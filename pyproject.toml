@@ -1,0 +1,20 @@
+[project]
+name = "pm-research"
+version = "0.1.0"
+description = "Phase-1 Polymarket copy-trading edge research: backfill, point-in-time selection, latency-modeled backtests"
+requires-python = ">=3.11"
+dependencies = ["pandas>=2.1", "numpy>=1.26", "pyarrow>=14"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+providers = ["polymarket-apis", "aiopolymarket==0.0.1"]
+
+[project.scripts]
+pm-research = "pm_research.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
