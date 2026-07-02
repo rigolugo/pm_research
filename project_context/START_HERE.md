@@ -22,7 +22,8 @@ Read these, in this order, before doing anything:
 6. `DATA_CONTRACTS_named_binary_probe.md` — exact inspected schemas/API surfaces for the named-binary probe (contract JSON, resolution parquet, conflicts CSV, p0_preflight.json, `Store`, `named_binary` semantics, Rank 1A warm-up). Authoritative/diagnostic-only/absent tagging.
 7. `PRICE_INPUT_CONTRACT_named_binary_probe.md` — the accepted S0 finding on the price input (why P1 is blocked).
 8. `SPEC_named_binary_probe.md` — the governing spec-only document for the future offline probe.
-9. The **latest active handoff / review memo** — currently `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md` (P1 paused/blocked) and `HANDOFF_orchestrator_named_binary_probe_p0.md` (P0 accepted).
+9. `SPEC_price_source_s1_coverage.md` — ACCEPTED / SPEC ONLY / coverage-only. The S1 plan for testing whether Polymarket CLOB `/prices-history` per token can cover the P0 universe with a usable decision-time per-side price. Authorizes no implementation, no S1 run, no network/data fetch, no S2, no P1/P2/P3, no probe execution, no scoring, no backfill.
+10. The **latest active handoff / review memo** — currently `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md` (P1 paused/blocked) and `HANDOFF_orchestrator_named_binary_probe_p0.md` (P0 accepted).
 
 Supporting reference (not overriding the above): `DUNE_DATA_NOTES.md` for Dune schema/export/precision lessons.
 
@@ -37,8 +38,10 @@ Supporting reference (not overriding the above): `DUNE_DATA_NOTES.md` for Dune s
 - **P2 / P3 / probe execution: UNAUTHORIZED.** `named_binary_probe_blocked = true` in all gate states. A `CLEAR_WITH_WARNINGS` outcome source does not authorize a probe.
 - **Chat2 Dune wallet-cohort discovery: BLOCKED** (separate phase; outcome-source scoreability does not unblock it).
 
+- **S1 price-source coverage spec: ACCEPTED / SPEC ONLY.** `SPEC_price_source_s1_coverage.md` is the accepted, coverage-only plan for testing whether Polymarket CLOB `/prices-history` per token can cover the P0 universe (39,693 conditions) with a usable decision-time per-side price. It is the first stage of the "Next possible step" below. **It authorizes nothing:** no implementation, no S1 run, no network/data fetch, no S2, no P1/P2/P3, no probe execution, no scoring, no backfill. It does **not** unblock P1 by itself — it only measures whether a candidate per-side price source is viable; a NEGATIVE result leaves P1 blocked with no `yes_price` fallback.
+
 ### Next possible step — only if explicitly authorized by the user
-A **spec-only price-source build plan** for a per-side / token-identity-keyed decision-time price series (e.g. `[condition_id, ts, outcome_index/token_id, side_price]` from CLOB/print history per token), analogous to the Stage 0–4 non-YES/NO resolution-source build. **Spec only** — no implementation, no data run, no backfill, no scoring, no probe. P1 cannot resume until such a price source exists and is audit-checked.
+A **spec-only price-source build plan** for a per-side / token-identity-keyed decision-time price series (e.g. `[condition_id, ts, outcome_index/token_id, side_price]` from CLOB/print history per token), analogous to the Stage 0–4 non-YES/NO resolution-source build. The S1 coverage spec (accepted, above) is the first stage of this; a later S2 build spec would follow only if S1 coverage is favorable and separately authorized. **Spec only** — no implementation, no data run, no backfill, no scoring, no probe. P1 cannot resume until such a price source exists and is audit-checked in a later, separately authorized stage.
 
 ---
 
