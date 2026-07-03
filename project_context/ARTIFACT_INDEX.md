@@ -136,6 +136,7 @@ Pin all of the following in the Claude Project Files panel (read `START_HERE.md`
 - `PRICE_INPUT_CONTRACT_named_binary_probe.md` — accepted S0 price-input finding (why P1 is blocked).
 - `CLAUDE_PROJECT_SETTINGS.md` — operational Claude capability settings (network allowlist, skills); does not override the above and authorizes nothing.
 - Active specs/handoffs as applicable — `SPEC_named_binary_probe.md` (spec only; post-S0 blocker addendum), `SPEC_price_source_s1_coverage.md` (accepted / spec only / coverage-only), `HANDOFF_orchestrator_named_binary_probe_p0.md` (P0 accepted), `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md` (P1 paused/blocked).
+ - `ORCHESTRATOR_LOW_CONTEXT_MODE.md` — reusable low-context review/decision protocol (minimal read policy + typed decision verbs). Documentation only; overrides nothing and authorizes nothing.
 - Supporting reference (not overriding): `DUNE_DATA_NOTES.md`.
 
 Keep these version-controlled in the repo AND pinned in the Claude Project Files panel; re-upload when changed so the two stay in sync.

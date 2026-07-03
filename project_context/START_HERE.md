@@ -28,6 +28,7 @@ Read these, in this order, before doing anything:
 Supporting reference (not overriding the above): `DUNE_DATA_NOTES.md` for Dune schema/export/precision lessons.
 
 `CLAUDE_PROJECT_SETTINGS.md` — operational Claude capability settings only: network allowlist policy, enabled/recommended skills, disabled/not-recommended skills. This file does not override `GUARDRAILS.md`, `PROJECT_STATE.md`, `DECISION_LOG.md`, `CLOSED_FINDINGS.md`, `ARTIFACT_INDEX.md`, `DATA_CONTRACTS_*.md`, `PRICE_INPUT_CONTRACT_*.md`, or active specs. It does not authorize implementation, data fetching, P1/P2/P3 continuation, probe execution, wallet discovery, PnL, paper/live trading, `log_index`, or full indexer work.
+ `ORCHESTRATOR_LOW_CONTEXT_MODE.md` — operating protocol for narrow review/decision tasks run without a full repo scan (minimal read policy + APPROVE/BLOCK/DEFER/ACCEPT FINDING/NEEDS VERIFICATION). It does not override the source-of-truth files and authorizes nothing.
 
 ---
 
