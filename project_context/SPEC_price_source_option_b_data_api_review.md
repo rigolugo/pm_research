@@ -1,7 +1,7 @@
 # SPEC — Option B (Polymarket Data API `/trades`) per-side price source — SPEC-ONLY REVIEW
 
 **Type:** SPEC ONLY. Falsification-minded review + bounded test design.
-**Status:** Draft for Orchestrator review. **Authorizes nothing.** No implementation, no network
+**Status:** ACCEPTED / SPEC ONLY. **Authorizes nothing further.** No implementation, no network
 call, no data run, no backfill, no scoring, no probe, no gate change. `named_binary_probe_blocked`
 stays `true`. No `yes_price` / `1 - price` / `1 - yes_price` synthesis anywhere.
 **Authorization basis:** spec-only Option B review, explicitly authorized in-chat; this is the one
