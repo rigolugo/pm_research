@@ -21,3 +21,11 @@ Current status:
 - Next possible task, only if explicitly authorized, is a SPEC ONLY price-source build plan.
 
 Raw data and generated artifacts are not stored in this repo.
+
+## License / reuse
+
+No open-source license is granted at this time.
+
+This repository is public for review, orchestration, and reproducibility of a private research workflow only. All rights are reserved by the repository owner unless a separate written license is granted.
+
+Do not use this repository to build or operate trading systems, copy-trading systems, wallet-following systems, live trading, paper trading, full indexers, or PnL/wallet-discovery products.
