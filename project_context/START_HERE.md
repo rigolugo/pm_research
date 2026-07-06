@@ -36,13 +36,14 @@ Read these, in this order, before doing anything:
 8. `SPEC_named_binary_probe.md` — governing spec-only document for the future offline probe.
 9. `SPEC_price_source_s1_coverage.md` — accepted S1 coverage-only spec. Historical/accepted spec context only; S1 Pass 1 has now completed with a negative sampled result.
 10. `SPEC_price_source_alt_trade_prints.md` — accepted S1-ALT (Option A local trade-print) coverage-only spec, precision-loss correction applied. Historical/accepted spec context only; S1-ALT Pass 1 has now completed with a negative sampled result.
-11. `SPEC_price_source_option_b_data_api_review.md` — **accepted Option B Data API `/trades` spec-only review.** Historical/accepted spec context only; it authorizes nothing further.
+11. `SPEC_price_source_option_b_data_api_review.md` — accepted Option B Data API `/trades` spec context. B0 has since executed and is recorded as inconclusive for API trust; it authorizes nothing further.
 12. Latest active handoffs/review memos:
     - `HANDOFF_orchestrator_s1_pass1_RESULT.md`
     - `HANDOFF_orchestrator_s1_alt_pass1_RESULT.md`
     - `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`
     - `HANDOFF_orchestrator_named_binary_probe_p0.md`
     - `HANDOFF_orchestrator_option_b_spec_s1_1_patch.md`
+    - `HANDOFF_orchestrator_option_b_b0_RESULT.md`
 
 Supporting references, not overriding the above:
 
@@ -67,7 +68,7 @@ These supporting files do not authorize implementation, data fetching, P1/P2/P3 
 
 - **S1-ALT Pass 1 (Option A local trade-print) coverage: COMPLETED / ACCEPTED — RESULT: `S1ALT_SOURCE_NOT_VIABLE`.** After the S1 negative, the first candidate alternative per-side price source — local trade-print reconstruction via `Store.load_trades()` (no network) — was tested per `SPEC_price_source_alt_trade_prints.md`, reusing the **exact accepted S1 Pass-1 300-condition sample** (248 measured + 52 S1-invalid-window, pre-excluded and never re-measured). On the accepted sampled run, Level-B both-sides coverage again cleared 0.95 in no subclass: UP_DOWN 13/50 = 0.26, OVER_UNDER 40/98 ≈ 0.4082, NAMED_OTHER 71/100 = 0.71. This is Pass 1 sampled coverage only. Consequence: local trade prints are not viable either on this evidence; P1 remains BLOCKED with no `yes_price` fallback and no `1 - price` synthesis. No Pass 2, Option C, S2, P1/P2/P3, probe, scoring, backfill, wallet/OrdersMatched/`log_index`/PnL, or gate change is authorized; `named_binary_probe_blocked` stays `true`.
 
-- **Option B Data API `/trades` spec-only review: ACCEPTED / SPEC ONLY.** `SPEC_price_source_option_b_data_api_review.md` was accepted at orchestrator review with two doc-only wording amendments (§8 and §1.1). Acceptance authorizes **nothing further**: no Phase B0 run, no Phase B1, no full Pass 1, no S2, no implementation, no network/API call, no data run, no backfill, no scoring, no P1/P2/P3, no probe, no wallet/OrdersMatched/`log_index`/PnL, and no gate change. Earlier Phase B0 code is draft/reference only unless separately authorized after the spec is pinned. A negative or ambiguous Option B result would close only the Data API `/trades` candidate on that evidence; any different future candidate source would require a fresh, separately authorized spec. Option C/on-chain reconstruction remains out of scope by current guardrails.
+- **Option B Data API `/trades` Phase B0: EXECUTED / INCONCLUSIVE FOR API TRUST.** A separately authorized B0 run halted at `STOP_API_LOCAL_MISMATCH` (`api_count=1747`, `local_count=8`, `matched_count=0`, `mismatch_count=1755`; first mismatches were `API_ONLY`). Follow-up local-only artifact inspection halted at `STOP_API_ARTIFACT_MISSING` because only `option_b_b0_manifest.json` was persisted and there were no saved API/mismatch rows for offline temporal-overlap analysis. B0 did **not** establish Data API mechanical trust, so **B1 remains not authorized**. Because local staleness/incompleteness remains plausible but unverified, do **not** close Option B as a clean API semantic failure on this evidence. No B0 rerun, fresh Polymarket download, B1, full Pass 1, S2, P1/P2/P3, probe, scoring, backfill, wallet/OrdersMatched/`log_index`/PnL, or gate change is authorized. `named_binary_probe_blocked` stays `true`.
 
 - **Chat2 Dune wallet-cohort discovery: BLOCKED.** It is a separate phase. Outcome-source scoreability does not unblock wallet discovery.
 
@@ -75,9 +76,9 @@ These supporting files do not authorize implementation, data fetching, P1/P2/P3 
 
 ## Next possible step — only if explicitly authorized by the user
 
-No next execution or implementation task is authorized by the Option B spec acceptance.
+No next execution or implementation task is authorized by the current Option B B0 state.
 
-A future move would require separate explicit authorization and a fresh scoped decision. Examples include a Phase B0 implementation review/code-only task, a Phase B0 network execution task, a B1 gap pilot, a full Pass 1 coverage task, a Pass 2 generalization check, or a different candidate-source spec. None follows automatically.
+A future move would require separate explicit authorization and a fresh scoped decision. Examples include a corrected B0 artifact-capture/reconciliation spec, a different candidate-source spec, or a separately reviewed data-refresh/local-completeness diagnostic. None follows automatically. B1/full Pass 1/S2/P1/P2/P3/probe work remains blocked.
 
 Any further move remains bounded by the project guardrails. No data run, network/API call, implementation, backfill, scoring, probe, P1/P2/P3 continuation, wallet/OrdersMatched/`log_index`/PnL, or gate change is authorized unless explicitly approved in-chat and allowed by the current repo guardrails.
 
@@ -85,7 +86,7 @@ Any further move remains bounded by the project guardrails. No data run, network
 
 ## What is NOT authorized
 
-No Phase B0 run, Phase B1, full Pass 1, S2, P1/P2/P3, or probe execution.
+No B0 rerun, Phase B1, full Pass 1, S2, P1/P2/P3, or probe execution.
 
 No scoring: no Brier, log-loss, calibration, reliability, splits, or forecast-vs-price metrics.
 
