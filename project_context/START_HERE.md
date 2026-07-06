@@ -78,7 +78,7 @@ These supporting files do not authorize implementation, data fetching, P1/P2/P3 
 
 No next execution or implementation task is authorized by the current Option B B0 state.
 
-A future move would require separate explicit authorization and a fresh scoped decision. Examples include a corrected B0 artifact-capture/reconciliation spec, a different candidate-source spec, or a separately reviewed data-refresh/local-completeness diagnostic. None follows automatically. B1/full Pass 1/S2/P1/P2/P3/probe work remains blocked.
+A future move would require separate explicit authorization and a fresh scoped decision. Examples include code/tests-only implementation of the accepted corrected B0 diagnostic harness, a different candidate-source spec, or a separately reviewed data-refresh/local-completeness diagnostic. None follows automatically. B1/full Pass 1/S2/P1/P2/P3/probe work remains blocked.
 
 Any further move remains bounded by the project guardrails. No data run, network/API call, implementation, backfill, scoring, probe, P1/P2/P3 continuation, wallet/OrdersMatched/`log_index`/PnL, or gate change is authorized unless explicitly approved in-chat and allowed by the current repo guardrails.
 

@@ -7,39 +7,48 @@
 ## Settled decisions (with corrected history)
 
 ### Rank 1A decision policy: `first_price_after_warmup`
+
 Chosen over fixed-lead-before-resolution because resolution time is derived from price convergence — a fixed lead would leak the outcome. Decision timestamp = first YES price >= 1h after first trade. Lookahead-safe.
 
 ### OrderFilled topic order: topic2=maker, topic3=taker (RESOLVED)
+
 **History (3 reversals before settling):**
+
 1. Initial decode assumed topic2=maker/topic3=taker.
 2. A buggy mid-pass showed "both roles" -> reversed to topic2=taker/topic3=maker.
 3. Reversal was based on an **invalid comparison** (local log_index 1227 vs Dune evt_index 1229 — different logs in a multi-fill tx).
 4. **Resolved** by exact-log-index Dune match across BOTH contracts: all rows showed Dune maker == topic2. Reverted to original (topic2=maker). Matches the CTF Exchange V2 source.
-**Settled:** `topic1=orderHash, topic2=maker, topic3=taker`. Verified, both contracts.
+   **Settled:** `topic1=orderHash, topic2=maker, topic3=taker`. Verified, both contracts.
 
 ### The 217/0 and 10/0 "all-taker" results were ARTIFACTS, not findings
+
 - **217/0** (early OrderFilled sample-join): a join-logic artifact compounded by the topic swap.
 - **10/0** (first OrdersMatched run): an **asset-id precision-loss bug** — Dune web-UI CSV export floated 78-digit token IDs into scientific notation (`5.20896e+76`) and turned `0` into `0.0`, breaking asset matching so no maker could be confirmed.
-**Lesson:** all-one-role outputs are a red flag; validate against a known case before interpreting. The maker-pairing validation harness caught the 10/0 before any conclusion.
+  **Lesson:** all-one-role outputs are a red flag; validate against a known case before interpreting. The maker-pairing validation harness caught the 10/0 before any conclusion.
 
 ### Asset-id precision fix (two parts)
+
 - **Part A:** Dune query casts uint256 asset/amount fields to varchar.
 - **Part B:** read those columns as `dtype=str`; compare via `canonical_int` (normalizes "0"/"0.0"/whitespace/full-precision integer strings); raise `DataExportPrecisionLoss` loudly on scientific notation.
-After fix + Dune-API CSV path: MAKER_PAIRING_VALIDATED (4/4), expanded run 100% recoverable / 0 precision-loss.
+  After fix + Dune-API CSV path: MAKER_PAIRING_VALIDATED (4/4), expanded run 100% recoverable / 0 precision-loss.
 
 ### Fee-field diagnostic: SUPERSEDED
+
 Inconclusive (NEED_MORE_SAMPLE; fee sparse, ~9% nonzero, weak separator). Superseded by OrdersMatched, which gives economic role directly via `takerordermaker`. Artifact preserved; line closed.
 
 ### Data hygiene (store contract)
+
 - Missing `condition_id` rows are **persisted in raw parquet but DROPPED at analysis load** (Option A). `save_wallet_trades` keeps them; `load_trades` drops null/blank condition_id.
 - Trade-id dedup **prefers rows with populated semantic keys** (tx_hash x4 + token_id x2 + outcome_index x1, stable mergesort).
 
 ### Reference cross-checks (external, corroborated)
+
 - antflow Dune queries: OrdersMatched fires **once per trade**, OrderFilled **twice per trade**; volume = `LEAST(maker,taker amountFilled)/1e6`.
 - warproxxx/poly_data: confirms `/1e6` scaling, USDC side = `assetId == 0`, and the **operator-leg filter** (exchange contract appears as taker on CTF mint/burn legs — treat as intermediary, not counterparty).
 - ghost-hunter: off-chain matches can revert on-chain — a *live-execution* risk only; our on-chain event data excludes ghosts by construction.
 
 ### Named-binary semantics validated; probe BLOCKED on missing non-YES/NO outcomes (SETTLED)
+
 - **Semantics/orientation validated.** The yes_price → canonical_side_price rewrite is complete and audit-gated. Orientation reads token identity (not display label); orientation_correctness_rate = 1.0; token_id/outcome_index coverage = 0.99601. Classification contract pinned (`nb_contract_version = nb-contract-2026-06-28.1`); the frequency-ranked label-pair census needed zero hand-rules beyond the seed lexicon.
 - **Audit-reporting Issue A fixed.** `determine_schema` previously required one interpretation to clear 99% across the entire mixed eligible universe, returned `chosen_schema=None`, and reported `resolution_mapping_success_rate=0.0` — masking a perfect YES/NO result. Now schema is selected on the cleanly-mappable subset; unmappable rows stay blocked but no longer veto selection. Same all-or-nothing artifact class as 10/0: an all-zero output that was a bug hiding a real signal, caught by per-subclass validation before concluding.
 - **local resolutions.parquet is YES/NO-only.** `winning_outcome` takes only `NO` (16,920) / `YES` (5,099) across 22,019 rows. No team / UP-DOWN / OVER-UNDER winner value appears.
@@ -47,7 +56,9 @@ Inconclusive (NEED_MORE_SAMPLE; fee sparse, ~9% nonzero, weak separator). Supers
 - **named-binary probe remains BLOCKED** pending a validated non-YES/NO realized-outcome source. Caught at the audit gate; no probe run, none authorized. A naive probe would have scored ~105k markets against a YES/NO winner and produced plausible-looking garbage.
 
 ### Named-binary non-YES/NO outcome source implemented and audit-gated — Stage 4 ACCEPTED (SETTLED)
+
 The blocker above is now resolved as a data-availability matter. A Dune-sourced non-YES/NO realized-outcome pipeline (Stages 0–4) was built and accepted.
+
 - **Source.** `polymarket_polygon.ctf_evt_conditionresolution` exposes `payoutnumerators` (array(uint256)) keyed by `conditionid`; it covers the non-YES/NO named-binary universe (Stage 1 coverage ~1.0). Winners derive ONLY from the payout vector (exactly-one-nonzero-slot), never from price convergence. Corroboration: `ctf_evt_payoutredemption`.
 - **Build.** Stage 3 produced 39,693 RESOLVED_SINGLE_WINNER rows; 253 AMBIGUOUS_MULTIPLE_WINNERS (split/tie/refund payouts) excluded + counted; zero MALFORMED / PRECISION_LOSS / SLOT_TOKEN_MAPPING_MISSING / TOKEN_INDEX_CONFLICT / duplicate-different-payout.
 - **Gate (Stage 4).** Additive `--resolution-source` flag overlays the winners. The **legacy pooled-all `gate_state` remains BLOCKED_BY_RESOLUTION_MAPPING** — correct and honest, because local `resolutions.parquet` is YES/NO-only and YES_NO maps at only ~0.13, holding the pooled rate below the 0.99 floor. A **separate non-YES/NO branch gate is `CLEAR_WITH_WARNINGS`**: non_yesno_pooled_map_rate 0.99339 (≥0.99) and each subclass ≥0.95 (UP_DOWN 0.99995, NAMED_OTHER 0.98657, OVER_UNDER 0.96535). Per-subclass counts separate `missing_source_rows` from `AMBIGUOUS_MULTIPLE_WINNERS` (NAMED_OTHER 11 missing + 216 ambiguous; OVER_UNDER 0 + 36; UP_DOWN 0 + 1) — missing rows are NOT labeled ambiguous.
@@ -55,13 +66,17 @@ The blocker above is now resolved as a data-availability matter. A Dune-sourced 
 - **Self-correction during the build (meta).** Three errors were caught and fixed by reading real output, not tooling: a wrong NAMED_OTHER-clears-0.99 claim (it is ~0.987, clears 0.95 not 0.99); a stale gate_policy_note that contradicted the branch result; and a count-labeling bug that conflated missing-source-rows with ambiguous payouts.
 
 ### S1 Pass 1 price-source coverage: `S1_SOURCE_NOT_VIABLE` (ACCEPTED, sampled) — SETTLED
+
 The first stage of the per-side price-source build plan (`SPEC_price_source_s1_coverage.md`) was implemented as a coverage-only, network-hard-gated, user-run test and **completed with a NEGATIVE Pass-1 sampled result.**
+
 - **Result.** On the accepted run: sample 300/300; **248 valid-window** conditions measured, **52 invalid-window** excluded + reported; **496** side-token fetches; endpoint shape parsed cleanly (`GET /prices-history`, `history` list, point keys `p`/`t`, no deviation). **Level-B both-sides coverage (the binding criterion) cleared 0.95 in no subclass:** UP_DOWN 19/50 = 0.38, OVER_UNDER 51/98 ≈ 0.5204, NAMED_OTHER 65/100 = 0.65. Verdict **`S1_SOURCE_NOT_VIABLE`**. Figures reconcile: 248 + 52 = 300; 248 × 2 = 496; per-subclass measured (50 + 98 + 100) = 248.
 - **Consequence.** CLOB `/prices-history` does **not** provide a usable decision-window per-side price for both sides across the sampled P0 universe. **P1 remains BLOCKED with no `yes_price` fallback.** This is **Pass 1 sampled coverage only** — not Pass 2 full-universe coverage; the sampled negative was accepted as the finding. A later S2 build spec was gated on *favorable* S1 coverage, which did not occur, so **S2 does not follow** on this evidence. No Pass 2, S2, P1/P2/P3, probe, scoring, backfill, or gate change is authorized; `named_binary_probe_blocked` stays `true`.
 - **Artifact-vs-finding discipline (meta).** The verdict was only trusted **after** the measurement was made healthy. Three earlier `S1_SOURCE_NOT_VIABLE` outputs were **artifacts, not findings**, each caught before acceptance: a request-window bug, an invalid-decision-window misclassification, and a `parse_ts` gap for the real `resolved_at` string form. The accepted run shows wide valid windows and 248 genuinely measured conditions.
 
 ### S1-ALT Pass 1 (Option A local trade-print) price-source coverage: `S1ALT_SOURCE_NOT_VIABLE` (ACCEPTED, sampled) — SETTLED
+
 After the S1 negative, the first candidate alternative per-side price source — local trade-print reconstruction via `Store.load_trades()` (Option A, no network) — was implemented per `SPEC_price_source_alt_trade_prints.md` as a coverage-only, local-only, user-run test, reusing the **exact accepted S1 Pass-1 300-condition sample** for direct comparability, and **completed with a NEGATIVE Pass-1 sampled result.**
+
 - **Result.** On the accepted run: sample 300/300 reconstructed as the union of the accepted S1 by-condition + excluded ledgers; **248 measured-eligible**, **52 S1-invalid-window** pre-excluded + reported. `measured_by_subclass` UP_DOWN 50 / OVER_UNDER 98 / NAMED_OTHER 100 — **identical** to the accepted S1 breakdown. Level-B class counts: BOTH_SIDES 124 / ONE_SIDE 65 / NEITHER 59. **Level-B both-sides coverage (the binding criterion) cleared 0.95 in no subclass:** UP_DOWN 13/50 = 0.26, OVER_UNDER 40/98 ≈ 0.4081632653, NAMED_OTHER 71/100 = 0.71. Verdict **`S1ALT_SOURCE_NOT_VIABLE`**. Diagnostics: `token_pair_unresolved` 0, `malformed_trade_rows_total` 19, `invalid_price_rows_total` 0, `all_one_status_detected` false, `level_c_validation` passed.
 - **Consequence.** Local trade prints do **not** provide a usable decision-window per-side price for both sides across the sampled P0 universe either. **P1 remains BLOCKED with no `yes_price` fallback and no `1 - price` synthesis.** This is **Pass 1 sampled coverage only** — not Pass 2 full-universe coverage; the sampled negative was accepted as the finding. A later S2 build spec was gated on *favorable* S1 (or S1-ALT) coverage, which did not occur for either candidate, so **S2 does not follow** on this evidence. No Pass 2, Option C, S2, P1/P2/P3, probe, scoring, backfill, or gate change is authorized; `named_binary_probe_blocked` stays `true`.
 - **Artifact-vs-finding discipline (meta).** As with S1, the verdict was only trusted **after** the measurement was made healthy. Four issues were caught and fixed before acceptance: setup/schema-stop, sample-reconstruction, excluded-reason normalization, and bounded `outcome_index` precision-handling. The accepted run reconciles exactly at every level and shows a genuinely mixed Level-B distribution.
@@ -69,6 +84,7 @@ After the S1 negative, the first candidate alternative per-side price source —
 ### Option B Phase B0 Data API `/trades`: `STOP_API_LOCAL_MISMATCH` + diagnostic `STOP_API_ARTIFACT_MISSING` (ACCEPTED, inconclusive for API trust)
 
 `SPEC_price_source_option_b_data_api_review.md` was drafted as a pessimistic, falsification-minded review of the Polymarket Data API `/trades` endpoint as a per-side/token-identity price-source candidate and **accepted at orchestrator review**, with two doc-only wording patches applied post-acceptance:
+
 - **§8** (build-gate section): amended so a negative/ambiguous result is recorded as closing **only** the Data API `/trades` candidate on that evidence — not the whole per-side price line — and any different future candidate source would need a **fresh, separately authorized** spec. Option C/on-chain reconstruction stays out of scope by current guardrails.
 - **§1.1** (H2 hypothesis bullet): amended with matching wording — a negative result means the Data API `/trades` path did not supply two-sided, token-identity-resolvable observations for the affected conditions, closing that specific candidate, not foreclosing all future candidates.
 
@@ -79,6 +95,20 @@ After the S1 negative, the first candidate alternative per-side price source —
 **Interpretation.** The B0 halt remains real, but it is not a clean API semantic-failure finding. Console evidence made local staleness/incompleteness plausible, but that hypothesis is unverified because the run did not persist enough API/mismatch rows for offline temporal-overlap analysis. Do **not** close Option B as a clean Data API semantic failure on this evidence.
 
 **Standing consequence.** B0 did not establish trust, so **B1 remains not authorized**. No B0 rerun, fresh Polymarket download, full Pass 1, S2, P1/P2/P3, probe, scoring, backfill, wallet/OrdersMatched/`log_index`/PnL, or gate change is authorized. P1 remains **BLOCKED** on the continued absence of an accepted per-side/token-identity price source. `named_binary_probe_blocked` stays `true`.
+
+### Option B B0 Failure Diagnostic spec: ACCEPTED / SPEC ONLY (SETTLED)
+
+`SPEC_option_b_b0_failure_diagnostic.md` is the accepted spec-only design for a *possible* corrected B0 diagnostic run (the run itself is **not** authorized by acceptance). The spec targets the root defect: the original B0 runner evaluated `STOP_API_LOCAL_MISMATCH` before persisting evidentiary artifacts, destroying the rows needed to diagnose the halt.
+
+**Persistence requirements (D1–D9).** Corrected design requires persist-before-halt ordering with incremental per-condition/per-page writes; full API raw-row ledger (bounded at 25,000 rows, locked at acceptance); full local comparison rows with load provenance; full bidirectional mismatch ledger including ambiguities; per-condition pagination completeness status; `takerOnly` cardinality measurements; local temporal min/max per condition; API temporal min/max per condition (unit-attested); and offline-recomputable overlap classifications (D9).
+
+**Time-bounded reconciliation safety (locked at acceptance).** Row-level matching evaluated only within `[local_min_traded_at − τ, local_max_traded_at + τ]` per condition, where `τ = 120 seconds` (locked, not tunable). API rows later than `local_max_traded_at + σ` classified as `API_AFTER_LOCAL_WINDOW` but **never** used to claim local incompleteness unless beyond separation margin `σ = 24 hours` (locked), and only as "consistent-with-H-LOCAL" — not proof. Full composite-identity matching inside the window. No side synthesis anywhere.
+
+**Classifications (§5, locked at acceptance).** Per-condition precedence: `OVERLAP_SCHEMA_BLOCKED` > `OVERLAP_PAGINATION_PARTIAL` > `NO_TEMPORAL_OVERLAP` > `OVERLAP_MATCHED` > `OVERLAP_API_LOCAL_MISMATCH`. Run-level `API_ARTIFACT_COMPLETE` / `API_ARTIFACT_INCOMPLETE`; an incomplete run carries zero H-API/H-LOCAL evidence weight.
+
+**Locked `OVERLAP_MATCHED` clean bar.** All in-window API rows and all in-window local rows paired by full composite identity (R1–R3); zero `API_ONLY` in-window; zero `LOCAL_ONLY` in-window; zero `TX_HASH_AMBIGUOUS`; pagination complete (`COMPLETE_SHORT_FINAL_PAGE`); artifacts complete and offline-recomputable (`API_ARTIFACT_COMPLETE`). Any shortfall on any element ⇒ not-matched; no weaker bar.
+
+**Spec acceptance does not authorize a run.** A corrected diagnostic rerun would require a separate, explicit second authorization. B1, P1, and all downstream remain blocked. `named_binary_probe_blocked` stays `true`.
 
 ---
 
@@ -94,7 +124,7 @@ After the S1 negative, the first candidate alternative per-side price source —
 - Named-binary non-YES/NO outcome source + Stage 4 gate integration (ACCEPTED). Do not re-derive the source, the build, or the gate-policy split. The legacy pooled-all gate stays BLOCKED_BY_RESOLUTION_MAPPING (YES/NO sparsity); the non-YES/NO branch is CLEAR_WITH_WARNINGS. The only open named-binary work is whatever the user explicitly authorizes downstream — and the probe itself remains unauthorized.
 - S1 Pass 1 sampled coverage result (`S1_SOURCE_NOT_VIABLE`, ACCEPTED). Do not re-derive or re-litigate the sampled negative or the per-subclass rates (UP_DOWN 0.38 / OVER_UNDER ≈ 0.5204 / NAMED_OTHER 0.65 vs 0.95). It is Pass 1 sampled coverage only; a Pass 2 full-universe run or any alternative price source is a **separate, explicitly-authorized** step. P1 stays blocked with no `yes_price` fallback; the probe stays unauthorized.
 - S1-ALT Pass 1 (Option A local trade-print) sampled coverage result (`S1ALT_SOURCE_NOT_VIABLE`, ACCEPTED). Do not re-derive or re-litigate the sampled negative or the per-subclass rates (UP_DOWN 0.26 / OVER_UNDER ≈ 0.4081632653 / NAMED_OTHER 0.71 vs 0.95). It reused the **exact accepted S1 Pass-1 300-condition sample** (248 measured + 52 S1-invalid-window, pre-excluded and never re-measured), so it is directly comparable to the S1 result. It is Pass 1 sampled coverage only; a Pass 2 full-universe run for either candidate, Option C, or any alternative price source is a **separate, explicitly-authorized** step. P1 stays blocked with no `yes_price` fallback or `1 - price` synthesis; the probe stays unauthorized.
-- Option B (Data API `/trades`) B0 state: B0 execution halted at `STOP_API_LOCAL_MISMATCH`, then local-only failure diagnosis halted at `STOP_API_ARTIFACT_MISSING` because only the manifest was persisted. Do not re-litigate the accepted spec text or its two applied wording patches (§8, §1.1). B0 did not establish Data API mechanical trust, so B1 is not authorized; however, do not close Option B as a clean API semantic failure on this evidence because stale/incomplete local parquet remains plausible but unverified. No B0 rerun/full Pass 1/S2/P1/P2/P3/probe/scoring/backfill is authorized; see the settled-decision section above for detail.
+- Option B (Data API `/trades`) B0 state: B0 execution halted at `STOP_API_LOCAL_MISMATCH`, then local-only failure diagnosis halted at `STOP_API_ARTIFACT_MISSING` because only the manifest was persisted. Do not re-litigate the accepted spec text or its two applied wording patches (§8, §1.1). B0 did not establish Data API mechanical trust, so B1 is not authorized; however, do not close Option B as a clean API semantic failure on this evidence because stale/incomplete local parquet remains plausible but unverified. The accepted B0 Failure Diagnostic spec (`SPEC_option_b_b0_failure_diagnostic.md`) addresses this by requiring persist-before-halt ordering, full evidence ledgers, and offline-recomputable overlap classifications. Specification is fixed and locked at acceptance: `τ = 120 seconds`, `σ = 24 hours`, `OVERLAP_MATCHED` clean bar. A corrected run remains not authorized by acceptance; it would require separate explicit second authorization. No B0 rerun/full Pass 1/S2/P1/P2/P3/probe/scoring/backfill is authorized.
 
 ---
 
