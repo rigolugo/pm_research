@@ -32,6 +32,8 @@ import math
 import os
 import random
 import re
+import sys
+import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
@@ -67,6 +69,11 @@ DECISION_PRICE_BOTH_SIDES = "DECISION_PRICE_BOTH_SIDES"
 DECISION_PRICE_ONE_SIDE = "DECISION_PRICE_ONE_SIDE"
 DECISION_PRICE_NEITHER = "DECISION_PRICE_NEITHER"
 NO_TRADE_ANCHOR = "NO_TRADE_ANCHOR"
+# Invalid/missing decision window: resolved_at missing OR resolved_at <= first_trade_ts+warmup.
+# Such a condition has NO ex-ante decision window at all, so it is NOT measurable coverage and
+# must never be counted as DECISION_PRICE_NEITHER (which is a real "queried, nothing there"
+# negative). Excluded and reported separately; never fetched.
+NO_VALID_DECISION_WINDOW = "NO_VALID_DECISION_WINDOW_AFTER_WARMUP"
 
 # Stop / exclusion states
 STOP_P0_NOT_CLEAR = "STOP_P0_NOT_CLEAR"
@@ -84,6 +91,9 @@ S1_SOURCE_VIABLE = "S1_SOURCE_VIABLE"
 S1_SOURCE_PARTIAL = "S1_SOURCE_PARTIAL"
 S1_SOURCE_NOT_VIABLE = "S1_SOURCE_NOT_VIABLE"
 S1_INCONCLUSIVE_SHAPE = "S1_INCONCLUSIVE_SHAPE"
+S1_INCONCLUSIVE_NO_VALID_DECISION_WINDOW_SAMPLE = (
+    "S1_INCONCLUSIVE_NO_VALID_DECISION_WINDOW_SAMPLE"
+)
 S1_PASS1_COMPLETE = "S1_PASS1_COMPLETE"
 
 # Coverage threshold (spec 7.2, LOCKED) - Level B is the binding criterion.
@@ -175,13 +185,31 @@ def parse_ts(value: Any) -> float:
         raise ValueError("parse_ts received bool")
     if isinstance(value, (int, float)):
         return float(value)
+    # Datetime-like objects (pandas Timestamp, datetime) as returned by
+    # Store.load_trades()'s traded_at column. pandas Timestamp IS a datetime subclass, so
+    # this one branch covers both, tz-aware and tz-naive. Timestamp-only fix: it touches
+    # NO token-id / integer-identity handling (token ids never pass through parse_ts; they
+    # go through canonical_int). tz-aware -> epoch directly; tz-naive -> treat as UTC
+    # (project convention) so the result is independent of the runner's local timezone.
+    if isinstance(value, datetime):
+        dt = value if value.tzinfo is not None else value.replace(tzinfo=timezone.utc)
+        return dt.timestamp()
     s = str(value).strip()
     if s == "":
         raise ValueError("parse_ts received empty string")
     if re.match(r"^[0-9]+(\.[0-9]+)?$", s):
         return float(s)
     s2 = s.replace(" UTC", "").replace("Z", "").strip()
-    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%d"):
+    # Accept the real resolution-source form "2025-03-06 07:25:37.000 UTC" (fractional
+    # seconds, " UTC" suffix already stripped above) alongside the whole-second and ISO
+    # forms. %f matches 1-6 fractional digits, covering ".000" millisecond precision.
+    for fmt in (
+        "%Y-%m-%d %H:%M:%S",
+        "%Y-%m-%d %H:%M:%S.%f",
+        "%Y-%m-%dT%H:%M:%S",
+        "%Y-%m-%dT%H:%M:%S.%f",
+        "%Y-%m-%d",
+    ):
         try:
             dt = datetime.strptime(s2, fmt).replace(tzinfo=timezone.utc)
             return dt.timestamp()
@@ -231,10 +259,11 @@ def assert_contract_version(*versions: Optional[str]) -> None:
 class ConditionRecord:
     condition_id: str
     subclass: str  # one of ORIENTED_SUBCLASSES
-    resolved_at: str  # STRING form, parsed only for the window bound
+    resolved_at: Any  # raw resolution timestamp (pandas Timestamp / str / None); parsed via parse_ts
     side_0_token: Optional[str] = None
     side_1_token: Optional[str] = None
     pair_status: str = "PENDING"  # "OK" or TOKEN_PAIR_UNRESOLVED
+    malformed_trade_rows: int = 0  # diagnostic: count of skipped missing/malformed trade rows
 
 
 def _normalize_eligible(value: Any) -> bool:
@@ -287,7 +316,7 @@ def build_universe(
                 f"contract={c_sub} resolution={r_sub}"
             )
         universe.append(
-            ConditionRecord(condition_id=cid, subclass=c_sub, resolved_at=row.get("resolved_at", ""))
+            ConditionRecord(condition_id=cid, subclass=c_sub, resolved_at=row.get("resolved_at"))
         )
     return universe
 
@@ -295,38 +324,66 @@ def build_universe(
 # ---------------------------------------------------------------------------
 # Token-pair enumeration from TRADES (spec 3.1) - never from winners
 # ---------------------------------------------------------------------------
+def _is_missing_field(value: Any) -> bool:
+    """True iff a trade-row token_id / outcome_index is MISSING/malformed rather than a
+    real value: None, empty/whitespace string, or a NaN float (`v != v`).
+
+    A NaN is a missing field, not precision loss. A *real* non-null float (e.g. 5.2e76 or a
+    float-mangled large id) is NOT missing — it must still reach canonical_int and STOP_PRECISION_LOSS.
+    """
+    if value is None:
+        return True
+    if isinstance(value, float):
+        return value != value  # NaN
+    s = str(value).strip()
+    if s == "":
+        return True
+    if s.lower() in ("nan", "none"):
+        return True
+    return False
+
+
 def enumerate_token_pair(
     trade_tuples: Sequence[Tuple[str, Any, Any]],
-) -> Tuple[Optional[str], Optional[str], str]:
+) -> Tuple[Optional[str], Optional[str], str, int]:
     """Given distinct (condition_id, token_id, outcome_index) tuples for ONE condition,
-    return (side_0_token, side_1_token, status).
+    return (side_0_token, side_1_token, status, malformed_rows).
 
     Requires exactly two stable, string-safe side tokens: one for outcome_index 0 and
-    one for outcome_index 1. Anything else -> (None, None, TOKEN_PAIR_UNRESOLVED).
+    one for outcome_index 1. Anything else -> (None, None, TOKEN_PAIR_UNRESOLVED, malformed).
 
-    Fails LOUD (DataExportPrecisionLoss) on scientific-notation / float-mangled token ids -
-    precision loss is never a soft TOKEN_PAIR_UNRESOLVED.
+    Rows with a MISSING/malformed token_id or outcome_index (None / empty / NaN) are
+    SKIPPED and counted (`malformed_rows`) — they are not precision loss. A condition that
+    cannot yield two stable string-safe side tokens from the *valid* rows is
+    TOKEN_PAIR_UNRESOLVED, never a STOP.
+
+    Fails LOUD (DataExportPrecisionLoss) only on a *real* non-null value that is
+    scientific-notation / float-mangled / non-integer identity — precision loss is never a
+    soft TOKEN_PAIR_UNRESOLVED and never a missing row.
     """
     by_index: Dict[int, set] = {}
+    malformed = 0
     for _cid, token_id, outcome_index in trade_tuples:
-        if token_id is None or outcome_index is None:
-            return None, None, TOKEN_PAIR_UNRESOLVED
+        # Missing/malformed row -> skip + count (not precision loss).
+        if _is_missing_field(token_id) or _is_missing_field(outcome_index):
+            malformed += 1
+            continue
         _ = canonical_int(token_id)  # precision discipline first (raises on sci-notation)
         idx = canonical_int(outcome_index)
         if idx not in (0, 1):
-            return None, None, TOKEN_PAIR_UNRESOLVED
+            return None, None, TOKEN_PAIR_UNRESOLVED, malformed
         by_index.setdefault(idx, set()).add(str(token_id).strip())
 
     if set(by_index.keys()) != {0, 1}:
-        return None, None, TOKEN_PAIR_UNRESOLVED
+        return None, None, TOKEN_PAIR_UNRESOLVED, malformed
     if len(by_index[0]) != 1 or len(by_index[1]) != 1:
-        return None, None, TOKEN_PAIR_UNRESOLVED
+        return None, None, TOKEN_PAIR_UNRESOLVED, malformed
 
     s0 = next(iter(by_index[0]))
     s1 = next(iter(by_index[1]))
     if canonical_int(s0) == canonical_int(s1):
-        return None, None, TOKEN_PAIR_UNRESOLVED
-    return s0, s1, "OK"
+        return None, None, TOKEN_PAIR_UNRESOLVED, malformed
+    return s0, s1, "OK", malformed
 
 
 def resolve_token_pairs(
@@ -340,8 +397,9 @@ def resolve_token_pairs(
     unresolved: List[ConditionRecord] = []
     for c in universe:
         tuples = trades_by_condition.get(c.condition_id, [])
-        s0, s1, status = enumerate_token_pair(tuples)
+        s0, s1, status, malformed = enumerate_token_pair(tuples)
         c.side_0_token, c.side_1_token, c.pair_status = s0, s1, status
+        c.malformed_trade_rows = malformed
         (resolved if status == "OK" else unresolved).append(c)
 
     total = len(universe)
@@ -836,11 +894,35 @@ class StoreLoader:
         import pandas as pd  # lazy
 
         path = self._art("named_binary", "named_binary_resolution_source_rows.parquet")
-        # dtype safety: every column is str in the parquet (DATA_CONTRACTS 2); read as-is.
         df = pd.read_parquet(path)
-        # Force object/string dtype to preserve 78-digit token ids (fail loud downstream).
-        df = df.astype(str)
-        return df.to_dict("records")
+
+        # --- resolved_at diagnosis/fix (S1 blocker) --------------------------------
+        # DATA_CONTRACTS §2 lists the timestamp column as `resolved_at`. Guard against a
+        # schema/name drift AND against a coercion bug: a blanket df.astype(str) turns a
+        # tz-aware datetime64 `resolved_at` into "2025-03-06 00:00:00+00:00", which
+        # parse_ts rejects -> None -> blank -> the false all-invalid-window sample.
+        #
+        # Fix: string-cast the string-safe identity columns (token ids, indices) as before,
+        # but DO NOT stringify `resolved_at` — carry it as the raw pandas value so
+        # parse_ts's datetime branch handles Timestamp/tz-aware/naive correctly. If the
+        # column is entirely absent, fail loud rather than silently blanking every window.
+        if "resolved_at" not in df.columns:
+            raise ValueError(
+                "STOP_RESOLUTION_SCHEMA: resolution-source parquet has no 'resolved_at' "
+                f"column. Present columns: {list(df.columns)}. Per DATA_CONTRACTS §2 the "
+                "column must be named 'resolved_at'; inspect the resolution-source builder/"
+                "export before rerunning S1 (do not silently remap block-time columns)."
+            )
+        string_safe_cols = [c for c in df.columns if c != "resolved_at"]
+        for c in string_safe_cols:
+            df[c] = df[c].astype(str)
+        # resolved_at kept as-is (Timestamp / str / NaT). Convert to plain Python objects;
+        # NaT/NaN -> None so downstream parse_ts fails cleanly per-row instead of on "NaT".
+        resolved_col = df["resolved_at"].tolist()
+        records = df[string_safe_cols].to_dict("records")
+        for rec, ra in zip(records, resolved_col):
+            rec["resolved_at"] = None if pd.isna(ra) else ra
+        return records
 
     def load_trades_index(
         self, condition_ids: Sequence[str]
@@ -939,6 +1021,16 @@ BY_CONDITION_HEADER = (
     "level_b_class",
     "nearest_gap_side_0_seconds",
     "nearest_gap_side_1_seconds",
+    # Request-window diagnostics (so the orchestrator can verify the queried window per
+    # condition, not just the first observed GET). Timestamps/counts only - never prices.
+    "first_trade_ts",
+    "decision_lower_ts",          # first_trade_ts + warmup_seconds
+    "resolved_at_ts",
+    "request_start_ts",
+    "request_end_ts",
+    "request_window_seconds",     # request_end_ts - request_start_ts
+    "observed_point_count_side_0",
+    "observed_point_count_side_1",
 )
 EXCLUDED_HEADER = ("condition_id", "subclass", "reason")
 
@@ -1023,6 +1115,29 @@ class RunConfig:
     fidelity: Optional[int] = None
     allow_batch: bool = False
     network_authorized: bool = False  # gates ALL fetch + ALL artifact writes
+    quiet: bool = False              # suppress [S1] progress heartbeat on stderr
+    progress_every: int = 25         # print a fetch-loop heartbeat every N sampled conditions
+
+
+# ---------------------------------------------------------------------------
+# Progress / heartbeat (stderr only; never stdout, never price data, never token lists)
+# ---------------------------------------------------------------------------
+def _fmt_elapsed(seconds: float) -> str:
+    """Format elapsed seconds as HH:MM:SS for a heartbeat line (display only)."""
+    total = max(0, int(seconds))
+    h, rem = divmod(total, 3600)
+    m, s = divmod(rem, 60)
+    return f"{h:02d}:{m:02d}:{s:02d}"
+
+
+def _progress(quiet: bool, msg: str) -> None:
+    """Emit one compact `[S1] ...` heartbeat line to STDERR so stdout stays
+    machine-readable JSON. No-op when quiet. flush=True so long local runs show
+    liveness immediately rather than buffering. NEVER prints a price series or a
+    per-condition token list - counts and phase names only."""
+    if quiet:
+        return
+    print(msg, file=sys.stderr, flush=True)
 
 
 def _fetch_series_for_token(
@@ -1068,11 +1183,12 @@ def run_pass1_coverage(
         }
 
     # ---- (1) P0 + (2) contract + (3) resolution rows.
+    _progress(cfg.quiet, "[S1] loading P0/contract/resolution/trades...")
     p0 = loader.load_p0_preflight()
     try:
         final_p0_eligible = validate_p0(p0)  # requires P0_CLEAR + version equality
     except ValueError as exc:
-        return _stop_result(str(exc))
+        return _stop_result(str(exc), cfg.quiet)
 
     contract_conditions = loader.load_contract_conditions()
     resolution_rows = loader.load_resolution_rows()
@@ -1081,7 +1197,8 @@ def run_pass1_coverage(
     try:
         universe = build_universe(contract_conditions, resolution_rows)
     except ValueError as exc:
-        return _stop_result(str(exc))
+        return _stop_result(str(exc), cfg.quiet)
+    _progress(cfg.quiet, f"[S1] universe built: {len(universe)} conditions")
 
     # ---- (4)+(6) Trades index + token-pair enumeration from trades (never winners).
     cids = [c.condition_id for c in universe]
@@ -1091,17 +1208,28 @@ def run_pass1_coverage(
             universe, trades_by_condition
         )
     except DataExportPrecisionLoss as exc:
-        return _stop_result(f"{STOP_PRECISION_LOSS}: {exc}")
+        return _stop_result(f"{STOP_PRECISION_LOSS}: {exc}", cfg.quiet)
     except ValueError as exc:
-        return _stop_result(str(exc))
+        return _stop_result(str(exc), cfg.quiet)
+    # Diagnostic total (also reused below in the JSON result / excluded ledger, computed once
+    # so the heartbeat line and the final artifact never drift from each other).
+    malformed_trade_rows_total = sum(
+        c.malformed_trade_rows for c in resolved_conditions
+    ) + sum(c.malformed_trade_rows for c in unresolved_conditions)
+    _progress(
+        cfg.quiet,
+        f"[S1] token pairs resolved: {len(resolved_conditions)}/{len(universe)}, "
+        f"unresolved {len(unresolved_conditions)}, malformed trade rows {malformed_trade_rows_total}",
+    )
 
     # ---- (7) Deterministic Pass-1 stratified SAMPLE only.
     sample = build_pass1_sample(resolved_conditions, cfg.sample_size, cfg.seed)
     # Structural assertion: we only ever fetch the bounded sample, never the whole universe.
     if len(sample) > cfg.sample_size:
-        return _stop_result(f"{STOP_VALIDATION_REQUIRED}: sample bound violated")
+        return _stop_result(f"{STOP_VALIDATION_REQUIRED}: sample bound violated", cfg.quiet)
     if len(resolved_conditions) > cfg.sample_size and len(sample) >= len(resolved_conditions):
-        return _stop_result(f"{STOP_VALIDATION_REQUIRED}: sample not a strict subset")
+        return _stop_result(f"{STOP_VALIDATION_REQUIRED}: sample not a strict subset", cfg.quiet)
+    _progress(cfg.quiet, f"[S1] sample selected: {len(sample)} conditions")
 
     # ---- (8) Fetch both side tokens for SAMPLED conditions only.
     shape_sink: List[Dict[str, Any]] = []
@@ -1114,13 +1242,62 @@ def run_pass1_coverage(
     validation_pairs: List[Tuple[str, SeriesResult, SeriesResult]] = []
     fetched_token_count = 0
     batch_equiv_results: List[bool] = []
+    request_window_seconds_list: List[int] = []  # per-condition request window widths (diagnostic)
+    # Invalid decision-window conditions (resolved_at missing OR <= first_trade_ts+warmup):
+    # never fetched, never classified DECISION_PRICE_NEITHER; excluded + reported separately.
+    invalid_window_conditions: List[ConditionRecord] = []
+    invalid_window_by_subclass: Dict[str, int] = {}
+    valid_window_by_subclass: Dict[str, int] = {}
 
     try:
-        for cond in sample:
+        fetch_start = time.monotonic()
+        total_sample = len(sample)
+        for i, cond in enumerate(sample):
+            # Heartbeat: always before the first fetch (i==0), then every progress_every
+            # sampled conditions. Counts + elapsed time only - never a price series, never
+            # a per-condition token list.
+            if i == 0 or (cfg.progress_every > 0 and i % cfg.progress_every == 0):
+                elapsed = _fmt_elapsed(time.monotonic() - fetch_start)
+                _progress(
+                    cfg.quiet,
+                    f"[S1] fetching coverage: {i}/{total_sample} conditions, elapsed {elapsed}",
+                )
+
             resolved_at_ts = _safe_resolved_at(cond.resolved_at)
             ft = first_trade_ts.get(cond.condition_id)
-            start_ts = int(ft) if ft is not None else 0
-            end_ts = int(resolved_at_ts) if resolved_at_ts is not None else start_ts + 1
+            decision_lower = (ft + WARMUP_SECONDS) if ft is not None else None
+
+            # ---- Guard: a condition with no VALID decision window is not measurable coverage.
+            # resolved_at missing OR resolved_at <= first_trade_ts + warmup => NO ex-ante window.
+            # We do NOT query the endpoint and do NOT classify it DECISION_PRICE_NEITHER; it is
+            # excluded and reported so it cannot masquerade as a real coverage negative. This is
+            # the fix for the all-1-second / all-NEITHER / false-NOT_VIABLE artifact.
+            if not valid_decision_window(ft, resolved_at_ts):
+                invalid_window_conditions.append(cond)
+                invalid_window_by_subclass[cond.subclass] = (
+                    invalid_window_by_subclass.get(cond.subclass, 0) + 1
+                )
+                win_secs = (
+                    "" if (resolved_at_ts is None or decision_lower is None)
+                    else int(resolved_at_ts) - int(decision_lower)
+                )
+                per_condition_rows.append([
+                    cond.condition_id, cond.subclass, cond.side_0_token, cond.side_1_token,
+                    "NOT_QUERIED", "NOT_QUERIED", "n/a", NO_VALID_DECISION_WINDOW,
+                    "", "",
+                    "" if ft is None else int(ft),
+                    "" if decision_lower is None else int(decision_lower),
+                    "" if resolved_at_ts is None else int(resolved_at_ts),
+                    "", "", win_secs, 0, 0,
+                ])
+                continue
+
+            valid_window_by_subclass[cond.subclass] = (
+                valid_window_by_subclass.get(cond.subclass, 0) + 1
+            )
+            # Request window spans the FULL decision window (validity already guaranteed above,
+            # so this can never collapse to the pathological 1-second clamp).
+            start_ts, end_ts = _decision_request_window(ft, resolved_at_ts)
 
             s0 = _fetch_series_for_token(client, cond.side_0_token, start_ts, end_ts, cfg)
             s1 = _fetch_series_for_token(client, cond.side_1_token, start_ts, end_ts, cfg)
@@ -1142,22 +1319,38 @@ def run_pass1_coverage(
             one_present = (s0.status == SERIES_PRESENT) ^ (s1.status == SERIES_PRESENT)
             reach = "both" if both_present else ("one" if one_present else "neither")
 
-            if resolved_at_ts is None:
-                lb = NO_TRADE_ANCHOR if ft is None else DECISION_PRICE_NEITHER
-            else:
-                lb = classify_decision_window(s0, s1, ft, resolved_at_ts)
+            # resolved_at_ts is guaranteed non-None here (validity guard above).
+            lb = classify_decision_window(s0, s1, ft, resolved_at_ts)
             level_b_classifications.append((cond.subclass, lb))
 
-            gap0 = nearest_gap_seconds(s0.points, ft, resolved_at_ts) if resolved_at_ts else None
-            gap1 = nearest_gap_seconds(s1.points, ft, resolved_at_ts) if resolved_at_ts else None
+            gap0 = nearest_gap_seconds(s0.points, ft, resolved_at_ts)
+            gap1 = nearest_gap_seconds(s1.points, ft, resolved_at_ts)
 
+            request_window_seconds = end_ts - start_ts
+            request_window_seconds_list.append(request_window_seconds)
             per_condition_rows.append([
                 cond.condition_id, cond.subclass, cond.side_0_token, cond.side_1_token,
                 s0.status, s1.status, reach, lb,
                 "" if gap0 is None else round(gap0, 3),
                 "" if gap1 is None else round(gap1, 3),
+                "" if ft is None else int(ft),
+                "" if decision_lower is None else int(decision_lower),
+                int(resolved_at_ts),
+                start_ts,
+                end_ts,
+                request_window_seconds,
+                len(s0.points),
+                len(s1.points),
             ])
             validation_pairs.append((cond.condition_id, s0, s1))
+        if total_sample:
+            elapsed = _fmt_elapsed(time.monotonic() - fetch_start)
+            _progress(
+                cfg.quiet,
+                f"[S1] fetching coverage: {len(request_window_seconds_list)}/{total_sample} "
+                f"valid-window conditions fetched ({len(invalid_window_conditions)} skipped, "
+                f"invalid window), elapsed {elapsed}",
+            )
     except EndpointShapeError as exc:
         # Surface the deviation: build shape observations from whatever was captured
         # (including the deviating response), record them in the returned result, and
@@ -1170,12 +1363,12 @@ def run_pass1_coverage(
             wrote_shape = True
         except Exception:  # noqa: BLE001 - shape capture must never mask the stop verdict
             wrote_shape = False
-        stop = _stop_result(f"{STOP_ENDPOINT_SHAPE_UNRECOGNIZED}: {exc}")
+        stop = _stop_result(f"{STOP_ENDPOINT_SHAPE_UNRECOGNIZED}: {exc}", cfg.quiet)
         stop["endpoint_shape_observations"] = shape_obs
         stop["endpoint_shape_written"] = wrote_shape
         return stop
     except DataExportPrecisionLoss as exc:
-        return _stop_result(f"{STOP_PRECISION_LOSS}: {exc}")
+        return _stop_result(f"{STOP_PRECISION_LOSS}: {exc}", cfg.quiet)
 
     # ---- (10) Level C validation BEFORE trusting any all-one aggregate.
     all_one_a = all_one_status_guard(level_a_pool)
@@ -1202,13 +1395,40 @@ def run_pass1_coverage(
 
     verdict = _pass1_verdict(per_subclass, level_a_pool, validation_required)
 
-    # ---- Excluded ledger.
+    # ---- Invalid-window override: if NOTHING in the sample had a valid decision window,
+    # endpoint coverage was never measured. That is NOT a coverage negative — it is
+    # inconclusive. Never report S1_SOURCE_NOT_VIABLE in that case.
+    n_valid_window = len(request_window_seconds_list)
+    n_invalid_window = len(invalid_window_conditions)
+    if n_valid_window == 0:
+        verdict = S1_INCONCLUSIVE_NO_VALID_DECISION_WINDOW_SAMPLE
+
+    # ---- Excluded ledger. (malformed_trade_rows_total was already computed once, right
+    # after resolve_token_pairs, and is reused here so the heartbeat line and this ledger
+    # never drift from each other.)
     excluded_rows: List[List[Any]] = []
     for c in unresolved_conditions:
-        excluded_rows.append([c.condition_id, c.subclass, TOKEN_PAIR_UNRESOLVED])
+        reason = TOKEN_PAIR_UNRESOLVED
+        if c.malformed_trade_rows:
+            reason = f"{TOKEN_PAIR_UNRESOLVED} (malformed_trade_rows={c.malformed_trade_rows})"
+        excluded_rows.append([c.condition_id, c.subclass, reason])
     for cond, (sub, lb) in zip(sample, level_b_classifications):
         if lb == NO_TRADE_ANCHOR:
             excluded_rows.append([cond.condition_id, sub, NO_TRADE_ANCHOR])
+    # Invalid decision-window conditions: excluded + reported with window diagnostics.
+    for c in invalid_window_conditions:
+        ft_c = first_trade_ts.get(c.condition_id)
+        ra_c = _safe_resolved_at(c.resolved_at)
+        dl_c = (ft_c + WARMUP_SECONDS) if ft_c is not None else None
+        win = ("" if (ra_c is None or dl_c is None) else int(ra_c) - int(dl_c))
+        excluded_rows.append([
+            c.condition_id, c.subclass,
+            f"{NO_VALID_DECISION_WINDOW} "
+            f"(first_trade_ts={'' if ft_c is None else int(ft_c)}, "
+            f"decision_lower_ts={'' if dl_c is None else int(dl_c)}, "
+            f"resolved_at_ts={'' if ra_c is None else int(ra_c)}, "
+            f"window_seconds={win})",
+        ])
 
     # ---- Reconciliation (universe-level; the sample is an explicit subset this pass).
     universe_recon = reconcile(
@@ -1225,6 +1445,10 @@ def run_pass1_coverage(
     # ---- Observed endpoint shape (from the capture sink) for the shape ledger.
     endpoint_shape_observations = _build_shape_observations(shape_sink)
 
+    # ---- Request-window distribution (diagnostic; guards against the 1-second-window bug
+    # being masked by an all-one aggregate or a single observed GET example).
+    request_window = request_window_summary(request_window_seconds_list, sample)
+
     result = {
         "s1_verdict": verdict,
         "pass": 1,
@@ -1234,6 +1458,21 @@ def run_pass1_coverage(
         "final_p0_eligible": final_p0_eligible,
         "universe_resolved_pairs": len(resolved_conditions),
         "token_pair_unresolved": len(unresolved_conditions),
+        "malformed_trade_rows_total": malformed_trade_rows_total,
+        "request_window_summary": request_window,
+        "decision_window_validity": {
+            "sampled": len(sample),
+            "valid_window": n_valid_window,
+            "invalid_window": n_invalid_window,
+            "valid_window_by_subclass": valid_window_by_subclass,
+            "invalid_window_by_subclass": invalid_window_by_subclass,
+            "note": (
+                "Invalid = resolved_at missing OR resolved_at <= first_trade_ts+warmup. "
+                "Invalid-window conditions are NOT fetched and NOT counted as "
+                "DECISION_PRICE_NEITHER; they are excluded and reported separately. "
+                "Coverage rates below are measured over VALID-window conditions only."
+            ),
+        },
         "sample_size_requested": cfg.sample_size,
         "sample_size_actual": len(sample),
         "fetched_token_count": fetched_token_count,
@@ -1261,9 +1500,11 @@ def run_pass1_coverage(
     result["artifact_dir"] = writer.s1_dir()
 
     # ---- (11) Write coverage-only artifacts (only reached when authorized).
+    _progress(cfg.quiet, "[S1] writing artifacts...")
     _write_all_artifacts(
         writer, result, per_condition_rows, excluded_rows, cfg, endpoint_shape_observations
     )
+    _progress(cfg.quiet, f"[S1] done: verdict={verdict}")
     return result
 
 
@@ -1274,7 +1515,68 @@ def _safe_resolved_at(resolved_at: str) -> Optional[float]:
         return None
 
 
-def _stop_result(verdict: str) -> Dict[str, Any]:
+def valid_decision_window(
+    first_trade_ts: Optional[float],
+    resolved_at_ts: Optional[float],
+    warmup_seconds: int = WARMUP_SECONDS,
+) -> bool:
+    """A condition has a usable ex-ante decision window iff BOTH anchors exist AND
+    resolved_at is strictly AFTER the decision lower bound:
+
+        decision_lower = first_trade_ts + warmup_seconds
+        valid  <=>  resolved_at_ts is not None
+                    AND first_trade_ts is not None
+                    AND resolved_at_ts > decision_lower
+
+    If invalid, there is no interval `[decision_lower, resolved_at)` in which a decision-window
+    point could ever exist, so the condition is NOT measurable coverage — it must be excluded
+    and reported, never queried, and never classified DECISION_PRICE_NEITHER.
+    """
+    if first_trade_ts is None or resolved_at_ts is None:
+        return False
+    return resolved_at_ts > (first_trade_ts + warmup_seconds)
+
+
+def _decision_request_window(
+    first_trade_ts: Optional[float],
+    resolved_at_ts: Optional[float],
+    warmup_seconds: int = WARMUP_SECONDS,
+) -> Tuple[int, int]:
+    """Build the endpoint REQUEST window that must fully contain the decision window.
+
+    Returns (start_ts, end_ts) as integer epoch seconds where:
+        lower = first_trade_ts + warmup_seconds   -> request start = floor(lower)
+        upper = resolved_at                        -> request end   = ceil(upper)
+
+    The request is deliberately INCLUSIVE of the upper bound (ceil) so a decision-window
+    point that sits just below resolved_at is actually returned by the endpoint; the
+    leakage-safe cut (strictly `< resolved_at`) is applied later in classify_decision_window,
+    NEVER by narrowing the request. This function never returns a 1-second window when a real
+    resolved_at is available (that pathological narrow window was the bug).
+
+    Degenerate inputs:
+      * no trade anchor -> request from 0 (Level B will yield NO_TRADE_ANCHOR regardless).
+      * no resolved_at  -> end = start + 1 (cannot bound the window; Level B can't classify it
+                           as in-window, so this stays a non-usable diagnostic, not a false hit).
+      * lower >= upper  -> clamp end to start + 1 so the request is still well-formed; the
+                           window is effectively empty and Level B will not find an in-window
+                           point (correctly), rather than silently querying a backwards range.
+    """
+    if first_trade_ts is None:
+        lower = 0.0
+    else:
+        lower = first_trade_ts + warmup_seconds
+    start_ts = int(math.floor(lower))
+    if resolved_at_ts is None:
+        return start_ts, start_ts + 1
+    end_ts = int(math.ceil(resolved_at_ts))
+    if end_ts <= start_ts:
+        end_ts = start_ts + 1
+    return start_ts, end_ts
+
+
+def _stop_result(verdict: str, quiet: bool = True) -> Dict[str, Any]:
+    _progress(quiet, f"[S1] done: verdict={verdict}")
     return {
         "s1_verdict": verdict,
         "authorized_scope": AUTHORIZED_SCOPE,
@@ -1289,6 +1591,53 @@ def _count(values: Sequence[str]) -> Dict[str, int]:
     for v in values:
         out[v] = out.get(v, 0) + 1
     return out
+
+
+def _median(values: Sequence[float]) -> Optional[float]:
+    if not values:
+        return None
+    s = sorted(values)
+    n = len(s)
+    mid = n // 2
+    if n % 2 == 1:
+        return float(s[mid])
+    return (s[mid - 1] + s[mid]) / 2.0
+
+
+def request_window_summary(
+    window_seconds: Sequence[int],
+    sample: Sequence[ConditionRecord],
+) -> Dict[str, Any]:
+    """Compact request-window distribution so a single 1-second observed GET can never be
+    mistaken for the whole sample. Counts/seconds only - no prices, no series.
+
+    Guards specifically against the request-window bug: count_le_1 counts pathological
+    ~1-second windows; count_gt_3600 counts windows wide enough to actually contain a
+    decision-window point at first_trade_ts + 3600."""
+    subclass_counts: Dict[str, int] = {}
+    for c in sample:
+        subclass_counts[c.subclass] = subclass_counts.get(c.subclass, 0) + 1
+    if not window_seconds:
+        return {
+            "n": 0,
+            "min_request_window_seconds": None,
+            "median_request_window_seconds": None,
+            "max_request_window_seconds": None,
+            "count_request_window_seconds_le_1": 0,
+            "count_request_window_seconds_le_60": 0,
+            "count_request_window_seconds_gt_3600": 0,
+            "sample_count_by_subclass": subclass_counts,
+        }
+    return {
+        "n": len(window_seconds),
+        "min_request_window_seconds": int(min(window_seconds)),
+        "median_request_window_seconds": _median(window_seconds),
+        "max_request_window_seconds": int(max(window_seconds)),
+        "count_request_window_seconds_le_1": sum(1 for w in window_seconds if w <= 1),
+        "count_request_window_seconds_le_60": sum(1 for w in window_seconds if w <= 60),
+        "count_request_window_seconds_gt_3600": sum(1 for w in window_seconds if w > 3600),
+        "sample_count_by_subclass": subclass_counts,
+    }
 
 
 def _spread_validation_sample(
@@ -1344,7 +1693,8 @@ def _write_all_artifacts(
         "price_source_s1_coverage_by_condition.csv", BY_CONDITION_HEADER, per_condition_rows
     )
     writer.write_text(
-        "price_source_s1_endpoint_shape.md", _render_endpoint_shape_md(endpoint_shape_observations)
+        "price_source_s1_endpoint_shape.md",
+        _render_endpoint_shape_md(endpoint_shape_observations, result.get("request_window_summary")),
     )
     writer.write_csv("price_source_s1_excluded.csv", EXCLUDED_HEADER, excluded_rows)
 
@@ -1360,6 +1710,8 @@ def _render_coverage_md(result: Dict[str, Any]) -> str:
         f"- final_p0_eligible: {result.get('final_p0_eligible')}",
         f"- universe resolved pairs: {result.get('universe_resolved_pairs')}",
         f"- token-pair unresolved: {result.get('token_pair_unresolved')}",
+        f"- malformed trade rows (skipped, diagnostic only): "
+        f"{result.get('malformed_trade_rows_total')}",
         f"- sample size (actual/requested): "
         f"{result.get('sample_size_actual')}/{result.get('sample_size_requested')}",
         f"- fetched token count: {result.get('fetched_token_count')} "
@@ -1367,7 +1719,18 @@ def _render_coverage_md(result: Dict[str, Any]) -> str:
         f"- Pass 2 available: {result.get('pass2_available')}",
         "",
         "## Level A status counts",
+        "(Level A here = endpoint response for the queried decision window "
+        "[floor(first_trade_ts+warmup), ceil(resolved_at)], not a broader 'series exists at "
+        "all' probe. SERIES_EMPTY = no points in that window.)",
         f"{result.get('level_a_status_counts')}",
+        "",
+        "## Request-window summary (diagnostic — guards against the 1-second-window bug)",
+        f"{result.get('request_window_summary')}",
+        "",
+        "## Decision-window validity (invalid = resolved_at missing or <= first_trade_ts+warmup)",
+        "(Invalid-window conditions are NOT fetched and NOT counted as DECISION_PRICE_NEITHER; "
+        "they are excluded and reported. Coverage is measured over valid-window conditions only.)",
+        f"{result.get('decision_window_validity')}",
         "",
         "## Level B decision-window classes",
         f"{result.get('level_b_class_counts')}",
@@ -1449,7 +1812,7 @@ def _build_shape_observations(
     return obs
 
 
-def _render_endpoint_shape_md(observations: Any) -> str:
+def _render_endpoint_shape_md(observations: Any, request_window: Optional[Dict[str, Any]] = None) -> str:
     lines = [
         "# S1 Endpoint Shape - DOCUMENTED vs OBSERVED",
         "",
@@ -1461,6 +1824,20 @@ def _render_endpoint_shape_md(observations: Any) -> str:
         "S1 performs no complementary-side conversion and asserts no canonical-probability meaning.",
         "- This file records STRUCTURE ONLY (keys, counts, statuses). No reusable price "
         "series is persisted. Token ids may appear (already in the coverage ledger).",
+        "- **Level A scope note:** the Level A status recorded here reflects the endpoint "
+        "response for the QUERIED decision window [floor(first_trade_ts+warmup), ceil(resolved_at)], "
+        "not a broader 'does any history exist at all' probe. S1 performs no separate "
+        "full-range reachability query, so SERIES_EMPTY means 'no points in the decision "
+        "window', which is exactly what Level B needs — it does not by itself prove the token "
+        "has no history anywhere. A future S2 build may add a broader reachability probe if "
+        "that distinction matters.",
+        "",
+        "## Request-window summary (whole sample)",
+        "The single observed GET below is ONE SAMPLE ONLY. To verify the request window across "
+        "the whole sample - and that it is not the pathological ~1-second window - read this "
+        "distribution (also in price_source_s1_coverage.json -> request_window_summary and the "
+        "per-condition columns in price_source_s1_coverage_by_condition.csv):",
+        f"{request_window if request_window is not None else '(summary not available on this stop path)'}",
         "",
         "## OBSERVED (this run)",
     ]
@@ -1471,6 +1848,8 @@ def _render_endpoint_shape_md(observations: Any) -> str:
         dev = observations.get("deviation")
 
         lines.append("### Single-token GET")
+        lines.append("(first observed GET — ONE SAMPLE ONLY; see the request-window summary "
+                     "above for the whole-sample distribution)")
         if get_o:
             lines += [
                 f"- path: {get_o.get('path')}",
@@ -1544,6 +1923,17 @@ def build_arg_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Permit POST /batch-prices-history as a candidate path (still checked vs single).",
     )
+    p.add_argument(
+        "--quiet",
+        action="store_true",
+        help="Suppress the [S1] progress heartbeat on stderr (progress is ON by default).",
+    )
+    p.add_argument(
+        "--progress-every",
+        type=int,
+        default=25,
+        help="Print a fetch-loop heartbeat every N sampled conditions (default: 25).",
+    )
     return p
 
 
@@ -1564,6 +1954,8 @@ def build_run_config(args: argparse.Namespace) -> RunConfig:
         fidelity=args.fidelity,
         allow_batch=bool(getattr(args, "allow_batch", False)),
         network_authorized=network_authorized_from_args(args),
+        quiet=bool(getattr(args, "quiet", False)),
+        progress_every=int(getattr(args, "progress_every", 25)),
     )
 
 

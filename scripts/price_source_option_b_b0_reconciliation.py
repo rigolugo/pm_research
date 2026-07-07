@@ -521,6 +521,8 @@ def _normalize_known_good_status(value: Any) -> str:
     if value is None:
         return ""
     raw = str(value).strip().upper()
+    if not raw:
+        return ""
     # Preserve common S1/S1-ALT diagnostic suffixes as only the leading class token.
     raw = raw.split()[0]
     if raw in KNOWN_GOOD_STATUS_ALIASES:
