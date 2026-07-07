@@ -1,0 +1,43 @@
+{
+  "phase": "OPTION_C_C1A_BOUNDED_CANARY",
+  "authorized_scope": "OPTION_C_C1A_CANARY_RECONCILIATION_ONLY",
+  "outcome": "C1_ROW_EXPLOSION",
+  "detail": "C1_ROW_EXPLOSION: '0x00e0e2e768260268c59fd8c43d77f771b19cf1d70ddfcf51c0198e4f58e0fc8e' exceeded per_condition_row_cap 2000",
+  "by_condition": {
+    "0x00e0e2e768260268c59fd8c43d77f771b19cf1d70ddfcf51c0198e4f58e0fc8e": {
+      "dune_rows_in_window": 2001,
+      "dune_only_tx_hash_count": 794,
+      "local_only_tx_hash_count": 136,
+      "overlap_tx_hash_count": 24,
+      "unresolved_side_rows": 0
+    },
+    "0x05e6b63f6a9a207c7d09a6165a7b42dc9b561129528a488509818c9d850d235d": {
+      "dune_rows_in_window": 0,
+      "dune_only_tx_hash_count": 0,
+      "local_only_tx_hash_count": 7,
+      "overlap_tx_hash_count": 0,
+      "unresolved_side_rows": 0
+    },
+    "0x06a49f84dc36633874f4d11e26205ec7816bf06fcf5ca100c010a8e72ee0d34f": {
+      "dune_rows_in_window": 0,
+      "dune_only_tx_hash_count": 0,
+      "local_only_tx_hash_count": 47,
+      "overlap_tx_hash_count": 0,
+      "unresolved_side_rows": 0
+    },
+    "0x0cb2ceea234b5983a21b51186d52aede1f85e242a519123508ea18ac53a561c2": {
+      "dune_rows_in_window": 705,
+      "dune_only_tx_hash_count": 248,
+      "local_only_tx_hash_count": 0,
+      "overlap_tx_hash_count": 44,
+      "unresolved_side_rows": 0
+    },
+    "0x0d37350307c1f60f7f2f83387d9273ab0eac02ed7919e3875e5f28a71fbe675e": {
+      "dune_rows_in_window": 0,
+      "dune_only_tx_hash_count": 0,
+      "local_only_tx_hash_count": 188,
+      "overlap_tx_hash_count": 0,
+      "unresolved_side_rows": 0
+    }
+  }
+}

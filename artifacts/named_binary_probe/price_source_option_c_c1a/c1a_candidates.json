@@ -1,0 +1,42 @@
+[
+  {
+    "condition_id": "0x00e0e2e768260268c59fd8c43d77f771b19cf1d70ddfcf51c0198e4f58e0fc8e",
+    "window_start_utc": "1761987962",
+    "window_end_utc": "1761998477",
+    "per_condition_row_cap": 2000,
+    "global_row_cap": 6000,
+    "source_table_version": "polymarket_polygon.ctfexchange_evt_orderfilled"
+  },
+  {
+    "condition_id": "0x05e6b63f6a9a207c7d09a6165a7b42dc9b561129528a488509818c9d850d235d",
+    "window_start_utc": "1779818545",
+    "window_end_utc": "1779846031",
+    "per_condition_row_cap": 2000,
+    "global_row_cap": 6000,
+    "source_table_version": "polymarket_polygon.ctfexchange_evt_orderfilled"
+  },
+  {
+    "condition_id": "0x06a49f84dc36633874f4d11e26205ec7816bf06fcf5ca100c010a8e72ee0d34f",
+    "window_start_utc": "1742245687",
+    "window_end_utc": "1742450267",
+    "per_condition_row_cap": 2000,
+    "global_row_cap": 6000,
+    "source_table_version": "polymarket_polygon.ctfexchange_evt_orderfilled"
+  },
+  {
+    "condition_id": "0x0cb2ceea234b5983a21b51186d52aede1f85e242a519123508ea18ac53a561c2",
+    "window_start_utc": "1747851870",
+    "window_end_utc": "1747892685",
+    "per_condition_row_cap": 2000,
+    "global_row_cap": 6000,
+    "source_table_version": "polymarket_polygon.ctfexchange_evt_orderfilled"
+  },
+  {
+    "condition_id": "0x0d37350307c1f60f7f2f83387d9273ab0eac02ed7919e3875e5f28a71fbe675e",
+    "window_start_utc": "1742832150",
+    "window_end_utc": "1743135040",
+    "per_condition_row_cap": 2000,
+    "global_row_cap": 6000,
+    "source_table_version": "polymarket_polygon.ctfexchange_evt_orderfilled"
+  }
+]

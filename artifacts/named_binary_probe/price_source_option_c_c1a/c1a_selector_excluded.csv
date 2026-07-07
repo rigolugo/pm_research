@@ -1,0 +1,1 @@
+condition_id,nb_subclass,side_0_token_id,side_1_token_id,outcome_index_0,outcome_index_1,window_start_utc,window_end_utc,decision_time_basis,per_condition_row_cap,global_row_cap,dune_query_limit,selector_source,source_table_version,token_pair_validation_status
