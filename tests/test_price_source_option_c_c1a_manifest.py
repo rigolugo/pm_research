@@ -9,6 +9,8 @@ import importlib.util
 import os
 import re
 import sys
+import types
+from datetime import datetime, timezone
 
 import pytest
 
@@ -63,6 +65,33 @@ def test_canonical_int_rejects_float():
     with pytest.raises(c1a.DataExportPrecisionLoss):
         c1a.canonical_int(5.2)
 
+
+
+
+# ---------------------------------------------------------------------------
+# Timestamp parsing: real Store.load_trades().traded_at can be datetime-like
+# ---------------------------------------------------------------------------
+def test_parse_ts_utc_accepts_aware_datetime():
+    dt = datetime(2025, 11, 1, 9, 6, 2, tzinfo=timezone.utc)
+    assert c1a.parse_ts_utc(dt) == dt.timestamp()
+
+
+def test_parse_ts_utc_accepts_naive_datetime_as_utc():
+    dt = datetime(2025, 11, 1, 9, 6, 2)
+    expected = dt.replace(tzinfo=timezone.utc).timestamp()
+    assert c1a.parse_ts_utc(dt) == expected
+
+
+def test_parse_ts_utc_accepts_pandas_timestamp_utc():
+    pd = pytest.importorskip("pandas")
+    ts = pd.Timestamp("2025-11-01 09:06:02", tz="UTC")
+    expected = datetime(2025, 11, 1, 9, 6, 2, tzinfo=timezone.utc).timestamp()
+    assert c1a.parse_ts_utc(ts) == expected
+
+
+def test_parse_ts_utc_accepts_fractional_iso_timezone_string():
+    expected = datetime(2025, 11, 1, 9, 6, 2, 123000, tzinfo=timezone.utc).timestamp()
+    assert c1a.parse_ts_utc("2025-11-01T09:06:02.123Z") == expected
 
 # ---------------------------------------------------------------------------
 # enumerate_token_pair
@@ -268,6 +297,54 @@ def test_validate_candidate_list_rejects_invalid_source_table_version():
     ]
     with pytest.raises(ValueError, match=c1a.STOP_SOURCE_TABLE_VERSION_INVALID):
         c1a.validate_candidate_list(candidates)
+
+
+
+
+def test_store_loader_includes_datetime_like_traded_at_row_in_window(monkeypatch):
+    pd = pytest.importorskip("pandas")
+
+    in_window_0 = datetime(2025, 11, 1, 9, 6, 2, tzinfo=timezone.utc)
+    in_window_1 = pd.Timestamp("2025-11-01 09:07:02", tz="UTC")
+    out_of_window = datetime(2025, 11, 2, 9, 6, 2, tzinfo=timezone.utc)
+
+    fake_df = pd.DataFrame(
+        {
+            "condition_id": [CID_A, CID_A, CID_A],
+            "token_id": [T0, T1, T2],
+            "outcome_index": ["0", "1", "0"],
+            "traded_at": [in_window_0, in_window_1, out_of_window],
+        }
+    )
+
+    class FakeStore:
+        def __init__(self, root):
+            self.root = root
+
+        def load_trades(self):
+            return fake_df
+
+    pm_module = types.ModuleType("pm_research")
+    data_module = types.ModuleType("pm_research.data")
+    store_module = types.ModuleType("pm_research.data.store")
+    store_module.Store = FakeStore
+    monkeypatch.setitem(sys.modules, "pm_research", pm_module)
+    monkeypatch.setitem(sys.modules, "pm_research.data", data_module)
+    monkeypatch.setitem(sys.modules, "pm_research.data.store", store_module)
+
+    loader = c1a.StoreLoader(root="unused", artifacts_dir="unused")
+    windows = {
+        CID_A: (
+            c1a.parse_ts_utc(datetime(2025, 11, 1, 9, 0, 0, tzinfo=timezone.utc)),
+            c1a.parse_ts_utc(datetime(2025, 11, 1, 10, 0, 0, tzinfo=timezone.utc)),
+        )
+    }
+
+    trades = loader.load_trades_for_conditions([CID_A], windows)
+    assert trades[CID_A] == [(CID_A, T0, "0"), (CID_A, T1, "1")]
+
+    s0, s1, status = c1a.enumerate_token_pair(trades[CID_A])
+    assert (s0, s1, status) == (T0, T1, c1a.MANIFEST_OK)
 
 
 # ---------------------------------------------------------------------------

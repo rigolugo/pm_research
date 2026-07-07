@@ -9,6 +9,7 @@ import csv
 import json
 import os
 import sys
+from datetime import datetime, timezone
 
 import pytest
 
@@ -62,6 +63,25 @@ def _row(**overrides):
 def test_canonical_int_rejects_scientific_notation():
     with pytest.raises(canary.DataExportPrecisionLoss):
         canary.canonical_int("5.2e76")
+
+
+def test_parse_ts_utc_accepts_dune_fractional_utc_string():
+    got = canary.parse_ts_utc("2025-05-21 23:59:22.000 UTC")
+    expected = datetime(2025, 5, 21, 23, 59, 22, tzinfo=timezone.utc).timestamp()
+    assert got == expected
+
+
+def test_parse_ts_utc_accepts_dune_second_precision_utc_string():
+    got = canary.parse_ts_utc("2025-05-21 23:59:22 UTC")
+    expected = datetime(2025, 5, 21, 23, 59, 22, tzinfo=timezone.utc).timestamp()
+    assert got == expected
+
+
+def test_parse_ts_utc_accepts_datetime_like_values_as_utc():
+    aware = datetime(2025, 5, 21, 23, 59, 22, tzinfo=timezone.utc)
+    naive = datetime(2025, 5, 21, 23, 59, 22)
+    assert canary.parse_ts_utc(aware) == aware.timestamp()
+    assert canary.parse_ts_utc(naive) == aware.timestamp()
 
 
 # ---------------------------------------------------------------------------
@@ -366,3 +386,60 @@ def test_main_non_halt_run_reports_executed_needs_review_not_design_clear(tmp_pa
     assert result["outcome"] != canary.C1_CANARY_DESIGN_CLEAR
     assert (out_dir / "option_c_c1a_tagged_rows.csv").exists()
     assert (out_dir / "option_c_c1a_raw_rows_sample.csv").exists()
+
+
+
+def test_main_accepts_utf8_bom_prefixed_dune_csv_header(tmp_path, monkeypatch):
+    manifest_doc = {
+        "phase": "OPTION_C_C1A_SELECTOR_MANIFEST",
+        "conditions": [
+            {
+                "condition_id": CID,
+                "side_0_token_id": T0,
+                "side_1_token_id": T1,
+                "window_start_utc": "2025-05-21 00:00:00 UTC",
+                "window_end_utc": "2025-05-22 00:00:00 UTC",
+                "per_condition_row_cap": 10,
+                "global_row_cap": 10,
+                "source_table_version": "polymarket_polygon.ctfexchange_evt_orderfilled",
+            }
+        ],
+    }
+    manifest_path = tmp_path / "manifest.json"
+    manifest_path.write_text(json.dumps(manifest_doc), encoding="utf-8")
+
+    dune_csv_path = tmp_path / "dune_export_bom.csv"
+    with open(dune_csv_path, "w", newline="", encoding="utf-8-sig") as fh:
+        w = csv.DictWriter(
+            fh,
+            fieldnames=[
+                "condition_id",
+                "tx_hash",
+                "block_time",
+                "makerAssetId",
+                "takerAssetId",
+                "makerAmountFilled",
+                "takerAmountFilled",
+                "source_provenance",
+            ],
+        )
+        w.writeheader()
+        w.writerow(_row(tx_hash="0xNEW_BOM", block_time="2025-05-21 23:59:22.000 UTC"))
+
+    out_dir = tmp_path / "out_bom"
+    monkeypatch.setattr(canary.LocalTxHashLoader, "load", lambda self, manifest: {CID: set()})
+
+    rc = canary.main(
+        [
+            "--manifest",
+            str(manifest_path),
+            "--dune-csv",
+            str(dune_csv_path),
+            "--out-dir",
+            str(out_dir),
+        ]
+    )
+    assert rc == 0
+    with open(out_dir / "c1a_canary_result.json", encoding="utf-8") as fh:
+        result = json.load(fh)
+    assert result["outcome"] == canary.C1_CANARY_EXECUTED_NEEDS_REVIEW
