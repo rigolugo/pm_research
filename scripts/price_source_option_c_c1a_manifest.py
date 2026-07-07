@@ -159,15 +159,48 @@ def canonical_int(value: Any) -> int:
 
 
 def parse_ts_utc(value: Any) -> float:
-    """Parse a fixed window bound to epoch seconds. Accepts epoch numbers or
-    ISO-8601 / 'YYYY-MM-DD HH:MM:SS[ UTC]' strings. Fails loud otherwise."""
+    """Parse a fixed window bound or Store.load_trades().traded_at value to
+    epoch seconds in UTC.
+
+    Accepts epoch numbers, datetime-like values (including pandas Timestamp),
+    and common ISO-8601 / 'YYYY-MM-DD HH:MM:SS[ UTC]' strings. Naive datetimes
+    are treated as UTC. Fails loud otherwise.
+    """
+    if isinstance(value, datetime):
+        if value.tzinfo is None:
+            value = value.replace(tzinfo=timezone.utc)
+        return value.timestamp()
     if isinstance(value, (int, float)) and not isinstance(value, bool):
         return float(value)
     s = str(value).strip()
     if re.match(r"^[0-9]+(\.[0-9]+)?$", s):
         return float(s)
+
+    # Common pandas/string forms include either a literal UTC suffix, a Z suffix,
+    # a numeric timezone offset, and/or fractional seconds. Prefer
+    # datetime.fromisoformat after normalizing the separator/suffix, then fall
+    # back to the older fixed formats for backward compatibility.
+    normalized = s
+    if normalized.endswith(" UTC"):
+        normalized = normalized[:-4] + "+00:00"
+    if normalized.endswith("Z"):
+        normalized = normalized[:-1] + "+00:00"
+    try:
+        dt = datetime.fromisoformat(normalized)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.timestamp()
+    except ValueError:
+        pass
+
     s2 = s.replace(" UTC", "").replace("Z", "").strip()
-    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%d"):
+    for fmt in (
+        "%Y-%m-%d %H:%M:%S.%f",
+        "%Y-%m-%dT%H:%M:%S.%f",
+        "%Y-%m-%d %H:%M:%S",
+        "%Y-%m-%dT%H:%M:%S",
+        "%Y-%m-%d",
+    ):
         try:
             return datetime.strptime(s2, fmt).replace(tzinfo=timezone.utc).timestamp()
         except ValueError:

@@ -144,15 +144,57 @@ def canonical_int(value: Any) -> int:
 
 
 def parse_ts_utc(value: Any) -> float:
+    """Parse source timestamps to UTC epoch seconds.
+
+    Dune CSV exports commonly carry `block_time` as strings such as
+    `YYYY-MM-DD HH:MM:SS.fff UTC`; local loaders may also pass datetime-like
+    values. Treat an explicit `UTC` / `Z` suffix as UTC, and treat tz-naive
+    datetime objects as UTC rather than local time.
+    """
+    if isinstance(value, datetime):
+        dt = value
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc).timestamp()
     if isinstance(value, (int, float)) and not isinstance(value, bool):
         return float(value)
     s = str(value).strip()
     if re.match(r"^[0-9]+(\.[0-9]+)?$", s):
         return float(s)
-    s2 = s.replace(" UTC", "").replace("Z", "").strip()
-    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%d"):
+
+    # Dune API CSV often emits e.g. `2025-05-21 23:59:22.000 UTC`.
+    # Strip only explicit UTC/Z markers and then parse the remaining value as UTC.
+    s2 = s
+    explicit_utc = False
+    if s2.endswith(" UTC"):
+        s2 = s2[: -len(" UTC")].strip()
+        explicit_utc = True
+    if s2.endswith("Z"):
+        s2 = s2[:-1].strip()
+        explicit_utc = True
+    # Also accept ISO offsets when present; convert them back to UTC.
+    iso_candidate = s.replace("Z", "+00:00")
+    try:
+        dt = datetime.fromisoformat(iso_candidate)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc).timestamp()
+    except ValueError:
+        pass
+
+    for fmt in (
+        "%Y-%m-%d %H:%M:%S.%f",
+        "%Y-%m-%d %H:%M:%S",
+        "%Y-%m-%dT%H:%M:%S.%f",
+        "%Y-%m-%dT%H:%M:%S",
+        "%Y-%m-%d",
+    ):
         try:
-            return datetime.strptime(s2, fmt).replace(tzinfo=timezone.utc).timestamp()
+            dt = datetime.strptime(s2, fmt)
+            # `explicit_utc` is recorded for readability; all accepted string forms
+            # are interpreted as UTC in this canary, never as local time.
+            _ = explicit_utc
+            return dt.replace(tzinfo=timezone.utc).timestamp()
         except ValueError:
             continue
     raise ValueError(f"unparseable timestamp: {value!r}")
@@ -587,7 +629,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         manifest_doc = json.load(fh)
     manifest = load_manifest(manifest_doc)
 
-    with open(args.dune_csv, "r", newline="", encoding="utf-8") as fh:
+    with open(args.dune_csv, "r", newline="", encoding="utf-8-sig") as fh:
         event_rows_raw = list(csv.DictReader(fh))
 
     local_loader = LocalTxHashLoader(args.root)
