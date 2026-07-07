@@ -139,8 +139,11 @@ def test_manifest_can_verify_against_source_csv(tmp_path):
     manifest = write_manifest(tmp_path)
     cids = [c["condition_id"] for c in json.loads(manifest.read_text())["conditions"]]
     source_csv = tmp_path / "source.csv"
+    blank_status_cid = CID_PREFIX + "f" * 64
     source_csv.write_text(
-        "condition_id,level_b_class\n" + "\n".join(f"{cid},BOTH_SIDES" for cid in cids) + "\n",
+        "condition_id,level_b_class\n"
+        + "\n".join(f"{cid},BOTH_SIDES" for cid in cids)
+        + f"\n{blank_status_cid},\n",
         encoding="utf-8",
     )
     loaded = b0.load_condition_manifest(manifest, provenance_source_csv=source_csv)
