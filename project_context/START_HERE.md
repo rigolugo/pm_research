@@ -38,8 +38,10 @@ Read these, in this order, before doing anything:
 10. `SPEC_price_source_alt_trade_prints.md` — accepted S1-ALT (Option A local trade-print) coverage-only spec, precision-loss correction applied. Historical/accepted spec context only; S1-ALT Pass 1 completed with a negative sampled result.
 11. `SPEC_price_source_option_b_data_api_review.md` — accepted Option B Data API `/trades` spec context. Historical/accepted spec context only: original B0 halted and remained inconclusive because required artifacts were missing; the corrected B0 diagnostic later completed and did **not** establish Data API `/trades` mechanical trust. B1 remains unauthorized.
 12. `SPEC_option_b_b0_failure_diagnostic.md` — accepted corrected B0 diagnostic spec. Historical/accepted spec context only; the corrected diagnostic harness has since been implemented and user-run under separate authorization with a negative B0 mechanical-trust result.
-13. `SPEC_price_source_option_c_onchain.md` — accepted Option C (on-chain / decoded OrderFilled event tables) price-source candidate review, Revision 3. C0 (candidate/source-interface selection) is accepted spec-only; C1 (bounded coverage/trust pilot) is GUARDRAIL BLOCKED pending a future design that resolves the local-`tx_hash`-scoping trap. No implementation follows.
-14. Latest active handoffs/review memos:
+13. `SPEC_price_source_option_c_onchain.md` — accepted Option C (on-chain / decoded OrderFilled event tables) price-source candidate review, Revision 3. Option C Revision 3 is accepted / spec-only; C0 (candidate/source-interface selection) is accepted / spec-only. At Revision 3, C1 (bounded coverage/trust pilot) was guardrail-blocked — no safe bounded sample design then resolved the local-`tx_hash`-scoping trap. That pre-C1R block is superseded by the separately accepted C1R addendum below.
+14. `SPEC_price_source_option_c_onchain_C1R_addendum.md` — accepted C1R (C1 Revised) design addendum, SPEC ONLY. Resolves the Revision-3 scoping trap via a fixed selector manifest (outcome-independent), subquery-wrapped SQL with per-condition cap+1 over-fetch, hard row-cap enforcement, empty-export detection, row-level evidence artifacts, and source-table validation.
+15. `README_price_source_option_c_c1a.md` — C1A manifest + bounded canary implementation package (code/test-only, 50 pure-logic tests passing, no network). C1A bounded user-run is now authorized only under this accepted README/code path. No C1A result exists yet.
+16. Latest active handoffs/review memos:
     - `HANDOFF_orchestrator_s1_pass1_RESULT.md`
     - `HANDOFF_orchestrator_s1_alt_pass1_RESULT.md`
     - `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`
@@ -49,6 +51,8 @@ Read these, in this order, before doing anything:
     - `HANDOFF_orchestrator_option_b_b0_failure_diagnostic.md`
     - `HANDOFF_orchestrator_option_b_b0_corrected_diagnostic_RESULT.md`
     - `HANDOFF_orchestrator_option_c_onchain_spec.md`
+    - `HANDOFF_orchestrator_option_c_c1r_design_addendum.md`
+    - `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`
 
 Supporting references, not overriding the above:
 
@@ -75,7 +79,7 @@ These supporting files do not authorize implementation, data fetching, P1/P2/P3 
 
 - **Option B Data API `/trades` corrected B0 diagnostic: COMPLETED / ACCEPTED — RESULT: `B0_MECHANICAL_TRUST_NOT_ESTABLISHED`.** Corrected B0 completed with `artifact_status = API_ARTIFACT_COMPLETE` and `halt_code = null`, but did not establish Data API `/trades` mechanical trust. Fixed 10-condition manifest result: `api_rows_primary = 13,009`, `api_rows_total_all_query_modes = 17,853`, `local_rows = 1,346`, `mismatches = 14,355`; classifications `OVERLAP_API_LOCAL_MISMATCH = 7`, `OVERLAP_PAGINATION_PARTIAL = 3`, `OVERLAP_MATCHED = 0`, `NO_TEMPORAL_OVERLAP = 0`; mismatches `API_ONLY = 11,829`, `LOCAL_ONLY = 145`, `TX_HASH_AMBIGUOUS = 2,381`; pagination `COMPLETE_SHORT_FINAL_PAGE = 7`, `PARTIAL_RETRIEVAL = 3`. Metadata caveat: `takeronly_probe_conditions` differs between reconciliation and offline recompute summaries (3 vs 10), while core status/counts match; this does not change the B0 negative finding. **B1 remains not authorized.** Option B must not proceed to B1/full Pass 1/S2/P1/P2/P3/probe. P1 remains BLOCKED on the absence of an accepted per-side/token-identity price source. No scoring, backfill, wallet/OrdersMatched/`log_index`/PnL, price-series artifact, or gate change is authorized. `named_binary_probe_blocked` stays `true`.
 
-- **Option C (on-chain / decoded OrderFilled event tables) price-source spec: ACCEPTED / SPEC ONLY (Revision 3).** `SPEC_price_source_option_c_onchain.md` is the accepted third per-side/token-identity price-source candidate review, after Option A/S1-ALT and Option B (both closed negative). **C0** (bounded decoded Dune/vendor OrderFilled event tables as the candidate) is accepted as source-interface/spec verification only — no coverage claim, no run. **C1** (a bounded coverage/trust pilot) is currently **GUARDRAIL BLOCKED**: no safe bounded sample design resolves the local-`tx_hash`-scoping trap — local-`tx_hash` scoping likely reproduces S1-ALT and cannot test missing coverage by construction, while independent condition/time-window event querying risks broad event reconstruction / indexer-shaped work under the "No full indexer" constraint. This is a design-level guardrail block, not an empirical negative, and does **not** close Option C. No implementation follows. P1 remains BLOCKED; `named_binary_probe_blocked` stays `true`.
+- **Option C (on-chain / decoded OrderFilled event tables) price-source spec: ACCEPTED / SPEC ONLY (Revision 3).** `SPEC_price_source_option_c_onchain.md` is the accepted third per-side/token-identity price-source candidate review, after Option A/S1-ALT and Option B (both closed negative). **C0** (bounded decoded Dune/vendor OrderFilled event tables as the candidate) remains accepted / spec-only — no coverage claim, no run. **At Revision 3, C1** (a bounded coverage/trust pilot) **was guardrail-blocked**: no safe bounded sample design then resolved the local-`tx_hash`-scoping trap — local-`tx_hash` scoping likely reproduces S1-ALT and cannot test missing coverage by construction, while independent condition/time-window event querying risks broad event reconstruction / indexer-shaped work under the "No full indexer" constraint. **That pre-C1R block is superseded by the separately accepted C1R addendum** (`SPEC_price_source_option_c_onchain_C1R_addendum.md`, SPEC ONLY), which resolves the design-level scoping trap via a fixed selector manifest, subquery-wrapped SQL with cap+1 over-fetch, hard row-cap enforcement, empty-export detection, row-level evidence artifacts, and source-table validation. **C1A bounded user-run is now authorized only under the accepted README/code path** (`README_price_source_option_c_c1a.md`; code/test-only, 50 pure-logic tests passing, no network). **No C1A result exists yet.** P1 remains BLOCKED; `named_binary_probe_blocked` stays `true`.
 
 - **Chat2 Dune wallet-cohort discovery: BLOCKED.** It is a separate phase. Outcome-source scoreability does not unblock wallet discovery.
 
@@ -85,9 +89,9 @@ These supporting files do not authorize implementation, data fetching, P1/P2/P3 
 
 No further Option B B0 execution is authorized. B1 remains not authorized. Option B should not proceed to B1/full Pass 1/S2/P1/P2/P3/probe.
 
-Option C C0 (candidate/source-interface selection) is accepted as spec-only; C1 (a bounded coverage/trust pilot) is GUARDRAIL BLOCKED and not proposed pending a design that resolves the local-`tx_hash`-scoping trap (§2 of `SPEC_price_source_option_c_onchain.md`).
+**The next possible step is the bounded C1A user-run, exactly per `README_price_source_option_c_c1a.md`.** C1A (manifest design + bounded canary reconciliation) is code/test-only (50 pure-logic tests passing, no network) and is authorized for user-run, not for Claude execution. **Results must return to the orchestrator for review before any C1B/C2/P1 discussion.**
 
-A future move would require a fresh scoped decision, such as: a C1 design that actually resolves the scoping trap (a separate, freshly authorized SPEC-ONLY document — not implied by C0's acceptance), a different candidate-source SPEC ONLY plan, or a separately reviewed metadata cleanup if needed. Nothing follows automatically.
+**C1B full sampled coverage is not authorized. C2 reusable/production implementation is not authorized. P1/P2/P3/probe remain unauthorized. `named_binary_probe_blocked` remains `true`.**
 
 Any further move remains bounded by the project guardrails. No data run, network/API/RPC call, implementation, backfill, scoring, probe, P1/P2/P3 continuation, wallet/OrdersMatched/`log_index`/PnL, or gate change is authorized unless explicitly approved in-chat and allowed by the current repo guardrails.
 
@@ -97,7 +101,7 @@ Any further move remains bounded by the project guardrails. No data run, network
 
 No B1, full Pass 1, S2, P1/P2/P3, or probe execution follows from the corrected B0 diagnostic result.
 
-No C1 pilot of any kind follows from the Option C Revision 3 spec acceptance — C1 is GUARDRAIL BLOCKED, not merely unauthorized-pending-request.
+No C1B full sampled coverage, C2 reusable/production implementation, P1/P2/P3 continuation, or probe execution follows from C1A. The only authorized C1A action is the bounded user-run exactly per `README_price_source_option_c_c1a.md`, with results returned to orchestrator for review.
 
 No scoring: no Brier, log-loss, calibration, reliability, splits, or forecast-vs-price metrics.
 
