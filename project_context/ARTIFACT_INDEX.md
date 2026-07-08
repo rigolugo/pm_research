@@ -107,6 +107,33 @@ Decision impact: corrected B0 did **not** establish Data API `/trades` mechanica
 
 Metadata caveat: `reconciliation.json` reports `takeronly_probe_conditions = 3`, while `offline_recompute_summary.json` reports `takeronly_probe_conditions = 10`. Core `artifact_status`, `halt_code`, counts, `mismatch_counts`, `pagination_counts`, and `classification_counts` match. This is a metadata/recompute inconsistency only and does not change the B0 negative finding.
 
+### `artifacts/named_binary_probe/price_source_option_c_c1a/`
+
+C1A selector manifest + bounded canary artifacts (user-run, ACCEPTED VALID HALT; result `C1_ROW_EXPLOSION`). Coverage/trust diagnostics only — **no price series is persisted**.
+
+Accepted result:
+
+- manifest `resolved_count = 5`, `excluded_count = 0`
+- canary outcome `C1_ROW_EXPLOSION`
+- halt detail: condition `0x00e0e2e768260268c59fd8c43d77f771b19cf1d70ddfcf51c0198e4f58e0fc8e` returned 2001 rows, exceeding `per_condition_row_cap = 2000`
+- cap behavior: generated SQL intentionally uses `LIMIT per_condition_row_cap + 1` so cap exceedance is detected rather than silently truncated
+- diagnostic counts: `0x00e0...fc8e` — 2001 Dune rows, 794 Dune-only tx hashes, 136 local-only, 24 overlap, 0 unresolved side rows; `0x0cb2...61c2` — 705 Dune rows, 248 Dune-only, 0 local-only, 44 overlap, 0 unresolved side rows; three other candidates returned 0 Dune rows and local-only tx hashes
+
+Artifact set:
+
+- `c1a_selector_manifest.json` — fixed 5-condition selector manifest; full string-safe side-token identities; no outcome-conditioned selector source.
+- `c1a_selector_manifest.csv` — CSV form of the selector manifest.
+- `c1a_dune_query.sql` — generated decoded-OrderFilled query; uses fixed windows/tokens and cap+1 over-fetch; historical artifact only, not authorization for another Dune run.
+- `c1a_canary_result.json` — machine-readable canary result with halt code and counts.
+- `c1a_canary_result.md` — narrative canary result report.
+- `c1a_canary_by_condition.csv` — per-condition canary ledger.
+- `option_c_c1a_raw_rows_sample.csv` — raw-row evidence sample.
+- `option_c_c1a_tagged_rows.csv` — tagged event rows including token-side match and tx-hash relation diagnostics.
+
+Decision impact: C1A halted validly on row explosion. This is not a price-source viability verdict and does not unblock P1. C1B/C2/P1/P2/P3/probe remain unauthorized. `named_binary_probe_blocked` stays `true`.
+
+Parser-fix note: the C1A user-run exposed two local parser issues that were patched before result acceptance — manifest timestamp parsing needed datetime-like / pandas `Timestamp` support; canary parsing needed Dune timestamp strings (`YYYY-MM-DD HH:MM:SS.fff UTC`) and UTF-8 BOM-tolerant CSV header handling. These were local parser fixes only, not evidence of source viability.
+
 ---
 
 ## Scripts (`scripts/`)
@@ -210,12 +237,15 @@ Metadata caveat: `reconciliation.json` reports `takeronly_probe_conditions = 3`,
 - `HANDOFF_orchestrator_option_c_onchain_spec.md` — Claude-to-Orchestrator handoff recording the ACCEPT FINDING for the Option C Revision 3 spec: C0 accepted scope, C1 guardrail block (as it stood at Revision 3), files patched, and confirmation that no state/gate/probe authorization changed.
 - `SPEC_price_source_option_c_onchain_C1R_addendum.md` — ACCEPTED / SPEC ONLY. C1R (C1 Revised) design addendum: resolves the Revision-3 C1 guardrail block via fixed selector manifest (outcome-independent, never reads winner/outcome fields), subquery-wrapped SQL with per-condition `cap+1` over-fetch, hard row-cap enforcement (fail-fast), empty-export detection (`C1_SOURCE_EMPTY`), row-level evidence artifacts, and source-table validation against the two decoded OrderFilled tables only. Pure-logic tests: 50 passing. No execution.
 - `HANDOFF_orchestrator_option_c_c1r_design_addendum.md` — Claude-to-Orchestrator handoff for C1R design acceptance: how the design resolves the Revision-3 scoping trap, 50 tests passing, no run/execution, all guardrails preserved.
-- `README_price_source_option_c_c1a.md` — C1A implementation runbook: manifest builder + bounded canary reconciliation (pure code/test-only, 50 tests, no network). **C1A bounded user-run is authorized only under this README's documented three-step flow, not for Claude execution.** No C1A result exists yet. C1B/C2/P1/P2/P3 remain NOT authorized.
+- `README_price_source_option_c_c1a.md` — C1A implementation runbook: manifest builder + bounded canary reconciliation (pure code/test-only, 50 tests, no network). Historical runbook for the now-completed C1A user-run; does not authorize another run by itself. Accepted result: valid `C1_ROW_EXPLOSION` halt. C1B/C2/P1/P2/P3 remain NOT authorized.
 - `scripts/price_source_option_c_c1a_manifest.py` — C1A selector manifest builder (local-only, no network). Validates candidates (3–5 conditions, `RESOLVED_SINGLE_WINNER` status, oriented subclasses only), enumerates token pairs (S1 discipline, never reading outcome/winner fields), validates `source_table_version` against a strict regex + two-table allowlist, and renders the Dune SQL query text (subquery-wrapped, `cap+1` over-fetch — never executed by this script). 29 tests, all passing.
 - `scripts/price_source_option_c_c1a_canary.py` — C1A bounded canary reconciliation (Dune CSV consumer, local-only, no network). Enforces hard per-condition/global row caps with fail-fast (`C1_ROW_EXPLOSION`), halts on empty export (`C1_SOURCE_EMPTY`), tags rows by raw token match (no interpretation), compares tx_hash coverage against the local store, persists row-level evidence (`option_c_c1a_raw_rows_sample.csv`, `option_c_c1a_tagged_rows.csv`) even on a halt, and reports `C1_CANARY_EXECUTED_NEEDS_REVIEW` on a clean run — never auto-emits `C1_CANARY_DESIGN_CLEAR` (that label is Orchestrator-applied only, after manual review). 21 tests, all passing.
 - `tests/test_price_source_option_c_c1a_manifest.py` — C1A manifest builder test suite (29 tests, all passing in a bare Python environment; no pandas/Store dependency exercised).
 - `tests/test_price_source_option_c_c1a_canary.py` — C1A canary reconciliation test suite (21 tests, all passing; covers cap+1 explosion, exactly-at-cap non-explosion, global cap+1 explosion, empty-export halt, non-halt `EXECUTED_NEEDS_REVIEW` status, row-level artifact writer including `LOCAL_ONLY` synthetic rows, and invalid/non-allowlisted `source_table_version` rejection).
 - `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md` — Claude-to-Orchestrator handoff for C1A implementation completion: all prior BLOCK rounds closed, 50 tests passing, C1A authorized for user-run only (not Claude execution), next step is user-run per README with results returned to orchestrator for review before any C1B/C2/P1 discussion.
+- `HANDOFF_orchestrator_option_c_c1a_timestamp_fix.md` — local parser fix handoff: manifest timestamp parser now accepts datetime-like / pandas `Timestamp` values from `Store.load_trades().traded_at`; parser fix only, no source-viability evidence.
+- `HANDOFF_orchestrator_option_c_c1a_canary_parser_fix.md` — local parser fix handoff: canary parser now accepts Dune timestamp strings with `UTC` suffix and tolerates UTF-8 BOM CSV headers; parser fix only, no source-viability evidence.
+- `HANDOFF_orchestrator_option_c_c1a_RESULT.md` — Claude-to-Orchestrator handoff recording accepted C1A result: user-run manifest resolved 5/excluded 0 and canary halted validly on `C1_ROW_EXPLOSION`; no C1B/C2/P1/probe authorization follows.
 
 ## Stage 4 audit gate fields (in `named_binary_audit_gate.json` when `--resolution-source` is supplied)
 
@@ -240,7 +270,7 @@ Pin all of the following in the Claude Project Files panel (read `START_HERE.md`
 - `DATA_CONTRACTS_named_binary_probe.md` — exact inspected schemas/API surfaces for the probe.
 - `PRICE_INPUT_CONTRACT_named_binary_probe.md` — accepted S0 price-input finding (why P1 is blocked).
 - `CLAUDE_PROJECT_SETTINGS.md` — operational Claude capability settings; does not override the above and authorizes nothing.
-- Active specs/handoffs as applicable — `SPEC_named_binary_probe.md`, `SPEC_price_source_s1_coverage.md`, `SPEC_price_source_alt_trade_prints.md`, `SPEC_price_source_option_b_data_api_review.md`, `SPEC_option_b_b0_failure_diagnostic.md`, `SPEC_price_source_option_c_onchain.md`, `SPEC_price_source_option_c_onchain_C1R_addendum.md`, `README_price_source_option_c_c1a.md`, `HANDOFF_orchestrator_named_binary_probe_p0.md`, `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`, `HANDOFF_orchestrator_option_b_spec_s1_1_patch.md`, `HANDOFF_orchestrator_option_b_b0_RESULT.md`, `HANDOFF_orchestrator_option_b_b0_failure_diagnostic.md`, `HANDOFF_orchestrator_option_b_b0_corrected_diagnostic_RESULT.md`, `HANDOFF_orchestrator_option_c_onchain_spec.md`, `HANDOFF_orchestrator_option_c_c1r_design_addendum.md`, `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`.
+- Active specs/handoffs as applicable — `SPEC_named_binary_probe.md`, `SPEC_price_source_s1_coverage.md`, `SPEC_price_source_alt_trade_prints.md`, `SPEC_price_source_option_b_data_api_review.md`, `SPEC_option_b_b0_failure_diagnostic.md`, `SPEC_price_source_option_c_onchain.md`, `SPEC_price_source_option_c_onchain_C1R_addendum.md`, `README_price_source_option_c_c1a.md`, `HANDOFF_orchestrator_named_binary_probe_p0.md`, `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`, `HANDOFF_orchestrator_option_b_spec_s1_1_patch.md`, `HANDOFF_orchestrator_option_b_b0_RESULT.md`, `HANDOFF_orchestrator_option_b_b0_failure_diagnostic.md`, `HANDOFF_orchestrator_option_b_b0_corrected_diagnostic_RESULT.md`, `HANDOFF_orchestrator_option_c_onchain_spec.md`, `HANDOFF_orchestrator_option_c_c1r_design_addendum.md`, `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`, `HANDOFF_orchestrator_option_c_c1a_RESULT.md`.
 - `ORCHESTRATOR_LOW_CONTEXT_MODE.md` — reusable low-context review/decision protocol. Documentation only; overrides nothing and authorizes nothing.
 - Supporting reference (not overriding): `DUNE_DATA_NOTES.md`.
 
