@@ -134,6 +134,8 @@ Decision impact: C1A halted validly on row explosion. This is not a price-source
 
 Parser-fix note: the C1A user-run exposed two local parser issues that were patched before result acceptance — manifest timestamp parsing needed datetime-like / pandas `Timestamp` support; canary parsing needed Dune timestamp strings (`YYYY-MM-DD HH:MM:SS.fff UTC`) and UTF-8 BOM-tolerant CSV header handling. These were local parser fixes only, not evidence of source viability.
 
+Follow-up spec note: `SPEC_price_source_option_c_c1a_followup.md` is ACCEPTED / SPEC ONLY. It accepts the C1A-F1 selector-policy shape in principle after the accepted C1A `C1_ROW_EXPLOSION` halt. It does not add artifacts to this folder and does not authorize implementation, tests, SQL/query generation, a Dune/API/RPC/network run, a bounded user-run, cap increases, row truncation, C1B/C2/P1/P2/P3/probe, scoring/backfill/wallet/`log_index`/PnL, a price artifact, or side synthesis.
+
 ---
 
 ## Scripts (`scripts/`)
@@ -178,7 +180,6 @@ Parser-fix note: the C1A user-run exposed two local parser issues that were patc
 
 - `inspect_named_binary_probe_data_contracts.py` — read-only inspector for exact schemas/API surfaces.
 - `inspect_oriented_price_formula.py` — read-only inspector for price/orientation callables.
-- `inspect_price_input_s0.py` — read-only S0 price-input inspector. Refuses to infer `side_1 = 1 - yes_price`.
 
 ---
 
@@ -246,6 +247,8 @@ Parser-fix note: the C1A user-run exposed two local parser issues that were patc
 - `HANDOFF_orchestrator_option_c_c1a_timestamp_fix.md` — local parser fix handoff: manifest timestamp parser now accepts datetime-like / pandas `Timestamp` values from `Store.load_trades().traded_at`; parser fix only, no source-viability evidence.
 - `HANDOFF_orchestrator_option_c_c1a_canary_parser_fix.md` — local parser fix handoff: canary parser now accepts Dune timestamp strings with `UTC` suffix and tolerates UTF-8 BOM CSV headers; parser fix only, no source-viability evidence.
 - `HANDOFF_orchestrator_option_c_c1a_RESULT.md` — Claude-to-Orchestrator handoff recording accepted C1A result: user-run manifest resolved 5/excluded 0 and canary halted validly on `C1_ROW_EXPLOSION`; no C1B/C2/P1/probe authorization follows.
+- `SPEC_price_source_option_c_c1a_followup.md` — ACCEPTED / SPEC ONLY. C1A-F1 selector-policy shape accepted in principle after the accepted C1A `C1_ROW_EXPLOSION` halt. It defines a deterministic, outcome-independent, local-density / subclass-balanced selector-policy shape with an explicit default selector pool limited to the already accepted small S1/S1-ALT eligible pool / C1A-compatible measured pool unless broader local-only computation is separately authorized. It rejects hand-picking, winner/outcome leakage, local-`tx_hash` Dune filtering, Dune count scouting, cap increases, truncation, full-universe scanning/profiling, reusable volume-profiling artifacts, and treating local density as a guaranteed predictor. It authorizes no implementation, no code/tests, no SQL/query generation, no Dune/API/RPC/network run, no bounded user-run, no C1B/C2/P1/P2/P3/probe, no scoring/backfill/wallet/`log_index`/PnL, no price artifact, and no side synthesis.
+- `HANDOFF_orchestrator_option_c_c1a_followup_SPEC.md` — Claude-to-Orchestrator handoff for the accepted C1A-F1 follow-up selector-policy SPEC. Documentation-only; records that no code, tests, artifacts, query, implementation, or run are authorized.
 
 ## Stage 4 audit gate fields (in `named_binary_audit_gate.json` when `--resolution-source` is supplied)
 
@@ -270,7 +273,7 @@ Pin all of the following in the Claude Project Files panel (read `START_HERE.md`
 - `DATA_CONTRACTS_named_binary_probe.md` — exact inspected schemas/API surfaces for the probe.
 - `PRICE_INPUT_CONTRACT_named_binary_probe.md` — accepted S0 price-input finding (why P1 is blocked).
 - `CLAUDE_PROJECT_SETTINGS.md` — operational Claude capability settings; does not override the above and authorizes nothing.
-- Active specs/handoffs as applicable — `SPEC_named_binary_probe.md`, `SPEC_price_source_s1_coverage.md`, `SPEC_price_source_alt_trade_prints.md`, `SPEC_price_source_option_b_data_api_review.md`, `SPEC_option_b_b0_failure_diagnostic.md`, `SPEC_price_source_option_c_onchain.md`, `SPEC_price_source_option_c_onchain_C1R_addendum.md`, `README_price_source_option_c_c1a.md`, `HANDOFF_orchestrator_named_binary_probe_p0.md`, `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`, `HANDOFF_orchestrator_option_b_spec_s1_1_patch.md`, `HANDOFF_orchestrator_option_b_b0_RESULT.md`, `HANDOFF_orchestrator_option_b_b0_failure_diagnostic.md`, `HANDOFF_orchestrator_option_b_b0_corrected_diagnostic_RESULT.md`, `HANDOFF_orchestrator_option_c_onchain_spec.md`, `HANDOFF_orchestrator_option_c_c1r_design_addendum.md`, `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`, `HANDOFF_orchestrator_option_c_c1a_RESULT.md`.
+- Active specs/handoffs as applicable — `SPEC_named_binary_probe.md`, `SPEC_price_source_s1_coverage.md`, `SPEC_price_source_alt_trade_prints.md`, `SPEC_price_source_option_b_data_api_review.md`, `SPEC_option_b_b0_failure_diagnostic.md`, `SPEC_price_source_option_c_onchain.md`, `SPEC_price_source_option_c_onchain_C1R_addendum.md`, `README_price_source_option_c_c1a.md`, `SPEC_price_source_option_c_c1a_followup.md`, `HANDOFF_orchestrator_named_binary_probe_p0.md`, `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`, `HANDOFF_orchestrator_option_b_spec_s1_1_patch.md`, `HANDOFF_orchestrator_option_b_b0_RESULT.md`, `HANDOFF_orchestrator_option_b_b0_failure_diagnostic.md`, `HANDOFF_orchestrator_option_b_b0_corrected_diagnostic_RESULT.md`, `HANDOFF_orchestrator_option_c_onchain_spec.md`, `HANDOFF_orchestrator_option_c_c1r_design_addendum.md`, `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`, `HANDOFF_orchestrator_option_c_c1a_RESULT.md`, `HANDOFF_orchestrator_option_c_c1a_followup_SPEC.md`.
 - `ORCHESTRATOR_LOW_CONTEXT_MODE.md` — reusable low-context review/decision protocol. Documentation only; overrides nothing and authorizes nothing.
 - Supporting reference (not overriding): `DUNE_DATA_NOTES.md`.
 
