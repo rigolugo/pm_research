@@ -1,6 +1,6 @@
 # ARTIFACT INDEX
 
-*What exists and where. Paths are in the local repo `C:\b1\pm_research` unless noted.*
+*What exists and where. Paths are in the local repo `C:1\pm_research` unless noted.*
 
 ---
 
@@ -170,6 +170,7 @@ Artifact set:
 - `c1a_f1_selector_excluded.csv` — selector exclusions.
 - `c1a_f1_canary_manifest.json` — JSON manifest consumed by `scripts/price_source_option_c_c1a_canary.py`, with `conditions[]`, side token IDs, windows, and caps.
 - `c1a_f1_dune_query.sql` — prepared decoded-OrderFilled SQL text; historical artifact only and not authorization to execute or rerun.
+- `c1a_f1_dune_export.csv` — raw Dune export used by the accepted C1A-F1 bounded canary; historical evidence only, not authorization to rerun, modify SQL, or use as price input.
 - `c1a_canary_result.json` — machine-readable C1A-F1 canary result.
 - `c1a_canary_result.md` — narrative C1A-F1 canary result report.
 - `c1a_canary_by_condition.csv` — per-condition C1A-F1 canary ledger.
@@ -177,6 +178,8 @@ Artifact set:
 - `option_c_c1a_tagged_rows.csv` — tagged rows with raw token-side match and tx-hash relation diagnostics.
 
 Decision impact: C1A-F1 is accepted as executed and reviewable mixed coverage/trust evidence. It does **not** mark Option C viable, does **not** mark C1 design-clear, does **not** unblock P1, and does **not** authorize C1B/C2/P1/P2/P3/probe/scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, cap increases, truncation, additional canaries, or any price artifact. `named_binary_probe_blocked` stays `true`.
+
+C1A-F2 artifact review impact: `project_context/HANDOFF_orchestrator_option_c_c1a_f2_ARTIFACT_REVIEW.md` is accepted with result `C1F2_ARTIFACTS_INSUFFICIENT`. The C1A-F1 artifacts confirm the mixed summary and safe selector/query/cap discipline, but the `OVER_UNDER` local-only evidence is too thin for safe causal classification: the two local-only rows lack local-side timestamp/token/outcome_index/side-match/row-identity/window-membership fields. No likely-cause label is accepted; no one-condition diagnostic is recommended. This does not mark Option C viable, does not mark C1 design-clear, does not unblock P1, and does not authorize any downstream work.
 
 ---
 
@@ -298,6 +301,9 @@ Decision impact: C1A-F1 is accepted as executed and reviewable mixed coverage/tr
 - `README_price_source_option_c_c1a_f1_canary_prep.md` — C1A-F1 prep-only runbook. Historical after the C1A-F1 user-run; not authorization for rerun or downstream work.
 - `HANDOFF_orchestrator_option_c_c1a_f1_canary_PREP.md` — prep-only handoff for C1A-F1 SQL/manifest package; no execution authorized by the handoff itself.
 - `HANDOFF_orchestrator_option_c_c1a_f1_canary_REVIEW.md` — docs-only post-run handoff recording the accepted C1A-F1 mixed evidence result: `C1_CANARY_EXECUTED_NEEDS_REVIEW`, 133 total Dune rows, 34 total Dune-only tx hashes, no row explosion, no unresolved side rows, no price artifact, and no P1/C1B/C2/probe authorization.
+- `SPEC_price_source_option_c_c1a_f2_followup.md` — ACCEPTED / SPEC ONLY. C1A-F2 no-run / artifact-review-only follow-up after accepted C1A-F1 mixed evidence. Rejects another canary, selector-only F2, SQL generation/modification, Dune/API/RPC/network calls, local data runs, cap changes, truncation, local-`tx_hash` Dune filtering, Dune count scouting, C1B/C2/P1/P2/P3/probe, scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, price artifacts, gate changes, and side synthesis.
+- `HANDOFF_orchestrator_option_c_c1a_f2_followup_SPEC.md` — docs-only handoff accompanying the accepted F2 SPEC; records that F2 may proceed only as no-run / artifact-review-only and authorizes no implementation or run.
+- `HANDOFF_orchestrator_option_c_c1a_f2_ARTIFACT_REVIEW.md` — accepted C1A-F2 review-only artifact memo; result `C1F2_ARTIFACTS_INSUFFICIENT` because the `OVER_UNDER` local-only evidence lacks local-side row detail needed for causal classification. No P1 unblock, no Option C viability, no C1 design-clear, no further canary, no price artifact.
 
 ## Stage 4 audit gate fields (in `named_binary_audit_gate.json` when `--resolution-source` is supplied)
 
@@ -322,7 +328,7 @@ Pin all of the following in the Claude Project Files panel (read `START_HERE.md`
 - `DATA_CONTRACTS_named_binary_probe.md` — exact inspected schemas/API surfaces for the probe.
 - `PRICE_INPUT_CONTRACT_named_binary_probe.md` — accepted S0 price-input finding (why P1 is blocked).
 - `CLAUDE_PROJECT_SETTINGS.md` — operational Claude capability settings; does not override the above and authorizes nothing.
-- Active specs/handoffs as applicable — `SPEC_named_binary_probe.md`, `SPEC_price_source_s1_coverage.md`, `SPEC_price_source_alt_trade_prints.md`, `SPEC_price_source_option_b_data_api_review.md`, `SPEC_option_b_b0_failure_diagnostic.md`, `SPEC_price_source_option_c_onchain.md`, `SPEC_price_source_option_c_onchain_C1R_addendum.md`, `README_price_source_option_c_c1a.md`, `SPEC_price_source_option_c_c1a_followup.md`, `README_price_source_option_c_c1a_f1_canary_prep.md`, `HANDOFF_orchestrator_named_binary_probe_p0.md`, `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`, `HANDOFF_orchestrator_option_b_spec_s1_1_patch.md`, `HANDOFF_orchestrator_option_b_b0_RESULT.md`, `HANDOFF_orchestrator_option_b_b0_failure_diagnostic.md`, `HANDOFF_orchestrator_option_b_b0_corrected_diagnostic_RESULT.md`, `HANDOFF_orchestrator_option_c_onchain_spec.md`, `HANDOFF_orchestrator_option_c_c1r_design_addendum.md`, `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`, `HANDOFF_orchestrator_option_c_c1a_RESULT.md`, `HANDOFF_orchestrator_option_c_c1a_followup_SPEC.md`, `HANDOFF_orchestrator_option_c_c1a_f1_canary_PREP.md`, `HANDOFF_orchestrator_option_c_c1a_f1_canary_REVIEW.md`.
+- Active specs/handoffs as applicable — `SPEC_named_binary_probe.md`, `SPEC_price_source_s1_coverage.md`, `SPEC_price_source_alt_trade_prints.md`, `SPEC_price_source_option_b_data_api_review.md`, `SPEC_option_b_b0_failure_diagnostic.md`, `SPEC_price_source_option_c_onchain.md`, `SPEC_price_source_option_c_onchain_C1R_addendum.md`, `README_price_source_option_c_c1a.md`, `SPEC_price_source_option_c_c1a_followup.md`, `README_price_source_option_c_c1a_f1_canary_prep.md`, `SPEC_price_source_option_c_c1a_f2_followup.md`, `HANDOFF_orchestrator_named_binary_probe_p0.md`, `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`, `HANDOFF_orchestrator_option_b_spec_s1_1_patch.md`, `HANDOFF_orchestrator_option_b_b0_RESULT.md`, `HANDOFF_orchestrator_option_b_b0_failure_diagnostic.md`, `HANDOFF_orchestrator_option_b_b0_corrected_diagnostic_RESULT.md`, `HANDOFF_orchestrator_option_c_onchain_spec.md`, `HANDOFF_orchestrator_option_c_c1r_design_addendum.md`, `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`, `HANDOFF_orchestrator_option_c_c1a_RESULT.md`, `HANDOFF_orchestrator_option_c_c1a_followup_SPEC.md`, `HANDOFF_orchestrator_option_c_c1a_f1_canary_PREP.md`, `HANDOFF_orchestrator_option_c_c1a_f1_canary_REVIEW.md`, `HANDOFF_orchestrator_option_c_c1a_f2_followup_SPEC.md`, `HANDOFF_orchestrator_option_c_c1a_f2_ARTIFACT_REVIEW.md`.
 - `ORCHESTRATOR_LOW_CONTEXT_MODE.md` — reusable low-context review/decision protocol. Documentation only; overrides nothing and authorizes nothing.
 - Supporting reference (not overriding): `DUNE_DATA_NOTES.md`.
 
