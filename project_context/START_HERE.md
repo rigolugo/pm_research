@@ -43,7 +43,8 @@ Read these, in this order, before doing anything:
 15. `README_price_source_option_c_c1a.md` — C1A manifest + bounded canary implementation package (code/test-only, 50 pure-logic tests passing, no network). C1A bounded user-run executed and is accepted as a valid `C1_ROW_EXPLOSION` halt; historical runbook context only, not authorization for another run.
 16. `SPEC_price_source_option_c_c1a_followup.md` — ACCEPTED / SPEC ONLY. C1A-F1 selector-policy shape accepted in principle after the accepted C1A `C1_ROW_EXPLOSION` halt. It records that a deterministic, outcome-independent, bounded selector-policy shape can be safe in principle, with the default selector pool limited to the already accepted small S1/S1-ALT eligible pool / C1A-compatible measured pool unless separately authorized. It authorizes no implementation, no code/test task, no SQL/query generation, no Dune/API/RPC/network run, no cap increase, no row truncation, no C1B/C2/P1/P2/P3/probe, no scoring/backfill/wallet/`log_index`/PnL, and no price artifact.
 17. `SPEC_price_source_option_c_c1a_f2_followup.md` — ACCEPTED / SPEC ONLY. C1A-F2 is no-run / artifact-review-only after accepted C1A-F1 mixed evidence. It rejects selector-only F2, another Dune canary, SQL generation/modification, Dune/API/RPC/network calls, local data runs, cap changes, truncation, local-`tx_hash` Dune filtering, Dune count scouting, C1B/C2/P1/P2/P3/probe, scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, price artifacts, gate changes, and side synthesis.
-18. Latest active handoffs/review memos:
+18. `SPEC_price_source_option_c_artifact_enrichment.md` — ACCEPTED / SPEC ONLY. Defines minimum evidence-capture requirements for any possible future Option C / decoded `OrderFilled` diagnostic so local-only, Dune-only, and overlap rows can be reviewed without rerunning or guessing. It authorizes no implementation, tests, local data reads, Dune/API/RPC/network, SQL generation/modification/execution, additional canary, one-condition diagnostic, C1B/C2, P1/P2/P3/probe, scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, price artifact, gate change, cap change, row truncation, or side synthesis.
+19. Latest active handoffs/review memos:
     - `HANDOFF_orchestrator_s1_pass1_RESULT.md`
     - `HANDOFF_orchestrator_s1_alt_pass1_RESULT.md`
     - `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`
@@ -60,6 +61,7 @@ Read these, in this order, before doing anything:
     - `HANDOFF_orchestrator_option_c_c1a_f1_canary_REVIEW.md`
     - `HANDOFF_orchestrator_option_c_c1a_f2_followup_SPEC.md`
     - `HANDOFF_orchestrator_option_c_c1a_f2_ARTIFACT_REVIEW.md`
+    - `HANDOFF_orchestrator_option_c_artifact_enrichment_SPEC.md`
 
 Supporting references, not overriding the above:
 
@@ -100,7 +102,7 @@ The C1A-F1 bounded canary has executed and is accepted as reviewable mixed cover
 
 **C1B full sampled coverage is not authorized. C2 reusable/production implementation is not authorized. P1/P2/P3/probe remain unauthorized. `named_binary_probe_blocked` remains `true`.**
 
-Any further move remains bounded by the project guardrails. No data run, network/API/RPC call, implementation, backfill, scoring, probe, P1/P2/P3 continuation, wallet/OrdersMatched/`log_index`/PnL, or gate change is authorized unless explicitly approved in-chat and allowed by the current repo guardrails. If the project later wants to pursue the unresolved `OVER_UNDER` evidence gap, the only safe next step would be a separate doc-only artifact-enrichment review specification; that still would not authorize implementation, a run, SQL changes, Dune/API/RPC/network calls, local data processing, another canary, C1B/C2/P1/P2/P3/probe, scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, price artifacts, gate changes, cap changes, row truncation, or side synthesis.
+Any further move remains bounded by the project guardrails. No data run, network/API/RPC call, implementation, backfill, scoring, probe, P1/P2/P3 continuation, wallet/OrdersMatched/`log_index`/PnL, or gate change is authorized unless explicitly approved in-chat and allowed by the current repo guardrails. The artifact-enrichment evidence-capture SPEC is now ACCEPTED / SPEC ONLY for the unresolved `OVER_UNDER` evidence gap. This acceptance still does not authorize implementation, tests, artifact generation, a run, SQL generation/modification/execution, Dune/API/RPC/network calls, local data processing, another canary, one-condition diagnostic, C1B/C2/P1/P2/P3/probe, scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, price artifacts, gate changes, cap changes, row truncation, or side synthesis.
 
 ---
 

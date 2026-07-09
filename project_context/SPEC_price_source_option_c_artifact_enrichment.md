@@ -2,7 +2,7 @@
 
 **Decision posture:** SPEC ONLY. This document defines evidence-capture requirements for a *possible future* Option C / decoded `OrderFilled` diagnostic. It authorizes no implementation, no run, and no downstream continuation.
 
-**Status:** Proposed for Orchestrator review. This document is not acceptance, not implementation authorization, and not data-run authorization.
+**Status:** ACCEPTED by Orchestrator as SPEC ONLY. This document is not implementation authorization and not data-run authorization.
 
 **Scope:** Documentation only. Define the minimum evidence-capture requirements — required artifacts, required columns/fields, required labels, and required stop/reject conditions — for any future Option C / decoded `OrderFilled` diagnostic that compares local rows with source rows, so that local-only, Dune-only, and overlap rows can be reviewed without rerunning data or guessing at causes.
 

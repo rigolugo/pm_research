@@ -2,6 +2,8 @@
 
 **Primary decision label:** `ARTIFACT_ENRICHMENT_SPEC_ONLY`
 
+**Orchestrator status:** ACCEPTED as SPEC ONLY. This does not authorize implementation, a run, SQL, data reads, or downstream continuation.
+
 **Scope:** Documentation-only handoff for the newly drafted `SPEC_price_source_option_c_artifact_enrichment.md`. No code, tests, SQL generation, SQL edits, Dune/API/RPC/network calls, local data processing, rerun, new canary, one-condition diagnostic, price artifact, or probe/scoring/backfill/wallet/OrdersMatched/`log_index`/PnL work was performed. No gate was changed.
 
 ---
@@ -75,6 +77,6 @@ Delivery does not equal acceptance or authorization. Both files await Orchestrat
 
 ---
 
-## 7. Recommended orchestrator decision
+## 7. Orchestrator decision
 
-Recommended: review and, if acceptable, mark `ARTIFACT_ENRICHMENT_SPEC_ONLY` accepted / spec-only in `PROJECT_STATE.md` and `ARTIFACT_INDEX.md`. This acceptance would still not authorize generating any of the six required artifacts, running C1A/C1A-F1 again, or proceeding to C1B/C2/P1/P2/P3/probe. Any future step that would actually produce these artifacts requires separate, explicit authorization and remains bounded by all standing guardrails.
+ACCEPTED as `ARTIFACT_ENRICHMENT_SPEC_ONLY` / SPEC ONLY. Record this acceptance in `PROJECT_STATE.md`, `ARTIFACT_INDEX.md`, and `START_HERE.md`. This acceptance still does not authorize generating any of the six required artifacts, running C1A/C1A-F1 again, producing code/tests, generating/modifying SQL, reading local data, calling Dune/API/RPC/network, creating a one-condition diagnostic, or proceeding to C1B/C2/P1/P2/P3/probe. Any future step that would actually produce these artifacts requires separate, explicit authorization and remains bounded by all standing guardrails.
