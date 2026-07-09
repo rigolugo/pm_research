@@ -1,6 +1,6 @@
 # ARTIFACT INDEX
 
-*What exists and where. Paths are in the local repo `C:1\pm_research` unless noted.*
+*What exists and where. Paths are in the local repo `C:\b1\pm_research` unless noted.*
 
 ---
 
