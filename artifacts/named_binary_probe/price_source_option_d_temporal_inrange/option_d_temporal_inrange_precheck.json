@@ -1,0 +1,99 @@
+{
+  "status": "COMPLETED",
+  "authorized_scope": "OPTION_D_TEMPORAL_INRANGE_PRECHECK_ONLY",
+  "spec_version": "option-d-temporal-inrange-precheck-2026-07-09",
+  "spec_name": "SPEC_price_source_option_d_temporal_inrange_precheck.md",
+  "spec_accepted_label": "OPTION_D_TEMPORAL_INRANGE_PRECHECK_SPEC_ACCEPTED_SPEC_ONLY",
+  "p0_state_observed": "P0_CLEAR",
+  "named_binary_probe_blocked_observed": true,
+  "nb_contract_version": "nb-contract-2026-06-28.1",
+  "vendor_start_constants": {
+    "pmxt_v2": "2026-04-13T19:00:00Z",
+    "telonex_l2": "2025-10-11T00:00:00Z"
+  },
+  "uniform_result_detected": false,
+  "uniform_result_vendors": [],
+  "uniform_result_accepted_after_validation": false,
+  "universe_reconciliation": {
+    "expected_total": 39693,
+    "observed_total": 39693,
+    "matches_expected": true,
+    "expected_by_subclass": {
+      "UP_DOWN": 22012,
+      "OVER_UNDER": 1003,
+      "NAMED_OTHER": 16678
+    },
+    "observed_by_subclass": {
+      "UP_DOWN": 22012,
+      "OVER_UNDER": 1003,
+      "NAMED_OTHER": 16678
+    }
+  },
+  "counts_pooled": {
+    "denominator": 39693,
+    "valid_first_trade_ts": 39693,
+    "no_first_trade_ts": 0,
+    "valid_resolved_at": 39693,
+    "pmxt_v2_in_range": 18137,
+    "telonex_l2_in_range": 37749,
+    "pmxt_v2_fraction": 0.45693195273725845,
+    "telonex_l2_fraction": 0.9510241100445922,
+    "out_of_range_pmxt_v2": 21556,
+    "out_of_range_telonex_l2": 1944
+  },
+  "counts_by_subclass": {
+    "UP_DOWN": {
+      "denominator": 22012,
+      "valid_first_trade_ts": 22012,
+      "no_first_trade_ts": 0,
+      "valid_resolved_at": 22012,
+      "pmxt_v2_in_range": 11649,
+      "telonex_l2_in_range": 21455,
+      "pmxt_v2_fraction": 0.5292113392694894,
+      "telonex_l2_fraction": 0.9746956205705979,
+      "out_of_range_pmxt_v2": 10363,
+      "out_of_range_telonex_l2": 557
+    },
+    "OVER_UNDER": {
+      "denominator": 1003,
+      "valid_first_trade_ts": 1003,
+      "no_first_trade_ts": 0,
+      "valid_resolved_at": 1003,
+      "pmxt_v2_in_range": 663,
+      "telonex_l2_in_range": 982,
+      "pmxt_v2_fraction": 0.6610169491525424,
+      "telonex_l2_fraction": 0.9790628115653041,
+      "out_of_range_pmxt_v2": 340,
+      "out_of_range_telonex_l2": 21
+    },
+    "NAMED_OTHER": {
+      "denominator": 16678,
+      "valid_first_trade_ts": 16678,
+      "no_first_trade_ts": 0,
+      "valid_resolved_at": 16678,
+      "pmxt_v2_in_range": 5825,
+      "telonex_l2_in_range": 15312,
+      "pmxt_v2_fraction": 0.3492625014989807,
+      "telonex_l2_fraction": 0.9180956949274494,
+      "out_of_range_pmxt_v2": 10853,
+      "out_of_range_telonex_l2": 1366
+    }
+  },
+  "halt_code": null,
+  "halt_detail": null,
+  "forbidden_actions_observed": {
+    "vendor_fetch": false,
+    "external_network_api_rpc_call": false,
+    "pmxt_archive_downloaded": false,
+    "telonex_fetch": false,
+    "account_api_key_paid_action": false,
+    "price_fields_read": false,
+    "token_side_fields_read": false,
+    "canonical_side_price_computed": false,
+    "p1_unblocked": false,
+    "probe_execution": false,
+    "scoring_wallet_ordersmatched_logindex_pnl": false,
+    "gate_changed": false,
+    "named_binary_probe_blocked_observed": true
+  }
+}
