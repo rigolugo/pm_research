@@ -94,105 +94,55 @@ This original artifact-missing defect is now superseded by the accepted correcte
 
 `SPEC_option_b_b0_failure_diagnostic.md` is the accepted spec-only design for the corrected B0 diagnostic run. The spec targets the original root defect: the first B0 runner evaluated `STOP_API_LOCAL_MISMATCH` before persisting evidentiary artifacts.
 
-**Persistence requirements (D1–D9).** Corrected design requires persist-before-halt ordering with incremental per-condition/per-page writes; full API raw-row ledger (bounded at 25,000 rows); full local comparison rows with load provenance; full bidirectional mismatch ledger including ambiguities; per-condition pagination completeness status; `takerOnly` cardinality measurements; local temporal min/max per condition; API temporal min/max per condition; and offline-recomputable overlap classifications.
-
-**Time-bounded reconciliation safety.** Row-level matching is evaluated only within `[local_min_traded_at − τ, local_max_traded_at + τ]` per condition, where `τ = 120 seconds`. API rows later than `local_max_traded_at + σ` with `σ = 24 hours` are limited to "consistent with H-LOCAL" and never prove local incompleteness.
-
-**Classifications.** Per-condition precedence: `OVERLAP_SCHEMA_BLOCKED` > `OVERLAP_PAGINATION_PARTIAL` > `NO_TEMPORAL_OVERLAP` > `OVERLAP_MATCHED` > `OVERLAP_API_LOCAL_MISMATCH`. Run-level statuses: `API_ARTIFACT_COMPLETE` / `API_ARTIFACT_INCOMPLETE`.
-
-**Locked `OVERLAP_MATCHED` clean bar.** All in-window API rows and all in-window local rows must pair by full composite identity; zero `API_ONLY`; zero `LOCAL_ONLY`; zero `TX_HASH_AMBIGUOUS`; pagination complete; artifacts complete and offline-recomputable. Any shortfall means not matched.
-
 The corrected harness was later implemented and user-run under separate authorization. The completed result is recorded next.
 
 ### Option B corrected B0 diagnostic result: `B0_MECHANICAL_TRUST_NOT_ESTABLISHED` (ACCEPTED) — SETTLED
 
 The corrected Option B B0 diagnostic harness was implemented and then user-run under separate authorization to repair the original persist-before-halt defect. The corrected run completed and persisted enough artifacts for offline diagnosis.
 
-**Accepted run result.**
+**Accepted run result.** `artifact_status = API_ARTIFACT_COMPLETE`; `halt_code = null`; `manifest_conditions = 10`; `api_rows_primary = 13,009`; `api_rows_total_all_query_modes = 17,853`; `local_rows = 1,346`; `mismatches = 14,355`.
 
-- `artifact_status = API_ARTIFACT_COMPLETE`
-- `halt_code = null`
-- `manifest_conditions = 10`
-- `api_rows_primary = 13,009`
-- `api_rows_total_all_query_modes = 17,853`
-- `local_rows = 1,346`
-- `mismatches = 14,355`
+**Classification counts.** `OVERLAP_API_LOCAL_MISMATCH = 7`; `OVERLAP_PAGINATION_PARTIAL = 3`; `OVERLAP_MATCHED = 0`; `NO_TEMPORAL_OVERLAP = 0`.
 
-**Classification counts.**
+**Mismatch counts.** `API_ONLY = 11,829`; `LOCAL_ONLY = 145`; `TX_HASH_AMBIGUOUS = 2,381`.
 
-- `OVERLAP_API_LOCAL_MISMATCH = 7`
-- `OVERLAP_PAGINATION_PARTIAL = 3`
-- `OVERLAP_MATCHED = 0`
-- `NO_TEMPORAL_OVERLAP = 0`
+**Pagination counts.** `COMPLETE_SHORT_FINAL_PAGE = 7`; `PARTIAL_RETRIEVAL = 3`.
 
-**Mismatch counts.**
+**Interpretation.** Corrected B0 did **not** establish Data API `/trades` mechanical trust. The earlier `STOP_API_ARTIFACT_MISSING` defect is closed for this corrected run, but the completed evidence is negative for B0 mechanical trust on the fixed manifest. This is B0 only; it is not a coverage verdict, not a price-source build authorization, and not a downstream gate input.
 
-- `API_ONLY = 11,829`
-- `LOCAL_ONLY = 145`
-- `TX_HASH_AMBIGUOUS = 2,381`
+**Metadata caveat.** `reconciliation.json` reports `takeronly_probe_conditions = 3`, while `offline_recompute_summary.json` reports `takeronly_probe_conditions = 10`. Core fields match; treat this as a metadata/recompute inconsistency only.
 
-**Pagination counts.**
-
-- `COMPLETE_SHORT_FINAL_PAGE = 7`
-- `PARTIAL_RETRIEVAL = 3`
-
-**Interpretation.** Corrected B0 did **not** establish Data API `/trades` mechanical trust. The earlier `STOP_API_ARTIFACT_MISSING` defect is closed for this corrected run, but the completed evidence is negative for B0 mechanical trust on the fixed manifest: seven conditions show overlap API/local mismatch, three conditions are pagination-partial, and zero conditions are cleanly matched. This is B0 only; it is not a coverage verdict, not a price-source build authorization, and not a downstream gate input.
-
-**Metadata caveat.** `reconciliation.json` reports `takeronly_probe_conditions = 3`, while `offline_recompute_summary.json` reports `takeronly_probe_conditions = 10`. Core fields match: `artifact_status`, `halt_code`, row counts, `mismatch_counts`, `pagination_counts`, and `classification_counts`. Treat this as a metadata/recompute inconsistency only; it does not change the B0 negative finding.
-
-**Standing consequence.** B1 remains not authorized. Option B must not proceed to B1/full Pass 1/S2/P1/P2/P3/probe. P1 remains BLOCKED on the absence of an accepted per-side/token-identity price source. `named_binary_probe_blocked` stays `true`. No scoring, backfill, wallet discovery, OrdersMatched expansion, `log_index`, PnL, price-series artifact, or gate change is authorized.
+**Standing consequence.** B1 remains not authorized. Option B must not proceed to B1/full Pass 1/S2/P1/P2/P3/probe. P1 remains BLOCKED on the absence of an accepted per-side/token-identity price source. `named_binary_probe_blocked` stays `true`.
 
 ### Option C Revision 3: SPEC ACCEPTED — C0 candidate selected, C1 GUARDRAIL BLOCKED AT REVISION 3 (SETTLED — HISTORICAL; SUPERSEDED FOR C1 BY LATER C1R/C1A DECISIONS)
 
-**Historical Rev 3 state, superseded for C1 by later C1R/C1A decisions.** The C1 guardrail block described below reflects the state as it stood at Revision 3 only. It is not the current state — see the C1R and C1A entries immediately following this section for what supersedes it. C0's acceptance and the underlying safety reasoning for why local-`tx_hash`-only and broad-indexing designs are unsafe remain valid and are preserved here for reference.
+After Option A/S1-ALT and Option B both closed negative, `SPEC_price_source_option_c_onchain.md` (Revision 3) was accepted as the third per-side/token-identity price-source candidate review: on-chain reconstruction via bounded, already-decoded Dune/vendor OrderFilled event tables.
 
-After Option A/S1-ALT and Option B both closed negative, `SPEC_price_source_option_c_onchain.md` (Revision 3) was accepted as the third per-side/token-identity price-source candidate review: on-chain reconstruction via bounded, already-decoded Dune/vendor OrderFilled event tables (the same class of decoded-event Dune infrastructure already validated for OrdersMatched economic-role work and the CTF resolution source).
-
-**C0 (candidate/source-interface selection): accepted, spec-only.** Decoded Dune/vendor OrderFilled event tables, bounded, are the identified Option C candidate. No coverage claim, no run, no artifact beyond the spec record. Not a B0-equivalent pilot. **This remains accepted / spec-only and unaffected by the C1 history below.**
-
-**C1 (bounded coverage/trust pilot): GUARDRAIL BLOCKED — AS OF REVISION 3, NOT CURRENTLY.** No safe bounded sample design had been found at that time that resolved a two-sided dilemma:
-
-- **Local `tx_hash` scoping** (sample built from tx_hashes already in the local store) is structurally the same shape as S1-ALT, likely reproducing its negative result, and — more fundamentally — **cannot test for missing coverage by construction**: a sample drawn from what local already knows can never surface trades local is missing.
-- **Independent condition/time-window event querying** (needed to actually test for missing coverage) requires querying the on-chain event stream by market/time criteria rather than a bounded transaction list, which is structurally indexer-shaped work and risks the "No full indexer" absolute constraint regardless of pilot scale.
-
-This was a **design-level guardrail block, not an empirical negative**, and it did **not** close Option C. At the time, a future C1 design was understood to require a separate, freshly authorized SPEC-ONLY document. **That design has since been produced and accepted — see the C1R entry immediately below, which supersedes this block.**
-
-**Standing consequence (historical, at Revision 3).** P1 remained BLOCKED on the absence of an accepted per-side/token-identity price source. B1 (Option B) remained unauthorized. P2/P3/probe remained unauthorized. `named_binary_probe_blocked` stayed `true`. Handoff: `HANDOFF_orchestrator_option_c_onchain_spec.md`.
-
----
+C0 (candidate/source-interface selection) remains accepted, spec-only. The Revision-3 C1 guardrail block is historical and superseded by C1R/C1A. The unsafe old C1 designs remain closed: local-`tx_hash`-only scoping cannot test missing coverage by construction, and broad independent condition/time-window event querying risks indexer-shaped work.
 
 ### Option C C1R (C1 Revised) design addendum: SPEC ACCEPTED (SETTLED — CURRENT STATE FOR C1 DESIGN)
 
-`SPEC_price_source_option_c_onchain_C1R_addendum.md` (Patch 1) is the accepted design that resolves the Revision-3 C1 guardrail block above. It does not reopen or contradict the Revision-3 safety reasoning (local-`tx_hash`-only scoping and broad independent indexing remain unsafe on their own) — it resolves the dilemma instead via:
-
-1. A **fixed selector manifest** (outcome-independent — manifest selection never reads `resolved_winning_token_id` or any winner/outcome field), reusing the accepted S1 token-pair enumeration discipline, so scoping is not derived from local `tx_hash` presence.
-2. **Subquery-wrapped SQL** with a per-condition `cap+1` over-fetch limit, so row explosion is detected rather than masked by a truncating LIMIT.
-3. **Hard per-condition and global row-cap enforcement**, fail-fast on excess.
-4. **Empty-export detection** (`C1_SOURCE_EMPTY`) — a zero-row Dune export halts rather than passing as clean.
-5. **Row-level evidence artifacts** (`option_c_c1a_raw_rows_sample.csv`, `option_c_c1a_tagged_rows.csv`) with `matched_side` and `tx_hash_relation` (`DUNE_ONLY`/`OVERLAP`/`LOCAL_ONLY`).
-6. **Source-table validation** against the two decoded OrderFilled tables named in `DUNE_DATA_NOTES.md` §3 only — never an arbitrary rendered string.
-
-C1R remains **SPEC ONLY**: no execution, no Claude run, no Dune/API/RPC call. Pure-logic tests: 50 passing in sandbox (29 manifest-builder + 21 canary-reconciliation tests). All guardrails preserved. Handoff: `HANDOFF_orchestrator_option_c_c1r_design_addendum.md`.
-
-**Standing consequence.** P1 remains BLOCKED. B1 remains unauthorized. P2/P3/probe remain unauthorized. `named_binary_probe_blocked` stays `true`. C1R by itself authorizes no run — see the C1A entry below for the user-run authorization.
-
----
+`SPEC_price_source_option_c_onchain_C1R_addendum.md` (Patch 1) is the accepted design that resolves the Revision-3 C1 guardrail block via fixed selector manifest, subquery-wrapped SQL with per-condition cap+1 over-fetch, hard row-cap enforcement, empty-export detection, row-level evidence artifacts, and source-table validation. C1R remains SPEC ONLY by itself: no execution, no Claude run, no Dune/API/RPC call. Pure-logic tests: 50 passing. P1 remains BLOCKED. `named_binary_probe_blocked` stays `true`.
 
 ### Option C C1A manifest + bounded canary: ACCEPTED VALID HALT — `C1_ROW_EXPLOSION` (SETTLED)
 
-The C1A implementation package (`scripts/price_source_option_c_c1a_manifest.py`, `scripts/price_source_option_c_c1a_canary.py`, their test suites, `README_price_source_option_c_c1a.md`, `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`) implemented the C1R design above. It was code/test-only, pure Python, no-network, with 50 pure-logic tests passing before user execution. The user then executed the bounded C1A flow locally and returned artifacts for review.
+The C1A implementation package implemented the C1R design. It was code/test-only, pure Python, no-network, with 50 pure-logic tests passing before user execution. The user then executed the bounded C1A flow locally and returned artifacts for review.
 
-**Accepted result.** Selector manifest construction succeeded with `resolved_count = 5` and `excluded_count = 0`. The bounded canary halted with `C1_ROW_EXPLOSION`: condition `0x00e0e2e768260268c59fd8c43d77f771b19cf1d70ddfcf51c0198e4f58e0fc8e` returned `2001` rows, exceeding `per_condition_row_cap = 2000`. This halt is valid and expected because the generated SQL intentionally uses `LIMIT per_condition_row_cap + 1` so cap exceedance is detected rather than silently truncated.
+**Accepted result.** Selector manifest construction succeeded with `resolved_count = 5` and `excluded_count = 0`. The bounded canary halted with `C1_ROW_EXPLOSION`: condition `0x00e0e2e768260268c59fd8c43d77f771b19cf1d70ddfcf51c0198e4f58e0fc8e` returned `2001` rows, exceeding `per_condition_row_cap = 2000`. This halt is valid and expected because the generated SQL intentionally uses `LIMIT per_condition_row_cap + 1`.
 
-**Diagnostics.** The accepted canary report records `0x00e0...fc8e` with 2001 Dune rows, 794 Dune-only tx hashes, 136 local-only, 24 overlap, and 0 unresolved side rows; `0x0cb2...61c2` with 705 Dune rows, 248 Dune-only tx hashes, 0 local-only, 44 overlap, and 0 unresolved side rows; and three other candidates with 0 Dune rows and local-only tx hashes.
+**Interpretation.** This is a valid bounded-canary halt, not a price-source viability verdict. It does not compute or persist price. No C1B/C2/P1 conclusion follows.
 
-**Interpretation.** This is a valid bounded-canary halt, not a price-source viability verdict. It does not compute or persist price. The result shows the C1A query pattern can exceed the hard canary caps on at least one fixed condition/window/token pair, so no C1B/C2/P1 conclusion follows.
+### Option C C1A-F1 and C1A-F2: mixed evidence accepted; artifacts insufficient for causal closure (SETTLED)
 
-**Implementation fixes discovered during C1A.** Two local parser bugs were found and patched before this accepted result could be read: the manifest parser needed datetime-like / pandas `Timestamp` support for local `traded_at`; the canary parser needed Dune timestamp string support (`YYYY-MM-DD HH:MM:SS.fff UTC`) and UTF-8 BOM-tolerant CSV header handling. These are parser fixes only, not evidence of source viability.
+C1A-F1 executed and produced reviewable mixed coverage/trust evidence: outcome `C1_CANARY_EXECUTED_NEEDS_REVIEW`; 133 total Dune rows in fixed windows; no row explosion; no unresolved side rows; 34 total Dune-only tx hashes; `NAMED_OTHER` = 104 Dune rows / 27 Dune-only / 2 overlap / 0 local-only / 0 unresolved; `UP_DOWN` = 29 Dune rows / 7 Dune-only / 4 overlap / 0 local-only / 0 unresolved; `OVER_UNDER` = 0 Dune rows / 0 Dune-only / 0 overlap / 2 local-only / 0 unresolved.
 
-**Standing consequence.** P1 remains BLOCKED. **C1B full sampled coverage is NOT authorized. C2 reusable/production implementation is NOT authorized.** P1/P2/P3/probe remain unauthorized. `named_binary_probe_blocked` stays `true`. No scoring, backfill, wallet discovery, OrdersMatched expansion, `log_index`, PnL, price-series artifact, or side synthesis is authorized. Handoffs: `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`, `HANDOFF_orchestrator_option_c_c1a_timestamp_fix.md`, `HANDOFF_orchestrator_option_c_c1a_canary_parser_fix.md`, `HANDOFF_orchestrator_option_c_c1a_RESULT.md`.
+C1A-F2 artifact review is accepted with result `C1F2_ARTIFACTS_INSUFFICIENT`: the C1A-F1 artifacts confirm the mixed summary plus safe selector/query/cap discipline, but the `OVER_UNDER` local-only evidence is too thin for safe causal classification because the two local-only rows lack local-side timestamp/token/outcome_index/side-match/row-identity/window-membership fields. No likely-cause label is accepted and no one-condition diagnostic is recommended.
 
-**Only possible next step.** If separately authorized later, the next step is SPEC ONLY: a C1A follow-up design to decide whether a bounded candidate-selection rule can avoid row explosion without hand-picking, leakage, or full-indexer behavior. No implementation or Dune run follows from this result.
+Option C is not viable, C1 is not design-clear, P1 remains BLOCKED, and `named_binary_probe_blocked` stays `true`.
+
+### Option C artifact-enrichment evidence-capture SPEC: ACCEPTED / SPEC ONLY — SETTLED
+
+`SPEC_price_source_option_c_artifact_enrichment.md` is accepted as SPEC ONLY. It defines minimum evidence-capture requirements for any possible future Option C / decoded `OrderFilled` diagnostic. It authorizes no implementation, tests, local data reads, Dune/API/RPC/network, SQL generation/modification/execution, additional canary, one-condition diagnostic, C1B/C2/P1/P2/P3/probe, scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, price artifact, gate change, cap change, row truncation, or side synthesis.
 
 ### Option D L2 order-book vendor archive coverage spec: ACCEPTED / SPEC ONLY — SETTLED
 
@@ -204,9 +154,23 @@ The C1A implementation package (`scripts/price_source_option_c_c1a_manifest.py`,
 
 **Price-basis discipline.** Best bid, best ask, and mid are diagnostics only in the coverage spec. No final canonical price basis is accepted. Any future price-basis decision would require a separately accepted build spec and audit.
 
-**Standing consequence.** Option D acceptance authorizes no implementation, tests, local temporal precheck, vendor/network fetch, PMXT raw archive download, Telonex fetch, vendor account/API key/paid action, Pass 1, Pass 2, price artifact build, canonical-side price computation, P1/P2/P3 continuation, probe execution, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis. P1 remains BLOCKED on missing accepted per-side/token-identity price input. `named_binary_probe_blocked` remains `true`.
+**Standing consequence.** Option D acceptance authorizes no implementation, tests, local temporal precheck, vendor/network fetch, PMXT raw archive download, Telonex fetch, vendor account/API key/paid action, Pass 1, Pass 2, price artifact build, canonical-side price computation, P1/P2/P3 continuation, probe execution, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis. P1 remains BLOCKED; `named_binary_probe_blocked` remains `true`.
 
-**Only possible next step.** If separately authorized later, the only Option D next step is a local-only/read-only temporal in-range precheck using already-local P0/project data: compute the fraction of P0-eligible conditions where both `decision_ts = first_trade_ts + 3600s` and `resolved_at` are at or after `2026-04-13T19:00:00Z` for PMXT v2, and at or after `2025-10-11T00:00:00Z` for Telonex L2. That precheck must not fetch vendor data, create accounts/API keys, build prices, compute canonical-side prices, resume P1, score, touch wallets/OrdersMatched/`log_index`/PnL, or change gates.
+### Option D temporal in-range precheck SPEC: ACCEPTED / SPEC ONLY — SETTLED
+
+`SPEC_price_source_option_d_temporal_inrange_precheck.md` is accepted as SPEC ONLY. It defines a local-only/read-only timing-feasibility precheck design for Option D.
+
+**Purpose.** The spec asks only what fraction of accepted P0-eligible conditions have both `decision_ts = first_trade_ts + 3600s` and `resolved_at` inside the PMXT v2 and Telonex L2 archive windows.
+
+**Required universe discipline.** The spec must not assume `p0_preflight.json` contains condition-level rows. A future implementation, if separately authorized, must reconstruct and verify the exact P0 universe from the named-binary classification contract joined to `named_binary_resolution_source_rows.parquet`, then reconcile to `final_p0_eligible = 39,693`, with subclass denominators `UP_DOWN = 22,012`, `OVER_UNDER = 1,003`, and `NAMED_OTHER = 16,678`.
+
+**Timestamp discipline.** `first_trade_ts = min(traded_at)` per condition; `decision_ts = first_trade_ts + 3600s`; `resolved_at` comes from `named_binary_resolution_source_rows.parquet`; all timestamps must be normalized to timezone-aware UTC before comparison.
+
+**Vendor constants.** PMXT v2 start is `2026-04-13T19:00:00Z`; Telonex L2 start is `2025-10-11T00:00:00Z`; lower bounds are inclusive.
+
+**Interpretation.** Temporal in-range coverage does not establish vendor availability, token coverage, side coverage, both-side book state, book depth, price quality, mechanical trust, price-source viability, or P1 viability. A positive temporal result may only justify proposing a later separately authorized vendor-coverage SPEC. A negative temporal result may close or deprioritize Option D without touching P1.
+
+**Standing consequence.** This spec authorizes no implementation, tests, local data reads, precheck run, artifact generation, vendor/network fetch, PMXT raw archive download, Telonex fetch, vendor account/API key/paid action, Pass 1, Pass 2, price artifact build, price computation, canonical-side price computation, P1/P2/P3 continuation, probe execution, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis. P1 remains BLOCKED and `named_binary_probe_blocked` remains `true`.
 
 ---
 
@@ -222,10 +186,10 @@ The C1A implementation package (`scripts/price_source_option_c_c1a_manifest.py`,
 - Named-binary non-YES/NO outcome source + Stage 4 gate integration (ACCEPTED). Do not re-derive the source, the build, or the gate-policy split. The legacy pooled-all gate stays BLOCKED_BY_RESOLUTION_MAPPING; the non-YES/NO branch is CLEAR_WITH_WARNINGS. The probe itself remains unauthorized.
 - S1 Pass 1 sampled coverage result (`S1_SOURCE_NOT_VIABLE`, ACCEPTED). Do not re-derive or re-litigate the sampled negative or per-subclass rates. It is Pass 1 sampled coverage only; a Pass 2 full-universe run or any alternative price source is a separate, explicitly-authorized step. P1 stays blocked with no `yes_price` fallback; the probe stays unauthorized.
 - S1-ALT Pass 1 sampled coverage result (`S1ALT_SOURCE_NOT_VIABLE`, ACCEPTED). Do not re-derive or re-litigate the sampled negative or per-subclass rates. It reused the exact accepted S1 Pass-1 sample and is Pass 1 sampled coverage only. P1 stays blocked with no `yes_price` fallback or `1 - price` synthesis; the probe stays unauthorized.
-- Option B (Data API `/trades`) corrected B0 state: corrected B0 diagnostic completed with `artifact_status = API_ARTIFACT_COMPLETE`, `halt_code = null`, but did **not** establish mechanical trust (`OVERLAP_API_LOCAL_MISMATCH = 7`, `OVERLAP_PAGINATION_PARTIAL = 3`, `OVERLAP_MATCHED = 0`, `NO_TEMPORAL_OVERLAP = 0`; mismatches `API_ONLY = 11,829`, `LOCAL_ONLY = 145`, `TX_HASH_AMBIGUOUS = 2,381`; pagination `COMPLETE_SHORT_FINAL_PAGE = 7`, `PARTIAL_RETRIEVAL = 3`). Do not re-litigate the original artifact-missing defect; the corrected run has enough evidence and is negative for B0 mechanical trust on the fixed manifest. Metadata caveat: `takeronly_probe_conditions` differs between reconciliation and offline recompute summaries (3 vs 10), but core counts/statuses match and the caveat does not change the negative finding. B1 remains not authorized; no full Pass 1/S2/P1/P2/P3/probe/scoring/backfill is authorized.
-- Option C Revision 3 SPEC ONLY acceptance (historical Rev 3 state, superseded for C1 by later C1R/C1A decisions): C0 (bounded decoded Dune/vendor OrderFilled event tables as candidate) is accepted, spec-only, no run — this remains current. At Revision 3, C1 was guardrail-blocked; that pre-C1R block is superseded by the separately accepted C1R addendum (see below). Do not reopen the old unsafe C1 designs — local-`tx_hash`-only scoping (reproduces S1-ALT, cannot test missing coverage by construction) or broad independent condition/time-window indexing (indexer-shaped, risks the "No full indexer" constraint) — without a fresh, separately authorized SPEC-ONLY document; C1R already is that document and already resolves this dilemma, so do not re-litigate the Revision-3 block as if unresolved. P1 stays blocked; the probe stays unauthorized; `named_binary_probe_blocked` stays `true`.
-- Option C C1R (C1 Revised) design addendum (ACCEPTED, SPEC ONLY): resolves the Revision-3 C1 guardrail block via fixed selector manifest (outcome-independent), subquery-wrapped SQL with cap+1 over-fetch, hard row-cap enforcement, empty-export detection, row-level evidence artifacts, and source-table validation. 50 pure-logic tests passing. Do not re-derive or re-litigate this design; do not re-propose C1 designs it already supersedes. No execution occurred or is authorized by C1R alone.
-- Option C C1A manifest + bounded canary (ACCEPTED VALID HALT — `C1_ROW_EXPLOSION`): user-run C1A produced a 5-condition manifest (`resolved_count = 5`, `excluded_count = 0`) and halted validly when one condition returned 2001 rows against `per_condition_row_cap = 2000`. The cap+1 SQL proved row explosion instead of silently truncating. This is a coverage/trust diagnostic only, not a price-source viability verdict; no price was computed or persisted. C1B and C2 are NOT authorized. Do not treat C1A result acceptance as authorizing C1B, C2, P1/P2/P3, probe, scoring, backfill, wallet discovery, OrdersMatched expansion, or `log_index`. `named_binary_probe_blocked` stays `true`.
+- Option B corrected B0 state (`B0_MECHANICAL_TRUST_NOT_ESTABLISHED`). Do not re-litigate the original artifact-missing defect; the corrected run has enough evidence and is negative for B0 mechanical trust on the fixed manifest. B1 remains not authorized; no full Pass 1/S2/P1/P2/P3/probe/scoring/backfill is authorized.
+- Option C Revision 3 SPEC ONLY acceptance, C1R accepted design, C1A accepted valid halt, C1A-F1 mixed evidence, and C1A-F2 insufficient-artifact result. Do not reopen old unsafe C1 designs, do not mark C1 design-clear, and do not authorize C1B/C2/P1/P2/P3/probe from these findings.
+- Option D L2 order-book vendor archive coverage SPEC (`OPTION_D_SPEC_ACCEPTED_SPEC_ONLY`). Do not substitute non-L2 channels for L2 book depth; do not treat best bid/ask/mid diagnostics as an accepted price basis; P1 stays blocked.
+- Option D temporal in-range precheck SPEC (`OPTION_D_TEMPORAL_INRANGE_PRECHECK_SPEC_ACCEPTED_SPEC_ONLY`). Do not treat timing feasibility as vendor availability, side/token coverage, book depth, price quality, mechanical trust, price-source viability, or P1 viability. Implementation or execution of the precheck requires separate explicit authorization.
 
 ---
 
