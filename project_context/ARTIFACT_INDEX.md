@@ -136,6 +136,48 @@ Parser-fix note: the C1A user-run exposed two local parser issues that were patc
 
 Follow-up spec note: `SPEC_price_source_option_c_c1a_followup.md` is ACCEPTED / SPEC ONLY. It accepts the C1A-F1 selector-policy shape in principle after the accepted C1A `C1_ROW_EXPLOSION` halt. It does not add artifacts to this folder and does not authorize implementation, tests, SQL/query generation, a Dune/API/RPC/network run, a bounded user-run, cap increases, row truncation, C1B/C2/P1/P2/P3/probe, scoring/backfill/wallet/`log_index`/PnL, a price artifact, or side synthesis.
 
+### `artifacts/named_binary_probe/price_source_option_c_c1a_f1/`
+
+C1A-F1 selector + bounded canary artifacts (selector/prep accepted; user-run executed and ACCEPTED as reviewable mixed evidence; result `C1_CANARY_EXECUTED_NEEDS_REVIEW`). Coverage/trust diagnostics only — **no price series is persisted**.
+
+Accepted selector/prep context:
+
+- selector universe was bounded to the accepted small S1/S1-ALT eligible / C1A-compatible measured pool; no full ~288K universe scan/profile and no reusable volume-profiling artifact.
+- selected conditions = 3, one per subclass: `OVER_UNDER`, `NAMED_OTHER`, `UP_DOWN`.
+- cap constants preserved: `per_condition_row_cap = 2000`, per-condition Dune query `LIMIT = 2001` (`cap+1` over-fetch), `global_row_cap = 6000`.
+- generated SQL used decoded `OrderFilled` tables only, fixed token pairs/windows, subquery-wrapped branch limits, and no local `tx_hash` filter.
+- selector/prep artifacts authorize no run by themselves.
+
+Accepted C1A-F1 post-run result:
+
+- canary outcome `C1_CANARY_EXECUTED_NEEDS_REVIEW`
+- total Dune rows in fixed windows = 133
+- no row explosion
+- no unresolved side rows
+- Dune-only tx hashes found = 34 total
+- `NAMED_OTHER`: 104 Dune rows, 27 Dune-only tx hashes, 2 overlap tx hashes, 0 local-only tx hashes, 0 unresolved side rows
+- `UP_DOWN`: 29 Dune rows, 7 Dune-only tx hashes, 4 overlap tx hashes, 0 local-only tx hashes, 0 unresolved side rows
+- `OVER_UNDER`: 0 Dune rows, 0 Dune-only tx hashes, 0 overlap tx hashes, 2 local-only tx hashes, 0 unresolved side rows
+- no price was computed or persisted
+- this is **not** `C1_CANARY_DESIGN_CLEAR`
+
+Artifact set:
+
+- `c1a_f1_windows.json` — deterministic windows input derived from bounded local/static inputs.
+- `c1a_f1_windows.json.provenance.json` — windows provenance; records local-trades bounded-pool source, no Dune/API/RPC/network, no SQL, no price artifact, no full-universe scan.
+- `c1a_f1_selector_provenance.json` — selector provenance; records selected/rejected conditions, density source, caps, guardrail fields, and no Dune count scout / no local-tx-hash filter / no winner/outcome/price/score/PnL fields.
+- `c1a_f1_selected_conditions.csv` — accepted selected 3-condition manifest source with side token identities and selector diagnostics.
+- `c1a_f1_selector_excluded.csv` — selector exclusions.
+- `c1a_f1_canary_manifest.json` — JSON manifest consumed by `scripts/price_source_option_c_c1a_canary.py`, with `conditions[]`, side token IDs, windows, and caps.
+- `c1a_f1_dune_query.sql` — prepared decoded-OrderFilled SQL text; historical artifact only and not authorization to execute or rerun.
+- `c1a_canary_result.json` — machine-readable C1A-F1 canary result.
+- `c1a_canary_result.md` — narrative C1A-F1 canary result report.
+- `c1a_canary_by_condition.csv` — per-condition C1A-F1 canary ledger.
+- `option_c_c1a_raw_rows_sample.csv` — bounded raw-row evidence as ingested from the user-provided Dune CSV export.
+- `option_c_c1a_tagged_rows.csv` — tagged rows with raw token-side match and tx-hash relation diagnostics.
+
+Decision impact: C1A-F1 is accepted as executed and reviewable mixed coverage/trust evidence. It does **not** mark Option C viable, does **not** mark C1 design-clear, does **not** unblock P1, and does **not** authorize C1B/C2/P1/P2/P3/probe/scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, cap increases, truncation, additional canaries, or any price artifact. `named_binary_probe_blocked` stays `true`.
+
 ---
 
 ## Scripts (`scripts/`)
@@ -170,11 +212,13 @@ Follow-up spec note: `SPEC_price_source_option_c_c1a_followup.md` is ACCEPTED / 
 
 - `named_binary_probe_p0_preflight.py` — Stage P0 preflight (ACCEPTED, P0_CLEAR). Read-only except for its three `artifacts/named_binary_probe/` outputs. Counts only; no trades/prices, no decision timestamps, no canonical_side_price, no scoring, no Dune/network, no log_index, no wallet logic.
 
-### Named-binary probe (S1 price-source coverage — coverage-only, user-run)
+### Named-binary probe (price-source diagnostics — coverage/trust only, user-run when explicitly authorized)
 
 - `price_source_s1_coverage.py` — S1 Pass 1 CLOB `/prices-history` coverage test (ACCEPTED run; verdict `S1_SOURCE_NOT_VIABLE`). Coverage-only: no `yes_price` / `1 - yes_price` / `1 - price` / `1 - p` synthesis; no writes to `prices/`; no scoring/backfill; `named_binary_probe_blocked` never flipped.
 - `price_source_s1_alt_pass1_coverage.py` — S1-ALT Pass 1 local trade-print coverage test (ACCEPTED run; verdict `S1ALT_SOURCE_NOT_VIABLE`). Local-only; reuses accepted S1 sample; no price series persisted.
 - `price_source_option_b_b0_failure_diagnostic.py` — corrected Option B B0 diagnostic harness. It was code/test authorized separately, then user-run; accepted result `B0_MECHANICAL_TRUST_NOT_ESTABLISHED`. Diagnostic/trust artifacts only; no price series, no B1/full Pass 1/S2/P1/P2/P3/probe authorization, no gate change.
+- `price_source_option_c_c1a_f1_selector.py` — C1A-F1 selector helper; local-only selector/windows preparation over the bounded accepted pool. Historical after accepted selector artifacts; no Dune/API/RPC/network, no SQL execution, no price artifact, no full-universe profiling.
+- `price_source_option_c_c1a_f1_prepare_canary.py` — C1A-F1 prep-only SQL/manifest generator from accepted selected conditions and windows. Historical after accepted C1A-F1 prep; no Dune/API/RPC/network path and no SQL execution.
 
 ### Named-binary probe (read-only inspection scripts — no code/gate/probe changes)
 
@@ -193,6 +237,8 @@ Follow-up spec note: `SPEC_price_source_option_c_c1a_followup.md` is ACCEPTED / 
 - `test_named_binary_probe_p0_preflight.py` — Stage P0 preflight suite.
 - `test_price_source_s1_coverage.py` — S1 Pass 1 coverage suite.
 - `test_price_source_option_b_b0_failure_diagnostic.py` — corrected Option B B0 diagnostic harness suite; covers artifact persistence, offline recompute, cap enforcement, Windows-safe writing, schema-blocked classification, and takerOnly incompleteness behavior.
+- `test_price_source_option_c_c1a_f1_selector.py` — C1A-F1 selector helper suite; local-only guardrails for bounded selector/windows generation.
+- `test_price_source_option_c_c1a_f1_canary_prep.py` — C1A-F1 prep suite; verifies exact accepted 3-condition set, caps, manifest/SQL consistency, no local-tx-hash filter, no forbidden winner/outcome/PnL/score fields, and no network/SQL execution path.
 
 ---
 
@@ -249,6 +295,9 @@ Follow-up spec note: `SPEC_price_source_option_c_c1a_followup.md` is ACCEPTED / 
 - `HANDOFF_orchestrator_option_c_c1a_RESULT.md` — Claude-to-Orchestrator handoff recording accepted C1A result: user-run manifest resolved 5/excluded 0 and canary halted validly on `C1_ROW_EXPLOSION`; no C1B/C2/P1/probe authorization follows.
 - `SPEC_price_source_option_c_c1a_followup.md` — ACCEPTED / SPEC ONLY. C1A-F1 selector-policy shape accepted in principle after the accepted C1A `C1_ROW_EXPLOSION` halt. It defines a deterministic, outcome-independent, local-density / subclass-balanced selector-policy shape with an explicit default selector pool limited to the already accepted small S1/S1-ALT eligible pool / C1A-compatible measured pool unless broader local-only computation is separately authorized. It rejects hand-picking, winner/outcome leakage, local-`tx_hash` Dune filtering, Dune count scouting, cap increases, truncation, full-universe scanning/profiling, reusable volume-profiling artifacts, and treating local density as a guaranteed predictor. It authorizes no implementation, no code/tests, no SQL/query generation, no Dune/API/RPC/network run, no bounded user-run, no C1B/C2/P1/P2/P3/probe, no scoring/backfill/wallet/`log_index`/PnL, no price artifact, and no side synthesis.
 - `HANDOFF_orchestrator_option_c_c1a_followup_SPEC.md` — Claude-to-Orchestrator handoff for the accepted C1A-F1 follow-up selector-policy SPEC. Documentation-only; records that no code, tests, artifacts, query, implementation, or run are authorized.
+- `README_price_source_option_c_c1a_f1_canary_prep.md` — C1A-F1 prep-only runbook. Historical after the C1A-F1 user-run; not authorization for rerun or downstream work.
+- `HANDOFF_orchestrator_option_c_c1a_f1_canary_PREP.md` — prep-only handoff for C1A-F1 SQL/manifest package; no execution authorized by the handoff itself.
+- `HANDOFF_orchestrator_option_c_c1a_f1_canary_REVIEW.md` — docs-only post-run handoff recording the accepted C1A-F1 mixed evidence result: `C1_CANARY_EXECUTED_NEEDS_REVIEW`, 133 total Dune rows, 34 total Dune-only tx hashes, no row explosion, no unresolved side rows, no price artifact, and no P1/C1B/C2/probe authorization.
 
 ## Stage 4 audit gate fields (in `named_binary_audit_gate.json` when `--resolution-source` is supplied)
 
@@ -273,7 +322,7 @@ Pin all of the following in the Claude Project Files panel (read `START_HERE.md`
 - `DATA_CONTRACTS_named_binary_probe.md` — exact inspected schemas/API surfaces for the probe.
 - `PRICE_INPUT_CONTRACT_named_binary_probe.md` — accepted S0 price-input finding (why P1 is blocked).
 - `CLAUDE_PROJECT_SETTINGS.md` — operational Claude capability settings; does not override the above and authorizes nothing.
-- Active specs/handoffs as applicable — `SPEC_named_binary_probe.md`, `SPEC_price_source_s1_coverage.md`, `SPEC_price_source_alt_trade_prints.md`, `SPEC_price_source_option_b_data_api_review.md`, `SPEC_option_b_b0_failure_diagnostic.md`, `SPEC_price_source_option_c_onchain.md`, `SPEC_price_source_option_c_onchain_C1R_addendum.md`, `README_price_source_option_c_c1a.md`, `SPEC_price_source_option_c_c1a_followup.md`, `HANDOFF_orchestrator_named_binary_probe_p0.md`, `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`, `HANDOFF_orchestrator_option_b_spec_s1_1_patch.md`, `HANDOFF_orchestrator_option_b_b0_RESULT.md`, `HANDOFF_orchestrator_option_b_b0_failure_diagnostic.md`, `HANDOFF_orchestrator_option_b_b0_corrected_diagnostic_RESULT.md`, `HANDOFF_orchestrator_option_c_onchain_spec.md`, `HANDOFF_orchestrator_option_c_c1r_design_addendum.md`, `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`, `HANDOFF_orchestrator_option_c_c1a_RESULT.md`, `HANDOFF_orchestrator_option_c_c1a_followup_SPEC.md`.
+- Active specs/handoffs as applicable — `SPEC_named_binary_probe.md`, `SPEC_price_source_s1_coverage.md`, `SPEC_price_source_alt_trade_prints.md`, `SPEC_price_source_option_b_data_api_review.md`, `SPEC_option_b_b0_failure_diagnostic.md`, `SPEC_price_source_option_c_onchain.md`, `SPEC_price_source_option_c_onchain_C1R_addendum.md`, `README_price_source_option_c_c1a.md`, `SPEC_price_source_option_c_c1a_followup.md`, `README_price_source_option_c_c1a_f1_canary_prep.md`, `HANDOFF_orchestrator_named_binary_probe_p0.md`, `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`, `HANDOFF_orchestrator_option_b_spec_s1_1_patch.md`, `HANDOFF_orchestrator_option_b_b0_RESULT.md`, `HANDOFF_orchestrator_option_b_b0_failure_diagnostic.md`, `HANDOFF_orchestrator_option_b_b0_corrected_diagnostic_RESULT.md`, `HANDOFF_orchestrator_option_c_onchain_spec.md`, `HANDOFF_orchestrator_option_c_c1r_design_addendum.md`, `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`, `HANDOFF_orchestrator_option_c_c1a_RESULT.md`, `HANDOFF_orchestrator_option_c_c1a_followup_SPEC.md`, `HANDOFF_orchestrator_option_c_c1a_f1_canary_PREP.md`, `HANDOFF_orchestrator_option_c_c1a_f1_canary_REVIEW.md`.
 - `ORCHESTRATOR_LOW_CONTEXT_MODE.md` — reusable low-context review/decision protocol. Documentation only; overrides nothing and authorizes nothing.
 - Supporting reference (not overriding): `DUNE_DATA_NOTES.md`.
 
