@@ -172,6 +172,29 @@ Option C is not viable, C1 is not design-clear, P1 remains BLOCKED, and `named_b
 
 **Standing consequence.** This spec authorizes no implementation, tests, local data reads, precheck run, artifact generation, vendor/network fetch, PMXT raw archive download, Telonex fetch, vendor account/API key/paid action, Pass 1, Pass 2, price artifact build, price computation, canonical-side price computation, P1/P2/P3 continuation, probe execution, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis. P1 remains BLOCKED and `named_binary_probe_blocked` remains `true`.
 
+### Option D temporal in-range precheck result: COMPLETED / ACCEPTED — SETTLED
+
+The Option D local-only/read-only temporal in-range precheck was implemented after separate authorization, fixture-tested, user-run locally, and accepted.
+
+**Result label.** `OPTION_D_TEMPORAL_INRANGE_PRECHECK_COMPLETED_ACCEPTED`.
+
+**Run status.** `COMPLETED`; `halt_code = null`; `uniform_result_detected = false`.
+
+**Universe reconciliation.** Exact accepted P0 match: expected 39,693 / observed 39,693; subclass observed counts UP_DOWN 22,012, OVER_UNDER 1,003, NAMED_OTHER 16,678. No first-trade anchors were missing and no `resolved_at` values were missing.
+
+**Pooled temporal coverage.**
+- PMXT v2: 18,137 / 39,693 = 0.456932.
+- Telonex L2: 37,749 / 39,693 = 0.951024.
+
+**Subclass temporal coverage.**
+- UP_DOWN: PMXT v2 0.529211; Telonex L2 0.974696.
+- OVER_UNDER: PMXT v2 0.661017; Telonex L2 0.979063.
+- NAMED_OTHER: PMXT v2 0.349263; Telonex L2 0.918096.
+
+**Interpretation.** PMXT v2 is closed/deprioritized for broad full-P0 Option D coverage on timing grounds. A PMXT API key does not change the PMXT v2 archive start-date limitation. Any future PMXT work would require a separate narrow-subset SPEC ONLY authorization and must not be treated as broad P0 coverage. Telonex L2 remains plausible only for a later separately authorized SPEC ONLY vendor-coverage review: pooled temporal coverage narrowly clears 0.95, but NAMED_OTHER is below 0.95, so it is not a clean automatic pass.
+
+**Standing consequence.** Timing feasibility does not establish vendor availability, token coverage, side coverage, both-side book state, book depth, price quality, mechanical trust, price-source viability, or P1 viability. No vendor fetch, PMXT online/API-key test, Telonex fetch, account/API key/paid action, Pass 1, Pass 2, price artifact, bid/ask/mid/spread/depth/canonical-side price computation, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis follows. P1 remains BLOCKED and `named_binary_probe_blocked` remains `true`.
+
 ---
 
 ## DO NOT REOPEN unless explicitly asked
@@ -189,7 +212,7 @@ Option C is not viable, C1 is not design-clear, P1 remains BLOCKED, and `named_b
 - Option B corrected B0 state (`B0_MECHANICAL_TRUST_NOT_ESTABLISHED`). Do not re-litigate the original artifact-missing defect; the corrected run has enough evidence and is negative for B0 mechanical trust on the fixed manifest. B1 remains not authorized; no full Pass 1/S2/P1/P2/P3/probe/scoring/backfill is authorized.
 - Option C Revision 3 SPEC ONLY acceptance, C1R accepted design, C1A accepted valid halt, C1A-F1 mixed evidence, and C1A-F2 insufficient-artifact result. Do not reopen old unsafe C1 designs, do not mark C1 design-clear, and do not authorize C1B/C2/P1/P2/P3/probe from these findings.
 - Option D L2 order-book vendor archive coverage SPEC (`OPTION_D_SPEC_ACCEPTED_SPEC_ONLY`). Do not substitute non-L2 channels for L2 book depth; do not treat best bid/ask/mid diagnostics as an accepted price basis; P1 stays blocked.
-- Option D temporal in-range precheck SPEC (`OPTION_D_TEMPORAL_INRANGE_PRECHECK_SPEC_ACCEPTED_SPEC_ONLY`). Do not treat timing feasibility as vendor availability, side/token coverage, book depth, price quality, mechanical trust, price-source viability, or P1 viability. Implementation or execution of the precheck requires separate explicit authorization.
+- Option D temporal in-range precheck SPEC and result (`OPTION_D_TEMPORAL_INRANGE_PRECHECK_COMPLETED_ACCEPTED`). Do not re-run or reinterpret the temporal precheck without explicit authorization. Do not treat timing feasibility as vendor availability, side/token coverage, book depth, price quality, mechanical trust, price-source viability, or P1 viability. PMXT v2 is closed/deprioritized for broad full-P0 coverage on timing grounds; Telonex L2 may only proceed to a separately authorized SPEC ONLY vendor-coverage review.
 
 ---
 

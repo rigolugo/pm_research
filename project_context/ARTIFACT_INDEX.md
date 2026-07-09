@@ -45,6 +45,25 @@ Recommended subfolder organization (currently flat — reorganize when convenien
 - `p0_excluded_counts.csv` — per-subclass tally.
 - `price_input_s0_inspection.txt` — read-only S0 price-input inspection evidence. Records price provenance, the YES/NO-only / named-binary-unsafe meaning of `yes_price`, the absence of any local per-side/per-token price artifact, and a non-YES/NO price sample.
 
+### `artifacts/named_binary_probe/price_source_option_d_temporal_inrange/`
+
+Option D temporal in-range precheck artifacts (user-run, ACCEPTED; result `OPTION_D_TEMPORAL_INRANGE_PRECHECK_COMPLETED_ACCEPTED`). Local-only/read-only timing-feasibility artifacts only — **no vendor data and no price series is persisted**.
+
+Accepted result:
+- status `COMPLETED`; `halt_code = null`
+- exact P0 reconciliation: expected 39,693 / observed 39,693; UP_DOWN 22,012; OVER_UNDER 1,003; NAMED_OTHER 16,678
+- no missing first-trade anchors; no missing `resolved_at`
+- PMXT v2 pooled temporal coverage: 18,137 / 39,693 = 0.456932
+- Telonex L2 pooled temporal coverage: 37,749 / 39,693 = 0.951024
+- Telonex L2 by subclass: UP_DOWN 0.974696; OVER_UNDER 0.979063; NAMED_OTHER 0.918096
+- PMXT v2 is closed/deprioritized for broad full-P0 Option D coverage on timing grounds
+- Telonex L2 is plausible only for a later separately authorized SPEC ONLY vendor-coverage review
+- no vendor fetch, account/API key/paid action, price computation, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis follows; `named_binary_probe_blocked` remains true
+
+Artifact set:
+- `option_d_temporal_inrange_precheck.json` — machine-readable temporal in-range result and self-attestation.
+- `option_d_temporal_inrange_precheck.md` — narrative temporal in-range result report.
+
 ### `artifacts/named_binary_probe/price_source_s1/`
 
 S1 Pass 1 **coverage-only** artifacts (user-run, ACCEPTED; verdict `S1_SOURCE_NOT_VIABLE`). Coverage diagnostics only — **no price series is persisted**.
@@ -222,6 +241,7 @@ C1A-F2 artifact review impact: `project_context/HANDOFF_orchestrator_option_c_c1
 - `price_source_option_b_b0_failure_diagnostic.py` — corrected Option B B0 diagnostic harness. It was code/test authorized separately, then user-run; accepted result `B0_MECHANICAL_TRUST_NOT_ESTABLISHED`. Diagnostic/trust artifacts only; no price series, no B1/full Pass 1/S2/P1/P2/P3/probe authorization, no gate change.
 - `price_source_option_c_c1a_f1_selector.py` — C1A-F1 selector helper; local-only selector/windows preparation over the bounded accepted pool. Historical after accepted selector artifacts; no Dune/API/RPC/network, no SQL execution, no price artifact, no full-universe profiling.
 - `price_source_option_c_c1a_f1_prepare_canary.py` — C1A-F1 prep-only SQL/manifest generator from accepted selected conditions and windows. Historical after accepted C1A-F1 prep; no Dune/API/RPC/network path and no SQL execution.
+- `price_source_option_d_temporal_inrange_precheck.py` — Option D local-only/read-only temporal in-range precheck. User-run completed and accepted with result `OPTION_D_TEMPORAL_INRANGE_PRECHECK_COMPLETED_ACCEPTED`; timing-feasibility only, no vendor data, no price series, no P1/probe/scoring/gate authorization.
 
 ### Named-binary probe (read-only inspection scripts — no code/gate/probe changes)
 
@@ -242,6 +262,7 @@ C1A-F2 artifact review impact: `project_context/HANDOFF_orchestrator_option_c_c1
 - `test_price_source_option_b_b0_failure_diagnostic.py` — corrected Option B B0 diagnostic harness suite; covers artifact persistence, offline recompute, cap enforcement, Windows-safe writing, schema-blocked classification, and takerOnly incompleteness behavior.
 - `test_price_source_option_c_c1a_f1_selector.py` — C1A-F1 selector helper suite; local-only guardrails for bounded selector/windows generation.
 - `test_price_source_option_c_c1a_f1_canary_prep.py` — C1A-F1 prep suite; verifies exact accepted 3-condition set, caps, manifest/SQL consistency, no local-tx-hash filter, no forbidden winner/outcome/PnL/score fields, and no network/SQL execution path.
+- `test_price_source_option_d_temporal_inrange_precheck.py` — Option D temporal in-range precheck fixture suite; local fixture tests accepted with 53 passed.
 
 ---
 
@@ -307,7 +328,10 @@ C1A-F2 artifact review impact: `project_context/HANDOFF_orchestrator_option_c_c1
 - `SPEC_price_source_option_c_artifact_enrichment.md` — ACCEPTED / SPEC ONLY. Defines minimum evidence-capture requirements for any possible future Option C / decoded `OrderFilled` diagnostic so local-only, Dune-only, and overlap rows can be reviewed without rerunning or guessing. Defines required future artifacts (`local_comparison_rows.csv`, `source_orderfilled_rows.csv`, `comparison_tagged_rows.csv`, `comparison_by_condition.csv`, `comparison_reconciliation.json`, `artifact_schema.md`), required columns, reconciliation checks, stop/reject labels, and guardrail flags. Authorizes no implementation, no tests, no local data reads, no Dune/API/RPC/network, no SQL generation/modification/execution, no additional canary, no one-condition diagnostic, no C1B/C2/P1/P2/P3/probe, no scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, no price artifact, no gate change, no cap change, no row truncation, and no side synthesis.
 - `HANDOFF_orchestrator_option_c_artifact_enrichment_SPEC.md` — docs-only handoff accompanying the accepted artifact-enrichment SPEC; records `ARTIFACT_ENRICHMENT_SPEC_ONLY` and preserves all standing blocks.
 - `SPEC_price_source_option_d_l2_archive.md` — ACCEPTED / SPEC ONLY. Option D L2 order-book vendor archive coverage-feasibility spec for PMXT v2 and Telonex L2 order-book/quote archives. Candidate scope: PMXT v2 only from `2026-04-13T19:00:00Z`; Telonex L2 order-book/quote history from `2025-10-11T00:00:00Z`. PMXT v1 and Telonex on-chain fills are out of scope for L2 book coverage unless separately reviewed. Accepted channel-mismatch guards: `VENDOR_HISTORY_NOT_L2_BOOK_RELEVANT` and `STOP_VENDOR_HISTORY_CHANNEL_MISMATCH`. Authorizes no implementation, tests, local temporal precheck, vendor fetch, account/API/paid action, Pass 1, Pass 2, price artifact, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis. P1 remains blocked; `named_binary_probe_blocked` remains true.
-- `SPEC_price_source_option_d_temporal_inrange_precheck.md` — ACCEPTED / SPEC ONLY. Option D local-only/read-only temporal in-range precheck design. It is timing-feasibility only: future work, if separately authorized, may compute the fraction of accepted P0-eligible conditions with both `decision_ts = first_trade_ts + 3600s` and `resolved_at` inside PMXT v2 (`>= 2026-04-13T19:00:00Z`) and Telonex L2 (`>= 2025-10-11T00:00:00Z`) archive windows. It authorizes no implementation, tests, local data reads, run, artifacts, vendor/network fetch, PMXT/Telonex fetch, account/API/paid action, price artifact, price computation, canonical-side price computation, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis. `named_binary_probe_blocked` remains true.
+- `SPEC_price_source_option_d_temporal_inrange_precheck.md` — ACCEPTED / SPEC ONLY. Option D local-only/read-only temporal in-range precheck design. The authorized local-only run later completed and is accepted as `OPTION_D_TEMPORAL_INRANGE_PRECHECK_COMPLETED_ACCEPTED`.
+- `README_price_source_option_d_temporal_inrange_precheck.md` — implementation/runbook for the Option D temporal precheck. Historical after accepted local run; does not authorize rerun or downstream work by itself.
+- `HANDOFF_orchestrator_option_d_temporal_inrange_precheck_IMPLEMENTATION_PATCH.md` — implementation patch handoff; fixture tests accepted with 53 passed before the user-run.
+- `HANDOFF_orchestrator_option_d_temporal_inrange_precheck_RESULT.md` — accepted result handoff: PMXT v2 temporal coverage 0.456932 (closed/deprioritized for broad full-P0 coverage); Telonex L2 temporal coverage 0.951024 pooled but NAMED_OTHER 0.918096, so only a later SPEC ONLY vendor-coverage review is plausible. P1 remains blocked; `named_binary_probe_blocked` remains true.
 
 ## Stage 4 audit gate fields (in `named_binary_audit_gate.json` when `--resolution-source` is supplied)
 
