@@ -1,0 +1,23 @@
+{
+  "authorized_scope": "OPTION_C_C1A_F1_SELECTOR_POLICY_ONLY_NO_NETWORK_NO_RUN",
+  "bounded_condition_ids_requested": 300,
+  "built_reusable_volume_profile": false,
+  "condition_count": 300,
+  "missing_window_count": 0,
+  "no_dune_api_rpc_network": true,
+  "no_price_artifact": true,
+  "no_run_authorized": true,
+  "no_sql_generation_or_execution": true,
+  "phase": "OPTION_C_C1A_F1_SELECTOR",
+  "pool_field_fallback_reason": "C1F_SELECTOR_INPUTS_MISSING: window end precedes start for '0x0769d8d4742ea3bdedadeb8006970a99eb989ebff5990d8fb62ac1b98b589e41' using decision_lower_ts/resolved_at_ts",
+  "pool_fields_used": false,
+  "pool_source": "price_source_s1_coverage_by_condition.csv",
+  "scanned_full_universe": false,
+  "used_dune_or_network": false,
+  "used_price_or_score_field": false,
+  "used_sql": false,
+  "used_winner_or_outcome_field": false,
+  "window_rule": "min_local_traded_at_to_max_local_traded_at_per_condition_inside_bounded_pool",
+  "windows_json": "c1a_f1_windows.json",
+  "windows_source": "LOCAL_TRADES_BOUNDED_POOL_ONLY"
+}

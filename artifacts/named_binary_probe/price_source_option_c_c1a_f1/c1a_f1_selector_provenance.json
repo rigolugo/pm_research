@@ -1,0 +1,920 @@
+{
+  "authorized_scope": "OPTION_C_C1A_F1_SELECTOR_POLICY_ONLY_NO_NETWORK_NO_RUN",
+  "built_reusable_volume_profile": false,
+  "caps_raised": false,
+  "density_fields_rejected_and_never_used": [
+    "clob_density",
+    "clob_point_count",
+    "nearest_gap_side_0_seconds",
+    "nearest_gap_side_1_seconds",
+    "observed_point_count_side_0",
+    "observed_point_count_side_1",
+    "price_history_point_count"
+  ],
+  "density_fields_used": [
+    "local_trade_rows_in_window",
+    "local_distinct_tx_hash_count_in_window",
+    "window_seconds"
+  ],
+  "density_source": "COMPUTED_FROM_LOCAL_TRADES",
+  "deterministic_tie_breaker": "sha256(condition_id|selector_policy_version)",
+  "dune_query_limit_over_fetch_cap_plus_one": 2001,
+  "global_row_cap_ceiling": 6000,
+  "max_conditions": 5,
+  "min_conditions": 3,
+  "no_run_authorized": true,
+  "per_condition_row_cap_ceiling": 2000,
+  "phase": "OPTION_C_C1A_F1_SELECTOR",
+  "pool_source": "price_source_s1_coverage_by_condition.csv",
+  "pool_source_is_bounded_accepted_pool": true,
+  "prior_c1a_holdout_applied": false,
+  "prior_c1a_holdout_uniform_whole_manifest": false,
+  "rejected": [
+    {
+      "condition_id": "0x016b7f9a7b1cb512bf49ce58ed20916664f892d852725351412616e1a122d3d5",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x02a2939087327ba80a876e35f2bd5a8e3964b3130b923886dd04cff7f142c1e7",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x0769d8d4742ea3bdedadeb8006970a99eb989ebff5990d8fb62ac1b98b589e41",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x08790c0f53a2534beafb3eec400b90eeced04da903d9e74b8bb8801c94f4276a",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x0abd0b82902e91d145ef25b2bae876d27e987759522aef8ed621b6ecf3afe891",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x0e5c5e3b23e0cc365ad1adc66013747c304b97713fa9fd67cedfbe55d512e385",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x0efb28d0d06ae9749f8ebe0637691303ef72c528e505d86cfd213b4cda9ac018",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x11db1f95a39d309a96bba69bdab372a3ef04aa4df073637f0829307ca4e974a3",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x1293be037aa1ef56d204332b1aea4751247489cfd3ebd3fc8c37c80da25280f6",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x148e710bef76c6c9cef7780fcc28092a2bf1277c08180b8e53a8665fb8b077da",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x1878249a3de251f4fde7041d995a74d617d6e840f2978dfe2113338e44b541a0",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x18ab51c95715a6bb3e6d388dcb2855e2915b912041b8bb1f9e0c43c4082e1eb2",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x1e19715713e811308fb26e070330564a22caf3fed870c2a77fbbded2964a4fc2",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x1fa5a894d33b8b33c05e88c2353033cb2357c74515e9b7a3c95582a424acb0e4",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x2409c582d0c377f94fa235b3a337b6c5f501279920e641827c8bef27a0946638",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x26eea52859ea6d131faead3e5fd52177dc6c7de6062e36219cd565d62a4906db",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x277467d2447c8b42ff50e15b3b7c22a80c1ba4da09994e20f27062c0296bbd0a",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x286fa31aba9dfd8716a8bab72ddd43d77e2012bb968ad25834fb198e01ef7c77",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x314441cc8e4c46b6247030cc69f71ee4a244b39aa1dcbd3cea818c8f12512fb7",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x32b2c43014379a80775b803790edef5289bf003cd88b1d60a02b2517020a1541",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x331541577a752f5d5535a7936dabf8c6b578c3cc20d79d84d142a8c87959b75b",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x3427a72a365858892ae88f3ddbf4a9405826c052a25a6581bc60385674eac14a",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x36118efce98b6d982737ee558eec1c88f25fbe4f08e7aedcdd35e5c47da5e938",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x378da880f3df5b055761f58980e77425f44fc88c527e01d832553ad4db6b2f1e",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x3811d8cc7025586e6dedf726944c467de5571372be284c755dd74befe1cc7b86",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x38680ff3e22cf94ea22c4dd4359f2257f2542915b9cc2e80050485a65101c263",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x3b17ea4340bd4d8ec53abb734d903fa6afb6f413b5736fe1083982b7b5cb335e",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x3cf246a640142384aaffd3f95da0943ece81b870fc169a19249e1ceb5a9f5de2",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x3d3b0907b2b2b8e2d47f6e113ad574b1eb3464880992052e1dd3920134f9d349",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x3e02144283f069b73433346709fc46700ae07b3e1cf350bc1d48031933fced3c",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x3e875d77cf7e77f24c2cd6c8e084df21116f8809075922895ea422be7524a448",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x3e9c7e04731333f7e10d8197b5c946d5172e552307b85c5a56af473f5618ff3d",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x3ea9c1b854c73bb18841dd82a7dbb37b2c76ce7c68a63547823c9d308bba5233",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x3f57d4e660a4183e11332f8f8cef13ab6d7d5a4a7b993df27ddc30bd6d18a96a",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x403797f35c05bc86a7a0cd525bdc049d37d2808dcf9b630410ff9bdb92680d95",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x4077374ab6cc601b9238e406d8db68a8eec671021e3000d372dfa331fca60508",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x413afa9195cd9cdfa7077de3c26be14248a61eb512300db617fd1c2437005d07",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x42331cf82607f8031f55aa162824a9994bbbd5d10ad7715f9a5c8b0812d7732d",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x44a281951cdb032b93816f85de1b83f5a5c94d0ec00818dda6812f3508f5b0dd",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x470ee5e7bd4acec501637396087a025a5706fe42f252e1f43a08f78b561360d6",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x47399d0b7bf3de8a9b48668a57b519e1764e50fe9e558664a90795f55ad18d2b",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x48973f402a1fd0cb5ce55c3374fe8fc94e1e75a9e0c56e2445be530d378c86c2",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x49a3d2e049a6a9eecfad4960ca5d6c45b6f8ebecd86e64f05f2c0d2a27ce1ae7",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x4a8dbb6b80e935c63db3d45014eb0fffb21a650e5eeed1683499b9ef2ba79396",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x4b1d122e8641833949f262a8c3d1bb14df011ba600911b35fdb0fcc2314f0813",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x4b48b5bfb4f134733562d493d78e596763ff0b4e48778c9401f7dab7c1115809",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x4c02423087a8cddce9707bab018c4e0bae453524d36f0a5ebdefcb77e48541ec",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x4d22e9fafadb498306ac061e1a0f3e905b78e33ff52c74bac78b2491784f3086",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x4feae995be268193a02f590f5186102f31d5d3b80ea77ece3999f9f75ec27f28",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x52ff2df1af31515531d292e874970a83c32bc1df5de9e3c132bf749da79a03d7",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x53508bb2662aadfae90a6642b59f2eebb04817f153530a6fea9482d58389d919",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x540cb70cf8e27987a18b5711370d7c6136c89c73836a93abb6d369c2c156a429",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x568a80ea27c31aa58540896322f8e4491022eba4e8a9c80c86a31c5919d1f70c",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x56e504a067b91095a3fe4f80cd4f20668c9241306e518bb16ae643e845ff6fef",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x593518b390830234d739de499b825b0c7f0a1a2e948d17ebcc6867d483b3b7c5",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x59d11ab1ddfda626421d8cce4f059bac227ba9b85f8614e7f37d73f2285548d1",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x5a5dc1651c7eff16836c09686387e2fa4b6db0f2cfd197029ba260d3d7ae938e",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x5a808c67074bb0eeff4b772c28409accc59574dcf08b3be79b13888675c98c83",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x5aad64ed0877bdca91f95fdd52f5271b5712c5415a882b1fa3d2b72002801cbb",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x5af3b6bdf17f54c43659201ff0ab68b4b32c9182bf4285118407ef5a40270b26",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x5e0383242fd95c6c589b834c609ff97b47042e7d3af01228c49bb68d74df0e3c",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x5f89392a85080d3f6892df281ead5289bb04045ad389dcf2db6220dd49887cc7",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x6017264dda697298dcacb3653b29a4760523cc18bb00c745be269aa575141dec",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x6109418590d9b42cccc6fb873c4c243dbb352dc07ec19bc8063f5b3813faf437",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x61b5c77fcdc91059a141c2cea58663be80c46a1a5b8f96f906b04577fbb25521",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x61e1e48a2eb16f5fc6da854410ba445557635aab1a10bcbfa9a219c8b57ef58f",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x6306d7009f711e5e81bb0f5a3b7a5b902931c1c3d6ddbe1e547ae5f1e6def64c",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x63c88de1d3aecf78efc443f87657ed1ccf78f1488631174fa798bb58521994fa",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x67846abe26b98daebfa3969052e55f61073e1bacda2dbca5903852b8bc7417bf",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x68b858906726fc29e5f16466adb8b9b1de66c4e8d9ea28db008dfe61f95827ca",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x6a9bb3eb61f46395751eddf3c45e0ec1560c97a32d1d1fbbe1aeb9b9db367da6",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x6aa26c6906a95ab1cfede8c3166148d416e6ce9465d20d3714884a5f53fff42c",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x6c3bfea9f4b703774c5b7ab02c24339b98a57ec342688046a4677c6d6915c601",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x6eac23ab1f4d4bdceea8af479bb145e4cf0ea9bda1d47e89bcde91ef365a475f",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x700ce3a95cbd0eb0293e658162fda9039e756c1901fa5197d1c4d48e9b2018a9",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x70751c7956313452bde603f35f7e7e94070c48b5dd3167b491367bb9d1d0a41b",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x74009d97a46b61e6d7c3a0d176ed57fe72e970c302ceaa413fa3620cc5031e56",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x75184db075d579cdb9f23a9afabaa1500c4162108160993d04a517d15ee73bc0",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x754a9cb6358526a4a2bd1c61577085592176150cc7e4131ff29b4b53fa1beff2",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x76fe664489e96850144b0231f435947b83bc91b5d9a4e83a81e20127855964fe",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x7b0f66cf94d5c251c6d9117abcc8a61d9229f7809aa178ff2ae3051d39d7eb83",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x7bdfbb071e8c8894d3f2fe805419806307903a64a3bc904d97e96cdba82319c8",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x7c4966dfd5f92cbdc42c3f957bef4f47bb6b2022a43d2f38e868727d3d499f30",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x7ca4e57f387f77dfc1168e35990fbbc94e0b3c3366a48b1995fe5aafeceb8391",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x7f52e3b5cee619330fe89136ba18bb883c491ea9f412d33de621af7bf4a72bcd",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x7fd3525aa572f0adaebbc2b41b984df7f1d13f4efe02a9c0b70e00567dfe4049",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x80f17bc53878f3e5867b015e28ece2e8a69c8cff0698fb7d0b440fcb4e8c9844",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x8170e190a2369b796016136c4c53ed1315b481148787231162f32415c296c828",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x8176dc8086de2e042d5503bc520612d4f4edb7efd6adc0dc69efc49a23637b04",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x81a7de53b767fbe24ea5da7373e7c6cc3bc422760ce64926fc89190c2b647040",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x83d7c76b2e427142e7c54f1467279064e16ccb87e2433c1e08d3d3a320b071d8",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x88dc61da05979fbe0e00463b1b92ceb3068bd87c50135a65de98f098fbad3e24",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x8952fbcd0311466eda0574138eb74db353e291de69f6b14190fb02bfb566476a",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x8dc14a307e065ef11d328482493470fa7443baa40f3362dda7d36ae0cd67afda",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x8e19d5d8986f4dd7178d033f7f0b04533792b17a2634d398ca89e2cb030f99f0",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x8f720fd593276433670ed66c4aa05a4a2aab5746e78957a3e9651d4edf2306f2",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x904ffa256ad48ea514799ebac788ff80d8b6eac8057eb9970e6321c2e5b4d82b",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x91338541f3de929515e32b979a18967a605f1b89838acabfcf57a571d2a68477",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x91b233dff5f8be5b036e3eedb02baf1f3241b0545b12053ac2288dacb3bbd785",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x927fbdc42c475c604c84c4f7adca67d344ebccbe7a18f9f8d45999cf5dd3d4ad",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x93eb692cfbe8c518303d94c28eefec22bfa71d4009ec6d70a46ea20bd980c50e",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x9408b713ebc275fd5f6ac475fb095e4605e00f78540cf6a3c63d61e22f478b5f",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x94c258cf9d1983e4b470fdbbbab9635f862305df4ba9b45767011bde9b718222",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x95703f93c79d5835a1ddc700e2b8cc4a2d5ffed66df5ce4b36d79c01a3d1b417",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0x957484cf3fdf94b24ce031e8a3da74c750f9797019ba46b8dc385a2ed6f7a674",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0x96eea474977aa501752f9a8b750884b2aca96fc9aeff68eb1a04bc0dcd56a00d",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0x9b930ac4c07d3b2f0d64afef042f65e9b31cf0e3424f0492bee5d32e36e885ed",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xa41a9748ae5f89aa8fbe012748555bb8cb48f84e3fb921be4bbeba2a12d23f76",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xa5a069d77ecd1efed825c53a3ca096f9ff2a3e30436f61fd5b5584f808c47990",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xa60cc036ed710c12689d3eb225e534a1b6bd04eaeee2d36217adbb06be85ac06",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xab22a6ebe5e136276790f6a49e40e9cfe0f05895c4b05dd3512471a261021021",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xaf2cc930610ad76418b558bcc7c061eac334d54be16d1fa57124242d8858643b",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xb0fdd78fb893d3bd4dec90b6e384eab3f944bec9f3de263690d9f02077a861a6",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xb15af62d47acf4bc0d8e8dc87d7575ee75e7bb2acf703b72bfd2dfe6afefc4e3",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xb2022d6925c8e640e3b7d741385f1880a6977511cdcdeb951bc32c52ded91df1",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xb59f3f6cbe413efc1ecbb42fff10390dc355c5c4d8aefe8d447a898813d8121f",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xb68eb447a9d62b238bcfbd2982ca35121e7e8b6c6c1f6905ba6034fdc94cc352",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xb83f21b65e0d70da8e2b238422118c5126857cea8ce4cc6fd64638e648d5d55a",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xb9abfcc7d1feb05d2cfb3b59d7fab6c89d6978495c151fa50a5c9263f0df264d",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xbc17d3ee8e5a271edb15ce29835b789097c1602d2be6cc790c7a622c6ce9e069",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xbcb9bab7bdcb8dc80ff16050f0ea001c991345e364be5fa1aa419453b594cbbf",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xc3847663dea8495dd6e341b88c07af9f573b531b52dc7014e1f6d8122fc334d3",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xc3d851422dea9ae08452e3e034afa3953f6ac6b5c1f0dc7b9772096270527d86",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xc46dae85e231efb9c116440f30e3e7a1aa654ecd734ed524040490af132525b0",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xc539be0da1e163a91a58a57abf4f863699f07400c9e07d42d5c29facfd62c678",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xc677877beebf6e85837fe87efc2400175fe149a5cf47625ebb6727ce263943c6",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xc67d4d1617ea938691ef2bf24d45aa0fc861545d5b74fb703f2e28bcaf138752",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xc91dcbfbd72a366e665d392a8804588d28b2eecafb3c6ad72c7f08b3a041e72a",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xca48d80dd9667900c5939dd6a0d9811356822687100f06624e10b0c0b1f37526",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xca51acc4124095f0495dc0df0d1b26e8bfb99b20d32793c8645b03aecaac6721",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xca7574d76a4bf2673b6103dc532a2a86bf78c0eccd69c27d1584ae9232b5a215",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xcb0bb3667a3cf2192c486c6dcdadde0a448c669ab0d96d5edc0642e73aa7842f",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xcca5309b7589814f524639d0ce885b8425557e7cfd1efacd7841cc1f9d601b1b",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xcf0ec5b1b4bb0217a668347afc6c642ca573bbb134fa2a5cb11b6e656ee03cc0",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xcfc7dcdfd830819fd162a087b51d2a0a3dd1bbc9ad8f65b1cf60500081730dce",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xd3b15fbfe59faad30e30550ae98630490b4a6161550b9c18dbf281c8715c1948",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xd79eb4efb5527ca19d65f5c0ee6e211a4613d5f509c4ab31f718010656a23561",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xd8c5908542bc77e08dfd1518910249bdf7b974c62ef18b3eed051798f438a84e",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xd9be5ae6282aca5bc58a80f9aec9fa70d74c1caa5c8350e2cc304238f39230c0",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xdba1da85449cac025af2838434d7824a00f1739b2e0835e6efb1c9f126cd7ae6",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xdcb3d51f4030073b6a3ff89989b1b8ed489b7404725fd050abfcb441222d489b",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xddf47751d15407929bef8e7c29a16c6390828b22090273b3a068699fafa04a97",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xe0aa1265da778bbd61f273ab79e9732f453247aafbac6225652edfa46ba1e88a",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xe186e0b53bd8697248ddaccd9657290613e2de0c5c80860d2ff73bee2ef6bc93",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xe50123a6f88c36371e23cb6af4fb50e1cf3170210b5a555558f670b0e8698d35",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xe52022aa1db19510215e68f46222dd9e2071fb6205945b8383171f88b7cbab97",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xe5cc15eb8d46a0bd49b3667826b3b0020468b20c0f5c3481168f5b0df2f50d39",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xe77c833e481f582e851fbeef307c4d9269948ad804877c69742b54ad19a0913b",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xe86c1b84f6f73fe94e22755b2482b373fe4d7767e1cd3d2a19bf06f780811d2e",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xe9ab871df44c7cef245d4c190c9a31c59204c726ae8d363eedf546cef5ca7da6",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xebbbc04f06d8b06ab46487d82e188e1c746ba918d938c4603dfd5e3516b7d5ba",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xec433556640a7f6f5b2a0f284a4aed3737e5e57ddb7a4fbf013099b8ba607cbe",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xee9ed83a2d46a5f4cefc5a91f90854eb626becaa05f35daaf0c80f7db78598eb",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xef0bfe7d77a23171801866e58e5f6e340485baf832ee967d0082056cd7e4a446",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xef13052224dc5a2ef06325a9311c9f04176bff623eb8a239bc84d35041cf18a2",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xf1514a68733454c1bb43e1360cd030fbf6a40e15caf2fbe81ef36166243955b7",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xf16c5b34ee02689995e64469f5e2681d4e7eab1923221d880c92f0056d94ac8e",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xf27ad386ee0d4ffc50626fffba9fc7116d67653f09118148ec98039861986a38",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xf4fcafd083139c6d2a6afbafb4e566f6d52642d1125d06397e55fc8d253fa401",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xf58431966b1a4aa588577723dc904ddae39bfaec9e07cd00082b94a3ef843bf7",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xf5892495df0a13e650972c0f9ad2587058d2ea66f9cd21eb54e96bdc1b731b04",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    },
+    {
+      "condition_id": "0xf8023b983d3d62bc816992e9dbce47f9af43102dc5504c9f76daf1c48ff27c4d",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xfdb2b251c722cfae4d6800d65676d379f09d94c09b5260fac7f7e70a3b888d53",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "UP_DOWN"
+    },
+    {
+      "condition_id": "0xfde530f263fb9484bffd5781cbdd97f10f72c8e48d801b192529983378f9c2c6",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "NAMED_OTHER"
+    },
+    {
+      "condition_id": "0xffcf12cb48bb34f305bb618ed3db9e3fde817733bff52ac82f389af2c947535e",
+      "reason": "REJECT_NOT_REACHABLE_BOTH",
+      "subclass": "OVER_UNDER"
+    }
+  ],
+  "rejected_count": 165,
+  "require_reachable_both": true,
+  "scanned_full_universe": false,
+  "selected": [
+    {
+      "condition_id": "0xf7361f4c577945b89d4a537eda2acd3cceb1e22cb722c8a48a3114eff058b8d7",
+      "density_band": "LOW",
+      "density_source": "COMPUTED_FROM_LOCAL_TRADES",
+      "dune_query_limit_over_fetch": 2001,
+      "global_row_cap": 6000,
+      "local_distinct_tx_hash_count_in_window": 2,
+      "local_trade_rows_in_window": 2,
+      "per_condition_row_cap": 2000,
+      "side_0_token": "99739207105257790128075344211534912968459868715904103406100301477967219589411",
+      "side_1_token": "106729855668864395518421132772923669991080130848538476329326157512462635983691",
+      "stratum_role": "SUBCLASS_PRIMARY",
+      "subclass": "OVER_UNDER",
+      "tie_break": "31d2ae86be43352a57d2f81680fc5f6d75b0d7bf7369761100471cb72e4f7520",
+      "window_seconds": 9865
+    },
+    {
+      "condition_id": "0x2bd2a48746fbdecf0555bfe8f5138340341ac3909c7fb5bdf281293039e97148",
+      "density_band": "LOW",
+      "density_source": "COMPUTED_FROM_LOCAL_TRADES",
+      "dune_query_limit_over_fetch": 2001,
+      "global_row_cap": 6000,
+      "local_distinct_tx_hash_count_in_window": 2,
+      "local_trade_rows_in_window": 2,
+      "per_condition_row_cap": 2000,
+      "side_0_token": "58628042844461990190086982042785508732336823662751558364538755697118206148037",
+      "side_1_token": "75024428455096870875984688928039027558009491467451272577964844877843591010157",
+      "stratum_role": "SUBCLASS_PRIMARY",
+      "subclass": "NAMED_OTHER",
+      "tie_break": "bb7c8f17a25c52a1ded2f2e74060410d937e1c6b46a6a1db984a67625e0a9aba",
+      "window_seconds": 7190
+    },
+    {
+      "condition_id": "0x8f08f282ea61a9a8ec2b22413e2a8764487eea351337fd14f4409ca34151dec7",
+      "density_band": "LOW",
+      "density_source": "COMPUTED_FROM_LOCAL_TRADES",
+      "dune_query_limit_over_fetch": 2001,
+      "global_row_cap": 6000,
+      "local_distinct_tx_hash_count_in_window": 4,
+      "local_trade_rows_in_window": 4,
+      "per_condition_row_cap": 2000,
+      "side_0_token": "48991736195478188402624113441181522209031772931978706832085598958658129270671",
+      "side_1_token": "71508481217075253633242510255608914759767530465405876068993106076736030574871",
+      "stratum_role": "SUBCLASS_PRIMARY",
+      "subclass": "UP_DOWN",
+      "tie_break": "26cc9dee97f915aa0366054f32f018b0d64d957fd4e26c0fe872ea7fd841b7e7",
+      "window_seconds": 306
+    }
+  ],
+  "selected_count": 3,
+  "selector_policy_version": "c1a-f1-selector-2026-07-08.2-localtrade-density",
+  "used_dune_count_scout": false,
+  "used_local_tx_hash_filter": false,
+  "used_ordersmatched_or_wallet_or_pnl": false,
+  "used_price_or_score_field": false,
+  "used_s1_clob_point_counts_as_density": false,
+  "used_winner_or_outcome_field": false
+}

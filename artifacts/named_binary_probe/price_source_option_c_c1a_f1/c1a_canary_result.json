@@ -1,0 +1,29 @@
+{
+  "phase": "OPTION_C_C1A_BOUNDED_CANARY",
+  "authorized_scope": "OPTION_C_C1A_CANARY_RECONCILIATION_ONLY",
+  "outcome": "C1_CANARY_EXECUTED_NEEDS_REVIEW",
+  "detail": "",
+  "by_condition": {
+    "0xf7361f4c577945b89d4a537eda2acd3cceb1e22cb722c8a48a3114eff058b8d7": {
+      "dune_rows_in_window": 0,
+      "dune_only_tx_hash_count": 0,
+      "local_only_tx_hash_count": 2,
+      "overlap_tx_hash_count": 0,
+      "unresolved_side_rows": 0
+    },
+    "0x2bd2a48746fbdecf0555bfe8f5138340341ac3909c7fb5bdf281293039e97148": {
+      "dune_rows_in_window": 104,
+      "dune_only_tx_hash_count": 27,
+      "local_only_tx_hash_count": 0,
+      "overlap_tx_hash_count": 2,
+      "unresolved_side_rows": 0
+    },
+    "0x8f08f282ea61a9a8ec2b22413e2a8764487eea351337fd14f4409ca34151dec7": {
+      "dune_rows_in_window": 29,
+      "dune_only_tx_hash_count": 7,
+      "local_only_tx_hash_count": 0,
+      "overlap_tx_hash_count": 4,
+      "unresolved_side_rows": 0
+    }
+  }
+}
