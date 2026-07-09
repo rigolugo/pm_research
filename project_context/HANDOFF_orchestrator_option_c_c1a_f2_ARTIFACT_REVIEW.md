@@ -2,17 +2,15 @@
 
 **Primary decision label:** `C1F2_ARTIFACTS_INSUFFICIENT`
 
-**Scope:** Review-only / documentation-only F2 artifact memo for C1A-F2. No code, tests, SQL generation, SQL edits, Dune/API/RPC/network calls, local data processing, rerun, new canary, price artifact, probe/scoring/backfill/wallet/OrdersMatched/`log_index`/PnL work, cap change, row truncation, or gate change was performed.
+**Revision note:** This memo supersedes the prior F2 artifact-review memo. The prior memo used `C1F2_ARTIFACTS_INSUFFICIENT` because the C1A-F1 artifacts were not available from canonical GitHub paths during that review. That reason is no longer the governing reason for this revision. The user supplied the C1A-F1 artifact ZIP as explicit review input for this session, and the expected C1A-F1 files are present. The primary label remains `C1F2_ARTIFACTS_INSUFFICIENT`, but now because the `OVER_UNDER` local-only evidence is too thin for safe F2 causal classification.
+
+**Scope:** Review-only / documentation-only F2 artifact memo for C1A-F2. No code, tests, SQL generation, SQL edits, Dune/API/RPC/network calls, local data processing, rerun, new canary, price artifact, probe/scoring/backfill/wallet/OrdersMatched/`log_index`/PnL work, cap change, row truncation, side synthesis, or gate change was performed.
 
 ---
 
-## 1. Reviewed / attempted artifact list
+## 1. Reviewed artifact list
 
-The review attempted to inspect the C1A-F1 artifacts listed in `ARTIFACT_INDEX.md` under:
-
-`artifacts/named_binary_probe/price_source_option_c_c1a_f1/`
-
-Expected C1A-F1 artifact set:
+The supplied C1A-F1 artifact ZIP contains the expected C1A-F1 files:
 
 1. `c1a_f1_windows.json`
 2. `c1a_f1_windows.json.provenance.json`
@@ -27,136 +25,190 @@ Expected C1A-F1 artifact set:
 11. `option_c_c1a_raw_rows_sample.csv`
 12. `option_c_c1a_tagged_rows.csv`
 
-Also checked, by exact canonical path, the two F2 context files named in the task:
+The ZIP also includes:
 
-1. `project_context/SPEC_price_source_option_c_c1a_f2_followup.md`
-2. `project_context/HANDOFF_orchestrator_option_c_c1a_f2_followup_SPEC.md`
+13. `c1a_f1_dune_export.csv`
+
+Artifact availability is therefore not the F2 blocker in this revision.
 
 ---
 
 ## 2. Artifact completeness finding
 
-The F2 artifact review cannot be completed from the canonical GitHub repo state inspected for this memo.
+The artifact set is present and is sufficient to review:
 
-Findings:
+- accepted C1A-F1 by-subclass counts;
+- selected `OVER_UNDER` condition identity;
+- selected-condition / manifest / windows / SQL consistency for the fixed window and side-token pair;
+- selector provenance guardrails;
+- cap discipline;
+- SQL query shape as fixed token-pair/time-window filtering against decoded `OrderFilled` tables;
+- positive Dune-returning subclasses for returned-row consistency with fixed windows and token pairs.
 
-- `ARTIFACT_INDEX.md` documents the expected C1A-F1 artifact set and records the accepted C1A-F1 result as reviewable mixed coverage/trust evidence.
-- The exact C1A-F1 artifact paths listed above were not retrievable from the canonical repo by exact path during this review.
-- Repository search found documentation references to `price_source_option_c_c1a_f1`, but did not surface the listed persisted C1A-F1 artifact files themselves.
-- The two required F2 source documents named in the task, `SPEC_price_source_option_c_c1a_f2_followup.md` and `HANDOFF_orchestrator_option_c_c1a_f2_followup_SPEC.md`, were also not retrievable from the canonical repo by exact path.
+The artifact set is still insufficient for F2 causal classification because the `OVER_UNDER` evidence consists of only two local-only tx hashes, and the tagged evidence does not carry the local-side row fields needed to decide why Dune returned zero rows for that condition.
 
-Because the actual F1 artifacts were not available for direct inspection, this memo cannot verify manifest integrity, window comparability, token-pair comparability, source-table provenance, cap discipline, or local-only evidence shape from artifact contents. Documentation summaries alone are insufficient for the requested F2 artifact review.
-
-Decision consequence: use `C1F2_ARTIFACTS_INSUFFICIENT`, not a likely-cause label.
-
----
-
-## 3. `OVER_UNDER` evidence summary
-
-Accepted summary evidence from the already-recorded C1A-F1 result says:
-
-- `OVER_UNDER`: `0` Dune rows
-- `OVER_UNDER`: `0` Dune-only tx hashes
-- `OVER_UNDER`: `0` overlap tx hashes
-- `OVER_UNDER`: `2` local-only tx hashes
-- `OVER_UNDER`: `0` unresolved side rows
-
-This is sufficient to state that the accepted C1A-F1 result was mixed and that `OVER_UNDER` was the zero-Dune-row subclass in the selected 3-condition canary.
-
-It is not sufficient for F2 to assign a specific cause. Without the actual windows, manifest, SQL text, selected-condition ledger, by-condition ledger, and tagged-row evidence, this review cannot determine whether the `OVER_UNDER` zero is more likely:
-
-- a selector/window artifact;
-- a source coverage gap;
-- a local/Dune identity mismatch; or
-- some other unresolved artifact-level explanation.
-
-No “likely” label is supported by directly inspected artifact contents.
+Decision consequence: keep `C1F2_ARTIFACTS_INSUFFICIENT`, not a likely-cause label.
 
 ---
 
-## 4. Selector / window / token / source-table / local-only evidence review
+## 3. Accepted C1A-F1 counts
+
+The accepted C1A-F1 counts are internally consistent:
+
+| Subclass | Dune rows | Dune-only tx hashes | Overlap tx hashes | Local-only tx hashes | Unresolved side rows |
+|---|---:|---:|---:|---:|---:|
+| `OVER_UNDER` | 0 | 0 | 0 | 2 | 0 |
+| `NAMED_OTHER` | 104 | 27 | 2 | 0 | 0 |
+| `UP_DOWN` | 29 | 7 | 4 | 0 | 0 |
+
+The result remains mixed review evidence. `NAMED_OTHER` and `UP_DOWN` returned decoded `OrderFilled` rows and Dune-only tx hashes. `OVER_UNDER` returned zero Dune rows and has two local-only tx hashes.
+
+This is not price-source viability evidence. No price was computed or persisted.
+
+---
+
+## 4. `OVER_UNDER` evidence summary
+
+The selected `OVER_UNDER` condition is:
+
+`0xf7361f4c577945b89d4a537eda2acd3cceb1e22cb722c8a48a3114eff058b8d7`
+
+Key fields are consistent across selected conditions, manifest, windows, and SQL:
+
+- fixed window: `2026-05-17 20:12:58 UTC` to `2026-05-17 22:57:23 UTC`;
+- side-token IDs match across selected conditions, manifest, and SQL:
+  - `side_0_token_id = 99739207105257790128075344211534912968459868715904103406100301477967219589411`;
+  - `side_1_token_id = 106729855668864395518421132772923669991080130848538476329326157512462635983691`;
+- `local_trade_rows_in_window = 2`;
+- `local_distinct_tx_hash_count_in_window = 2`;
+- `per_condition_row_cap = 2000`;
+- Dune per-condition query limit = `2001` (`cap + 1` over-fetch);
+- `global_row_cap = 6000`.
+
+The zero-Dune `OVER_UNDER` result is real at the artifact-summary level: the by-condition/result artifacts show `0` Dune rows, `0` overlap, and `2` local-only tx hashes. However, the artifacts do not provide enough local-side row detail to classify the cause.
+
+---
+
+## 5. Selector / window / token / source-table / local-only evidence review
 
 ### Selector provenance
 
-Not verifiable from artifact contents. The required selector provenance file was not available for direct inspection.
+Selector provenance remains safe on the inspected artifacts:
 
-Therefore this review cannot independently confirm from the artifact that the `OVER_UNDER` condition was selected only by the accepted deterministic, outcome-independent policy and not by result-aware edits, Dune counts, local-tx-hash filtering, or winner/outcome fields.
+- no Dune count scout;
+- no local-tx-hash Dune filter;
+- no winner/outcome field use;
+- no price/score field use;
+- no OrdersMatched/wallet/PnL use;
+- no full-universe scan;
+- bounded accepted pool source retained;
+- deterministic local-density / subclass-balanced selector shape retained;
+- caps not raised;
+- no reusable volume-profile artifact.
+
+The `OVER_UNDER` condition was selected under the accepted deterministic policy. The inspected selector provenance does not show result-aware edits, Dune counts, local-tx-hash filtering, winner/outcome fields, price fields, score fields, OrdersMatched, wallet, PnL, or full-universe profiling as selector inputs.
 
 ### Manifest integrity
 
-Not verifiable from artifact contents. The required canary manifest file was not available for direct inspection.
+The `OVER_UNDER` manifest evidence is internally consistent with the selected-condition evidence:
 
-Therefore this review cannot independently confirm that the `OVER_UNDER` manifest row contains exactly two string-safe side token IDs, fixed window bounds, subclass label, caps, and source-table/version fields.
+- exactly two string-safe side-token IDs are present;
+- subclass label is `OVER_UNDER`;
+- fixed window bounds are present;
+- `per_condition_row_cap = 2000`;
+- `global_row_cap = 6000`;
+- Dune query branch over-fetch is `2001`.
 
 ### Window comparability
 
-Not verifiable from artifact contents. The windows, manifest, SQL, canary result, and by-condition ledger were not available together for direct comparison.
+The `OVER_UNDER` fixed window is consistent across the selected-condition evidence, windows artifact, manifest, SQL text, canary result, and by-condition ledger:
 
-Therefore this review cannot compare the `OVER_UNDER` fixed window across all required evidence surfaces.
+`2026-05-17 20:12:58 UTC` to `2026-05-17 22:57:23 UTC`.
+
+This supports window consistency as far as the artifacts expose the selected-condition/window surfaces.
+
+It does not prove that the two local-only rows individually carried local timestamps inside the window, because `option_c_c1a_tagged_rows.csv` does not carry local timestamp/traded_at fields for those local-only rows.
 
 ### Token-pair comparability
 
-Not verifiable from artifact contents. The selected-condition CSV, manifest, SQL text, and tagged rows were not available together for direct comparison.
+The `OVER_UNDER` side-token IDs match across selected conditions, manifest, and SQL. Because `OVER_UNDER` returned no Dune rows, there are no returned source rows for that subclass from which to evaluate source-side token behavior.
 
-Because `OVER_UNDER` had zero Dune rows in the accepted summary, no source-side token behavior can be inferred from returned Dune rows for that subclass. The artifact-level question remains unresolved.
+Positive Dune-returning subclasses (`NAMED_OTHER`, `UP_DOWN`) have raw rows consistent with their fixed windows and token pairs. That supports the general SQL/tagging mechanism for returned rows in those subclasses only. It does not resolve the `OVER_UNDER` zero-row cause.
 
 ### Source-table provenance
 
-Not verifiable from artifact contents. The historical SQL and result metadata were not available for direct inspection.
+The SQL is fixed token-pair/time-window filtering against decoded `OrderFilled` tables and does not filter by local tx hash. The inspected SQL/result metadata does not imply arbitrary table substitution for the reviewed C1A-F1 result.
 
-Therefore this review cannot independently confirm that the actual historical SQL/result metadata names only the expected decoded `OrderFilled` source table(s), nor can it rule out arbitrary table substitution from artifact contents.
+This supports source-table/query-shape discipline at the canary level. It does not classify the `OVER_UNDER` zero-Dune cause.
 
 ### Local-only evidence shape
 
-Not verifiable from artifact contents. The by-condition ledger and tagged-row evidence were not available for direct inspection.
+This is the F2 blocker.
 
-Therefore this review cannot independently confirm that the two `OVER_UNDER` local-only tx hashes are represented sufficiently to show they belong to the fixed condition/window/token-pair comparison. No tx-hash lookup, Dune requery, source lookup, or count scout was performed.
+`option_c_c1a_tagged_rows.csv` contains the two `OVER_UNDER` local-only tx hashes. However, those rows lack the local-side fields needed for F2 classification, including:
 
----
+- local timestamp / `traded_at`;
+- local `token_id`;
+- local `outcome_index`;
+- local side-token match;
+- local amount or local row identity;
+- direct proof that the local rows individually fall inside the fixed window;
+- enough local-row context to compare local row identity against the Dune token/window query surface.
 
-## 5. No price leakage review
+Therefore the artifact review cannot safely decide whether the `OVER_UNDER` zero-Dune result is due to:
 
-Not verifiable from artifact contents. The selector provenance, selected-condition source, manifest, SQL, result, by-condition ledger, and tagged rows were not available for direct inspection.
+- selector/window artifact;
+- source coverage gap;
+- local/Dune identity mismatch;
+- source-table mismatch;
+- timestamp/window-boundary issue;
+- or another unresolved artifact-level cause.
 
-This review therefore cannot independently confirm from the artifacts that no price, canonical-side price, winner fields, PnL, score, or probe metrics were consumed in selector/review artifacts.
-
-Standing accepted context still says no price was computed or persisted in C1A-F1, and the review does not contradict that. The issue is only that F2 artifact-level verification cannot be completed without the artifacts.
-
----
-
-## 6. Cap discipline review
-
-Not verifiable from artifact contents. The manifest and SQL were not available for direct inspection.
-
-Accepted documentation says C1A-F1 preserved:
-
-- `per_condition_row_cap = 2000`
-- per-condition SQL `LIMIT = 2001` (`cap + 1` over-fetch)
-- `global_row_cap = 6000`
-- no row explosion
-- no truncation
-
-F2 cannot independently confirm those fields across manifest, SQL, and result artifacts without the actual files.
+No tx-hash lookup, Dune requery, source lookup, count scout, or local data rerun was performed.
 
 ---
 
-## 7. Defects / insufficiencies found
+## 6. No price leakage review
+
+The inspected artifacts support the standing no-price-leakage boundary:
+
+- selector provenance does not use price or score fields;
+- selector provenance does not use winner/outcome fields;
+- selector provenance does not use OrdersMatched/wallet/PnL fields;
+- windows provenance records no price artifact;
+- C1A-F1 result remains coverage/trust diagnostics only.
+
+No price, canonical-side price, winner/PnL/score/probe metric, `yes_price`, `1 - price`, `1 - yes_price`, `1 - p`, or side synthesis is accepted or used by this memo.
+
+---
+
+## 7. Cap discipline review
+
+Cap discipline is preserved on the inspected artifacts:
+
+- `per_condition_row_cap = 2000`;
+- Dune per-condition query limit = `2001` (`cap + 1` over-fetch);
+- `global_row_cap = 6000`;
+- no row explosion in C1A-F1;
+- no truncation claim is used to self-clear the result.
+
+The result is still not `C1_CANARY_DESIGN_CLEAR` and does not authorize any larger run or cap policy change.
+
+---
+
+## 8. Defects / insufficiencies found
 
 Primary insufficiency:
 
-- The expected F1 artifact files listed in `ARTIFACT_INDEX.md` were not available for direct artifact review from the canonical repo paths inspected here.
+- The `OVER_UNDER` local-only evidence is too thin for causal classification. The tagged artifact records the two local-only tx hashes, but not the local-side row details needed to distinguish a selector/window issue from a true source coverage gap, local/Dune identity mismatch, source-table mismatch, timestamp/window-boundary issue, or another cause.
 
-Additional context-file insufficiency:
+This is not a finding that the C1A-F1 result is invalid. It is a finding that F2 cannot classify the `OVER_UNDER` zero-Dune cause from the present artifacts.
 
-- The required F2 context files named in the task were not available by exact canonical repo path:
-  - `project_context/SPEC_price_source_option_c_c1a_f2_followup.md`
-  - `project_context/HANDOFF_orchestrator_option_c_c1a_f2_followup_SPEC.md`
-
-This is not a finding that the C1A-F1 result is invalid. It is a finding that F2 artifact review cannot substantiate a more specific label from the artifacts currently available to this review.
+No likely-cause label is supported.
 
 ---
 
-## 8. Interpretation discipline
+## 9. Interpretation discipline
 
 No F2 outcome unblocks P1.
 
@@ -173,12 +225,12 @@ Standing state remains:
 
 ---
 
-## 9. Recommended next action
+## 10. Recommended next action
 
-**Recommended next action:** remain unresolved / stop.
+**Recommended next action:** stop / remain unresolved.
 
-Do not proceed to another canary, C1B, C2, P1/P2/P3, probe, scoring, backfill, wallet/OrdersMatched/`log_index`/PnL, cap change, row truncation, SQL modification, price artifact, or any implementation task from this memo.
+Do not proceed to another canary, C1B, C2, P1/P2/P3, probe, scoring, backfill, wallet/OrdersMatched/`log_index`/PnL, cap change, row truncation, SQL modification, price artifact, gate change, or any implementation task from this memo.
 
-Before any F2 artifact-level conclusion can be made, the exact listed C1A-F1 artifacts and the missing F2 context documents must be made available in the canonical repo, or explicitly supplied as the review input under a new review-only authorization. After that, F2 can be repeated as artifact review only.
+Do not recommend a one-condition diagnostic from this memo.
 
-No separate one-condition diagnostic spec is recommended from this memo, because the current insufficiency is artifact availability, not a narrowly testable artifact-supported hypothesis.
+If the project later wants to pursue this exact unresolved issue, the only safe next step would be a separate doc-only artifact-enrichment review specification, explicitly authorized later, focused on whether future artifacts should include enough local-side row evidence to make a review classification possible. That would still not authorize implementation, a run, SQL changes, a Dune/API/RPC/network call, local data processing, another canary, C1B/C2/P1/P2/P3/probe, scoring, backfill, wallet/OrdersMatched/`log_index`/PnL, price artifacts, gate changes, cap changes, row truncation, or side synthesis.
