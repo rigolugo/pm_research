@@ -194,6 +194,20 @@ The C1A implementation package (`scripts/price_source_option_c_c1a_manifest.py`,
 
 **Only possible next step.** If separately authorized later, the next step is SPEC ONLY: a C1A follow-up design to decide whether a bounded candidate-selection rule can avoid row explosion without hand-picking, leakage, or full-indexer behavior. No implementation or Dune run follows from this result.
 
+### Option D L2 order-book vendor archive coverage spec: ACCEPTED / SPEC ONLY — SETTLED
+
+`SPEC_price_source_option_d_l2_archive.md` is accepted as a methodology/specification document only. It defines Option D as a coverage-only feasibility review for third-party L2 order-book/quote vendor archives as a fourth per-side/token-identity price-source candidate family after S1/S1-ALT/Option B negatives and unresolved Option C evidence.
+
+**Vendor scope.** PMXT scope is **PMXT v2 only**, with effective v2 L2 order-book archive start `2026-04-13T19:00:00Z`; PMXT v1 is out of scope and must not be silently used to extend coverage unless separately reviewed. Telonex L2 order-book/quote scope starts `2025-10-11T00:00:00Z`; Telonex on-chain fills from market inception are not L2 book coverage and must not be used to infer decision-time side prices.
+
+**Channel-mismatch guard.** The accepted guard labels are `VENDOR_HISTORY_NOT_L2_BOOK_RELEVANT` and `STOP_VENDOR_HISTORY_CHANNEL_MISMATCH`. Older or broader non-L2 channels — trades, fills, on-chain fills, metadata, or any other non-book history — must never be substituted for L2 book/quote depth. Better coverage from the wrong channel is not Option D coverage and does not unblock P1.
+
+**Price-basis discipline.** Best bid, best ask, and mid are diagnostics only in the coverage spec. No final canonical price basis is accepted. Any future price-basis decision would require a separately accepted build spec and audit.
+
+**Standing consequence.** Option D acceptance authorizes no implementation, tests, local temporal precheck, vendor/network fetch, PMXT raw archive download, Telonex fetch, vendor account/API key/paid action, Pass 1, Pass 2, price artifact build, canonical-side price computation, P1/P2/P3 continuation, probe execution, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis. P1 remains BLOCKED on missing accepted per-side/token-identity price input. `named_binary_probe_blocked` remains `true`.
+
+**Only possible next step.** If separately authorized later, the only Option D next step is a local-only/read-only temporal in-range precheck using already-local P0/project data: compute the fraction of P0-eligible conditions where both `decision_ts = first_trade_ts + 3600s` and `resolved_at` are at or after `2026-04-13T19:00:00Z` for PMXT v2, and at or after `2025-10-11T00:00:00Z` for Telonex L2. That precheck must not fetch vendor data, create accounts/API keys, build prices, compute canonical-side prices, resume P1, score, touch wallets/OrdersMatched/`log_index`/PnL, or change gates.
+
 ---
 
 ## DO NOT REOPEN unless explicitly asked

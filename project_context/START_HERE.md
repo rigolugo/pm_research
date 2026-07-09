@@ -44,7 +44,8 @@ Read these, in this order, before doing anything:
 16. `SPEC_price_source_option_c_c1a_followup.md` — ACCEPTED / SPEC ONLY. C1A-F1 selector-policy shape accepted in principle after the accepted C1A `C1_ROW_EXPLOSION` halt. It records that a deterministic, outcome-independent, bounded selector-policy shape can be safe in principle, with the default selector pool limited to the already accepted small S1/S1-ALT eligible pool / C1A-compatible measured pool unless separately authorized. It authorizes no implementation, no code/test task, no SQL/query generation, no Dune/API/RPC/network run, no cap increase, no row truncation, no C1B/C2/P1/P2/P3/probe, no scoring/backfill/wallet/`log_index`/PnL, and no price artifact.
 17. `SPEC_price_source_option_c_c1a_f2_followup.md` — ACCEPTED / SPEC ONLY. C1A-F2 is no-run / artifact-review-only after accepted C1A-F1 mixed evidence. It rejects selector-only F2, another Dune canary, SQL generation/modification, Dune/API/RPC/network calls, local data runs, cap changes, truncation, local-`tx_hash` Dune filtering, Dune count scouting, C1B/C2/P1/P2/P3/probe, scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, price artifacts, gate changes, and side synthesis.
 18. `SPEC_price_source_option_c_artifact_enrichment.md` — ACCEPTED / SPEC ONLY. Defines minimum evidence-capture requirements for any possible future Option C / decoded `OrderFilled` diagnostic so local-only, Dune-only, and overlap rows can be reviewed without rerunning or guessing. It authorizes no implementation, tests, local data reads, Dune/API/RPC/network, SQL generation/modification/execution, additional canary, one-condition diagnostic, C1B/C2, P1/P2/P3/probe, scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, price artifact, gate change, cap change, row truncation, or side synthesis.
-19. Latest active handoffs/review memos:
+19. `SPEC_price_source_option_d_l2_archive.md` — ACCEPTED / SPEC ONLY. Defines Option D: L2 order-book vendor archive coverage feasibility for PMXT v2 and Telonex L2 order-book/quote archives. It is coverage/spec methodology only. PMXT scope is v2 only, effective start `2026-04-13T19:00:00Z`; PMXT v1 is out of scope unless separately reviewed. Telonex L2 order-book/quote scope starts `2025-10-11T00:00:00Z`; Telonex on-chain fills from inception are not L2 book coverage. It authorizes no implementation, tests, local temporal precheck, vendor/network fetch, account/API/paid action, Pass 1, Pass 2, price artifact, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis.
+20. Latest active handoffs/review memos:
     - `HANDOFF_orchestrator_s1_pass1_RESULT.md`
     - `HANDOFF_orchestrator_s1_alt_pass1_RESULT.md`
     - `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`
@@ -90,6 +91,8 @@ These supporting files do not authorize implementation, data fetching, P1/P2/P3 
 
 - **Option C (on-chain / decoded OrderFilled event tables) price-source diagnostics: C1A valid halt accepted; C1A-F1 executed and reviewable mixed evidence; C1A-F2 artifact review accepted insufficient.** `SPEC_price_source_option_c_onchain.md` remains the accepted Revision-3 candidate review; C0 remains accepted / spec-only. The Revision-3 C1 guardrail block is superseded by the accepted C1R addendum (`SPEC_price_source_option_c_onchain_C1R_addendum.md`, SPEC ONLY), which defined the fixed selector manifest + cap+1 bounded query design. The original C1A bounded user-run executed and is accepted as a valid halt: manifest `resolved_count = 5`, `excluded_count = 0`; canary outcome `C1_ROW_EXPLOSION`; condition `0x00e0e2e768260268c59fd8c43d77f771b19cf1d70ddfcf51c0198e4f58e0fc8e` returned 2001 rows against `per_condition_row_cap = 2000`, proving cap exceedance rather than truncation. `SPEC_price_source_option_c_c1a_followup.md` accepted the C1A-F1 selector-policy shape in principle; subsequent bounded local-only selector/prep tasks produced a 3-condition C1A-F1 canary package. C1A-F1 then executed and produced reviewable mixed coverage/trust evidence: outcome `C1_CANARY_EXECUTED_NEEDS_REVIEW`; 133 total Dune rows in fixed windows; no row explosion; no unresolved side rows; 34 total Dune-only tx hashes; `NAMED_OTHER` = 104 Dune rows / 27 Dune-only / 2 overlap / 0 local-only / 0 unresolved; `UP_DOWN` = 29 Dune rows / 7 Dune-only / 4 overlap / 0 local-only / 0 unresolved; `OVER_UNDER` = 0 Dune rows / 0 Dune-only / 0 overlap / 2 local-only / 0 unresolved. C1A-F1 is coverage diagnostic only, not a price-source viability verdict; no price was computed or persisted. C1A-F2 artifact review is accepted with result `C1F2_ARTIFACTS_INSUFFICIENT`: the C1A-F1 artifacts are available and confirm the mixed summary plus safe selector/query/cap discipline, but the `OVER_UNDER` local-only evidence lacks local-side timestamp/token/outcome_index/side-match/row-identity/window-membership fields needed for causal classification. No likely-cause label is accepted; no one-condition diagnostic is recommended. It is **not** `C1_CANARY_DESIGN_CLEAR`; Option C is not marked viable; P1 remains BLOCKED; `named_binary_probe_blocked` stays `true`; C1B/C2/P1/P2/P3/probe remain unauthorized.
 
+- **Option D L2 order-book vendor archive coverage spec: ACCEPTED / SPEC ONLY.** Option D is a coverage-only feasibility spec for PMXT v2 and Telonex L2 order-book/quote archives as a fourth candidate per-side/token-identity price-source family. PMXT candidate scope is v2 only from `2026-04-13T19:00:00Z`; PMXT v1 is out of scope unless separately reviewed. Telonex L2 order-book/quote scope starts `2025-10-11T00:00:00Z`; Telonex on-chain fills from inception are not L2 book coverage. Channel-mismatch guards are accepted: `VENDOR_HISTORY_NOT_L2_BOOK_RELEVANT` and `STOP_VENDOR_HISTORY_CHANNEL_MISMATCH`. Best bid, best ask, and mid are diagnostics only; no price-basis decision is accepted. Option D does not unblock P1 and authorizes no temporal precheck, vendor fetch, implementation, tests, Pass 1, Pass 2, price artifact, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis. `named_binary_probe_blocked` remains `true`.
+
 - **Chat2 Dune wallet-cohort discovery: BLOCKED.** It is a separate phase. Outcome-source scoreability does not unblock wallet discovery.
 
 ---
@@ -103,6 +106,8 @@ The C1A-F1 bounded canary has executed and is accepted as reviewable mixed cover
 **C1B full sampled coverage is not authorized. C2 reusable/production implementation is not authorized. P1/P2/P3/probe remain unauthorized. `named_binary_probe_blocked` remains `true`.**
 
 Any further move remains bounded by the project guardrails. No data run, network/API/RPC call, implementation, backfill, scoring, probe, P1/P2/P3 continuation, wallet/OrdersMatched/`log_index`/PnL, or gate change is authorized unless explicitly approved in-chat and allowed by the current repo guardrails. The artifact-enrichment evidence-capture SPEC is now ACCEPTED / SPEC ONLY for the unresolved `OVER_UNDER` evidence gap. This acceptance still does not authorize implementation, tests, artifact generation, a run, SQL generation/modification/execution, Dune/API/RPC/network calls, local data processing, another canary, one-condition diagnostic, C1B/C2/P1/P2/P3/probe, scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, price artifacts, gate changes, cap changes, row truncation, or side synthesis.
+
+For Option D, the only possible next step — and only if separately authorized — is a **local-only/read-only temporal in-range precheck** using already-local P0/project data. It would compute the fraction of P0-eligible conditions where both `decision_ts = first_trade_ts + 3600s` and `resolved_at` are at or after `2026-04-13T19:00:00Z` for PMXT v2, and at or after `2025-10-11T00:00:00Z` for Telonex L2. It must not fetch vendor data, create accounts/API keys, build prices, compute canonical-side prices, resume P1, score, touch wallets/OrdersMatched/`log_index`/PnL, or change gates.
 
 ---
 
@@ -122,13 +127,16 @@ Do not flip `named_binary_probe_blocked`.
 
 Do not use `yes_price`, `1 - price`, or `1 - yes_price` to unblock named-binary pricing.
 
+No Option D temporal precheck, vendor/network fetch, PMXT raw archive download, Telonex fetch, vendor account/API key/paid action, Pass 1, Pass 2, price artifact, canonical-side price computation, P1/P2/P3/probe execution, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis follows from the accepted Option D SPEC ONLY document.
+
 ---
 
 ## Working discipline
 
-- Verify before concluding.
-- Never conclude from one row or from an all-one-role/all-one-direction output.
-- Spec before implementation.
-- Never silently reverse a prior decision.
-- Close each task with a Claude-to-Orchestrator handoff memo.
-- Claude should treat this public mirror as context only. It authorizes no implementation.
+* Verify before concluding.
+* Never conclude from one row or from an all-one-role/all-one-direction output.
+* Spec before implementation.
+* Never silently reverse a prior decision.
+* Close each task with a Claude-to-Orchestrator handoff memo.
+* Canonical project file updates are manual: ChatGPT reads the canonical repo, prepares complete replacement files for the user, and does not write to GitHub. Claude should not be asked to update canonical project files in the repo.
+* Claude should treat this public mirror as context only. It authorizes no implementation.
