@@ -195,6 +195,16 @@ The Option D local-only/read-only temporal in-range precheck was implemented aft
 
 **Standing consequence.** Timing feasibility does not establish vendor availability, token coverage, side coverage, both-side book state, book depth, price quality, mechanical trust, price-source viability, or P1 viability. No vendor fetch, PMXT online/API-key test, Telonex fetch, account/API key/paid action, Pass 1, Pass 2, price artifact, bid/ask/mid/spread/depth/canonical-side price computation, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis follows. P1 remains BLOCKED and `named_binary_probe_blocked` remains `true`.
 
+### P0 Representativeness and Quality Audit: ACCEPTED — `P0_REPRESENTATIVENESS_CLEAR_WITH_LIMITATIONS`
+
+Spec `SPEC_p0_representativeness_quality_audit.md`, implementation `scripts/p0_representativeness_quality_audit.py`, tests `tests/test_p0_representativeness_quality_audit.py`. Local-only/read-only run authorized and completed; result accepted.
+
+**Accepted result.** Base P0 (39,693) is valid enough for later historical named-binary research framing, with limitations. The excluded/missing/ambiguous tail (264 conditions) is compositionally skewed relative to included P0, but the impact-weighted comparison `pre_resolution_candidate_vs_final_p0` is CLEAR, so that tail is too small to materially change final P0 composition.
+
+**Vendor subset-bias section.** §6 did not run; it correctly halted with `STOP_OPTION_D_CONDITION_LEDGER_ABSENT` because no condition-level Option D artifact exists. No Option D rerun, re-emission, or recomputation occurred.
+
+**Standing consequence.** This finding does not unblock P1, does not authorize vendor action, does not authorize price-source construction, does not authorize P1/P2/P3/probe, and does not change `named_binary_probe_blocked`. **DO NOT REOPEN** absent a new condition-level Option D artifact or a new representativeness question.
+
 ---
 
 ## DO NOT REOPEN unless explicitly asked
@@ -213,6 +223,7 @@ The Option D local-only/read-only temporal in-range precheck was implemented aft
 - Option C Revision 3 SPEC ONLY acceptance, C1R accepted design, C1A accepted valid halt, C1A-F1 mixed evidence, and C1A-F2 insufficient-artifact result. Do not reopen old unsafe C1 designs, do not mark C1 design-clear, and do not authorize C1B/C2/P1/P2/P3/probe from these findings.
 - Option D L2 order-book vendor archive coverage SPEC (`OPTION_D_SPEC_ACCEPTED_SPEC_ONLY`). Do not substitute non-L2 channels for L2 book depth; do not treat best bid/ask/mid diagnostics as an accepted price basis; P1 stays blocked.
 - Option D temporal in-range precheck SPEC and result (`OPTION_D_TEMPORAL_INRANGE_PRECHECK_COMPLETED_ACCEPTED`). Do not re-run or reinterpret the temporal precheck without explicit authorization. Do not treat timing feasibility as vendor availability, side/token coverage, book depth, price quality, mechanical trust, price-source viability, or P1 viability. PMXT v2 is closed/deprioritized for broad full-P0 coverage on timing grounds; Telonex L2 may only proceed to a separately authorized SPEC ONLY vendor-coverage review.
+- P0 Representativeness and Quality Audit result (`P0_REPRESENTATIVENESS_CLEAR_WITH_LIMITATIONS`). Do not reinterpret the excluded-tail skew as broad P0 bias; the impact-weighted pre-resolution-vs-final-P0 comparison is CLEAR. Do not use this result to unblock P1, authorize vendor action, authorize price-source construction, authorize P1/P2/P3/probe, or change gates.
 
 ---
 

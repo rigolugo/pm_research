@@ -45,6 +45,25 @@ Recommended subfolder organization (currently flat — reorganize when convenien
 - `p0_excluded_counts.csv` — per-subclass tally.
 - `price_input_s0_inspection.txt` — read-only S0 price-input inspection evidence. Records price provenance, the YES/NO-only / named-binary-unsafe meaning of `yes_price`, the absence of any local per-side/per-token price artifact, and a non-YES/NO price sample.
 
+### `artifacts/named_binary_probe/p0_representativeness_quality/`
+
+P0 representativeness and quality audit artifacts (user-run, ACCEPTED; result `P0_REPRESENTATIVENESS_CLEAR_WITH_LIMITATIONS`). Local-only/read-only descriptive audit only — **no vendor data, no price series, no wallet/scoring/PnL fields, and no gate change**.
+
+Accepted result:
+- status `COMPLETED`; `halt_code = null`
+- exact P0 reconciliation: expected 39,693 / observed 39,693; UP_DOWN 22,012; OVER_UNDER 1,003; NAMED_OTHER 16,678
+- structural completeness: first_trade_ts 1.0; resolved_at 1.0; trade-row presence 1.0
+- category/market rows unusable in this audit (`market_row_rate = 0.0`, `category_rate = 0.0`) — limitation only, not a blocking halt
+- included P0 vs excluded/missing/ambiguous tail: MATERIAL diagnostic skew
+- impact-weighted `pre_resolution_candidate_vs_final_p0`: CLEAR; excluded/missing/ambiguous tail is too small to materially alter final P0 composition
+- §6 vendor-subset section halted `STOP_OPTION_D_CONDITION_LEDGER_ABSENT` because no condition-level Option D artifact exists; no Option D rerun, re-emission, or recomputation occurred
+- does not unblock P1, authorize vendor action, authorize price-source construction, authorize P1/P2/P3/probe, scoring, wallet work, `OrdersMatched`, `log_index`, PnL, gate change, or side synthesis
+
+Artifact set:
+- `p0_representativeness_quality_audit.json` — machine-readable accepted result.
+- `p0_representativeness_quality_audit.md` — narrative accepted result report.
+- `p0_representativeness_by_condition.csv` — non-price descriptive per-condition ledger emitted by the authorized audit.
+
 ### `artifacts/named_binary_probe/price_source_option_d_temporal_inrange/`
 
 Option D temporal in-range precheck artifacts (user-run, ACCEPTED; result `OPTION_D_TEMPORAL_INRANGE_PRECHECK_COMPLETED_ACCEPTED`). Local-only/read-only timing-feasibility artifacts only — **no vendor data and no price series is persisted**.
@@ -95,7 +114,6 @@ B0 Data API `/trades` mechanical-trust pilot artifacts. Historical state: the or
 Corrected Option B B0 diagnostic artifacts (user-run, ACCEPTED; result `B0_MECHANICAL_TRUST_NOT_ESTABLISHED`). Diagnostic/trust artifacts only — **no price series is persisted**.
 
 Accepted result:
-
 - `artifact_status = API_ARTIFACT_COMPLETE`
 - `halt_code = null`
 - `manifest_conditions = 10`
@@ -108,7 +126,6 @@ Accepted result:
 - pagination: `COMPLETE_SHORT_FINAL_PAGE = 7`, `PARTIAL_RETRIEVAL = 3`
 
 Expected artifact set:
-
 - `manifest_attested.json` — fixed 10-condition manifest copy plus run constants/provenance.
 - `api_rows.csv` — bounded normalized API row ledger.
 - `api_raw_pages.jsonl` — bounded raw page evidence with metadata.
@@ -131,7 +148,6 @@ Metadata caveat: `reconciliation.json` reports `takeronly_probe_conditions = 3`,
 C1A selector manifest + bounded canary artifacts (user-run, ACCEPTED VALID HALT; result `C1_ROW_EXPLOSION`). Coverage/trust diagnostics only — **no price series is persisted**.
 
 Accepted result:
-
 - manifest `resolved_count = 5`, `excluded_count = 0`
 - canary outcome `C1_ROW_EXPLOSION`
 - halt detail: condition `0x00e0e2e768260268c59fd8c43d77f771b19cf1d70ddfcf51c0198e4f58e0fc8e` returned 2001 rows, exceeding `per_condition_row_cap = 2000`
@@ -139,7 +155,6 @@ Accepted result:
 - diagnostic counts: `0x00e0...fc8e` — 2001 Dune rows, 794 Dune-only tx hashes, 136 local-only, 24 overlap, 0 unresolved side rows; `0x0cb2...61c2` — 705 Dune rows, 248 Dune-only, 0 local-only, 44 overlap, 0 unresolved side rows; three other candidates returned 0 Dune rows and local-only tx hashes
 
 Artifact set:
-
 - `c1a_selector_manifest.json` — fixed 5-condition selector manifest; full string-safe side-token identities; no outcome-conditioned selector source.
 - `c1a_selector_manifest.csv` — CSV form of the selector manifest.
 - `c1a_dune_query.sql` — generated decoded-OrderFilled query; uses fixed windows/tokens and cap+1 over-fetch; historical artifact only, not authorization for another Dune run.
@@ -160,7 +175,6 @@ Follow-up spec note: `SPEC_price_source_option_c_c1a_followup.md` is ACCEPTED / 
 C1A-F1 selector + bounded canary artifacts (selector/prep accepted; user-run executed and ACCEPTED as reviewable mixed evidence; result `C1_CANARY_EXECUTED_NEEDS_REVIEW`). Coverage/trust diagnostics only — **no price series is persisted**.
 
 Accepted selector/prep context:
-
 - selector universe was bounded to the accepted small S1/S1-ALT eligible / C1A-compatible measured pool; no full ~288K universe scan/profile and no reusable volume-profiling artifact.
 - selected conditions = 3, one per subclass: `OVER_UNDER`, `NAMED_OTHER`, `UP_DOWN`.
 - cap constants preserved: `per_condition_row_cap = 2000`, per-condition Dune query `LIMIT = 2001` (`cap+1` over-fetch), `global_row_cap = 6000`.
@@ -168,7 +182,6 @@ Accepted selector/prep context:
 - selector/prep artifacts authorize no run by themselves.
 
 Accepted C1A-F1 post-run result:
-
 - canary outcome `C1_CANARY_EXECUTED_NEEDS_REVIEW`
 - total Dune rows in fixed windows = 133
 - no row explosion
@@ -181,7 +194,6 @@ Accepted C1A-F1 post-run result:
 - this is **not** `C1_CANARY_DESIGN_CLEAR`
 
 Artifact set:
-
 - `c1a_f1_windows.json` — deterministic windows input derived from bounded local/static inputs.
 - `c1a_f1_windows.json.provenance.json` — windows provenance; records local-trades bounded-pool source, no Dune/API/RPC/network, no SQL, no price artifact, no full-universe scan.
 - `c1a_f1_selector_provenance.json` — selector provenance; records selected/rejected conditions, density source, caps, guardrail fields, and no Dune count scout / no local-tx-hash filter / no winner/outcome/price/score/PnL fields.
@@ -230,9 +242,10 @@ C1A-F2 artifact review impact: `project_context/HANDOFF_orchestrator_option_c_c1
 - `export_contract_for_dune.py` — exports the classification contract to a Dune-upload CSV.
 - `build_named_binary_resolution_source.py` — Stage 3 bulk builder.
 
-### Named-binary probe (Stage P0 only)
+### Named-binary probe (Stage P0 and representativeness)
 
 - `named_binary_probe_p0_preflight.py` — Stage P0 preflight (ACCEPTED, P0_CLEAR). Read-only except for its three `artifacts/named_binary_probe/` outputs. Counts only; no trades/prices, no decision timestamps, no canonical_side_price, no scoring, no Dune/network, no log_index, no wallet logic.
+- `p0_representativeness_quality_audit.py` — P0 representativeness and quality audit (ACCEPTED result `P0_REPRESENTATIVENESS_CLEAR_WITH_LIMITATIONS`). Local-only/read-only descriptive audit; reads no price/wallet/token-side/scoring fields; §6 vendor-subset comparison halts `STOP_OPTION_D_CONDITION_LEDGER_ABSENT` when no condition-level Option D ledger exists; does not unblock P1 or authorize probe/vendor work.
 
 ### Named-binary probe (price-source diagnostics — coverage/trust only, user-run when explicitly authorized)
 
@@ -258,6 +271,7 @@ C1A-F2 artifact review impact: `project_context/HANDOFF_orchestrator_option_c_c1
 - `test_build_named_binary_resolution_source.py` — Stage 3 builder suite.
 - `test_named_binary_stage4_gate.py` — Stage 4 suite.
 - `test_named_binary_probe_p0_preflight.py` — Stage P0 preflight suite.
+- `test_p0_representativeness_quality_audit.py` — P0 representativeness and quality audit suite; covers local-only guardrails, P0 reconstruction, forbidden-field protections, trade-id dedup consistency, Option D condition-ledger absence/validation behavior, and interpretation patch behavior.
 - `test_price_source_s1_coverage.py` — S1 Pass 1 coverage suite.
 - `test_price_source_option_b_b0_failure_diagnostic.py` — corrected Option B B0 diagnostic harness suite; covers artifact persistence, offline recompute, cap enforcement, Windows-safe writing, schema-blocked classification, and takerOnly incompleteness behavior.
 - `test_price_source_option_c_c1a_f1_selector.py` — C1A-F1 selector helper suite; local-only guardrails for bounded selector/windows generation.
@@ -293,6 +307,8 @@ C1A-F2 artifact review impact: `project_context/HANDOFF_orchestrator_option_c_c1
 - `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md` — Stage P1 review memo (PAUSED/BLOCKED). Superseded by DATA_CONTRACTS + PRICE_INPUT_CONTRACT; P1 stays blocked.
 - `DATA_CONTRACTS_named_binary_probe.md` — ACCEPTED reference contract.
 - `PRICE_INPUT_CONTRACT_named_binary_probe.md` — ACCEPTED S0 finding. P1 remains BLOCKED on price input.
+- `SPEC_p0_representativeness_quality_audit.md` — ACCEPTED / SPEC ONLY. Defines local-only/read-only P0 representativeness and quality audit methodology; later authorized run accepted as `P0_REPRESENTATIVENESS_CLEAR_WITH_LIMITATIONS`. It authorizes no vendor action, price-source construction, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis.
+- `HANDOFF_claude_p0_representativeness_ACCEPTED_CLOSED.md` — Claude-to-Orchestrator closure memo for the accepted P0 representativeness audit result; suggested canonical-doc text only, no repo edits.
 - `SPEC_price_source_s1_coverage.md` — ACCEPTED / SPEC ONLY / coverage-only. Authorizes no implementation, no S1 run, no network/data fetch, no backfill, no scoring, no S2, no P1/P2/P3, no probe execution. Forbids `yes_price` / `1 - yes_price` / `1 - p` side-synthesis.
 - `HANDOFF_orchestrator_s1_pass1_RESULT.md` — S1 Pass 1 sampled coverage RESULT (ACCEPTED): `S1_SOURCE_NOT_VIABLE`. Pass 1 sampled coverage only; P1 stays blocked.
 - `HANDOFF_orchestrator_s1_alt_pass1_RESULT.md` — S1-ALT Pass 1 sampled coverage RESULT (ACCEPTED): `S1ALT_SOURCE_NOT_VIABLE`. Pass 1 sampled coverage only; P1 stays blocked.
@@ -357,7 +373,7 @@ Pin all of the following in the Claude Project Files panel (read `START_HERE.md`
 - `DATA_CONTRACTS_named_binary_probe.md` — exact inspected schemas/API surfaces for the probe.
 - `PRICE_INPUT_CONTRACT_named_binary_probe.md` — accepted S0 price-input finding (why P1 is blocked).
 - `CLAUDE_PROJECT_SETTINGS.md` — operational Claude capability settings; does not override the above and authorizes nothing.
-- Active specs/handoffs as applicable — `SPEC_named_binary_probe.md`, `SPEC_price_source_s1_coverage.md`, `SPEC_price_source_alt_trade_prints.md`, `SPEC_price_source_option_b_data_api_review.md`, `SPEC_option_b_b0_failure_diagnostic.md`, `SPEC_price_source_option_c_onchain.md`, `SPEC_price_source_option_c_onchain_C1R_addendum.md`, `README_price_source_option_c_c1a.md`, `SPEC_price_source_option_c_c1a_followup.md`, `README_price_source_option_c_c1a_f1_canary_prep.md`, `SPEC_price_source_option_c_c1a_f2_followup.md`, `SPEC_price_source_option_c_artifact_enrichment.md`, `SPEC_price_source_option_d_l2_archive.md`, `SPEC_price_source_option_d_temporal_inrange_precheck.md`, `HANDOFF_orchestrator_named_binary_probe_p0.md`, `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`, `HANDOFF_orchestrator_option_b_spec_s1_1_patch.md`, `HANDOFF_orchestrator_option_b_b0_RESULT.md`, `HANDOFF_orchestrator_option_b_b0_failure_diagnostic.md`, `HANDOFF_orchestrator_option_b_b0_corrected_diagnostic_RESULT.md`, `HANDOFF_orchestrator_option_c_onchain_spec.md`, `HANDOFF_orchestrator_option_c_c1r_design_addendum.md`, `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`, `HANDOFF_orchestrator_option_c_c1a_RESULT.md`, `HANDOFF_orchestrator_option_c_c1a_followup_SPEC.md`, `HANDOFF_orchestrator_option_c_c1a_f1_canary_PREP.md`, `HANDOFF_orchestrator_option_c_c1a_f1_canary_REVIEW.md`, `HANDOFF_orchestrator_option_c_c1a_f2_followup_SPEC.md`, `HANDOFF_orchestrator_option_c_c1a_f2_ARTIFACT_REVIEW.md`, `HANDOFF_orchestrator_option_c_artifact_enrichment_SPEC.md`.
+- Active specs/handoffs as applicable — `SPEC_named_binary_probe.md`, `SPEC_p0_representativeness_quality_audit.md`, `SPEC_price_source_s1_coverage.md`, `SPEC_price_source_alt_trade_prints.md`, `SPEC_price_source_option_b_data_api_review.md`, `SPEC_option_b_b0_failure_diagnostic.md`, `SPEC_price_source_option_c_onchain.md`, `SPEC_price_source_option_c_onchain_C1R_addendum.md`, `README_price_source_option_c_c1a.md`, `SPEC_price_source_option_c_c1a_followup.md`, `README_price_source_option_c_c1a_f1_canary_prep.md`, `SPEC_price_source_option_c_c1a_f2_followup.md`, `SPEC_price_source_option_c_artifact_enrichment.md`, `SPEC_price_source_option_d_l2_archive.md`, `SPEC_price_source_option_d_temporal_inrange_precheck.md`, `HANDOFF_orchestrator_named_binary_probe_p0.md`, `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`, `HANDOFF_claude_p0_representativeness_ACCEPTED_CLOSED.md`, `HANDOFF_orchestrator_option_b_spec_s1_1_patch.md`, `HANDOFF_orchestrator_option_b_b0_RESULT.md`, `HANDOFF_orchestrator_option_b_b0_failure_diagnostic.md`, `HANDOFF_orchestrator_option_b_b0_corrected_diagnostic_RESULT.md`, `HANDOFF_orchestrator_option_c_onchain_spec.md`, `HANDOFF_orchestrator_option_c_c1r_design_addendum.md`, `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`, `HANDOFF_orchestrator_option_c_c1a_RESULT.md`, `HANDOFF_orchestrator_option_c_c1a_followup_SPEC.md`, `HANDOFF_orchestrator_option_c_c1a_f1_canary_PREP.md`, `HANDOFF_orchestrator_option_c_c1a_f1_canary_REVIEW.md`, `HANDOFF_orchestrator_option_c_c1a_f2_followup_SPEC.md`, `HANDOFF_orchestrator_option_c_c1a_f2_ARTIFACT_REVIEW.md`, `HANDOFF_orchestrator_option_c_artifact_enrichment_SPEC.md`.
 - `ORCHESTRATOR_LOW_CONTEXT_MODE.md` — reusable low-context review/decision protocol. Documentation only; overrides nothing and authorizes nothing.
 - Supporting reference (not overriding): `DUNE_DATA_NOTES.md`.
 
