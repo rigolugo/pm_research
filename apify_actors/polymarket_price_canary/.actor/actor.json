@@ -1,0 +1,14 @@
+{
+  "actorSpecification": 1,
+  "name": "polymarket-price-canary",
+  "title": "Polymarket Price Canary (Dry-Run Only)",
+  "description": "Validates a small, fixed Polymarket condition manifest and builds the planned Gamma/CLOB request URLs (Gamma metadata, CLOB /prices-history, CLOB current-shape endpoints). This build is DRY-RUN ONLY: it makes zero network calls to Polymarket or any other external host. See project_context/SPEC_apify_polymarket_price_canary.md in rigolugo/pm_research for the full design and guardrail rationale.",
+  "version": "0.1.0",
+  "buildTag": "latest",
+  "meta": {
+    "templateId": "python-empty"
+  },
+  "dockerfile": "./Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json"
+}
