@@ -10,7 +10,6 @@
       "editor": "json",
       "description": "3-5 pre-selected conditions, one per nb_subclass where possible. No fields are derived at runtime; decision_ts must be precomputed externally, e.g. first_trade_ts + 3600s.",
       "items": {
-        "title": "Condition",
         "type": "object",
         "properties": {
           "condition_id": {
