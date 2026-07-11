@@ -15,11 +15,13 @@
           "condition_id": {
             "title": "Condition ID",
             "type": "string",
+            "editor": "textfield",
             "description": "Polymarket condition id."
           },
           "nb_subclass": {
             "title": "Named-binary subclass",
             "type": "string",
+            "editor": "select",
             "enum": [
               "UP_DOWN",
               "OVER_UNDER",
@@ -30,21 +32,25 @@
           "decision_ts": {
             "title": "Decision timestamp",
             "type": "string",
+            "editor": "textfield",
             "description": "Timezone-aware ISO 8601 UTC timestamp, e.g. 2026-01-01T00:00:00Z. Precomputed externally; this Actor never derives it."
           },
           "side_0_token_id": {
             "title": "Side 0 token ID",
             "type": "string",
+            "editor": "textfield",
             "description": "String-safe decimal token id for outcome_index=0. Scientific notation is rejected."
           },
           "side_1_token_id": {
             "title": "Side 1 token ID",
             "type": "string",
+            "editor": "textfield",
             "description": "String-safe decimal token id for outcome_index=1. Scientific notation is rejected."
           },
           "slug": {
             "title": "Gamma slug",
             "type": "string",
+            "editor": "textfield",
             "description": "Optional Gamma market/event slug, used only if fetch_gamma_metadata=true."
           }
         },
@@ -60,6 +66,7 @@
     "max_conditions": {
       "title": "Condition cap for this run",
       "type": "integer",
+      "editor": "number",
       "default": 5,
       "minimum": 1,
       "maximum": 5,
@@ -68,12 +75,14 @@
     "fetch_gamma_metadata": {
       "title": "Plan Gamma metadata lookups",
       "type": "boolean",
+      "editor": "checkbox",
       "default": true,
       "description": "If true, plans one Gamma metadata request per condition that supplies a slug."
     },
     "gamma_lookup_type": {
       "title": "Gamma lookup type",
       "type": "string",
+      "editor": "select",
       "enum": [
         "markets",
         "events"
@@ -84,24 +93,28 @@
     "gamma_base_url": {
       "title": "Gamma API base URL",
       "type": "string",
+      "editor": "textfield",
       "default": "https://gamma-api.polymarket.com",
       "description": "Base URL for Gamma metadata lookups."
     },
     "clob_base_url": {
       "title": "CLOB API base URL",
       "type": "string",
+      "editor": "textfield",
       "default": "https://clob.polymarket.com",
       "description": "Base URL for CLOB /prices-history and current-shape endpoints."
     },
     "fetch_clob_book_shape": {
       "title": "Plan current-shape endpoint checks",
       "type": "boolean",
+      "editor": "checkbox",
       "default": true,
       "description": "If true, plans /book, /price, /midpoint, /spread requests per side token, for current-schema validation only. These are never used for a historical/decision-time conclusion."
     },
     "price_history_window_seconds": {
       "title": "Price-history window (+/- seconds around decision_ts)",
       "type": "integer",
+      "editor": "number",
       "default": 3600,
       "minimum": 1,
       "description": "Used to compute planned startTs/endTs for GET /prices-history."
@@ -109,12 +122,14 @@
     "fidelity": {
       "title": "CLOB fidelity parameter",
       "type": "string",
+      "editor": "textfield",
       "default": "1",
       "description": "Passthrough to the documented fidelity query parameter. ASSUMPTION - VERIFY against live Polymarket docs before any future live run."
     },
     "global_request_cap": {
       "title": "Global planned-request cap",
       "type": "integer",
+      "editor": "number",
       "default": 50,
       "minimum": 1,
       "description": "Hard fail-fast ceiling on total planned request rows across the whole run. The Actor halts with APIFY_GLOBAL_REQUEST_CAP_EXCEEDED if the plan would exceed this, even though no calls are ever made in this build."
@@ -122,6 +137,7 @@
     "dry_run": {
       "title": "Dry run (informational only in this build)",
       "type": "boolean",
+      "editor": "checkbox",
       "default": true,
       "description": "This build is DRY-RUN ONLY and contains no network-call code path at all. Setting this to false has no effect except a logged warning; it does not enable any network call. A live-run mode would require a separate, explicitly authorized implementation."
     }
