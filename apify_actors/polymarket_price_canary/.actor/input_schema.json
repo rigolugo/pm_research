@@ -8,37 +8,54 @@
       "title": "Fixed condition manifest (max 5)",
       "type": "array",
       "editor": "json",
-      "description": "3-5 pre-selected conditions, one per nb_subclass where possible. No fields are derived at runtime; decision_ts must be precomputed externally (e.g. first_trade_ts + 3600s).",
+      "description": "3-5 pre-selected conditions, one per nb_subclass where possible. No fields are derived at runtime; decision_ts must be precomputed externally, e.g. first_trade_ts + 3600s.",
       "items": {
+        "title": "Condition",
         "type": "object",
         "properties": {
           "condition_id": {
+            "title": "Condition ID",
             "type": "string",
             "description": "Polymarket condition id."
           },
           "nb_subclass": {
+            "title": "Named-binary subclass",
             "type": "string",
-            "enum": ["UP_DOWN", "OVER_UNDER", "NAMED_OTHER"],
+            "enum": [
+              "UP_DOWN",
+              "OVER_UNDER",
+              "NAMED_OTHER"
+            ],
             "description": "Named-binary subclass, as already classified upstream."
           },
           "decision_ts": {
+            "title": "Decision timestamp",
             "type": "string",
             "description": "Timezone-aware ISO 8601 UTC timestamp, e.g. 2026-01-01T00:00:00Z. Precomputed externally; this Actor never derives it."
           },
           "side_0_token_id": {
+            "title": "Side 0 token ID",
             "type": "string",
             "description": "String-safe decimal token id for outcome_index=0. Scientific notation is rejected."
           },
           "side_1_token_id": {
+            "title": "Side 1 token ID",
             "type": "string",
             "description": "String-safe decimal token id for outcome_index=1. Scientific notation is rejected."
           },
           "slug": {
+            "title": "Gamma slug",
             "type": "string",
             "description": "Optional Gamma market/event slug, used only if fetch_gamma_metadata=true."
           }
         },
-        "required": ["condition_id", "nb_subclass", "decision_ts", "side_0_token_id", "side_1_token_id"]
+        "required": [
+          "condition_id",
+          "nb_subclass",
+          "decision_ts",
+          "side_0_token_id",
+          "side_1_token_id"
+        ]
       }
     },
     "max_conditions": {
@@ -58,7 +75,10 @@
     "gamma_lookup_type": {
       "title": "Gamma lookup type",
       "type": "string",
-      "enum": ["markets", "events"],
+      "enum": [
+        "markets",
+        "events"
+      ],
       "default": "markets",
       "description": "Which Gamma collection to query by slug."
     },
@@ -91,7 +111,7 @@
       "title": "CLOB fidelity parameter",
       "type": "string",
       "default": "1",
-      "description": "Passthrough to the documented 'fidelity' query parameter. [ASSUMPTION - VERIFY against live Polymarket docs before any future live run.]"
+      "description": "Passthrough to the documented fidelity query parameter. ASSUMPTION - VERIFY against live Polymarket docs before any future live run."
     },
     "global_request_cap": {
       "title": "Global planned-request cap",
@@ -107,5 +127,7 @@
       "description": "This build is DRY-RUN ONLY and contains no network-call code path at all. Setting this to false has no effect except a logged warning; it does not enable any network call. A live-run mode would require a separate, explicitly authorized implementation."
     }
   },
-  "required": ["conditions"]
+  "required": [
+    "conditions"
+  ]
 }
