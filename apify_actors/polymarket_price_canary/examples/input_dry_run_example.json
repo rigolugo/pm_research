@@ -1,0 +1,34 @@
+{
+  "conditions": [
+    {
+      "condition_id": "0xaaaa000000000000000000000000000000000000000000000000000000000001",
+      "nb_subclass": "UP_DOWN",
+      "decision_ts": "2026-01-01T01:00:00Z",
+      "side_0_token_id": "100000000000000000000000000000000000000000000000000000000000000000000001",
+      "side_1_token_id": "200000000000000000000000000000000000000000000000000000000000000000000002",
+      "slug": "example-up-down-market-placeholder"
+    },
+    {
+      "condition_id": "0xbbbb000000000000000000000000000000000000000000000000000000000002",
+      "nb_subclass": "OVER_UNDER",
+      "decision_ts": "2026-02-15T12:30:00Z",
+      "side_0_token_id": "300000000000000000000000000000000000000000000000000000000000000000000003",
+      "side_1_token_id": "400000000000000000000000000000000000000000000000000000000000000000000004"
+    },
+    {
+      "condition_id": "0xcccc000000000000000000000000000000000000000000000000000000000003",
+      "nb_subclass": "NAMED_OTHER",
+      "decision_ts": "2026-03-20T18:00:00Z",
+      "side_0_token_id": "500000000000000000000000000000000000000000000000000000000000000000000005",
+      "side_1_token_id": "600000000000000000000000000000000000000000000000000000000000000000000006",
+      "slug": "example-named-other-market-placeholder"
+    }
+  ],
+  "max_conditions": 5,
+  "fetch_gamma_metadata": true,
+  "fetch_clob_book_shape": true,
+  "price_history_window_seconds": 3600,
+  "fidelity": "1",
+  "global_request_cap": 50,
+  "dry_run": true
+}
