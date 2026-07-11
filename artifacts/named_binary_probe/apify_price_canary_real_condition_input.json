@@ -1,0 +1,35 @@
+{
+  "conditions": [
+    {
+      "condition_id": "0x00001032adc2a18f836a38d7da2ffc1d81cbcf44f9a8b33c9c941fd0a07e2914",
+      "nb_subclass": "UP_DOWN",
+      "decision_ts": "2026-05-08T05:27:06Z",
+      "side_0_token_id": "50032985715985471336234385208654764576187956035740122038070895206704220422185",
+      "side_1_token_id": "109698188374952358828403296190168510922946767295513158688653183147258255237628"
+    },
+    {
+      "condition_id": "0x0087652a603d3384be139ddd86863ec929444c228b5b4d60f65975e521f63928",
+      "nb_subclass": "OVER_UNDER",
+      "decision_ts": "2025-10-31T08:00:16Z",
+      "side_0_token_id": "106099374993647142164267627217883942706898163732343713162775914501732005702237",
+      "side_1_token_id": "8291999378679458711056369266566314659459576677992759222955666677017071705749"
+    },
+    {
+      "condition_id": "0x00037e466770d6f50dea9c86bd61bf51b6e8f1691f01f31c79c5d68478a749b7",
+      "nb_subclass": "NAMED_OTHER",
+      "decision_ts": "2025-10-26T04:13:19Z",
+      "side_0_token_id": "32874143431182453306382402037507784623171565710198826655279925389781115171453",
+      "side_1_token_id": "115106533854952929921880145034234473816878970887704040770098217370923080642504"
+    }
+  ],
+  "max_conditions": 5,
+  "fetch_gamma_metadata": false,
+  "gamma_lookup_type": "markets",
+  "gamma_base_url": "https://gamma-api.polymarket.com",
+  "clob_base_url": "https://clob.polymarket.com",
+  "fetch_clob_book_shape": true,
+  "price_history_window_seconds": 3600,
+  "fidelity": "1",
+  "global_request_cap": 50,
+  "dry_run": true
+}
