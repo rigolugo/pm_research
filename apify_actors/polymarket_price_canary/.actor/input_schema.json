@@ -1,14 +1,14 @@
 {
-  "title": "Polymarket Price Canary Input (Dry-Run Only)",
+  "title": "Polymarket Price Canary Input (Dry-Run by Default; Gated Live Canary)",
   "type": "object",
   "schemaVersion": 1,
-  "description": "This build is DRY-RUN ONLY and makes zero network calls, regardless of the dry_run value supplied here. Only GET /prices-history (single-market form) is planned for CLOB price history; /batch-prices-history is intentionally not used because current Polymarket docs do not clearly document it.",
+  "description": "By default (dry_run absent or true) this build makes ZERO network calls, exactly as before -- only GET /prices-history (single-market form) is ever planned; /batch-prices-history is never used. A gated live-canary mode exists behind dry_run=false PLUS live_canary_enabled=true PLUS acknowledge_not_p1_evidence=true. If any of those three is not exactly satisfied, the run hard-stops before any request. Live-canary output is diagnostic only and never P1 evidence -- see disclaimer_label on every live-canary row.",
   "properties": {
     "conditions": {
       "title": "Fixed condition manifest (max 5)",
       "type": "array",
       "editor": "json",
-      "description": "3-5 pre-selected conditions, one per nb_subclass where possible. No fields are derived at runtime; decision_ts must be precomputed externally, e.g. first_trade_ts + 3600s.",
+      "description": "3-5 pre-selected conditions, one per nb_subclass where possible (dry-run planner). NOTE: the gated live-canary mode (see live_canary_enabled below) additionally requires EXACTLY 3 conditions, one each of UP_DOWN/OVER_UNDER/NAMED_OTHER, with no per-condition tolerance -- any problem hard-stops the whole live-canary run before any request. No fields are derived at runtime; decision_ts must be precomputed externally (e.g. first_trade_ts + 3600s).",
       "items": {
         "type": "object",
         "properties": {
@@ -22,11 +22,7 @@
             "title": "Named-binary subclass",
             "type": "string",
             "editor": "select",
-            "enum": [
-              "UP_DOWN",
-              "OVER_UNDER",
-              "NAMED_OTHER"
-            ],
+            "enum": ["UP_DOWN", "OVER_UNDER", "NAMED_OTHER"],
             "description": "Named-binary subclass, as already classified upstream."
           },
           "decision_ts": {
@@ -54,13 +50,7 @@
             "description": "Optional Gamma market/event slug, used only if fetch_gamma_metadata=true."
           }
         },
-        "required": [
-          "condition_id",
-          "nb_subclass",
-          "decision_ts",
-          "side_0_token_id",
-          "side_1_token_id"
-        ]
+        "required": ["condition_id", "nb_subclass", "decision_ts", "side_0_token_id", "side_1_token_id"]
       }
     },
     "max_conditions": {
@@ -83,10 +73,7 @@
       "title": "Gamma lookup type",
       "type": "string",
       "editor": "select",
-      "enum": [
-        "markets",
-        "events"
-      ],
+      "enum": ["markets", "events"],
       "default": "markets",
       "description": "Which Gamma collection to query by slug."
     },
@@ -124,7 +111,7 @@
       "type": "string",
       "editor": "textfield",
       "default": "1",
-      "description": "Passthrough to the documented fidelity query parameter. ASSUMPTION - VERIFY against live Polymarket docs before any future live run."
+      "description": "Passthrough to the documented 'fidelity' query parameter. [ASSUMPTION - VERIFY against live Polymarket docs before any future live run.]"
     },
     "global_request_cap": {
       "title": "Global planned-request cap",
@@ -135,14 +122,33 @@
       "description": "Hard fail-fast ceiling on total planned request rows across the whole run. The Actor halts with APIFY_GLOBAL_REQUEST_CAP_EXCEEDED if the plan would exceed this, even though no calls are ever made in this build."
     },
     "dry_run": {
-      "title": "Dry run (informational only in this build)",
+      "title": "Dry run (true = old safe path; false = attempt gated live canary)",
       "type": "boolean",
       "editor": "checkbox",
       "default": true,
-      "description": "This build is DRY-RUN ONLY and contains no network-call code path at all. Setting this to false has no effect except a logged warning; it does not enable any network call. A live-run mode would require a separate, explicitly authorized implementation."
+      "description": "Default true: takes the unchanged dry-run path, zero network calls, exactly as before. Set to the literal JSON boolean false to ATTEMPT the gated live-canary path -- but that path immediately hard-stops (zero requests) unless live_canary_enabled=true AND acknowledge_not_p1_evidence=true are ALSO both set. This delivery does not authorize an actual live run regardless of these flags."
+    },
+    "live_canary_enabled": {
+      "title": "[LIVE CANARY GATE 1 of 2] Explicitly enable live-canary mode",
+      "type": "boolean",
+      "editor": "checkbox",
+      "default": false,
+      "description": "Must be the literal JSON boolean true, together with acknowledge_not_p1_evidence=true and dry_run=false, or the run hard-stops before any request. Missing or false is the safe default."
+    },
+    "acknowledge_not_p1_evidence": {
+      "title": "[LIVE CANARY GATE 2 of 2] Acknowledge this is not P1 evidence",
+      "type": "boolean",
+      "editor": "checkbox",
+      "default": false,
+      "description": "Must be the literal JSON boolean true, together with live_canary_enabled=true and dry_run=false, or the run hard-stops before any request. By setting this true you acknowledge that live-canary output is diagnostic only: it does not establish P0 coverage, does not overturn S1_SOURCE_NOT_VIABLE, and does not unblock P1. Missing or false is the safe default."
+    },
+    "live_include_current_endpoint_check": {
+      "title": "[Live canary only] Include optional current-endpoint schema comparison",
+      "type": "boolean",
+      "editor": "checkbox",
+      "default": false,
+      "description": "Only relevant in live-canary mode. If true, adds up to 3 additional /book requests (one side per condition) purely for current-state schema comparison -- never historical, never a parsed_side_candidate_row. Total requests stay within the hard cap of 12 either way (6 mandatory, or 9 with this enabled)."
     }
   },
-  "required": [
-    "conditions"
-  ]
+  "required": ["conditions"]
 }
