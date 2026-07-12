@@ -21,15 +21,5 @@
       "side_0_token_id": "32874143431182453306382402037507784623171565710198826655279925389781115171453",
       "side_1_token_id": "115106533854952929921880145034234473816878970887704040770098217370923080642504"
     }
-  ],
-  "max_conditions": 5,
-  "fetch_gamma_metadata": false,
-  "gamma_lookup_type": "markets",
-  "gamma_base_url": "https://gamma-api.polymarket.com",
-  "clob_base_url": "https://clob.polymarket.com",
-  "fetch_clob_book_shape": true,
-  "price_history_window_seconds": 3600,
-  "fidelity": "1",
-  "global_request_cap": 50,
-  "dry_run": true
+  ]
 }
