@@ -91,6 +91,8 @@ def test_expected_root_property_editor_values():
         "live_canary_enabled": "checkbox",
         "acknowledge_not_p1_evidence": "checkbox",
         "live_include_current_endpoint_check": "checkbox",
+        "transport_isolation_canary_enabled": "checkbox",
+        "acknowledge_transport_isolation_not_p1_evidence": "checkbox",
     }
     for name, expected_editor in expected.items():
         assert name in root_properties, f"expected root property {name!r} not found in schema"

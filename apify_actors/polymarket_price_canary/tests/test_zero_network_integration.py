@@ -153,6 +153,85 @@ def test_missing_acknowledgements_e2e_zero_network_calls(tmp_path):
     assert rows[0].get("request_url_actual") is None
 
 
+def test_mode_ambiguous_e2e_zero_subprocess_calls(tmp_path):
+    """dry_run=false with BOTH transport_isolation_canary_enabled=true and
+    live_canary_enabled=true -- must halt with zero requests on EITHER
+    path, before either sub-module's own gating even runs."""
+    actor_input = {
+        "conditions": _valid_three_conditions(),
+        "dry_run": False,
+        "transport_isolation_canary_enabled": True,
+        "acknowledge_transport_isolation_not_p1_evidence": True,
+        "live_canary_enabled": True,
+        "acknowledge_not_p1_evidence": True,
+    }
+    returncode, stdout, stderr, dataset_dir = _run_actor_subprocess(tmp_path, actor_input)
+    rows = _read_all_dataset_rows(dataset_dir)
+
+    assert len(rows) == 1, f"expected exactly 1 hard-stop row, got {len(rows)}: {rows}"
+    assert rows[0]["request_classification"] == "STOP_APIFY_TRANSPORT_MODE_AMBIGUOUS"
+    assert rows[0]["disclaimer_label"] == "APIFY_TRANSPORT_ISOLATION_NOT_P1_EVIDENCE"
+    assert "errors" not in rows[0]
+    assert rows[0]["execution_origin"] == "APIFY_CURL_LIBCURL"
+    assert rows[0]["transport"] == "CURL"
+    assert rows[0].get("http_status") is None
+    assert rows[0].get("curl_exit_code") is None
+
+
+def test_transport_isolation_missing_acknowledgement_e2e_zero_subprocess_calls(tmp_path):
+    """dry_run=false + transport_isolation_canary_enabled=true, but the
+    second acknowledgement missing -- must hard-stop before any curl
+    process (including before the curl-version preflight)."""
+    actor_input = {
+        "conditions": _valid_three_conditions(),
+        "dry_run": False,
+        "transport_isolation_canary_enabled": True,
+        # acknowledge_transport_isolation_not_p1_evidence deliberately omitted
+    }
+    returncode, stdout, stderr, dataset_dir = _run_actor_subprocess(tmp_path, actor_input)
+    rows = _read_all_dataset_rows(dataset_dir)
+
+    assert len(rows) == 1, f"expected exactly 1 hard-stop row, got {len(rows)}: {rows}"
+    assert rows[0]["disclaimer_label"] == "APIFY_TRANSPORT_ISOLATION_NOT_P1_EVIDENCE"
+    assert rows[0]["request_classification"] == "PREFLIGHT_HARD_STOP"
+    assert "errors" not in rows[0]
+    assert rows[0]["execution_origin"] == "APIFY_CURL_LIBCURL"
+    assert rows[0]["transport"] == "CURL"
+    assert rows[0].get("http_status") is None
+    assert rows[0].get("curl_exit_code") is None
+    assert rows[0].get("curl_executable_path") is None
+    # Detailed error text is no longer stored on the row (patch 4), but
+    # remains available via Actor logging / Actor.fail(status_message=...).
+    assert "acknowledge_transport_isolation_not_p1_evidence" in stdout + stderr
+
+
+def test_transport_isolation_manifest_absent_e2e_zero_subprocess_calls(tmp_path):
+    """dry_run=false + both transport-isolation acknowledgements true, but
+    the fixed identity manifest file does not exist at the expected repo
+    path from this working directory -- must hard-stop with zero curl
+    processes (no curl_executable_path, no http_status, no curl_exit_code
+    anywhere on the stop row)."""
+    actor_input = {
+        "conditions": _valid_three_conditions(),
+        "dry_run": False,
+        "transport_isolation_canary_enabled": True,
+        "acknowledge_transport_isolation_not_p1_evidence": True,
+    }
+    returncode, stdout, stderr, dataset_dir = _run_actor_subprocess(tmp_path, actor_input)
+    rows = _read_all_dataset_rows(dataset_dir)
+
+    assert len(rows) == 1, f"expected exactly 1 hard-stop row, got {len(rows)}: {rows}"
+    assert rows[0]["request_classification"] == "STOP_APIFY_TRANSPORT_MANIFEST_MISSING_OR_INVALID"
+    assert rows[0]["disclaimer_label"] == "APIFY_TRANSPORT_ISOLATION_NOT_P1_EVIDENCE"
+    assert "errors" not in rows[0]
+    assert rows[0]["execution_origin"] == "APIFY_CURL_LIBCURL"
+    assert rows[0]["transport"] == "CURL"
+    assert rows[0].get("http_status") is None
+    assert rows[0].get("curl_exit_code") is None
+    assert rows[0].get("curl_executable_path") is None
+    assert "STOP_APIFY_TRANSPORT_MANIFEST_MISSING_OR_INVALID" in stdout + stderr
+
+
 if __name__ == "__main__":
     import tempfile
     with tempfile.TemporaryDirectory() as td:
@@ -163,4 +242,10 @@ if __name__ == "__main__":
         print("PASS test_dry_run_true_explicit_e2e_zero_network_calls")
         test_missing_acknowledgements_e2e_zero_network_calls(tmp)
         print("PASS test_missing_acknowledgements_e2e_zero_network_calls")
+        test_mode_ambiguous_e2e_zero_subprocess_calls(tmp)
+        print("PASS test_mode_ambiguous_e2e_zero_subprocess_calls")
+        test_transport_isolation_missing_acknowledgement_e2e_zero_subprocess_calls(tmp)
+        print("PASS test_transport_isolation_missing_acknowledgement_e2e_zero_subprocess_calls")
+        test_transport_isolation_manifest_absent_e2e_zero_subprocess_calls(tmp)
+        print("PASS test_transport_isolation_manifest_absent_e2e_zero_subprocess_calls")
     print("\nALL E2E SELF-TESTS PASSED")
