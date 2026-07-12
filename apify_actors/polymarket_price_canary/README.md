@@ -1,4 +1,4 @@
-# Polymarket Price Canary Actor — Dry-Run by Default, Gated Live-Canary Capability (Review Only, Not Authorized to Run)
+# Polymarket Price Canary Actor — Dry-Run by Default, Gated Live-Canary + Transport-Isolation Capability (Review Only, Not Authorized to Run)
 
 **Status:** Dry-run behavior implemented and accepted per earlier Orchestrator authorization (unchanged in this revision — see "What this Actor does" below). Live-canary capability implemented in this revision per `SPEC_apify_live_price_source_canary.md` (accepted, branch `apify-price-canary-dry-run`) under an **"implementation package review only"** authorization: **no Apify run, no build/deploy, no network call, no live dataset** has occurred as part of this delivery. See the self-attestation near the end of this file.
 
@@ -37,20 +37,26 @@ apify_actors/polymarket_price_canary/
 ├── src/
 │   ├── __init__.py
 │   ├── __main__.py         # `python3 -m src` entry point
-│   ├── main.py             # Apify SDK wiring: dispatches dry-run vs. gated live-canary path
+│   ├── main.py             # Apify SDK wiring: dispatches dry-run / live-canary / transport-isolation paths
 │   ├── validation.py       # pure logic: dry-run validation + request-plan builder, NO network, NO apify import
-│   └── live_canary.py      # pure logic + HttpFetcher: live-canary gating, plan, parsing, row types (§ below)
+│   ├── live_canary.py      # pure logic + HttpFetcher: live-canary gating, plan, parsing, row types (urllib transport)
+│   └── transport_isolation_canary.py  # pure logic + SubprocessCurlRunner: transport-isolation gating, plan, parsing, row types (curl transport)
 ├── tests/
 │   ├── test_validation.py               # 32 pure-logic tests for the dry-run path, no network, no Apify runtime needed
 │   ├── test_live_canary.py              # 52 pure-logic + fake-fetcher tests for the live-canary path, no network
-│   └── test_zero_network_integration.py # 3 real end-to-end Actor runs (subprocess + local storage), no network
+│   ├── test_zero_network_integration.py # 6 real end-to-end Actor runs (subprocess + local storage), no network
+│   ├── test_input_schema_regression.py  # 11 schema-shape tests, pinned title/editor values for every field
+│   └── test_transport_isolation_canary.py  # pure-logic + injected-subprocess tests for the transport-isolation path, no real curl invoked
 ├── examples/
 │   └── input_dry_run_example.json   # 3 placeholder conditions, one per subclass
 ├── requirements.txt
 └── README.md                # this file
+
+artifacts/named_binary_probe/
+└── apify_price_canary_real_condition_input.json  # fixed identity/reconciliation manifest (see "Transport-isolation canary mode" below)
 ```
 
-`src/validation.py` and `src/live_canary.py` both have no dependency on the `apify` package at all (`live_canary.py` does import `.validation`, a sibling pure module — not `apify`), so their logic can be tested (and read/audited) completely independently of any Apify runtime or account.
+`src/validation.py`, `src/live_canary.py`, and `src/transport_isolation_canary.py` all have no dependency on the `apify` package at all (each only imports sibling pure modules, not `apify`), so their logic can be tested (and read/audited) completely independently of any Apify runtime or account.
 
 ## Running the tests (no network, no Apify account needed)
 
@@ -60,12 +66,29 @@ pip install pytest --break-system-packages   # or just `pip install pytest` in a
 python3 -m pytest tests/ -v
 ```
 
-**87 tests total, all passing, verified before delivery:**
+**194 tests total, all passing. Claude result: `194 passed in 4.83s`.**
+
+```text
+194 tests total
+
+test_validation.py: 32
+test_live_canary.py: 52
+test_zero_network_integration.py: 6
+test_input_schema_regression.py: 11
+test_transport_isolation_canary.py: 93
+```
+
+**Orchestrator reproduction note:** the Orchestrator independently reproduced 188 of these 194 tests (all non-integration tests, including all 93 transport-isolation tests). The six Actor subprocess integration tests in `test_zero_network_integration.py` were **not** independently reproduced by the Orchestrator, because the Orchestrator's review environment lacked the `apify` package that those specific tests require to invoke `python3 -m src`. The `194 passed in 4.83s` result above is Claude's own sandbox run, not a claim of Orchestrator reproduction of the full suite.
+
 - `test_validation.py` — 32 pure-logic tests for the dry-run path (unchanged from the prior revision).
 - `test_live_canary.py` — 52 pure-logic + fake-fetcher tests for the live-canary path: acknowledgement gating, strict whole-manifest condition validation, request-plan construction (mandatory 6 / optional 9, single-market form only, no batch, no Gamma), request-cap enforcement (including a zero-network proof via a poisoned fetcher), token-identity basis (`REQUEST_URL` default-acceptable / `RESPONSE_BODY` bonus / `UNCONFIRMED` narrow-trigger), response parsing (usable shape, empty history, endpoint error incl. invalid JSON, parse-blocked incl. out-of-range price), nearest-timestamp selection with an explicit tie-break test (and an order-independence test), condition-pair rollup (all three `condition_pair_status` values, including proof that `UNCONFIRMED_TOKEN_ID` never counts toward `BOTH_SIDES_PRESENT`), mandatory disclaimer on every row type, and a forbidden-field sweep across every output row.
-- `test_zero_network_integration.py` — 3 real end-to-end Actor runs, each as a subprocess against Apify's file-system local storage (not just unit tests): default input, explicit `dry_run: true`, and `dry_run: false` with a missing acknowledgement. Each asserts the correct output rows appear and that no row carries an `http_status` field (which only a real live-canary fetch attempt would produce) — proof at the full Actor-entry-point level, not only inside isolated functions.
+- `test_zero_network_integration.py` — 6 real end-to-end Actor runs, each as a subprocess against Apify's file-system local storage (not just unit tests): default input, explicit `dry_run: true`, `dry_run: false` with a missing live-canary acknowledgement, mode-ambiguity (both `transport_isolation_canary_enabled` and `live_canary_enabled` true), transport-isolation with a missing acknowledgement, and transport-isolation with the fixed manifest absent from the resolved runtime path. Each asserts the correct output rows appear, that no unexpected row is produced, and — for the transport-isolation cases — that no row carries `http_status`/`curl_exit_code`/`curl_executable_path` (which only a real curl attempt would produce). None of these six subprocess invocations made any CLOB, Polymarket, Gamma, or Apify data request; they exercise only the zero-network dry-run path and the preflight-halt paths.
+- `test_input_schema_regression.py` — 11 schema-shape tests: every root and nested `input_schema.json` property has the `title`/`editor` Apify requires, `conditions.items` correctly has no `title` of its own, and the exact pinned `title`/`editor` values (including the two transport-isolation gating fields) match precisely.
+- `test_transport_isolation_canary.py` — 93 pure-logic + injected-subprocess tests for the transport-isolation (curl) path: acknowledgement/dispatch gating, exact manifest reconciliation (including rejecting any runtime-only extra field, not just mismatched values), curl provenance completeness (`curl_version`/`libcurl_version`/`tls_backend`/non-empty `curl_supported_protocols`/`https` present — each missing piece proven to cause zero data-request subprocess calls), curl command-construction safety, full-pipeline classification and row counts, unconfirmed-token-identity handling (never produces a candidate, never counts toward `BOTH_SIDES_PRESENT`), exact-type runtime-override rejection, and exact 34-field preflight stop-row shape with correct classification mapping.
 
-`HttpFetcher` (the only code path in the whole package capable of a real network call) is never instantiated in any test — `test_live_canary.py` uses `FakeFetcher`/`PoisonedFetcher` stand-ins, and `test_zero_network_integration.py` relies on the sandbox's own network egress policy (which does not allow the Polymarket/Gamma/CLOB hosts at all) as a second line of defense on top of the code's own gating.
+**Correction on runner instantiation:** no real curl subprocess was invoked anywhere in this delivery or its tests. However, `SubprocessCurlRunner` **is** instantiated once, in `test_curl_command_construction_exact_and_safe` — but only *after* `subprocess.run` itself is monkeypatched to a non-executing fake, so the test can inspect the exact `argv` the runner would pass to curl without ever launching a process. Every other test uses `FakeCurlRunner`/`PoisonedCurlRunner` stand-ins and never touches `SubprocessCurlRunner` at all.
+
+`HttpFetcher` (the live-canary module's only real-network code path) is never instantiated in any test — `test_live_canary.py` uses `FakeFetcher`/`PoisonedFetcher` stand-ins, and `test_zero_network_integration.py` relies on the sandbox's own network egress policy (which does not allow the Polymarket/Gamma/CLOB hosts at all) as a second line of defense on top of the code's own gating.
 
 A request-cap violation is proven to cause zero network calls only at the `test_live_canary.py` level (`test_request_cap_violation_causes_zero_network_calls`), via direct parameter injection of an artificially-lowered cap — this is the only way to exercise that branch at all, since a valid 3-condition manifest always produces 6 or 9 requests, both under the real 12 cap, making a genuine cap violation structurally unreachable through valid Actor input by design.
 
@@ -181,7 +204,90 @@ No `yes_price`, `1 - price`, `1 - yes_price`, side synthesis, or `canonical_side
 8. Run it with `dry_run: true` (the default). This build's dry-run path still has no network-call code path at all — running it on Apify is equivalent to the local run above: it will validate input and emit planned-request dataset rows only. **Do not** set `dry_run: false` on a real Apify run as part of this review — see the live-canary Runbook above; that requires a separate, explicit user authorization not granted by this delivery.
 9. This package **does** now contain live-fetch code (`live_canary.HttpFetcher`), unlike the prior dry-run-only revision — but it is reachable only via the explicit three-flag gate described above, and no run against real Apify infrastructure has occurred or is authorized as part of this delivery.
 
-## Guardrail-to-code mapping (for reviewer convenience)
+## Transport-isolation canary mode (implemented this revision — NOT executed as part of this delivery)
+
+**This mode has never been run, built, or deployed as part of producing this package. No curl subprocess has been invoked against any real host.** See the self-attestation in the implementation handoff.
+
+### Why this mode exists
+
+The urllib-based live-canary mode (above) recorded a uniform Cloudflare 1010 block on all six mandatory requests (`FINDING_apify_live_canary_endpoint_blocked.md`). A later controlled local diagnostic showed the same block reproduced via local Python `urllib`, but **not** via local system `curl`/libcurl on the identical six URLs — implicating the HTTP transport/client profile rather than confirming Apify's network origin as the cause. This mode tests, if and when separately authorized to run, whether that same transport substitution changes reachability **from Apify's own hosting environment** (`SPEC_apify_transport_isolation_canary.md`, accepted).
+
+### Gating — mutually exclusive with the live-canary mode
+
+The transport-isolation path is only reached when `dry_run` is the literal JSON boolean `false` **and** `transport_isolation_canary_enabled` is the literal JSON boolean `true`. If `live_canary_enabled` is **also** `true` in the same input, the run halts with zero requests attempted on **either** path:
+
+```text
+STOP_APIFY_TRANSPORT_MODE_AMBIGUOUS
+```
+
+Once in the transport-isolation path, `transport_isolation_canary.check_transport_isolation_acknowledgements()` runs **first**, before anything else:
+
+| Flag | Required value | If missing/false |
+|---|---|---|
+| `dry_run` | `false` | Takes the live-canary or dry-run path instead |
+| `transport_isolation_canary_enabled` | `true` | Hard-stop, zero curl processes |
+| `acknowledge_transport_isolation_not_p1_evidence` | `true` | Hard-stop, zero curl processes |
+
+After acknowledgements pass: `live_include_current_endpoint_check` must be `false`/absent (no `/book`, no optional endpoint, no Gamma on this route — ever); any supplied `clob_base_url`/`price_history_window_seconds`/`fidelity` must exactly equal the fixed accepted values or the run hard-stops (no silent override). Only after that does the fixed identity manifest get loaded and reconciled.
+
+### The fixed identity manifest — exact reconciliation, zero normalization
+
+```text
+artifacts/named_binary_probe/apify_price_canary_real_condition_input.json
+```
+
+This file is the **reviewed identity/reconciliation artifact** — it is not a second runtime-input path. The Actor still receives its conditions via `Actor.get_input()`/`raw_input`, exactly as the urllib live-canary already does. Before any curl process, `raw_input["conditions"]` must reconcile **exactly** against this file: same order, same condition IDs, same subclasses, same decision timestamps, same side-0/side-1 token strings, same decimal-string form. Nothing is normalized, sorted, trimmed, or numerically reinterpreted — a reordered condition, a swapped side, or a token differing only by a leading zero all fail reconciliation. Any mismatch, or the file being absent/unreadable/malformed/wrong-shaped/containing extra fields, hard-stops with zero curl processes:
+
+```text
+STOP_APIFY_TRANSPORT_MANIFEST_MISSING_OR_INVALID
+```
+
+**Known packaging limitation:** this fixed manifest file may not automatically exist inside the Actor's actual build/container context when deployed to Apify — this delivery does not solve that by editing the Dockerfile, duplicating the manifest, downloading it at runtime, or changing the build context. If the file is unavailable at runtime, the required behavior is exactly the same zero-request hard-stop above; see the implementation handoff for this open packaging question.
+
+### Curl provenance preflight — not a network request
+
+After manifest reconciliation, `curl --version` (only) is run via `subprocess.run` with an argument array (never `shell=True`), recording `curl_executable_path`, `curl_version`, `libcurl_version`, `tls_backend`, `curl_supported_protocols`, a bounded `curl_version_output`, and `curl_version_exit_code`. The run hard-stops with zero data requests unless **all** of the following are captured: `curl_version`, `libcurl_version`, `tls_backend`, a non-empty `curl_supported_protocols` list, and `"https"` present in that list. Curl absence, an execution failure, or a non-zero exit code hard-stop the same way, before any of the above is even attempted:
+
+```text
+STOP_APIFY_CURL_TRANSPORT_UNAVAILABLE
+```
+
+No package is installed and the Dockerfile is not touched by this delivery — if curl turns out to be absent from the Actor's actual container image, adding it is a separate, later authorization.
+
+### What gets curled, if ever run
+
+Exactly six requests, one fresh `curl` process each, sequential in fixed manifest order (side 0 then side 1 per condition), one attempt per URL, no retries: `GET /prices-history?market=TOKEN_ID&startTs=...&endTs=...&fidelity=1` against `https://clob.polymarket.com`, matching the accepted request builder exactly. Core command shape (argument array, never a shell string):
+
+```text
+curl -q --silent --show-error --max-time 15 --dump-header <tmp> --output <tmp> --write-out %{http_code} <exact-url>
+```
+
+`-q` (disable `.curlrc`) is placed first, purely to stop an inherited `.curlrc` from silently injecting a proxy/header/retry/cookie behavior — not a functional request parameter. No custom user-agent, no custom `Accept`, no browser headers, no cookies, no `Referer`/`Origin`, no proxy, no retry flags, no redirect-following, no compression/browser mimicry, no HTTP-version forcing, no authentication. Proxy environment variables (`http_proxy`/`https_proxy`/`ftp_proxy`/`all_proxy`/`no_proxy`, case-insensitively) are stripped from the child process's environment — no proxy option is ever added to replace them. Response body and headers are captured to bounded temporary files (`tempfile.TemporaryDirectory()`, guaranteed cleanup even on exception) with conservative resource-bounding size caps (2,000,000 bytes body / 100,000 bytes headers) that only ever produce an execution-error classification if exceeded — never a retry, never a silent truncate-and-continue.
+
+### Output: the same three row types, transport-specific fields additive
+
+1. **`raw_request_summary_row`** — all 22 fields retained unchanged from the urllib live-canary schema, plus 12 additive transport-provenance fields (`execution_origin`, `transport`, `curl_executable_path`, `curl_version`, `libcurl_version`, `tls_backend`, `curl_supported_protocols`, `curl_version_output`, `curl_version_exit_code`, `curl_exit_code`, `curl_stderr_excerpt`, `response_headers_excerpt`) — 34 fields total.
+2. **`parsed_side_candidate_row`** — the same 17 fields as the urllib live-canary schema. No transport fields, no `token_identity_basis`, are added here — that field lives only on the raw row, joinable via `run_id`+`condition_id`+`side`.
+3. **`condition_pair_summary_row`** — the same 15 fields as the urllib live-canary schema. No transport fields here either — provenance is on the two corresponding raw rows.
+
+Bounds (decode first as UTF-8 with replacement, then slice to character count — matching the accepted `raw_response_excerpt` behavior exactly): `raw_response_excerpt` / `curl_stderr_excerpt` = 500 characters, `response_headers_excerpt` = 1000 characters, `curl_version_output` = 2000 characters.
+
+Every row of every type carries `disclaimer_label: "APIFY_TRANSPORT_ISOLATION_NOT_P1_EVIDENCE"` — never the urllib live-canary's `APIFY_LIVE_CANARY_NOT_P1_EVIDENCE`; the two are never interchanged or blended.
+
+### Classifications
+
+`request_classification`: `APIFY_CURL_TRANSPORT_USABLE_SHAPE` / `APIFY_CURL_TRANSPORT_EMPTY_HISTORY` / `APIFY_CURL_TRANSPORT_PARSE_BLOCKED` / `APIFY_CURL_TRANSPORT_ENDPOINT_ERROR` / `APIFY_CURL_TRANSPORT_EXECUTION_ERROR` (curl itself failed or returned non-zero before any HTTP response existed). `condition_pair_status` remains `BOTH_SIDES_PRESENT` / `ONE_SIDED_ONLY` / `BOTH_SIDES_MISSING_OR_BLOCKED`. Never `SOURCE_VIABLE`, `COVERAGE_CLEAR`, `S1_OVERTURNED`, `P1_UNBLOCKED`, or any comparable verdict — no code path in this module can construct one.
+
+### Runbook — implementation package only, not authorized to run
+
+1. Do **not** build or deploy this Actor to Apify as part of this review.
+2. Do **not** set `dry_run: false` + `transport_isolation_canary_enabled: true` against a real Apify run under any circumstances until a separate, explicit user authorization for an actual live run is given.
+3. The fixed manifest at `artifacts/named_binary_probe/apify_price_canary_real_condition_input.json` must be present and exactly reconciled before any run is even attempted — if it's absent from the deployed container/build context, that's the required zero-request hard-stop, not something to work around in this delivery.
+4. If/when a live run is separately authorized: confirm curl exists in the target container (see the open packaging question above), review the resulting rows per the spec's interpretation matrix before drawing any conclusion.
+
+---
+
+
 
 ### Dry-run path (unchanged from prior revision)
 
@@ -212,3 +318,22 @@ No `yes_price`, `1 - price`, `1 - yes_price`, side synthesis, or `canonical_side
 | `UNCONFIRMED_TOKEN_ID` never counts as a usable pair | `live_canary._condition_pair_summary_rows` | `test_condition_pair_unconfirmed_token_id_never_counts_as_present` |
 | No forbidden fields, `is_synthesized` always `False` | `live_canary` row builders | `test_no_forbidden_fields_in_any_output_row` |
 | Mandatory disclaimer on every row type | `live_canary.DISCLAIMER_LABEL` | `test_disclaimer_on_every_row_type` |
+
+### Transport-isolation path (this revision)
+
+| Guardrail | Enforced in | Test(s) |
+|---|---|---|
+| Zero curl processes by default | `main.py` only enters this path when `dry_run` is literal `False` AND `transport_isolation_canary_enabled` is literal `True`; `SubprocessCurlRunner` constructed in exactly one place | `test_default_input_and_dry_run_true_never_touch_transport_isolation`, `test_missing_flag_zero_subprocess_calls` |
+| Both acknowledgements required, literal-boolean only | `transport_isolation_canary.check_transport_isolation_acknowledgements` | `test_missing_transport_isolation_enabled_hard_stops`, `test_missing_acknowledgement_hard_stops`, `test_truthy_non_boolean_values_rejected` |
+| Simultaneous old/new live-mode flags rejected before any process | `main.py` dispatch + `transport_isolation_canary.check_no_mode_ambiguity` | `test_simultaneous_flags_rejected_zero_subprocess_calls` |
+| No optional endpoint / no Gamma on this route | `transport_isolation_canary.check_no_optional_endpoint` | `test_optional_endpoint_flag_true_hard_stops` |
+| Runtime overrides must match fixed values exactly | `transport_isolation_canary.check_runtime_overrides` | `test_conflicting_base_url_hard_stops`, `test_conflicting_window_hard_stops`, `test_conflicting_fidelity_hard_stops` |
+| Exact manifest reconciliation, zero normalization | `transport_isolation_canary.reconcile_manifest_and_raw_input` | `test_reordered_conditions_fail`, `test_side_swap_fails`, `test_changed_token_string_fails`, `test_leading_zero_token_fails`, `test_extra_condition_fails`, `test_missing_condition_fails` |
+| Manifest with extra top-level fields hard-stops | `transport_isolation_canary.load_fixed_manifest` | `test_manifest_with_extra_top_level_field_hard_stops_zero_subprocess` |
+| Curl provenance preflight, zero data requests on failure | `transport_isolation_canary.run_curl_version_preflight` | `test_curl_absent_hard_stops`, `test_curl_version_nonzero_exit_hard_stops`, `test_malformed_version_output_hard_stops` |
+| Exactly six requests, no more possible | `transport_isolation_canary.build_transport_isolation_plan` / `check_exact_request_count` | `test_plan_has_exactly_six_requests` |
+| No custom headers/proxy/cookies/retries/redirects in the curl command | `transport_isolation_canary.SubprocessCurlRunner.run_request` (argument-array construction) | `test_curl_command_construction_exact_and_safe` |
+| Proxy environment variables stripped | `transport_isolation_canary.sanitized_subprocess_env` | `test_proxy_env_vars_stripped_case_insensitively` |
+| No transport fields / `token_identity_basis` on candidate or pair rows | `transport_isolation_canary` row builders | `test_no_forbidden_fields_on_candidate_or_pair_rows` |
+| Mandatory disclaimer, never the old live-canary label | `transport_isolation_canary.DISCLAIMER_LABEL` | `test_disclaimer_on_every_row_type_never_old_label` |
+| Exact field counts (22/12/17/15) | `transport_isolation_canary` row builders | `test_exact_field_counts_all_row_types` |
