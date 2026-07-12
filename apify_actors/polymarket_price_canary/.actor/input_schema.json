@@ -2,7 +2,7 @@
   "title": "Polymarket Price Canary Input (Dry-Run by Default; Gated Live Canary)",
   "type": "object",
   "schemaVersion": 1,
-  "description": "By default (dry_run absent or true) this build makes ZERO network calls, exactly as before -- only GET /prices-history (single-market form) is ever planned; /batch-prices-history is never used. A gated live-canary mode exists behind dry_run=false PLUS live_canary_enabled=true PLUS acknowledge_not_p1_evidence=true. If any of those three is not exactly satisfied, the run hard-stops before any request. Live-canary output is diagnostic only and never P1 evidence -- see disclaimer_label on every live-canary row.",
+  "description": "By default (dry_run absent or true) this build makes ZERO network calls, exactly as before -- only GET /prices-history (single-market form) is ever planned; /batch-prices-history is never used. A gated live-canary mode (Python urllib) exists behind dry_run=false + live_canary_enabled=true + acknowledge_not_p1_evidence=true. A SEPARATE, mutually-exclusive gated transport-isolation-canary mode (system curl) exists behind dry_run=false + transport_isolation_canary_enabled=true + acknowledge_transport_isolation_not_p1_evidence=true. Setting both live_canary_enabled and transport_isolation_canary_enabled to true in the same run is rejected before any request (STOP_APIFY_TRANSPORT_MODE_AMBIGUOUS). All gated output is diagnostic only and never P1 evidence -- see disclaimer_label on every row.",
   "properties": {
     "conditions": {
       "title": "Fixed condition manifest (max 5)",
@@ -147,7 +147,21 @@
       "type": "boolean",
       "editor": "checkbox",
       "default": false,
-      "description": "Only relevant in live-canary mode. If true, adds up to 3 additional /book requests (one side per condition) purely for current-state schema comparison -- never historical, never a parsed_side_candidate_row. Total requests stay within the hard cap of 12 either way (6 mandatory, or 9 with this enabled)."
+      "description": "Only relevant in live-canary mode. If true, adds up to 3 additional /book requests (one side per condition) purely for current-state schema comparison -- never historical, never a parsed_side_candidate_row. Total requests stay within the hard cap of 12 either way (6 mandatory, or 9 with this enabled). Must be false or absent for the transport-isolation-canary route."
+    },
+    "transport_isolation_canary_enabled": {
+      "title": "[TRANSPORT-ISOLATION GATE 1 of 2] Explicitly enable the curl transport-isolation canary",
+      "type": "boolean",
+      "editor": "checkbox",
+      "default": false,
+      "description": "Must be the literal JSON boolean true, together with acknowledge_transport_isolation_not_p1_evidence=true and dry_run=false, or the run hard-stops before any curl process. Mutually exclusive with live_canary_enabled=true (both true in the same run hard-stops with STOP_APIFY_TRANSPORT_MODE_AMBIGUOUS, before any request). Missing or false is the safe default. Output is transport/reachability evidence only -- no coverage or P1 conclusion, no automatic future-run authorization."
+    },
+    "acknowledge_transport_isolation_not_p1_evidence": {
+      "title": "[TRANSPORT-ISOLATION GATE 2 of 2] Acknowledge this is not P1 evidence",
+      "type": "boolean",
+      "editor": "checkbox",
+      "default": false,
+      "description": "Must be the literal JSON boolean true, together with transport_isolation_canary_enabled=true and dry_run=false, or the run hard-stops before any curl process. By setting this true you acknowledge that transport-isolation-canary output is diagnostic only: it does not establish P0 coverage, does not overturn S1_SOURCE_NOT_VIABLE, and does not unblock P1. Missing or false is the safe default."
     }
   },
   "required": ["conditions"]

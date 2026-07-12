@@ -2,7 +2,7 @@
   "actorSpecification": 1,
   "name": "polymarket-price-canary",
   "title": "Polymarket Price Canary (Dry-Run Only)",
-  "description": "Validates a small, fixed Polymarket condition manifest and builds the planned Gamma/CLOB request URLs (Gamma metadata, CLOB /prices-history, CLOB current-shape endpoints). Dry-run by default: zero network calls. A gated live-canary mode exists behind three explicit input flags (dry_run=false + live_canary_enabled=true + acknowledge_not_p1_evidence=true); any missing flag hard-stops before any request. See project_context/SPEC_apify_live_price_source_canary.md in rigolugo/pm_research for the full design and guardrail rationale.",
+  "description": "Validates a small, fixed Polymarket condition manifest and builds the planned Gamma/CLOB request URLs (Gamma metadata, CLOB /prices-history, CLOB current-shape endpoints). Dry-run by default: zero network calls. A gated live-canary mode (Python urllib) exists behind three explicit input flags (dry_run=false + live_canary_enabled=true + acknowledge_not_p1_evidence=true). A separate, mutually-exclusive gated transport-isolation-canary mode (system curl) exists behind dry_run=false + transport_isolation_canary_enabled=true + acknowledge_transport_isolation_not_p1_evidence=true. This build does not assume curl exists in the Actor's container image, and no run of either gated mode has been authorized or performed as part of this delivery. See project_context/SPEC_apify_live_price_source_canary.md and SPEC_apify_transport_isolation_canary.md in rigolugo/pm_research for the full design and guardrail rationale.",
   "version": "0.1.0",
   "buildTag": "latest",
   "meta": {
