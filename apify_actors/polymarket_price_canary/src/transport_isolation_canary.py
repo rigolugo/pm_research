@@ -27,8 +27,11 @@ Structural safety, not just a flag:
     for that request.
   - Every function that builds a request plan, parses a response, or
     validates the manifest is pure computation -- no I/O -- and is
-    independently unit-tested with injected fake/poisoned runners. No test
-    in this codebase ever constructs a real `SubprocessCurlRunner`.
+    independently unit-tested with injected fake/poisoned runners. No real
+    curl subprocess is invoked by the tests. One command-construction test
+    instantiates `SubprocessCurlRunner` only after monkeypatching
+    `subprocess.run` to a non-executing fake; all other tests use injected
+    fake or poisoned runners.
 
 Guardrails encoded here (see the accepted spec for full rationale):
   - Exactly 3 conditions, one per subclass (UP_DOWN, OVER_UNDER,
@@ -503,9 +506,11 @@ class CurlRequestResult:
 
 class SubprocessCurlRunner:
     """The ONLY class in this codebase that can invoke a real `curl`
-    subprocess. Instantiated in exactly one place:
-    run_transport_isolation_from_actor_input(). Never instantiated in any
-    test -- tests always inject a fake/poisoned runner instead. Never
+    subprocess. Instantiated in exactly one production path:
+    run_transport_isolation_from_actor_input(). No real curl subprocess is
+    invoked by the tests. One command-construction test instantiates this
+    class only after monkeypatching `subprocess.run` to a non-executing
+    fake; all other tests use injected fake or poisoned runners. Never
     exercised against a real network in this delivery."""
 
     def __init__(
