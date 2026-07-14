@@ -1,0 +1,56 @@
+{
+  "endpoint": {
+    "fragment_allowed": false,
+    "host": "clob.polymarket.com",
+    "path": "/prices-history",
+    "port": null,
+    "scheme": "https"
+  },
+  "exact_url_template_with_fidelity": "https://clob.polymarket.com/prices-history?market={market}&startTs={startTs}&endTs={endTs}&interval=max&fidelity={fidelity}",
+  "exact_url_template_without_fidelity": "https://clob.polymarket.com/prices-history?market={market}&startTs={startTs}&endTs={endTs}&interval=max",
+  "forbidden": [
+    "duplicate_query_keys",
+    "unregistered_query_keys",
+    "empty_query_key",
+    "fragment",
+    "default_port",
+    "userinfo",
+    "path_normalization",
+    "parameter_reordering"
+  ],
+  "hash_rule": "exact_url_sha256 = SHA256(UTF-8 exact_url bytes) with no trailing LF",
+  "parameter_contract": {
+    "endTs": {
+      "derivation": "ceil(exact_resolved_at_ts_ns / 1000000000)",
+      "integer_grammar": "0|[1-9][0-9]*",
+      "source": "request_plan.request_end_ts"
+    },
+    "fidelity": {
+      "included_if_and_only_if": "policy_resolution.fidelity_included == true",
+      "integer_grammar": "0|[1-9][0-9]*",
+      "source": "policy_resolution.fidelity_value"
+    },
+    "interval": {
+      "literal": "max"
+    },
+    "market": {
+      "lexical_preservation": "retain original stripped Source-B/Source-D-reconciled token string exactly; do not canonicalize numeric-equivalent forms such as .0",
+      "percent_encoding": "RFC3986 percent-encode every UTF-8 byte outside ALPHA DIGIT - . _ ~ using uppercase hex",
+      "source": "request_plan.token_id_lexeme"
+    },
+    "startTs": {
+      "derivation": "floor(exact_decision_lower_ts_ns / 1000000000)",
+      "integer_grammar": "0|[1-9][0-9]*",
+      "source": "request_plan.request_start_ts"
+    }
+  },
+  "parameter_order": [
+    "market",
+    "startTs",
+    "endTs",
+    "interval",
+    "fidelity_if_included"
+  ],
+  "schema_version": "local_curl_url_serialization_policy.v22",
+  "spec_revision": 22
+}

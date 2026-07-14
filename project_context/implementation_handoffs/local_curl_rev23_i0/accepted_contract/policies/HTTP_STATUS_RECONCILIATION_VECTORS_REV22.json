@@ -1,0 +1,34 @@
+{
+  "schema_version": "local_curl_http_status_reconciliation_vectors.v22",
+  "spec_revision": 22,
+  "vectors": [
+    {
+      "expected_issue_code": "HTTP_STATUS_WRITEOUT_200_HEADER_404",
+      "expected_stop": "STOP_HTTP_STATUS_EVIDENCE_MISMATCH",
+      "selected_header_status_line": "HTTP/1.1 404 Not Found",
+      "vector_id": "WOUT_200_HEADER_404",
+      "write_out_http_code_bytes": "200"
+    },
+    {
+      "expected_issue_code": "HTTP_STATUS_WRITEOUT_404_HEADER_200",
+      "expected_stop": "STOP_HTTP_STATUS_EVIDENCE_MISMATCH",
+      "selected_header_status_line": "HTTP/1.1 200 OK",
+      "vector_id": "WOUT_404_HEADER_200",
+      "write_out_http_code_bytes": "404"
+    },
+    {
+      "expected_issue_code": "HTTP_STATUS_WRITEOUT_000_HEADER_PRESENT",
+      "expected_stop": "STOP_HTTP_STATUS_EVIDENCE_MISMATCH",
+      "selected_header_status_line": "HTTP/1.1 200 OK",
+      "vector_id": "WOUT_000_WITH_SELECTED_FINAL_HEADER",
+      "write_out_http_code_bytes": "000"
+    },
+    {
+      "expected_issue_code": "HTTP_STATUS_WRITEOUT_VALID_HEADER_STATUS_INVALID",
+      "expected_stop": "STOP_HTTP_STATUS_EVIDENCE_MISMATCH",
+      "selected_header_status_line": "HTP/1.1 200 OK",
+      "vector_id": "VALID_WOUT_INVALID_STATUS_LINE_HEADER",
+      "write_out_http_code_bytes": "200"
+    }
+  ]
+}
