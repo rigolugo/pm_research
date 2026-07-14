@@ -278,6 +278,8 @@ C1A-F2 artifact review impact: `project_context/HANDOFF_orchestrator_option_c_c1
 - `test_price_source_option_c_c1a_f1_canary_prep.py` — C1A-F1 prep suite; verifies exact accepted 3-condition set, caps, manifest/SQL consistency, no local-tx-hash filter, no forbidden winner/outcome/PnL/score fields, and no network/SQL execution path.
 - `test_price_source_option_d_temporal_inrange_precheck.py` — Option D temporal in-range precheck fixture suite; local fixture tests accepted with 53 passed.
 
+REV23 I0 note: future implementation test-source files may be added under `tests/local_curl_per_side/`, but **I0 authorizes authoring only, not execution**. Until separately authorized and run, they must be indexed as `NOT_RUN_NOT_AUTHORIZED`, not as passing tests.
+
 ---
 
 ## Core package (`pm_research/`)
@@ -287,6 +289,8 @@ C1A-F2 artifact review impact: `project_context/HANDOFF_orchestrator_option_c_c1
 - `semantics/` — named-binary semantics layer: `lexicon.py`, `mapping_audit.py`, `resolution_schema.py`, `resolution_source.py`, `named_binary.py`, `__init__.py`.
 - `splits.py` — `rolling_train_test_splits`.
 - `calibration.py` — `IsotonicCalibrator`.
+
+REV23 I0 preferred implementation namespace: `pm_research/local_curl_per_side/`. This path is authorized only for the deterministic I0 contract core described in the canonical handoff; it is not authorization for runtime orchestration, curl, network, replay, or empirical artifacts.
 
 ---
 
@@ -320,34 +324,73 @@ C1A-F2 artifact review impact: `project_context/HANDOFF_orchestrator_option_c_c1
 - `README_option_b_b0_failure_diagnostic.md` — implementation/run-instructions README for the corrected B0 diagnostic harness. Historical now that corrected B0 has completed; no further B0 run is authorized by this README.
 - `HANDOFF_claude_option_b_b0_failure_diagnostic_IMPLEMENTATION.md` — Claude-to-Orchestrator implementation handoff for the corrected B0 diagnostic harness. Code/test handoff only; did not authorize a run by itself.
 - `HANDOFF_orchestrator_option_b_b0_corrected_diagnostic_RESULT.md` — docs-only handoff recording the accepted corrected B0 diagnostic result: artifact-complete/no-halt run, but Data API `/trades` mechanical trust not established (`OVERLAP_API_LOCAL_MISMATCH = 7`, `OVERLAP_PAGINATION_PARTIAL = 3`, `OVERLAP_MATCHED = 0`). B1/P1/downstream remain blocked; `named_binary_probe_blocked` remains true.
-- `SPEC_price_source_option_c_onchain.md` — ACCEPTED / SPEC ONLY (Revision 3). Third per-side/token-identity price-source candidate review (after Option A/S1-ALT and Option B, both closed negative): bounded decoded Dune/vendor OrderFilled event tables. C0 (candidate/source-interface selection) is accepted, spec-only, no run — this remains current. At Revision 3, C1 (bounded coverage/trust pilot) was guardrail-blocked (local-`tx_hash` scoping likely reproduces S1-ALT and cannot test missing coverage by construction; independent condition/time-window event querying risks indexer-shaped work under "No full indexer"). That pre-C1R block is superseded by the separately accepted C1R addendum below.
-- `HANDOFF_orchestrator_option_c_onchain_spec.md` — Claude-to-Orchestrator handoff recording the ACCEPT FINDING for the Option C Revision 3 spec: C0 accepted scope, C1 guardrail block (as it stood at Revision 3), files patched, and confirmation that no state/gate/probe authorization changed.
-- `SPEC_price_source_option_c_onchain_C1R_addendum.md` — ACCEPTED / SPEC ONLY. C1R (C1 Revised) design addendum: resolves the Revision-3 C1 guardrail block via fixed selector manifest (outcome-independent, never reads winner/outcome fields), subquery-wrapped SQL with per-condition `cap+1` over-fetch, hard row-cap enforcement (fail-fast), empty-export detection (`C1_SOURCE_EMPTY`), row-level evidence artifacts, and source-table validation against the two decoded OrderFilled tables only. Pure-logic tests: 50 passing. No execution.
-- `HANDOFF_orchestrator_option_c_c1r_design_addendum.md` — Claude-to-Orchestrator handoff for C1R design acceptance: how the design resolves the Revision-3 scoping trap, 50 tests passing, no run/execution, all guardrails preserved.
-- `README_price_source_option_c_c1a.md` — C1A implementation runbook: manifest builder + bounded canary reconciliation (pure code/test-only, 50 tests, no network). Historical runbook for the now-completed C1A user-run; does not authorize another run by itself. Accepted result: valid `C1_ROW_EXPLOSION` halt. C1B/C2/P1/P2/P3 remain NOT authorized.
-- `scripts/price_source_option_c_c1a_manifest.py` — C1A selector manifest builder (local-only, no network). Validates candidates (3–5 conditions, `RESOLVED_SINGLE_WINNER` status, oriented subclasses only), enumerates token pairs (S1 discipline, never reading outcome/winner fields), validates `source_table_version` against a strict regex + two-table allowlist, and renders the Dune SQL query text (subquery-wrapped, `cap+1` over-fetch — never executed by this script). 29 tests, all passing.
-- `scripts/price_source_option_c_c1a_canary.py` — C1A bounded canary reconciliation (Dune CSV consumer, local-only, no network). Enforces hard per-condition/global row caps with fail-fast (`C1_ROW_EXPLOSION`), halts on empty export (`C1_SOURCE_EMPTY`), tags rows by raw token match (no interpretation), compares tx_hash coverage against the local store, persists row-level evidence (`option_c_c1a_raw_rows_sample.csv`, `option_c_c1a_tagged_rows.csv`) even on a halt, and reports `C1_CANARY_EXECUTED_NEEDS_REVIEW` on a clean run — never auto-emits `C1_CANARY_DESIGN_CLEAR` (that label is Orchestrator-applied only, after manual review). 21 tests, all passing.
-- `tests/test_price_source_option_c_c1a_manifest.py` — C1A manifest builder test suite (29 tests, all passing in a bare Python environment; no pandas/Store dependency exercised).
-- `tests/test_price_source_option_c_c1a_canary.py` — C1A canary reconciliation test suite (21 tests, all passing; covers cap+1 explosion, exactly-at-cap non-explosion, global cap+1 explosion, empty-export halt, non-halt `EXECUTED_NEEDS_REVIEW` status, row-level artifact writer including `LOCAL_ONLY` synthetic rows, and invalid/non-allowlisted `source_table_version` rejection).
-- `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md` — Claude-to-Orchestrator handoff for C1A implementation completion: all prior BLOCK rounds closed, 50 tests passing, C1A authorized for user-run only (not Claude execution), next step is user-run per README with results returned to orchestrator for review before any C1B/C2/P1 discussion.
-- `HANDOFF_orchestrator_option_c_c1a_timestamp_fix.md` — local parser fix handoff: manifest timestamp parser now accepts datetime-like / pandas `Timestamp` values from `Store.load_trades().traded_at`; parser fix only, no source-viability evidence.
-- `HANDOFF_orchestrator_option_c_c1a_canary_parser_fix.md` — local parser fix handoff: canary parser now accepts Dune timestamp strings with `UTC` suffix and tolerates UTF-8 BOM CSV headers; parser fix only, no source-viability evidence.
-- `HANDOFF_orchestrator_option_c_c1a_RESULT.md` — Claude-to-Orchestrator handoff recording accepted C1A result: user-run manifest resolved 5/excluded 0 and canary halted validly on `C1_ROW_EXPLOSION`; no C1B/C2/P1/probe authorization follows.
-- `SPEC_price_source_option_c_c1a_followup.md` — ACCEPTED / SPEC ONLY. C1A-F1 selector-policy shape accepted in principle after the accepted C1A `C1_ROW_EXPLOSION` halt. It defines a deterministic, outcome-independent, local-density / subclass-balanced selector-policy shape with an explicit default selector pool limited to the already accepted small S1/S1-ALT eligible pool / C1A-compatible measured pool unless broader local-only computation is separately authorized. It rejects hand-picking, winner/outcome leakage, local-`tx_hash` Dune filtering, Dune count scouting, cap increases, truncation, full-universe scanning/profiling, reusable volume-profiling artifacts, and treating local density as a guaranteed predictor. It authorizes no implementation, no code/tests, no SQL/query generation, no Dune/API/RPC/network run, no bounded user-run, no C1B/C2/P1/P2/P3/probe, no scoring/backfill/wallet/`log_index`/PnL, no price artifact, and no side synthesis.
-- `HANDOFF_orchestrator_option_c_c1a_followup_SPEC.md` — Claude-to-Orchestrator handoff for the accepted C1A-F1 follow-up selector-policy SPEC. Documentation-only; records that no code, tests, artifacts, query, implementation, or run are authorized.
-- `README_price_source_option_c_c1a_f1_canary_prep.md` — C1A-F1 prep-only runbook. Historical after the C1A-F1 user-run; not authorization for rerun or downstream work.
-- `HANDOFF_orchestrator_option_c_c1a_f1_canary_PREP.md` — prep-only handoff for C1A-F1 SQL/manifest package; no execution authorized by the handoff itself.
-- `HANDOFF_orchestrator_option_c_c1a_f1_canary_REVIEW.md` — docs-only post-run handoff recording the accepted C1A-F1 mixed evidence result: `C1_CANARY_EXECUTED_NEEDS_REVIEW`, 133 total Dune rows, 34 total Dune-only tx hashes, no row explosion, no unresolved side rows, no price artifact, and no P1/C1B/C2/probe authorization.
-- `SPEC_price_source_option_c_c1a_f2_followup.md` — ACCEPTED / SPEC ONLY. C1A-F2 no-run / artifact-review-only follow-up after accepted C1A-F1 mixed evidence. Rejects another canary, selector-only F2, SQL generation/modification, Dune/API/RPC/network calls, local data runs, cap changes, truncation, local-`tx_hash` Dune filtering, Dune count scouting, C1B/C2/P1/P2/P3/probe, scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, price artifacts, gate changes, and side synthesis.
-- `HANDOFF_orchestrator_option_c_c1a_f2_followup_SPEC.md` — docs-only handoff accompanying the accepted F2 SPEC; records that F2 may proceed only as no-run / artifact-review-only and authorizes no implementation or run.
-- `HANDOFF_orchestrator_option_c_c1a_f2_ARTIFACT_REVIEW.md` — accepted C1A-F2 review-only artifact memo; result `C1F2_ARTIFACTS_INSUFFICIENT` because the `OVER_UNDER` local-only evidence lacks local-side row detail needed for causal classification. No P1 unblock, no Option C viability, no C1 design-clear, no further canary, no price artifact.
-- `SPEC_price_source_option_c_artifact_enrichment.md` — ACCEPTED / SPEC ONLY. Defines minimum evidence-capture requirements for any possible future Option C / decoded `OrderFilled` diagnostic so local-only, Dune-only, and overlap rows can be reviewed without rerunning or guessing. Defines required future artifacts (`local_comparison_rows.csv`, `source_orderfilled_rows.csv`, `comparison_tagged_rows.csv`, `comparison_by_condition.csv`, `comparison_reconciliation.json`, `artifact_schema.md`), required columns, reconciliation checks, stop/reject labels, and guardrail flags. Authorizes no implementation, no tests, no local data reads, no Dune/API/RPC/network, no SQL generation/modification/execution, no additional canary, no one-condition diagnostic, no C1B/C2/P1/P2/P3/probe, no scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, no price artifact, no gate change, no cap change, no row truncation, and no side synthesis.
-- `HANDOFF_orchestrator_option_c_artifact_enrichment_SPEC.md` — docs-only handoff accompanying the accepted artifact-enrichment SPEC; records `ARTIFACT_ENRICHMENT_SPEC_ONLY` and preserves all standing blocks.
-- `SPEC_price_source_option_d_l2_archive.md` — ACCEPTED / SPEC ONLY. Option D L2 order-book vendor archive coverage-feasibility spec for PMXT v2 and Telonex L2 order-book/quote archives. Candidate scope: PMXT v2 only from `2026-04-13T19:00:00Z`; Telonex L2 order-book/quote history from `2025-10-11T00:00:00Z`. PMXT v1 and Telonex on-chain fills are out of scope for L2 book coverage unless separately reviewed. Accepted channel-mismatch guards: `VENDOR_HISTORY_NOT_L2_BOOK_RELEVANT` and `STOP_VENDOR_HISTORY_CHANNEL_MISMATCH`. Authorizes no implementation, tests, local temporal precheck, vendor fetch, account/API/paid action, Pass 1, Pass 2, price artifact, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis. P1 remains blocked; `named_binary_probe_blocked` remains true.
-- `SPEC_price_source_option_d_temporal_inrange_precheck.md` — ACCEPTED / SPEC ONLY. Option D local-only/read-only temporal in-range precheck design. The authorized local-only run later completed and is accepted as `OPTION_D_TEMPORAL_INRANGE_PRECHECK_COMPLETED_ACCEPTED`.
-- `README_price_source_option_d_temporal_inrange_precheck.md` — implementation/runbook for the Option D temporal precheck. Historical after accepted local run; does not authorize rerun or downstream work by itself.
-- `HANDOFF_orchestrator_option_d_temporal_inrange_precheck_IMPLEMENTATION_PATCH.md` — implementation patch handoff; fixture tests accepted with 53 passed before the user-run.
-- `HANDOFF_orchestrator_option_d_temporal_inrange_precheck_RESULT.md` — accepted result handoff: PMXT v2 temporal coverage 0.456932 (closed/deprioritized for broad full-P0 coverage); Telonex L2 temporal coverage 0.951024 pooled but NAMED_OTHER 0.918096, so only a later SPEC ONLY vendor-coverage review is plausible. P1 remains blocked; `named_binary_probe_blocked` remains true.
+- `SPEC_price_source_option_c_onchain.md` — ACCEPTED / SPEC ONLY (Revision 3). Third per-side/token-identity price-source candidate review (after Option A/S1-ALT and Option B, both closed negative): bounded decoded Dune/vendor OrderFilled event tables. C0 (candidate/source-interface selection) is accepted, spec-only, no run — this remains current. At Revision 3, C1 (bounded coverage/trust pilot) was guardrail-blocked; that pre-C1R block is superseded by the separately accepted C1R addendum below.
+- `HANDOFF_orchestrator_option_c_onchain_spec.md` — Claude-to-Orchestrator handoff recording the ACCEPT FINDING for the Option C Revision 3 spec.
+- `SPEC_price_source_option_c_onchain_C1R_addendum.md` — ACCEPTED / SPEC ONLY. C1R design addendum: fixed selector manifest, subquery-wrapped SQL, cap+1 over-fetch, hard caps, empty-export detection, row-level evidence, and source-table validation. Pure-logic tests: 50 passing. No execution.
+- `HANDOFF_orchestrator_option_c_c1r_design_addendum.md` — Claude-to-Orchestrator handoff for C1R design acceptance.
+- `README_price_source_option_c_c1a.md` — C1A implementation runbook; historical after the accepted C1A user-run; does not authorize another run.
+- `scripts/price_source_option_c_c1a_manifest.py` — C1A selector manifest builder; 29 tests passing.
+- `scripts/price_source_option_c_c1a_canary.py` — C1A bounded canary reconciliation; 21 tests passing.
+- `tests/test_price_source_option_c_c1a_manifest.py` — C1A manifest builder tests.
+- `tests/test_price_source_option_c_c1a_canary.py` — C1A canary tests.
+- `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md` — implementation handoff for C1A.
+- `HANDOFF_orchestrator_option_c_c1a_timestamp_fix.md` — parser-fix handoff for datetime-like values.
+- `HANDOFF_orchestrator_option_c_c1a_canary_parser_fix.md` — Dune timestamp/BOM parser-fix handoff.
+- `HANDOFF_orchestrator_option_c_c1a_RESULT.md` — accepted valid-halt result handoff.
+- `SPEC_price_source_option_c_c1a_followup.md` — ACCEPTED / SPEC ONLY C1A-F1 selector-policy design.
+- `HANDOFF_orchestrator_option_c_c1a_followup_SPEC.md` — documentation-only C1A-F1 spec handoff.
+- `README_price_source_option_c_c1a_f1_canary_prep.md` — historical C1A-F1 prep runbook; no rerun authorization.
+- `HANDOFF_orchestrator_option_c_c1a_f1_canary_PREP.md` — prep-only handoff.
+- `HANDOFF_orchestrator_option_c_c1a_f1_canary_REVIEW.md` — accepted mixed-evidence result handoff.
+- `SPEC_price_source_option_c_c1a_f2_followup.md` — ACCEPTED / SPEC ONLY no-run artifact-review follow-up.
+- `HANDOFF_orchestrator_option_c_c1a_f2_followup_SPEC.md` — docs-only F2 spec handoff.
+- `HANDOFF_orchestrator_option_c_c1a_f2_ARTIFACT_REVIEW.md` — accepted result `C1F2_ARTIFACTS_INSUFFICIENT`.
+- `SPEC_price_source_option_c_artifact_enrichment.md` — ACCEPTED / SPEC ONLY evidence-capture requirements for any future Option C diagnostic.
+- `HANDOFF_orchestrator_option_c_artifact_enrichment_SPEC.md` — docs-only artifact-enrichment handoff.
+- `SPEC_price_source_option_d_l2_archive.md` — ACCEPTED / SPEC ONLY Option D L2 archive coverage-feasibility spec.
+- `SPEC_price_source_option_d_temporal_inrange_precheck.md` — ACCEPTED / SPEC ONLY Option D local temporal precheck design; later run accepted.
+- `README_price_source_option_d_temporal_inrange_precheck.md` — historical implementation/runbook; does not authorize rerun.
+- `HANDOFF_orchestrator_option_d_temporal_inrange_precheck_IMPLEMENTATION_PATCH.md` — implementation patch handoff; 53 fixture tests passed before user run.
+- `HANDOFF_orchestrator_option_d_temporal_inrange_precheck_RESULT.md` — accepted temporal result handoff.
+
+### Local-curl Revision 23 accepted contract and active I0 handoff
+
+Canonical directory:
+
+`project_context/implementation_handoffs/local_curl_rev23_i0/`
+
+Required files and subdirectories:
+
+- `README_FIRST.md` — handoff entrypoint and mandatory read order.
+- `IMPLEMENTATION_AUTHORIZATION_SCOPE.md` — controlling I0 authorization boundary.
+- `SENTINEL_ACCEPTANCE_DECISION.md` — records acceptance of Revision 23 with Amendments 01 and 02.
+- `CANONICAL_REPOSITORY_POINTER.md` — repository and bootstrap pointer.
+- `HANDOFF_INVENTORY.md` — complete handoff inventory.
+- `HANDOFF_SHA256SUMS.txt` — integrity manifest for the handoff contents.
+- `prompts/CLAUDE_NEW_CHAT_PROMPT.md` — implementation-chat prompt.
+- `prompts/SENTINEL_NEW_CHAT_PROMPT.md` — implementation-review-chat prompt.
+- `accepted_contract/` — materialized effective Revision 23 governing contract, including corrected governing manifest and sidecar.
+- `amendment_audit/` — Amendment 01 and Amendment 02 audit trail.
+
+Handoff ZIP:
+
+- `claude_rev23_i0_implementation_handoff.zip`
+- SHA-256: `606a6f366d502508166fbd2933e418407185339230a12004d25be589f0df6ec5`
+
+Accepted effective contract hashes:
+
+- specification: `92e2c4acff45463e8ef566cbc56a5248cb23bd810b310fbea2bdeca197c0d916`
+- schema registry: `ce1ede1a27b438f6a8f6c04bf7c1642d74a2419719050e2f6bd85cb6ef949aca`
+- request-plan/authorization contract: `4f0834b48d08fcfdaf32970d2542e61ab7c1263bb7ec727de1f02f2c1a7fbd37`
+- governing-package semantic hash: `d62a48d3157937edff343c1249837be4a147356cb960c481804ca4800f889cef`
+- governing-package manifest file hash: `cbced7b6072cb33339c624474b746cc7cf347eb33ad946b8364118b83ce1a8eb`
+
+Authorization impact:
+
+- Revision 23 is accepted as SPEC ONLY.
+- REV23 I0 source and unexecuted test-source authoring are authorized.
+- Test execution, local research-data reads, curl/subprocess/network execution, reservation/request execution, replay, empirical artifacts, later V-stages, CLI/dependency changes, P1/P2/P3, probe, scoring, price construction, side synthesis, wallet/PnL/trading, and gate changes remain unauthorized.
+- The handoff is an implementation contract, not a run authorization.
 
 ## Stage 4 audit gate fields (in `named_binary_audit_gate.json` when `--resolution-source` is supplied)
 
@@ -373,8 +416,10 @@ Pin all of the following in the Claude Project Files panel (read `START_HERE.md`
 - `DATA_CONTRACTS_named_binary_probe.md` — exact inspected schemas/API surfaces for the probe.
 - `PRICE_INPUT_CONTRACT_named_binary_probe.md` — accepted S0 price-input finding (why P1 is blocked).
 - `CLAUDE_PROJECT_SETTINGS.md` — operational Claude capability settings; does not override the above and authorizes nothing.
+- `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md` — current active implementation-handoff entrypoint.
+- `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md` — controlling I0 authorization. This file must be read in every future Claude, Sentinel, or Professor chat touching REV23 implementation.
 - Active specs/handoffs as applicable — `SPEC_named_binary_probe.md`, `SPEC_p0_representativeness_quality_audit.md`, `SPEC_price_source_s1_coverage.md`, `SPEC_price_source_alt_trade_prints.md`, `SPEC_price_source_option_b_data_api_review.md`, `SPEC_option_b_b0_failure_diagnostic.md`, `SPEC_price_source_option_c_onchain.md`, `SPEC_price_source_option_c_onchain_C1R_addendum.md`, `README_price_source_option_c_c1a.md`, `SPEC_price_source_option_c_c1a_followup.md`, `README_price_source_option_c_c1a_f1_canary_prep.md`, `SPEC_price_source_option_c_c1a_f2_followup.md`, `SPEC_price_source_option_c_artifact_enrichment.md`, `SPEC_price_source_option_d_l2_archive.md`, `SPEC_price_source_option_d_temporal_inrange_precheck.md`, `HANDOFF_orchestrator_named_binary_probe_p0.md`, `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`, `HANDOFF_claude_p0_representativeness_ACCEPTED_CLOSED.md`, `HANDOFF_orchestrator_option_b_spec_s1_1_patch.md`, `HANDOFF_orchestrator_option_b_b0_RESULT.md`, `HANDOFF_orchestrator_option_b_b0_failure_diagnostic.md`, `HANDOFF_orchestrator_option_b_b0_corrected_diagnostic_RESULT.md`, `HANDOFF_orchestrator_option_c_onchain_spec.md`, `HANDOFF_orchestrator_option_c_c1r_design_addendum.md`, `HANDOFF_orchestrator_option_c_c1a_IMPLEMENTATION.md`, `HANDOFF_orchestrator_option_c_c1a_RESULT.md`, `HANDOFF_orchestrator_option_c_c1a_followup_SPEC.md`, `HANDOFF_orchestrator_option_c_c1a_f1_canary_PREP.md`, `HANDOFF_orchestrator_option_c_c1a_f1_canary_REVIEW.md`, `HANDOFF_orchestrator_option_c_c1a_f2_followup_SPEC.md`, `HANDOFF_orchestrator_option_c_c1a_f2_ARTIFACT_REVIEW.md`, `HANDOFF_orchestrator_option_c_artifact_enrichment_SPEC.md`.
 - `ORCHESTRATOR_LOW_CONTEXT_MODE.md` — reusable low-context review/decision protocol. Documentation only; overrides nothing and authorizes nothing.
 - Supporting reference (not overriding): `DUNE_DATA_NOTES.md`.
 
-Keep these version-controlled in the repo AND pinned in the Claude Project Files panel; re-upload when changed so the two stay in sync.
+Keep these version-controlled in the repo AND pinned in the Claude Project Files panel; re-upload when changed so the two stay in sync. The REV23 I0 handoff must also exist in the canonical repository; a chat-local ZIP or `/mnt/data` copy is not sufficient authority for future chats.

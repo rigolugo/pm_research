@@ -67,6 +67,7 @@ Read these, in this order, before doing anything:
     - `HANDOFF_orchestrator_option_c_artifact_enrichment_SPEC.md`
     - `HANDOFF_orchestrator_option_d_temporal_inrange_precheck_IMPLEMENTATION_PATCH.md`
     - `HANDOFF_orchestrator_option_d_temporal_inrange_precheck_RESULT.md`
+23. `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`, then `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md` — active REV23 I0 Claude implementation handoff. Revision 23 with Amendments 01 and 02 is accepted. Gustavo authorized only the pure deterministic contract-core implementation package. Source and test-source authoring are authorized; test execution, local research-data reads, curl/subprocess/network execution, replay, empirical artifacts, P1/P2/P3, and probe execution remain unauthorized.
 
 Supporting references, not overriding the above:
 
@@ -99,11 +100,19 @@ These supporting files do not authorize implementation, data fetching, P1/P2/P3 
 
 - **Option D temporal in-range precheck: COMPLETED / ACCEPTED — RESULT `OPTION_D_TEMPORAL_INRANGE_PRECHECK_COMPLETED_ACCEPTED`.** Local-only/read-only run completed with exact P0 reconciliation: 39,693 / 39,693 pooled; UP_DOWN 22,012; OVER_UNDER 1,003; NAMED_OTHER 16,678; no missing first-trade anchors; no missing `resolved_at`; no halt. PMXT v2 temporal in-range coverage: 18,137 / 39,693 = 0.456932 pooled (UP_DOWN 0.529211 / OVER_UNDER 0.661017 / NAMED_OTHER 0.349263). Telonex L2 temporal in-range coverage: 37,749 / 39,693 = 0.951024 pooled (UP_DOWN 0.974696 / OVER_UNDER 0.979063 / NAMED_OTHER 0.918096). PMXT v2 is closed/deprioritized for broad full-P0 Option D coverage on timing grounds. Telonex L2 is plausible only for a later separately authorized SPEC ONLY vendor-coverage review; `NAMED_OTHER` below 0.95 prevents treating it as a clean automatic pass. No vendor data, prices, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis follows. `named_binary_probe_blocked` remains `true`.
 
+- **Local-curl per-side dataset verification Revision 23: ACCEPTED / SPEC ONLY.** The frozen Revision 23 package plus `REV23_AMENDMENT_01` and `REV23_AMENDMENT_02` form the accepted governing contract. No empirical replay has been authorized or performed under this acceptance.
+
+- **REV23 I0 contract-core implementation package: AUTHORIZED / ACTIVE.** Gustavo explicitly authorized Claude to author one narrowly scoped, pure deterministic implementation package under `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`. Authorized: source code and unexecuted test-source files for canonical serialization/hashing, identities, manifests, URL/request-plan validation, I0 schemas/state bindings, cancellation proof validation, and HTTP-status reconciliation. Unauthorized: test execution, local research-data reads, curl/subprocess/network execution, reservation or request execution, replay, empirical artifacts, V1/V2/full V0–V10 orchestration, CLI integration, dependency changes, P1/P2/P3, probe, scoring, price construction, side synthesis, wallet/PnL/trading, and gate changes.
+
 - **Chat2 Dune wallet-cohort discovery: BLOCKED.** It is a separate phase. Outcome-source scoreability does not unblock wallet discovery.
 
 ---
 
 ## Next possible step — only if explicitly authorized by the user
+
+The current authorized step is Claude preparation of the REV23 I0 pure deterministic contract-core implementation package. Claude must return source files, authored-but-unexecuted tests, a conformance report, a changed-file manifest, a patch, an authorization-observed statement, and `TEST_EXECUTION_STATUS.md = NOT_RUN_NOT_AUTHORIZED`.
+
+No test execution follows from I0 implementation authorization. A later test-execution stage requires a separate explicit Gustavo authorization after Sentinel reviews the implementation package.
 
 No further Option B B0 execution is authorized. B1 remains not authorized. Option B should not proceed to B1/full Pass 1/S2/P1/P2/P3/probe.
 
@@ -111,13 +120,15 @@ The C1A-F1 bounded canary has executed and is accepted as reviewable mixed cover
 
 **C1B full sampled coverage is not authorized. C2 reusable/production implementation is not authorized. P1/P2/P3/probe remain unauthorized. `named_binary_probe_blocked` remains `true`.**
 
-Any further move remains bounded by the project guardrails. No data run, network/API/RPC call, implementation, backfill, scoring, probe, P1/P2/P3 continuation, wallet/OrdersMatched/`log_index`/PnL, or gate change is authorized unless explicitly approved in-chat and allowed by the current repo guardrails. The artifact-enrichment evidence-capture SPEC is now ACCEPTED / SPEC ONLY for the unresolved `OVER_UNDER` evidence gap. This acceptance still does not authorize implementation, tests, artifact generation, a run, SQL generation/modification/execution, Dune/API/RPC/network calls, local data processing, another canary, one-condition diagnostic, C1B/C2/P1/P2/P3/probe, scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, price artifacts, gate changes, cap changes, row truncation, or side synthesis.
+Any further move remains bounded by the project guardrails. Outside the explicit REV23 I0 source-authoring tranche, no data run, network/API/RPC call, implementation, backfill, scoring, probe, P1/P2/P3 continuation, wallet/OrdersMatched/`log_index`/PnL, or gate change is authorized unless explicitly approved in-chat and allowed by the current repo guardrails. The artifact-enrichment evidence-capture SPEC remains ACCEPTED / SPEC ONLY for the unresolved `OVER_UNDER` evidence gap and authorizes no implementation or run.
 
 For Option D, the temporal in-range precheck has completed and is ACCEPTED. The only possible next Option D step — and only if separately authorized — is a **SPEC ONLY** vendor-coverage review, with Telonex L2 the only broad candidate still plausible from timing coverage. PMXT v2 should not be pursued as broad full-P0 coverage after the 0.456932 pooled temporal result; any PMXT work would require a separate narrow-subset SPEC ONLY framing and must not use an API key or vendor fetch without explicit authorization. No vendor fetch, account/API key use, price build, canonical-side price computation, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, or gate change follows from the temporal result.
 
 ---
 
 ## What is NOT authorized
+
+No REV23 I0 test execution, lint, coverage, CI execution, local research-data read, curl discovery, subprocess launch, network access, reservation/request execution, replay, empirical capture, compatibility/strict analysis, results/finalization, CLI integration, dependency change, git publication, P1/P2/P3, probe, scoring, price construction, side synthesis, wallet/PnL/trading, or gate change.
 
 No B1, full Pass 1, S2, P1/P2/P3, or probe execution follows from the corrected B0 diagnostic result.
 
@@ -146,3 +157,4 @@ No additional Option D run, rerun, ledger expansion, vendor/network fetch, PMXT 
 * Close each task with a Claude-to-Orchestrator handoff memo.
 * Canonical project file updates are manual: ChatGPT reads the canonical repo, prepares complete replacement files for the user, and does not write to GitHub. Claude should not be asked to update canonical project files in the repo.
 * Claude should treat this public mirror as context only. It authorizes no implementation.
+* For REV23 I0, future chats must read the canonical handoff directory. The authorization lives in `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`, not in chat memory.
