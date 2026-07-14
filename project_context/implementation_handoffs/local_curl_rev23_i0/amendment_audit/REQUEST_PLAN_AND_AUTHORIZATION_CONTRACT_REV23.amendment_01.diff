@@ -1,0 +1,56 @@
+--- a/REQUEST_PLAN_AND_AUTHORIZATION_CONTRACT_REV23.md
++++ b/REQUEST_PLAN_AND_AUTHORIZATION_CONTRACT_REV23.md
+@@ -16,7 +16,7 @@
+ 
+ ## 3. Initial request-set hash used by run identity
+ 
+-The initial set is all 496 request-plan rows. Its semantic object is computed before `run_id` by using a pre-run placeholder authorization mode `INITIAL_REPLAY` and excluding `authorization_id` and `run_id`; the resulting `initial_496_request_set_sha256` is included in run identity. After run establishment, the Gustavo INITIAL authorization must contain the same ordered 496 `(execution_ordinal,request_id)` entries and must recompute the same entry-set hash. It additionally binds `run_id` in the finalized authorization-specific request-set object.
++The initial set is all 496 request-plan rows. `initial_496_request_set_sha256` is SHA-256 of exactly 496 canonical typed `(execution_ordinal, request_id)` entries ordered by execution ordinal `0..495`, joined with one LF and no trailing LF. It contains no authorization mode, `authorization_id`, or `run_id`. After run establishment, the Gustavo INITIAL authorization must contain the identical ordered entries and recompute the identical entry-set hash.
+ 
+ ## 4. Per-authorization immutable namespace
+ 
+@@ -33,9 +33,9 @@
+ 
+ ## 5. Request-set object and hashes
+ 
+-The request-set schema is closed. It includes `spec_revision=23`, authorization ID, run ID, mode, request-plan logical hash, execution-order hash, governing-package manifest semantic hash, every retained/policy contract file hash, exact ordered entries, and maximum request count.
++The request-set schema is closed. Its semantic projection includes `spec_revision=23`, run ID, mode, request-plan logical hash, execution-order hash, governing-package manifest semantic hash, every retained/policy contract file hash, exact ordered entries, entry-set hash, and maximum request count. It excludes `authorization_id`, its semantic-hash destination, and complete-file-hash destinations.
+ 
+-The semantic hash excludes only its semantic-hash destination field and complete-file-hash fields. The complete JSON file has a separate file SHA-256 sidecar. The authorization record includes both hashes, and every authorization-use/capture row includes the exact request-set complete-file hash.
++After the request-set semantic hash and `authorization_id` are computed, the stored request-set file includes the authorization ID. The complete JSON file then receives an independent file SHA-256 sidecar. Every authorization-use and capture row includes the exact request-set complete-file hash.
+ 
+ Mode rules:
+ 
+@@ -47,21 +47,26 @@
+ 
+ ## 6. Authorization semantic ID and complete-file hash
+ 
+-The external Gustavo authorization semantic projection includes schema/revision, Gustavo attestation, creation/expiry, mode, run ID, request-plan/order hashes, request-set semantic/file hashes, fingerprint semantic/file hashes, detached pre-run attachment hash, governing-package manifest semantic/file hashes, and all contract/policy/vector hashes. It excludes `authorization_id`, complete authorization-file hash, and sidecar destination fields.
++The two-phase construction order is exact:
+ 
+-`authorization_id = "auth_" + SHA256(canonical compact sorted-key JSON bytes of the semantic projection)`. The complete authorization JSON file is hashed independently and recorded in `authorization_record.sha256`. The implementation may validate but may not create, edit, repair, or replace Gustavo’s record.
++1. Compute the request-set semantic hash without `authorization_id`.
++2. Compute the external Gustavo `authorization_id` from the closed authorization-ID semantic projection. That projection includes `authorized_request_set_semantic_sha256` and excludes `authorization_id`, `authorized_request_set_file_sha256`, the complete authorization-file hash, and sidecar destinations.
++3. Store the request-set file with the computed authorization ID and compute its complete-file SHA-256.
++4. Store that request-set complete-file hash in the authorization record as a non-ID-projection field, then compute `authorization_record.sha256`.
++
++The implementation may validate but may not create, edit, repair, or replace Gustavo’s record.
+ 
+ ## 7. Reservation state machine and positive cancellation proof
+ 
+-The authorization-use event states are `ACTIVATED`, `REQUEST_RESERVED`, `REQUEST_START_CONFIRMED`, `REQUEST_START_AMBIGUOUS`, `REQUEST_TERMINAL_RECORDED`, `REQUEST_RESERVATION_CANCELLED_NO_START`, `EXPIRED_UNUSED`, and `CLOSED`.
++The authorization-use event states are `ACTIVATED`, `REQUEST_RESERVED`, `REQUEST_START_CONFIRMED`, `REQUEST_START_AMBIGUOUS`, `REQUEST_TERMINAL_RECORDED`, `REQUEST_RESERVATION_CANCELLED_NO_START`, `EXPIRED_UNUSED`, and `CLOSED`. Their exact predecessors and required/prohibited fields are closed in the schema patch. START_CONFIRMED and START_AMBIGUOUS bind the exact matching STARTED capture-row hash; TERMINAL_RECORDED binds both that STARTED row and the exact matching terminal-row hash. All authorization, reservation, request, ordinal, attempt, authorization-record-hash, and request-set-hash values must match across use and capture rows.
+ 
+-Cancellation from `REQUEST_RESERVED` requires complete hash-bound capture and process-launch snapshots proving zero STARTED rows, zero launch evidence, and zero terminal capture rows for the full reservation interval; irreversible closure of the reservation; and an explicit old-authorization unusable flag. Any missing or contradictory evidence is `RESERVATION_START_STATUS_UNPROVEN` and is not continuation eligibility.
++Cancellation from `REQUEST_RESERVED` binds one immutable capture-audit snapshot covering the complete reservation interval and proving zero matching STARTED rows and zero matching terminal rows. The durable launch rule is that process launch occurs only after a committed STARTED row. Cancellation also requires irreversible reservation closure and an explicit old-authorization unusable flag. Missing, stale, partial, interval-incomplete, or contradictory evidence is `RESERVATION_START_STATUS_UNPROVEN` and is not continuation eligibility.
+ 
+ ## 8. Cross-file invariants
+ 
+-1. Directory authorization ID, record authorization ID, request-set authorization ID, and all use/capture references are equal.
++1. Directory authorization ID, record authorization ID, stored request-set authorization ID, and all use/capture references are equal; the request-set semantic projection itself excludes authorization ID.
+ 2. Run ID, request-plan logical hash, execution-order hash, governing-package hash, fingerprint hash, and every contract hash are equal across the run identity, fingerprint readiness, authorization record, request set, pre-V7 metadata, and final inventory.
+-3. Semantic hashes and complete-file hashes recompute independently.
++3. Request-set semantic hash is computed first without authorization ID; authorization ID is computed second without request-set complete-file hash; stored request-set file hash is computed third; authorization complete-file hash is computed last. All hashes recompute independently.
+ 4. Authorization records and request sets are immutable and never overwritten.
+ 5. No reservation can start before ACTIVATED and REQUEST_RESERVED rows commit.
+ 6. A cancelled reservation can never later produce a STARTED or terminal row under the old authorization.

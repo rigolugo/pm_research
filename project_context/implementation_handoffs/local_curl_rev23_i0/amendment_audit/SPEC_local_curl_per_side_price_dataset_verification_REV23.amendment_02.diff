@@ -1,0 +1,11 @@
+--- a/SPEC_local_curl_per_side_price_dataset_verification_REV23.md
++++ b/SPEC_local_curl_per_side_price_dataset_verification_REV23.md
+@@ -367,7 +367,7 @@
+ url_serialization_policy_file_sha256 = a148c2ac31e31c981bcafbb91e7416018a57796e6e41f7e522d2d249b5ad479a
+ transport_policy_file_sha256 = 78644908a852fba0dda2068b7b08a92c4b8a8a575fb2153876f9d478c5f1d2ca
+ http_status_reconciliation_vectors_file_sha256 = 65b937d9e85d589e6c06f2e50095731f2f537a07dc02758e484375c79254fb11
+-schema_registry_file_sha256 = 54b03b63dd65be462591e63ab3308153c10cc9de5c75e56f564612efe3f7cfcd
++schema_registry_file_sha256 = ce1ede1a27b438f6a8f6c04bf7c1642d74a2419719050e2f6bd85cb6ef949aca
+ ```
+ 
+ Missing component, extra component, mutation, destination-field inclusion, or `run_id` inclusion is `STOP_FINGERPRINT_INVALID`.

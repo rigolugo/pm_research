@@ -1,0 +1,908 @@
+[
+  {
+    "op": "replace",
+    "path": "/json_schemas/authorized_request_set_v23/invariants",
+    "value": [
+      "entries ordered by execution_ordinal",
+      "maximum_request_count equals entries length",
+      "authorized_request_entries_sha256 equals LF-joined typed (execution_ordinal,request_id) entry hash with no trailing LF",
+      "INITIAL_REPLAY authorized_request_entries_sha256 equals run_identity.initial_496_request_set_sha256",
+      "mode-specific exact membership",
+      "authorization_id is excluded from authorized_request_set_semantic_sha256 and is populated only after authorization_id computation",
+      "stored request-set complete-file hash is computed only after authorization_id is populated"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/authorized_request_set_v23/semantic_hash_projection",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "run_id",
+      "authorization_mode",
+      "request_plan_logical_sha256",
+      "request_execution_order_sha256",
+      "governing_package_manifest_semantic_sha256",
+      "source_d_algorithm_contract_file_sha256",
+      "requests_json_equivalence_contract_file_sha256",
+      "curl_subprocess_contract_file_sha256",
+      "response_header_extraction_contract_file_sha256",
+      "response_header_extraction_vectors_file_sha256",
+      "compatibility_edge_vectors_file_sha256",
+      "url_serialization_policy_file_sha256",
+      "transport_policy_file_sha256",
+      "http_status_reconciliation_vectors_file_sha256",
+      "entries",
+      "authorized_request_entries_sha256",
+      "maximum_request_count"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/json_schemas/network_authorization_record/governing",
+    "value": false
+  },
+  {
+    "op": "add",
+    "path": "/json_schemas/network_authorization_record/superseded_by",
+    "value": "json:network_authorization_record_v23"
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/network_authorization_record/semantic_hash_projection/fields",
+    "value": []
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/network_authorization_record/semantic_hash_projection/mode",
+    "value": "NON_GOVERNING_LEGACY_SUPPORT_NO_IDENTITY_AUTHORITY"
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/network_authorization_record_v23/invariants",
+    "value": [
+      "expires_at_ns > created_at_ns",
+      "record externally authored by Gustavo",
+      "directory ID equals semantic ID",
+      "authorization_id semantic projection includes authorized_request_set_semantic_sha256",
+      "authorization_id semantic projection excludes authorization_id and authorized_request_set_file_sha256",
+      "authorized_request_set_file_sha256 is populated only after authorization_id and stored request-set bytes exist"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/network_authorization_record_v23/semantic_hash_projection",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "run_id",
+      "authorization_mode",
+      "authorized_by",
+      "authorization_statement",
+      "created_at_ns",
+      "expires_at_ns",
+      "request_plan_logical_sha256",
+      "request_execution_order_sha256",
+      "authorized_request_set_semantic_sha256",
+      "fingerprint_semantic_sha256",
+      "fingerprint_file_sha256",
+      "detached_pre_run_attachment_semantic_sha256",
+      "governing_package_manifest_semantic_sha256",
+      "governing_package_manifest_file_sha256",
+      "source_d_algorithm_contract_file_sha256",
+      "requests_json_equivalence_contract_file_sha256",
+      "curl_subprocess_contract_file_sha256",
+      "response_header_extraction_contract_file_sha256",
+      "response_header_extraction_vectors_file_sha256",
+      "compatibility_edge_vectors_file_sha256",
+      "url_serialization_policy_file_sha256",
+      "transport_policy_file_sha256",
+      "http_status_reconciliation_vectors_file_sha256"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/json_schemas/run_identity_semantic_object/governing",
+    "value": false
+  },
+  {
+    "op": "add",
+    "path": "/json_schemas/run_identity_semantic_object/superseded_by",
+    "value": "json:run_identity_semantic_v23"
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/run_identity_semantic_object/semantic_hash_projection/fields",
+    "value": []
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/run_identity_semantic_object/semantic_hash_projection/mode",
+    "value": "NON_GOVERNING_LEGACY_SUPPORT_NO_IDENTITY_AUTHORITY"
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/run_policy_fingerprint/semantic_hash_projection/excluded_destination_fields",
+    "value": [
+      "fingerprint_semantic_sha256",
+      "run_id"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/run_policy_fingerprint/semantic_hash_projection/fields",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "policy_established",
+      "component_hashes"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/rev23_identity_contracts/authorization_id/exclude",
+    "value": [
+      "authorization_id",
+      "authorized_request_set_file_sha256",
+      "authorization_record_file_sha256",
+      "sidecar destination fields"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/rev23_identity_contracts/reservation_id/projection",
+    "value": [
+      "run_id",
+      "authorization_id",
+      "authorization_record_file_sha256",
+      "authorized_request_set_file_sha256",
+      "request_id",
+      "execution_ordinal",
+      "attempt_number",
+      "request_plan_row_sha256"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/row_hash_projections/authorization_use_event_sha256/fields",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "run_id",
+      "authorization_id",
+      "authorization_record_file_sha256",
+      "event_ordinal",
+      "event_ts_ns",
+      "authorization_mode",
+      "authorization_use_state",
+      "request_id",
+      "execution_ordinal",
+      "attempt_number",
+      "reservation_id",
+      "reason_code",
+      "capture_start_event_row_sha256",
+      "capture_terminal_event_row_sha256",
+      "capture_started_row_count",
+      "terminal_capture_row_count",
+      "capture_audit_snapshot_sha256",
+      "reservation_irrevocably_closed",
+      "old_authorization_reservation_usable",
+      "reservation_start_proof_state",
+      "authorized_request_set_file_sha256"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/row_hash_projections/capture_event_row_sha256/fields",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "run_id",
+      "request_id",
+      "execution_ordinal",
+      "attempt_number",
+      "capture_event_ordinal",
+      "capture_event_state",
+      "event_ts_ns",
+      "authorization_id",
+      "authorization_record_file_sha256",
+      "authorized_request_set_file_sha256",
+      "reservation_id",
+      "run_policy_fingerprint_file_sha256",
+      "request_plan_row_sha256",
+      "subprocess_contract_sha256",
+      "effective_argv",
+      "effective_argv_sha256",
+      "proxy_variables_removed",
+      "process_id",
+      "curl_completion_category",
+      "curl_exit_code",
+      "http_code_evidence_state",
+      "http_status_stdout_raw_base64",
+      "http_status_code",
+      "body_evidence_state",
+      "body_path",
+      "body_size_bytes",
+      "body_sha256",
+      "header_evidence_state",
+      "header_path",
+      "header_size_bytes",
+      "header_sha256",
+      "stderr_evidence_state",
+      "stderr_path",
+      "stderr_size_bytes",
+      "stderr_sha256",
+      "body_oversize",
+      "header_oversize",
+      "stderr_oversize",
+      "interruption_reason_code"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/schema_usage/json:network_authorization_record",
+    "value": [
+      {
+        "kind": "closed_support_schema_non_governing",
+        "path": "SCHEMA_REGISTRY_REV23.json"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/schema_usage/json:run_identity_semantic_object",
+    "value": [
+      {
+        "kind": "closed_support_schema_non_governing",
+        "path": "SCHEMA_REGISTRY_REV23.json"
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/semantic_hashes/initial_496_request_set_sha256",
+    "value": {
+      "algorithm": "sha256(LF-joined canonical typed entry rows, no trailing LF)",
+      "cardinality": 496,
+      "entry_fields": [
+        "execution_ordinal",
+        "request_id"
+      ],
+      "entry_types": {
+        "execution_ordinal": "UINT16",
+        "request_id": "STRING matching ^req_[0-9a-f]{64}$"
+      },
+      "ordering": "execution_ordinal ascending exactly 0..495",
+      "separator": "one byte LF between adjacent entries",
+      "trailing_lf": false,
+      "schema_id": "local_curl_initial_496_request_set_entry.v23"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/semantic_hashes/authorization_id/fields",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "run_id",
+      "authorization_mode",
+      "authorized_by",
+      "authorization_statement",
+      "created_at_ns",
+      "expires_at_ns",
+      "request_plan_logical_sha256",
+      "request_execution_order_sha256",
+      "authorized_request_set_semantic_sha256",
+      "fingerprint_semantic_sha256",
+      "fingerprint_file_sha256",
+      "detached_pre_run_attachment_semantic_sha256",
+      "governing_package_manifest_semantic_sha256",
+      "governing_package_manifest_file_sha256",
+      "source_d_algorithm_contract_file_sha256",
+      "requests_json_equivalence_contract_file_sha256",
+      "curl_subprocess_contract_file_sha256",
+      "response_header_extraction_contract_file_sha256",
+      "response_header_extraction_vectors_file_sha256",
+      "compatibility_edge_vectors_file_sha256",
+      "url_serialization_policy_file_sha256",
+      "transport_policy_file_sha256",
+      "http_status_reconciliation_vectors_file_sha256"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/semantic_hashes/authorization_id/prefix",
+    "value": "auth_"
+  },
+  {
+    "op": "replace",
+    "path": "/semantic_hashes/authorization_id/algorithm",
+    "value": "prefix + sha256(canonical compact JSON authorization-ID semantic projection, sorted keys, UTF-8, no trailing LF)"
+  },
+  {
+    "op": "replace",
+    "path": "/semantic_hashes/authorization_id/excluded_fields",
+    "value": [
+      "authorization_id",
+      "authorized_request_set_file_sha256",
+      "authorization_record_file_sha256",
+      "sidecar destination fields"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/semantic_hashes/authorization_id/schema_id",
+    "value": "local_curl_network_authorization_record.v23"
+  },
+  {
+    "op": "replace",
+    "path": "/semantic_hashes/request_id/fields",
+    "value": [
+      "condition_id",
+      "outcome_index",
+      "token_id_lexeme",
+      "exact_decision_lower_ts_ns",
+      "exact_resolved_at_ts_ns",
+      "request_start_ts",
+      "request_end_ts"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/semantic_hashes/reservation_id/fields",
+    "value": [
+      "run_id",
+      "authorization_id",
+      "authorization_record_file_sha256",
+      "authorized_request_set_file_sha256",
+      "request_id",
+      "execution_ordinal",
+      "attempt_number",
+      "request_plan_row_sha256"
+    ]
+  },
+  {
+    "op": "remove",
+    "path": "/semantic_hashes/run_id/run_nonce_hex"
+  },
+  {
+    "op": "replace",
+    "path": "/semantic_hashes/run_id/fields",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "pre_run_nonce_hex",
+      "pre_run_created_at_ns",
+      "pre_run_attempt_id",
+      "detached_pre_run_attachment_semantic_sha256",
+      "governing_package_manifest_semantic_sha256",
+      "fingerprint_semantic_sha256",
+      "request_manifest_logical_sha256",
+      "request_plan_logical_sha256",
+      "request_execution_order_sha256",
+      "initial_496_request_set_sha256"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/semantic_hashes/run_id/resume_rule",
+    "value": "recompute from persisted pre-run identity and bound hashes; never regenerate nonce or timestamp"
+  },
+  {
+    "op": "replace",
+    "path": "/semantic_hashes/run_id/schema_id",
+    "value": "local_curl_run_identity_semantic.v23"
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/authorization_use_events/conditional_requirements/ACTIVATED",
+    "value": {
+      "allowed_predecessor_states": [],
+      "predecessor_scope": "authorization stream; must be event_ordinal 0",
+      "exact_values": {
+        "reason_code": "AUTHORIZATION_ACTIVATED",
+        "reservation_start_proof_state": "NOT_APPLICABLE"
+      },
+      "required_nonnull": [],
+      "prohibited_nonnull": [
+        "request_id",
+        "execution_ordinal",
+        "attempt_number",
+        "reservation_id",
+        "capture_start_event_row_sha256",
+        "capture_terminal_event_row_sha256",
+        "capture_started_row_count",
+        "terminal_capture_row_count",
+        "capture_audit_snapshot_sha256",
+        "reservation_irrevocably_closed",
+        "old_authorization_reservation_usable"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/authorization_use_events/conditional_requirements/CLOSED",
+    "value": {
+      "allowed_predecessor_states": [
+        "ACTIVATED",
+        "REQUEST_TERMINAL_RECORDED",
+        "REQUEST_RESERVATION_CANCELLED_NO_START",
+        "EXPIRED_UNUSED"
+      ],
+      "predecessor_scope": "authorization stream; final event",
+      "exact_values": {
+        "reason_code": "AUTHORIZATION_CLOSED",
+        "reservation_start_proof_state": "NOT_APPLICABLE"
+      },
+      "required_nonnull": [],
+      "prohibited_nonnull": [
+        "request_id",
+        "execution_ordinal",
+        "attempt_number",
+        "reservation_id",
+        "capture_start_event_row_sha256",
+        "capture_terminal_event_row_sha256",
+        "capture_started_row_count",
+        "terminal_capture_row_count",
+        "capture_audit_snapshot_sha256",
+        "reservation_irrevocably_closed",
+        "old_authorization_reservation_usable"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/authorization_use_events/conditional_requirements/EXPIRED_UNUSED",
+    "value": {
+      "allowed_predecessor_states": [
+        "ACTIVATED"
+      ],
+      "predecessor_scope": "authorization stream; no REQUEST_RESERVED event exists for this authorization",
+      "exact_values": {
+        "reason_code": "EXPIRED_UNUSED",
+        "reservation_start_proof_state": "NOT_APPLICABLE"
+      },
+      "required_nonnull": [],
+      "prohibited_nonnull": [
+        "request_id",
+        "execution_ordinal",
+        "attempt_number",
+        "reservation_id",
+        "capture_start_event_row_sha256",
+        "capture_terminal_event_row_sha256",
+        "capture_started_row_count",
+        "terminal_capture_row_count",
+        "capture_audit_snapshot_sha256",
+        "reservation_irrevocably_closed",
+        "old_authorization_reservation_usable"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/authorization_use_events/conditional_requirements/REQUEST_RESERVED",
+    "value": {
+      "allowed_predecessor_states": [
+        "ACTIVATED",
+        "REQUEST_TERMINAL_RECORDED",
+        "REQUEST_RESERVATION_CANCELLED_NO_START"
+      ],
+      "predecessor_scope": "immediately preceding authorization event; new reservation tuple",
+      "exact_values": {
+        "reason_code": "REQUEST_RESERVED",
+        "reservation_start_proof_state": "NOT_APPLICABLE"
+      },
+      "required_nonnull": [
+        "request_id",
+        "execution_ordinal",
+        "attempt_number",
+        "reservation_id"
+      ],
+      "prohibited_nonnull": [
+        "capture_start_event_row_sha256",
+        "capture_terminal_event_row_sha256",
+        "capture_started_row_count",
+        "terminal_capture_row_count",
+        "capture_audit_snapshot_sha256",
+        "reservation_irrevocably_closed",
+        "old_authorization_reservation_usable"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/authorization_use_events/conditional_requirements/REQUEST_START_AMBIGUOUS",
+    "value": {
+      "allowed_predecessor_states": [
+        "REQUEST_RESERVED"
+      ],
+      "predecessor_scope": "same authorization, reservation, request, execution ordinal, and attempt",
+      "exact_values": {
+        "reason_code": "START_AMBIGUOUS",
+        "reservation_start_proof_state": "START_EVIDENCE_PRESENT"
+      },
+      "required_nonnull": [
+        "request_id",
+        "execution_ordinal",
+        "attempt_number",
+        "reservation_id",
+        "capture_start_event_row_sha256"
+      ],
+      "prohibited_nonnull": [
+        "capture_terminal_event_row_sha256",
+        "capture_started_row_count",
+        "terminal_capture_row_count",
+        "capture_audit_snapshot_sha256",
+        "reservation_irrevocably_closed",
+        "old_authorization_reservation_usable"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/authorization_use_events/conditional_requirements/REQUEST_START_CONFIRMED",
+    "value": {
+      "allowed_predecessor_states": [
+        "REQUEST_RESERVED"
+      ],
+      "predecessor_scope": "same authorization, reservation, request, execution ordinal, and attempt",
+      "exact_values": {
+        "reason_code": "START_CONFIRMED",
+        "reservation_start_proof_state": "START_EVIDENCE_PRESENT"
+      },
+      "required_nonnull": [
+        "request_id",
+        "execution_ordinal",
+        "attempt_number",
+        "reservation_id",
+        "capture_start_event_row_sha256"
+      ],
+      "prohibited_nonnull": [
+        "capture_terminal_event_row_sha256",
+        "capture_started_row_count",
+        "terminal_capture_row_count",
+        "capture_audit_snapshot_sha256",
+        "reservation_irrevocably_closed",
+        "old_authorization_reservation_usable"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/authorization_use_events/conditional_requirements/REQUEST_TERMINAL_RECORDED",
+    "value": {
+      "allowed_predecessor_states": [
+        "REQUEST_START_CONFIRMED",
+        "REQUEST_START_AMBIGUOUS"
+      ],
+      "predecessor_scope": "same authorization, reservation, request, execution ordinal, and attempt",
+      "exact_values": {
+        "reason_code": "TERMINAL_RECORDED",
+        "reservation_start_proof_state": "START_EVIDENCE_PRESENT"
+      },
+      "required_nonnull": [
+        "request_id",
+        "execution_ordinal",
+        "attempt_number",
+        "reservation_id",
+        "capture_start_event_row_sha256",
+        "capture_terminal_event_row_sha256"
+      ],
+      "prohibited_nonnull": [
+        "capture_started_row_count",
+        "terminal_capture_row_count",
+        "capture_audit_snapshot_sha256",
+        "reservation_irrevocably_closed",
+        "old_authorization_reservation_usable"
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/authorization_use_events/conditional_requirements/REQUEST_RESERVATION_CANCELLED_NO_START/allowed_predecessor_states",
+    "value": [
+      "REQUEST_RESERVED"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/authorization_use_events/conditional_requirements/REQUEST_RESERVATION_CANCELLED_NO_START/predecessor_scope",
+    "value": "same authorization, reservation, request, execution ordinal, and attempt"
+  },
+  {
+    "op": "remove",
+    "path": "/table_schemas/authorization_use_events/conditional_requirements/REQUEST_RESERVATION_CANCELLED_NO_START/exact_values/process_launch_evidence_count"
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/authorization_use_events/conditional_requirements/REQUEST_RESERVATION_CANCELLED_NO_START/exact_values/reason_code",
+    "value": "POSITIVE_PROOF_NO_START"
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/authorization_use_events/conditional_requirements/REQUEST_RESERVATION_CANCELLED_NO_START/required_nonnull",
+    "value": [
+      "request_id",
+      "execution_ordinal",
+      "attempt_number",
+      "reservation_id",
+      "capture_started_row_count",
+      "terminal_capture_row_count",
+      "capture_audit_snapshot_sha256",
+      "reservation_irrevocably_closed",
+      "old_authorization_reservation_usable"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/authorization_use_events/field_order",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "run_id",
+      "authorization_id",
+      "authorization_record_file_sha256",
+      "event_ordinal",
+      "event_ts_ns",
+      "authorization_mode",
+      "authorization_use_state",
+      "request_id",
+      "execution_ordinal",
+      "attempt_number",
+      "reservation_id",
+      "reason_code",
+      "capture_start_event_row_sha256",
+      "capture_terminal_event_row_sha256",
+      "capture_started_row_count",
+      "terminal_capture_row_count",
+      "capture_audit_snapshot_sha256",
+      "reservation_irrevocably_closed",
+      "old_authorization_reservation_usable",
+      "reservation_start_proof_state",
+      "authorized_request_set_file_sha256",
+      "authorization_use_event_sha256"
+    ]
+  },
+  {
+    "op": "remove",
+    "path": "/table_schemas/authorization_use_events/fields/process_launch_evidence_count"
+  },
+  {
+    "op": "remove",
+    "path": "/table_schemas/authorization_use_events/fields/process_launch_journal_snapshot_sha256"
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/authorization_use_events/fields/capture_start_event_row_sha256",
+    "value": {
+      "nullable": true,
+      "type": "SHA256"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/authorization_use_events/fields/capture_terminal_event_row_sha256",
+    "value": {
+      "nullable": true,
+      "type": "SHA256"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/authorization_use_events/invariants",
+    "value": [
+      "ACTIVATED is the first event for an authorization; REQUEST_RESERVED is the only reservation state",
+      "there is no generic RESERVED state",
+      "event ordinals are gapless per authorization and rows are immutable",
+      "spec_revision equals governing replay revision 23",
+      "missing/partial evidence cannot satisfy REQUEST_RESERVATION_CANCELLED_NO_START or continuation eligibility",
+      "REQUEST_START_CONFIRMED and REQUEST_START_AMBIGUOUS capture_start_event_row_sha256 resolves to a STARTED capture row",
+      "REQUEST_TERMINAL_RECORDED capture_terminal_event_row_sha256 resolves to the matching INTERRUPTED or COMPLETED capture row",
+      "authorization_id, authorization_record_file_sha256, authorized_request_set_file_sha256, reservation_id, request_id, execution_ordinal, and attempt_number are identical across each authorization-use event and its bound capture row",
+      "REQUEST_RESERVATION_CANCELLED_NO_START capture_audit_snapshot_sha256 covers the complete reservation interval and proves zero matching STARTED and terminal rows",
+      "process launch is durably permitted only after a committed STARTED capture row; therefore a complete zero-STARTED snapshot is positive no-launch evidence"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/authorization_use_events/row_hash_projection",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "run_id",
+      "authorization_id",
+      "authorization_record_file_sha256",
+      "event_ordinal",
+      "event_ts_ns",
+      "authorization_mode",
+      "authorization_use_state",
+      "request_id",
+      "execution_ordinal",
+      "attempt_number",
+      "reservation_id",
+      "reason_code",
+      "capture_start_event_row_sha256",
+      "capture_terminal_event_row_sha256",
+      "capture_started_row_count",
+      "terminal_capture_row_count",
+      "capture_audit_snapshot_sha256",
+      "reservation_irrevocably_closed",
+      "old_authorization_reservation_usable",
+      "reservation_start_proof_state",
+      "authorized_request_set_file_sha256"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/capture_events/field_order",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "run_id",
+      "request_id",
+      "execution_ordinal",
+      "attempt_number",
+      "capture_event_ordinal",
+      "capture_event_state",
+      "event_ts_ns",
+      "authorization_id",
+      "authorization_record_file_sha256",
+      "authorized_request_set_file_sha256",
+      "reservation_id",
+      "run_policy_fingerprint_file_sha256",
+      "request_plan_row_sha256",
+      "subprocess_contract_sha256",
+      "effective_argv",
+      "effective_argv_sha256",
+      "proxy_variables_removed",
+      "process_id",
+      "curl_completion_category",
+      "curl_exit_code",
+      "http_code_evidence_state",
+      "http_status_stdout_raw_base64",
+      "http_status_code",
+      "body_evidence_state",
+      "body_path",
+      "body_size_bytes",
+      "body_sha256",
+      "header_evidence_state",
+      "header_path",
+      "header_size_bytes",
+      "header_sha256",
+      "stderr_evidence_state",
+      "stderr_path",
+      "stderr_size_bytes",
+      "stderr_sha256",
+      "body_oversize",
+      "header_oversize",
+      "stderr_oversize",
+      "interruption_reason_code",
+      "capture_event_row_sha256"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/capture_events/fields/authorized_request_set_file_sha256",
+    "value": {
+      "nullable": false,
+      "type": "SHA256"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/capture_events/invariants",
+    "value": [
+      "attempt numbers are contiguous per request; each attempt has exactly one STARTED ordinal 0 and at most one terminal ordinal 1",
+      "terminal uniqueness: zero terminal means started-only; exactly one terminal is INTERRUPTED or COMPLETED; duplicate/conflicting terminal is structural invalid",
+      "every event references the exact authorization file hash and reservation for that request/attempt",
+      "effective argv has exactly 19 elements with --disable ordinal 1 and --http1.1 ordinal 2",
+      "state-specific one_of contract is total and mutually exclusive",
+      "valid INTERRUPTED evidence maps to INTERRUPTED_SELECTED; malformed partial evidence maps to STOP_CAPTURE_EVENT_SCHEMA_INVALID",
+      "COMPLETED event evidence is complete and hash-addressed before either analysis row can validate",
+      "resume never overwrites an attempt; a new request-specific attempt is max prior attempt + 1",
+      "spec_revision equals governing replay revision 23",
+      "every capture row authorized_request_set_file_sha256 equals the matching authorization-use event and authorization namespace",
+      "every capture row authorization_id, authorization_record_file_sha256, authorized_request_set_file_sha256, reservation_id, request_id, execution_ordinal, and attempt_number equal the bound authorization-use values"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/capture_events/one_of_by_capture_event_state/COMPLETED/required_nonnull",
+    "value": [
+      "authorization_id",
+      "authorization_record_file_sha256",
+      "authorized_request_set_file_sha256",
+      "reservation_id",
+      "run_policy_fingerprint_file_sha256",
+      "request_plan_row_sha256",
+      "subprocess_contract_sha256",
+      "effective_argv",
+      "effective_argv_sha256",
+      "proxy_variables_removed",
+      "process_id",
+      "curl_completion_category",
+      "curl_exit_code"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/capture_events/one_of_by_capture_event_state/INTERRUPTED/required_nonnull",
+    "value": [
+      "authorization_id",
+      "authorization_record_file_sha256",
+      "authorized_request_set_file_sha256",
+      "reservation_id",
+      "run_policy_fingerprint_file_sha256",
+      "request_plan_row_sha256",
+      "subprocess_contract_sha256",
+      "effective_argv",
+      "effective_argv_sha256",
+      "proxy_variables_removed",
+      "curl_completion_category",
+      "interruption_reason_code"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/capture_events/one_of_by_capture_event_state/STARTED/required_nonnull",
+    "value": [
+      "authorization_id",
+      "authorization_record_file_sha256",
+      "authorized_request_set_file_sha256",
+      "reservation_id",
+      "run_policy_fingerprint_file_sha256",
+      "request_plan_row_sha256",
+      "subprocess_contract_sha256",
+      "effective_argv",
+      "effective_argv_sha256",
+      "proxy_variables_removed"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/capture_events/row_hash_projection",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "run_id",
+      "request_id",
+      "execution_ordinal",
+      "attempt_number",
+      "capture_event_ordinal",
+      "capture_event_state",
+      "event_ts_ns",
+      "authorization_id",
+      "authorization_record_file_sha256",
+      "authorized_request_set_file_sha256",
+      "reservation_id",
+      "run_policy_fingerprint_file_sha256",
+      "request_plan_row_sha256",
+      "subprocess_contract_sha256",
+      "effective_argv",
+      "effective_argv_sha256",
+      "proxy_variables_removed",
+      "process_id",
+      "curl_completion_category",
+      "curl_exit_code",
+      "http_code_evidence_state",
+      "http_status_stdout_raw_base64",
+      "http_status_code",
+      "body_evidence_state",
+      "body_path",
+      "body_size_bytes",
+      "body_sha256",
+      "header_evidence_state",
+      "header_path",
+      "header_size_bytes",
+      "header_sha256",
+      "stderr_evidence_state",
+      "stderr_path",
+      "stderr_size_bytes",
+      "stderr_sha256",
+      "body_oversize",
+      "header_oversize",
+      "stderr_oversize",
+      "interruption_reason_code"
+    ]
+  }
+]

@@ -1,0 +1,142 @@
+--- a/SPEC_local_curl_per_side_price_dataset_verification_REV23.md
++++ b/SPEC_local_curl_per_side_price_dataset_verification_REV23.md
+@@ -201,13 +201,14 @@
+ - `request_manifest_row_sha256` hashes all request-manifest fields excluding destination hashes.
+ - `request_plan_row_sha256` hashes all request-plan fields excluding destination hashes and must bind the equal request-manifest row hash.
+ - `fingerprint_semantic_sha256` hashes the closed fingerprint semantic object excluding itself, `run_id`, and destination hashes.
+-- `pre_run_attempt_id = "pra_" + SHA256(canonical compact JSON of {"attempt_kind":"LOCAL_CURL_PRE_RUN_ATTEMPT","spec_revision":22,"nonce_hex":"<64 lowercase hex>","created_at_ns":"<UTC int ns>"})`.
+-- `run_id = "run_" + SHA256(canonical compact JSON of the closed run identity semantic object: `spec_revision=23`, persisted 32-byte nonce as 64 lowercase hex, `created_at_ns`, `fingerprint_semantic_sha256`, `request_manifest_logical_sha256`, `request_plan_logical_sha256`, `request_execution_order_sha256`, and `authorized_initial_request_set_sha256`; sorted keys, UTF-8, no trailing LF). The destination `run_id` is excluded.
+-- `reservation_id = "res_" + SHA256(typed run_id, authorization_id, authorization_file_sha256, authorized_request_set_sha256, request_id, execution_ordinal, attempt_number, request_plan_row_sha256)`.
++- `pre_run_attempt_id = "pra_" + SHA256(canonical compact JSON of {"attempt_kind":"LOCAL_CURL_PRE_RUN_ATTEMPT","spec_revision":23,"nonce_hex":"<64 lowercase hex>","created_at_ns":"<UTC int ns>"})`.
++- `run_id = "run_" + SHA256(canonical compact JSON of the exact twelve-field §8.5 projection, in this semantic field order: `schema_version`, `spec_revision`, `pre_run_nonce_hex`, `pre_run_created_at_ns`, `pre_run_attempt_id`, `detached_pre_run_attachment_semantic_sha256`, `governing_package_manifest_semantic_sha256`, `fingerprint_semantic_sha256`, `request_manifest_logical_sha256`, `request_plan_logical_sha256`, `request_execution_order_sha256`, and `initial_496_request_set_sha256`; sorted object keys, UTF-8, no trailing LF). The destination `run_id` is excluded.
++- `reservation_id = "res_" + SHA256(typed run_id, authorization_id, authorization_record_file_sha256, authorized_request_set_file_sha256, request_id, execution_ordinal, attempt_number, request_plan_row_sha256)`.
+ - `partition_id = "part_" + SHA256(typed run_id, audit_family, partition_ordinal, partition_count, key_range, logical_hash)`. Audit rows do not contain partition ID.
+ - `stop_inventory_semantic_sha256` and `pre_run_stop_inventory_semantic_sha256` sort typed inventory entries by artifact-path UTF-8 bytes and exclude the inventory file, marker file, and destination semantic hash.
+ - `effective_argv_sha256` is defined in §11.4.
+-- `authorized_request_set_sha256` is defined in §12.
++- `initial_496_request_set_sha256 = SHA256` of exactly 496 canonical typed `(execution_ordinal, request_id)` entries ordered by execution ordinal `0..495`, joined with one LF and no trailing LF.
++- Authorization-specific request-set semantic and complete-file hashes are defined in §12.
+ - `authorization_use_event_row_sha256` is defined in §13.
+ - `http_status_reconciliation_row_sha256` is defined in §15.
+ 
+@@ -336,7 +337,7 @@
+ 1. `required_evidence_source_ids` equals the registered ordered source list exactly;
+ 2. `observed_row_hashes` has the same length and order;
+ 3. every hash resolves to the unique `PRESENT_VALID` observation row for that field/source pair;
+-4. `resolution_basis` equals the registered Revision-22 basis: endpoint-shape basis, pinned-implementation-plus-Revision-22 replay basis, or `REVISION23_FIXED_HTTP11_TRANSPORT_CONTRACT`;
++4. `resolution_basis` equals the exact registered enum value `REVISION23_FIXED_TRANSPORT_AND_PACKAGE_CONTRACT`;
+ 5. `resolution_state=RESOLVED`, `validator_result=VALID`, `defensive_default_used=false`, and resolved canonical JSON equals the frozen target-object value.
+ 
+ `policy_established=true` iff all conditions hold for all 32 rows and no contradiction group, invalid/unreadable/absent evidence, duplicate, omitted/extra source, omitted/extra hash, or frozen-object mismatch exists.
+@@ -347,8 +348,8 @@
+ {
+   "component_hashes": "<closed component object>",
+   "policy_established": true,
+-  "schema_version": "local_curl_run_policy_fingerprint.v22",
+-  "spec_revision": 22
++  "schema_version": "local_curl_run_policy_fingerprint.v23",
++  "spec_revision": 23
+ }
+ ```
+ 
+@@ -366,8 +367,7 @@
+ url_serialization_policy_file_sha256 = a148c2ac31e31c981bcafbb91e7416018a57796e6e41f7e522d2d249b5ad479a
+ transport_policy_file_sha256 = 78644908a852fba0dda2068b7b08a92c4b8a8a575fb2153876f9d478c5f1d2ca
+ http_status_reconciliation_vectors_file_sha256 = 65b937d9e85d589e6c06f2e50095731f2f537a07dc02758e484375c79254fb11
+-schema_registry_file_sha256 = efb18a9fdcee1a915b6a0613b9e0deefd4feb1c7778df2b9c3a1294b8ef74790
+-artifact_registry_file_sha256 = 856c42d0ca5f4519c0aef2967eae98156dcc822c1142dd50f9d8c254fef9675d
++schema_registry_file_sha256 = 54b03b63dd65be462591e63ab3308153c10cc9de5c75e56f564612efe3f7cfcd
+ ```
+ 
+ Missing component, extra component, mutation, destination-field inclusion, or `run_id` inclusion is `STOP_FINGERPRINT_INVALID`.
+@@ -504,12 +504,11 @@
+ 
+ ### 12.2 Authorized request-set semantic projection
+ 
+-The closed request-set object contains:
++The request-set semantic projection is computed before `authorization_id` exists. It contains the following closed fields and excludes `authorization_id`, `authorized_request_set_semantic_sha256`, and every complete-file-hash destination:
+ 
+ ```text
+ schema_version = local_curl_authorized_request_set.v23
+ spec_revision = 23
+-authorization_id
+ run_id
+ authorization_mode
+ request_plan_logical_sha256
+@@ -525,18 +524,22 @@
+ transport_policy_file_sha256
+ http_status_reconciliation_vectors_file_sha256
+ entries[] ordered by execution_ordinal
++authorized_request_entries_sha256
+ maximum_request_count
+ ```
+ 
+-Each entry is exactly `(execution_ordinal:uint16, request_id:req_<sha256>)`. `authorized_request_set_semantic_sha256` hashes the canonical object excluding itself and complete-file hash fields. The complete JSON file has a separate SHA-256 sidecar. Both semantic and file hashes must validate.
+-
+-Mode rules remain exact: INITIAL contains all 496 rows; CONTINUATION contains only positively proven no-start reservations or never-reserved never-started rows under a new external authorization; REQUEST_SPECIFIC contains exactly one prior-start request. `maximum_request_count` equals entry count and satisfies the mode cap.
+-
+-### 12.3 Gustavo authorization semantic ID
+-
+-The authorization semantic projection contains all closed authorization fields except `authorization_id`, `authorization_record_file_sha256`, and sidecar destination fields. It includes Gustavo identity/attestation, creation/expiry nanoseconds, mode, `run_id`, request-plan and execution-order hashes, request-set semantic and complete-file hashes, fingerprint semantic and complete-file hashes, detached pre-run attachment hash, governing-package manifest semantic and complete-file hashes, and every retained/policy contract file hash.
+-
+-`authorization_id = "auth_" + SHA256(canonical authorization semantic bytes)`. The complete authorization record has an independent `authorization_record_file_sha256` sidecar. Every authorization-use and capture row references both the exact authorization-record complete-file hash and authorized-request-set complete-file hash. Cross-file mismatch, missing sidecar, path/ID mismatch, or same semantic ID with different bytes stops before reservation.
++Each entry is exactly `(execution_ordinal:uint16, request_id:req_<sha256>)`. `authorized_request_set_semantic_sha256` hashes this canonical projection. Mode rules remain exact: INITIAL contains all 496 rows; CONTINUATION contains only positively proven no-start reservations or never-reserved never-started rows under a new external authorization; REQUEST_SPECIFIC contains exactly one prior-start request. `maximum_request_count` equals entry count and satisfies the mode cap.
++
++### 12.3 Two-phase Gustavo authorization and request-set construction
++
++The construction order is mandatory and noncircular:
++
++1. Compute `authorized_request_set_semantic_sha256` from §12.2 with no `authorization_id`.
++2. Compute `authorization_id = "auth_" + SHA256(canonical authorization-ID semantic bytes)`. That projection includes `authorized_request_set_semantic_sha256` and excludes `authorization_id`, `authorized_request_set_file_sha256`, `authorization_record_file_sha256`, and sidecar destination fields.
++3. Persist `authorized_request_set.json` with the computed `authorization_id`; compute its independent complete-file SHA-256 and sidecar.
++4. Persist the complete authorization record with `authorized_request_set_file_sha256` as a non-ID-projection field; compute the independent `authorization_record_file_sha256` sidecar.
++
++Every authorization-use and capture row references both exact complete-file hashes. Cross-file mismatch, missing sidecar, path/ID mismatch, or same semantic ID with different semantic bytes stops before reservation.
+ 
+ ## 13. Authorization-use lifecycle and reservation-before-start recovery
+ 
+@@ -553,24 +556,22 @@
+ CLOSED
+ ```
+ 
+-`REQUEST_RESERVATION_CANCELLED_NO_START` is terminal for one reservation. It is reachable only from `REQUEST_RESERVED`, never after a start-confirmed, start-ambiguous, or terminal event. It requires positive, hash-bound evidence:
++`REQUEST_RESERVATION_CANCELLED_NO_START` is terminal for one reservation. It is reachable only from `REQUEST_RESERVED`, never after a start-confirmed, start-ambiguous, or terminal event. It requires one immutable `capture_audit_snapshot_sha256` covering the complete reservation interval from reservation commit through cancellation commit and proving:
+ 
+ ```text
+ capture_started_row_count = 0
+-process_launch_evidence_count = 0
+ terminal_capture_row_count = 0
+-capture_audit_snapshot_sha256
+-process_launch_journal_snapshot_sha256
++process launch is durably permitted only after a committed STARTED capture row
+ reservation_irrevocably_closed = true
+ old_authorization_reservation_usable = false
+ cancellation_reason_code = POSITIVE_PROOF_NO_START
+ ```
+ 
+-The two snapshots must cover the complete reservation interval from reservation commit through cancellation commit. Missing, unreadable, partial, stale, or contradictory evidence is `RESERVATION_START_STATUS_UNPROVEN`; it is not proof of no start and does not make the request continuation-eligible.
++Missing, unreadable, partial, stale, interval-incomplete, or contradictory capture evidence is `RESERVATION_START_STATUS_UNPROVEN`; it is not proof of no start and does not make the request continuation-eligible.
+ 
+ Only after the cancellation event is finalized may a new, external Gustavo CONTINUATION authorization include that request. The old authorization can never reactivate or reuse the cancelled reservation. A cancelled reservation creates no capture attempt and does not alter request attempt numbering.
+ 
+-Other state rules remain strict: one ACTIVATED per authorization; one reservation tuple per `(authorization_id,request_id,attempt_number)`; START_CONFIRMED references a committed capture STARTED row; START_AMBIGUOUS records launch ambiguity and cannot be relabeled no-start; TERMINAL_RECORDED references exactly one matching INTERRUPTED or COMPLETED terminal; EXPIRED_UNUSED applies only when no reservation exists; CLOSED is final. Every predecessor, multiplicity, field-presence, hash, and expiry rule is specified in the schema registry.
++Other state rules remain strict: one ACTIVATED per authorization; one reservation tuple per `(authorization_id,request_id,attempt_number)`; START_CONFIRMED and START_AMBIGUOUS each bind `capture_start_event_row_sha256` to the exact matching committed STARTED capture row; TERMINAL_RECORDED binds both that STARTED row and `capture_terminal_event_row_sha256` to the exact matching INTERRUPTED or COMPLETED row. Authorization ID, authorization-record hash, authorized-request-set hash, reservation ID, request ID, execution ordinal, and attempt number must be identical across authorization-use and capture rows. EXPIRED_UNUSED applies only when no reservation exists; CLOSED is final. Every predecessor, multiplicity, field-presence, hash, and expiry rule is specified in the schema registry.
+ 
+ ## 14. Capture attempts, selected attempts, and dispositions
+ 
+@@ -578,13 +579,13 @@
+ 
+ `capture_events` is a closed discriminated union on `capture_event_state`.
+ 
+-**STARTED** has ordinal 0 within an attempt. It is committed before process launch and contains authorization/reservation/fingerprint/request-plan references, the retained subprocess-contract hash, complete 19-element effective argv and `effective_argv_sha256`, exact URL hash, and proxy-removal list. Curl completion, exit, HTTP code, header/body/stderr evidence, oversize, and interruption fields are prohibited. `process_id` is nullable because immutable events are not backfilled.
++**STARTED** has ordinal 0 within an attempt. It is committed before process launch and contains authorization ID, authorization-record complete-file hash, authorized-request-set complete-file hash, reservation/fingerprint/request-plan references, the retained subprocess-contract hash, complete 19-element effective argv and `effective_argv_sha256`, exact URL hash, and proxy-removal list. Curl completion, exit, HTTP code, header/body/stderr evidence, oversize, and interruption fields are prohibited. `process_id` is nullable because immutable events are not backfilled.
+ 
+ **INTERRUPTED** has ordinal 1 and exactly one of `WRAPPER_TIMEOUT`, `RUNNER_EXCEPTION_AFTER_START`, or `LAUNCH_EXCEPTION_START_AMBIGUOUS`. Exit-code and HTTP-code evidence are absent. Wrapper-timeout and runner-exception require a process ID; launch-ambiguous requires it null. Each body/header/stderr evidence group is either fully absent or fully captured. Partial group evidence is malformed and triggers `STOP_CAPTURE_EVENT_SCHEMA_INVALID`.
+ 
+ **COMPLETED** has ordinal 1 and one of `EXIT_0`, `EXIT_28_TIMEOUT`, or `EXIT_OTHER_NONZERO`, with exact exit-code mapping. Body/header/stderr/stdout evidence is complete and hash-addressed. HTTP write-out bytes are parsed only from registered stdout evidence and must be exactly three ASCII digits. `000` maps to `HTTP_CODE_000` with null integer status. `100..599` maps to `HTTP_CODE_100_599` with equal integer. Other bytes stop.
+ 
+-Attempt numbers are contiguous `1..N`. Every attempt has one STARTED and zero or one terminal. Duplicate/conflicting terminals, ordinal errors, authorization mismatches, partial evidence, hash failures, or unauthorized attempts are structural capture stops. Resume never overwrites an attempt; a new request-specific attempt is `max prior attempt + 1`.
++Attempt numbers are contiguous `1..N`. Every attempt has one STARTED and zero or one terminal. Every capture state includes the exact `authorized_request_set_file_sha256`; it must equal the matching authorization-use row and authorization namespace. Duplicate/conflicting terminals, ordinal errors, authorization or request-set mismatches, partial evidence, hash failures, or unauthorized attempts are structural capture stops. Resume never overwrites an attempt; a new request-specific attempt is `max prior attempt + 1`.
+ 
+ ### 14.2 Selected attempt and dispositions
+ 

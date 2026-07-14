@@ -1,0 +1,47 @@
+{
+  "schema_id": "rev23_amendment_manifest.v1",
+  "amendment_id": "REV23_AMENDMENT_01",
+  "baseline_package": {
+    "path": "local_curl_per_side_dataset_verification_REV23_package.zip",
+    "sha256": "87f2335d5ee9762f03d665136ef6d330554495a39bd10856a6385f1e3d8b1b93"
+  },
+  "targets": [
+    {
+      "path": "SPEC_local_curl_per_side_price_dataset_verification_REV23.md",
+      "baseline_sha256": "d39ed18ac45f3d4aaf1fb01430da834a94b8400d59a30a22663c0cb3fc9c6032",
+      "amended_sha256": "94e42dfb48912392197250ec96500e3bdadcfa8de5331ad81cfcfb9d85835dc3",
+      "amendment_artifact": "SPEC_local_curl_per_side_price_dataset_verification_REV23.amendment_01.diff"
+    },
+    {
+      "path": "SCHEMA_REGISTRY_REV23.json",
+      "baseline_sha256": "54b03b63dd65be462591e63ab3308153c10cc9de5c75e56f564612efe3f7cfcd",
+      "amended_sha256": "ce1ede1a27b438f6a8f6c04bf7c1642d74a2419719050e2f6bd85cb6ef949aca",
+      "amendment_artifact": "SCHEMA_REGISTRY_REV23.amendment_01.jsonpatch",
+      "amended_serialization": "canonical compact JSON; sorted keys; UTF-8; no trailing LF"
+    },
+    {
+      "path": "REQUEST_PLAN_AND_AUTHORIZATION_CONTRACT_REV23.md",
+      "baseline_sha256": "d6b98ee6167e8063709ace39f79236bb6e68a8aae2722f304626ac5b62323e04",
+      "amended_sha256": "4f0834b48d08fcfdaf32970d2542e61ab7c1263bb7ec727de1f02f2c1a7fbd37",
+      "amendment_artifact": "REQUEST_PLAN_AND_AUTHORIZATION_CONTRACT_REV23.amendment_01.diff"
+    }
+  ],
+  "amendment_files": [
+    {
+      "path": "REV23_AMENDMENT_01.md",
+      "sha256": "977bbf3cb354f434c7532d4f30f2d2b089703edc9d3e3a8558bf87fe5de33087"
+    },
+    {
+      "path": "SPEC_local_curl_per_side_price_dataset_verification_REV23.amendment_01.diff",
+      "sha256": "45bcf5839e41aaf8df8ecff44a7417fdb0fec059ffc6776f1b50f34733aee565"
+    },
+    {
+      "path": "SCHEMA_REGISTRY_REV23.amendment_01.jsonpatch",
+      "sha256": "1942ddd4fdcf432ace72e7f12683d46f4121b824a3c7e2ea2deca323f16ed953"
+    },
+    {
+      "path": "REQUEST_PLAN_AND_AUTHORIZATION_CONTRACT_REV23.amendment_01.diff",
+      "sha256": "5d6de4702b9692221835db02a3486150afe6f12a7e14aac9c4fa5b0bad5ca495"
+    }
+  ]
+}
