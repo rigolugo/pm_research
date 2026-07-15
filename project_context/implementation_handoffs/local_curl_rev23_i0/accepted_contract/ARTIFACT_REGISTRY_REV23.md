@@ -80,7 +80,7 @@ The archive is self-contained. `GOVERNING_PACKAGE_MANIFEST_REV23.json` binds all
 | `artifacts/local_curl_per_side/runs/<run_id>/policy/pre_v7_metadata.json` | `json:pre_v7_metadata` | V6/V7 validator | exactly 1 | immutable | must bind package/contract hashes |
 | `artifacts/local_curl_per_side/runs/<run_id>/policy/run_policy_fingerprint.json` | `json:run_policy_fingerprint` | V6 run establishment | exactly 1 | immutable | run-scoped validated fingerprint |
 | `artifacts/local_curl_per_side/runs/<run_id>/reports/result_summary.json` | `json:result_summary_v23` | V9 result engine | zero or one | immutable | only structurally valid replay result |
-| `artifacts/local_curl_per_side/runs/<run_id>/request_manifest/token_manifest.parquet` | `table:token_manifest` | V5 request-manifest builder | exactly 600 rows | immutable | complete 600-token manifest |
+| `artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_manifest/token_manifest.parquet` | `table:token_manifest` | V5 token-manifest builder | exactly 600 rows | immutable | V5 pre-run; after V3 reconciliation and before request manifest |
 | `artifacts/local_curl_per_side/runs/<run_id>/resume/resume_journal.parquet` | `table:resume_journal` | V7-V9 resume controller | zero or more, strictly increasing journal_ordinal | append-only with detached snapshots | records every resume/skip/retry/cancellation decision |
 | `artifacts/local_curl_per_side/runs/<run_id>/stop/stop_state.json` | `json:stop_state` | V7-V10 stop handler | zero or one | immutable | no replay label |
 | `artifacts/local_curl_per_side/runs/<run_id>/strict/audit_snapshot_manifest.json` | `json:audit_snapshot_manifest` | strict snapshot finalizer | one current manifest plus immutable historical manifests by sequence | immutable per sequence | hash chain uses previous manifest file hash; never self-hashes |
@@ -103,7 +103,7 @@ The archive is self-contained. `GOVERNING_PACKAGE_MANIFEST_REV23.json` binds all
 
 - Every listed path has exactly one governing schema and one producer.
 - Every consumer list is nonempty.
-- Pre-run artifacts cannot contain a `run_id` before V6.
+- Pre-run artifacts cannot contain a `run_id` before V6. The sole token manifest is the registered V5 pre-run artifact; a run-scoped token-manifest copy is prohibited.
 - Authorization records are namespaced and immutable.
 - Finalized directories are immutable; rejected writes are logged only outside them.
 - Missing evidence never becomes negative evidence or continuation eligibility.

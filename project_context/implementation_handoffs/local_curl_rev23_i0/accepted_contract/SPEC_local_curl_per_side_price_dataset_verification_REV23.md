@@ -1,6 +1,6 @@
 # SPEC — Local-Curl Per-Side Dataset Verification — Revision 23
 
-**Status:** `SPECIFICATION_REVISION_ONLY — Professor submission to Sentinel`.  
+**Status:** `SPECIFICATION_REVISION_ONLY — REV23 Amendment 03 materialized for Professor → Sentinel review`.  
 **Supersedes:** Revision 22 in full. No implementer may consult Revision 22 or any earlier revision to recover governing rules.  
 **Project:** `rigolugo/pm_research`.  
 **Reviewer / decision authority:** Sentinel.  
@@ -48,6 +48,7 @@ Revision 23 retains the accepted Revision 22 corrections and additionally closes
 - adds positive-evidence reservation cancellation through `REQUEST_RESERVATION_CANCELLED_NO_START`;
 - removes impossible result branches and causal language unsupported by a separate causal-proof contract; and
 - synchronizes all schemas, artifacts, matrices, stops, results, tests, and hashes.
+- materializes REV23 Amendment 03: the sole token manifest is V5 pre-run, request/plan schemas are closed, pre-run time is integer, partition identity is singular, and HTTP reconciliation is total.
 
 
 ### 1.1 Self-contained governing bytes
@@ -184,15 +185,127 @@ Endpoint-shape parsing locates the observed `### Single-token GET` bullet block 
 
 ### 7.1 Typed row encoding
 
-For each registered projection, create a JSON array in projection order. Each cell is:
+Storage types and logical hash tags are separate. The accepted non-null mapping remains `UINT8|UINT16|UINT32|UINT64 -> UINT`, signed integer storage -> `INT`, `UTC_NS -> UTC_NS`, and `STRING|BOOL|SHA256|STRING_LIST` to the same-named tag. Width-specific logical tags are forbidden.
+
+Every null cell is exactly:
 
 ```json
-{"n":"<field_name>","t":"<logical_tag>","v":<logical_value>}
+{"n":"<field>","t":"NULL","v":null}
 ```
 
-Canonical JSON uses UTF-8, sorted object keys, compact separators, NFC logical strings, no NaN/infinity, and no trailing LF. Raw evidence bytes are base64 and are never Unicode-normalized.
+Null never retains a non-null tag. Canonical row JSON and logical relation hashing remain unchanged. Raw evidence Base64 is a logical `STRING`; decoded raw bytes are not Unicode-normalized.
 
-The row SHA-256 is over exact typed-row bytes. Destination hash fields are excluded. Logical hashes sort rows by the registered key—strings by unsigned UTF-8 bytes, integers numerically, tuples lexicographically—join exact row bytes with one LF and no trailing LF, then SHA-256. An empty relation hashes the empty byte string.
+The exact amended projections are:
+
+#### Token-manifest row projection
+
+| Field | Storage type | Non-null `t` | Null `t` | Constraint |
+|---|---|---|---|---|
+| `schema_version` | `STRING` | `STRING` | forbidden | registered field contract |
+| `spec_revision` | `UINT16` | `UINT` | forbidden | registered field contract |
+| `condition_id` | `STRING` | `STRING` | forbidden | registered field contract |
+| `subclass` | `STRING` | `STRING` | forbidden | registered field contract |
+| `outcome_index` | `UINT8` | `UINT` | forbidden | registered field contract |
+| `token_id_lexeme` | `STRING` | `STRING` | forbidden | registered field contract |
+| `query_eligible` | `BOOL` | `BOOL` | forbidden | registered field contract |
+| `invalid_window_state` | `STRING` | `STRING` | forbidden | registered field contract |
+| `invalid_window_reason` | `STRING` | `STRING` | `NULL` | registered field contract |
+| `compatibility_first_trade_ts_float_hex` | `STRING` | `STRING` | `NULL` | registered field contract |
+| `compatibility_decision_lower_ts_float_hex` | `STRING` | `STRING` | `NULL` | registered field contract |
+| `compatibility_resolved_at_ts_float_hex` | `STRING` | `STRING` | `NULL` | registered field contract |
+| `exact_first_trade_ts_ns` | `UTC_NS` | `UTC_NS` | `NULL` | registered field contract |
+| `exact_decision_lower_ts_ns` | `UTC_NS` | `UTC_NS` | `NULL` | registered field contract |
+| `exact_resolved_at_ts_ns` | `UTC_NS` | `UTC_NS` | `NULL` | registered field contract |
+| `request_start_ts` | `INT64` | `INT` | `NULL` | registered field contract |
+| `request_end_ts` | `INT64` | `INT` | `NULL` | registered field contract |
+| `source_d_token_row_sha256` | `SHA256` | `SHA256` | forbidden | registered field contract |
+| `source_b_source_d_reconciliation_row_sha256` | `SHA256` | `SHA256` | forbidden | registered field contract |
+
+#### Request-manifest row projection
+
+| Field | Storage type | Non-null `t` | Null `t` | Constraint |
+|---|---|---|---|---|
+| `schema_version` | `STRING` | `STRING` | forbidden | registered field contract |
+| `spec_revision` | `UINT16` | `UINT` | forbidden | registered field contract |
+| `request_id` | `STRING` | `STRING` | forbidden | registered field contract |
+| `execution_ordinal` | `UINT16` | `UINT` | forbidden | registered field contract |
+| `condition_id` | `STRING` | `STRING` | forbidden | registered field contract |
+| `subclass` | `STRING` | `STRING` | forbidden | registered field contract |
+| `outcome_index` | `UINT8` | `UINT` | forbidden | registered field contract |
+| `token_id_lexeme` | `STRING` | `STRING` | forbidden | registered field contract |
+| `compatibility_first_trade_ts_float_hex` | `STRING` | `STRING` | forbidden | registered field contract |
+| `compatibility_decision_lower_ts_float_hex` | `STRING` | `STRING` | forbidden | registered field contract |
+| `compatibility_resolved_at_ts_float_hex` | `STRING` | `STRING` | forbidden | registered field contract |
+| `exact_first_trade_ts_ns` | `UTC_NS` | `UTC_NS` | forbidden | registered field contract |
+| `exact_decision_lower_ts_ns` | `UTC_NS` | `UTC_NS` | forbidden | registered field contract |
+| `exact_resolved_at_ts_ns` | `UTC_NS` | `UTC_NS` | forbidden | registered field contract |
+| `request_start_ts` | `INT64` | `INT` | forbidden | registered field contract |
+| `request_end_ts` | `INT64` | `INT` | forbidden | registered field contract |
+| `token_manifest_row_sha256` | `SHA256` | `SHA256` | forbidden | registered field contract |
+
+#### Request-plan row projection
+
+| Field | Storage type | Non-null `t` | Null `t` | Constraint |
+|---|---|---|---|---|
+| `schema_version` | `STRING` | `STRING` | forbidden | registered field contract |
+| `spec_revision` | `UINT16` | `UINT` | forbidden | registered field contract |
+| `request_id` | `STRING` | `STRING` | forbidden | registered field contract |
+| `execution_ordinal` | `UINT16` | `UINT` | forbidden | registered field contract |
+| `condition_id` | `STRING` | `STRING` | forbidden | registered field contract |
+| `subclass` | `STRING` | `STRING` | forbidden | registered field contract |
+| `outcome_index` | `UINT8` | `UINT` | forbidden | registered field contract |
+| `token_id_lexeme` | `STRING` | `STRING` | forbidden | registered field contract |
+| `compatibility_first_trade_ts_float_hex` | `STRING` | `STRING` | forbidden | registered field contract |
+| `compatibility_decision_lower_ts_float_hex` | `STRING` | `STRING` | forbidden | registered field contract |
+| `compatibility_resolved_at_ts_float_hex` | `STRING` | `STRING` | forbidden | registered field contract |
+| `exact_decision_lower_ts_ns` | `UTC_NS` | `UTC_NS` | forbidden | registered field contract |
+| `exact_resolved_at_ts_ns` | `UTC_NS` | `UTC_NS` | forbidden | registered field contract |
+| `request_start_ts` | `INT64` | `INT` | forbidden | registered field contract |
+| `request_end_ts` | `INT64` | `INT` | forbidden | registered field contract |
+| `parameter_order` | `STRING_LIST` | `STRING_LIST` | forbidden | registered field contract |
+| `conditional_fidelity_state` | `STRING` | `STRING` | forbidden | registered field contract |
+| `exact_url` | `STRING` | `STRING` | forbidden | registered field contract |
+| `exact_url_sha256` | `SHA256` | `SHA256` | forbidden | registered field contract |
+| `url_policy_sha256` | `SHA256` | `SHA256` | forbidden | registered field contract |
+| `transport_policy_sha256` | `SHA256` | `SHA256` | forbidden | registered field contract |
+| `subprocess_contract_sha256` | `SHA256` | `SHA256` | forbidden | registered field contract |
+| `request_manifest_row_sha256` | `SHA256` | `SHA256` | forbidden | registered field contract |
+
+#### HTTP reconciliation row projection
+
+| Field | Storage type | Non-null `t` | Null `t` | Constraint |
+|---|---|---|---|---|
+| `schema_version` | `STRING` | `STRING` | forbidden | registered field contract |
+| `spec_revision` | `UINT16` | `UINT` | forbidden | registered field contract |
+| `run_id` | `STRING` | `STRING` | forbidden | registered field contract |
+| `authorization_id` | `STRING` | `STRING` | forbidden | registered field contract |
+| `request_id` | `STRING` | `STRING` | forbidden | registered field contract |
+| `execution_ordinal` | `UINT16` | `UINT` | forbidden | registered field contract |
+| `attempt_number` | `UINT32` | `UINT` | forbidden | registered field contract |
+| `reservation_id` | `STRING` | `STRING` | forbidden | registered field contract |
+| `capture_completed_event_row_sha256` | `SHA256` | `SHA256` | forbidden | registered field contract |
+| `write_out_stdout_raw_base64` | `STRING` | `STRING` | forbidden | registered field contract |
+| `stdout_evidence_sha256` | `SHA256` | `SHA256` | forbidden | registered field contract |
+| `header_evidence_sha256` | `SHA256` | `SHA256` | forbidden | registered field contract |
+| `write_out_http_code_lexeme` | `STRING` | `STRING` | `NULL` | registered field contract |
+| `write_out_http_status_int` | `UINT16` | `UINT` | `NULL` | registered field contract |
+| `write_out_http_code_state` | `STRING` | `STRING` | forbidden | registered field contract |
+| `selected_header_status_state` | `STRING` | `STRING` | forbidden | registered field contract |
+| `selected_header_status_int` | `UINT16` | `UINT` | `NULL` | registered field contract |
+| `status_reconciliation_state` | `STRING` | `STRING` | forbidden | registered field contract |
+| `issue_code` | `STRING` | `STRING` | `NULL` | registered field contract |
+
+#### Partition-ID semantic projection
+
+| Field | Storage type | Non-null `t` | Null `t` | Constraint |
+|---|---|---|---|---|
+| `run_id` | `STRING` | `STRING` | forbidden | registered field contract |
+| `audit_family` | `STRING` | `STRING` | forbidden | registered field contract |
+| `partition_ordinal` | `UINT64` | `UINT` | forbidden | registered field contract |
+| `row_count` | `UINT64` | `UINT` | forbidden | registered field contract |
+| `first_key_canonical_json` | `STRING` | `STRING` | `NULL` | registered field contract |
+| `last_key_canonical_json` | `STRING` | `STRING` | `NULL` | registered field contract |
+| `partition_logical_sha256` | `SHA256` | `SHA256` | forbidden | registered field contract |
 
 ### 7.2 Identities and projections
 
@@ -201,10 +314,10 @@ The row SHA-256 is over exact typed-row bytes. Destination hash fields are exclu
 - `request_manifest_row_sha256` hashes all request-manifest fields excluding destination hashes.
 - `request_plan_row_sha256` hashes all request-plan fields excluding destination hashes and must bind the equal request-manifest row hash.
 - `fingerprint_semantic_sha256` hashes the closed fingerprint semantic object excluding itself, `run_id`, and destination hashes.
-- `pre_run_attempt_id = "pra_" + SHA256(canonical compact JSON of {"attempt_kind":"LOCAL_CURL_PRE_RUN_ATTEMPT","spec_revision":23,"nonce_hex":"<64 lowercase hex>","created_at_ns":"<UTC int ns>"})`.
+- `pre_run_attempt_id = "pra_" + SHA256(canonical compact sorted-key JSON of the exact five-field object `schema_version`, `spec_revision`, `attempt_kind`, `nonce_hex`, and integer `created_at_ns`)`. String, decimal, float, exponent, Boolean, or null `created_at_ns` is invalid.
 - `run_id = "run_" + SHA256(canonical compact JSON of the exact twelve-field §8.5 projection, in this semantic field order: `schema_version`, `spec_revision`, `pre_run_nonce_hex`, `pre_run_created_at_ns`, `pre_run_attempt_id`, `detached_pre_run_attachment_semantic_sha256`, `governing_package_manifest_semantic_sha256`, `fingerprint_semantic_sha256`, `request_manifest_logical_sha256`, `request_plan_logical_sha256`, `request_execution_order_sha256`, and `initial_496_request_set_sha256`; sorted object keys, UTF-8, no trailing LF). The destination `run_id` is excluded.
 - `reservation_id = "res_" + SHA256(typed run_id, authorization_id, authorization_record_file_sha256, authorized_request_set_file_sha256, request_id, execution_ordinal, attempt_number, request_plan_row_sha256)`.
-- `partition_id = "part_" + SHA256(typed run_id, audit_family, partition_ordinal, partition_count, key_range, logical_hash)`. Audit rows do not contain partition ID.
+- `partition_id = "part_" + SHA256(typed run_id, audit_family, partition_ordinal, row_count, first_key_canonical_json, last_key_canonical_json, partition_logical_sha256)`. This seven-field projection is sole and exact; `audit_family` is restricted to the partition-specific domain `capture|analysis_compatibility|analysis_strict`, not the broader global audit-family enum; audit rows do not contain partition ID.
 - `stop_inventory_semantic_sha256` and `pre_run_stop_inventory_semantic_sha256` sort typed inventory entries by artifact-path UTF-8 bytes and exclude the inventory file, marker file, and destination semantic hash.
 - `effective_argv_sha256` is defined in §11.4.
 - `initial_496_request_set_sha256 = SHA256` of exactly 496 canonical typed `(execution_ordinal, request_id)` entries ordered by execution ordinal `0..495`, joined with one LF and no trailing LF.
@@ -226,7 +339,7 @@ V1 isolated Source D reconstruction and provenance
 V2 Source B raw capture and normalization
 V3 600-row Source B/Source D reconciliation
 V4 32-field policy establishment
-V5 request manifest, request plan, plan hashes, and fingerprint readiness
+V5 token manifest, request manifest, request plan, plan hashes, and fingerprint readiness
 V5A detached pre-run attachment semantic object
 V5B detached governing-package manifest validation
 V6 run-identity construction and run-scoped attachment persistence
@@ -367,79 +480,97 @@ compatibility_edge_vectors_file_sha256 = 1403c0c87d337fb66b48e8ac4d60699978a3177
 url_serialization_policy_file_sha256 = a148c2ac31e31c981bcafbb91e7416018a57796e6e41f7e522d2d249b5ad479a
 transport_policy_file_sha256 = 78644908a852fba0dda2068b7b08a92c4b8a8a575fb2153876f9d478c5f1d2ca
 http_status_reconciliation_vectors_file_sha256 = 65b937d9e85d589e6c06f2e50095731f2f537a07dc02758e484375c79254fb11
-schema_registry_file_sha256 = ce1ede1a27b438f6a8f6c04bf7c1642d74a2419719050e2f6bd85cb6ef949aca
+schema_registry_file_sha256 = bb5e03e91b26ecc14b6a3579b7118dc776caada3d988edaa1c342669e466bc22
 ```
 
 Missing component, extra component, mutation, destination-field inclusion, or `run_id` inclusion is `STOP_FINGERPRINT_INVALID`.
 
-## 10. Closed request-manifest and request-plan contract
+## 10. Closed token-manifest, request-manifest, and request-plan contract
 
-### 10.1 Request manifest
+### 10.1 Sole V5 token manifest
 
-The request manifest has exactly 496 rows. It is derived only from reconciled Source B/D query-eligible token rows. For each row:
+The sole token manifest is `artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_manifest/token_manifest.parquet`. `artifacts/local_curl_per_side/runs/<run_id>/request_manifest/token_manifest.parquet` is prohibited. There is no run-scoped copy, dual artifact, or deferred post-V6 validation. V5 commits the token manifest after V3 reconciliation and before the request manifest. V5A includes its exact path, complete-file hash, and logical hash before V6 computes the unchanged twelve-field `run_id`.
+
+The token manifest is `local_curl_token_manifest.v23`, exactly 600 rows, exactly 300 conditions with outcome indices `{0,1}`, keyed and ordered by `(condition_id,outcome_index)`, and closed to exactly these fields in order:
 
 ```text
-schema_version = local_curl_request_manifest_row.v23
-spec_revision = 23
+schema_version
+spec_revision
 condition_id
 subclass
-outcome_index = 0|1
+outcome_index
 token_id_lexeme
+query_eligible
+invalid_window_state
+invalid_window_reason
+compatibility_first_trade_ts_float_hex
+compatibility_decision_lower_ts_float_hex
+compatibility_resolved_at_ts_float_hex
+exact_first_trade_ts_ns
 exact_decision_lower_ts_ns
 exact_resolved_at_ts_ns
 request_start_ts
 request_end_ts
-invalid_window_state = QUERY_ELIGIBLE
-source_b_row_hash
-source_d_token_row_hash
-source_b_source_d_reconciliation_row_hash
-request_id
-request_manifest_row_sha256
+source_d_token_row_sha256
+source_b_source_d_reconciliation_row_sha256
+token_manifest_row_sha256
 ```
 
-`request_start_ts = floor(exact_decision_lower_ts_ns / 1_000_000_000)`.  
-`request_end_ts = ceil(exact_resolved_at_ts_ns / 1_000_000_000)`.  
-Bounds require `0 <= request_start_ts < request_end_ts <= 253402300799`.  
-Integers serialize as canonical base-10 without sign for nonnegative values and without leading zeroes except zero itself.
+Each source hash resolves uniquely in the same pre-run attempt and recomputes from its registered destination-excluding projection. Both referenced rows have the same typed key, and the reconciliation row is `RECONCILED`. Query eligibility, invalid-window reason, exact/compatibility timestamps, and bounds derive only from accepted reconciliation and Source D evidence. Source presence alone cannot establish eligibility. `token_id_lexeme` is the exact original reconciled lexeme, including `.0`; winner-conditioned derivation is forbidden. Any path, count, key, provenance, typed-equality, conditional-nullability, row-hash, logical-hash, or complete-file-hash defect is `STOP_MANIFEST_COUNT_OR_HASH_INVALID` at V5 with zero requests guaranteed.
 
-### 10.2 Exact byte-level URL serializer
+### 10.2 Request manifest
 
-The complete URL policy is `URL_SERIALIZATION_POLICY_REV22.json`, SHA-256 `a148c2ac31e31c981bcafbb91e7416018a57796e6e41f7e522d2d249b5ad479a`. The serializer is:
-
-1. Start with literal prefix `https://clob.polymarket.com/prices-history?`.
-2. Use lowercase host exactly `clob.polymarket.com`; no port, userinfo, fragment, path normalization, or trailing slash.
-3. Emit parameters in exact order: `market`, `startTs`, `endTs`, `interval`, then `fidelity` only if policy establishes fidelity inclusion.
-4. Use literal key bytes exactly as shown.
-5. Use `=` between key and value and `&` between pairs.
-6. Values are UTF-8 encoded then percent-encoded bytewise. Unreserved bytes `A-Z a-z 0-9 - . _ ~` are retained; every other byte becomes `%HH` with uppercase hex.
-7. `market` value is exactly `token_id_lexeme` from the matched manifest row after Source B/D reconciliation. Numeric-equivalent forms are not normalized. If a canonical `.0` token string is the sole original reconciled lexeme, `.0` remains in the URL unchanged except percent-encoding if ever required.
-8. `startTs` and `endTs` are canonical decimal integers from the manifest row.
-9. `interval` is literal `max`.
-10. `fidelity` is omitted iff the policy says omitted. If included, its value is the exact accepted endpoint-shape fidelity integer lexeme normalized to canonical decimal by the policy gate.
-
-Forbidden: duplicate keys, empty keys, unregistered parameters, parameter reordering, default port `:443`, fragments, query key case changes, path case changes, token numeric canonicalization, decoded-space `+` encoding, trailing `&`, and trailing LF.
-
-`exact_url` must equal the serializer output. `exact_url_sha256 = SHA256(UTF-8 exact_url bytes)` with no trailing LF.
-
-### 10.3 Request plan row
-
-The request plan has exactly 496 rows and every row must exactly match one manifest row by `request_id`. Required fields:
+The request manifest is `local_curl_request_manifest.v23`, exactly 496 rows, with unique `request_id`, `execution_ordinal`, and `(condition_id,outcome_index)`. Ordinals are exactly `0..495`; the logical order is numeric execution ordinal. Its exact 18 fields are:
 
 ```text
-schema_version = local_curl_request_plan_row.v23
-spec_revision = 23
+schema_version
+spec_revision
 request_id
 execution_ordinal
 condition_id
 subclass
 outcome_index
 token_id_lexeme
+compatibility_first_trade_ts_float_hex
+compatibility_decision_lower_ts_float_hex
+compatibility_resolved_at_ts_float_hex
+exact_first_trade_ts_ns
 exact_decision_lower_ts_ns
 exact_resolved_at_ts_ns
 request_start_ts
 request_end_ts
-parameter_order = ["market","startTs","endTs","interval"] or ["market","startTs","endTs","interval","fidelity"]
-conditional_fidelity_state = FIDELITY_INCLUDED|FIDELITY_OMITTED
+token_manifest_row_sha256
+request_manifest_row_sha256
+```
+
+`token_id` is forbidden. Every row binds exactly one recomputed token-manifest row with `query_eligible=true`, `invalid_window_state=QUERY_ELIGIBLE`, and null invalid-window reason; fields copied from it are typed-equal. An unrelated eligible row hash is invalid. Request ID uses the registered seven-field typed identity. Rows are assigned ordinals after sorting by condition ID unsigned UTF-8, outcome index numeric, token lexeme unsigned UTF-8, then request ID unsigned UTF-8.
+
+### 10.3 Exact URL serializer
+
+The complete URL policy remains `URL_SERIALIZATION_POLICY_REV22.json`, SHA-256 `a148c2ac31e31c981bcafbb91e7416018a57796e6e41f7e522d2d249b5ad479a`. The `market` value is the exact `token_id_lexeme`; numeric normalization and `.0` removal are forbidden. Parameter order is exactly `market,startTs,endTs,interval` with conditional trailing `fidelity`. The existing byte-level percent-encoding, host, path, integer, interval, and no-trailing-byte rules remain unchanged.
+
+### 10.4 Request plan
+
+The request plan is `local_curl_request_plan.v23`, exactly 496 rows in execution-ordinal order, one-to-one with the request manifest. Its exact 24 fields are:
+
+```text
+schema_version
+spec_revision
+request_id
+execution_ordinal
+condition_id
+subclass
+outcome_index
+token_id_lexeme
+compatibility_first_trade_ts_float_hex
+compatibility_decision_lower_ts_float_hex
+compatibility_resolved_at_ts_float_hex
+exact_decision_lower_ts_ns
+exact_resolved_at_ts_ns
+request_start_ts
+request_end_ts
+parameter_order
+conditional_fidelity_state
 exact_url
 exact_url_sha256
 url_policy_sha256
@@ -449,25 +580,7 @@ request_manifest_row_sha256
 request_plan_row_sha256
 ```
 
-Contract requirements:
-
-- `url_policy_sha256` must equal `a148c2ac31e31c981bcafbb91e7416018a57796e6e41f7e522d2d249b5ad479a`.
-- `transport_policy_sha256` must equal `78644908a852fba0dda2068b7b08a92c4b8a8a575fb2153876f9d478c5f1d2ca`.
-- `subprocess_contract_sha256` must equal `ee65157b2a5de50a3d91a0eb9dbef33a9b04c7f66d6bbad9f62be519442bede5`.
-- `condition_id`, `outcome_index`, `token_id_lexeme`, exact timestamps, integer bounds, subclass, and `request_id` must exactly equal the matching manifest row.
-- `request_id` is recomputed and must match.
-- `execution_ordinal` is a unique integer and the set is exactly `0..495`.
-- Execution ordering is unsigned UTF-8 `condition_id`, numeric `outcome_index`, unsigned UTF-8 `token_id_lexeme`, unsigned UTF-8 `request_id`.
-- No duplicate URL, duplicate `(condition_id,outcome_index)`, missing ordinal, extra ordinal, duplicate request ID, or orphan request-plan row is allowed.
-- Conditional fidelity behavior must match the policy and accepted endpoint evidence exactly.
-- `exact_url` must equal the byte-level serializer output.
-- `exact_url_sha256` must equal SHA-256 of UTF-8 exact URL bytes with no trailing LF.
-
-### 10.4 Request-plan logical hashes and counterexamples
-
-`request_plan_logical_sha256` hashes typed rows ordered by `execution_ordinal`. `request_plan_url_set_sha256` hashes typed `(execution_ordinal, request_id, exact_url_sha256)` rows. `request_execution_order_sha256` hashes typed `(execution_ordinal, request_id)` rows.
-
-Counterexample tests must fail for: reordered parameter keys; lowercase percent hex; `+` for space; duplicate `market`; fragment; `:443`; omitted `interval`; `interval` not `max`; fidelity included when policy says omitted; fidelity omitted when policy says included; token `.0` canonicalized away; start/end leading zero; endpoint path case change; request ID not recomputed; duplicate ordinal; missing ordinal 495; unregistered `foo=bar`; URL hash computed with trailing LF.
+The valid parameter vectors are exactly `["market","startTs","endTs","interval"]` and `["market","startTs","endTs","interval","fidelity"]`, paired respectively with `FIDELITY_OMITTED` and `FIDELITY_INCLUDED`. Every copied field is typed-equal to the matched manifest row; request and manifest hashes recompute. URL, policy, transport, and subprocess hashes are exact. Plan defects are `STOP_REQUEST_PLAN_INVALID`; ordering defects are `STOP_REQUEST_EXECUTION_ORDER_INVALID`.
 
 ## 11. Transport and effective argv binding
 
@@ -583,7 +696,21 @@ Other state rules remain strict: one ACTIVATED per authorization; one reservatio
 
 **INTERRUPTED** has ordinal 1 and exactly one of `WRAPPER_TIMEOUT`, `RUNNER_EXCEPTION_AFTER_START`, or `LAUNCH_EXCEPTION_START_AMBIGUOUS`. Exit-code and HTTP-code evidence are absent. Wrapper-timeout and runner-exception require a process ID; launch-ambiguous requires it null. Each body/header/stderr evidence group is either fully absent or fully captured. Partial group evidence is malformed and triggers `STOP_CAPTURE_EVENT_SCHEMA_INVALID`.
 
-**COMPLETED** has ordinal 1 and one of `EXIT_0`, `EXIT_28_TIMEOUT`, or `EXIT_OTHER_NONZERO`, with exact exit-code mapping. Body/header/stderr/stdout evidence is complete and hash-addressed. HTTP write-out bytes are parsed only from registered stdout evidence and must be exactly three ASCII digits. `000` maps to `HTTP_CODE_000` with null integer status. `100..599` maps to `HTTP_CODE_100_599` with equal integer. Other bytes stop.
+**COMPLETED** has ordinal 1 and one of `EXIT_0`, `EXIT_28_TIMEOUT`, or `EXIT_OTHER_NONZERO`, with exact exit-code mapping. Body/header/stderr/stdout evidence is complete and hash-addressed. Exact stdout bytes are persisted as canonical RFC 4648 Base64 in `http_status_stdout_raw_base64` and included in the capture row hash. For every completion category, the bytes mechanically derive exactly one of `HTTP_CODE_000`, `HTTP_CODE_100_599`, or `HTTP_CODE_INVALID`; no completed category excludes malformed or out-of-range bytes. All nine completion-category × write-out-state pairs remain valid `COMPLETED` capture states long enough to persist exactly one HTTP reconciliation row. No compatibility or strict body analysis may occur before that row.
+
+| Completion category | Exit code | Derived capture write-out state | Capture validity | Mandatory next step | Compatibility/strict body analysis before reconciliation |
+|---|---:|---|---|---|---:|
+| `EXIT_0` | `0` | `HTTP_CODE_000` | valid `COMPLETED` capture | persist reconciliation row → apply selected-header derivation and 12-cell table; no direct C02/C03 route | no |
+| `EXIT_0` | `0` | `HTTP_CODE_100_599` | valid `COMPLETED` capture | persist reconciliation row → apply selected-header derivation and 12-cell table; no direct C07–C23 route | no |
+| `EXIT_0` | `0` | `HTTP_CODE_INVALID` | valid `COMPLETED` capture | persist reconciliation row → `STOP_HTTP_WRITEOUT_INVALID`; no body analysis | no |
+| `EXIT_28_TIMEOUT` | `28` | `HTTP_CODE_000` | valid `COMPLETED` capture | persist reconciliation row → apply selected-header derivation and 12-cell table; no direct C02/C03 route | no |
+| `EXIT_28_TIMEOUT` | `28` | `HTTP_CODE_100_599` | valid `COMPLETED` capture | persist reconciliation row → apply selected-header derivation and 12-cell table; no direct C07–C23 route | no |
+| `EXIT_28_TIMEOUT` | `28` | `HTTP_CODE_INVALID` | valid `COMPLETED` capture | persist reconciliation row → `STOP_HTTP_WRITEOUT_INVALID`; no body analysis | no |
+| `EXIT_OTHER_NONZERO` | `nonzero !=28` | `HTTP_CODE_000` | valid `COMPLETED` capture | persist reconciliation row → apply selected-header derivation and 12-cell table; no direct C02/C03 route | no |
+| `EXIT_OTHER_NONZERO` | `nonzero !=28` | `HTTP_CODE_100_599` | valid `COMPLETED` capture | persist reconciliation row → apply selected-header derivation and 12-cell table; no direct C07–C23 route | no |
+| `EXIT_OTHER_NONZERO` | `nonzero !=28` | `HTTP_CODE_INVALID` | valid `COMPLETED` capture | persist reconciliation row → `STOP_HTTP_WRITEOUT_INVALID`; no body analysis | no |
+
+`HTTP_CODE_INVALID` maps to reconciliation write-out state `INVALID`; after the required reconciliation row is persisted, it produces `STOP_HTTP_WRITEOUT_INVALID` before any compatibility or strict body analysis. `HTTP_CODE_000` and `HTTP_CODE_100_599` proceed only to selected-header derivation and the existing twelve-combination reconciliation table. The capture lifecycle never routes directly to C02, C03, or C07–C23.
 
 Attempt numbers are contiguous `1..N`. Every attempt has one STARTED and zero or one terminal. Every capture state includes the exact `authorized_request_set_file_sha256`; it must equal the matching authorization-use row and authorization namespace. Duplicate/conflicting terminals, ordinal errors, authorization or request-set mismatches, partial evidence, hash failures, or unauthorized attempts are structural capture stops. Resume never overwrites an attempt; a new request-specific attempt is `max prior attempt + 1`.
 
@@ -605,19 +732,17 @@ Valid interruption remains empirical unresolved evidence in the 496-token vector
 
 Revision 23 adds an independent structural reconciliation before C14–C23 body processing.
 
-### 15.1 Evidence extraction
+Every selected `COMPLETED` capture requires this reconciliation regardless of curl completion category or derived write-out state. The lifecycle cannot route directly to C02, C03, or C07–C23. `HTTP_CODE_INVALID` is persisted through the reconciliation row and stops there; only non-invalid write-out evidence may reach the existing selected-header reconciliation and compatibility precedence.
 
-For every COMPLETED capture:
+### 15.1 Sole schema version and persisted row
 
-1. Parse curl write-out HTTP code from registered stdout evidence only. It must be exactly three ASCII digits.
-2. Parse selected final header status independently from registered header evidence using the retained response-header extraction contract.
-3. Persist one row in `analysis/http_status_reconciliation.parquet`.
+The sole schema version is `local_curl_http_status_reconciliation.v23`. No `_row.v23` alias or any other value is accepted.
 
-Required row fields:
+For every selected COMPLETED capture, persist one row in `analysis/http_status_reconciliation.parquet` with this exact field order:
 
 ```text
-schema_version = local_curl_http_status_reconciliation_row.v23
-spec_revision = 23
+schema_version
+spec_revision
 run_id
 authorization_id
 request_id
@@ -625,39 +750,71 @@ execution_ordinal
 attempt_number
 reservation_id
 capture_completed_event_row_sha256
+write_out_stdout_raw_base64
 stdout_evidence_sha256
 header_evidence_sha256
 write_out_http_code_lexeme
-write_out_http_status_int nullable
-write_out_http_code_state = VALID_STATUS|VALID_000|INVALID
-selected_header_status_state = VALID_STATUS|NO_SELECTED_FINAL_HEADER|INVALID_STATUS_LINE|HEADER_EVIDENCE_INVALID
-selected_header_status_int nullable
-status_reconciliation_state = RECONCILED|MISMATCH_STOP|NOT_RECONCILABLE_STOP
-issue_code nullable
+write_out_http_status_int
+write_out_http_code_state
+selected_header_status_state
+selected_header_status_int
+status_reconciliation_state
+issue_code
 http_status_reconciliation_row_sha256
 ```
 
-`http_status_reconciliation_row_sha256` hashes all destination-excluding row fields.
+`http_status_reconciliation_row_sha256` hashes every preceding field using the registered typed-cell projection. Nullable lexeme, integer, and issue fields use `t:"NULL",v:null` when null.
 
-### 15.2 Reconciliation rule
+### 15.2 Write-out evidence derivation
 
-- If write-out state is `VALID_STATUS` and selected header state is `VALID_STATUS`, the integer statuses must be equal. Inequality triggers `STOP_HTTP_STATUS_EVIDENCE_MISMATCH`.
-- If write-out state is `VALID_000` and selected header state is `VALID_STATUS`, trigger `STOP_HTTP_STATUS_EVIDENCE_MISMATCH`.
-- If write-out state is `VALID_STATUS` and selected header state is `INVALID_STATUS_LINE` or `HEADER_EVIDENCE_INVALID`, trigger `STOP_HTTP_STATUS_EVIDENCE_MISMATCH`.
-- If write-out state is invalid, trigger `STOP_HTTP_WRITEOUT_INVALID`.
-- If no selected final header exists and write-out is `VALID_STATUS` or `VALID_000`, continue to compatibility branches C01–C13 as applicable only when the retained header contract classifies absence/no-final-header as the corresponding front-end evidence state. It cannot reach C14–C23.
-- Reconciled status rows are required before compatibility C14–C23 and strict completed-response analysis.
+`capture_completed_event_row_sha256` resolves uniquely to the selected COMPLETED capture. `write_out_stdout_raw_base64` equals its `http_status_stdout_raw_base64` exactly. It is canonical standard RFC 4648 Base64 with required padding; decode-then-reencode equality is mandatory. `stdout_evidence_sha256` is SHA-256 of the decoded bytes.
 
-Mismatch vectors are governed by `HTTP_STATUS_RECONCILIATION_VECTORS_REV22.json`, SHA-256 `65b937d9e85d589e6c06f2e50095731f2f537a07dc02758e484375c79254fb11`:
+For decoded bytes `B`, apply exactly:
 
-```text
-write-out 200 vs header 404 -> HTTP_STATUS_WRITEOUT_200_HEADER_404
-write-out 404 vs header 200 -> HTTP_STATUS_WRITEOUT_404_HEADER_200
-write-out 000 with selected final header -> HTTP_STATUS_WRITEOUT_000_HEADER_PRESENT
-valid write-out with invalid status-line header evidence -> HTTP_STATUS_WRITEOUT_VALID_HEADER_STATUS_INVALID
-```
+1. malformed length/content (`len(B) != 3` or any non-ASCII-digit byte) → lexeme null, `INVALID`, integer null;
+2. `B == b"000"` → lexeme `"000"`, `VALID_000`, integer null;
+3. three ASCII digits with decimal `100..599` → exact lexeme, `VALID_STATUS`, equal integer;
+4. three ASCII digits in `001..099` or `600..999` → exact lexeme, `INVALID`, integer null.
 
-These issue codes are structural reconciliation stops, not measurement-inconclusive outcomes. They are evaluated before C14–C23 body processing. C14 invalid-status-line as a runtime network-response branch is therefore `DEFENSIVE_UNREACHABLE_AFTER_REV22_STATUS_RECONCILIATION`; it may remain only as a vector/defensive parser classification, never as a finalized runtime compatibility row.
+The mapping is total and mutually exclusive for every byte sequence. Raw bytes, Base64, hash, lexeme, state, and integer are mechanically derived and cross-checked; independent caller assertions are forbidden.
+
+Required rejection examples include `404` paired with integer `200`; `000` labeled `VALID_STATUS`; `200` labeled `VALID_000`; `999` labeled `VALID_STATUS`; two-byte, four-byte, non-digit, Unicode-digit, and non-ASCII evidence; and any lexeme/hash/integer inconsistent with registered bytes.
+
+### 15.3 Selected-header derivation
+
+`header_evidence_sha256` equals the selected COMPLETED capture's `header_sha256`, and the exact complete registered header bytes must recompute it. Run the retained response-header extraction contract at SHA-256 `b010e18ee1da53b37bc70aa37b5e92ab35593b259140300b69174020ca710460`. The persisted state/integer equals this ordered adapter output:
+
+1. unavailable, oversize, truncated, unreadable, or hash-mismatched exact evidence → `HEADER_EVIDENCE_INVALID`, null;
+2. parser `selected_http_status_code` non-null → `VALID_STATUS`, exact parser integer `100..599`;
+3. null status plus `HEADER_NO_FINAL_RESPONSE_BLOCK` → `NO_SELECTED_FINAL_HEADER`, null;
+4. null status plus `HEADER_STATUS_LINE_INVALID` → `INVALID_STATUS_LINE`, null;
+5. other null-status parser output → `HEADER_EVIDENCE_INVALID`, null.
+
+No independently supplied state or integer may override parser output.
+
+### 15.4 Preserved total reconciliation rule
+
+After both evidence derivations, apply the unchanged twelve Cartesian combinations and valid/valid subcases:
+
+| Write-out | Header / integer subcase | Integer nullability and range | State | Issue | Structural stop | Permitted continuation | C14–C23 |
+|---|---|---|---|---|---|---|---:|
+| `INVALID` | `VALID_STATUS` | write null; header non-null `100..599` | `NOT_RECONCILABLE_STOP` | `HTTP_WRITEOUT_INVALID` | `STOP_HTTP_WRITEOUT_INVALID` | none | no |
+| `INVALID` | `NO_SELECTED_FINAL_HEADER` | both null | `NOT_RECONCILABLE_STOP` | `HTTP_WRITEOUT_INVALID` | `STOP_HTTP_WRITEOUT_INVALID` | none | no |
+| `INVALID` | `INVALID_STATUS_LINE` | both null | `NOT_RECONCILABLE_STOP` | `HTTP_WRITEOUT_INVALID` | `STOP_HTTP_WRITEOUT_INVALID` | none | no |
+| `INVALID` | `HEADER_EVIDENCE_INVALID` | both null | `NOT_RECONCILABLE_STOP` | `HTTP_WRITEOUT_INVALID` | `STOP_HTTP_WRITEOUT_INVALID` | none | no |
+| `VALID_STATUS` | `VALID_STATUS`, equal | both non-null `100..599`; equal | `RECONCILED` | null | none | `C14_C23_ELIGIBLE` | yes |
+| `VALID_STATUS` | `VALID_STATUS`, `200/404` | both non-null `100..599` | `MISMATCH_STOP` | `HTTP_STATUS_WRITEOUT_200_HEADER_404` | `STOP_HTTP_STATUS_EVIDENCE_MISMATCH` | none | no |
+| `VALID_STATUS` | `VALID_STATUS`, `404/200` | both non-null `100..599` | `MISMATCH_STOP` | `HTTP_STATUS_WRITEOUT_404_HEADER_200` | `STOP_HTTP_STATUS_EVIDENCE_MISMATCH` | none | no |
+| `VALID_STATUS` | `VALID_STATUS`, other unequal | both non-null `100..599` | `MISMATCH_STOP` | `HTTP_STATUS_WRITEOUT_HEADER_UNEQUAL` | `STOP_HTTP_STATUS_EVIDENCE_MISMATCH` | none | no |
+| `VALID_STATUS` | `NO_SELECTED_FINAL_HEADER` | write non-null `100..599`; header null | `RECONCILED` | `NO_SELECTED_FINAL_HEADER` | none | `C01_C13_FRONT_END_ONLY` | no |
+| `VALID_STATUS` | `INVALID_STATUS_LINE` | write non-null `100..599`; header null | `MISMATCH_STOP` | `HTTP_STATUS_WRITEOUT_VALID_HEADER_STATUS_INVALID` | `STOP_HTTP_STATUS_EVIDENCE_MISMATCH` | none | no |
+| `VALID_STATUS` | `HEADER_EVIDENCE_INVALID` | write non-null `100..599`; header null | `MISMATCH_STOP` | `HTTP_STATUS_WRITEOUT_VALID_HEADER_STATUS_INVALID` | `STOP_HTTP_STATUS_EVIDENCE_MISMATCH` | none | no |
+| `VALID_000` | `VALID_STATUS` | write null; header non-null `100..599` | `MISMATCH_STOP` | `HTTP_STATUS_WRITEOUT_000_HEADER_PRESENT` | `STOP_HTTP_STATUS_EVIDENCE_MISMATCH` | none | no |
+| `VALID_000` | `NO_SELECTED_FINAL_HEADER` | both null | `RECONCILED` | `NO_SELECTED_FINAL_HEADER` | none | `C01_C13_FRONT_END_ONLY` | no |
+| `VALID_000` | `INVALID_STATUS_LINE` | both null | `MISMATCH_STOP` | `HTTP_STATUS_WRITEOUT_000_HEADER_EVIDENCE_INVALID` | `STOP_HTTP_STATUS_EVIDENCE_MISMATCH` | none | no |
+| `VALID_000` | `HEADER_EVIDENCE_INVALID` | both null | `MISMATCH_STOP` | `HTTP_STATUS_WRITEOUT_000_HEADER_EVIDENCE_INVALID` | `STOP_HTTP_STATUS_EVIDENCE_MISMATCH` | none | no |
+
+Every unequal valid pair stops. Every derived `INVALID` branch first persists this reconciliation row and then triggers `STOP_HTTP_WRITEOUT_INVALID`; it cannot enter C01–C23. Only non-invalid write-out evidence reaches the remaining table cells. Only equal valid integers can reach C14–C23. No-selected-final-header branches remain restricted to C01–C13 front-end continuation. These rules apply identically to `EXIT_0`, `EXIT_28_TIMEOUT`, and `EXIT_OTHER_NONZERO`.
 
 ## 16. Canonical-S1 compatibility JSON adapter and analysis
 
@@ -838,11 +995,16 @@ Acceptance tests are specification requirements only and are not authorized by t
 8. Namespaced authorization: INITIAL, CONTINUATION, and REQUEST_SPECIFIC records coexist without overwrite; semantic ID, complete file hash, request-set semantic hash, request-set file hash, package/fingerprint/plan bindings, and all cross-file equalities are tested.
 9. Reservation cancellation: positive zero-start evidence succeeds; missing capture snapshot, missing launch snapshot, partial interval, contradictory STARTED row, launch evidence, terminal evidence, or later old-authorization use fails.
 10. Authorization-use/capture reconciliation: predecessor, multiplicity, reservation, attempt, hash, expiry, and terminal rules are total.
-11. HTTP status reconciliation vectors and retained compatibility/strict vector corpora execute exactly.
-12. Selected attempt, valid interruption, disposition, fixed 496 token vector, 248 pair vector, threshold lower/upper bounds, and all-one safeguards reconcile.
-13. Result-label tests prove exact S1 negative reproduction is below threshold; clear labels are unreachable from exact reproduction; gain-only clear and nonmonotone-clear branches are separately reachable; threshold-inconclusive precedes below-threshold differences.
-14. Finalization atomicity, post-finalization external audit, no second finalization, and immutable detached snapshots are enforced.
-15. Complete non-authorization boundary remains present in the specification and Sentinel handoff.
+11. The sole HTTP reconciliation schema version is exactly `local_curl_http_status_reconciliation.v23` in the table, field domain, row-hash projection, and every proposed assertion; aliases fail.
+12. Arbitrary stdout bytes map to exactly one write-out state, and raw Base64/hash/lexeme/state/integer inconsistency fails, including all registered counterexamples.
+13. Selected-header state/integer equal the retained parser adapter output over exact registered header bytes; caller override fails.
+14. All twelve reconciliation combinations remain total after evidence derivation, with unchanged outputs, stops, continuations, and C14–C23 reachability.
+15. HTTP status reconciliation vectors and retained compatibility/strict vector corpora remain byte-identical and are proposed for exact execution only after separate authorization.
+16. Selected attempt, valid interruption, disposition, fixed 496 token vector, 248 pair vector, threshold lower/upper bounds, and all-one safeguards reconcile.
+17. Result-label tests prove exact S1 negative reproduction is below threshold; clear labels are unreachable from exact reproduction; gain-only clear and nonmonotone-clear branches are separately reachable; threshold-inconclusive precedes below-threshold differences.
+18. Finalization atomicity, post-finalization external audit, no second finalization, and immutable detached snapshots are enforced.
+19. Token-manifest lifecycle, exact 600-row provenance, exact 496-row request/plan membership, integer pre-run identity, storage/logical-tag separation, exact NULL encoding, the sole seven-field partition identity with only three partition families, all 12 HTTP outer cells and valid/valid subcases, and absence of the prohibited run-scoped token path are tested.
+20. Complete non-authorization boundary remains present in the specification and Sentinel handoff.
 
 ## 26. Requirements traceability
 

@@ -1,0 +1,24 @@
+--- a/REQUEST_PLAN_AND_AUTHORIZATION_CONTRACT_REV23.md
++++ b/REQUEST_PLAN_AND_AUTHORIZATION_CONTRACT_REV23.md
+@@ -2,15 +2,17 @@
+ 
+ This companion is governing with `SPEC_local_curl_per_side_price_dataset_verification_REV23.md`. It is specification only and authorizes no implementation or execution.
+ 
+-## 1. Fixed request-plan contract
++## 1. Fixed V5 token, request-manifest, and request-plan contract
+ 
+-The request manifest and request plan each contain exactly 496 rows. Each plan row exactly copies the matched manifest values for request ID, condition, subclass, outcome index, original token lexeme, exact nanosecond anchors, integer request bounds, and manifest row hash. Request IDs are recomputed; execution ordinals are the exact set `0..495` ordered by unsigned UTF-8 condition ID, numeric outcome index, unsigned UTF-8 token lexeme, then request ID.
++V5 uses one acyclic chain: committed V1 Source D token rows → committed V3 reconciliation → `artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_manifest/token_manifest.parquet` (600 rows) → request manifest (496 rows) → request plan and hashes (496 rows). The prohibited path `artifacts/local_curl_per_side/runs/<run_id>/request_manifest/token_manifest.parquet` must not exist. No run-scoped copy or deferred validation is permitted.
+ 
+-The exact URL serializer is the embedded `policies/URL_SERIALIZATION_POLICY_REV22.json`. Its file SHA-256 is `a148c2ac31e31c981bcafbb91e7416018a57796e6e41f7e522d2d249b5ad479a`. The URL, transport, and retained curl subprocess hashes are included in every request-plan row. `request_plan_logical_sha256` hashes typed rows in execution order, LF-separated, no trailing LF. `request_execution_order_sha256` hashes only typed `(execution_ordinal,request_id)` rows under the same rule.
++The token manifest is keyed and ordered by `(condition_id,outcome_index)`, references exact recomputed Source D and reconciliation rows, requires `RECONCILED`, derives eligibility only from accepted reconciliation, and preserves the exact token lexeme including `.0`. The request manifest references one exact eligible token row and uses the 18-field `local_curl_request_manifest.v23` schema. The request plan uses the 24-field `local_curl_request_plan.v23` schema, binds the exact request-manifest row hash, includes the closed parameter-order/fidelity pair, and preserves token lexemes through exact URL serialization.
++
++Both request relations contain exactly 496 rows. Request ordinals are exactly `0..495`; logical relation hashes use execution-ordinal order. Request IDs, row hashes, logical hashes, the URL-set hash, and execution-order hash all recompute from the registered typed projections.
+ 
+ ## 2. Detached pre-run binding
+ 
+-Before a run exists, V0–V5 artifacts are bound by `detached_pre_run_attachment_semantic_sha256`. The attachment object contains only pre-run-relative paths and complete file hashes plus required logical hashes. It excludes `run_id`, run destinations, its destination hash, and sidecar hashes.
++Before a run exists, V0–V5 artifacts—including the relocated V5 token manifest, request manifest, request plan, plan hashes, and fingerprint readiness—are bound by `detached_pre_run_attachment_semantic_sha256`. The attachment object contains only pre-run-relative paths and complete file hashes plus required logical hashes. It excludes `run_id`, run destinations, its destination hash, and sidecar hashes.
+ 
+ `GOVERNING_PACKAGE_MANIFEST_REV23.json` independently binds the exact specification package bytes. Its semantic hash is required by fingerprint readiness, run identity, every authorization, pre-V7 validation, and final inventories.
+ 

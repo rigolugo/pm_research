@@ -52,6 +52,11 @@ The prior handoff's self-containment, closed registry, detached pre-run attachme
 - `SCHEMA_REGISTRY_REV23.json`: `e9590fac64ce245dbebd7f0e0bcaca5cf8b263e907e202dbba779f1be9157f19`
 - `SPEC_local_curl_per_side_price_dataset_verification_REV23.md`: `d4271f3bfb29924c3937a0569d3cee585ef32125604785ba474e837a2ca642b9`
 
+### Package-level target hashes
+
+- `GOVERNING_PACKAGE_MANIFEST_REV23.json`: `b2627541175ca3ccb225491c1a684e0d7c00eed20d40e30cd65da23136528afa`
+- governing manifest semantic SHA-256: `6510bee82e4047bc3e035cfa27732556b313300f19368c8f02ed7cb8eda5c86b`
+
 ### Requested Sentinel decision
 
 `APPROVE`, `BLOCK`, `DEFER`, or `NEEDS VERIFICATION` for this specification revision only.

@@ -1,0 +1,2694 @@
+[
+  {
+    "op": "add",
+    "path": "/rev23_amendment_03",
+    "value": {
+      "amendment_id": "REV23_AMENDMENT_03",
+      "baseline_commit": "226085ca9ba7fa41a8b666005499827d6fa6b9c5",
+      "completed_capture_lifecycle_closure": "all 3 completion categories x all 3 derived capture write-out states are validly representable; all 9 pairs require HTTP reconciliation; HTTP_CODE_INVALID persists then stops; non-invalid pairs continue only under the existing 12-cell table",
+      "fixed_stage_order": [
+        "V1_SOURCE_D",
+        "V3_RECONCILIATION",
+        "V5_TOKEN_MANIFEST",
+        "V5_REQUEST_MANIFEST",
+        "V5_REQUEST_PLAN_AND_HASHES",
+        "V5A_DETACHED_ATTACHMENT",
+        "V6_RUN_ID"
+      ],
+      "http_mapping": "total 3x4 state mapping plus equal/unequal valid-status refinement; see table_schemas.http_status_reconciliation.conditional_requirements",
+      "http_reconciliation_schema_version": "local_curl_http_status_reconciliation.v23",
+      "prohibited_token_manifest_path": "artifacts/local_curl_per_side/runs/<run_id>/request_manifest/token_manifest.parquet",
+      "request_manifest_cardinality": 496,
+      "request_plan_cardinality": 496,
+      "run_identity_projection_unchanged": true,
+      "selected_header_binding": "exact retained parser contract SHA-256 b010e18ee1da53b37bc70aa37b5e92ab35593b259140300b69174020ca710460",
+      "specification_only": true,
+      "token_manifest_cardinality": 600,
+      "token_manifest_path": "artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_manifest/token_manifest.parquet",
+      "typed_cell_contract": {
+        "nonnull_storage_to_logical_tag": {
+          "BOOL": "BOOL",
+          "INT64": "INT",
+          "SHA256": "SHA256",
+          "STRING": "STRING",
+          "STRING_LIST": "STRING_LIST",
+          "UINT16": "UINT",
+          "UINT32": "UINT",
+          "UINT64": "UINT",
+          "UINT8": "UINT",
+          "UTC_NS": "UTC_NS"
+        },
+        "null_cell_exact": {
+          "n": "<field>",
+          "t": "NULL",
+          "v": null
+        },
+        "width_specific_logical_tags_forbidden": true
+      },
+      "write_out_evidence_representation": "canonical RFC 4648 Base64 raw stdout bytes plus SHA-256, nullable exact ASCII lexeme, derived state, and derived integer"
+    }
+  },
+  {
+    "op": "remove",
+    "path": "/artifact_catalog/artifacts~1local_curl_per_side~1runs~1<run_id>~1request_manifest~1token_manifest.parquet"
+  },
+  {
+    "op": "add",
+    "path": "/artifact_catalog/artifacts~1local_curl_per_side~1pre_run_attempts~1<pre_run_attempt_id>~1request_manifest~1token_manifest.parquet",
+    "value": {
+      "cardinality": "exactly 600 rows",
+      "consumers": [
+        "V5 request-manifest builder",
+        "V5A detached attachment builder",
+        "V6 run-identity validator",
+        "authorization validator",
+        "Sentinel"
+      ],
+      "hash_rule": "complete file SHA-256 plus registered row and logical hashes",
+      "lifecycle": "V5 pre-run; committed after V3 reconciliation and before request manifest",
+      "mutability": "immutable",
+      "producer": "V5 token-manifest builder",
+      "schema_ref": "table:token_manifest"
+    }
+  },
+  {
+    "op": "remove",
+    "path": "/artifact_schema_bindings/artifacts~1local_curl_per_side~1runs~1<run_id>~1request_manifest~1token_manifest.parquet"
+  },
+  {
+    "op": "add",
+    "path": "/artifact_schema_bindings/artifacts~1local_curl_per_side~1pre_run_attempts~1<pre_run_attempt_id>~1request_manifest~1token_manifest.parquet",
+    "value": {
+      "cardinality": "exactly 600 rows",
+      "schema_ref": "table:token_manifest"
+    }
+  },
+  {
+    "op": "remove",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_0/http_code"
+  },
+  {
+    "op": "remove",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_0/downstream"
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_0/capture_event_state",
+    "value": "COMPLETED"
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_0/derived_http_code_evidence_state_domain",
+    "value": [
+      "HTTP_CODE_000",
+      "HTTP_CODE_100_599",
+      "HTTP_CODE_INVALID"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_0/mandatory_order",
+    "value": "COMPLETED capture commit -> HTTP reconciliation row commit -> registered stop or permitted continuation -> compatibility/strict body analysis only when permitted"
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_0/totality",
+    "value": "all three derived write-out evidence states are permitted and explicitly governed for this completion category; no raw stdout byte sequence is excluded"
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_0/write_out_state_behavior",
+    "value": {
+      "HTTP_CODE_000": {
+        "c14_c23_reachable_before_reconciliation": false,
+        "capture_event_state": "COMPLETED",
+        "capture_schema_valid": true,
+        "direct_compatibility_case": null,
+        "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+        "http_reconciliation_row_required": true,
+        "http_status_code": null,
+        "next_step": "persist the exact HTTP reconciliation row; only the table result may stop or permit C01-C13 front-end continuation",
+        "reconciliation_result": "derive selected-header state and apply the registered 12-combination HTTP reconciliation table",
+        "write_out_http_code_state": "VALID_000"
+      },
+      "HTTP_CODE_100_599": {
+        "c14_c23_reachable_before_reconciliation": false,
+        "capture_event_state": "COMPLETED",
+        "capture_schema_valid": true,
+        "direct_compatibility_case": null,
+        "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+        "http_reconciliation_row_required": true,
+        "http_status_code": "exact derived integer in 100..599",
+        "next_step": "persist the exact HTTP reconciliation row; only the table result may stop, permit C01-C13 front-end continuation, or permit C14-C23",
+        "reconciliation_result": "derive selected-header state and apply the registered 12-combination HTTP reconciliation table",
+        "write_out_http_code_state": "VALID_STATUS"
+      },
+      "HTTP_CODE_INVALID": {
+        "c14_c23_reachable_before_reconciliation": false,
+        "capture_event_state": "COMPLETED",
+        "capture_schema_valid": true,
+        "direct_compatibility_case": null,
+        "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+        "http_reconciliation_row_required": true,
+        "http_status_code": null,
+        "next_step": "persist the exact HTTP reconciliation row, then stop before compatibility or strict body analysis",
+        "reconciliation_result": {
+          "c14_c23_reachable": false,
+          "issue_code": "HTTP_WRITEOUT_INVALID",
+          "permitted_continuation": null,
+          "status_reconciliation_state": "NOT_RECONCILABLE_STOP",
+          "structural_stop": "STOP_HTTP_WRITEOUT_INVALID"
+        },
+        "write_out_http_code_state": "INVALID"
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_0/evidence",
+    "value": "body/header/stderr complete and hash-addressed; exact stdout bytes persisted as canonical RFC 4648 Base64 and capture-row-hash-bound"
+  },
+  {
+    "op": "remove",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_28/http_code"
+  },
+  {
+    "op": "remove",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_28/downstream"
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_28/capture_event_state",
+    "value": "COMPLETED"
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_28/derived_http_code_evidence_state_domain",
+    "value": [
+      "HTTP_CODE_000",
+      "HTTP_CODE_100_599",
+      "HTTP_CODE_INVALID"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_28/mandatory_order",
+    "value": "COMPLETED capture commit -> HTTP reconciliation row commit -> registered stop or permitted continuation -> compatibility/strict body analysis only when permitted"
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_28/totality",
+    "value": "all three derived write-out evidence states are permitted and explicitly governed for this completion category; no raw stdout byte sequence is excluded"
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_28/write_out_state_behavior",
+    "value": {
+      "HTTP_CODE_000": {
+        "c14_c23_reachable_before_reconciliation": false,
+        "capture_event_state": "COMPLETED",
+        "capture_schema_valid": true,
+        "direct_compatibility_case": null,
+        "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+        "http_reconciliation_row_required": true,
+        "http_status_code": null,
+        "next_step": "persist the exact HTTP reconciliation row; only the table result may stop or permit C01-C13 front-end continuation",
+        "reconciliation_result": "derive selected-header state and apply the registered 12-combination HTTP reconciliation table",
+        "write_out_http_code_state": "VALID_000"
+      },
+      "HTTP_CODE_100_599": {
+        "c14_c23_reachable_before_reconciliation": false,
+        "capture_event_state": "COMPLETED",
+        "capture_schema_valid": true,
+        "direct_compatibility_case": null,
+        "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+        "http_reconciliation_row_required": true,
+        "http_status_code": "exact derived integer in 100..599",
+        "next_step": "persist the exact HTTP reconciliation row; only the table result may stop, permit C01-C13 front-end continuation, or permit C14-C23",
+        "reconciliation_result": "derive selected-header state and apply the registered 12-combination HTTP reconciliation table",
+        "write_out_http_code_state": "VALID_STATUS"
+      },
+      "HTTP_CODE_INVALID": {
+        "c14_c23_reachable_before_reconciliation": false,
+        "capture_event_state": "COMPLETED",
+        "capture_schema_valid": true,
+        "direct_compatibility_case": null,
+        "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+        "http_reconciliation_row_required": true,
+        "http_status_code": null,
+        "next_step": "persist the exact HTTP reconciliation row, then stop before compatibility or strict body analysis",
+        "reconciliation_result": {
+          "c14_c23_reachable": false,
+          "issue_code": "HTTP_WRITEOUT_INVALID",
+          "permitted_continuation": null,
+          "status_reconciliation_state": "NOT_RECONCILABLE_STOP",
+          "structural_stop": "STOP_HTTP_WRITEOUT_INVALID"
+        },
+        "write_out_http_code_state": "INVALID"
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_EXIT_28/evidence",
+    "value": "body/header/stderr complete and hash-addressed; exact stdout bytes persisted as canonical RFC 4648 Base64 and capture-row-hash-bound"
+  },
+  {
+    "op": "remove",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_OTHER_NONZERO/http_code"
+  },
+  {
+    "op": "remove",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_OTHER_NONZERO/downstream"
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_OTHER_NONZERO/capture_event_state",
+    "value": "COMPLETED"
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_OTHER_NONZERO/derived_http_code_evidence_state_domain",
+    "value": [
+      "HTTP_CODE_000",
+      "HTTP_CODE_100_599",
+      "HTTP_CODE_INVALID"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_OTHER_NONZERO/mandatory_order",
+    "value": "COMPLETED capture commit -> HTTP reconciliation row commit -> registered stop or permitted continuation -> compatibility/strict body analysis only when permitted"
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_OTHER_NONZERO/totality",
+    "value": "all three derived write-out evidence states are permitted and explicitly governed for this completion category; no raw stdout byte sequence is excluded"
+  },
+  {
+    "op": "add",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_OTHER_NONZERO/write_out_state_behavior",
+    "value": {
+      "HTTP_CODE_000": {
+        "c14_c23_reachable_before_reconciliation": false,
+        "capture_event_state": "COMPLETED",
+        "capture_schema_valid": true,
+        "direct_compatibility_case": null,
+        "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+        "http_reconciliation_row_required": true,
+        "http_status_code": null,
+        "next_step": "persist the exact HTTP reconciliation row; only the table result may stop or permit C01-C13 front-end continuation",
+        "reconciliation_result": "derive selected-header state and apply the registered 12-combination HTTP reconciliation table",
+        "write_out_http_code_state": "VALID_000"
+      },
+      "HTTP_CODE_100_599": {
+        "c14_c23_reachable_before_reconciliation": false,
+        "capture_event_state": "COMPLETED",
+        "capture_schema_valid": true,
+        "direct_compatibility_case": null,
+        "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+        "http_reconciliation_row_required": true,
+        "http_status_code": "exact derived integer in 100..599",
+        "next_step": "persist the exact HTTP reconciliation row; only the table result may stop, permit C01-C13 front-end continuation, or permit C14-C23",
+        "reconciliation_result": "derive selected-header state and apply the registered 12-combination HTTP reconciliation table",
+        "write_out_http_code_state": "VALID_STATUS"
+      },
+      "HTTP_CODE_INVALID": {
+        "c14_c23_reachable_before_reconciliation": false,
+        "capture_event_state": "COMPLETED",
+        "capture_schema_valid": true,
+        "direct_compatibility_case": null,
+        "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+        "http_reconciliation_row_required": true,
+        "http_status_code": null,
+        "next_step": "persist the exact HTTP reconciliation row, then stop before compatibility or strict body analysis",
+        "reconciliation_result": {
+          "c14_c23_reachable": false,
+          "issue_code": "HTTP_WRITEOUT_INVALID",
+          "permitted_continuation": null,
+          "status_reconciliation_state": "NOT_RECONCILABLE_STOP",
+          "structural_stop": "STOP_HTTP_WRITEOUT_INVALID"
+        },
+        "write_out_http_code_state": "INVALID"
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/capture_event_lifecycle_contract/COMPLETED_OTHER_NONZERO/evidence",
+    "value": "body/header/stderr complete and hash-addressed; exact stdout bytes persisted as canonical RFC 4648 Base64 and capture-row-hash-bound"
+  },
+  {
+    "op": "add",
+    "path": "/enums/http_status_reconciliation_issue_code",
+    "value": [
+      "HTTP_STATUS_WRITEOUT_200_HEADER_404",
+      "HTTP_STATUS_WRITEOUT_404_HEADER_200",
+      "HTTP_STATUS_WRITEOUT_000_HEADER_PRESENT",
+      "HTTP_STATUS_WRITEOUT_VALID_HEADER_STATUS_INVALID",
+      "HTTP_WRITEOUT_INVALID",
+      "NO_SELECTED_FINAL_HEADER",
+      "HTTP_STATUS_WRITEOUT_HEADER_UNEQUAL",
+      "HTTP_STATUS_WRITEOUT_000_HEADER_EVIDENCE_INVALID"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/enums/partition_audit_family",
+    "value": [
+      "capture",
+      "analysis_compatibility",
+      "analysis_strict"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/enums/http_code_evidence_state",
+    "value": [
+      "HTTP_CODE_NOT_AVAILABLE",
+      "HTTP_CODE_000",
+      "HTTP_CODE_100_599",
+      "HTTP_CODE_INVALID"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/detached_pre_run_attachment_semantic/invariants",
+    "value": [
+      "entries ordered by stage_ordinal then unsigned UTF-8 artifact_path",
+      "no run_id, run-scoped path, or destination hash field",
+      "entry_count equals entries length",
+      "the V5 inventory includes token_manifest.parquet, request_manifest.parquet, request_plan.parquet, request_plan_hashes.json, and fingerprint readiness exactly once with registered file/logical hashes"
+    ]
+  },
+  {
+    "op": "remove",
+    "path": "/json_schemas/http_status_reconciliation_vector_v22/fields/expected_issue_code/domain"
+  },
+  {
+    "op": "add",
+    "path": "/json_schemas/http_status_reconciliation_vector_v22/fields/expected_issue_code/ref",
+    "value": "enum:http_status_reconciliation_issue_code"
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/pre_run_attempt_identity_v23/invariants",
+    "value": [
+      "created_at_ns is a JSON integer carrying signed UTC nanoseconds; string, decimal, float, exponent, Boolean, and null are invalid",
+      "pre_run_attempt_id is excluded from semantic bytes and recomputes from the exact five-field projection"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/pre_run_attempt_identity_v23/semantic_hash_projection",
+    "value": {
+      "excluded_destination_fields": [
+        "pre_run_attempt_id"
+      ],
+      "fields": [
+        "schema_version",
+        "spec_revision",
+        "attempt_kind",
+        "nonce_hex",
+        "created_at_ns"
+      ],
+      "mode": "CANONICAL_CLOSED_OBJECT"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/request_plan_hashes/field_order",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "request_manifest_logical_sha256",
+      "request_plan_logical_sha256",
+      "request_plan_url_set_sha256",
+      "request_execution_order_sha256",
+      "request_count"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/json_schemas/request_plan_hashes/fields/request_plan_url_set_sha256",
+    "value": {
+      "nullable": false,
+      "type": "SHA256"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/request_plan_hashes/invariants",
+    "value": [
+      "request_count equals 496",
+      "request_plan_url_set_sha256 hashes typed (execution_ordinal,request_id,exact_url_sha256) entries ordered by execution_ordinal",
+      "request_execution_order_sha256 hashes typed (execution_ordinal,request_id) entries ordered by execution_ordinal"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/request_plan_hashes/required_fields",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "request_manifest_logical_sha256",
+      "request_plan_logical_sha256",
+      "request_plan_url_set_sha256",
+      "request_execution_order_sha256",
+      "request_count"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/json_schemas/request_plan_hashes/semantic_hash_projection",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "request_manifest_logical_sha256",
+      "request_plan_logical_sha256",
+      "request_plan_url_set_sha256",
+      "request_execution_order_sha256",
+      "request_count"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/registry_completeness_invariants",
+    "value": [
+      "Every artifact_catalog path is unique and has exactly one schema_ref, one producer, and at least one consumer.",
+      "Every table schema defines additional_fields=false, exact fields, key, cardinality, ordering, row hash projection, and logical hash rule.",
+      "Every JSON schema defines additional_fields=false, exact fields, required fields, conditional requirements, semantic/file hash rules as applicable.",
+      "Every schema ref resolves; every table/json schema has at least one artifact or nested-schema use.",
+      "No field uses open state placeholders; nullability is a Boolean field property and structured values use closed schema references.",
+      "Every runtime schema uses spec_revision=23; retained embedded contracts keep their original internal revisions and bytes.",
+      "REV23 Amendment 03 typed-cell projections are closed for partition_id, token_manifest, request_manifest, request_plan, and http_status_reconciliation; storage type and logical tag are separate, and every nullable null uses NULL",
+      "REV23 Amendment 03 has exactly one HTTP reconciliation schema version across table, field domain, row-hash projection, specification, and traceability",
+      "REV23 Amendment 03 HTTP write-out raw bytes are canonically Base64-persisted and mechanically determine hash, lexeme, state, and integer for every byte sequence",
+      "REV23 Amendment 03 selected-header state and integer are mechanically derived from the retained response-header extraction contract over exact registered evidence",
+      "REV23 Amendment 03 completed-capture lifecycle is the total 3 completion categories x 3 derived write-out evidence states; all 9 pairs require HTTP reconciliation before body analysis and invalid always persists then stops"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/row_hash_projections/http_status_reconciliation_row_sha256",
+    "value": {
+      "destination_excluded": true,
+      "fields": [
+        "schema_version",
+        "spec_revision",
+        "run_id",
+        "authorization_id",
+        "request_id",
+        "execution_ordinal",
+        "attempt_number",
+        "reservation_id",
+        "capture_completed_event_row_sha256",
+        "write_out_stdout_raw_base64",
+        "stdout_evidence_sha256",
+        "header_evidence_sha256",
+        "write_out_http_code_lexeme",
+        "write_out_http_status_int",
+        "write_out_http_code_state",
+        "selected_header_status_state",
+        "selected_header_status_int",
+        "status_reconciliation_state",
+        "issue_code"
+      ],
+      "key": [
+        "request_id",
+        "attempt_number"
+      ],
+      "null_encoding": {
+        "n": "<field>",
+        "t": "NULL",
+        "v": null
+      },
+      "schema_id": "local_curl_http_status_reconciliation.v23",
+      "storage_width_specific_tags_forbidden": true,
+      "typed_cells": [
+        {
+          "field": "schema_version",
+          "nonnull_tag": "STRING",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "STRING"
+        },
+        {
+          "field": "spec_revision",
+          "nonnull_tag": "UINT",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "UINT16"
+        },
+        {
+          "field": "run_id",
+          "nonnull_tag": "STRING",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "STRING"
+        },
+        {
+          "field": "authorization_id",
+          "nonnull_tag": "STRING",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "STRING"
+        },
+        {
+          "field": "request_id",
+          "nonnull_tag": "STRING",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "STRING"
+        },
+        {
+          "field": "execution_ordinal",
+          "nonnull_tag": "UINT",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "UINT16"
+        },
+        {
+          "field": "attempt_number",
+          "nonnull_tag": "UINT",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "UINT32"
+        },
+        {
+          "field": "reservation_id",
+          "nonnull_tag": "STRING",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "STRING"
+        },
+        {
+          "field": "capture_completed_event_row_sha256",
+          "nonnull_tag": "SHA256",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "SHA256"
+        },
+        {
+          "field": "write_out_stdout_raw_base64",
+          "nonnull_tag": "STRING",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "STRING"
+        },
+        {
+          "field": "stdout_evidence_sha256",
+          "nonnull_tag": "SHA256",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "SHA256"
+        },
+        {
+          "field": "header_evidence_sha256",
+          "nonnull_tag": "SHA256",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "SHA256"
+        },
+        {
+          "field": "write_out_http_code_lexeme",
+          "nonnull_tag": "STRING",
+          "null_tag": "NULL",
+          "nullable": true,
+          "storage_type": "STRING"
+        },
+        {
+          "field": "write_out_http_status_int",
+          "nonnull_tag": "UINT",
+          "null_tag": "NULL",
+          "nullable": true,
+          "storage_type": "UINT16"
+        },
+        {
+          "field": "write_out_http_code_state",
+          "nonnull_tag": "STRING",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "STRING"
+        },
+        {
+          "field": "selected_header_status_state",
+          "nonnull_tag": "STRING",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "STRING"
+        },
+        {
+          "field": "selected_header_status_int",
+          "nonnull_tag": "UINT",
+          "null_tag": "NULL",
+          "nullable": true,
+          "storage_type": "UINT16"
+        },
+        {
+          "field": "status_reconciliation_state",
+          "nonnull_tag": "STRING",
+          "null_tag": null,
+          "nullable": false,
+          "storage_type": "STRING"
+        },
+        {
+          "field": "issue_code",
+          "nonnull_tag": "STRING",
+          "null_tag": "NULL",
+          "nullable": true,
+          "storage_type": "STRING"
+        }
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/row_hash_projections/request_manifest_row_sha256/null_encoding",
+    "value": {
+      "n": "<field>",
+      "t": "NULL",
+      "v": null
+    }
+  },
+  {
+    "op": "add",
+    "path": "/row_hash_projections/request_manifest_row_sha256/storage_width_specific_tags_forbidden",
+    "value": true
+  },
+  {
+    "op": "add",
+    "path": "/row_hash_projections/request_manifest_row_sha256/typed_cells",
+    "value": [
+      {
+        "field": "schema_version",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "spec_revision",
+        "nonnull_tag": "UINT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UINT16"
+      },
+      {
+        "field": "request_id",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "execution_ordinal",
+        "nonnull_tag": "UINT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UINT16"
+      },
+      {
+        "field": "condition_id",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "subclass",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "outcome_index",
+        "nonnull_tag": "UINT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UINT8"
+      },
+      {
+        "field": "token_id_lexeme",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "compatibility_first_trade_ts_float_hex",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "compatibility_decision_lower_ts_float_hex",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "compatibility_resolved_at_ts_float_hex",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "exact_first_trade_ts_ns",
+        "nonnull_tag": "UTC_NS",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UTC_NS"
+      },
+      {
+        "field": "exact_decision_lower_ts_ns",
+        "nonnull_tag": "UTC_NS",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UTC_NS"
+      },
+      {
+        "field": "exact_resolved_at_ts_ns",
+        "nonnull_tag": "UTC_NS",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UTC_NS"
+      },
+      {
+        "field": "request_start_ts",
+        "nonnull_tag": "INT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "INT64"
+      },
+      {
+        "field": "request_end_ts",
+        "nonnull_tag": "INT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "INT64"
+      },
+      {
+        "field": "token_manifest_row_sha256",
+        "nonnull_tag": "SHA256",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "SHA256"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/row_hash_projections/request_manifest_row_sha256/fields",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "request_id",
+      "execution_ordinal",
+      "condition_id",
+      "subclass",
+      "outcome_index",
+      "token_id_lexeme",
+      "compatibility_first_trade_ts_float_hex",
+      "compatibility_decision_lower_ts_float_hex",
+      "compatibility_resolved_at_ts_float_hex",
+      "exact_first_trade_ts_ns",
+      "exact_decision_lower_ts_ns",
+      "exact_resolved_at_ts_ns",
+      "request_start_ts",
+      "request_end_ts",
+      "token_manifest_row_sha256"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/row_hash_projections/request_plan_row_sha256/null_encoding",
+    "value": {
+      "n": "<field>",
+      "t": "NULL",
+      "v": null
+    }
+  },
+  {
+    "op": "add",
+    "path": "/row_hash_projections/request_plan_row_sha256/storage_width_specific_tags_forbidden",
+    "value": true
+  },
+  {
+    "op": "add",
+    "path": "/row_hash_projections/request_plan_row_sha256/typed_cells",
+    "value": [
+      {
+        "field": "schema_version",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "spec_revision",
+        "nonnull_tag": "UINT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UINT16"
+      },
+      {
+        "field": "request_id",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "execution_ordinal",
+        "nonnull_tag": "UINT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UINT16"
+      },
+      {
+        "field": "condition_id",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "subclass",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "outcome_index",
+        "nonnull_tag": "UINT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UINT8"
+      },
+      {
+        "field": "token_id_lexeme",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "compatibility_first_trade_ts_float_hex",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "compatibility_decision_lower_ts_float_hex",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "compatibility_resolved_at_ts_float_hex",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "exact_decision_lower_ts_ns",
+        "nonnull_tag": "UTC_NS",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UTC_NS"
+      },
+      {
+        "field": "exact_resolved_at_ts_ns",
+        "nonnull_tag": "UTC_NS",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UTC_NS"
+      },
+      {
+        "field": "request_start_ts",
+        "nonnull_tag": "INT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "INT64"
+      },
+      {
+        "field": "request_end_ts",
+        "nonnull_tag": "INT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "INT64"
+      },
+      {
+        "field": "parameter_order",
+        "nonnull_tag": "STRING_LIST",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING_LIST"
+      },
+      {
+        "field": "conditional_fidelity_state",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "exact_url",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "exact_url_sha256",
+        "nonnull_tag": "SHA256",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "SHA256"
+      },
+      {
+        "field": "url_policy_sha256",
+        "nonnull_tag": "SHA256",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "SHA256"
+      },
+      {
+        "field": "transport_policy_sha256",
+        "nonnull_tag": "SHA256",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "SHA256"
+      },
+      {
+        "field": "subprocess_contract_sha256",
+        "nonnull_tag": "SHA256",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "SHA256"
+      },
+      {
+        "field": "request_manifest_row_sha256",
+        "nonnull_tag": "SHA256",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "SHA256"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/row_hash_projections/request_plan_row_sha256/fields",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "request_id",
+      "execution_ordinal",
+      "condition_id",
+      "subclass",
+      "outcome_index",
+      "token_id_lexeme",
+      "compatibility_first_trade_ts_float_hex",
+      "compatibility_decision_lower_ts_float_hex",
+      "compatibility_resolved_at_ts_float_hex",
+      "exact_decision_lower_ts_ns",
+      "exact_resolved_at_ts_ns",
+      "request_start_ts",
+      "request_end_ts",
+      "parameter_order",
+      "conditional_fidelity_state",
+      "exact_url",
+      "exact_url_sha256",
+      "url_policy_sha256",
+      "transport_policy_sha256",
+      "subprocess_contract_sha256",
+      "request_manifest_row_sha256"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/row_hash_projections/token_manifest_row_sha256/null_encoding",
+    "value": {
+      "n": "<field>",
+      "t": "NULL",
+      "v": null
+    }
+  },
+  {
+    "op": "add",
+    "path": "/row_hash_projections/token_manifest_row_sha256/storage_width_specific_tags_forbidden",
+    "value": true
+  },
+  {
+    "op": "add",
+    "path": "/row_hash_projections/token_manifest_row_sha256/typed_cells",
+    "value": [
+      {
+        "field": "schema_version",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "spec_revision",
+        "nonnull_tag": "UINT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UINT16"
+      },
+      {
+        "field": "condition_id",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "subclass",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "outcome_index",
+        "nonnull_tag": "UINT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UINT8"
+      },
+      {
+        "field": "token_id_lexeme",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "query_eligible",
+        "nonnull_tag": "BOOL",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "BOOL"
+      },
+      {
+        "field": "invalid_window_state",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "invalid_window_reason",
+        "nonnull_tag": "STRING",
+        "null_tag": "NULL",
+        "nullable": true,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "compatibility_first_trade_ts_float_hex",
+        "nonnull_tag": "STRING",
+        "null_tag": "NULL",
+        "nullable": true,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "compatibility_decision_lower_ts_float_hex",
+        "nonnull_tag": "STRING",
+        "null_tag": "NULL",
+        "nullable": true,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "compatibility_resolved_at_ts_float_hex",
+        "nonnull_tag": "STRING",
+        "null_tag": "NULL",
+        "nullable": true,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "exact_first_trade_ts_ns",
+        "nonnull_tag": "UTC_NS",
+        "null_tag": "NULL",
+        "nullable": true,
+        "storage_type": "UTC_NS"
+      },
+      {
+        "field": "exact_decision_lower_ts_ns",
+        "nonnull_tag": "UTC_NS",
+        "null_tag": "NULL",
+        "nullable": true,
+        "storage_type": "UTC_NS"
+      },
+      {
+        "field": "exact_resolved_at_ts_ns",
+        "nonnull_tag": "UTC_NS",
+        "null_tag": "NULL",
+        "nullable": true,
+        "storage_type": "UTC_NS"
+      },
+      {
+        "field": "request_start_ts",
+        "nonnull_tag": "INT",
+        "null_tag": "NULL",
+        "nullable": true,
+        "storage_type": "INT64"
+      },
+      {
+        "field": "request_end_ts",
+        "nonnull_tag": "INT",
+        "null_tag": "NULL",
+        "nullable": true,
+        "storage_type": "INT64"
+      },
+      {
+        "field": "source_d_token_row_sha256",
+        "nonnull_tag": "SHA256",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "SHA256"
+      },
+      {
+        "field": "source_b_source_d_reconciliation_row_sha256",
+        "nonnull_tag": "SHA256",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "SHA256"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/row_hash_projections/token_manifest_row_sha256/fields",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "condition_id",
+      "subclass",
+      "outcome_index",
+      "token_id_lexeme",
+      "query_eligible",
+      "invalid_window_state",
+      "invalid_window_reason",
+      "compatibility_first_trade_ts_float_hex",
+      "compatibility_decision_lower_ts_float_hex",
+      "compatibility_resolved_at_ts_float_hex",
+      "exact_first_trade_ts_ns",
+      "exact_decision_lower_ts_ns",
+      "exact_resolved_at_ts_ns",
+      "request_start_ts",
+      "request_end_ts",
+      "source_d_token_row_sha256",
+      "source_b_source_d_reconciliation_row_sha256"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/schema_usage/table:token_manifest",
+    "value": [
+      {
+        "kind": "artifact",
+        "path": "artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_manifest/token_manifest.parquet"
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/semantic_hashes/partition_id/audit_rows_contain_partition_id",
+    "value": false
+  },
+  {
+    "op": "add",
+    "path": "/semantic_hashes/partition_id/empty_partition_rule",
+    "value": "row_count=0; first_key_canonical_json=null; last_key_canonical_json=null; partition_logical_sha256=SHA256(empty bytes)"
+  },
+  {
+    "op": "add",
+    "path": "/semantic_hashes/partition_id/field_domains",
+    "value": {
+      "audit_family": {
+        "ref": "enum:partition_audit_family"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/semantic_hashes/partition_id/invariants",
+    "value": [
+      "audit_family resolves only through enum:partition_audit_family and never through the broader enum:audit_family",
+      "each non-null cell uses its registered nonnull_tag; each nullable null cell uses tag NULL and value null",
+      "the typed_cells order equals fields exactly"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/semantic_hashes/partition_id/typed_cells",
+    "value": [
+      {
+        "field": "run_id",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "audit_family",
+        "nonnull_tag": "STRING",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "partition_ordinal",
+        "nonnull_tag": "UINT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UINT64"
+      },
+      {
+        "field": "row_count",
+        "nonnull_tag": "UINT",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "UINT64"
+      },
+      {
+        "field": "first_key_canonical_json",
+        "nonnull_tag": "STRING",
+        "null_tag": "NULL",
+        "nullable": true,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "last_key_canonical_json",
+        "nonnull_tag": "STRING",
+        "null_tag": "NULL",
+        "nullable": true,
+        "storage_type": "STRING"
+      },
+      {
+        "field": "partition_logical_sha256",
+        "nonnull_tag": "SHA256",
+        "null_tag": null,
+        "nullable": false,
+        "storage_type": "SHA256"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/semantic_hashes/partition_id/algorithm",
+    "value": "prefix + sha256(exact canonical typed-row bytes)"
+  },
+  {
+    "op": "replace",
+    "path": "/semantic_hashes/partition_id/collision_rule",
+    "value": "different semantic bytes under the same ID -> STOP_SEMANTIC_ID_COLLISION"
+  },
+  {
+    "op": "replace",
+    "path": "/semantic_hashes/partition_id/excluded_fields",
+    "value": [
+      "partition_id",
+      "partition_path",
+      "size_bytes",
+      "file_sha256",
+      "snapshot_partition_row_sha256",
+      "containing_snapshot_hashes"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/capture_events/fields/http_status_stdout_raw_base64/pattern",
+    "value": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/capture_events/invariants",
+    "value": [
+      "attempt numbers are contiguous per request; each attempt has exactly one STARTED ordinal 0 and at most one terminal ordinal 1",
+      "terminal uniqueness: zero terminal means started-only; exactly one terminal is INTERRUPTED or COMPLETED; duplicate/conflicting terminal is structural invalid",
+      "every event references the exact authorization file hash and reservation for that request/attempt",
+      "effective argv has exactly 19 elements with --disable ordinal 1 and --http1.1 ordinal 2",
+      "state-specific one_of contract is total and mutually exclusive",
+      "valid INTERRUPTED evidence maps to INTERRUPTED_SELECTED; malformed partial evidence maps to STOP_CAPTURE_EVENT_SCHEMA_INVALID",
+      "COMPLETED event evidence is complete and hash-addressed before either analysis row can validate",
+      "resume never overwrites an attempt; a new request-specific attempt is max prior attempt + 1",
+      "spec_revision equals governing replay revision 23",
+      "every capture row authorized_request_set_file_sha256 equals the matching authorization-use event and authorization namespace",
+      "every capture row authorization_id, authorization_record_file_sha256, authorized_request_set_file_sha256, reservation_id, request_id, execution_ordinal, and attempt_number equal the bound authorization-use values",
+      "every COMPLETED capture persists canonical Base64 for the exact stdout bytes; decoding and re-encoding must reproduce the stored string exactly",
+      "COMPLETED http_code_evidence_state and http_status_code are mechanically derived from exact decoded stdout bytes; invalid evidence is HTTP_CODE_INVALID with null integer and is not rejected before HTTP reconciliation evidence is persisted",
+      "each COMPLETED curl completion category EXIT_0, EXIT_28_TIMEOUT, and EXIT_OTHER_NONZERO permits exactly the three mechanically derived evidence states HTTP_CODE_000, HTTP_CODE_100_599, and HTTP_CODE_INVALID",
+      "HTTP_CODE_INVALID remains a validly represented COMPLETED capture state until exactly one HTTP reconciliation row is persisted; that row then produces STOP_HTTP_WRITEOUT_INVALID before compatibility or strict body analysis",
+      "no COMPLETED capture routes directly to C02, C03, or C07-C23; every completed category/state pair passes through HTTP reconciliation first",
+      "only non-invalid write-out evidence may be evaluated by the existing selected-header reconciliation and compatibility precedence"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/capture_events/one_of_by_capture_event_state/COMPLETED/allowed_http_code_evidence_states",
+    "value": [
+      "HTTP_CODE_000",
+      "HTTP_CODE_100_599",
+      "HTTP_CODE_INVALID"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/capture_events/one_of_by_capture_event_state/COMPLETED/completion_category_write_out_state_matrix",
+    "value": {
+      "EXIT_0": {
+        "HTTP_CODE_000": {
+          "c14_c23_reachable_before_reconciliation": false,
+          "capture_event_state": "COMPLETED",
+          "capture_schema_valid": true,
+          "direct_compatibility_case": null,
+          "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+          "http_reconciliation_row_required": true,
+          "http_status_code": null,
+          "next_step": "persist the exact HTTP reconciliation row; only the table result may stop or permit C01-C13 front-end continuation",
+          "reconciliation_result": "derive selected-header state and apply the registered 12-combination HTTP reconciliation table",
+          "write_out_http_code_state": "VALID_000"
+        },
+        "HTTP_CODE_100_599": {
+          "c14_c23_reachable_before_reconciliation": false,
+          "capture_event_state": "COMPLETED",
+          "capture_schema_valid": true,
+          "direct_compatibility_case": null,
+          "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+          "http_reconciliation_row_required": true,
+          "http_status_code": "exact derived integer in 100..599",
+          "next_step": "persist the exact HTTP reconciliation row; only the table result may stop, permit C01-C13 front-end continuation, or permit C14-C23",
+          "reconciliation_result": "derive selected-header state and apply the registered 12-combination HTTP reconciliation table",
+          "write_out_http_code_state": "VALID_STATUS"
+        },
+        "HTTP_CODE_INVALID": {
+          "c14_c23_reachable_before_reconciliation": false,
+          "capture_event_state": "COMPLETED",
+          "capture_schema_valid": true,
+          "direct_compatibility_case": null,
+          "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+          "http_reconciliation_row_required": true,
+          "http_status_code": null,
+          "next_step": "persist the exact HTTP reconciliation row, then stop before compatibility or strict body analysis",
+          "reconciliation_result": {
+            "c14_c23_reachable": false,
+            "issue_code": "HTTP_WRITEOUT_INVALID",
+            "permitted_continuation": null,
+            "status_reconciliation_state": "NOT_RECONCILABLE_STOP",
+            "structural_stop": "STOP_HTTP_WRITEOUT_INVALID"
+          },
+          "write_out_http_code_state": "INVALID"
+        }
+      },
+      "EXIT_28_TIMEOUT": {
+        "HTTP_CODE_000": {
+          "c14_c23_reachable_before_reconciliation": false,
+          "capture_event_state": "COMPLETED",
+          "capture_schema_valid": true,
+          "direct_compatibility_case": null,
+          "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+          "http_reconciliation_row_required": true,
+          "http_status_code": null,
+          "next_step": "persist the exact HTTP reconciliation row; only the table result may stop or permit C01-C13 front-end continuation",
+          "reconciliation_result": "derive selected-header state and apply the registered 12-combination HTTP reconciliation table",
+          "write_out_http_code_state": "VALID_000"
+        },
+        "HTTP_CODE_100_599": {
+          "c14_c23_reachable_before_reconciliation": false,
+          "capture_event_state": "COMPLETED",
+          "capture_schema_valid": true,
+          "direct_compatibility_case": null,
+          "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+          "http_reconciliation_row_required": true,
+          "http_status_code": "exact derived integer in 100..599",
+          "next_step": "persist the exact HTTP reconciliation row; only the table result may stop, permit C01-C13 front-end continuation, or permit C14-C23",
+          "reconciliation_result": "derive selected-header state and apply the registered 12-combination HTTP reconciliation table",
+          "write_out_http_code_state": "VALID_STATUS"
+        },
+        "HTTP_CODE_INVALID": {
+          "c14_c23_reachable_before_reconciliation": false,
+          "capture_event_state": "COMPLETED",
+          "capture_schema_valid": true,
+          "direct_compatibility_case": null,
+          "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+          "http_reconciliation_row_required": true,
+          "http_status_code": null,
+          "next_step": "persist the exact HTTP reconciliation row, then stop before compatibility or strict body analysis",
+          "reconciliation_result": {
+            "c14_c23_reachable": false,
+            "issue_code": "HTTP_WRITEOUT_INVALID",
+            "permitted_continuation": null,
+            "status_reconciliation_state": "NOT_RECONCILABLE_STOP",
+            "structural_stop": "STOP_HTTP_WRITEOUT_INVALID"
+          },
+          "write_out_http_code_state": "INVALID"
+        }
+      },
+      "EXIT_OTHER_NONZERO": {
+        "HTTP_CODE_000": {
+          "c14_c23_reachable_before_reconciliation": false,
+          "capture_event_state": "COMPLETED",
+          "capture_schema_valid": true,
+          "direct_compatibility_case": null,
+          "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+          "http_reconciliation_row_required": true,
+          "http_status_code": null,
+          "next_step": "persist the exact HTTP reconciliation row; only the table result may stop or permit C01-C13 front-end continuation",
+          "reconciliation_result": "derive selected-header state and apply the registered 12-combination HTTP reconciliation table",
+          "write_out_http_code_state": "VALID_000"
+        },
+        "HTTP_CODE_100_599": {
+          "c14_c23_reachable_before_reconciliation": false,
+          "capture_event_state": "COMPLETED",
+          "capture_schema_valid": true,
+          "direct_compatibility_case": null,
+          "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+          "http_reconciliation_row_required": true,
+          "http_status_code": "exact derived integer in 100..599",
+          "next_step": "persist the exact HTTP reconciliation row; only the table result may stop, permit C01-C13 front-end continuation, or permit C14-C23",
+          "reconciliation_result": "derive selected-header state and apply the registered 12-combination HTTP reconciliation table",
+          "write_out_http_code_state": "VALID_STATUS"
+        },
+        "HTTP_CODE_INVALID": {
+          "c14_c23_reachable_before_reconciliation": false,
+          "capture_event_state": "COMPLETED",
+          "capture_schema_valid": true,
+          "direct_compatibility_case": null,
+          "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+          "http_reconciliation_row_required": true,
+          "http_status_code": null,
+          "next_step": "persist the exact HTTP reconciliation row, then stop before compatibility or strict body analysis",
+          "reconciliation_result": {
+            "c14_c23_reachable": false,
+            "issue_code": "HTTP_WRITEOUT_INVALID",
+            "permitted_continuation": null,
+            "status_reconciliation_state": "NOT_RECONCILABLE_STOP",
+            "structural_stop": "STOP_HTTP_WRITEOUT_INVALID"
+          },
+          "write_out_http_code_state": "INVALID"
+        }
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/capture_events/one_of_by_capture_event_state/COMPLETED/http_reconciliation_requirement",
+    "value": "For every COMPLETED category and every derived HTTP_CODE_000, HTTP_CODE_100_599, or HTTP_CODE_INVALID state, persist exactly one table:http_status_reconciliation row before compatibility or strict body analysis. HTTP_CODE_INVALID maps to write_out_http_code_state INVALID and STOP_HTTP_WRITEOUT_INVALID after that row is persisted; non-invalid states may continue only according to the registered 12-combination reconciliation table."
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/capture_events/one_of_by_capture_event_state/COMPLETED/stdout_evidence_representation",
+    "value": {
+      "binding": "field is included in capture_event_row_sha256 and is copied byte-equivalently into HTTP reconciliation write_out_stdout_raw_base64",
+      "caller_assertions_forbidden": true,
+      "encoding": "canonical RFC 4648 Base64 with standard alphabet and required padding; empty byte sequence is empty string",
+      "field": "http_status_stdout_raw_base64"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/capture_events/one_of_by_capture_event_state/COMPLETED/analysis_requirement",
+    "value": "No COMPLETED capture routes directly to C02, C03, or C07-C23. The HTTP reconciliation row is mandatory first. Only a non-invalid write-out state whose registered HTTP/header reconciliation cell permits continuation may enter compatibility precedence; strict body analysis is permitted only where the same reconciliation result permits it. Missing analysis later yields COMPLETED_UNANALYZED."
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/capture_events/one_of_by_capture_event_state/COMPLETED/http_code_mapping",
+    "value": "Decode canonical RFC 4648 Base64 from http_status_stdout_raw_base64 to exact bytes B. If B is ASCII 000, http_code_evidence_state=HTTP_CODE_000 and http_status_code=null. If B is exactly three ASCII digits whose decimal value is 100..599, state=HTTP_CODE_100_599 and http_status_code equals that value. Every other byte sequence, including three ASCII digits outside those ranges and malformed length/content, maps to HTTP_CODE_INVALID with http_status_code=null. No raw byte sequence is unrepresentable."
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/capture_events/one_of_by_capture_event_state/COMPLETED/required_nonnull",
+    "value": [
+      "authorization_id",
+      "authorization_record_file_sha256",
+      "authorized_request_set_file_sha256",
+      "reservation_id",
+      "run_policy_fingerprint_file_sha256",
+      "request_plan_row_sha256",
+      "subprocess_contract_sha256",
+      "effective_argv",
+      "effective_argv_sha256",
+      "proxy_variables_removed",
+      "process_id",
+      "curl_completion_category",
+      "curl_exit_code",
+      "http_status_stdout_raw_base64"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/completed_capture_lifecycle_binding",
+    "value": {
+      "capture_http_code_evidence_states": [
+        "HTTP_CODE_000",
+        "HTTP_CODE_100_599",
+        "HTTP_CODE_INVALID"
+      ],
+      "capture_to_reconciliation_state": {
+        "HTTP_CODE_000": "VALID_000",
+        "HTTP_CODE_100_599": "VALID_STATUS",
+        "HTTP_CODE_INVALID": "INVALID"
+      },
+      "completion_categories": [
+        "EXIT_0",
+        "EXIT_28_TIMEOUT",
+        "EXIT_OTHER_NONZERO"
+      ],
+      "direct_compatibility_or_strict_body_analysis_before_reconciliation": false,
+      "invalid_rule": "HTTP_CODE_INVALID -> reconciliation INVALID -> NOT_RECONCILABLE_STOP + HTTP_WRITEOUT_INVALID + STOP_HTTP_WRITEOUT_INVALID before compatibility or strict body analysis",
+      "noninvalid_rule": "HTTP_CODE_000 and HTTP_CODE_100_599 proceed only through selected-header derivation and the registered 12-combination reconciliation table",
+      "pair_count": 9,
+      "row_required_for_every_cartesian_pair": true
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/selected_header_evidence_derivation",
+    "value": {
+      "all_other_states_integer": null,
+      "classification_order": [
+        {
+          "case": "EVIDENCE_INVALID",
+          "predicate": "complete registered header bytes are unavailable, oversize, unreadable, or hash-mismatched",
+          "selected_header_status_int": null,
+          "selected_header_status_state": "HEADER_EVIDENCE_INVALID"
+        },
+        {
+          "case": "VALID_STATUS",
+          "predicate": "retained parser output selected_http_status_code is non-null",
+          "selected_header_status_int": "exact parser selected_http_status_code in 100..599",
+          "selected_header_status_state": "VALID_STATUS"
+        },
+        {
+          "case": "NO_SELECTED_FINAL_HEADER",
+          "predicate": "parser selected_http_status_code is null and ordered_header_issue_codes contains HEADER_NO_FINAL_RESPONSE_BLOCK",
+          "selected_header_status_int": null,
+          "selected_header_status_state": "NO_SELECTED_FINAL_HEADER"
+        },
+        {
+          "case": "INVALID_STATUS_LINE",
+          "predicate": "parser selected_http_status_code is null and ordered_header_issue_codes contains HEADER_STATUS_LINE_INVALID",
+          "selected_header_status_int": null,
+          "selected_header_status_state": "INVALID_STATUS_LINE"
+        },
+        {
+          "case": "HEADER_EVIDENCE_INVALID_FALLBACK",
+          "predicate": "parser selected_http_status_code is null and neither preceding registered parser issue applies",
+          "selected_header_status_int": null,
+          "selected_header_status_state": "HEADER_EVIDENCE_INVALID"
+        }
+      ],
+      "parser_output_binding": "selected_header_status_state and selected_header_status_int equal this ordered adapter output; independently supplied values cannot override it",
+      "retained_contract_file_sha256": "b010e18ee1da53b37bc70aa37b5e92ab35593b259140300b69174020ca710460",
+      "retained_vectors_file_sha256": "00cb6e9be633fce678ac091d37d0353ff94de6de585ff6b28c7c1d40427fb38b",
+      "source_binding": [
+        "capture_completed_event_row_sha256 resolves uniquely to the selected COMPLETED capture row",
+        "header_evidence_sha256 equals that capture row header_sha256",
+        "the exact complete bytes at the registered header_path hash to header_evidence_sha256; truncated, oversize, unreadable, missing, or hash-mismatched evidence is not parser input"
+      ],
+      "valid_status_range": {
+        "maximum": 599,
+        "minimum": 100
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/write_out_evidence_derivation",
+    "value": {
+      "classification_order": [
+        {
+          "case": "MALFORMED",
+          "lexeme": null,
+          "predicate": "len(B) != 3 OR any byte is outside 0x30..0x39",
+          "write_out_http_code_state": "INVALID",
+          "write_out_http_status_int": null
+        },
+        {
+          "case": "ASCII_000",
+          "lexeme": "000",
+          "predicate": "B == 0x30 0x30 0x30",
+          "write_out_http_code_state": "VALID_000",
+          "write_out_http_status_int": null
+        },
+        {
+          "case": "ASCII_VALID_STATUS",
+          "lexeme": "exact ASCII decode of B",
+          "predicate": "len(B)=3, all ASCII digits, and decimal(B) in 100..599",
+          "write_out_http_code_state": "VALID_STATUS",
+          "write_out_http_status_int": "decimal(B)"
+        },
+        {
+          "case": "ASCII_OUT_OF_RANGE",
+          "lexeme": "exact ASCII decode of B",
+          "predicate": "len(B)=3, all ASCII digits, and decimal(B) in 001..099 or 600..999",
+          "write_out_http_code_state": "INVALID",
+          "write_out_http_status_int": null
+        }
+      ],
+      "counterexamples": [
+        {
+          "counterexample_id": "WRITE_404_INT_200",
+          "raw_stdout_base64": "NDA0",
+          "reason": "integer must equal decimal lexeme and registered raw bytes",
+          "supplied_int": 200,
+          "supplied_lexeme": "404",
+          "supplied_state": "VALID_STATUS"
+        },
+        {
+          "counterexample_id": "WRITE_000_LABELED_VALID_STATUS",
+          "raw_stdout_base64": "MDAw",
+          "reason": "000 maps only to VALID_000",
+          "supplied_int": null,
+          "supplied_lexeme": "000",
+          "supplied_state": "VALID_STATUS"
+        },
+        {
+          "counterexample_id": "WRITE_200_LABELED_VALID_000",
+          "raw_stdout_base64": "MjAw",
+          "reason": "200 maps only to VALID_STATUS with integer 200",
+          "supplied_int": null,
+          "supplied_lexeme": "200",
+          "supplied_state": "VALID_000"
+        },
+        {
+          "counterexample_id": "WRITE_999_LABELED_VALID_STATUS",
+          "raw_stdout_base64": "OTk5",
+          "reason": "three-digit out-of-range evidence maps to INVALID with null integer",
+          "supplied_int": 999,
+          "supplied_lexeme": "999",
+          "supplied_state": "VALID_STATUS"
+        },
+        {
+          "counterexample_id": "WRITE_TWO_BYTES",
+          "raw_stdout_base64": "MjA=",
+          "reason": "two raw bytes map to INVALID with null lexeme and integer",
+          "supplied_int": 20,
+          "supplied_lexeme": "020",
+          "supplied_state": "VALID_STATUS"
+        },
+        {
+          "counterexample_id": "WRITE_FOUR_BYTES",
+          "raw_stdout_base64": "MjAwMA==",
+          "reason": "four raw bytes map to INVALID with null lexeme and integer",
+          "supplied_int": 200,
+          "supplied_lexeme": "200",
+          "supplied_state": "VALID_STATUS"
+        },
+        {
+          "counterexample_id": "WRITE_NONDIGIT_ASCII",
+          "raw_stdout_base64": "Mk8w",
+          "reason": "ASCII letter O makes the evidence malformed; expected lexeme and integer are null",
+          "supplied_int": 200,
+          "supplied_lexeme": "200",
+          "supplied_state": "VALID_STATUS"
+        },
+        {
+          "counterexample_id": "WRITE_UNICODE_DIGITS",
+          "raw_stdout_base64": "2aLZoNmg",
+          "reason": "Unicode digits are not three ASCII digit bytes; expected lexeme and integer are null",
+          "supplied_int": 200,
+          "supplied_lexeme": "200",
+          "supplied_state": "VALID_STATUS"
+        },
+        {
+          "counterexample_id": "WRITE_NONASCII_BYTES",
+          "raw_stdout_base64": "/wCA",
+          "reason": "non-ASCII bytes map to INVALID with null lexeme and integer",
+          "supplied_int": null,
+          "supplied_lexeme": "000",
+          "supplied_state": "VALID_000"
+        },
+        {
+          "counterexample_id": "WRITE_REGISTERED_BYTES_LEXEME_MISMATCH",
+          "raw_stdout_base64": "NDA0",
+          "reason": "lexeme must be decoded from registered bytes without normalization",
+          "supplied_int": 200,
+          "supplied_lexeme": "200",
+          "supplied_state": "VALID_STATUS"
+        }
+      ],
+      "independent_caller_assertions_forbidden": [
+        "write_out_stdout_raw_base64",
+        "stdout_evidence_sha256",
+        "write_out_http_code_lexeme",
+        "write_out_http_code_state",
+        "write_out_http_status_int"
+      ],
+      "source_binding": {
+        "canonical_base64": "decode with standard RFC 4648 Base64; reject nonalphabet, misplaced padding, omitted required padding, or any stored lexeme whose decode-then-reencode differs; empty string represents empty bytes",
+        "capture_row": "capture_completed_event_row_sha256 resolves uniquely to the selected COMPLETED capture row",
+        "raw_base64_equality": "write_out_stdout_raw_base64 equals that capture row http_status_stdout_raw_base64 byte-for-byte as a UTF-8 Base64 lexeme",
+        "stdout_hash": "stdout_evidence_sha256 = lowercase SHA-256 of the decoded raw stdout bytes"
+      },
+      "totality": "cases are ordered, total, and mutually exclusive over every finite byte sequence",
+      "totality_proof": {
+        "case_binding": {
+          "0": "ASCII_000",
+          "1..99_or_600..999": "ASCII_OUT_OF_RANGE",
+          "100..599": "ASCII_VALID_STATUS",
+          "malformed": "MALFORMED"
+        },
+        "conclusion": "exactly one classification_order case applies to every finite byte sequence",
+        "digit_value_partition": "for exactly three ASCII digits, decimal(B) is exactly one member of the disjoint exhaustive ranges {0}, 1..99, 100..599, or 600..999",
+        "first_partition": "exactly one of: len(B) != 3 or a byte is non-ASCII-digit; otherwise B is exactly three ASCII digits",
+        "universe": "all finite byte sequences B"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/conditional_requirements/INVALID__HEADER_EVIDENCE_INVALID",
+    "value": {
+      "c14_c23_reachable": false,
+      "exact_values": {
+        "issue_code": "HTTP_WRITEOUT_INVALID",
+        "status_reconciliation_state": "NOT_RECONCILABLE_STOP"
+      },
+      "integer_ranges": {},
+      "permitted_continuation": null,
+      "required_nonnull": [],
+      "required_null": [
+        "write_out_http_status_int",
+        "selected_header_status_int"
+      ],
+      "structural_stop": "STOP_HTTP_WRITEOUT_INVALID",
+      "when": {
+        "selected_header_status_state": "HEADER_EVIDENCE_INVALID",
+        "write_out_http_code_state": "INVALID"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/conditional_requirements/INVALID__INVALID_STATUS_LINE",
+    "value": {
+      "c14_c23_reachable": false,
+      "exact_values": {
+        "issue_code": "HTTP_WRITEOUT_INVALID",
+        "status_reconciliation_state": "NOT_RECONCILABLE_STOP"
+      },
+      "integer_ranges": {},
+      "permitted_continuation": null,
+      "required_nonnull": [],
+      "required_null": [
+        "write_out_http_status_int",
+        "selected_header_status_int"
+      ],
+      "structural_stop": "STOP_HTTP_WRITEOUT_INVALID",
+      "when": {
+        "selected_header_status_state": "INVALID_STATUS_LINE",
+        "write_out_http_code_state": "INVALID"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/conditional_requirements/INVALID__NO_SELECTED_FINAL_HEADER",
+    "value": {
+      "c14_c23_reachable": false,
+      "exact_values": {
+        "issue_code": "HTTP_WRITEOUT_INVALID",
+        "status_reconciliation_state": "NOT_RECONCILABLE_STOP"
+      },
+      "integer_ranges": {},
+      "permitted_continuation": null,
+      "required_nonnull": [],
+      "required_null": [
+        "write_out_http_status_int",
+        "selected_header_status_int"
+      ],
+      "structural_stop": "STOP_HTTP_WRITEOUT_INVALID",
+      "when": {
+        "selected_header_status_state": "NO_SELECTED_FINAL_HEADER",
+        "write_out_http_code_state": "INVALID"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/conditional_requirements/INVALID__VALID_STATUS",
+    "value": {
+      "c14_c23_reachable": false,
+      "exact_values": {
+        "issue_code": "HTTP_WRITEOUT_INVALID",
+        "status_reconciliation_state": "NOT_RECONCILABLE_STOP"
+      },
+      "integer_ranges": {
+        "selected_header_status_int": {
+          "maximum": 599,
+          "minimum": 100
+        }
+      },
+      "permitted_continuation": null,
+      "required_nonnull": [
+        "selected_header_status_int"
+      ],
+      "required_null": [
+        "write_out_http_status_int"
+      ],
+      "structural_stop": "STOP_HTTP_WRITEOUT_INVALID",
+      "when": {
+        "selected_header_status_state": "VALID_STATUS",
+        "write_out_http_code_state": "INVALID"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/conditional_requirements/VALID_000__HEADER_EVIDENCE_INVALID",
+    "value": {
+      "c14_c23_reachable": false,
+      "exact_values": {
+        "issue_code": "HTTP_STATUS_WRITEOUT_000_HEADER_EVIDENCE_INVALID",
+        "status_reconciliation_state": "MISMATCH_STOP"
+      },
+      "integer_ranges": {},
+      "permitted_continuation": null,
+      "required_nonnull": [],
+      "required_null": [
+        "write_out_http_status_int",
+        "selected_header_status_int"
+      ],
+      "structural_stop": "STOP_HTTP_STATUS_EVIDENCE_MISMATCH",
+      "when": {
+        "selected_header_status_state": "HEADER_EVIDENCE_INVALID",
+        "write_out_http_code_state": "VALID_000"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/conditional_requirements/VALID_000__INVALID_STATUS_LINE",
+    "value": {
+      "c14_c23_reachable": false,
+      "exact_values": {
+        "issue_code": "HTTP_STATUS_WRITEOUT_000_HEADER_EVIDENCE_INVALID",
+        "status_reconciliation_state": "MISMATCH_STOP"
+      },
+      "integer_ranges": {},
+      "permitted_continuation": null,
+      "required_nonnull": [],
+      "required_null": [
+        "write_out_http_status_int",
+        "selected_header_status_int"
+      ],
+      "structural_stop": "STOP_HTTP_STATUS_EVIDENCE_MISMATCH",
+      "when": {
+        "selected_header_status_state": "INVALID_STATUS_LINE",
+        "write_out_http_code_state": "VALID_000"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/conditional_requirements/VALID_000__NO_SELECTED_FINAL_HEADER",
+    "value": {
+      "c14_c23_reachable": false,
+      "exact_values": {
+        "issue_code": "NO_SELECTED_FINAL_HEADER",
+        "status_reconciliation_state": "RECONCILED"
+      },
+      "integer_ranges": {},
+      "permitted_continuation": "C01_C13_FRONT_END_ONLY",
+      "required_nonnull": [],
+      "required_null": [
+        "write_out_http_status_int",
+        "selected_header_status_int"
+      ],
+      "structural_stop": null,
+      "when": {
+        "selected_header_status_state": "NO_SELECTED_FINAL_HEADER",
+        "write_out_http_code_state": "VALID_000"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/conditional_requirements/VALID_000__VALID_STATUS",
+    "value": {
+      "c14_c23_reachable": false,
+      "exact_values": {
+        "issue_code": "HTTP_STATUS_WRITEOUT_000_HEADER_PRESENT",
+        "status_reconciliation_state": "MISMATCH_STOP"
+      },
+      "integer_ranges": {
+        "selected_header_status_int": {
+          "maximum": 599,
+          "minimum": 100
+        }
+      },
+      "permitted_continuation": null,
+      "required_nonnull": [
+        "selected_header_status_int"
+      ],
+      "required_null": [
+        "write_out_http_status_int"
+      ],
+      "structural_stop": "STOP_HTTP_STATUS_EVIDENCE_MISMATCH",
+      "when": {
+        "selected_header_status_state": "VALID_STATUS",
+        "write_out_http_code_state": "VALID_000"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/conditional_requirements/VALID_STATUS__HEADER_EVIDENCE_INVALID",
+    "value": {
+      "c14_c23_reachable": false,
+      "exact_values": {
+        "issue_code": "HTTP_STATUS_WRITEOUT_VALID_HEADER_STATUS_INVALID",
+        "status_reconciliation_state": "MISMATCH_STOP"
+      },
+      "integer_ranges": {
+        "write_out_http_status_int": {
+          "maximum": 599,
+          "minimum": 100
+        }
+      },
+      "permitted_continuation": null,
+      "required_nonnull": [
+        "write_out_http_status_int"
+      ],
+      "required_null": [
+        "selected_header_status_int"
+      ],
+      "structural_stop": "STOP_HTTP_STATUS_EVIDENCE_MISMATCH",
+      "when": {
+        "selected_header_status_state": "HEADER_EVIDENCE_INVALID",
+        "write_out_http_code_state": "VALID_STATUS"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/conditional_requirements/VALID_STATUS__INVALID_STATUS_LINE",
+    "value": {
+      "c14_c23_reachable": false,
+      "exact_values": {
+        "issue_code": "HTTP_STATUS_WRITEOUT_VALID_HEADER_STATUS_INVALID",
+        "status_reconciliation_state": "MISMATCH_STOP"
+      },
+      "integer_ranges": {
+        "write_out_http_status_int": {
+          "maximum": 599,
+          "minimum": 100
+        }
+      },
+      "permitted_continuation": null,
+      "required_nonnull": [
+        "write_out_http_status_int"
+      ],
+      "required_null": [
+        "selected_header_status_int"
+      ],
+      "structural_stop": "STOP_HTTP_STATUS_EVIDENCE_MISMATCH",
+      "when": {
+        "selected_header_status_state": "INVALID_STATUS_LINE",
+        "write_out_http_code_state": "VALID_STATUS"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/conditional_requirements/VALID_STATUS__NO_SELECTED_FINAL_HEADER",
+    "value": {
+      "c14_c23_reachable": false,
+      "exact_values": {
+        "issue_code": "NO_SELECTED_FINAL_HEADER",
+        "status_reconciliation_state": "RECONCILED"
+      },
+      "integer_ranges": {
+        "write_out_http_status_int": {
+          "maximum": 599,
+          "minimum": 100
+        }
+      },
+      "permitted_continuation": "C01_C13_FRONT_END_ONLY",
+      "required_nonnull": [
+        "write_out_http_status_int"
+      ],
+      "required_null": [
+        "selected_header_status_int"
+      ],
+      "structural_stop": null,
+      "when": {
+        "selected_header_status_state": "NO_SELECTED_FINAL_HEADER",
+        "write_out_http_code_state": "VALID_STATUS"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/conditional_requirements/VALID_STATUS__VALID_STATUS",
+    "value": {
+      "integer_ranges": {
+        "selected_header_status_int": {
+          "maximum": 599,
+          "minimum": 100
+        },
+        "write_out_http_status_int": {
+          "maximum": 599,
+          "minimum": 100
+        }
+      },
+      "required_nonnull": [
+        "write_out_http_status_int",
+        "selected_header_status_int"
+      ],
+      "required_null": [],
+      "subcases": {
+        "EQUAL": {
+          "c14_c23_reachable": true,
+          "exact_values": {
+            "issue_code": null,
+            "status_reconciliation_state": "RECONCILED"
+          },
+          "permitted_continuation": "C14_C23_ELIGIBLE",
+          "predicate": "write_out_http_status_int == selected_header_status_int",
+          "structural_stop": null
+        },
+        "OTHER_UNEQUAL": {
+          "c14_c23_reachable": false,
+          "exact_values": {
+            "issue_code": "HTTP_STATUS_WRITEOUT_HEADER_UNEQUAL",
+            "status_reconciliation_state": "MISMATCH_STOP"
+          },
+          "permitted_continuation": null,
+          "predicate": "write_out_http_status_int != selected_header_status_int AND pair not in {(200,404),(404,200)}",
+          "structural_stop": "STOP_HTTP_STATUS_EVIDENCE_MISMATCH"
+        },
+        "WRITE_200_HEADER_404": {
+          "c14_c23_reachable": false,
+          "exact_values": {
+            "issue_code": "HTTP_STATUS_WRITEOUT_200_HEADER_404",
+            "status_reconciliation_state": "MISMATCH_STOP"
+          },
+          "permitted_continuation": null,
+          "predicate": "write_out_http_status_int == 200 AND selected_header_status_int == 404",
+          "structural_stop": "STOP_HTTP_STATUS_EVIDENCE_MISMATCH"
+        },
+        "WRITE_404_HEADER_200": {
+          "c14_c23_reachable": false,
+          "exact_values": {
+            "issue_code": "HTTP_STATUS_WRITEOUT_404_HEADER_200",
+            "status_reconciliation_state": "MISMATCH_STOP"
+          },
+          "permitted_continuation": null,
+          "predicate": "write_out_http_status_int == 404 AND selected_header_status_int == 200",
+          "structural_stop": "STOP_HTTP_STATUS_EVIDENCE_MISMATCH"
+        }
+      },
+      "subcases_total_and_mutually_exclusive": true,
+      "when": {
+        "selected_header_status_state": "VALID_STATUS",
+        "write_out_http_code_state": "VALID_STATUS"
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/http_status_reconciliation/field_order",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "run_id",
+      "authorization_id",
+      "request_id",
+      "execution_ordinal",
+      "attempt_number",
+      "reservation_id",
+      "capture_completed_event_row_sha256",
+      "write_out_stdout_raw_base64",
+      "stdout_evidence_sha256",
+      "header_evidence_sha256",
+      "write_out_http_code_lexeme",
+      "write_out_http_status_int",
+      "write_out_http_code_state",
+      "selected_header_status_state",
+      "selected_header_status_int",
+      "status_reconciliation_state",
+      "issue_code",
+      "http_status_reconciliation_row_sha256"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/fields/write_out_stdout_raw_base64",
+    "value": {
+      "nullable": false,
+      "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$",
+      "type": "STRING"
+    }
+  },
+  {
+    "op": "remove",
+    "path": "/table_schemas/http_status_reconciliation/fields/issue_code/domain"
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/http_status_reconciliation/fields/issue_code/ref",
+    "value": "enum:http_status_reconciliation_issue_code"
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/http_status_reconciliation/fields/write_out_http_code_lexeme/nullable",
+    "value": true
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/http_status_reconciliation/invariants",
+    "value": [
+      "conditional_requirements has exactly the 12 Cartesian pairs of 3 write-out states and 4 selected-header states; no wildcard is permitted",
+      "VALID_STATUS write-out requires write_out_http_status_int non-null in 100..599; VALID_000 and INVALID require it null",
+      "VALID_STATUS selected header requires selected_header_status_int non-null in 100..599; every other selected-header state requires it null",
+      "VALID_STATUS/VALID_STATUS subcases are total and mutually exclusive: equal, 200/404, 404/200, and other unequal",
+      "issue_code is null only for equal VALID_STATUS/VALID_STATUS evidence",
+      "only equal VALID_STATUS/VALID_STATUS can reach C14-C23; no-selected-final-header branches are limited to C01-C13 front-end continuation",
+      "all structural mismatch and invalid write-out branches stop before C14-C23",
+      "every row-hash null cell uses logical tag NULL and value null",
+      "schema_version equals exactly local_curl_http_status_reconciliation.v23; no alias or alternate HTTP reconciliation schema version is accepted",
+      "write_out_stdout_raw_base64 is canonical Base64 copied exactly from the bound COMPLETED capture row; stdout_evidence_sha256 hashes its decoded bytes",
+      "write_out lexeme, integer, and state are outputs of write_out_evidence_derivation and cannot be independent caller assertions",
+      "write_out_http_code_lexeme is non-null exactly for every three-ASCII-digit byte sequence, including INVALID out-of-range values; it is null for malformed evidence",
+      "selected_header_status_state and selected_header_status_int equal the retained response-header parser adapter output over exact hash-verified registered header bytes",
+      "VALID_STATUS selected header has integer 100..599; every other selected-header state has null integer",
+      "conditional_requirements remains the exact 12 Cartesian pairs and is applied only after write-out and header evidence derivation",
+      "every selected COMPLETED category/state pair persists exactly one HTTP reconciliation row before any compatibility or strict body analysis",
+      "HTTP_CODE_INVALID capture state maps to reconciliation state INVALID and always produces STOP_HTTP_WRITEOUT_INVALID after the reconciliation row is persisted"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/http_status_reconciliation/row_hash_projection",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "run_id",
+      "authorization_id",
+      "request_id",
+      "execution_ordinal",
+      "attempt_number",
+      "reservation_id",
+      "capture_completed_event_row_sha256",
+      "write_out_stdout_raw_base64",
+      "stdout_evidence_sha256",
+      "header_evidence_sha256",
+      "write_out_http_code_lexeme",
+      "write_out_http_status_int",
+      "write_out_http_code_state",
+      "selected_header_status_state",
+      "selected_header_status_int",
+      "status_reconciliation_state",
+      "issue_code"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/request_manifest/field_order",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "request_id",
+      "execution_ordinal",
+      "condition_id",
+      "subclass",
+      "outcome_index",
+      "token_id_lexeme",
+      "compatibility_first_trade_ts_float_hex",
+      "compatibility_decision_lower_ts_float_hex",
+      "compatibility_resolved_at_ts_float_hex",
+      "exact_first_trade_ts_ns",
+      "exact_decision_lower_ts_ns",
+      "exact_resolved_at_ts_ns",
+      "request_start_ts",
+      "request_end_ts",
+      "token_manifest_row_sha256",
+      "request_manifest_row_sha256"
+    ]
+  },
+  {
+    "op": "remove",
+    "path": "/table_schemas/request_manifest/fields/token_id"
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/request_manifest/fields/token_id_lexeme",
+    "value": {
+      "nullable": false,
+      "pattern": "^(0|[0-9]+|[0-9]+\\.0+)$",
+      "type": "STRING"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/request_manifest/fields/execution_ordinal/maximum",
+    "value": 495
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/request_manifest/fields/execution_ordinal/minimum",
+    "value": 0
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/request_manifest/invariants",
+    "value": [
+      "exactly execution ordinals 0..495",
+      "request_id, execution_ordinal, and (condition_id,outcome_index) are each unique",
+      "referenced token row exists, its hash recomputes, query_eligible=true, invalid_window_state=QUERY_ELIGIBLE, and invalid_window_reason is null",
+      "all copied fields are typed-equal to the referenced token row",
+      "request_id recomputes from the registered seven-field typed identity",
+      "token_id alias, coercion, fallback, and normalization are forbidden",
+      "spec_revision equals 23"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/request_manifest/logical_hash_rule",
+    "value": "encode destination-excluding typed rows; order by execution_ordinal numeric; join with one LF and no trailing LF; SHA-256"
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/request_manifest/ordering",
+    "value": [
+      "execution_ordinal"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/request_manifest/row_hash_projection",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "request_id",
+      "execution_ordinal",
+      "condition_id",
+      "subclass",
+      "outcome_index",
+      "token_id_lexeme",
+      "compatibility_first_trade_ts_float_hex",
+      "compatibility_decision_lower_ts_float_hex",
+      "compatibility_resolved_at_ts_float_hex",
+      "exact_first_trade_ts_ns",
+      "exact_decision_lower_ts_ns",
+      "exact_resolved_at_ts_ns",
+      "request_start_ts",
+      "request_end_ts",
+      "token_manifest_row_sha256"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/request_plan/conditional_requirements/FIDELITY_INCLUDED",
+    "value": {
+      "exact_values": {
+        "parameter_order": [
+          "market",
+          "startTs",
+          "endTs",
+          "interval",
+          "fidelity"
+        ]
+      },
+      "when": {
+        "conditional_fidelity_state": "FIDELITY_INCLUDED"
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/request_plan/conditional_requirements/FIDELITY_OMITTED",
+    "value": {
+      "exact_values": {
+        "parameter_order": [
+          "market",
+          "startTs",
+          "endTs",
+          "interval"
+        ]
+      },
+      "when": {
+        "conditional_fidelity_state": "FIDELITY_OMITTED"
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/request_plan/field_order",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "request_id",
+      "execution_ordinal",
+      "condition_id",
+      "subclass",
+      "outcome_index",
+      "token_id_lexeme",
+      "compatibility_first_trade_ts_float_hex",
+      "compatibility_decision_lower_ts_float_hex",
+      "compatibility_resolved_at_ts_float_hex",
+      "exact_decision_lower_ts_ns",
+      "exact_resolved_at_ts_ns",
+      "request_start_ts",
+      "request_end_ts",
+      "parameter_order",
+      "conditional_fidelity_state",
+      "exact_url",
+      "exact_url_sha256",
+      "url_policy_sha256",
+      "transport_policy_sha256",
+      "subprocess_contract_sha256",
+      "request_manifest_row_sha256",
+      "request_plan_row_sha256"
+    ]
+  },
+  {
+    "op": "remove",
+    "path": "/table_schemas/request_plan/fields/token_id"
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/request_plan/fields/conditional_fidelity_state",
+    "value": {
+      "domain": [
+        "FIDELITY_INCLUDED",
+        "FIDELITY_OMITTED"
+      ],
+      "nullable": false,
+      "type": "STRING"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/request_plan/fields/parameter_order",
+    "value": {
+      "allowed_vectors": [
+        [
+          "market",
+          "startTs",
+          "endTs",
+          "interval"
+        ],
+        [
+          "market",
+          "startTs",
+          "endTs",
+          "interval",
+          "fidelity"
+        ]
+      ],
+      "nullable": false,
+      "type": "STRING_LIST"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/request_plan/fields/request_manifest_row_sha256",
+    "value": {
+      "nullable": false,
+      "type": "SHA256"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/request_plan/fields/token_id_lexeme",
+    "value": {
+      "nullable": false,
+      "pattern": "^(0|[0-9]+|[0-9]+\\.0+)$",
+      "type": "STRING"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/request_plan/fields/execution_ordinal/maximum",
+    "value": 495
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/request_plan/fields/execution_ordinal/minimum",
+    "value": 0
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/request_plan/invariants",
+    "value": [
+      "exact one-to-one membership with request manifest",
+      "all copied values are typed-equal to the matched request-manifest row",
+      "request_manifest_row_sha256 and request_id recompute",
+      "exact URL serializer output and exact URL/policy/transport/subprocess hashes are required",
+      "token .0 lexeme is retained exactly",
+      "exact ordinal set 0..495",
+      "spec_revision equals 23"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/request_plan/logical_hash_rule",
+    "value": "encode destination-excluding typed rows; order by execution_ordinal numeric; join with one LF and no trailing LF; SHA-256"
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/request_plan/ordering",
+    "value": [
+      "execution_ordinal"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/request_plan/row_hash_projection",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "request_id",
+      "execution_ordinal",
+      "condition_id",
+      "subclass",
+      "outcome_index",
+      "token_id_lexeme",
+      "compatibility_first_trade_ts_float_hex",
+      "compatibility_decision_lower_ts_float_hex",
+      "compatibility_resolved_at_ts_float_hex",
+      "exact_decision_lower_ts_ns",
+      "exact_resolved_at_ts_ns",
+      "request_start_ts",
+      "request_end_ts",
+      "parameter_order",
+      "conditional_fidelity_state",
+      "exact_url",
+      "exact_url_sha256",
+      "url_policy_sha256",
+      "transport_policy_sha256",
+      "subprocess_contract_sha256",
+      "request_manifest_row_sha256"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/token_manifest/cardinality/artifact_constraints",
+    "value": [
+      {
+        "cardinality": "exactly 600 rows",
+        "path": "artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_manifest/token_manifest.parquet"
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/token_manifest/conditional_requirements/INVALID_WINDOW",
+    "value": {
+      "exact_values": {
+        "invalid_window_state": "INVALID_WINDOW",
+        "request_end_ts": null,
+        "request_start_ts": null
+      },
+      "required_nonnull": [
+        "invalid_window_reason"
+      ],
+      "when": {
+        "query_eligible": false
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/token_manifest/conditional_requirements/QUERY_ELIGIBLE",
+    "value": {
+      "exact_values": {
+        "invalid_window_reason": null,
+        "invalid_window_state": "QUERY_ELIGIBLE"
+      },
+      "required_nonnull": [
+        "compatibility_first_trade_ts_float_hex",
+        "compatibility_decision_lower_ts_float_hex",
+        "compatibility_resolved_at_ts_float_hex",
+        "exact_first_trade_ts_ns",
+        "exact_decision_lower_ts_ns",
+        "exact_resolved_at_ts_ns",
+        "request_start_ts",
+        "request_end_ts"
+      ],
+      "when": {
+        "query_eligible": true
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/token_manifest/field_order",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "condition_id",
+      "subclass",
+      "outcome_index",
+      "token_id_lexeme",
+      "query_eligible",
+      "invalid_window_state",
+      "invalid_window_reason",
+      "compatibility_first_trade_ts_float_hex",
+      "compatibility_decision_lower_ts_float_hex",
+      "compatibility_resolved_at_ts_float_hex",
+      "exact_first_trade_ts_ns",
+      "exact_decision_lower_ts_ns",
+      "exact_resolved_at_ts_ns",
+      "request_start_ts",
+      "request_end_ts",
+      "source_d_token_row_sha256",
+      "source_b_source_d_reconciliation_row_sha256",
+      "token_manifest_row_sha256"
+    ]
+  },
+  {
+    "op": "remove",
+    "path": "/table_schemas/token_manifest/fields/token_id"
+  },
+  {
+    "op": "remove",
+    "path": "/table_schemas/token_manifest/fields/source_b_condition_row_sha256"
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/token_manifest/fields/compatibility_decision_lower_ts_float_hex",
+    "value": {
+      "nullable": true,
+      "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$",
+      "type": "STRING"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/token_manifest/fields/compatibility_first_trade_ts_float_hex",
+    "value": {
+      "nullable": true,
+      "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$",
+      "type": "STRING"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/token_manifest/fields/compatibility_resolved_at_ts_float_hex",
+    "value": {
+      "nullable": true,
+      "pattern": "^-?0x[0-9a-f]+\\.[0-9a-f]+p[+-][0-9]+$",
+      "type": "STRING"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/token_manifest/fields/invalid_window_state",
+    "value": {
+      "domain": [
+        "QUERY_ELIGIBLE",
+        "INVALID_WINDOW"
+      ],
+      "nullable": false,
+      "type": "STRING"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/token_manifest/fields/source_b_source_d_reconciliation_row_sha256",
+    "value": {
+      "nullable": false,
+      "type": "SHA256"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/table_schemas/token_manifest/fields/token_id_lexeme",
+    "value": {
+      "nullable": false,
+      "pattern": "^(0|[0-9]+|[0-9]+\\.0+)$",
+      "type": "STRING"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/token_manifest/invariants",
+    "value": [
+      "exactly 300 distinct condition_id values and exactly outcome_index {0,1} per condition",
+      "source_d_token_row_sha256 resolves uniquely in the same pre-run attempt and recomputes from table:source_d_token",
+      "source_b_source_d_reconciliation_row_sha256 resolves uniquely in the same pre-run attempt and recomputes from table:source_b_source_d_reconciliation",
+      "both referenced rows have the same typed key and overall_reconciliation_state=RECONCILED",
+      "all copied and derived values are typed-equal to governing Source D and accepted reconciliation values",
+      "query eligibility derives only from accepted reconciliation; source presence alone cannot establish eligibility",
+      "token_id_lexeme is the exact original reconciled lexeme, including retained .0, and is never winner-derived",
+      "eligible bounds satisfy 0 <= request_start_ts < request_end_ts <= 253402300799",
+      "spec_revision equals 23"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/token_manifest/logical_hash_rule",
+    "value": "encode each registered typed row projection; order by condition_id unsigned UTF-8 then outcome_index numeric; join with one LF and no trailing LF; SHA-256; exclude row-hash destination field"
+  },
+  {
+    "op": "replace",
+    "path": "/table_schemas/token_manifest/row_hash_projection",
+    "value": [
+      "schema_version",
+      "spec_revision",
+      "condition_id",
+      "subclass",
+      "outcome_index",
+      "token_id_lexeme",
+      "query_eligible",
+      "invalid_window_state",
+      "invalid_window_reason",
+      "compatibility_first_trade_ts_float_hex",
+      "compatibility_decision_lower_ts_float_hex",
+      "compatibility_resolved_at_ts_float_hex",
+      "exact_first_trade_ts_ns",
+      "exact_decision_lower_ts_ns",
+      "exact_resolved_at_ts_ns",
+      "request_start_ts",
+      "request_end_ts",
+      "source_d_token_row_sha256",
+      "source_b_source_d_reconciliation_row_sha256"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/typed_row_contract/nonnull_storage_tag_rule",
+    "value": "UINT8, UINT16, UINT32, and UINT64 storage hash as UINT; INT64 storage hashes as INT; UTC nanoseconds hash as UTC_NS; STRING, BOOL, SHA256, and STRING_LIST retain those logical tags; storage width never creates a width-specific logical tag"
+  },
+  {
+    "op": "replace",
+    "path": "/typed_row_contract/null_representation",
+    "value": "{\"n\":\"<field>\",\"t\":\"NULL\",\"v\":null}"
+  }
+]

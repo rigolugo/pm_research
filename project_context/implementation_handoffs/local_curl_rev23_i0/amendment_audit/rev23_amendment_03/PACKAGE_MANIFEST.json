@@ -1,0 +1,258 @@
+{
+  "amendment_id": "REV23_AMENDMENT_03",
+  "baseline_commit": "226085ca9ba7fa41a8b666005499827d6fa6b9c5",
+  "file_count": 50,
+  "files": [
+    {
+      "path": "ARTIFACT_PRODUCER_CONSUMER_MATRIX_REV23_AMENDMENT_03.md",
+      "sha256": "43dfd523a54a361b1d847fd017e8e5101ad41edbc50dbe3d5a61078d4e0aa0c7",
+      "size_bytes": 2495
+    },
+    {
+      "path": "BASELINE_TARGET_INTEGRITY.json",
+      "sha256": "680f7c94edadddfd9a627611e82c7ba47e2ff8f3f2313a6b69fd67f2390b4ecd",
+      "size_bytes": 8502
+    },
+    {
+      "path": "CHANGE_LEDGER_REV23_AMENDMENT_03.md",
+      "sha256": "5041712339f2bc4d25283f5f762360fa836d7e32361e2ecbcd7de782ace87dfa",
+      "size_bytes": 1210
+    },
+    {
+      "path": "HANDOFF_SENTINEL_REV23_AMENDMENT_03.md",
+      "sha256": "19f75faf93b6278a12d46717bea1736d1391d8f09ae51bd95fdd59368718879b",
+      "size_bytes": 6521
+    },
+    {
+      "path": "MATERIALIZATION_STATUS.json",
+      "sha256": "ec03921c2f5cf30d46130295f8ed61db561495e66af1141e234f3e7e05d4fb32",
+      "size_bytes": 2472
+    },
+    {
+      "path": "README_FIRST.md",
+      "sha256": "4cf97299e54a47dd9f8a2e11a2a901a7771c9a2da2b828ef77de965e93903184",
+      "size_bytes": 1453
+    },
+    {
+      "path": "REQUIREMENTS_TRACEABILITY_MATRIX_REV23_AMENDMENT_03.md",
+      "sha256": "4a58bcab34301c37d468a5f7d151a05c299bd10f45ee499036a5e7b4c0af7b56",
+      "size_bytes": 1574
+    },
+    {
+      "path": "RESULT_LABEL_DECISION_TABLE_REV23_AMENDMENT_03.md",
+      "sha256": "c0c79ccfd8357586082610d26575013ce268fdb6db6dfd81f6c333218f12bf01",
+      "size_bytes": 940
+    },
+    {
+      "path": "REV23_AMENDMENT_03.md",
+      "sha256": "ab5a630a7534e53f6fac97769c9b16c6d6956a91528430e869b8615b475b0215",
+      "size_bytes": 38596
+    },
+    {
+      "path": "SCHEMA_REGISTRY_REV23.amendment_03.rfc6902.json",
+      "sha256": "28a6624e5be32405777d667def18738e3edd0e7f9ef55f9ad5e7a779dd131195",
+      "size_bytes": 95622
+    },
+    {
+      "path": "STATIC_CONSISTENCY_REPORT_REV23_AMENDMENT_03.md",
+      "sha256": "052f0030cbb58af177f863e70f143845b922b67f8f2a5e74f23b7d7d0dd5e3b4",
+      "size_bytes": 2455
+    },
+    {
+      "path": "TRANSFORMATION_MANIFEST.json",
+      "sha256": "07f452dea5e10715bb8d4b3f4d84365c44a3bd9172b3f45fda07d2ad887188df",
+      "size_bytes": 6730
+    },
+    {
+      "path": "TYPED_STOP_STATE_TABLE_REV23_AMENDMENT_03.md",
+      "sha256": "cf3ad22b7bbc404d5f57b669b58a321d8b6e39142ad166ce1436261e7ace3a91",
+      "size_bytes": 1997
+    },
+    {
+      "path": "UNRESOLVED_QUESTIONS_REV23_AMENDMENT_03.md",
+      "sha256": "bf5c7a0dce35204dd70c3ca475630fa5c578a21548b118f9562a2837419fbd99",
+      "size_bytes": 144
+    },
+    {
+      "path": "accepted_contract_materialized/ACCEPTED_CONTRACT_SHA256SUMS.txt",
+      "sha256": "92d8adcd3fe00e5d02fc8f338324b1008e4260f6947ad5fc9dc4156d6cd0ee02",
+      "size_bytes": 2431
+    },
+    {
+      "path": "accepted_contract_materialized/ARTIFACT_PRODUCER_CONSUMER_MATRIX_REV23.md",
+      "sha256": "e45244022c30cde6059b54be7daa9c28e5f735e62313a4f68de8dc7f1833f952",
+      "size_bytes": 28362
+    },
+    {
+      "path": "accepted_contract_materialized/ARTIFACT_REGISTRY_REV23.md",
+      "sha256": "f7b6659f40164855f6a9c1b26ab77df68994f0930293be0517aae19466dec892",
+      "size_bytes": 21599
+    },
+    {
+      "path": "accepted_contract_materialized/CHANGE_LEDGER_REV22_to_REV23.md",
+      "sha256": "371dacdca50ad9d88be0cd488e91406deb61512ead2861bef66e5177eaeba786",
+      "size_bytes": 5134
+    },
+    {
+      "path": "accepted_contract_materialized/GOVERNING_PACKAGE_MANIFEST_REV23.json",
+      "sha256": "b2627541175ca3ccb225491c1a684e0d7c00eed20d40e30cd65da23136528afa",
+      "size_bytes": 4847
+    },
+    {
+      "path": "accepted_contract_materialized/GOVERNING_PACKAGE_MANIFEST_REV23.sha256",
+      "sha256": "51e96fa3a126ebe2fedb8f441d45ac1e173b5eb8cc9b01a397a50b90d992b8b3",
+      "size_bytes": 143
+    },
+    {
+      "path": "accepted_contract_materialized/HANDOFF_SENTINEL_local_curl_REV23.md",
+      "sha256": "b6a15d8034128d0f1ecbda574e53fb826eee2e7acd9b024fc2d03c882d5d860e",
+      "size_bytes": 6271
+    },
+    {
+      "path": "accepted_contract_materialized/REQUEST_PLAN_AND_AUTHORIZATION_CONTRACT_REV23.md",
+      "sha256": "8095bb923742e8f7eafac61a1de52d9ff4e5537f8a03bb52af62eb795c9f0f7f",
+      "size_bytes": 7651
+    },
+    {
+      "path": "accepted_contract_materialized/RESULT_LABEL_DECISION_TABLE_REV23.md",
+      "sha256": "5b0b2a9f2c9d7889db595bdae24173c0e399f84128a0826ccc90698721a6f3e3",
+      "size_bytes": 2295
+    },
+    {
+      "path": "accepted_contract_materialized/SCHEMA_REGISTRY_REV23.json",
+      "sha256": "e9590fac64ce245dbebd7f0e0bcaca5cf8b263e907e202dbba779f1be9157f19",
+      "size_bytes": 632161
+    },
+    {
+      "path": "accepted_contract_materialized/SPEC_local_curl_per_side_price_dataset_verification_REV23.md",
+      "sha256": "d4271f3bfb29924c3937a0569d3cee585ef32125604785ba474e837a2ca642b9",
+      "size_bytes": 78040
+    },
+    {
+      "path": "accepted_contract_materialized/STOP_STATE_TABLE_REV23.md",
+      "sha256": "745a78470196636847a380ea8bd8e1cc4851d36b8dd98343f1ec29cd6401308e",
+      "size_bytes": 27076
+    },
+    {
+      "path": "accepted_contract_materialized/TRACEABILITY_MATRIX_REV23.md",
+      "sha256": "9f6c842cc897ac23917d085f7085648974a0bed8219030521a512edfaa35bc3a",
+      "size_bytes": 6743
+    },
+    {
+      "path": "accepted_contract_materialized/UNRESOLVED_QUESTIONS_REV23.md",
+      "sha256": "d6dea674fc45e0afdbe48cf57798dfd63e4aba870599d1cf9a97c40dc71f7e9c",
+      "size_bytes": 456
+    },
+    {
+      "path": "accepted_contract_materialized/contracts/CANONICAL_COMPATIBILITY_EDGE_VECTORS_REV21.json",
+      "sha256": "1403c0c87d337fb66b48e8ac4d60699978a317757d828961665381775d0f71cc",
+      "size_bytes": 3727
+    },
+    {
+      "path": "accepted_contract_materialized/contracts/CURL_SUBPROCESS_CONTRACT_REV20.json",
+      "sha256": "ee65157b2a5de50a3d91a0eb9dbef33a9b04c7f66d6bbad9f62be519442bede5",
+      "size_bytes": 1342
+    },
+    {
+      "path": "accepted_contract_materialized/contracts/REQUESTS_JSON_EQUIVALENCE_CONTRACT_REV18.json",
+      "sha256": "a5558f1805de7b2fe8d25fe37b22295ccd33c022436e8014b1892f38d9db4947",
+      "size_bytes": 16684
+    },
+    {
+      "path": "accepted_contract_materialized/contracts/RESPONSE_HEADER_EXTRACTION_CONTRACT_REV21.json",
+      "sha256": "b010e18ee1da53b37bc70aa37b5e92ab35593b259140300b69174020ca710460",
+      "size_bytes": 8722
+    },
+    {
+      "path": "accepted_contract_materialized/contracts/RESPONSE_HEADER_EXTRACTION_VECTORS_REV21.json",
+      "sha256": "00cb6e9be633fce678ac091d37d0353ff94de6de585ff6b28c7c1d40427fb38b",
+      "size_bytes": 39696
+    },
+    {
+      "path": "accepted_contract_materialized/contracts/SOURCE_D_ALGORITHM_CONTRACT_REV17.json",
+      "sha256": "0b2e0a4120a2e8b8f983e820cef1762f6503412db6c2039f82dbf63ae7e07388",
+      "size_bytes": 6314
+    },
+    {
+      "path": "accepted_contract_materialized/policies/HTTP_STATUS_RECONCILIATION_VECTORS_REV22.json",
+      "sha256": "65b937d9e85d589e6c06f2e50095731f2f537a07dc02758e484375c79254fb11",
+      "size_bytes": 1299
+    },
+    {
+      "path": "accepted_contract_materialized/policies/TRANSPORT_POLICY_REV22.json",
+      "sha256": "78644908a852fba0dda2068b7b08a92c4b8a8a575fb2153876f9d478c5f1d2ca",
+      "size_bytes": 805
+    },
+    {
+      "path": "accepted_contract_materialized/policies/URL_SERIALIZATION_POLICY_REV22.json",
+      "sha256": "a148c2ac31e31c981bcafbb91e7416018a57796e6e41f7e522d2d249b5ad479a",
+      "size_bytes": 1957
+    },
+    {
+      "path": "diffs/ACCEPTED_CONTRACT_SHA256SUMS.txt.diff",
+      "sha256": "671c55bce86cb4f1c29f2757c1a8246fa8d9d1fe9722f399922dc183523e3748",
+      "size_bytes": 3103
+    },
+    {
+      "path": "diffs/ARTIFACT_PRODUCER_CONSUMER_MATRIX_REV23.md.diff",
+      "sha256": "d3586b00d04978510e01c79dcdf048db2773970e44ca059644ab7ae2662ca7d1",
+      "size_bytes": 5370
+    },
+    {
+      "path": "diffs/ARTIFACT_REGISTRY_REV23.md.diff",
+      "sha256": "dbf381b01aefde93fbc0f9806c2cf23cc6663f7e26f970717dd092965fdd29e9",
+      "size_bytes": 2454
+    },
+    {
+      "path": "diffs/CHANGE_LEDGER_REV22_to_REV23.md.diff",
+      "sha256": "0ed8c2b556de9898fb98850b7a1f65fe74c6d2a4b3bb6c73971c03cfbc86eece",
+      "size_bytes": 4103
+    },
+    {
+      "path": "diffs/HANDOFF_SENTINEL_local_curl_REV23.md.diff",
+      "sha256": "d97c09e5033b488cbae397df9b0d7289c741a1e7c096ff9be1abfcf4679009d2",
+      "size_bytes": 4440
+    },
+    {
+      "path": "diffs/REQUEST_PLAN_AND_AUTHORIZATION_CONTRACT_REV23.md.diff",
+      "sha256": "89bed833f86613e68bcfee3d860126bc49867b0b71ec4d3055cc648e65af6eae",
+      "size_bytes": 3702
+    },
+    {
+      "path": "diffs/SPEC_local_curl_per_side_price_dataset_verification_REV23.md.diff",
+      "sha256": "cb8c9c0d0b2fff8c788125f2b8cb461131d822ef140e3d1ad3c1c8d030c986b0",
+      "size_bytes": 42519
+    },
+    {
+      "path": "diffs/STOP_STATE_TABLE_REV23.md.diff",
+      "sha256": "bb404ac033022d837ab7929caecc875bf95b1750406a468e32a6ecd10a810d82",
+      "size_bytes": 11517
+    },
+    {
+      "path": "diffs/TRACEABILITY_MATRIX_REV23.md.diff",
+      "sha256": "0040aa4084e7c8f7e2e93f99256416773c17b5e38bc0d1e73bdab46ae8df5cc8",
+      "size_bytes": 4723
+    },
+    {
+      "path": "diffs/UNRESOLVED_QUESTIONS_REV23.md.diff",
+      "sha256": "8e41893ee7846ee087756f9fb4bdcfea1bd336654da5adfcbe5ffd32eea27ee0",
+      "size_bytes": 957
+    },
+    {
+      "path": "replacements/GOVERNING_PACKAGE_MANIFEST_REV23.json",
+      "sha256": "b2627541175ca3ccb225491c1a684e0d7c00eed20d40e30cd65da23136528afa",
+      "size_bytes": 4847
+    },
+    {
+      "path": "replacements/GOVERNING_PACKAGE_MANIFEST_REV23.sha256",
+      "sha256": "51e96fa3a126ebe2fedb8f441d45ac1e173b5eb8cc9b01a397a50b90d992b8b3",
+      "size_bytes": 143
+    },
+    {
+      "path": "replacements/SCHEMA_REGISTRY_REV23.json",
+      "sha256": "e9590fac64ce245dbebd7f0e0bcaca5cf8b263e907e202dbba779f1be9157f19",
+      "size_bytes": 632161
+    }
+  ],
+  "schema_id": "rev23_amendment_03_package_manifest.v4"
+}
