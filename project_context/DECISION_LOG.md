@@ -205,7 +205,7 @@ Spec `SPEC_p0_representativeness_quality_audit.md`, implementation `scripts/p0_r
 
 **Standing consequence.** This finding does not unblock P1, does not authorize vendor action, does not authorize price-source construction, does not authorize P1/P2/P3/probe, and does not change `named_binary_probe_blocked`. **DO NOT REOPEN** absent a new condition-level Option D artifact or a new representativeness question.
 
-### Local-curl per-side dataset verification Revision 23 with Amendment 03: SPEC ACCEPTED; implementation not authorized — SETTLED
+### Local-curl per-side dataset verification Revision 23 with Amendment 03: SPEC ACCEPTED; bounded I0 implementation authoring authorized — SETTLED
 
 Revision 23 is accepted as the frozen Revision 23 package plus `REV23_AMENDMENT_01`, `REV23_AMENDMENT_02`, and `REV23_AMENDMENT_03`.
 
@@ -219,9 +219,11 @@ Accepted effective hashes:
 
 Amendment 03 resolves the token-manifest lifecycle cycle, exact partition/request schemas, typed-tag and null rules, integer pre-run identity timestamp, total raw-evidence-bound HTTP reconciliation, and the completed-capture lifecycle path. Populations remain 600 token-manifest rows, 496 request-manifest rows, and 496 request-plan rows. The twelve-field `run_id`, denominators, thresholds, result ordering, guardrails, P1 block, and `named_binary_probe_blocked = true` remain unchanged.
 
-The prior I0 source/test-source authorization was tied to the Amendments-01/02 contract bytes. It does not authorize work against Amendment 03 and is superseded/inactive. The previously submitted Claude implementation package was blocked and is not accepted as conformant.
+The prior I0 source/test-source authorization was tied to the Amendments-01/02 contract bytes and remains superseded. The previously submitted Claude implementation package was blocked and is not accepted as conformant.
 
-**Current authorization:** specification accepted and canonicalized only. No implementation correction, source/test-source authoring, tests, Python/project-code execution, local-data read, curl/subprocess/network action, reservation, replay, empirical artifact, P1/P2/P3, probe, scoring, price construction, wallet/PnL/trading, or gate change is authorized. A later implementation stage requires a new explicit Gustavo authorization and a newly pinned handoff.
+After canonical commit `fad41de515572ca30b4440b060a69dd6bfc57e2b` was verified, Gustavo explicitly authorized one new bounded Amendment 03 I0 implementation-authoring stage on `2026-07-15`. Sentinel pinned the exact source/test-source file matrix and activity statuses in `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`.
+
+**Current authorization:** exact source and unexecuted test-source authoring for one static Claude package only. Test execution, Python/project execution, local-data reads, curl/network/request execution, replay, empirical artifacts, CLI/dependencies, Git publication, P1/P2/P3, probe, scoring, price construction, wallet/PnL/trading, and gate changes remain unauthorized.
 
 ---
 
@@ -243,7 +245,7 @@ The prior I0 source/test-source authorization was tied to the Amendments-01/02 c
 - Option D temporal in-range precheck SPEC and result (`OPTION_D_TEMPORAL_INRANGE_PRECHECK_COMPLETED_ACCEPTED`). Do not re-run or reinterpret the temporal precheck without explicit authorization. Do not treat timing feasibility as vendor availability, side/token coverage, book depth, price quality, mechanical trust, price-source viability, or P1 viability. PMXT v2 is closed/deprioritized for broad full-P0 coverage on timing grounds; Telonex L2 may only proceed to a separately authorized SPEC ONLY vendor-coverage review.
 - P0 Representativeness and Quality Audit result (`P0_REPRESENTATIVENESS_CLEAR_WITH_LIMITATIONS`). Do not reinterpret the excluded-tail skew as broad P0 bias; the impact-weighted pre-resolution-vs-final-P0 comparison is CLEAR. Do not use this result to unblock P1, authorize vendor action, authorize price-source construction, authorize P1/P2/P3/probe, or change gates.
 - REV23 Amendment 03 acceptance. Do not restore the old run-scoped token manifest, the six-field partition shorthand, conflicting request schemas, string-valued pre-run timestamp, partial HTTP mapping, or a completed-capture path that bypasses reconciliation.
-- Prior REV23 I0 authorization. Do not treat the superseded Amendments-01/02 source/test-source authorization or old Claude prompt as permission to implement Amendment 03. Any new implementation or test-source authoring requires a separate explicit Gustavo authorization pinned to the current canonical hashes.
+- REV23 Amendment 03 I0 implementation authorization. Do not broaden the exact source/test-source matrix, execute tests or Python, read local data, invoke network/curl/request paths, create empirical artifacts, change dependencies/CLI, publish Git history, or continue downstream phases. The prior blocked packages remain non-authoritative.
 
 ---
 

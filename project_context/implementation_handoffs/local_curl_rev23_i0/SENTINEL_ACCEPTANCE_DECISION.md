@@ -18,6 +18,8 @@ Blocking findings at specification acceptance: none.
 
 This acceptance authorizes specification installation only. It does not authorize implementation, correction of the prior Claude package, source/test-source authoring, tests, execution, local reads, curl/subprocess/network activity, replay, empirical artifacts, P1/P2/P3, probe, scoring, wallet/PnL/trading, or gate changes.
 
-The prior narrow I0 implementation authorization applied only to the Amendments-01/02 bytes and is superseded/inactive. A new implementation stage requires a separate explicit Gustavo authorization after the canonical Amendment 03 commit is verified.
+The prior narrow I0 implementation authorization applied only to the Amendments-01/02 bytes and remains superseded.
+
+After canonical commit `fad41de515572ca30b4440b060a69dd6bfc57e2b` was verified, Gustavo separately authorized one bounded Amendment 03 I0 implementation-authoring stage on `2026-07-15`. That separate authorization is controlled exclusively by `IMPLEMENTATION_AUTHORIZATION_SCOPE.md`; it does not arise from specification acceptance and does not authorize tests or execution.
 
 The accepted specification remains non-empirical and does not unblock P1. `named_binary_probe_blocked = true`.

@@ -68,7 +68,8 @@ Read these, in this order, before doing anything:
     - `HANDOFF_orchestrator_option_d_temporal_inrange_precheck_IMPLEMENTATION_PATCH.md`
     - `HANDOFF_orchestrator_option_d_temporal_inrange_precheck_RESULT.md`
     - `HANDOFF_orchestrator_rev23_amendment_03_ACCEPTED.md`
-23. `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`, then `implementation_handoffs/local_curl_rev23_i0/SENTINEL_ACCEPTANCE_DECISION.md`, `accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`, and `IMPLEMENTATION_AUTHORIZATION_SCOPE.md` — Revision 23 with Amendments 01, 02, and 03 is the accepted SPEC ONLY contract. Amendment 03 is installed as canonical specification state. **No REV23 I0 implementation or test-source authoring is currently authorized.** The previous I0 authorization applied only to the Amendments-01/02 contract bytes and is superseded/inactive. A new bounded implementation stage requires a separate explicit Gustavo authorization after this canonical update is verified.
+    - `HANDOFF_orchestrator_rev23_amendment_03_i0_IMPLEMENTATION_AUTHORIZED.md`
+23. `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`, then `implementation_handoffs/local_curl_rev23_i0/SENTINEL_ACCEPTANCE_DECISION.md`, `accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`, and `IMPLEMENTATION_AUTHORIZATION_SCOPE.md` — Revision 23 with Amendments 01, 02, and 03 is the accepted governing specification. Gustavo separately authorized one bounded Amendment 03 I0 pure deterministic contract-core implementation-authoring stage on `2026-07-15`, pinned to canonical commit `fad41de515572ca30b4440b060a69dd6bfc57e2b`. Source and unexecuted test-source authoring are authorized only for the exact file matrix; tests, Python/project execution, local-data reads, curl/subprocess/network execution, replay, empirical artifacts, Git publication, P1/P2/P3, and probe execution remain unauthorized.
 
 Supporting references, not overriding the above:
 

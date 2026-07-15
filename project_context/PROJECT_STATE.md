@@ -40,7 +40,7 @@ Stay **Polymarket-native**. The wallet-edge thesis has been weakened across thre
 
 - **Local-curl per-side dataset verification Revision 23: ACCEPTED / SPEC ONLY.** The frozen Revision 23 package plus `REV23_AMENDMENT_01`, `REV23_AMENDMENT_02`, and accepted `REV23_AMENDMENT_03` form the governing contract. Effective governing hashes: specification `d4271f3bfb29924c3937a0569d3cee585ef32125604785ba474e837a2ca642b9`; schema registry `e9590fac64ce245dbebd7f0e0bcaca5cf8b263e907e202dbba779f1be9157f19`; request/authorization contract `8095bb923742e8f7eafac61a1de52d9ff4e5537f8a03bb52af62eb795c9f0f7f`; governing-package semantic hash `6510bee82e4047bc3e035cfa27732556b313300f19368c8f02ed7cb8eda5c86b`; governing manifest file hash `b2627541175ca3ccb225491c1a684e0d7c00eed20d40e30cd65da23136528afa`. No empirical replay has been authorized or performed under this acceptance.
 
-- **REV23 I0 implementation: NOT AUTHORIZED.** The previous narrow source/test-source authorization applied only to the Amendments-01/02 contract bytes. Amendment 03 changes governing interfaces and hashes, so the earlier authorization is superseded/inactive and cannot be reused. The previously submitted Claude package was not accepted as conformant. No implementation correction, test-source authoring, test execution, project-code execution, local-data read, curl/subprocess/network action, replay, or empirical artifact work is authorized. A new bounded implementation stage requires a separate explicit Gustavo authorization after this canonical update is verified.
+- **REV23 Amendment 03 I0 implementation authoring: AUTHORIZED / ACTIVE.** After canonical commit `fad41de515572ca30b4440b060a69dd6bfc57e2b` and the accepted hashes were verified, Gustavo explicitly authorized one bounded Claude implementation package on `2026-07-15`. Authorized: the exact new source and unexecuted test-source files listed in `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`, plus static conformance/package records. Unauthorized: tests, Python/project execution, local-data reads, curl/network/request execution, empirical artifacts, CLI/dependencies, Git publication, P1/P2/P3, probe, scoring, price construction, wallet/PnL/trading, and gate changes. The earlier blocked Claude packages remain non-authoritative.
 
 - **Chat2 Dune wallet cohort discovery: BLOCKED** unless separately authorized. It consumes the named-binary contract but is a distinct phase; do NOT conflate the now-usable outcome source with wallet discovery. Outcome-source scoreability does not unblock Chat2.
 
@@ -48,7 +48,7 @@ Stay **Polymarket-native**. The wallet-edge thesis has been weakened across thre
 
 ## What is NOT authorized
 
-No REV23 I0 implementation, implementation correction, test-source authoring, test execution, lint, coverage, CI execution, project-code execution, local research-data read, curl discovery, subprocess launch, network access, reservation/request execution, replay, empirical capture, compatibility/strict analysis, results/finalization, CLI integration, dependency change, git publication, P1/P2/P3, probe, scoring, price construction, side synthesis, wallet/PnL/trading, or gate change.
+Outside the exact Amendment 03 I0 source/test-source file matrix, no implementation or implementation correction is authorized. No test execution, lint, coverage, CI, Python/project-code execution, local research-data read, curl discovery, network or request execution, replay, empirical capture, compatibility/strict analysis, results/finalization, CLI integration, dependency change, Git publication, P1/P2/P3, probe, scoring, price construction, side synthesis, wallet/PnL/trading, or gate change is authorized. Subprocess use is limited to the exact read-only Git inspection and static hashing commands stated in the handoff.
 
 No C1B full sampled coverage, C2 reusable/production implementation, P1/P2/P3 continuation, probe execution, scoring, backfill, wallet discovery, OrdersMatched expansion, `log_index`, PnL, gate change, cap increase, row truncation, additional canary, SQL modification, or price artifact follows from the accepted C1A-F1 result or accepted C1A-F2 artifact review.
 
@@ -76,8 +76,8 @@ The only possible next Option D step, if explicitly authorized later, is a SPEC 
 
 ## Workflow
 
-- Claude works in its sandbox and delivers files only after a separate explicit implementation authorization. No REV23 I0 implementation prompt is currently active.
-- For REV23 I0, no source or test-source authoring, tests, Python/project-code execution, or runtime path is authorized until Gustavo separately approves a new Amendment-03 implementation stage.
+- Claude works in its sandbox under the active Amendment 03 I0 handoff and delivers one static implementation ZIP.
+- For REV23 I0, exact source and unexecuted test-source authoring are authorized; tests, Python/project-code execution, and every runtime path remain unauthorized.
 - Future Claude, Sentinel, and Professor chats must read `project_context/implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`, `SENTINEL_ACCEPTANCE_DECISION.md`, and `IMPLEMENTATION_AUTHORIZATION_SCOPE.md`; chat memory and the superseded prior prompt are not authorization.
 - User runs locally only after a separate explicit authorization for the relevant stage, then pastes outputs back.
 - Each task closes with a **Claude-to-Orchestrator handoff memo**.

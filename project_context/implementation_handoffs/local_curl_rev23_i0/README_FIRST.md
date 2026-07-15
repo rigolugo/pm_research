@@ -1,35 +1,36 @@
-# REV23 I0 Handoff — Amendment 03 Accepted / Implementation Not Authorized
+# REV23 Amendment 03 I0 Implementation Handoff — Active
 
 ## Purpose
 
-This directory contains the accepted effective Revision 23 specification with Amendments 01, 02, and 03, plus its audit trail.
+This directory contains the accepted effective Revision 23 specification with Amendments 01, 02, and 03 and the active bounded I0 implementation-authoring handoff.
 
-It does **not** currently authorize Claude implementation, correction, test-source authoring, tests, or execution.
+Gustavo explicitly authorized one Amendment 03 I0 implementation stage on `2026-07-15`. Sentinel authorizes Claude to author the exact source and unexecuted test-source files listed in `IMPLEMENTATION_AUTHORIZATION_SCOPE.md`. No test or runtime execution is authorized.
 
 ## Read order
 
 1. `SENTINEL_ACCEPTANCE_DECISION.md`
 2. `IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
-3. In the canonical repository, root `START_HERE.md`, then `project_context/START_HERE.md`, then its required read order.
-4. `accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`
-5. `accepted_contract/SPEC_local_curl_per_side_price_dataset_verification_REV23.md`
-6. `accepted_contract/SCHEMA_REGISTRY_REV23.json`
-7. `accepted_contract/REQUEST_PLAN_AND_AUTHORIZATION_CONTRACT_REV23.md`
-8. Relevant retained contracts/policies/vectors under `accepted_contract/contracts/` and `accepted_contract/policies/`.
-9. `amendment_audit/rev23_amendment_03/SENTINEL_ACCEPTANCE_DECISION_REV23_AMENDMENT_03.md`
+3. `authorization_audit/rev23_amendment_03_i0/README_FIRST.md`
+4. In the canonical repository, root `START_HERE.md`, then `project_context/START_HERE.md`, then its required read order.
+5. `accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`
+6. `accepted_contract/SPEC_local_curl_per_side_price_dataset_verification_REV23.md`
+7. `accepted_contract/SCHEMA_REGISTRY_REV23.json`
+8. `accepted_contract/REQUEST_PLAN_AND_AUTHORIZATION_CONTRACT_REV23.md`
+9. Relevant retained contracts/policies/vectors under `accepted_contract/contracts/` and `accepted_contract/policies/`.
+10. `amendment_audit/rev23_amendment_03/SENTINEL_ACCEPTANCE_DECISION_REV23_AMENDMENT_03.md`
 
-## Canonical-install baseline
+## Canonical implementation baseline
 
-This canonical update package was prepared against private-repository commit:
+Claude must observe exact repository `HEAD`:
 
-`226085ca9ba7fa41a8b666005499827d6fa6b9c5`
+`fad41de515572ca30b4440b060a69dd6bfc57e2b`
 
-After manual upload, the user must record the new commit. Any future implementation handoff must be regenerated and pinned to that new commit.
+Claude must not fetch, pull, reset, commit, push, create a branch, or open a PR. Material drift requires a stop to Sentinel.
 
 ## Contract integrity
 
-The accepted contract is bound by `accepted_contract/ACCEPTED_CONTRACT_SHA256SUMS.txt`, `accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`, and the manifest sidecar.
+The accepted contract is bound by `accepted_contract/ACCEPTED_CONTRACT_SHA256SUMS.txt`, `accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`, and the manifest sidecar. Static hash verification is allowed.
 
-## Current authorization
+## Active authorization
 
-No active REV23 I0 implementation authorization exists. The prior Amendments-01/02 authorization and Claude prompt are superseded and must not be reused.
+One static I0 implementation package is authorized. Source and test-source authoring are limited to the exact file matrix. Test execution, Python/project execution, local-data reads, network/curl actions, empirical artifacts, and Git publication remain prohibited.
