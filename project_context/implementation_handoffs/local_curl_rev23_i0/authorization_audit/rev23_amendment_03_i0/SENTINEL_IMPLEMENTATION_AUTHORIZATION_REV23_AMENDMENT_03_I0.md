@@ -1,11 +1,19 @@
-# Sentinel Implementation Authorization — REV23 Amendment 03 I0 Contract Core
+# Sentinel Implementation Authorization Record — REV23 Amendment 03 I0 Contract Core
 
 Decision: **APPROVE — NARROW IMPLEMENTATION AUTHORING ONLY**
 
 Authorizing authority: Gustavo, explicit current-chat authorization dated `2026-07-15`.
 Review authority: Sentinel.
 Implementation agent: Claude.
-Canonical baseline commit: `fad41de515572ca30b4440b060a69dd6bfc57e2b`.
+Accepted-contract commit: `fad41de515572ca30b4440b060a69dd6bfc57e2b`.
+First authorization-anchor commit: `d737aa9e12cbfa584b275e128c8624e01af72f61`.
+Actual implementation baseline: the verified synchronized local `HEAD` after a separately authorized source synchronization.
+
+## Canonical source gate
+
+The accepted-contract commit is `fad41de515572ca30b4440b060a69dd6bfc57e2b`. The first commit containing this active implementation authorization is `d737aa9e12cbfa584b275e128c8624e01af72f61`. These are different roles.
+
+Implementation authoring is blocked until Gustavo separately authorizes canonical source synchronization and the local repository passes the corrected source gate in `authorization_audit/rev23_amendment_03_i0/SENTINEL_CANONICAL_SOURCE_GATE_CORRECTION.md`. This implementation authorization does not itself authorize fetch, pull, reset, checkout/switch, re-clone, or any other source synchronization.
 
 ## Accepted governing contract
 
@@ -51,7 +59,7 @@ Only the following new test-source files may be authored:
 - `tests/local_curl_per_side/test_response_header.py`
 - `tests/local_curl_per_side/test_state_machine.py`
 
-All listed repository files are absent at baseline `fad41de515572ca30b4440b060a69dd6bfc57e2b` and must be delivered as complete new files. No other repository path is authorized.
+All listed repository files must be absent at the verified synchronized local implementation baseline and must be delivered as complete new files. Their absence must be checked before authoring. No other repository path is authorized.
 
 ## Required implementation coverage
 
@@ -84,17 +92,20 @@ No stubbed accepted identity or validator is permitted. No test may encode a kno
 - **Lint, coverage, type checking, CI, generated-code execution:** NOT AUTHORIZED.
 - **Local research-data or empirical-artifact reads:** NOT AUTHORIZED.
 - **Network, API, RPC, vendor, curl, or request execution:** NOT AUTHORIZED.
-- **Subprocess/shell use:** NOT AUTHORIZED except read-only `git rev-parse HEAD`, `git status --short`, `git diff`, `git diff --check`, and static byte hashing needed for package integrity. No command may execute Python, tests, project modules, generated code, curl, or network activity.
+- **Subprocess/shell use:** NOT AUTHORIZED except read-only local Git inspection (`git rev-parse HEAD`, `git status --short`, `git merge-base --is-ancestor`, `git diff`, `git diff --check`, `git cat-file -e`) and static byte hashing needed for source-gate/package integrity. Source synchronization commands are not authorized here and require a separate explicit Gustavo decision. No command may execute Python, tests, project modules, generated code, curl, or unrelated network activity.
 - **Artifact production:** AUTHORIZED only for the static implementation ZIP, complete source/test-source files, patch, manifests, conformance report, authorization-observed statement, review notes, and checksum inventory. No file under empirical `artifacts/` may be produced.
 - **Working-tree writes:** AUTHORIZED only for the exact listed source/test-source files and package-only deliverables in Claude's sandbox.
-- **Git history or remote writes:** NOT AUTHORIZED — no commit, branch, tag, push, pull, fetch, reset, PR, merge, or repository publication.
+- **Git history or remote writes:** NOT AUTHORIZED — no commit, branch, tag, push, pull, fetch, reset, checkout/switch to a remote ref, PR, merge, or repository publication. A later explicit source-sync authorization may narrowly permit specified read-only remote acquisition and working-tree synchronization commands; it does not follow from this implementation authorization.
 - **Canonical project-context edits:** NOT AUTHORIZED.
 
 ## Mandatory stop conditions
 
 Claude must stop and return to Sentinel without choosing silently if:
 
-- local `HEAD` is not exactly `fad41de515572ca30b4440b060a69dd6bfc57e2b` or the working tree contains material interface drift;
+- source synchronization has not been separately authorized and completed;
+- local `HEAD` is not `d737aa9e12cbfa584b275e128c8624e01af72f61` or a descendant, or `d737aa9e12cbfa584b275e128c8624e01af72f61` is absent/not an ancestor;
+- `git diff --name-only d737aa9e12cbfa584b275e128c8624e01af72f61..HEAD` includes any accepted-contract, `pm_research/`, `tests/`, dependency, CLI, or runtime-configuration path;
+- any authorized new source/test-source path already exists before authoring, or the working tree contains material interface drift;
 - any accepted contract byte or hash does not match the values above;
 - an accepted schema, projection, lifecycle, or issue-code mapping remains ambiguous;
 - implementation requires any file outside the exact authorized matrix;
@@ -112,9 +123,9 @@ It must contain:
 
 1. all exact authorized source files in repository-relative paths;
 2. all exact authorized test-source files in repository-relative paths;
-3. `IMPLEMENTATION_FILE_MANIFEST.json` with baseline commit, path, status, SHA-256, size, and purpose for every repository file;
+3. `IMPLEMENTATION_FILE_MANIFEST.json` with the actual verified synchronized baseline commit, authorization-anchor commit, accepted-contract commit, path, status, SHA-256, size, and purpose for every repository file;
 4. `IMPLEMENTATION_CONFORMANCE_REV23_AMENDMENT03_I0.md` mapping every public function/validator to exact governing sections and schema IDs;
-5. `IMPLEMENTATION_DIFF.patch` against `fad41de515572ca30b4440b060a69dd6bfc57e2b`;
+5. `IMPLEMENTATION_DIFF.patch` against the actual verified synchronized local implementation baseline recorded in the manifest;
 6. `IMPLEMENTATION_AUTHORIZATION_OBSERVED.md` listing every performed and expressly unperformed action;
 7. `TEST_EXECUTION_STATUS.md` with status exactly `NOT_RUN_NOT_AUTHORIZED`, plus proposed future commands only;
 8. `REVIEW_NOTES_FOR_SENTINEL.md` listing ambiguities, limitations, and any accepted behavior not implemented because it lies outside I0;

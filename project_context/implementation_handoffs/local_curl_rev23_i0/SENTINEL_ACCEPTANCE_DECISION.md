@@ -20,6 +20,6 @@ This acceptance authorizes specification installation only. It does not authoriz
 
 The prior narrow I0 implementation authorization applied only to the Amendments-01/02 bytes and remains superseded.
 
-After canonical commit `fad41de515572ca30b4440b060a69dd6bfc57e2b` was verified, Gustavo separately authorized one bounded Amendment 03 I0 implementation-authoring stage on `2026-07-15`. That separate authorization is controlled exclusively by `IMPLEMENTATION_AUTHORIZATION_SCOPE.md`; it does not arise from specification acceptance and does not authorize tests or execution.
+After accepted-contract commit `fad41de515572ca30b4440b060a69dd6bfc57e2b` was verified, Gustavo separately authorized one bounded Amendment 03 I0 implementation-authoring stage on `2026-07-15`; the authorization was first installed in canonical commit `d737aa9e12cbfa584b275e128c8624e01af72f61`. That separate authorization is controlled by `IMPLEMENTATION_AUTHORIZATION_SCOPE.md` and the canonical-source correction record. It does not arise from specification acceptance, does not authorize source synchronization, and does not authorize tests or execution. Implementation authoring is currently blocked until a separately authorized source synchronization completes and the corrected source gate passes.
 
 The accepted specification remains non-empirical and does not unblock P1. `named_binary_probe_blocked = true`.
