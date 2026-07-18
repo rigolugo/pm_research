@@ -170,9 +170,12 @@ Installation commits:
 - `CANONICAL_REPOSITORY_POINTER.md`
 - `prompts/CLAUDE_NEW_CHAT_PROMPT.md`
 - `prompts/SENTINEL_NEW_CHAT_PROMPT.md`
+- `scope_authoring/rev23_finding4_i0a/README_FIRST.md`
+- `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
+- `scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
 
-Current implementation scope:
-`DEFER — NOT AUTHORIZED`.
+Current implementation state:
+`I0A SCOPE REVISION 08 ACCEPTED — IMPLEMENTATION NOT AUTHORIZED`.
 
 ### `accepted_contract/`
 
@@ -219,6 +222,25 @@ Complete accepted Finding 4 materialization package, including:
 - `AUTHORIZATION_SUPERSESSION_REV23_FINDING4.md`
 - `CANONICAL_INSTALL_STATUS.md`
 
+### `scope_authoring/rev23_finding4_i0a/`
+
+Accepted bounded implementation-authoring scope.
+
+- `README_FIRST.md`
+- `SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
+- `ACCEPTED_SCOPE_MANIFEST.json`
+- `SCOPE_SHA256SUMS.txt`
+- `accepted_scope_revision_08/` — exact `14`-member canonical copy
+  of `REV23_FINDING4_I0A_SCOPE_REVISION_08.zip`
+
+Accepted source archive SHA-256:
+
+`004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
+
+The accepted maximum candidate matrix contains six source and six test-source
+paths. It is inactive until a separate Gustavo implementation decision and a new
+Sentinel implementation handoff.
+
 ### Historical Amendment 03 authorization audit
 
 `authorization_audit/rev23_amendment_03_i0/` remains preserved for history.
@@ -244,6 +266,8 @@ Pinned canonical files:
 - `CLAUDE_PROJECT_SETTINGS.md`
 - `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`
 - `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
+- `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/README_FIRST.md`
+- `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
 
 Keep canonical repository files and the Claude Project Files panel synchronized.
 The private repository remains authoritative.

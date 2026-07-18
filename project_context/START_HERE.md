@@ -35,8 +35,12 @@ Read these before doing anything:
 11. `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`
 12. `implementation_handoffs/local_curl_rev23_i0/SENTINEL_ACCEPTANCE_DECISION.md`
 13. `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
-14. `implementation_handoffs/local_curl_rev23_i0/accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`
-15. The remaining files required by the handoff read order.
+14. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/README_FIRST.md`
+15. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
+16. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
+17. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_08/README_FIRST.md`
+18. `implementation_handoffs/local_curl_rev23_i0/accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`
+19. The remaining files required by the handoff and accepted-scope read orders.
 
 ---
 
@@ -74,6 +78,23 @@ The installed contract and Finding 4 audit trail live under:
 
 ---
 
+## Accepted Finding 4 I0A scope
+
+Revision 08 is accepted as the bounded implementation-authoring scope.
+
+- review anchor: `88362521fe9ef247708e4d7b5f90753784b8b88e`
+- accepted archive SHA-256: `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
+- canonical scope path:
+  `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/`
+- implementation authorization: **NOT ACTIVE**
+- test execution: **UNAUTHORIZED**
+
+The commit containing this scope installation must be returned to Sentinel for
+verification before Gustavo may issue a separate implementation authorization.
+Scope acceptance does not activate the twelve-path matrix.
+
+---
+
 ## Current project state
 
 - P0 preflight: **ACCEPTED — `P0_CLEAR`**.
@@ -94,24 +115,18 @@ The installed contract and Finding 4 audit trail live under:
 
 No Claude implementation prompt is active.
 
-The earlier Amendment 03 I0 implementation authorization is superseded by the
-accepted Finding 4 contract. Current
-`implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
-records **DEFER — NOT AUTHORIZED**.
+The earlier Amendment 03 I0 implementation authorization remains superseded.
+Revision 08 scope acceptance does not authorize source synchronization,
+implementation-source authoring, test-source authoring, tests, project-code
+execution, local-data reads, network/curl, replay, empirical artifacts,
+P1/P2/P3, scoring, probe execution, Git writes by agents, or gate changes.
 
-Canonical installation does not authorize:
+The next boundary requires:
 
-- source synchronization;
-- source or test-source authoring;
-- tests, lint, coverage, CI, or project-code execution;
-- local research-data reads;
-- network, API, RPC, vendor, curl, or replay activity;
-- empirical artifacts;
-- P1/P2/P3, scoring, probe execution, or gate changes;
-- wallet discovery, OrdersMatched expansion, `log_index`, PnL-by-role, paper trading, or live trading.
-
-The next implementation boundary requires a separate explicit Gustavo decision
-and a new Sentinel handoff pinned to the then-current verified canonical commit.
+1. manual upload and commit of this canonical scope package;
+2. Sentinel verification of the resulting commit;
+3. a separate explicit Gustavo implementation decision; and
+4. a new Sentinel handoff pinned to the verified commit.
 
 ---
 
@@ -125,3 +140,4 @@ and a new Sentinel handoff pinned to the then-current verified canonical commit.
   and uploaded manually by Gustavo.
 - Claude must not edit canonical project-context files.
 - Never silently reverse a settled decision or reactivate superseded material.
+- Do not open Revision 09 for optional polish; reopen only for a concrete material contradiction.

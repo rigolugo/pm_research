@@ -196,13 +196,33 @@ All 109 changed files were confined to:
 No implementation, test, dependency, CLI/runtime, empirical, or research-data
 path changed.
 
-### Implementation supersession
+### Finding 4 I0A scope acceptance
 
-The earlier Amendment 03 I0 implementation authorization is superseded.
+Revision 08 is accepted as the bounded implementation-authoring scope.
 
-Current implementation scope is:
+- decision: `APPROVE`;
+- review anchor: `88362521fe9ef247708e4d7b5f90753784b8b88e`;
+- archive: `REV23_FINDING4_I0A_SCOPE_REVISION_08.zip`;
+- archive SHA-256: `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`;
+- accepted member count: `14`;
+- maximum candidate matrix: six source paths and six test-source paths;
+- implementation authorization: not active;
+- test execution: unauthorized.
 
-`DEFER — NOT AUTHORIZED`.
+The scope acceptance closes the revision loop. No Revision 09 should be opened
+for optional polish. A later scope amendment requires a concrete material
+contradiction that cannot be resolved from the accepted Revision 08 contract.
+
+The commit containing the accepted-scope canonical installation must be returned
+to Sentinel for verification before any implementation authorization.
+
+### Implementation supersession and current boundary
+
+The earlier Amendment 03 I0 implementation authorization remains superseded.
+
+The current state is:
+
+`I0A SCOPE REVISION 08 ACCEPTED — IMPLEMENTATION NOT AUTHORIZED`.
 
 No active Claude implementation prompt exists. Source synchronization,
 implementation, test authoring/execution, project-code execution, local-data
@@ -226,6 +246,7 @@ and gate changes require separate future decisions.
 - Amendment 03 versus authorization-anchor distinction.
 - Finding 4 approved source stack and accepted materialization.
 - The superseded Amendment 03 I0 implementation authorization.
+- Revision 08 I0A scope, absent a concrete material contract contradiction.
 
 ---
 

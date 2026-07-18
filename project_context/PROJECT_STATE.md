@@ -8,9 +8,9 @@
 
 Stay Polymarket-native and preserve the accepted research-only guardrails.
 
-The immediate project objective is to maintain the accepted Revision 23 +
-Finding 4 contract as the authoritative basis for any future bounded local-curl
-implementation decision. No implementation decision is active.
+The immediate project objective is to install and verify the accepted Revision
+23 Finding 4 I0A scope as the authoritative basis for a later bounded
+implementation-authoring decision. No implementation decision is active.
 
 ---
 
@@ -143,11 +143,35 @@ The installed tree includes:
 - preflight evidence;
 - replacements and transformation evidence;
 - authorization supersession record;
-- implementation scope set to `DEFER — NOT AUTHORIZED`;
 - disabled Claude implementation prompt.
 
 No `pm_research/`, `tests/`, dependency, CLI/runtime, research-data, or empirical
 path changed during installation.
+
+---
+
+## Revision 23 Finding 4 I0A scope state
+
+Revision 08 is accepted as the bounded implementation-authoring scope.
+
+- Sentinel decision: `APPROVE`
+- review anchor: `88362521fe9ef247708e4d7b5f90753784b8b88e`
+- accepted archive: `REV23_FINDING4_I0A_SCOPE_REVISION_08.zip`
+- accepted archive SHA-256: `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
+- accepted member count: `14`
+- canonical scope path:
+  `project_context/implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/`
+- accepted maximum candidate matrix: six source paths and six test-source paths
+- implementation authoring: **NOT AUTHORIZED**
+- test execution: **NOT AUTHORIZED**
+
+The accepted scope contains exact API, schema, grammar, assurance, result,
+return-payload, hash, fixture, and static-contract obligations. No Revision 09
+follows for optional polish. A later scope amendment requires a concrete material
+contradiction that cannot be resolved from Revision 08.
+
+The commit containing this canonical update must be returned to Sentinel for
+exact installation verification.
 
 ---
 
@@ -169,10 +193,13 @@ Specifically unauthorized:
 
 A new bounded implementation stage requires:
 
-1. this Phase B canonical-document synchronization to be manually installed;
-2. Sentinel verification of that documentation commit;
-3. a separate explicit Gustavo implementation authorization;
-4. a new Sentinel handoff with exact files, allowed activities, and prohibited activities.
+1. manual installation of this accepted-scope canonical update;
+2. Sentinel verification of the resulting commit and clean repository state;
+3. a separate explicit Gustavo implementation authorization; and
+4. a new Sentinel handoff with exact files and activity boundaries.
+
+Scope acceptance does not authorize tests, local-data reads, network use,
+artifact production, or Git writes.
 
 ---
 
@@ -188,9 +215,9 @@ A new bounded implementation stage requires:
 
 ## Next possible step
 
-Complete this Phase B documentation synchronization and return its commit SHA for
-Sentinel verification.
+Manually upload and commit this accepted-scope canonical update, then return the
+commit SHA to Sentinel for verification.
 
-After that verification, Gustavo may separately decide whether to authorize a
-new bounded Finding 4 implementation-authoring stage. Nothing proceeds
+After verification, Gustavo may separately decide whether to authorize bounded
+Finding 4 I0A implementation-source and test-source authoring. Nothing proceeds
 automatically.
