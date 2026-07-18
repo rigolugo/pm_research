@@ -30,3 +30,9 @@
 | Selected-header state/integer could be treated as caller assertions | Bound both fields to the retained response-header parser output over exact hash-verified registered evidence. |
 | Amendment materialization replaced the accepted Sentinel handoff | Restored the complete prior accepted handoff as an exact prefix and appended an Amendment 03 addendum identifying superseded and unchanged clauses. |
 | Completed-capture lifecycle summary excluded malformed/out-of-range stdout for some curl completion categories and bypassed reconciliation in downstream labels | Made all 3 completion categories accept all 3 derived capture write-out states; all 9 pairs persist HTTP reconciliation, invalid then stops, and no completed mapping routes directly to C02/C03/C07-C23. |
+
+
+# REV23 Finding 4 candidate materialization entry
+
+
+Candidate-only Finding 4 materialization incorporates `REV23_SNAPSHOT_PARTITION_CANCELLATION_AMENDMENT.md` SHA-256 `ffe8d209e3a5a7b8b0df1996f67172d781e0dd163a5d070501f1147eed5941d1`. It closes the snapshot-sequence, partition-range/hash, durable prepared-source, row-batch persistence, capture-fence, STARTED release, reservation-cancellation proof, CONTINUATION freshness, recovery, normal/conflict inventory, and I0 authorization-carry-forward specification gaps. It preserves all unrelated Revision 23 and Amendment 03 behavior. Status is `COMPLETE_FOR_SENTINEL_REVIEW_NOT_ACCEPTED`; no implementation or execution authorization is created.

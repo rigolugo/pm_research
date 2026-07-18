@@ -68,3 +68,13 @@ The prior handoff's self-containment, closed registry, detached pre-run attachme
 - full-universe build not authorized;
 - P1 remains blocked unless the canonical repository states otherwise;
 - `named_binary_probe_blocked` remains true unless separately changed through an accepted and authorized gate decision.
+
+
+# Sentinel handoff — REV23 Finding 4 candidate
+
+
+Decision requested: independently review the complete effective amendment `REV23_SNAPSHOT_PARTITION_CANCELLATION_AMENDMENT.md` SHA-256 `ffe8d209e3a5a7b8b0df1996f67172d781e0dd163a5d070501f1147eed5941d1` and the materialized accepted-contract candidate. This is specification materialization only. It does not approve itself, install canonical bytes, or authorize implementation.
+
+If accepted and installed, the prior Amendment 03 I0 authorization package must be explicitly superseded across project state, decision log, handoffs, authorization audit, source gate, prompts, inventories, and hashes before any later implementation decision.
+
+Specification revision only. Implementation not authorized. Tests and test authoring not authorized. Local reads and artifact recovery not authorized. Deterministic regeneration outside this package not authorized. Network or curl execution not authorized. Empirical run not authorized. Full-universe build not authorized. P1 remains blocked unless the canonical repository states otherwise. `named_binary_probe_blocked` remains true unless separately changed through an accepted and authorized gate decision.

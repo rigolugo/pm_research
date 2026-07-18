@@ -1017,3 +1017,10 @@ None. Any later implementation ambiguity returns to Sentinel and Professor for a
 ## 28. Non-authorization statement
 
 Specification revision only. Implementation is not authorized. Tests are not authorized. Prefetch is not authorized. Local reads and artifact recovery are not authorized. Deterministic regeneration and Source D regeneration are not authorized. Curl discovery is not authorized. Curl/network execution is not authorized. Replay is not authorized. Empirical artifact generation is not authorized. Full-universe work is not authorized. P1/P2/P3 continuation is not authorized. Probe execution is not authorized. Price construction, canonical-side price computation, side synthesis, `yes_price`, `1 - price`, `1 - p`, and price-store writes are not authorized. Scoring, wallet discovery, wallet copying, OrdersMatched expansion, unrestricted `log_index`, PnL, live trading, paper trading, and gate changes are not authorized. P1 remains blocked and `named_binary_probe_blocked` remains true.
+
+
+# REV23 Finding 4 — effective snapshot/partition/cancellation amendment
+
+The complete effective contract is the sibling governing file `REV23_SNAPSHOT_PARTITION_CANCELLATION_AMENDMENT.md`, complete-file SHA-256 `ffe8d209e3a5a7b8b0df1996f67172d781e0dd163a5d070501f1147eed5941d1`. It is incorporated by reference as a governing part of Revision 23 and supersedes only the snapshot, partition, capture-fence, reservation-cancellation proof, CONTINUATION freshness, Finding 4 inventory/finalization, and Amendment 03 I0 authorization-carry-forward clauses it expressly changes.
+
+All token-manifest, 600/496/496 population, request, URL, HTTP, denominator, threshold, result-label, P1/P2/P3, probe, and gate behavior remains unchanged. No implementation authorization follows from this candidate.

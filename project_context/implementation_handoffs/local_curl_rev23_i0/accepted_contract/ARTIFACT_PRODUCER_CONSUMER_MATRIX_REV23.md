@@ -93,3 +93,22 @@
 | `policies/URL_SERIALIZATION_POLICY_REV22.json` | Professor byte-copy packager | Sentinel, future validator | `json:url_serialization_policy` | complete file SHA-256; schema-specific row/logical/semantic hashes also required | package retained governing bytes |
 
 Every row above has one producer and at least one consumer. Duplicate path templates are forbidden. The sole token manifest is pre-run; the run-scoped token-manifest path is prohibited.
+
+
+# REV23 Finding 4 producer-consumer additions
+
+
+| Artifact | Sole producer | Required consumers | Lifecycle |
+|---|---|---|---|
+| Finding 4 effective amendment | Professor materialization stage | Sentinel; future canonical-package validator | immutable candidate governing contract |
+| prepared evidence unit | family snapshot publisher, fence coordinator, or V10 normal finalizer by registered unit kind | publication/adoption validator; recovery; inventories; Sentinel | immutable after atomic directory commit |
+| acquisition-bound payload and optional bound snapshot claim | fence coordinator | exact A+1 payload validator; recovery; cancellation/CONTINUATION validator | immutable fence-acquisition members |
+| immutable snapshot partition | family partition writer; capture only under open acquisition | every owning history validator; canonical-winner validator; terminal inventory | first canonical physical object immutable |
+| snapshot history directory | family snapshot finalizer; capture only under the bound open acquisition | chain/history/current-view/final validators | immutable atomic directory |
+| current generation and legacy mirrors | current-view projector after exact payload plus committed release for capture | readers; finalizer | generation immutable; mirror repairable preterminal |
+| immutable authorization-use/capture row batch | fence coordinator under exact payload unit | relation reconstruction; proof validator; aggregate projector | immutable atomic fence member |
+| fence unit | fence coordinator | row provenance; launch-order; cancellation/CONTINUATION; finalizer | immutable atomic directory |
+| normal inventory row | V10 normal finalizer from compatible owner cohort | terminal validator; Sentinel | exactly six fields; one row per unique normalized included path |
+| conflict inventory/marker bundle | V10 conflict finalizer | terminal validator; Sentinel | immutable terminal; exclusive of normal terminal profile |
+
+No valid race loser, superseded candidate, current alias, aggregate view, or inventory relationship becomes an alternative producer of canonical historical evidence.

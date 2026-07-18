@@ -37,3 +37,19 @@
 | Reachable result labels | §21 | result algorithm + table | ordered first match | exact reproduction/clear/difference reachability |
 | Finalization immutability | §§8.6,23 | inventories and marker schemas | UNFINALIZED_OPERATIONAL_RESIDUE | atomicity/post-finalization tests |
 | Authorization boundary | §§0,28 | non-authorization closing | no progression | acceptance never authorizes implementation/run |
+
+
+# REV23 Finding 4 traceability additions
+
+
+| Requirement | Effective amendment | Schema/invariant | Stop/decision | Proposed tests |
+|---|---|---|---|---|
+| sequence chain, historical reconciliation, cycles, latest/final snapshot | §§6–8 | own-entry reconciliation; unique contiguous chain; predecessor file hashes | family snapshot stop | §§24.1, 24.7, 24.17 |
+| partition closure and logical hashes | §§9–15 | ordinal `0..P-1`; canonical keys; ranges; seven-cell ID; relation/count reconciliation | row/logical/family stop | §§24.7, 24.17 |
+| prepared sources and atomic publication | §§3–5, 7 | exact paths, roles, ordinals, durable bytes, target trichotomy | family/fence/semantic stop | §§24.2–24.5 |
+| acquisition race and bound capture payload | §§5.4A, 5.7, 17 | separate race scope; full claim scope for ordinary adoption; exact A+1 | auth/capture or semantic stop | §§24.3, 24.6, 24.10 |
+| immutable row persistence and launch order | §§16–17 | row-batch authority; STARTED committed release before process creation | auth/capture stop | §§24.8, 24.11 |
+| cancellation and CONTINUATION | §§18–20 | fenced complete prefix; independent zero counts; freshness | unproven/proof/auth stop | §§24.12–24.13 |
+| normal inventory six-field owner cohort | §§8.6–8.6A, 21 | exact six fields; one row per path; external owner evidence; order independence | finalization inventory stop | §§24.14–24.17 |
+| conflict inventory and terminal marker | §21.4 | complete discovery, owner metadata, groups, marker, mutual exclusion | V10 stops | §§24.14–24.15 |
+| I0 authorization supersession/no carry-forward | §32 | acceptance requires synchronized replacement of authorization package | no implicit implementation authorization | §§24.16–24.17 |

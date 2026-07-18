@@ -110,3 +110,22 @@ Finalization profiles are not stop codes. Every structural stop emits no replay-
 ## Revision 23 lifecycle clarifications
 
 The governing rows above are unique. Policy resolution requires exactly 32 registered fields and 68 registered observation rows. Valid `INTERRUPTED_SELECTED` is empirical unresolved evidence and is not a stop. Atomicity unsupported or atomic promotion failure leaves the run halted-unfinalized with no marker and no finalization profile. A post-finalization write is rejected externally and recorded only as `POST_FINALIZATION_WRITE_REJECTED` in the operational audit; it is not a typed run stop and does not mutate finalized bytes.
+
+
+# REV23 Finding 4 stop synchronization
+
+
+| Stop | Exact Finding 4 trigger | Stage | Artifact behavior | Downstream effect |
+|---|---|---|---|---|
+| `STOP_CAPTURE_SNAPSHOT_INVALID` | capture sequence, partition, history, own-entry, coverage, or capture snapshot publication/adoption invalid | V7 | preserve all prepared/canonical candidates | no cancellation, CONTINUATION, or result |
+| `STOP_ANALYSIS_SNAPSHOT_INVALID` | compatibility/strict snapshot sequence, partition, history, current-view, or publication/adoption invalid | V8C/V8S | preserve evidence | no result |
+| `STOP_ROW_HASH_PROJECTION_INVALID` | amended registered typed projection malformed | first detecting stage | preserve bytes | no result |
+| `STOP_LOGICAL_HASH_MISMATCH` | amended projection is valid but logical hash differs | first detecting stage | preserve bytes | no result |
+| `STOP_SEMANTIC_ID_COLLISION` | one semantic identity maps to different semantic bytes; equal logical semantics with permitted physical variation excluded | first detecting stage | preserve all claims | conflict-stop eligible |
+| `STOP_AUTHORIZATION_CAPTURE_RECONCILIATION_FAILED` | fence publication/chain/intent/A+1/row provenance/STARTED release/reservation/cancellation/CONTINUATION binding invalid | V7/V8 | preserve open/conflicting evidence | no continuation or result |
+| `STOP_RESERVATION_NO_START_PROOF_INVALID` | readable evidence fails complete fenced interval, independent zero-count, closure, or freshness proof | V7/V8 | derive unproven; preserve contradiction | no continuation eligibility |
+| `STOP_FINALIZATION_INVENTORY_INVALID` | normal/conflict inventory schema, owner cohort, one-row-per-path closure, terminal profile, or marker invalid | V10 | no valid terminal profile | halted/unfinalized |
+| `STOP_FINALIZATION_ATOMICITY_UNSUPPORTED` | required V10 terminal publication protocol unsupported | V10 only | preserve prepared bytes | no terminal marker |
+| `STOP_FINALIZATION_ATOMICITY_FAILURE` | attempted V10 terminal publication fails | V10 only | preserve residue | no terminal marker |
+
+Global primary-stop selection is: valid committed `stop/stop_state.json` when present; otherwise earliest concrete stage in the registered global order, then exact stop-enum ordinal within that stage. Finding 4 local validator order does not rank unrelated V0–V10 stops.

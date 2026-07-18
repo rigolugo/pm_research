@@ -107,3 +107,22 @@ The archive is self-contained. `GOVERNING_PACKAGE_MANIFEST_REV23.json` binds all
 - Authorization records are namespaced and immutable.
 - Finalized directories are immutable; rejected writes are logged only outside them.
 - Missing evidence never becomes negative evidence or continuation eligibility.
+
+
+# REV23 Finding 4 artifact additions
+
+
+The following path families are closed and governing only as defined by the effective Finding 4 amendment:
+
+```text
+artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/
+artifacts/local_curl_per_side/runs/<run_id>/<audit_family>/snapshot_history/<snapshot_sequence_20d>/
+artifacts/local_curl_per_side/runs/<run_id>/<audit_family>/snapshot_partitions/<partition_id>.parquet
+artifacts/local_curl_per_side/runs/<run_id>/<audit_family>/current_generations/<snapshot_sequence_20d>/
+artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/
+artifacts/local_curl_per_side/runs/<run_id>/authorization_use/row_batches/<batch_id>.parquet
+artifacts/local_curl_per_side/runs/<run_id>/capture/row_batches/<batch_id>.parquet
+artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/
+```
+
+Each immutable multi-file publication commits by atomic no-replace directory promotion. Every prepared source, row batch, history member, fence member, sidecar, aggregate view, and terminal object has the exact producer, consumer, cardinality, hash, recovery, inventory, and immutability rule in the effective amendment. Current aliases and aggregate Parquet views are derived views and never historical authority.

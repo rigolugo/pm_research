@@ -73,3 +73,9 @@ Cancellation from `REQUEST_RESERVED` binds one immutable capture-audit snapshot 
 5. No reservation can start before ACTIVATED and REQUEST_RESERVED rows commit.
 6. A cancelled reservation can never later produce a STARTED or terminal row under the old authorization.
 7. Missing evidence never becomes negative proof or a false continuation unblock.
+
+
+# REV23 Finding 4 authorization supersession boundary
+
+
+If Sentinel accepts and the Finding 4 candidate is canonically installed, every existing Amendment 03 I0 implementation/source-sync authorization, source gate, prompt, and derived inventory is superseded and inactive. No implementation authorization carries forward implicitly. A later implementation stage requires a new explicit Gustavo authorization pinned to the then-current canonical commit and complete governing hashes. This candidate itself authorizes no implementation, source synchronization, tests, execution, network, replay, empirical work, downstream phase, or gate change.
