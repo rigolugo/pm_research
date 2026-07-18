@@ -1,0 +1,450 @@
+{
+  "invariants": [
+    "unique canonical target paths",
+    "exact one-to-one sidecar pairing",
+    "sidecar logical_sha256 NULL; non-sidecar non-null when present",
+    "PARTITION_PAYLOAD count len(snapshot_claim.partition_entries)",
+    "all conditionals resolved before prepared-unit commit"
+  ],
+  "key_set_equals_role_domain": true,
+  "role_count": 30,
+  "role_domain": [
+    "PARTITION_PAYLOAD",
+    "HISTORY_MANIFEST",
+    "HISTORY_MANIFEST_SIDECAR",
+    "HISTORY_INDEX",
+    "PUBLICATION_MARKER",
+    "PUBLICATION_MARKER_SIDECAR",
+    "CURRENT_GENERATION_MANIFEST",
+    "CURRENT_GENERATION_MANIFEST_SIDECAR",
+    "CURRENT_GENERATION_INDEX",
+    "CURRENT_GENERATION_MARKER",
+    "CURRENT_GENERATION_MARKER_SIDECAR",
+    "LEGACY_CURRENT_MANIFEST",
+    "LEGACY_CURRENT_MANIFEST_SIDECAR",
+    "LEGACY_CURRENT_INDEX",
+    "BOUND_PAYLOAD_INTENT",
+    "BOUND_PAYLOAD_INTENT_SIDECAR",
+    "BOUND_SNAPSHOT_CLAIM_SEMANTIC",
+    "BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR",
+    "FENCE_UNIT_MANIFEST",
+    "FENCE_UNIT_MANIFEST_SIDECAR",
+    "FENCE_EVENT",
+    "FENCE_EVENT_SIDECAR",
+    "AUTHORIZATION_USE_ROW_BATCH",
+    "AUTHORIZATION_USE_ROW_BATCH_SIDECAR",
+    "CAPTURE_ROW_BATCH",
+    "CAPTURE_ROW_BATCH_SIDECAR",
+    "NORMAL_FINAL_INVENTORY",
+    "NORMAL_FINAL_INVENTORY_SIDECAR",
+    "NORMAL_FINAL_MARKER",
+    "NORMAL_FINAL_MARKER_SIDECAR"
+  ],
+  "role_matrix": {
+    "AUTHORIZATION_USE_ROW_BATCH": {
+      "conditional_branch": "exactly one for listed authorization payloads; zero otherwise",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "paired_with:AUTHORIZATION_USE_ROW_BATCH_SIDECAR"
+    },
+    "AUTHORIZATION_USE_ROW_BATCH_SIDECAR": {
+      "conditional_branch": "present iff authorization batch present",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NULL",
+      "permitted_unit_kinds": [
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "sidecar_of:AUTHORIZATION_USE_ROW_BATCH"
+    },
+    "BOUND_PAYLOAD_INTENT": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "paired_with:BOUND_PAYLOAD_INTENT_SIDECAR"
+    },
+    "BOUND_PAYLOAD_INTENT_SIDECAR": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NULL",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "sidecar_of:BOUND_PAYLOAD_INTENT"
+    },
+    "BOUND_SNAPSHOT_CLAIM_SEMANTIC": {
+      "conditional_branch": "snapshot-bearing acquisition only; digest equals bound intent snapshot claim semantic",
+      "exact_cardinality": "1 iff bound_payload_event_kind in finding4_snapshot_bearing_payload_event_kind else 0",
+      "logical_sha256_nullability": "NON_NULL_WHEN_PRESENT",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "paired_with:BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR"
+    },
+    "BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR": {
+      "conditional_branch": "snapshot-bearing acquisition only",
+      "exact_cardinality": "1 iff BOUND_SNAPSHOT_CLAIM_SEMANTIC present else 0",
+      "logical_sha256_nullability": "NULL",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "sidecar_of:BOUND_SNAPSHOT_CLAIM_SEMANTIC"
+    },
+    "CAPTURE_ROW_BATCH": {
+      "conditional_branch": "exactly one for STARTED or terminal payload; zero otherwise",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "paired_with:CAPTURE_ROW_BATCH_SIDECAR"
+    },
+    "CAPTURE_ROW_BATCH_SIDECAR": {
+      "conditional_branch": "present iff capture batch present",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NULL",
+      "permitted_unit_kinds": [
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "sidecar_of:CAPTURE_ROW_BATCH"
+    },
+    "CURRENT_GENERATION_INDEX": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": null
+    },
+    "CURRENT_GENERATION_MANIFEST": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "paired_with:CURRENT_GENERATION_MANIFEST_SIDECAR"
+    },
+    "CURRENT_GENERATION_MANIFEST_SIDECAR": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "sidecar_of:CURRENT_GENERATION_MANIFEST"
+    },
+    "CURRENT_GENERATION_MARKER": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "paired_with:CURRENT_GENERATION_MARKER_SIDECAR"
+    },
+    "CURRENT_GENERATION_MARKER_SIDECAR": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "sidecar_of:CURRENT_GENERATION_MARKER"
+    },
+    "FENCE_EVENT": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "paired_with:FENCE_EVENT_SIDECAR"
+    },
+    "FENCE_EVENT_SIDECAR": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NULL",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "sidecar_of:FENCE_EVENT"
+    },
+    "FENCE_UNIT_MANIFEST": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "paired_with:FENCE_UNIT_MANIFEST_SIDECAR"
+    },
+    "FENCE_UNIT_MANIFEST_SIDECAR": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NULL",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "sidecar_of:FENCE_UNIT_MANIFEST"
+    },
+    "HISTORY_INDEX": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": null
+    },
+    "HISTORY_MANIFEST": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "paired_with:HISTORY_MANIFEST_SIDECAR"
+    },
+    "HISTORY_MANIFEST_SIDECAR": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "sidecar_of:HISTORY_MANIFEST"
+    },
+    "LEGACY_CURRENT_INDEX": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "DERIVED_VIEW_TARGET"
+      ],
+      "sidecar_relationship": null
+    },
+    "LEGACY_CURRENT_MANIFEST": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "DERIVED_VIEW_TARGET"
+      ],
+      "sidecar_relationship": "paired_with:LEGACY_CURRENT_MANIFEST_SIDECAR"
+    },
+    "LEGACY_CURRENT_MANIFEST_SIDECAR": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "DERIVED_VIEW_TARGET"
+      ],
+      "sidecar_relationship": "sidecar_of:LEGACY_CURRENT_MANIFEST"
+    },
+    "NORMAL_FINAL_INVENTORY": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "publication_modes": [
+        "SINGLE_AUTHORITATIVE_FILE"
+      ],
+      "sidecar_relationship": "paired_with:NORMAL_FINAL_INVENTORY_SIDECAR"
+    },
+    "NORMAL_FINAL_INVENTORY_SIDECAR": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NULL",
+      "permitted_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "publication_modes": [
+        "SINGLE_AUTHORITATIVE_FILE"
+      ],
+      "sidecar_relationship": "sidecar_of:NORMAL_FINAL_INVENTORY"
+    },
+    "NORMAL_FINAL_MARKER": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "publication_modes": [
+        "SINGLE_AUTHORITATIVE_FILE"
+      ],
+      "sidecar_relationship": "paired_with:NORMAL_FINAL_MARKER_SIDECAR"
+    },
+    "NORMAL_FINAL_MARKER_SIDECAR": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NULL",
+      "permitted_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "publication_modes": [
+        "SINGLE_AUTHORITATIVE_FILE"
+      ],
+      "sidecar_relationship": "sidecar_of:NORMAL_FINAL_MARKER"
+    },
+    "PARTITION_PAYLOAD": {
+      "conditional_branch": "one-to-one by partition_ordinal",
+      "exact_cardinality": "len(snapshot_claim.partition_entries)",
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "SINGLE_AUTHORITATIVE_FILE",
+        "REUSE_IMMUTABLE_SOURCE"
+      ],
+      "sidecar_relationship": null
+    },
+    "PUBLICATION_MARKER": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NON_NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "paired_with:PUBLICATION_MARKER_SIDECAR"
+    },
+    "PUBLICATION_MARKER_SIDECAR": {
+      "conditional_branch": "ALWAYS",
+      "exact_cardinality": 1,
+      "logical_sha256_nullability": "NULL",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "sidecar_relationship": "sidecar_of:PUBLICATION_MARKER"
+    }
+  },
+  "schema_version": "rev23_finding4_prepared_role_matrix.v1",
+  "status": "PREFLIGHT_FOR_SENTINEL_REVIEW_NOT_ACCEPTED",
+  "validation_result": "PASS",
+  "wildcard_keys_present": []
+}

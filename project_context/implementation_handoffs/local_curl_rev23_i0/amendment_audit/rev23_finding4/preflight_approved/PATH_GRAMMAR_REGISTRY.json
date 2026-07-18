@@ -1,0 +1,1706 @@
+{
+  "descriptor_selected_content_schema_required": true,
+  "entries": [
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION",
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED",
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 per committed prepared unit",
+      "conditional_branch": null,
+      "consumers": [
+        "recovery validator",
+        "snapshot/fence/finalization producer",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "committed with atomic prepared-unit directory; retained through applicable terminal inventory",
+      "logical_hash_rule": "claim_scope_sha256",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "PREPARED_CLAIM_SCOPE_json",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": true,
+      "producer": "prepared evidence producer",
+      "publication_mode": "ATOMIC_DIRECTORY_PROMOTION",
+      "schema_refs": [
+        "json:prepared_claim_scope_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION",
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED",
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 per committed prepared unit",
+      "conditional_branch": null,
+      "consumers": [
+        "recovery validator",
+        "snapshot/fence/finalization producer",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "committed with atomic prepared-unit directory; retained through applicable terminal inventory",
+      "logical_hash_rule": null,
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "PREPARED_CLAIM_SCOPE_sha256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": true,
+      "producer": "prepared evidence producer",
+      "publication_mode": "ATOMIC_DIRECTORY_PROMOTION",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION",
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED",
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 per committed prepared unit",
+      "conditional_branch": null,
+      "consumers": [
+        "recovery validator",
+        "snapshot/fence/finalization producer",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "committed with atomic prepared-unit directory; retained through applicable terminal inventory",
+      "logical_hash_rule": "role-specific claim_semantic_sha256",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "PREPARED_CLAIM_SEMANTIC_json",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": true,
+      "producer": "prepared evidence producer",
+      "publication_mode": "ATOMIC_DIRECTORY_PROMOTION",
+      "schema_refs": [
+        "json:snapshot_publication_claim_semantic_v23",
+        "json:fence_unit_claim_semantic_v23",
+        "json:normal_finalization_claim_semantic_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION",
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED",
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 per committed prepared unit",
+      "conditional_branch": null,
+      "consumers": [
+        "recovery validator",
+        "snapshot/fence/finalization producer",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "committed with atomic prepared-unit directory; retained through applicable terminal inventory",
+      "logical_hash_rule": null,
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "PREPARED_CLAIM_SEMANTIC_sha256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": true,
+      "producer": "prepared evidence producer",
+      "publication_mode": "ATOMIC_DIRECTORY_PROMOTION",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION",
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED",
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 per committed prepared unit",
+      "conditional_branch": null,
+      "consumers": [
+        "recovery validator",
+        "snapshot/fence/finalization producer",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "committed with atomic prepared-unit directory; retained through applicable terminal inventory",
+      "logical_hash_rule": "complete-file SHA-256 is prepared_unit_id input",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "PREPARED_PREPARATION_PLAN_json",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": true,
+      "producer": "prepared evidence producer",
+      "publication_mode": "ATOMIC_DIRECTORY_PROMOTION",
+      "schema_refs": [
+        "json:prepared_evidence_plan_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION",
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED",
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 per committed prepared unit",
+      "conditional_branch": null,
+      "consumers": [
+        "recovery validator",
+        "snapshot/fence/finalization producer",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "committed with atomic prepared-unit directory; retained through applicable terminal inventory",
+      "logical_hash_rule": null,
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "PREPARED_PREPARATION_PLAN_sha256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": true,
+      "producer": "prepared evidence producer",
+      "publication_mode": "ATOMIC_DIRECTORY_PROMOTION",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION",
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED",
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 per committed prepared unit",
+      "conditional_branch": null,
+      "consumers": [
+        "recovery validator",
+        "snapshot/fence/finalization producer",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "committed with atomic prepared-unit directory; retained through applicable terminal inventory",
+      "logical_hash_rule": "objects_logical_sha256",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "PREPARED_PREPARED_UNIT_json",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": true,
+      "producer": "prepared evidence producer",
+      "publication_mode": "ATOMIC_DIRECTORY_PROMOTION",
+      "schema_refs": [
+        "json:prepared_evidence_unit_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION",
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED",
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 per committed prepared unit",
+      "conditional_branch": null,
+      "consumers": [
+        "recovery validator",
+        "snapshot/fence/finalization producer",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "committed with atomic prepared-unit directory; retained through applicable terminal inventory",
+      "logical_hash_rule": null,
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "PREPARED_PREPARED_UNIT_sha256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": true,
+      "producer": "prepared evidence producer",
+      "publication_mode": "ATOMIC_DIRECTORY_PROMOTION",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION",
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED",
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly M members with ordinals 0..M-1; M=len(prepared_unit.objects)",
+      "conditional_branch": null,
+      "consumers": [
+        "canonical target promoter",
+        "recovery validator",
+        "terminal inventory"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "immutable prepared source; retained through terminal inventory",
+      "logical_hash_rule": "role-specific; descriptor logical_sha256 null exactly for sidecars",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_member_classification": "VALIDATED_PREPARED_OBJECT_MEMBER",
+      "object_roles": [
+        "PARTITION_PAYLOAD",
+        "HISTORY_MANIFEST",
+        "HISTORY_MANIFEST_SIDECAR",
+        "HISTORY_INDEX",
+        "PUBLICATION_MARKER",
+        "PUBLICATION_MARKER_SIDECAR",
+        "CURRENT_GENERATION_MANIFEST",
+        "CURRENT_GENERATION_MANIFEST_SIDECAR",
+        "CURRENT_GENERATION_INDEX",
+        "CURRENT_GENERATION_MARKER",
+        "CURRENT_GENERATION_MARKER_SIDECAR",
+        "LEGACY_CURRENT_MANIFEST",
+        "LEGACY_CURRENT_MANIFEST_SIDECAR",
+        "LEGACY_CURRENT_INDEX",
+        "BOUND_PAYLOAD_INTENT",
+        "BOUND_PAYLOAD_INTENT_SIDECAR",
+        "BOUND_SNAPSHOT_CLAIM_SEMANTIC",
+        "BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR",
+        "FENCE_UNIT_MANIFEST",
+        "FENCE_UNIT_MANIFEST_SIDECAR",
+        "FENCE_EVENT",
+        "FENCE_EVENT_SIDECAR",
+        "AUTHORIZATION_USE_ROW_BATCH",
+        "AUTHORIZATION_USE_ROW_BATCH_SIDECAR",
+        "CAPTURE_ROW_BATCH",
+        "CAPTURE_ROW_BATCH_SIDECAR",
+        "NORMAL_FINAL_INVENTORY",
+        "NORMAL_FINAL_INVENTORY_SIDECAR",
+        "NORMAL_FINAL_MARKER",
+        "NORMAL_FINAL_MARKER_SIDECAR"
+      ],
+      "path_id": "PREPARED_OBJECT_BIN",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "prepared evidence producer",
+      "publication_mode": "ROLE_MATRIX_CONTROLLED",
+      "schema_binding": {
+        "additional_fields": false,
+        "binding_mode": "DESCRIPTOR_SELECTED_MULTI_SCHEMA",
+        "descriptor_artifact_path": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.json",
+        "descriptor_container_schema_ref": "json:prepared_evidence_unit_v23",
+        "descriptor_item_schema_ref": "json:prepared_evidence_object_v23",
+        "descriptor_selector": {
+          "array_field": "objects",
+          "index_parse_rule": "exactly ten ASCII decimal digits parsed as UINT32 without sign or normalization",
+          "index_source": "object_ordinal_10d path variable",
+          "selection_rule": "select PREPARED_UNIT.json objects[object_ordinal] after requiring array ordinal set exactly 0..M-1 and objects stored in numeric ordinal order"
+        },
+        "required_descriptor_reconciliation": [
+          "selected object_ordinal equals parsed object_ordinal_10d",
+          "selected durable_source_path equals this normalized object-member path for ATOMIC_BUNDLE_MEMBER, SINGLE_AUTHORITATIVE_FILE, or DERIVED_VIEW_TARGET",
+          "selected durable_source_path equals selected canonical_target_path for REUSE_IMMUTABLE_SOURCE",
+          "selected canonical_target_path is normalized and uniquely registered for the selected object_role",
+          "selected file_size_bytes equals exact payload byte length",
+          "selected file_sha256 equals SHA-256 of exact payload bytes",
+          "selected object_role is permitted by the frozen 30-role matrix for PREPARED_UNIT.json unit_kind",
+          "selected publication_mode is permitted by the frozen 30-role matrix for selected object_role and unit_kind",
+          "selected logical_sha256 nullability equals the frozen role-matrix rule",
+          "selected sidecar_of_object_ordinal and paired role satisfy the frozen sidecar relationship"
+        ],
+        "selected_content_schema": {
+          "canonical_target_compatibility_rule": "match selected canonical_target_path to exactly one registered exact/dynamic canonical target grammar; require selected object_role among that grammar object_roles and selected content_schema_id among that target artifact_schema_bindings; zero, multiple, or unequal matches are invalid",
+          "field": "content_schema_id",
+          "fixed_payload_schema_forbidden": "json:prepared_evidence_object_v23",
+          "resolution_rule": "the exact selected content_schema_id must resolve to an existing json: or table: target in this accepted registry"
+        }
+      },
+      "sidecar_pair": null
+    },
+    {
+      "applicable_unit_kinds": [],
+      "cardinality": "zero or more transient directories",
+      "conditional_branch": null,
+      "consumers": [
+        "same producer only"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "not evidence; may be discarded unless atomically promoted to prepared unit",
+      "logical_hash_rule": null,
+      "mutability": "transient",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "PREPARING_TRANSIENT",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/.preparing/<producer_nonce>/",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "candidate producer",
+      "publication_mode": "NONE",
+      "schema_refs": [
+        "opaque:transient_staging"
+      ],
+      "sidecar_pair": null
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "1 per sequence",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "atomic immutable history bundle",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "HISTORY_MANIFEST"
+      ],
+      "path_id": "SNAPSHOT_AUDIT_SNAPSHOT_HISTORY_SNAPSHOT_SEQUENCE_20D_AUDIT_SNAPSHOT_MANIFEST_JSON",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:audit_snapshot_manifest"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "1 per sequence",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "atomic immutable history bundle",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "HISTORY_MANIFEST_SIDECAR"
+      ],
+      "path_id": "SNAPSHOT_AUDIT_SNAPSHOT_HISTORY_SNAPSHOT_SEQUENCE_20D_AUDIT_SNAPSHOT_MANIFEST_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "1 per sequence",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "atomic immutable history bundle",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "HISTORY_INDEX"
+      ],
+      "path_id": "SNAPSHOT_AUDIT_SNAPSHOT_HISTORY_SNAPSHOT_SEQUENCE_20D_SNAPSHOT_PARTITIONS_PARQUET",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/snapshot_partitions.parquet",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "table:snapshot_partition"
+      ],
+      "sidecar_pair": null
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "1 per sequence",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "atomic immutable history bundle",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "PUBLICATION_MARKER"
+      ],
+      "path_id": "SNAPSHOT_AUDIT_SNAPSHOT_HISTORY_SNAPSHOT_SEQUENCE_20D_PUBLICATION_COMMITTED_JSON",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:snapshot_publication_commit_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "1 per sequence",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "atomic immutable history bundle",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "PUBLICATION_MARKER_SIDECAR"
+      ],
+      "path_id": "SNAPSHOT_AUDIT_SNAPSHOT_HISTORY_SNAPSHOT_SEQUENCE_20D_PUBLICATION_COMMITTED_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "1 for unique head generation",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "atomic immutable current generation",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "CURRENT_GENERATION_MANIFEST"
+      ],
+      "path_id": "SNAPSHOT_CURRENT_VIEW_GENERATIONS_SNAPSHOT_SEQUENCE_20D_AUDIT_SNAPSHOT_MANIFEST_JSON",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:audit_snapshot_manifest"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "1 for unique head generation",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "atomic immutable current generation",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "CURRENT_GENERATION_MANIFEST_SIDECAR"
+      ],
+      "path_id": "SNAPSHOT_CURRENT_VIEW_GENERATIONS_SNAPSHOT_SEQUENCE_20D_AUDIT_SNAPSHOT_MANIFEST_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "1 for unique head generation",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "atomic immutable current generation",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "CURRENT_GENERATION_INDEX"
+      ],
+      "path_id": "SNAPSHOT_CURRENT_VIEW_GENERATIONS_SNAPSHOT_SEQUENCE_20D_SNAPSHOT_PARTITIONS_PARQUET",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/snapshot_partitions.parquet",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "table:snapshot_partition"
+      ],
+      "sidecar_pair": null
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "1 for unique head generation",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "atomic immutable current generation",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "CURRENT_GENERATION_MARKER"
+      ],
+      "path_id": "SNAPSHOT_CURRENT_VIEW_GENERATIONS_SNAPSHOT_SEQUENCE_20D_CURRENT_VIEW_COMMITTED_JSON",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:snapshot_current_view_commit_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "1 for unique head generation",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "atomic immutable current generation",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "CURRENT_GENERATION_MARKER_SIDECAR"
+      ],
+      "path_id": "SNAPSHOT_CURRENT_VIEW_GENERATIONS_SNAPSHOT_SEQUENCE_20D_CURRENT_VIEW_COMMITTED_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "1 current mirror",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "replaceable non-authoritative mirror after valid generation",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "LEGACY_CURRENT_MANIFEST"
+      ],
+      "path_id": "SNAPSHOT_AUDIT_SNAPSHOT_MANIFEST_JSON",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "DERIVED_VIEW_TARGET",
+      "schema_refs": [
+        "json:audit_snapshot_manifest"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "1 current mirror",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "replaceable non-authoritative mirror after valid generation",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "LEGACY_CURRENT_MANIFEST_SIDECAR"
+      ],
+      "path_id": "SNAPSHOT_AUDIT_SNAPSHOT_MANIFEST_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "DERIVED_VIEW_TARGET",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "1 current mirror",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "replaceable non-authoritative mirror after valid generation",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "LEGACY_CURRENT_INDEX"
+      ],
+      "path_id": "SNAPSHOT_SNAPSHOT_PARTITIONS_PARQUET",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/snapshot_partitions.parquet",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "DERIVED_VIEW_TARGET",
+      "schema_refs": [
+        "table:snapshot_partition"
+      ],
+      "sidecar_pair": null
+    },
+    {
+      "applicable_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "cardinality": "zero or more; union referenced by all sequences",
+      "conditional_branch": null,
+      "consumers": [
+        "snapshot validator",
+        "current-view repair",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "immutable single-authoritative-file partition",
+      "logical_hash_rule": "registered role semantic projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "PARTITION_PAYLOAD"
+      ],
+      "path_id": "SNAPSHOT_PARTITIONS_PARTITION_ID_PARQUET",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/partitions/<partition_id>.parquet",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 capture snapshot finalizer or V8 family snapshot finalizer",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "schema_refs": [
+        "table:capture_events",
+        "table:canonical_compatibility_analysis",
+        "table:strict_audit_analysis"
+      ],
+      "sidecar_pair": null
+    },
+    {
+      "applicable_unit_kinds": [
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED"
+      ],
+      "cardinality": "exactly 1 per fence unit",
+      "conditional_branch": "all fence units",
+      "consumers": [
+        "fence recovery",
+        "capture launch gate",
+        "cancellation/continuation validator",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "member of one atomic immutable fence-history directory",
+      "logical_hash_rule": "role-specific exact projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "FENCE_UNIT_MANIFEST"
+      ],
+      "path_id": "FENCE_FENCE_UNIT_JSON",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 authorization/capture fence coordinator or bound payload producer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:fence_unit_manifest_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED"
+      ],
+      "cardinality": "exactly 1 per fence unit",
+      "conditional_branch": "all fence units",
+      "consumers": [
+        "fence recovery",
+        "capture launch gate",
+        "cancellation/continuation validator",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "member of one atomic immutable fence-history directory",
+      "logical_hash_rule": "role-specific exact projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "FENCE_UNIT_MANIFEST_SIDECAR"
+      ],
+      "path_id": "FENCE_FENCE_UNIT_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 authorization/capture fence coordinator or bound payload producer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED"
+      ],
+      "cardinality": "exactly 1 per fence unit",
+      "conditional_branch": "all fence units",
+      "consumers": [
+        "fence recovery",
+        "capture launch gate",
+        "cancellation/continuation validator",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "member of one atomic immutable fence-history directory",
+      "logical_hash_rule": "role-specific exact projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "FENCE_EVENT"
+      ],
+      "path_id": "FENCE_FENCE_EVENT_JSON",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 authorization/capture fence coordinator or bound payload producer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:fence_event_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED"
+      ],
+      "cardinality": "exactly 1 per fence unit",
+      "conditional_branch": "all fence units",
+      "consumers": [
+        "fence recovery",
+        "capture launch gate",
+        "cancellation/continuation validator",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "member of one atomic immutable fence-history directory",
+      "logical_hash_rule": "role-specific exact projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "FENCE_EVENT_SIDECAR"
+      ],
+      "path_id": "FENCE_FENCE_EVENT_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 authorization/capture fence coordinator or bound payload producer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "FENCE_ACQUIRED"
+      ],
+      "cardinality": "1 when FENCE_ACQUIRED only; otherwise 0",
+      "conditional_branch": "FENCE_ACQUIRED only",
+      "consumers": [
+        "fence recovery",
+        "capture launch gate",
+        "cancellation/continuation validator",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "member of one atomic immutable fence-history directory",
+      "logical_hash_rule": "role-specific exact projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "BOUND_PAYLOAD_INTENT"
+      ],
+      "path_id": "FENCE_BOUND_PAYLOAD_INTENT_JSON",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 authorization/capture fence coordinator or bound payload producer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:capture_payload_intent_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "FENCE_ACQUIRED"
+      ],
+      "cardinality": "1 when FENCE_ACQUIRED only; otherwise 0",
+      "conditional_branch": "FENCE_ACQUIRED only",
+      "consumers": [
+        "fence recovery",
+        "capture launch gate",
+        "cancellation/continuation validator",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "member of one atomic immutable fence-history directory",
+      "logical_hash_rule": "role-specific exact projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "BOUND_PAYLOAD_INTENT_SIDECAR"
+      ],
+      "path_id": "FENCE_BOUND_PAYLOAD_INTENT_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 authorization/capture fence coordinator or bound payload producer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "FENCE_ACQUIRED"
+      ],
+      "cardinality": "1 when snapshot-bearing FENCE_ACQUIRED only; otherwise 0",
+      "conditional_branch": "snapshot-bearing FENCE_ACQUIRED only",
+      "consumers": [
+        "fence recovery",
+        "capture launch gate",
+        "cancellation/continuation validator",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "member of one atomic immutable fence-history directory",
+      "logical_hash_rule": "role-specific exact projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "BOUND_SNAPSHOT_CLAIM_SEMANTIC"
+      ],
+      "path_id": "FENCE_BOUND_SNAPSHOT_CLAIM_SEMANTIC_JSON",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 authorization/capture fence coordinator or bound payload producer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:snapshot_publication_claim_semantic_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "FENCE_ACQUIRED"
+      ],
+      "cardinality": "1 when snapshot-bearing FENCE_ACQUIRED only; otherwise 0",
+      "conditional_branch": "snapshot-bearing FENCE_ACQUIRED only",
+      "consumers": [
+        "fence recovery",
+        "capture launch gate",
+        "cancellation/continuation validator",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "member of one atomic immutable fence-history directory",
+      "logical_hash_rule": "role-specific exact projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR"
+      ],
+      "path_id": "FENCE_BOUND_SNAPSHOT_CLAIM_SEMANTIC_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 authorization/capture fence coordinator or bound payload producer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED"
+      ],
+      "cardinality": "1 when authorization row payloads only; otherwise 0",
+      "conditional_branch": "authorization row payloads only",
+      "consumers": [
+        "fence recovery",
+        "capture launch gate",
+        "cancellation/continuation validator",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "member of one atomic immutable fence-history directory",
+      "logical_hash_rule": "role-specific exact projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "AUTHORIZATION_USE_ROW_BATCH"
+      ],
+      "path_id": "FENCE_ROWS_AUTHORIZATION_USE_EVENTS_PARQUET",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.parquet",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 authorization/capture fence coordinator or bound payload producer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "table:authorization_use_events"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED"
+      ],
+      "cardinality": "1 when authorization row payloads only; otherwise 0",
+      "conditional_branch": "authorization row payloads only",
+      "consumers": [
+        "fence recovery",
+        "capture launch gate",
+        "cancellation/continuation validator",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "member of one atomic immutable fence-history directory",
+      "logical_hash_rule": "role-specific exact projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "AUTHORIZATION_USE_ROW_BATCH_SIDECAR"
+      ],
+      "path_id": "FENCE_ROWS_AUTHORIZATION_USE_EVENTS_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 authorization/capture fence coordinator or bound payload producer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.parquet"
+    },
+    {
+      "applicable_unit_kinds": [
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED"
+      ],
+      "cardinality": "1 when capture STARTED/terminal payloads only; otherwise 0",
+      "conditional_branch": "capture STARTED/terminal payloads only",
+      "consumers": [
+        "fence recovery",
+        "capture launch gate",
+        "cancellation/continuation validator",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "member of one atomic immutable fence-history directory",
+      "logical_hash_rule": "role-specific exact projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "CAPTURE_ROW_BATCH"
+      ],
+      "path_id": "FENCE_ROWS_CAPTURE_EVENTS_PARQUET",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.parquet",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 authorization/capture fence coordinator or bound payload producer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "table:capture_events"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED"
+      ],
+      "cardinality": "1 when capture STARTED/terminal payloads only; otherwise 0",
+      "conditional_branch": "capture STARTED/terminal payloads only",
+      "consumers": [
+        "fence recovery",
+        "capture launch gate",
+        "cancellation/continuation validator",
+        "V10 inventory",
+        "Sentinel"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "member of one atomic immutable fence-history directory",
+      "logical_hash_rule": "role-specific exact projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "CAPTURE_ROW_BATCH_SIDECAR"
+      ],
+      "path_id": "FENCE_ROWS_CAPTURE_EVENTS_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V7 authorization/capture fence coordinator or bound payload producer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.parquet"
+    },
+    {
+      "applicable_unit_kinds": [],
+      "cardinality": "0 or 1 current aggregate",
+      "conditional_branch": null,
+      "consumers": [
+        "readers only; never commit authority"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "derived exclusively from committed fence row batches",
+      "logical_hash_rule": "reconstructed committed relation logical hash",
+      "mutability": "replaceable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "AUTHORIZATION_AGGREGATE",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/authorization/authorization_use_events.parquet",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "derived aggregate-view builder",
+      "publication_mode": "DERIVED_VIEW_TARGET",
+      "schema_refs": [
+        "table:authorization_use_events"
+      ],
+      "sidecar_pair": null
+    },
+    {
+      "applicable_unit_kinds": [],
+      "cardinality": "0 or 1 current aggregate",
+      "conditional_branch": null,
+      "consumers": [
+        "readers only; never commit authority"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "derived exclusively from committed fence row batches",
+      "logical_hash_rule": "reconstructed committed relation logical hash",
+      "mutability": "replaceable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "CAPTURE_AGGREGATE",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/capture/capture_events.parquet",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "derived aggregate-view builder",
+      "publication_mode": "DERIVED_VIEW_TARGET",
+      "schema_refs": [
+        "table:capture_events"
+      ],
+      "sidecar_pair": null
+    },
+    {
+      "applicable_unit_kinds": [],
+      "cardinality": "exactly 1 in valid conflict terminal bundle",
+      "conditional_branch": null,
+      "consumers": [
+        "Sentinel",
+        "resume gate",
+        "terminal validator"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "four-member atomic immutable conflict terminal directory; mutually exclusive with normal terminal",
+      "logical_hash_rule": "marker/inventory registered projection or null for sidecar",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "CONFLICT_CONFLICT_STOP_json",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V10 conflict finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:conflict_stop_marker_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.sha256"
+    },
+    {
+      "applicable_unit_kinds": [],
+      "cardinality": "exactly 1 in valid conflict terminal bundle",
+      "conditional_branch": null,
+      "consumers": [
+        "Sentinel",
+        "resume gate",
+        "terminal validator"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "four-member atomic immutable conflict terminal directory; mutually exclusive with normal terminal",
+      "logical_hash_rule": "marker/inventory registered projection or null for sidecar",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "CONFLICT_CONFLICT_STOP_sha256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V10 conflict finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.json"
+    },
+    {
+      "applicable_unit_kinds": [],
+      "cardinality": "exactly 1 in valid conflict terminal bundle",
+      "conditional_branch": null,
+      "consumers": [
+        "Sentinel",
+        "resume gate",
+        "terminal validator"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "four-member atomic immutable conflict terminal directory; mutually exclusive with normal terminal",
+      "logical_hash_rule": "marker/inventory registered projection or null for sidecar",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "CONFLICT_CONFLICT_INVENTORY_json",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V10 conflict finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:conflict_stop_inventory_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.sha256"
+    },
+    {
+      "applicable_unit_kinds": [],
+      "cardinality": "exactly 1 in valid conflict terminal bundle",
+      "conditional_branch": null,
+      "consumers": [
+        "Sentinel",
+        "resume gate",
+        "terminal validator"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "four-member atomic immutable conflict terminal directory; mutually exclusive with normal terminal",
+      "logical_hash_rule": "marker/inventory registered projection or null for sidecar",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [],
+      "path_id": "CONFLICT_CONFLICT_INVENTORY_sha256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V10 conflict finalizer",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 for replay only",
+      "conditional_branch": "replay only",
+      "consumers": [
+        "Sentinel",
+        "terminal validator"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "inventory authoritative file first; applicable marker authoritative file last and sole normal terminal commit; sidecars are deterministic derivatives paired to their exact target",
+      "logical_hash_rule": "accepted normal finalization projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "NORMAL_FINAL_INVENTORY"
+      ],
+      "path_id": "NORMAL_FINAL_ARTIFACT_INVENTORY_JSON",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V10 normal finalizer",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "schema_refs": [
+        "json:final_artifact_inventory"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 for replay only",
+      "conditional_branch": "replay only",
+      "consumers": [
+        "Sentinel",
+        "terminal validator"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "inventory authoritative file first; applicable marker authoritative file last and sole normal terminal commit; sidecars are deterministic derivatives paired to their exact target",
+      "logical_hash_rule": null,
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "NORMAL_FINAL_INVENTORY_SIDECAR"
+      ],
+      "path_id": "NORMAL_FINAL_ARTIFACT_INVENTORY_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V10 normal finalizer",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 for clean stop only",
+      "conditional_branch": "clean stop only",
+      "consumers": [
+        "Sentinel",
+        "terminal validator"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "inventory authoritative file first; applicable marker authoritative file last and sole normal terminal commit; sidecars are deterministic derivatives paired to their exact target",
+      "logical_hash_rule": "accepted normal finalization projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "NORMAL_FINAL_INVENTORY"
+      ],
+      "path_id": "NORMAL_STOP_ARTIFACT_INVENTORY_JSON",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V10 normal finalizer",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "schema_refs": [
+        "json:stop_artifact_inventory"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 for clean stop only",
+      "conditional_branch": "clean stop only",
+      "consumers": [
+        "Sentinel",
+        "terminal validator"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "inventory authoritative file first; applicable marker authoritative file last and sole normal terminal commit; sidecars are deterministic derivatives paired to their exact target",
+      "logical_hash_rule": null,
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "NORMAL_FINAL_INVENTORY_SIDECAR"
+      ],
+      "path_id": "NORMAL_STOP_ARTIFACT_INVENTORY_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V10 normal finalizer",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 for replay only",
+      "conditional_branch": "replay only",
+      "consumers": [
+        "Sentinel",
+        "terminal validator"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "inventory authoritative file first; applicable marker authoritative file last and sole normal terminal commit; sidecars are deterministic derivatives paired to their exact target",
+      "logical_hash_rule": "accepted normal finalization projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "NORMAL_FINAL_MARKER"
+      ],
+      "path_id": "NORMAL_REPLAY_FINALIZED_JSON",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V10 normal finalizer",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "schema_refs": [
+        "json:finalization_marker_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 for replay only",
+      "conditional_branch": "replay only",
+      "consumers": [
+        "Sentinel",
+        "terminal validator"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "inventory authoritative file first; applicable marker authoritative file last and sole normal terminal commit; sidecars are deterministic derivatives paired to their exact target",
+      "logical_hash_rule": null,
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "NORMAL_FINAL_MARKER_SIDECAR"
+      ],
+      "path_id": "NORMAL_REPLAY_FINALIZED_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V10 normal finalizer",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.json"
+    },
+    {
+      "applicable_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 for clean stop only",
+      "conditional_branch": "clean stop only",
+      "consumers": [
+        "Sentinel",
+        "terminal validator"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "inventory authoritative file first; applicable marker authoritative file last and sole normal terminal commit; sidecars are deterministic derivatives paired to their exact target",
+      "logical_hash_rule": "accepted normal finalization projection",
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "NORMAL_FINAL_MARKER"
+      ],
+      "path_id": "NORMAL_STOP_FINALIZED_JSON",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.json",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V10 normal finalizer",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "schema_refs": [
+        "json:finalization_marker_v23"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.sha256"
+    },
+    {
+      "applicable_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "cardinality": "exactly 1 for clean stop only",
+      "conditional_branch": "clean stop only",
+      "consumers": [
+        "Sentinel",
+        "terminal validator"
+      ],
+      "file_hash_rule": "SHA-256 exact complete bytes",
+      "lifecycle": "inventory authoritative file first; applicable marker authoritative file last and sole normal terminal commit; sidecars are deterministic derivatives paired to their exact target",
+      "logical_hash_rule": null,
+      "mutability": "immutable",
+      "normalization": "slash-separated UTF-8 NFC relative path; no leading slash, drive, backslash, empty/dot/dot-dot/NUL component, symlink component, or root escape",
+      "object_roles": [
+        "NORMAL_FINAL_MARKER_SIDECAR"
+      ],
+      "path_id": "NORMAL_STOP_FINALIZED_SHA256",
+      "path_pattern": "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.sha256",
+      "path_root": "RUN_ROOT",
+      "prepared_structural_member": false,
+      "producer": "V10 normal finalizer",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "schema_refs": [
+        "json:sha256_sidecar"
+      ],
+      "sidecar_pair": "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.json"
+    }
+  ],
+  "normalization_rule": "slash-separated UTF-8 NFC relative path; no leading slash, drive prefix, backslash, empty, dot, dot-dot, NUL, symlink component, or root escape",
+  "object_member_excluded_from_structural_set": true,
+  "object_member_path": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin",
+  "path_count": 50,
+  "prepared_structural_member_set": [
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.json",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.sha256",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.sha256",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.json",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.sha256",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.json",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.sha256"
+  ],
+  "required_prepared_structural_members": [
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.json",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.sha256",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.sha256",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.json",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.sha256",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.json",
+    "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.sha256"
+  ],
+  "schema_version": "rev23_finding4_path_grammar_registry.v1",
+  "status": "PREFLIGHT_FOR_SENTINEL_REVIEW_NOT_ACCEPTED",
+  "structural_member_count": 8,
+  "structural_object_grammar_disjoint": true,
+  "validation_result": "PASS"
+}

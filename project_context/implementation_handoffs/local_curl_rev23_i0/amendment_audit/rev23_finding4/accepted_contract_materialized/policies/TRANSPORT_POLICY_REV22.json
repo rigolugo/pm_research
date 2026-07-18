@@ -1,0 +1,14 @@
+{
+  "authorized_protocol": "HTTP/1.1",
+  "effective_argv_projection": {
+    "logical_hash": "LF-join row bytes in ordinal order, no trailing LF, then SHA256",
+    "row_hash": "SHA256(canonical typed-row JSON bytes)",
+    "shape": "typed rows ordered by argv ordinal: (argv_ordinal:int, argv_value:string)"
+  },
+  "proxy_removal": "exact proxy-removal list and environment treatment retained from CURL_SUBPROCESS_CONTRACT_REV20.json",
+  "retained_curl_subprocess_contract_internal_revision": 20,
+  "schema_version": "local_curl_transport_policy.v22",
+  "spec_revision": 22,
+  "subprocess_contract_sha256": "ee65157b2a5de50a3d91a0eb9dbef33a9b04c7f66d6bbad9f62be519442bede5",
+  "write_out_http_code": "stdout registered evidence contains exactly one write-out HTTP code field parsed as three ASCII digits"
+}

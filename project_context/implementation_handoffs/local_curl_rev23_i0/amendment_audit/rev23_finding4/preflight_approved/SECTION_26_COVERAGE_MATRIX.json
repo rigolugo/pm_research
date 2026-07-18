@@ -1,0 +1,455 @@
+{
+  "all_items_concrete": true,
+  "item_count": 12,
+  "rows": [
+    {
+      "artifact_catalog_entries": [],
+      "enums": [],
+      "item": 1,
+      "matrices": [],
+      "projections_and_invariants": [
+        "field_order",
+        "fields",
+        "required_fields",
+        "conditional_requirements",
+        "semantic_hash_projection/projections",
+        "file_hash_rule",
+        "invariants"
+      ],
+      "prose_only": false,
+      "registry_paths": [
+        "json_schemas/prepared_evidence_object_v23",
+        "json_schemas/prepared_claim_scope_v23",
+        "json_schemas/snapshot_publication_claim_semantic_v23",
+        "json_schemas/capture_payload_intent_v23",
+        "json_schemas/fence_unit_claim_semantic_v23",
+        "json_schemas/normal_finalization_claim_semantic_v23",
+        "json_schemas/prepared_evidence_plan_v23",
+        "json_schemas/prepared_evidence_unit_v23",
+        "json_schemas/snapshot_publication_commit_v23",
+        "json_schemas/snapshot_current_view_commit_v23",
+        "json_schemas/fence_unit_manifest_v23",
+        "json_schemas/fence_event_v23",
+        "json_schemas/immutable_row_batch_v23",
+        "json_schemas/capture_fence_continuation_entry_v23",
+        "json_schemas/conflict_inventory_entry_v23",
+        "json_schemas/conflict_group_v23",
+        "json_schemas/conflict_stop_inventory_v23",
+        "json_schemas/conflict_stop_marker_v23"
+      ],
+      "requirement": "all 18 §3.3 support schemas exact and closed",
+      "validation_result": "PASS"
+    },
+    {
+      "artifact_catalog_entries": [
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin",
+        "artifacts/local_curl_per_side/runs/<run_id>/.preparing/<producer_nonce>/",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/snapshot_partitions.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/snapshot_partitions.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/snapshot_partitions.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/partitions/<partition_id>.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/authorization/authorization_use_events.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/capture_events.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.sha256"
+      ],
+      "enums": [
+        "enums/finding4_publication_mode"
+      ],
+      "item": 2,
+      "matrices": [
+        "rev23_finding4/prepared_contract/role_matrix"
+      ],
+      "projections_and_invariants": [
+        "prepared object exact ten-cell descriptor projection",
+        "object ordinals exactly 0..M-1 and object_ordinal_10d parses to selected descriptor ordinal",
+        "prepared structural-member set is exactly eight paths and excludes the object .bin member",
+        "structural and object-member grammars are disjoint",
+        "payload size/file hash/source path/target path/role/publication mode/logical-hash nullability/sidecar relation reconcile to selected PREPARED_UNIT.json objects[object_ordinal]",
+        "payload content schema is selected by descriptor.content_schema_id, resolves in the accepted registry, and is compatible with the registered canonical target and object role",
+        "no prepared payload .bin uses json:prepared_evidence_object_v23 as its content schema"
+      ],
+      "prose_only": false,
+      "registry_paths": [
+        "json_schemas/prepared_evidence_object_v23",
+        "json_schemas/prepared_claim_scope_v23",
+        "json_schemas/acquisition_race_scope_v23",
+        "rev23_finding4/prepared_contract/path_grammar_registry",
+        "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin",
+        "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin"
+      ],
+      "requirement": "source/target path grammar, object projection, ordinals, source modes, conditional bound-snapshot paths, acquisition-race scope",
+      "validation_result": "PASS"
+    },
+    {
+      "artifact_catalog_entries": [],
+      "enums": [
+        "enums/finding4_prepared_object_role"
+      ],
+      "item": 3,
+      "matrices": [
+        "30-role exact matrix"
+      ],
+      "projections_and_invariants": [
+        "set(role_matrix.keys()) == set(role enum)",
+        "PARTITION_PAYLOAD cardinality len(snapshot_claim.partition_entries)"
+      ],
+      "prose_only": false,
+      "registry_paths": [
+        "rev23_finding4/prepared_contract/role_matrix"
+      ],
+      "requirement": "total role/cardinality/sidecar/logical-hash matrix and partition count len(partition_entries)",
+      "validation_result": "PASS"
+    },
+    {
+      "artifact_catalog_entries": [],
+      "enums": [
+        "enums/finding4_capture_coverage_state"
+      ],
+      "item": 4,
+      "matrices": [
+        "snapshot capture coverage conditional matrix",
+        "fence event nullability matrix"
+      ],
+      "projections_and_invariants": [
+        "exact typed projections and raw-array aggregate exclusions"
+      ],
+      "prose_only": false,
+      "registry_paths": [
+        "json_schemas/prepared_claim_scope_v23",
+        "json_schemas/acquisition_race_scope_v23",
+        "json_schemas/snapshot_publication_claim_semantic_v23",
+        "json_schemas/fence_unit_claim_semantic_v23",
+        "json_schemas/normal_finalization_claim_semantic_v23",
+        "rev23_finding4/ordered_relation_hash_formula"
+      ],
+      "requirement": "claim scopes, acquisition race, all claim semantics, ordered relation, capture coverage and hashes",
+      "validation_result": "PASS"
+    },
+    {
+      "artifact_catalog_entries": [],
+      "enums": [
+        "enums/finding4_target_resolution",
+        "enums/finding4_prepared_disposition"
+      ],
+      "item": 5,
+      "matrices": [
+        "role-specific publication modes in role matrix"
+      ],
+      "projections_and_invariants": [
+        "semantic identity collision limited to different semantic bytes",
+        "race loser terminal inventory conditions"
+      ],
+      "prose_only": false,
+      "registry_paths": [
+        "rev23_finding4/prepared_contract/target_result",
+        "json_schemas/acquisition_race_scope_v23",
+        "json_schemas/conflict_inventory_entry_v23",
+        "json_schemas/conflict_stop_marker_v23"
+      ],
+      "requirement": "canonical-winner whitelist, three-value target result, race loser, physical/semantic distinction, conflict terminal retry exception",
+      "validation_result": "PASS"
+    },
+    {
+      "artifact_catalog_entries": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/snapshot_partitions.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/snapshot_partitions.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/snapshot_partitions.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/partitions/<partition_id>.parquet"
+      ],
+      "enums": [
+        "enums/finding4_audit_family",
+        "enums/finding4_capture_coverage_state"
+      ],
+      "item": 6,
+      "matrices": [
+        "snapshot predecessor/coverage/current-view conditionals"
+      ],
+      "projections_and_invariants": [
+        "partition ordinals/ranges/keys/logical hashes",
+        "capture current view requires payload+COMMITTED release"
+      ],
+      "prose_only": false,
+      "registry_paths": [
+        "json_schemas/snapshot_publication_claim_semantic_v23",
+        "json_schemas/snapshot_publication_commit_v23",
+        "json_schemas/snapshot_current_view_commit_v23",
+        "table_schemas/snapshot_partition",
+        "semantic_hashes/partition_id"
+      ],
+      "requirement": "snapshot historical reconciliation, sequence/cycle, capture coverage, acquisition-bound promotion, current-view-after-release, partition rules",
+      "validation_result": "PASS"
+    },
+    {
+      "artifact_catalog_entries": [
+        "artifacts/local_curl_per_side/runs/<run_id>/authorization/authorization_use_events.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/capture_events.parquet"
+      ],
+      "enums": [
+        "enums/reservation_start_proof_state"
+      ],
+      "item": 7,
+      "matrices": [
+        "batch role/cardinality matrix"
+      ],
+      "projections_and_invariants": [
+        "one row -> one immutable batch/fence",
+        "aggregate views non-authoritative"
+      ],
+      "prose_only": false,
+      "registry_paths": [
+        "json_schemas/immutable_row_batch_v23",
+        "table_schemas/authorization_use_events",
+        "table_schemas/capture_events"
+      ],
+      "requirement": "authorization/capture rows immutable batch and fence provenance; accepted proof-state enum preserved",
+      "validation_result": "PASS"
+    },
+    {
+      "artifact_catalog_entries": [
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.sha256"
+      ],
+      "enums": [
+        "enums/finding4_fence_event_kind",
+        "enums/finding4_release_outcome"
+      ],
+      "item": 8,
+      "matrices": [
+        "fence total event/nullability matrix",
+        "bound snapshot role/cardinality rows"
+      ],
+      "projections_and_invariants": [
+        "reservation_fence_unit_file_sha256 directly persisted",
+        "bound pair never partial"
+      ],
+      "prose_only": false,
+      "registry_paths": [
+        "json_schemas/capture_payload_intent_v23",
+        "json_schemas/fence_event_v23",
+        "json_schemas/fence_unit_manifest_v23",
+        "json_schemas/fence_unit_claim_semantic_v23"
+      ],
+      "requirement": "payload intent, bound snapshot roles/paths, exact fence fields, release nullability, linked plan/event-kind and cancellation reservation hash",
+      "validation_result": "PASS"
+    },
+    {
+      "artifact_catalog_entries": [
+        "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.sha256"
+      ],
+      "enums": [
+        "enums/finding4_owner_kind",
+        "enums/finding4_conflict_inventory_role_class",
+        "enums/finding4_conflict_observation_state",
+        "enums/finding4_conflict_classification",
+        "enums/finding4_conflict_kind",
+        "enums/finding4_semantic_scope",
+        "enums/stop_code"
+      ],
+      "item": 9,
+      "matrices": [
+        "entry role/state classification conditionals",
+        "conflict kind/scope identity map"
+      ],
+      "projections_and_invariants": [
+        "one row per path",
+        "complete root discovery except four self paths",
+        "marker terminal mutual exclusion"
+      ],
+      "prose_only": false,
+      "registry_paths": [
+        "json_schemas/conflict_inventory_entry_v23",
+        "json_schemas/conflict_group_v23",
+        "json_schemas/conflict_stop_inventory_v23",
+        "json_schemas/conflict_stop_marker_v23"
+      ],
+      "requirement": "conflict discovery/owners/roles/state matrix/recovery scope/groups/stop enum/inventory/marker",
+      "validation_result": "PASS"
+    },
+    {
+      "artifact_catalog_entries": [],
+      "enums": [
+        "enums/stop_stage",
+        "enums/stop_code"
+      ],
+      "item": 10,
+      "matrices": [
+        "primary stop global V0..V10 plus enum ordinal within stage"
+      ],
+      "projections_and_invariants": [
+        "snapshot publication failures use family stop",
+        "fence failures use STOP_AUTHORIZATION_CAPTURE_RECONCILIATION_FAILED"
+      ],
+      "prose_only": false,
+      "registry_paths": [
+        "stop_precedence",
+        "enums/stop_code",
+        "json_schemas/conflict_stop_inventory_v23"
+      ],
+      "requirement": "V10-only finalization atomicity stops; family snapshot and auth/capture stops preserved",
+      "validation_result": "PASS"
+    },
+    {
+      "artifact_catalog_entries": [],
+      "enums": [
+        "enums/finding4_owner_kind_precedence"
+      ],
+      "item": 11,
+      "matrices": [
+        "owner cohort and producer-stage mappings"
+      ],
+      "projections_and_invariants": [
+        "fields exactly artifact_role,file_sha256,logical_sha256,path,producer_stage,size_bytes",
+        "owner metadata external only",
+        "order-independent row bytes"
+      ],
+      "prose_only": false,
+      "registry_paths": [
+        "json_schemas/artifact_inventory_entry",
+        "rev23_finding4/normal_inventory_contract"
+      ],
+      "requirement": "exact six-field normal inventory, one row/path, owner cohort external validation, no owner fields, stage derivation, terminal owner exclusion",
+      "validation_result": "PASS"
+    },
+    {
+      "artifact_catalog_entries": [
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin",
+        "artifacts/local_curl_per_side/runs/<run_id>/.preparing/<producer_nonce>/",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/snapshot_partitions.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/snapshot_partitions.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/snapshot_partitions.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/partitions/<partition_id>.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/authorization/authorization_use_events.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/capture_events.parquet",
+        "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.sha256"
+      ],
+      "enums": [],
+      "item": 12,
+      "matrices": [
+        "target file plan"
+      ],
+      "projections_and_invariants": [
+        "non-Finding4 schema bytes preserved unless affected reference changes",
+        "no authorization expansion",
+        "artifact catalog and artifact schema binding use descriptor-selected multi-schema binding for prepared object .bin",
+        "fixed json:prepared_evidence_object_v23 payload assignment is absent"
+      ],
+      "prose_only": false,
+      "registry_paths": [
+        "artifact_catalog",
+        "artifact_schema_bindings",
+        "registry_completeness_invariants",
+        "rev23_finding4/authorization_boundary"
+      ],
+      "requirement": "artifact catalog, producer-consumer, lifecycle, resume, stops, tests, traceability, handoff, inventories, hashes and I0 supersession synchronization",
+      "validation_result": "PASS"
+    }
+  ],
+  "schema_version": "rev23_finding4_section_26_coverage_matrix.v1",
+  "status": "PREFLIGHT_FOR_SENTINEL_REVIEW_NOT_ACCEPTED",
+  "validation_result": "PASS"
+}

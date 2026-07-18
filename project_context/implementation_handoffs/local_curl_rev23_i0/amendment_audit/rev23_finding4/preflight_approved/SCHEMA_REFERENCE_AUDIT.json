@@ -1,0 +1,3566 @@
+{
+  "dynamic_descriptor_binding_audit": {
+    "binding_mode": "DESCRIPTOR_SELECTED_MULTI_SCHEMA",
+    "binding_path": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin",
+    "canonical_target_role_schema_compatibility_rule_registered": true,
+    "descriptor_container_schema_ref": "json:prepared_evidence_unit_v23",
+    "descriptor_item_schema_ref": "json:prepared_evidence_object_v23",
+    "descriptor_refs_resolved": true,
+    "fixed_payload_schema_absent_from_artifact_catalog": true,
+    "fixed_payload_schema_absent_from_artifact_schema_bindings": true,
+    "fixed_payload_schema_absent_from_path_grammar": true,
+    "registered_target_binding_unresolved": [],
+    "registered_target_binding_unresolved_count": 0,
+    "selected_content_schema_resolution_rule_registered": true,
+    "selected_content_schema_runtime_requirement": "every selected descriptor.content_schema_id must resolve to an existing json: or table: registry target before payload validation",
+    "validation_result": "PASS"
+  },
+  "prepared_member_partition_audit": {
+    "object_member_is_structural": false,
+    "object_member_path": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin",
+    "structural_and_object_grammars_disjoint": true,
+    "structural_member_count": 8,
+    "structural_members": [
+      "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.json",
+      "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.sha256",
+      "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json",
+      "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.sha256",
+      "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.json",
+      "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.sha256",
+      "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.json",
+      "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.sha256"
+    ],
+    "validation_result": "PASS"
+  },
+  "reference_count": 587,
+  "resolved_count": 587,
+  "resolved_references": [
+    {
+      "reference": "json:governing_package_manifest",
+      "resolved": true,
+      "source_path": "artifact_catalog/GOVERNING_PACKAGE_MANIFEST_REV23.json/schema_ref",
+      "target_registry_path": "json_schemas/governing_package_manifest"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/GOVERNING_PACKAGE_MANIFEST_REV23.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "opaque:markdown",
+      "resolved": true,
+      "source_path": "artifact_catalog/REV23_SNAPSHOT_PARTITION_CANCELLATION_AMENDMENT.md/schema_ref",
+      "target_registry_path": "opaque/markdown"
+    },
+    {
+      "reference": "table:operational_audit_events",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/operational_audit/<run_id>.jsonl/schema_ref",
+      "target_registry_path": "table_schemas/operational_audit_events"
+    },
+    {
+      "reference": "json:detached_pre_run_attachment_semantic",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/attachments/detached_pre_run_attachment_semantic.json/schema_ref",
+      "target_registry_path": "json_schemas/detached_pre_run_attachment_semantic"
+    },
+    {
+      "reference": "json:detached_pre_run_attachment_hash",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/attachments/detached_pre_run_attachment_semantic.sha256/schema_ref",
+      "target_registry_path": "json_schemas/detached_pre_run_attachment_hash"
+    },
+    {
+      "reference": "json:fingerprint_readiness_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/fingerprint_readiness/run_policy_fingerprint_readiness.json/schema_ref",
+      "target_registry_path": "json_schemas/fingerprint_readiness_v23"
+    },
+    {
+      "reference": "json:pre_run_attempt_identity_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/identity/pre_run_attempt_identity.json/schema_ref",
+      "target_registry_path": "json_schemas/pre_run_attempt_identity_v23"
+    },
+    {
+      "reference": "table:policy_observations",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/policy/policy_observations.parquet/schema_ref",
+      "target_registry_path": "table_schemas/policy_observations"
+    },
+    {
+      "reference": "table:policy_resolution",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/policy/policy_resolution.parquet/schema_ref",
+      "target_registry_path": "table_schemas/policy_resolution"
+    },
+    {
+      "reference": "table:source_b_source_d_reconciliation",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/reconciliation/source_b_source_d_reconciliation.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_b_source_d_reconciliation"
+    },
+    {
+      "reference": "json:source_b_reconciliation_summary",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/reconciliation/source_b_source_d_reconciliation_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/source_b_reconciliation_summary"
+    },
+    {
+      "reference": "table:request_manifest",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_manifest/request_manifest.parquet/schema_ref",
+      "target_registry_path": "table_schemas/request_manifest"
+    },
+    {
+      "reference": "table:token_manifest",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_manifest/token_manifest.parquet/schema_ref",
+      "target_registry_path": "table_schemas/token_manifest"
+    },
+    {
+      "reference": "table:request_plan",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_plan/request_plan.parquet/schema_ref",
+      "target_registry_path": "table_schemas/request_plan"
+    },
+    {
+      "reference": "json:request_plan_hashes",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_plan/request_plan_hashes.json/schema_ref",
+      "target_registry_path": "json_schemas/request_plan_hashes"
+    },
+    {
+      "reference": "table:endpoint_shape_observations",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/endpoint_shape_observations.parquet/schema_ref",
+      "target_registry_path": "table_schemas/endpoint_shape_observations"
+    },
+    {
+      "reference": "table:source_b_by_condition_raw",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/source_b_by_condition_raw.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_b_by_condition_raw"
+    },
+    {
+      "reference": "table:source_b_condition_normalized",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/source_b_condition_rows.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_b_condition_normalized"
+    },
+    {
+      "reference": "table:source_b_excluded_raw",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/source_b_excluded_raw.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_b_excluded_raw"
+    },
+    {
+      "reference": "table:source_b_excluded_normalized",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/source_b_excluded_rows.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_b_excluded_normalized"
+    },
+    {
+      "reference": "json:source_b_normalization_summary",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/source_b_normalization_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/source_b_normalization_summary"
+    },
+    {
+      "reference": "json:source_b_provenance_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/source_b_provenance.json/schema_ref",
+      "target_registry_path": "json_schemas/source_b_provenance_v23"
+    },
+    {
+      "reference": "json:source_d_data_input_inventory",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_data_input_inventory.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_data_input_inventory"
+    },
+    {
+      "reference": "json:source_d_detached_provenance_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_detached_provenance.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_detached_provenance_v23"
+    },
+    {
+      "reference": "json:implementation_provenance",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_implementation_provenance.json/schema_ref",
+      "target_registry_path": "json_schemas/implementation_provenance"
+    },
+    {
+      "reference": "json:source_d_isolation_attestation",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_isolation_attestation.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_isolation_attestation"
+    },
+    {
+      "reference": "json:source_d_provenance_attestation",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_provenance_attestation.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_provenance_attestation"
+    },
+    {
+      "reference": "json:source_d_regeneration_summary",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_regeneration_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_regeneration_summary"
+    },
+    {
+      "reference": "table:source_d_request",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_request_rows.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_d_request"
+    },
+    {
+      "reference": "json:runtime_provenance",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_runtime_provenance.json/schema_ref",
+      "target_registry_path": "json_schemas/runtime_provenance"
+    },
+    {
+      "reference": "json:source_d_source_b_ordering_attestation",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_source_b_ordering_attestation.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_source_b_ordering_attestation"
+    },
+    {
+      "reference": "table:source_d_token",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_token_rows.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_d_token"
+    },
+    {
+      "reference": "json:finalization_marker_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/stops/<stop_code>/PRE_RUN_STOP_FINALIZATION_FAILED.json/schema_ref",
+      "target_registry_path": "json_schemas/finalization_marker_v23"
+    },
+    {
+      "reference": "json:finalization_marker_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/stops/<stop_code>/PRE_RUN_STOP_FINALIZED.json/schema_ref",
+      "target_registry_path": "json_schemas/finalization_marker_v23"
+    },
+    {
+      "reference": "json:pre_run_stop_envelope_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/stops/<stop_code>/pre_run_stop_envelope.json/schema_ref",
+      "target_registry_path": "json_schemas/pre_run_stop_envelope_v23"
+    },
+    {
+      "reference": "json:pre_run_stop_inventory_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/stops/<stop_code>/pre_run_stop_inventory.json/schema_ref",
+      "target_registry_path": "json_schemas/pre_run_stop_inventory_v23"
+    },
+    {
+      "reference": "opaque:transient_staging",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/.preparing/<producer_nonce>//schema_ref",
+      "target_registry_path": "opaque/transient_staging"
+    },
+    {
+      "reference": "json:snapshot_publication_commit_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.json/schema_ref",
+      "target_registry_path": "json_schemas/snapshot_publication_commit_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.json/schema_ref",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/snapshot_partitions.parquet/schema_ref",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.json/schema_ref",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:snapshot_current_view_commit_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.json/schema_ref",
+      "target_registry_path": "json_schemas/snapshot_current_view_commit_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.json/schema_ref",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/snapshot_partitions.parquet/schema_ref",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "table:capture_events",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/partitions/<partition_id>.parquet/schema_ref/0",
+      "target_registry_path": "table_schemas/capture_events"
+    },
+    {
+      "reference": "table:canonical_compatibility_analysis",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/partitions/<partition_id>.parquet/schema_ref/1",
+      "target_registry_path": "table_schemas/canonical_compatibility_analysis"
+    },
+    {
+      "reference": "table:strict_audit_analysis",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/partitions/<partition_id>.parquet/schema_ref/2",
+      "target_registry_path": "table_schemas/strict_audit_analysis"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/snapshot_partitions.parquet/schema_ref",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "json:conflict_stop_inventory_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.json/schema_ref",
+      "target_registry_path": "json_schemas/conflict_stop_inventory_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:conflict_stop_marker_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.json/schema_ref",
+      "target_registry_path": "json_schemas/conflict_stop_marker_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/analysis/compatibility/audit_snapshot_manifest.json/schema_ref",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "table:canonical_compatibility_analysis",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/analysis/compatibility/partitions/<partition_id>.parquet/schema_ref",
+      "target_registry_path": "table_schemas/canonical_compatibility_analysis"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/analysis/compatibility/snapshot_partitions.parquet/schema_ref",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "table:canonical_compatibility_analysis",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/analysis/compatibility_analysis.parquet/schema_ref",
+      "target_registry_path": "table_schemas/canonical_compatibility_analysis"
+    },
+    {
+      "reference": "json:compatibility_analysis_summary",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/analysis/compatibility_analysis_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/compatibility_analysis_summary"
+    },
+    {
+      "reference": "table:canonical_compatibility_decoded_points",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/analysis/compatibility_decoded_points.parquet/schema_ref",
+      "target_registry_path": "table_schemas/canonical_compatibility_decoded_points"
+    },
+    {
+      "reference": "table:condition_pair_analysis",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/analysis/condition_pair_analysis.parquet/schema_ref",
+      "target_registry_path": "table_schemas/condition_pair_analysis"
+    },
+    {
+      "reference": "table:http_status_reconciliation",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/analysis/http_status_reconciliation.parquet/schema_ref",
+      "target_registry_path": "table_schemas/http_status_reconciliation"
+    },
+    {
+      "reference": "json:request_disposition_summary",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/analysis/request_disposition_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/request_disposition_summary"
+    },
+    {
+      "reference": "table:selected_request_disposition",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/analysis/selected_request_dispositions.parquet/schema_ref",
+      "target_registry_path": "table_schemas/selected_request_disposition"
+    },
+    {
+      "reference": "json:run_attachment_manifest_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/attachments/pre_run_attachment_manifest.json/schema_ref",
+      "target_registry_path": "json_schemas/run_attachment_manifest_v23"
+    },
+    {
+      "reference": "table:authorization_use_events",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/authorization/authorization_use_events.parquet/schema_ref",
+      "target_registry_path": "table_schemas/authorization_use_events"
+    },
+    {
+      "reference": "json:network_authorization_record_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/authorization/records/<authorization_id>/authorization_record.json/schema_ref",
+      "target_registry_path": "json_schemas/network_authorization_record_v23"
+    },
+    {
+      "reference": "json:authorization_record_sidecar_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/authorization/records/<authorization_id>/authorization_record.sha256/schema_ref",
+      "target_registry_path": "json_schemas/authorization_record_sidecar_v23"
+    },
+    {
+      "reference": "json:authorized_request_set_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/authorization/records/<authorization_id>/authorized_request_set.json/schema_ref",
+      "target_registry_path": "json_schemas/authorized_request_set_v23"
+    },
+    {
+      "reference": "json:authorized_request_set_sidecar_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/authorization/records/<authorization_id>/authorized_request_set.sha256/schema_ref",
+      "target_registry_path": "json_schemas/authorized_request_set_sidecar_v23"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/audit_snapshot_manifest.json/schema_ref",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "table:capture_events",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/capture_events.parquet/schema_ref",
+      "target_registry_path": "table_schemas/capture_events"
+    },
+    {
+      "reference": "json:fence_unit_manifest_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.json/schema_ref",
+      "target_registry_path": "json_schemas/fence_unit_manifest_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:capture_payload_intent_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.json/schema_ref",
+      "target_registry_path": "json_schemas/capture_payload_intent_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:snapshot_publication_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.json/schema_ref",
+      "target_registry_path": "json_schemas/snapshot_publication_claim_semantic_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:fence_event_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.json/schema_ref",
+      "target_registry_path": "json_schemas/fence_event_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:authorization_use_events",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.parquet/schema_ref",
+      "target_registry_path": "table_schemas/authorization_use_events"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:capture_events",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.parquet/schema_ref",
+      "target_registry_path": "table_schemas/capture_events"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:capture_events",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/partitions/<partition_id>.parquet/schema_ref",
+      "target_registry_path": "table_schemas/capture_events"
+    },
+    {
+      "reference": "table:quarantine_index",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/quarantine_index.parquet/schema_ref",
+      "target_registry_path": "table_schemas/quarantine_index"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/capture/snapshot_partitions.parquet/schema_ref",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "json:all_one_safeguard",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/comparison/all_one_safeguard.json/schema_ref",
+      "target_registry_path": "json_schemas/all_one_safeguard"
+    },
+    {
+      "reference": "table:comparison_rows",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/comparison/comparison_rows.parquet/schema_ref",
+      "target_registry_path": "table_schemas/comparison_rows"
+    },
+    {
+      "reference": "json:comparison_summary",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/comparison/comparison_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/comparison_summary"
+    },
+    {
+      "reference": "table:current_pair_states",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/comparison/current_pair_states.parquet/schema_ref",
+      "target_registry_path": "table_schemas/current_pair_states"
+    },
+    {
+      "reference": "json:subclass_thresholds_array",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/comparison/subclass_thresholds.json/schema_ref",
+      "target_registry_path": "json_schemas/subclass_thresholds_array"
+    },
+    {
+      "reference": "json:finalization_marker_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.json/schema_ref",
+      "target_registry_path": "json_schemas/finalization_marker_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:finalization_marker_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/finalization/RUN_STOP_FINALIZATION_FAILED.json/schema_ref",
+      "target_registry_path": "json_schemas/finalization_marker_v23"
+    },
+    {
+      "reference": "json:finalization_marker_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.json/schema_ref",
+      "target_registry_path": "json_schemas/finalization_marker_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:final_artifact_inventory",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.json/schema_ref",
+      "target_registry_path": "json_schemas/final_artifact_inventory"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:stop_artifact_inventory",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.json/schema_ref",
+      "target_registry_path": "json_schemas/stop_artifact_inventory"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:run_identity_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/identity/run_identity.json/schema_ref",
+      "target_registry_path": "json_schemas/run_identity_v23"
+    },
+    {
+      "reference": "json:pre_v7_metadata",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/policy/pre_v7_metadata.json/schema_ref",
+      "target_registry_path": "json_schemas/pre_v7_metadata"
+    },
+    {
+      "reference": "json:run_policy_fingerprint",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/policy/run_policy_fingerprint.json/schema_ref",
+      "target_registry_path": "json_schemas/run_policy_fingerprint"
+    },
+    {
+      "reference": "json:prepared_claim_scope_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.json/schema_ref",
+      "target_registry_path": "json_schemas/prepared_claim_scope_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:snapshot_publication_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json/schema_ref/0",
+      "target_registry_path": "json_schemas/snapshot_publication_claim_semantic_v23"
+    },
+    {
+      "reference": "json:fence_unit_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json/schema_ref/1",
+      "target_registry_path": "json_schemas/fence_unit_claim_semantic_v23"
+    },
+    {
+      "reference": "json:normal_finalization_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json/schema_ref/2",
+      "target_registry_path": "json_schemas/normal_finalization_claim_semantic_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:prepared_evidence_plan_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.json/schema_ref",
+      "target_registry_path": "json_schemas/prepared_evidence_plan_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:prepared_evidence_unit_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.json/schema_ref",
+      "target_registry_path": "json_schemas/prepared_evidence_unit_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:prepared_evidence_unit_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin/schema_binding/descriptor_container_schema_ref",
+      "target_registry_path": "json_schemas/prepared_evidence_unit_v23"
+    },
+    {
+      "reference": "json:prepared_evidence_object_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin/schema_binding/descriptor_item_schema_ref",
+      "target_registry_path": "json_schemas/prepared_evidence_object_v23"
+    },
+    {
+      "reference": "json:prepared_evidence_object_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin/schema_binding/selected_content_schema/fixed_payload_schema_forbidden",
+      "target_registry_path": "json_schemas/prepared_evidence_object_v23"
+    },
+    {
+      "reference": "json:result_summary_v23",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/reports/result_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/result_summary_v23"
+    },
+    {
+      "reference": "table:resume_journal",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/resume/resume_journal.parquet/schema_ref",
+      "target_registry_path": "table_schemas/resume_journal"
+    },
+    {
+      "reference": "json:stop_state",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/stop/stop_state.json/schema_ref",
+      "target_registry_path": "json_schemas/stop_state"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/strict/audit_snapshot_manifest.json/schema_ref",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "table:strict_audit_analysis",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/strict/partitions/<partition_id>.parquet/schema_ref",
+      "target_registry_path": "table_schemas/strict_audit_analysis"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/strict/snapshot_partitions.parquet/schema_ref",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "table:strict_audit_analysis",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/strict/strict_audit.parquet/schema_ref",
+      "target_registry_path": "table_schemas/strict_audit_analysis"
+    },
+    {
+      "reference": "json:strict_audit_summary",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/strict/strict_audit_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/strict_audit_summary"
+    },
+    {
+      "reference": "table:strict_audit_decoded_points",
+      "resolved": true,
+      "source_path": "artifact_catalog/artifacts/local_curl_per_side/runs/<run_id>/strict/strict_decoded_points.parquet/schema_ref",
+      "target_registry_path": "table_schemas/strict_audit_decoded_points"
+    },
+    {
+      "reference": "json:compatibility_edge_vectors",
+      "resolved": true,
+      "source_path": "artifact_catalog/contracts/CANONICAL_COMPATIBILITY_EDGE_VECTORS_REV21.json/schema_ref",
+      "target_registry_path": "json_schemas/compatibility_edge_vectors"
+    },
+    {
+      "reference": "json:curl_subprocess_contract",
+      "resolved": true,
+      "source_path": "artifact_catalog/contracts/CURL_SUBPROCESS_CONTRACT_REV20.json/schema_ref",
+      "target_registry_path": "json_schemas/curl_subprocess_contract"
+    },
+    {
+      "reference": "json:requests_json_equivalence_contract",
+      "resolved": true,
+      "source_path": "artifact_catalog/contracts/REQUESTS_JSON_EQUIVALENCE_CONTRACT_REV18.json/schema_ref",
+      "target_registry_path": "json_schemas/requests_json_equivalence_contract"
+    },
+    {
+      "reference": "json:response_header_extraction_contract",
+      "resolved": true,
+      "source_path": "artifact_catalog/contracts/RESPONSE_HEADER_EXTRACTION_CONTRACT_REV21.json/schema_ref",
+      "target_registry_path": "json_schemas/response_header_extraction_contract"
+    },
+    {
+      "reference": "json:response_header_extraction_vectors",
+      "resolved": true,
+      "source_path": "artifact_catalog/contracts/RESPONSE_HEADER_EXTRACTION_VECTORS_REV21.json/schema_ref",
+      "target_registry_path": "json_schemas/response_header_extraction_vectors"
+    },
+    {
+      "reference": "json:source_d_algorithm_contract",
+      "resolved": true,
+      "source_path": "artifact_catalog/contracts/SOURCE_D_ALGORITHM_CONTRACT_REV17.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_algorithm_contract"
+    },
+    {
+      "reference": "json:http_status_reconciliation_vectors_v22",
+      "resolved": true,
+      "source_path": "artifact_catalog/policies/HTTP_STATUS_RECONCILIATION_VECTORS_REV22.json/schema_ref",
+      "target_registry_path": "json_schemas/http_status_reconciliation_vectors_v22"
+    },
+    {
+      "reference": "json:transport_policy",
+      "resolved": true,
+      "source_path": "artifact_catalog/policies/TRANSPORT_POLICY_REV22.json/schema_ref",
+      "target_registry_path": "json_schemas/transport_policy"
+    },
+    {
+      "reference": "json:url_serialization_policy",
+      "resolved": true,
+      "source_path": "artifact_catalog/policies/URL_SERIALIZATION_POLICY_REV22.json/schema_ref",
+      "target_registry_path": "json_schemas/url_serialization_policy"
+    },
+    {
+      "reference": "json:governing_package_manifest",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/GOVERNING_PACKAGE_MANIFEST_REV23.json/schema_ref",
+      "target_registry_path": "json_schemas/governing_package_manifest"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/GOVERNING_PACKAGE_MANIFEST_REV23.sha256/schema_ref",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:operational_audit_events",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/operational_audit/<run_id>.jsonl/schema_ref",
+      "target_registry_path": "table_schemas/operational_audit_events"
+    },
+    {
+      "reference": "json:detached_pre_run_attachment_semantic",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/attachments/detached_pre_run_attachment_semantic.json/schema_ref",
+      "target_registry_path": "json_schemas/detached_pre_run_attachment_semantic"
+    },
+    {
+      "reference": "json:detached_pre_run_attachment_hash",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/attachments/detached_pre_run_attachment_semantic.sha256/schema_ref",
+      "target_registry_path": "json_schemas/detached_pre_run_attachment_hash"
+    },
+    {
+      "reference": "json:fingerprint_readiness_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/fingerprint_readiness/run_policy_fingerprint_readiness.json/schema_ref",
+      "target_registry_path": "json_schemas/fingerprint_readiness_v23"
+    },
+    {
+      "reference": "json:pre_run_attempt_identity_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/identity/pre_run_attempt_identity.json/schema_ref",
+      "target_registry_path": "json_schemas/pre_run_attempt_identity_v23"
+    },
+    {
+      "reference": "table:policy_observations",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/policy/policy_observations.parquet/schema_ref",
+      "target_registry_path": "table_schemas/policy_observations"
+    },
+    {
+      "reference": "table:policy_resolution",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/policy/policy_resolution.parquet/schema_ref",
+      "target_registry_path": "table_schemas/policy_resolution"
+    },
+    {
+      "reference": "table:source_b_source_d_reconciliation",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/reconciliation/source_b_source_d_reconciliation.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_b_source_d_reconciliation"
+    },
+    {
+      "reference": "json:source_b_reconciliation_summary",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/reconciliation/source_b_source_d_reconciliation_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/source_b_reconciliation_summary"
+    },
+    {
+      "reference": "table:request_manifest",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_manifest/request_manifest.parquet/schema_ref",
+      "target_registry_path": "table_schemas/request_manifest"
+    },
+    {
+      "reference": "table:token_manifest",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_manifest/token_manifest.parquet/schema_ref",
+      "target_registry_path": "table_schemas/token_manifest"
+    },
+    {
+      "reference": "table:request_plan",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_plan/request_plan.parquet/schema_ref",
+      "target_registry_path": "table_schemas/request_plan"
+    },
+    {
+      "reference": "json:request_plan_hashes",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/request_plan/request_plan_hashes.json/schema_ref",
+      "target_registry_path": "json_schemas/request_plan_hashes"
+    },
+    {
+      "reference": "table:endpoint_shape_observations",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/endpoint_shape_observations.parquet/schema_ref",
+      "target_registry_path": "table_schemas/endpoint_shape_observations"
+    },
+    {
+      "reference": "table:source_b_by_condition_raw",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/source_b_by_condition_raw.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_b_by_condition_raw"
+    },
+    {
+      "reference": "table:source_b_condition_normalized",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/source_b_condition_rows.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_b_condition_normalized"
+    },
+    {
+      "reference": "table:source_b_excluded_raw",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/source_b_excluded_raw.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_b_excluded_raw"
+    },
+    {
+      "reference": "table:source_b_excluded_normalized",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/source_b_excluded_rows.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_b_excluded_normalized"
+    },
+    {
+      "reference": "json:source_b_normalization_summary",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/source_b_normalization_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/source_b_normalization_summary"
+    },
+    {
+      "reference": "json:source_b_provenance_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_b/source_b_provenance.json/schema_ref",
+      "target_registry_path": "json_schemas/source_b_provenance_v23"
+    },
+    {
+      "reference": "json:source_d_data_input_inventory",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_data_input_inventory.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_data_input_inventory"
+    },
+    {
+      "reference": "json:source_d_detached_provenance_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_detached_provenance.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_detached_provenance_v23"
+    },
+    {
+      "reference": "json:implementation_provenance",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_implementation_provenance.json/schema_ref",
+      "target_registry_path": "json_schemas/implementation_provenance"
+    },
+    {
+      "reference": "json:source_d_isolation_attestation",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_isolation_attestation.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_isolation_attestation"
+    },
+    {
+      "reference": "json:source_d_provenance_attestation",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_provenance_attestation.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_provenance_attestation"
+    },
+    {
+      "reference": "json:source_d_regeneration_summary",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_regeneration_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_regeneration_summary"
+    },
+    {
+      "reference": "table:source_d_request",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_request_rows.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_d_request"
+    },
+    {
+      "reference": "json:runtime_provenance",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_runtime_provenance.json/schema_ref",
+      "target_registry_path": "json_schemas/runtime_provenance"
+    },
+    {
+      "reference": "json:source_d_source_b_ordering_attestation",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_source_b_ordering_attestation.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_source_b_ordering_attestation"
+    },
+    {
+      "reference": "table:source_d_token",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/source_d/source_d_token_rows.parquet/schema_ref",
+      "target_registry_path": "table_schemas/source_d_token"
+    },
+    {
+      "reference": "json:finalization_marker_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/stops/<stop_code>/PRE_RUN_STOP_FINALIZATION_FAILED.json/schema_ref",
+      "target_registry_path": "json_schemas/finalization_marker_v23"
+    },
+    {
+      "reference": "json:finalization_marker_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/stops/<stop_code>/PRE_RUN_STOP_FINALIZED.json/schema_ref",
+      "target_registry_path": "json_schemas/finalization_marker_v23"
+    },
+    {
+      "reference": "json:pre_run_stop_envelope_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/stops/<stop_code>/pre_run_stop_envelope.json/schema_ref",
+      "target_registry_path": "json_schemas/pre_run_stop_envelope_v23"
+    },
+    {
+      "reference": "json:pre_run_stop_inventory_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/pre_run_attempts/<pre_run_attempt_id>/stops/<stop_code>/pre_run_stop_inventory.json/schema_ref",
+      "target_registry_path": "json_schemas/pre_run_stop_inventory_v23"
+    },
+    {
+      "reference": "opaque:transient_staging",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/.preparing/<producer_nonce>//0",
+      "target_registry_path": "opaque/transient_staging"
+    },
+    {
+      "reference": "json:snapshot_publication_commit_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.json/0",
+      "target_registry_path": "json_schemas/snapshot_publication_commit_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.json/0",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/snapshot_partitions.parquet/0",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.json/0",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:snapshot_current_view_commit_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.json/0",
+      "target_registry_path": "json_schemas/snapshot_current_view_commit_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.json/0",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/snapshot_partitions.parquet/0",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "table:capture_events",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/partitions/<partition_id>.parquet/0",
+      "target_registry_path": "table_schemas/capture_events"
+    },
+    {
+      "reference": "table:canonical_compatibility_analysis",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/partitions/<partition_id>.parquet/1",
+      "target_registry_path": "table_schemas/canonical_compatibility_analysis"
+    },
+    {
+      "reference": "table:strict_audit_analysis",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/partitions/<partition_id>.parquet/2",
+      "target_registry_path": "table_schemas/strict_audit_analysis"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/<family_root>/snapshot_partitions.parquet/0",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "json:conflict_stop_inventory_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.json/0",
+      "target_registry_path": "json_schemas/conflict_stop_inventory_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_INVENTORY.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:conflict_stop_marker_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.json/0",
+      "target_registry_path": "json_schemas/conflict_stop_marker_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/CONFLICT_STOP_FINALIZED/CONFLICT_STOP.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/analysis/compatibility/audit_snapshot_manifest.json/schema_ref",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "table:canonical_compatibility_analysis",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/analysis/compatibility/partitions/<partition_id>.parquet/schema_ref",
+      "target_registry_path": "table_schemas/canonical_compatibility_analysis"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/analysis/compatibility/snapshot_partitions.parquet/schema_ref",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "table:canonical_compatibility_analysis",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/analysis/compatibility_analysis.parquet/schema_ref",
+      "target_registry_path": "table_schemas/canonical_compatibility_analysis"
+    },
+    {
+      "reference": "json:compatibility_analysis_summary",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/analysis/compatibility_analysis_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/compatibility_analysis_summary"
+    },
+    {
+      "reference": "table:canonical_compatibility_decoded_points",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/analysis/compatibility_decoded_points.parquet/schema_ref",
+      "target_registry_path": "table_schemas/canonical_compatibility_decoded_points"
+    },
+    {
+      "reference": "table:condition_pair_analysis",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/analysis/condition_pair_analysis.parquet/schema_ref",
+      "target_registry_path": "table_schemas/condition_pair_analysis"
+    },
+    {
+      "reference": "table:http_status_reconciliation",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/analysis/http_status_reconciliation.parquet/schema_ref",
+      "target_registry_path": "table_schemas/http_status_reconciliation"
+    },
+    {
+      "reference": "json:request_disposition_summary",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/analysis/request_disposition_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/request_disposition_summary"
+    },
+    {
+      "reference": "table:selected_request_disposition",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/analysis/selected_request_dispositions.parquet/schema_ref",
+      "target_registry_path": "table_schemas/selected_request_disposition"
+    },
+    {
+      "reference": "json:run_attachment_manifest_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/attachments/pre_run_attachment_manifest.json/schema_ref",
+      "target_registry_path": "json_schemas/run_attachment_manifest_v23"
+    },
+    {
+      "reference": "table:authorization_use_events",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/authorization/authorization_use_events.parquet/0",
+      "target_registry_path": "table_schemas/authorization_use_events"
+    },
+    {
+      "reference": "json:network_authorization_record_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/authorization/records/<authorization_id>/authorization_record.json/schema_ref",
+      "target_registry_path": "json_schemas/network_authorization_record_v23"
+    },
+    {
+      "reference": "json:authorization_record_sidecar_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/authorization/records/<authorization_id>/authorization_record.sha256/schema_ref",
+      "target_registry_path": "json_schemas/authorization_record_sidecar_v23"
+    },
+    {
+      "reference": "json:authorized_request_set_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/authorization/records/<authorization_id>/authorized_request_set.json/schema_ref",
+      "target_registry_path": "json_schemas/authorized_request_set_v23"
+    },
+    {
+      "reference": "json:authorized_request_set_sidecar_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/authorization/records/<authorization_id>/authorized_request_set.sha256/schema_ref",
+      "target_registry_path": "json_schemas/authorized_request_set_sidecar_v23"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/audit_snapshot_manifest.json/schema_ref",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "table:capture_events",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/capture_events.parquet/0",
+      "target_registry_path": "table_schemas/capture_events"
+    },
+    {
+      "reference": "json:fence_unit_manifest_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.json/0",
+      "target_registry_path": "json_schemas/fence_unit_manifest_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:capture_payload_intent_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.json/0",
+      "target_registry_path": "json_schemas/capture_payload_intent_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:snapshot_publication_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.json/0",
+      "target_registry_path": "json_schemas/snapshot_publication_claim_semantic_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:fence_event_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.json/0",
+      "target_registry_path": "json_schemas/fence_event_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:authorization_use_events",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.parquet/0",
+      "target_registry_path": "table_schemas/authorization_use_events"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:capture_events",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.parquet/0",
+      "target_registry_path": "table_schemas/capture_events"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:capture_events",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/partitions/<partition_id>.parquet/schema_ref",
+      "target_registry_path": "table_schemas/capture_events"
+    },
+    {
+      "reference": "table:quarantine_index",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/quarantine_index.parquet/schema_ref",
+      "target_registry_path": "table_schemas/quarantine_index"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/capture/snapshot_partitions.parquet/schema_ref",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "json:all_one_safeguard",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/comparison/all_one_safeguard.json/schema_ref",
+      "target_registry_path": "json_schemas/all_one_safeguard"
+    },
+    {
+      "reference": "table:comparison_rows",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/comparison/comparison_rows.parquet/schema_ref",
+      "target_registry_path": "table_schemas/comparison_rows"
+    },
+    {
+      "reference": "json:comparison_summary",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/comparison/comparison_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/comparison_summary"
+    },
+    {
+      "reference": "table:current_pair_states",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/comparison/current_pair_states.parquet/schema_ref",
+      "target_registry_path": "table_schemas/current_pair_states"
+    },
+    {
+      "reference": "json:subclass_thresholds_array",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/comparison/subclass_thresholds.json/schema_ref",
+      "target_registry_path": "json_schemas/subclass_thresholds_array"
+    },
+    {
+      "reference": "json:finalization_marker_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.json/0",
+      "target_registry_path": "json_schemas/finalization_marker_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:finalization_marker_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/finalization/RUN_STOP_FINALIZATION_FAILED.json/schema_ref",
+      "target_registry_path": "json_schemas/finalization_marker_v23"
+    },
+    {
+      "reference": "json:finalization_marker_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.json/0",
+      "target_registry_path": "json_schemas/finalization_marker_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:final_artifact_inventory",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.json/0",
+      "target_registry_path": "json_schemas/final_artifact_inventory"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:stop_artifact_inventory",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.json/0",
+      "target_registry_path": "json_schemas/stop_artifact_inventory"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:run_identity_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/identity/run_identity.json/schema_ref",
+      "target_registry_path": "json_schemas/run_identity_v23"
+    },
+    {
+      "reference": "json:pre_v7_metadata",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/policy/pre_v7_metadata.json/schema_ref",
+      "target_registry_path": "json_schemas/pre_v7_metadata"
+    },
+    {
+      "reference": "json:run_policy_fingerprint",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/policy/run_policy_fingerprint.json/schema_ref",
+      "target_registry_path": "json_schemas/run_policy_fingerprint"
+    },
+    {
+      "reference": "json:prepared_claim_scope_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.json/0",
+      "target_registry_path": "json_schemas/prepared_claim_scope_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:snapshot_publication_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json/0",
+      "target_registry_path": "json_schemas/snapshot_publication_claim_semantic_v23"
+    },
+    {
+      "reference": "json:fence_unit_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json/1",
+      "target_registry_path": "json_schemas/fence_unit_claim_semantic_v23"
+    },
+    {
+      "reference": "json:normal_finalization_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json/2",
+      "target_registry_path": "json_schemas/normal_finalization_claim_semantic_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:prepared_evidence_plan_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.json/0",
+      "target_registry_path": "json_schemas/prepared_evidence_plan_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:prepared_evidence_unit_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.json/0",
+      "target_registry_path": "json_schemas/prepared_evidence_unit_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.sha256/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:prepared_evidence_unit_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin/descriptor_container_schema_ref",
+      "target_registry_path": "json_schemas/prepared_evidence_unit_v23"
+    },
+    {
+      "reference": "json:prepared_evidence_object_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin/descriptor_item_schema_ref",
+      "target_registry_path": "json_schemas/prepared_evidence_object_v23"
+    },
+    {
+      "reference": "json:prepared_evidence_object_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin/selected_content_schema/fixed_payload_schema_forbidden",
+      "target_registry_path": "json_schemas/prepared_evidence_object_v23"
+    },
+    {
+      "reference": "json:result_summary_v23",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/reports/result_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/result_summary_v23"
+    },
+    {
+      "reference": "table:resume_journal",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/resume/resume_journal.parquet/schema_ref",
+      "target_registry_path": "table_schemas/resume_journal"
+    },
+    {
+      "reference": "json:stop_state",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/stop/stop_state.json/schema_ref",
+      "target_registry_path": "json_schemas/stop_state"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/strict/audit_snapshot_manifest.json/schema_ref",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "table:strict_audit_analysis",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/strict/partitions/<partition_id>.parquet/schema_ref",
+      "target_registry_path": "table_schemas/strict_audit_analysis"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/strict/snapshot_partitions.parquet/schema_ref",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "table:strict_audit_analysis",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/strict/strict_audit.parquet/schema_ref",
+      "target_registry_path": "table_schemas/strict_audit_analysis"
+    },
+    {
+      "reference": "json:strict_audit_summary",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/strict/strict_audit_summary.json/schema_ref",
+      "target_registry_path": "json_schemas/strict_audit_summary"
+    },
+    {
+      "reference": "table:strict_audit_decoded_points",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/artifacts/local_curl_per_side/runs/<run_id>/strict/strict_decoded_points.parquet/schema_ref",
+      "target_registry_path": "table_schemas/strict_audit_decoded_points"
+    },
+    {
+      "reference": "json:compatibility_edge_vectors",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/contracts/CANONICAL_COMPATIBILITY_EDGE_VECTORS_REV21.json/schema_ref",
+      "target_registry_path": "json_schemas/compatibility_edge_vectors"
+    },
+    {
+      "reference": "json:curl_subprocess_contract",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/contracts/CURL_SUBPROCESS_CONTRACT_REV20.json/schema_ref",
+      "target_registry_path": "json_schemas/curl_subprocess_contract"
+    },
+    {
+      "reference": "json:requests_json_equivalence_contract",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/contracts/REQUESTS_JSON_EQUIVALENCE_CONTRACT_REV18.json/schema_ref",
+      "target_registry_path": "json_schemas/requests_json_equivalence_contract"
+    },
+    {
+      "reference": "json:response_header_extraction_contract",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/contracts/RESPONSE_HEADER_EXTRACTION_CONTRACT_REV21.json/schema_ref",
+      "target_registry_path": "json_schemas/response_header_extraction_contract"
+    },
+    {
+      "reference": "json:response_header_extraction_vectors",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/contracts/RESPONSE_HEADER_EXTRACTION_VECTORS_REV21.json/schema_ref",
+      "target_registry_path": "json_schemas/response_header_extraction_vectors"
+    },
+    {
+      "reference": "json:source_d_algorithm_contract",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/contracts/SOURCE_D_ALGORITHM_CONTRACT_REV17.json/schema_ref",
+      "target_registry_path": "json_schemas/source_d_algorithm_contract"
+    },
+    {
+      "reference": "json:http_status_reconciliation_vectors_v22",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/policies/HTTP_STATUS_RECONCILIATION_VECTORS_REV22.json/schema_ref",
+      "target_registry_path": "json_schemas/http_status_reconciliation_vectors_v22"
+    },
+    {
+      "reference": "json:transport_policy",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/policies/TRANSPORT_POLICY_REV22.json/schema_ref",
+      "target_registry_path": "json_schemas/transport_policy"
+    },
+    {
+      "reference": "json:url_serialization_policy",
+      "resolved": true,
+      "source_path": "artifact_schema_bindings/policies/URL_SERIALIZATION_POLICY_REV22.json/schema_ref",
+      "target_registry_path": "json_schemas/url_serialization_policy"
+    },
+    {
+      "reference": "json:all_one_vector_record",
+      "resolved": true,
+      "source_path": "json_schemas/all_one_safeguard/fields/vectors/ref",
+      "target_registry_path": "json_schemas/all_one_vector_record"
+    },
+    {
+      "reference": "json:all_one_counts_by_state",
+      "resolved": true,
+      "source_path": "json_schemas/all_one_vector_record/fields/counts_by_state/ref",
+      "target_registry_path": "json_schemas/all_one_counts_by_state"
+    },
+    {
+      "reference": "json:all_one_derivation_hashes",
+      "resolved": true,
+      "source_path": "json_schemas/all_one_vector_record/fields/derivation_hashes/ref",
+      "target_registry_path": "json_schemas/all_one_derivation_hashes"
+    },
+    {
+      "reference": "enum:all_one_evaluation",
+      "resolved": true,
+      "source_path": "json_schemas/all_one_vector_record/fields/evaluation/ref",
+      "target_registry_path": "enums/all_one_evaluation"
+    },
+    {
+      "reference": "enum:all_one_reason_code",
+      "resolved": true,
+      "source_path": "json_schemas/all_one_vector_record/fields/reason_code/ref",
+      "target_registry_path": "enums/all_one_reason_code"
+    },
+    {
+      "reference": "enum:all_one_vector_name",
+      "resolved": true,
+      "source_path": "json_schemas/all_one_vector_record/fields/vector_name/ref",
+      "target_registry_path": "enums/all_one_vector_name"
+    },
+    {
+      "reference": "json:artifact_inventory_entry",
+      "resolved": true,
+      "source_path": "json_schemas/artifact_inventory_entry_array/fields/entries/ref",
+      "target_registry_path": "json_schemas/artifact_inventory_entry"
+    },
+    {
+      "reference": "json:snapshot_partition_entry",
+      "resolved": true,
+      "source_path": "json_schemas/audit_snapshot_manifest/fields/partition_entries/ref",
+      "target_registry_path": "json_schemas/snapshot_partition_entry"
+    },
+    {
+      "reference": "enum:authorization_mode",
+      "resolved": true,
+      "source_path": "json_schemas/authorized_request_set_v23/fields/authorization_mode/ref",
+      "target_registry_path": "enums/authorization_mode"
+    },
+    {
+      "reference": "json:authorized_request_set_entry_v23",
+      "resolved": true,
+      "source_path": "json_schemas/authorized_request_set_v23/fields/entries/items_ref",
+      "target_registry_path": "json_schemas/authorized_request_set_entry_v23"
+    },
+    {
+      "reference": "json:canonical_sampling_function_entry",
+      "resolved": true,
+      "source_path": "json_schemas/canonical_sampling_function_provenance/fields/functions/ref",
+      "target_registry_path": "json_schemas/canonical_sampling_function_entry"
+    },
+    {
+      "reference": "enum:authorization_mode",
+      "resolved": true,
+      "source_path": "json_schemas/capture_payload_intent_v23/fields/authorization_mode/ref",
+      "target_registry_path": "enums/authorization_mode"
+    },
+    {
+      "reference": "enum:capture_event_state",
+      "resolved": true,
+      "source_path": "json_schemas/capture_payload_intent_v23/fields/capture_event_state/ref",
+      "target_registry_path": "enums/capture_event_state"
+    },
+    {
+      "reference": "json:comparison_code_counts",
+      "resolved": true,
+      "source_path": "json_schemas/comparison_summary/fields/comparison_code_counts/ref",
+      "target_registry_path": "json_schemas/comparison_code_counts"
+    },
+    {
+      "reference": "json:compatibility_branch_counts",
+      "resolved": true,
+      "source_path": "json_schemas/compatibility_analysis_summary/fields/counts_by_branch/ref",
+      "target_registry_path": "json_schemas/compatibility_branch_counts"
+    },
+    {
+      "reference": "json:compatibility_edge_vector",
+      "resolved": true,
+      "source_path": "json_schemas/compatibility_edge_vectors/fields/vectors/ref",
+      "target_registry_path": "json_schemas/compatibility_edge_vector"
+    },
+    {
+      "reference": "opaque:unregistered",
+      "resolved": true,
+      "source_path": "json_schemas/conflict_inventory_entry_v23/conditional_requirements/UNREGISTERED_OWNER/constants/content_schema_id",
+      "target_registry_path": "opaque/unregistered"
+    },
+    {
+      "reference": "json:conflict_group_v23",
+      "resolved": true,
+      "source_path": "json_schemas/conflict_stop_inventory_v23/fields/conflict_groups/items_ref",
+      "target_registry_path": "json_schemas/conflict_group_v23"
+    },
+    {
+      "reference": "json:conflict_inventory_entry_v23",
+      "resolved": true,
+      "source_path": "json_schemas/conflict_stop_inventory_v23/fields/entries/items_ref",
+      "target_registry_path": "json_schemas/conflict_inventory_entry_v23"
+    },
+    {
+      "reference": "enum:stop_code",
+      "resolved": true,
+      "source_path": "json_schemas/conflict_stop_inventory_v23/fields/primary_stop_code/ref",
+      "target_registry_path": "enums/stop_code"
+    },
+    {
+      "reference": "json:conflict_group_v23",
+      "resolved": true,
+      "source_path": "json_schemas/conflict_stop_inventory_v23/projections/conflict_groups_logical_sha256/items_ref",
+      "target_registry_path": "json_schemas/conflict_group_v23"
+    },
+    {
+      "reference": "json:conflict_inventory_entry_v23",
+      "resolved": true,
+      "source_path": "json_schemas/conflict_stop_inventory_v23/projections/entries_logical_sha256/items_ref",
+      "target_registry_path": "json_schemas/conflict_inventory_entry_v23"
+    },
+    {
+      "reference": "enum:stop_code",
+      "resolved": true,
+      "source_path": "json_schemas/conflict_stop_marker_v23/fields/primary_stop_code/ref",
+      "target_registry_path": "enums/stop_code"
+    },
+    {
+      "reference": "json:empty_object",
+      "resolved": true,
+      "source_path": "json_schemas/curl_subprocess_contract/fields/allowed_environment_additions/ref",
+      "target_registry_path": "json_schemas/empty_object"
+    },
+    {
+      "reference": "enum:attachment_stage",
+      "resolved": true,
+      "source_path": "json_schemas/detached_attachment_entry/fields/stage/ref",
+      "target_registry_path": "enums/attachment_stage"
+    },
+    {
+      "reference": "json:detached_attachment_entry",
+      "resolved": true,
+      "source_path": "json_schemas/detached_pre_run_attachment_semantic/fields/entries/items_ref",
+      "target_registry_path": "json_schemas/detached_attachment_entry"
+    },
+    {
+      "reference": "json:fence_unit_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "json_schemas/fence_event_v23/semantic_hash_projection/claim_semantic_ref",
+      "target_registry_path": "json_schemas/fence_unit_claim_semantic_v23"
+    },
+    {
+      "reference": "json:capture_fence_continuation_entry_v23",
+      "resolved": true,
+      "source_path": "json_schemas/fence_unit_manifest_v23/fields/continuation_validation_entries/items_ref",
+      "target_registry_path": "json_schemas/capture_fence_continuation_entry_v23"
+    },
+    {
+      "reference": "json:immutable_row_batch_v23",
+      "resolved": true,
+      "source_path": "json_schemas/fence_unit_manifest_v23/fields/row_batches/items_ref",
+      "target_registry_path": "json_schemas/immutable_row_batch_v23"
+    },
+    {
+      "reference": "json:capture_fence_continuation_entry_v23",
+      "resolved": true,
+      "source_path": "json_schemas/fence_unit_manifest_v23/projections/continuation_validation_entries_logical_sha256/items_ref",
+      "target_registry_path": "json_schemas/capture_fence_continuation_entry_v23"
+    },
+    {
+      "reference": "json:immutable_row_batch_v23",
+      "resolved": true,
+      "source_path": "json_schemas/fence_unit_manifest_v23/projections/row_batches_semantic_logical_sha256/items_ref",
+      "target_registry_path": "json_schemas/immutable_row_batch_v23"
+    },
+    {
+      "reference": "json:fence_unit_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "json_schemas/fence_unit_manifest_v23/semantic_hash_projection/schema_ref",
+      "target_registry_path": "json_schemas/fence_unit_claim_semantic_v23"
+    },
+    {
+      "reference": "json:artifact_inventory_entry",
+      "resolved": true,
+      "source_path": "json_schemas/final_artifact_inventory/fields/artifacts/ref",
+      "target_registry_path": "json_schemas/artifact_inventory_entry"
+    },
+    {
+      "reference": "enum:finalization_marker_kind",
+      "resolved": true,
+      "source_path": "json_schemas/finalization_marker_v23/fields/marker_kind/ref",
+      "target_registry_path": "enums/finalization_marker_kind"
+    },
+    {
+      "reference": "enum:result_label",
+      "resolved": true,
+      "source_path": "json_schemas/finalization_marker_v23/fields/result_label/ref",
+      "target_registry_path": "enums/result_label"
+    },
+    {
+      "reference": "enum:stop_code",
+      "resolved": true,
+      "source_path": "json_schemas/finalization_marker_v23/fields/stop_code/ref",
+      "target_registry_path": "enums/stop_code"
+    },
+    {
+      "reference": "enum:finalization_profile",
+      "resolved": true,
+      "source_path": "json_schemas/finalized_marker/fields/finalization_profile/ref",
+      "target_registry_path": "enums/finalization_profile"
+    },
+    {
+      "reference": "json:run_policy_fingerprint_component_hashes",
+      "resolved": true,
+      "source_path": "json_schemas/fingerprint_readiness_v23/fields/component_hashes/ref",
+      "target_registry_path": "json_schemas/run_policy_fingerprint_component_hashes"
+    },
+    {
+      "reference": "json:governing_package_manifest_entry",
+      "resolved": true,
+      "source_path": "json_schemas/governing_package_manifest/fields/entries/items_ref",
+      "target_registry_path": "json_schemas/governing_package_manifest_entry"
+    },
+    {
+      "reference": "enum:package_entry_role",
+      "resolved": true,
+      "source_path": "json_schemas/governing_package_manifest_entry/fields/role/ref",
+      "target_registry_path": "enums/package_entry_role"
+    },
+    {
+      "reference": "enum:http_status_reconciliation_issue_code",
+      "resolved": true,
+      "source_path": "json_schemas/http_status_reconciliation_vector_v22/fields/expected_issue_code/ref",
+      "target_registry_path": "enums/http_status_reconciliation_issue_code"
+    },
+    {
+      "reference": "json:http_status_reconciliation_vector_v22",
+      "resolved": true,
+      "source_path": "json_schemas/http_status_reconciliation_vectors_v22/fields/vectors/items_ref",
+      "target_registry_path": "json_schemas/http_status_reconciliation_vector_v22"
+    },
+    {
+      "reference": "table:authorization_use_events",
+      "resolved": true,
+      "source_path": "json_schemas/immutable_row_batch_v23/fields/schema_id/domain/0",
+      "target_registry_path": "table_schemas/authorization_use_events"
+    },
+    {
+      "reference": "table:capture_events",
+      "resolved": true,
+      "source_path": "json_schemas/immutable_row_batch_v23/fields/schema_id/domain/1",
+      "target_registry_path": "table_schemas/capture_events"
+    },
+    {
+      "reference": "json:implementation_file_entry",
+      "resolved": true,
+      "source_path": "json_schemas/implementation_provenance/fields/implementation_files/ref",
+      "target_registry_path": "json_schemas/implementation_file_entry"
+    },
+    {
+      "reference": "enum:authorization_mode",
+      "resolved": true,
+      "source_path": "json_schemas/network_authorization_record/fields/authorization_mode/ref",
+      "target_registry_path": "enums/authorization_mode"
+    },
+    {
+      "reference": "json:authorized_request_set_entry",
+      "resolved": true,
+      "source_path": "json_schemas/network_authorization_record/fields/authorized_request_set/ref",
+      "target_registry_path": "json_schemas/authorized_request_set_entry"
+    },
+    {
+      "reference": "json:network_authorization_record_v23",
+      "resolved": true,
+      "source_path": "json_schemas/network_authorization_record/superseded_by",
+      "target_registry_path": "json_schemas/network_authorization_record_v23"
+    },
+    {
+      "reference": "enum:authorization_mode",
+      "resolved": true,
+      "source_path": "json_schemas/network_authorization_record_v23/fields/authorization_mode/ref",
+      "target_registry_path": "enums/authorization_mode"
+    },
+    {
+      "reference": "enum:stop_code",
+      "resolved": true,
+      "source_path": "json_schemas/normal_finalization_claim_semantic_v23/fields/primary_stop_code/ref",
+      "target_registry_path": "enums/stop_code"
+    },
+    {
+      "reference": "enum:result_label",
+      "resolved": true,
+      "source_path": "json_schemas/normal_finalization_claim_semantic_v23/fields/result_label/ref",
+      "target_registry_path": "enums/result_label"
+    },
+    {
+      "reference": "json:artifact_inventory_entry",
+      "resolved": true,
+      "source_path": "json_schemas/pre_run_stop_envelope_v23/fields/committed_artifacts/items_ref",
+      "target_registry_path": "json_schemas/artifact_inventory_entry"
+    },
+    {
+      "reference": "enum:pre_run_stage",
+      "resolved": true,
+      "source_path": "json_schemas/pre_run_stop_envelope_v23/fields/stage/ref",
+      "target_registry_path": "enums/pre_run_stage"
+    },
+    {
+      "reference": "enum:stop_code",
+      "resolved": true,
+      "source_path": "json_schemas/pre_run_stop_envelope_v23/fields/stop_code/ref",
+      "target_registry_path": "enums/stop_code"
+    },
+    {
+      "reference": "enum:stop_reason_code",
+      "resolved": true,
+      "source_path": "json_schemas/pre_run_stop_envelope_v23/fields/stop_reason_code/ref",
+      "target_registry_path": "enums/stop_reason_code"
+    },
+    {
+      "reference": "json:artifact_inventory_entry",
+      "resolved": true,
+      "source_path": "json_schemas/pre_run_stop_inventory_v23/fields/artifacts/items_ref",
+      "target_registry_path": "json_schemas/artifact_inventory_entry"
+    },
+    {
+      "reference": "enum:stop_code",
+      "resolved": true,
+      "source_path": "json_schemas/pre_run_stop_inventory_v23/fields/stop_code/ref",
+      "target_registry_path": "enums/stop_code"
+    },
+    {
+      "reference": "json:prepared_claim_object_v23",
+      "resolved": true,
+      "source_path": "json_schemas/prepared_claim_scope_v23/fields/object_claims/items_ref",
+      "target_registry_path": "json_schemas/prepared_claim_object_v23"
+    },
+    {
+      "reference": "json:prepared_claim_object_v23",
+      "resolved": true,
+      "source_path": "json_schemas/prepared_claim_scope_v23/projections/object_claims_logical_sha256/items_ref",
+      "target_registry_path": "json_schemas/prepared_claim_object_v23"
+    },
+    {
+      "reference": "json:prepared_planned_object_v23",
+      "resolved": true,
+      "source_path": "json_schemas/prepared_evidence_plan_v23/fields/planned_objects/items_ref",
+      "target_registry_path": "json_schemas/prepared_planned_object_v23"
+    },
+    {
+      "reference": "json:prepared_planned_object_v23",
+      "resolved": true,
+      "source_path": "json_schemas/prepared_evidence_plan_v23/projections/planned_objects_logical_sha256/items_ref",
+      "target_registry_path": "json_schemas/prepared_planned_object_v23"
+    },
+    {
+      "reference": "json:prepared_evidence_object_v23",
+      "resolved": true,
+      "source_path": "json_schemas/prepared_evidence_unit_v23/fields/objects/items_ref",
+      "target_registry_path": "json_schemas/prepared_evidence_object_v23"
+    },
+    {
+      "reference": "json:prepared_evidence_object_v23",
+      "resolved": true,
+      "source_path": "json_schemas/prepared_evidence_unit_v23/projections/objects_logical_sha256/items_ref",
+      "target_registry_path": "json_schemas/prepared_evidence_object_v23"
+    },
+    {
+      "reference": "json:comparison_summary",
+      "resolved": true,
+      "source_path": "json_schemas/replay_result/fields/comparison_summary/ref",
+      "target_registry_path": "json_schemas/comparison_summary"
+    },
+    {
+      "reference": "json:compatibility_branch_counts",
+      "resolved": true,
+      "source_path": "json_schemas/replay_result/fields/compatibility_branch_counts/ref",
+      "target_registry_path": "json_schemas/compatibility_branch_counts"
+    },
+    {
+      "reference": "json:replay_fixed_counts",
+      "resolved": true,
+      "source_path": "json_schemas/replay_result/fields/fixed_counts/ref",
+      "target_registry_path": "json_schemas/replay_fixed_counts"
+    },
+    {
+      "reference": "enum:result_label",
+      "resolved": true,
+      "source_path": "json_schemas/replay_result/fields/result_label/ref",
+      "target_registry_path": "enums/result_label"
+    },
+    {
+      "reference": "enum:strict_audit_coverage_state",
+      "resolved": true,
+      "source_path": "json_schemas/replay_result/fields/strict_audit_coverage_state/ref",
+      "target_registry_path": "enums/strict_audit_coverage_state"
+    },
+    {
+      "reference": "enum:strict_audit_replay_state",
+      "resolved": true,
+      "source_path": "json_schemas/replay_result/fields/strict_audit_replay_state/ref",
+      "target_registry_path": "enums/strict_audit_replay_state"
+    },
+    {
+      "reference": "json:subclass_threshold_record",
+      "resolved": true,
+      "source_path": "json_schemas/replay_result/fields/subclass_thresholds/ref",
+      "target_registry_path": "json_schemas/subclass_threshold_record"
+    },
+    {
+      "reference": "json:request_disposition_counts",
+      "resolved": true,
+      "source_path": "json_schemas/request_disposition_summary/fields/counts_by_disposition/ref",
+      "target_registry_path": "json_schemas/request_disposition_counts"
+    },
+    {
+      "reference": "json:requests_json_adapter_contract",
+      "resolved": true,
+      "source_path": "json_schemas/requests_json_equivalence_contract/fields/adapter_contract/ref",
+      "target_registry_path": "json_schemas/requests_json_adapter_contract"
+    },
+    {
+      "reference": "json:requests_json_pinned_runtime",
+      "resolved": true,
+      "source_path": "json_schemas/requests_json_equivalence_contract/fields/pinned_runtime/ref",
+      "target_registry_path": "json_schemas/requests_json_pinned_runtime"
+    },
+    {
+      "reference": "json:requests_json_response_harness",
+      "resolved": true,
+      "source_path": "json_schemas/requests_json_equivalence_contract/fields/response_harness/ref",
+      "target_registry_path": "json_schemas/requests_json_response_harness"
+    },
+    {
+      "reference": "json:requests_json_vector_execution_contract",
+      "resolved": true,
+      "source_path": "json_schemas/requests_json_equivalence_contract/fields/vector_execution_contract/ref",
+      "target_registry_path": "json_schemas/requests_json_vector_execution_contract"
+    },
+    {
+      "reference": "json:requests_json_equivalence_vector",
+      "resolved": true,
+      "source_path": "json_schemas/requests_json_equivalence_contract/fields/vectors/ref",
+      "target_registry_path": "json_schemas/requests_json_equivalence_vector"
+    },
+    {
+      "reference": "enum:requests_equivalence_vector_category",
+      "resolved": true,
+      "source_path": "json_schemas/requests_json_equivalence_vector/fields/category/ref",
+      "target_registry_path": "enums/requests_equivalence_vector_category"
+    },
+    {
+      "reference": "enum:equivalence_class",
+      "resolved": true,
+      "source_path": "json_schemas/requests_json_equivalence_vector/fields/equivalence_class/ref",
+      "target_registry_path": "enums/equivalence_class"
+    },
+    {
+      "reference": "json:requests_json_expected_adapter_outcome",
+      "resolved": true,
+      "source_path": "json_schemas/requests_json_equivalence_vector/fields/expected_adapter_outcome/ref",
+      "target_registry_path": "json_schemas/requests_json_expected_adapter_outcome"
+    },
+    {
+      "reference": "json:requests_json_expected_requests_outcome",
+      "resolved": true,
+      "source_path": "json_schemas/requests_json_equivalence_vector/fields/expected_requests_outcome/ref",
+      "target_registry_path": "json_schemas/requests_json_expected_requests_outcome"
+    },
+    {
+      "reference": "json:requests_json_vector_headers",
+      "resolved": true,
+      "source_path": "json_schemas/requests_json_equivalence_vector/fields/headers/ref",
+      "target_registry_path": "json_schemas/requests_json_vector_headers"
+    },
+    {
+      "reference": "enum:compatibility_issue_code",
+      "resolved": true,
+      "source_path": "json_schemas/requests_json_expected_adapter_outcome/fields/issue_code/ref",
+      "target_registry_path": "enums/compatibility_issue_code"
+    },
+    {
+      "reference": "enum:adapter_outcome_state",
+      "resolved": true,
+      "source_path": "json_schemas/requests_json_expected_adapter_outcome/fields/state/ref",
+      "target_registry_path": "enums/adapter_outcome_state"
+    },
+    {
+      "reference": "enum:requests_outcome_state",
+      "resolved": true,
+      "source_path": "json_schemas/requests_json_expected_requests_outcome/fields/state/ref",
+      "target_registry_path": "enums/requests_outcome_state"
+    },
+    {
+      "reference": "enum:adapter_metadata_eligibility_state",
+      "resolved": true,
+      "source_path": "json_schemas/response_header_expected_outcome/fields/adapter_metadata_eligibility_state/ref",
+      "target_registry_path": "enums/adapter_metadata_eligibility_state"
+    },
+    {
+      "reference": "enum:content_type_resolution_state",
+      "resolved": true,
+      "source_path": "json_schemas/response_header_expected_outcome/fields/content_type_resolution_state/ref",
+      "target_registry_path": "enums/content_type_resolution_state"
+    },
+    {
+      "reference": "enum:header_extraction_state",
+      "resolved": true,
+      "source_path": "json_schemas/response_header_expected_outcome/fields/header_extraction_state/ref",
+      "target_registry_path": "enums/header_extraction_state"
+    },
+    {
+      "reference": "enum:no_content_type_body_domain_state",
+      "resolved": true,
+      "source_path": "json_schemas/response_header_expected_outcome/fields/no_content_type_body_domain_state/ref",
+      "target_registry_path": "enums/no_content_type_body_domain_state"
+    },
+    {
+      "reference": "enum:header_extraction_issue_code",
+      "resolved": true,
+      "source_path": "json_schemas/response_header_expected_outcome/fields/ordered_header_issue_codes/items_ref",
+      "target_registry_path": "enums/header_extraction_issue_code"
+    },
+    {
+      "reference": "enum:http_protocol_policy_state",
+      "resolved": true,
+      "source_path": "json_schemas/response_header_expected_outcome/fields/protocol_policy_state/ref",
+      "target_registry_path": "enums/http_protocol_policy_state"
+    },
+    {
+      "reference": "enum:http_protocol_observed",
+      "resolved": true,
+      "source_path": "json_schemas/response_header_expected_outcome/fields/selected_http_protocol/ref",
+      "target_registry_path": "enums/http_protocol_observed"
+    },
+    {
+      "reference": "json:response_header_vector",
+      "resolved": true,
+      "source_path": "json_schemas/response_header_extraction_vectors/fields/vectors/ref",
+      "target_registry_path": "json_schemas/response_header_vector"
+    },
+    {
+      "reference": "json:response_header_expected_outcome",
+      "resolved": true,
+      "source_path": "json_schemas/response_header_vector/fields/expected/ref",
+      "target_registry_path": "json_schemas/response_header_expected_outcome"
+    },
+    {
+      "reference": "enum:result_label",
+      "resolved": true,
+      "source_path": "json_schemas/result_summary_v23/fields/result_label/ref",
+      "target_registry_path": "enums/result_label"
+    },
+    {
+      "reference": "json:run_identity_semantic_v23",
+      "resolved": true,
+      "source_path": "json_schemas/run_identity_semantic_object/superseded_by",
+      "target_registry_path": "json_schemas/run_identity_semantic_v23"
+    },
+    {
+      "reference": "json:run_identity_semantic_v23",
+      "resolved": true,
+      "source_path": "json_schemas/run_identity_v23/fields/run_identity_semantic/ref",
+      "target_registry_path": "json_schemas/run_identity_semantic_v23"
+    },
+    {
+      "reference": "json:run_policy_fingerprint_component_hashes",
+      "resolved": true,
+      "source_path": "json_schemas/run_policy_fingerprint/fields/component_hashes/ref",
+      "target_registry_path": "json_schemas/run_policy_fingerprint_component_hashes"
+    },
+    {
+      "reference": "json:canonical_sampling_function_provenance",
+      "resolved": true,
+      "source_path": "json_schemas/runtime_provenance/fields/canonical_sampling_provenance/ref",
+      "target_registry_path": "json_schemas/canonical_sampling_function_provenance"
+    },
+    {
+      "reference": "json:runtime_package_entry",
+      "resolved": true,
+      "source_path": "json_schemas/runtime_provenance/fields/named_packages/ref",
+      "target_registry_path": "json_schemas/runtime_package_entry"
+    },
+    {
+      "reference": "json:snapshot_claim_partition_entry_v23",
+      "resolved": true,
+      "source_path": "json_schemas/snapshot_publication_claim_semantic_v23/fields/partition_entries/items_ref",
+      "target_registry_path": "json_schemas/snapshot_claim_partition_entry_v23"
+    },
+    {
+      "reference": "json:snapshot_claim_partition_entry_v23",
+      "resolved": true,
+      "source_path": "json_schemas/snapshot_publication_claim_semantic_v23/projections/partition_entries_semantic_logical_sha256/items_ref",
+      "target_registry_path": "json_schemas/snapshot_claim_partition_entry_v23"
+    },
+    {
+      "reference": "enum:source_b_normalization_component",
+      "resolved": true,
+      "source_path": "json_schemas/source_b_normalization_component_entry/fields/component_name/ref",
+      "target_registry_path": "enums/source_b_normalization_component"
+    },
+    {
+      "reference": "json:reconciliation_mismatch_counts",
+      "resolved": true,
+      "source_path": "json_schemas/source_b_reconciliation_summary/fields/mismatch_counts_by_code/ref",
+      "target_registry_path": "json_schemas/reconciliation_mismatch_counts"
+    },
+    {
+      "reference": "json:data_input_inventory_entry",
+      "resolved": true,
+      "source_path": "json_schemas/source_d_data_input_inventory/fields/entries/ref",
+      "target_registry_path": "json_schemas/data_input_inventory_entry"
+    },
+    {
+      "reference": "json:source_d_universe_counts",
+      "resolved": true,
+      "source_path": "json_schemas/source_d_regeneration_summary/fields/oriented_universe_counts_by_subclass/ref",
+      "target_registry_path": "json_schemas/source_d_universe_counts"
+    },
+    {
+      "reference": "json:source_d_sample_counts",
+      "resolved": true,
+      "source_path": "json_schemas/source_d_regeneration_summary/fields/sample_count_by_subclass/ref",
+      "target_registry_path": "json_schemas/source_d_sample_counts"
+    },
+    {
+      "reference": "json:artifact_inventory_entry",
+      "resolved": true,
+      "source_path": "json_schemas/stop_artifact_inventory/fields/artifacts/ref",
+      "target_registry_path": "json_schemas/artifact_inventory_entry"
+    },
+    {
+      "reference": "enum:stop_reason_code",
+      "resolved": true,
+      "source_path": "json_schemas/stop_state/fields/reason_code/ref",
+      "target_registry_path": "enums/stop_reason_code"
+    },
+    {
+      "reference": "enum:stop_stage",
+      "resolved": true,
+      "source_path": "json_schemas/stop_state/fields/stage/ref",
+      "target_registry_path": "enums/stop_stage"
+    },
+    {
+      "reference": "enum:stop_code",
+      "resolved": true,
+      "source_path": "json_schemas/stop_state/fields/stop_code/ref",
+      "target_registry_path": "enums/stop_code"
+    },
+    {
+      "reference": "json:strict_audit_agreement_counts",
+      "resolved": true,
+      "source_path": "json_schemas/strict_audit_summary/fields/counts_by_agreement_state/ref",
+      "target_registry_path": "json_schemas/strict_audit_agreement_counts"
+    },
+    {
+      "reference": "enum:strict_audit_coverage_state",
+      "resolved": true,
+      "source_path": "json_schemas/strict_audit_summary/fields/strict_audit_coverage_state/ref",
+      "target_registry_path": "enums/strict_audit_coverage_state"
+    },
+    {
+      "reference": "enum:strict_audit_replay_state",
+      "resolved": true,
+      "source_path": "json_schemas/strict_audit_summary/fields/strict_audit_replay_state/ref",
+      "target_registry_path": "enums/strict_audit_replay_state"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "json_schemas/subclass_threshold_record/fields/subclass/ref",
+      "target_registry_path": "enums/subclass"
+    },
+    {
+      "reference": "enum:threshold_state",
+      "resolved": true,
+      "source_path": "json_schemas/subclass_threshold_record/fields/threshold_state/ref",
+      "target_registry_path": "enums/threshold_state"
+    },
+    {
+      "reference": "json:subclass_threshold_record",
+      "resolved": true,
+      "source_path": "json_schemas/subclass_thresholds_array/fields/records/ref",
+      "target_registry_path": "json_schemas/subclass_threshold_record"
+    },
+    {
+      "reference": "json:token_not_found_entry",
+      "resolved": true,
+      "source_path": "json_schemas/token_not_found_registry/fields/entries/ref",
+      "target_registry_path": "json_schemas/token_not_found_entry"
+    },
+    {
+      "reference": "json:empty_object",
+      "resolved": true,
+      "source_path": "json_schemas/transport_policy/fields/environment_additions/ref",
+      "target_registry_path": "json_schemas/empty_object"
+    },
+    {
+      "reference": "json:acquisition_race_scope_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/acquisition_race_scope_ref",
+      "target_registry_path": "json_schemas/acquisition_race_scope_v23"
+    },
+    {
+      "reference": "json:prepared_evidence_unit_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/descriptor_selected_content_schema_binding/descriptor_container_schema_ref",
+      "target_registry_path": "json_schemas/prepared_evidence_unit_v23"
+    },
+    {
+      "reference": "json:prepared_evidence_object_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/descriptor_selected_content_schema_binding/descriptor_item_schema_ref",
+      "target_registry_path": "json_schemas/prepared_evidence_object_v23"
+    },
+    {
+      "reference": "json:prepared_evidence_object_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/descriptor_selected_content_schema_binding/selected_content_schema/fixed_payload_schema_forbidden",
+      "target_registry_path": "json_schemas/prepared_evidence_object_v23"
+    },
+    {
+      "reference": "json:prepared_claim_scope_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/0/schema_refs/0",
+      "target_registry_path": "json_schemas/prepared_claim_scope_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/1/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/10/schema_refs/0",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/11/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/12/schema_refs/0",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "json:snapshot_publication_commit_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/13/schema_refs/0",
+      "target_registry_path": "json_schemas/snapshot_publication_commit_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/14/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/15/schema_refs/0",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/16/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/17/schema_refs/0",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "json:snapshot_current_view_commit_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/18/schema_refs/0",
+      "target_registry_path": "json_schemas/snapshot_current_view_commit_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/19/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:snapshot_publication_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/2/schema_refs/0",
+      "target_registry_path": "json_schemas/snapshot_publication_claim_semantic_v23"
+    },
+    {
+      "reference": "json:fence_unit_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/2/schema_refs/1",
+      "target_registry_path": "json_schemas/fence_unit_claim_semantic_v23"
+    },
+    {
+      "reference": "json:normal_finalization_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/2/schema_refs/2",
+      "target_registry_path": "json_schemas/normal_finalization_claim_semantic_v23"
+    },
+    {
+      "reference": "json:audit_snapshot_manifest",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/20/schema_refs/0",
+      "target_registry_path": "json_schemas/audit_snapshot_manifest"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/21/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:snapshot_partition",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/22/schema_refs/0",
+      "target_registry_path": "table_schemas/snapshot_partition"
+    },
+    {
+      "reference": "table:capture_events",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/23/schema_refs/0",
+      "target_registry_path": "table_schemas/capture_events"
+    },
+    {
+      "reference": "table:canonical_compatibility_analysis",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/23/schema_refs/1",
+      "target_registry_path": "table_schemas/canonical_compatibility_analysis"
+    },
+    {
+      "reference": "table:strict_audit_analysis",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/23/schema_refs/2",
+      "target_registry_path": "table_schemas/strict_audit_analysis"
+    },
+    {
+      "reference": "json:fence_unit_manifest_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/24/schema_refs/0",
+      "target_registry_path": "json_schemas/fence_unit_manifest_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/25/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:fence_event_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/26/schema_refs/0",
+      "target_registry_path": "json_schemas/fence_event_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/27/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:capture_payload_intent_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/28/schema_refs/0",
+      "target_registry_path": "json_schemas/capture_payload_intent_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/29/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/3/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:snapshot_publication_claim_semantic_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/30/schema_refs/0",
+      "target_registry_path": "json_schemas/snapshot_publication_claim_semantic_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/31/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:authorization_use_events",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/32/schema_refs/0",
+      "target_registry_path": "table_schemas/authorization_use_events"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/33/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:capture_events",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/34/schema_refs/0",
+      "target_registry_path": "table_schemas/capture_events"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/35/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "table:authorization_use_events",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/36/schema_refs/0",
+      "target_registry_path": "table_schemas/authorization_use_events"
+    },
+    {
+      "reference": "table:capture_events",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/37/schema_refs/0",
+      "target_registry_path": "table_schemas/capture_events"
+    },
+    {
+      "reference": "json:conflict_stop_marker_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/38/schema_refs/0",
+      "target_registry_path": "json_schemas/conflict_stop_marker_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/39/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:prepared_evidence_plan_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/4/schema_refs/0",
+      "target_registry_path": "json_schemas/prepared_evidence_plan_v23"
+    },
+    {
+      "reference": "json:conflict_stop_inventory_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/40/schema_refs/0",
+      "target_registry_path": "json_schemas/conflict_stop_inventory_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/41/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:final_artifact_inventory",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/42/schema_refs/0",
+      "target_registry_path": "json_schemas/final_artifact_inventory"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/43/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:stop_artifact_inventory",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/44/schema_refs/0",
+      "target_registry_path": "json_schemas/stop_artifact_inventory"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/45/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:finalization_marker_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/46/schema_refs/0",
+      "target_registry_path": "json_schemas/finalization_marker_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/47/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:finalization_marker_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/48/schema_refs/0",
+      "target_registry_path": "json_schemas/finalization_marker_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/49/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/5/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:prepared_evidence_unit_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/6/schema_refs/0",
+      "target_registry_path": "json_schemas/prepared_evidence_unit_v23"
+    },
+    {
+      "reference": "json:sha256_sidecar",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/7/schema_refs/0",
+      "target_registry_path": "json_schemas/sha256_sidecar"
+    },
+    {
+      "reference": "json:prepared_evidence_unit_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/8/schema_binding/descriptor_container_schema_ref",
+      "target_registry_path": "json_schemas/prepared_evidence_unit_v23"
+    },
+    {
+      "reference": "json:prepared_evidence_object_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/8/schema_binding/descriptor_item_schema_ref",
+      "target_registry_path": "json_schemas/prepared_evidence_object_v23"
+    },
+    {
+      "reference": "json:prepared_evidence_object_v23",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/8/schema_binding/selected_content_schema/fixed_payload_schema_forbidden",
+      "target_registry_path": "json_schemas/prepared_evidence_object_v23"
+    },
+    {
+      "reference": "opaque:transient_staging",
+      "resolved": true,
+      "source_path": "rev23_finding4/prepared_contract/path_grammar_registry/9/schema_refs/0",
+      "target_registry_path": "opaque/transient_staging"
+    },
+    {
+      "reference": "json:network_authorization_record_v23",
+      "resolved": true,
+      "source_path": "rev23_identity_contracts/authorization_id/semantic_schema",
+      "target_registry_path": "json_schemas/network_authorization_record_v23"
+    },
+    {
+      "reference": "json:detached_pre_run_attachment_semantic",
+      "resolved": true,
+      "source_path": "rev23_identity_contracts/detached_pre_run_attachment_semantic_sha256/semantic_schema",
+      "target_registry_path": "json_schemas/detached_pre_run_attachment_semantic"
+    },
+    {
+      "reference": "json:pre_run_attempt_identity_v23",
+      "resolved": true,
+      "source_path": "rev23_identity_contracts/pre_run_attempt_id/semantic_schema",
+      "target_registry_path": "json_schemas/pre_run_attempt_identity_v23"
+    },
+    {
+      "reference": "json:run_identity_semantic_v23",
+      "resolved": true,
+      "source_path": "rev23_identity_contracts/run_id/semantic_schema",
+      "target_registry_path": "json_schemas/run_identity_semantic_v23"
+    },
+    {
+      "reference": "enum:partition_audit_family",
+      "resolved": true,
+      "source_path": "semantic_hashes/partition_id/field_domains/audit_family/ref",
+      "target_registry_path": "enums/partition_audit_family"
+    },
+    {
+      "reference": "enum:source_b_level_a_status",
+      "resolved": true,
+      "source_path": "source_b_normalization_contract/level_a_domain_ref",
+      "target_registry_path": "enums/source_b_level_a_status"
+    },
+    {
+      "reference": "enum:source_b_reachability",
+      "resolved": true,
+      "source_path": "source_b_normalization_contract/reachability_domain_ref",
+      "target_registry_path": "enums/source_b_reachability"
+    },
+    {
+      "reference": "json:p0_counts_pooled_projection",
+      "resolved": true,
+      "source_path": "source_d_input_structure_schemas/p0_projection/fields/counts_pooled/ref",
+      "target_registry_path": "json_schemas/p0_counts_pooled_projection"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "source_d_input_structure_schemas/resolution_record_projection/fields/subclass/ref",
+      "target_registry_path": "enums/subclass"
+    },
+    {
+      "reference": "enum:authorization_mode",
+      "resolved": true,
+      "source_path": "table_schemas/authorization_use_events/fields/authorization_mode/ref",
+      "target_registry_path": "enums/authorization_mode"
+    },
+    {
+      "reference": "enum:authorization_use_state",
+      "resolved": true,
+      "source_path": "table_schemas/authorization_use_events/fields/authorization_use_state/ref",
+      "target_registry_path": "enums/authorization_use_state"
+    },
+    {
+      "reference": "enum:authorization_use_reason_code",
+      "resolved": true,
+      "source_path": "table_schemas/authorization_use_events/fields/reason_code/ref",
+      "target_registry_path": "enums/authorization_use_reason_code"
+    },
+    {
+      "reference": "enum:reservation_start_proof_state",
+      "resolved": true,
+      "source_path": "table_schemas/authorization_use_events/fields/reservation_start_proof_state/ref",
+      "target_registry_path": "enums/reservation_start_proof_state"
+    },
+    {
+      "reference": "enum:adapter_metadata_eligibility_state",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/adapter_metadata_eligibility_state/ref",
+      "target_registry_path": "enums/adapter_metadata_eligibility_state"
+    },
+    {
+      "reference": "enum:compatibility_adapter_eligibility_state",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/compatibility_adapter_eligibility_state/ref",
+      "target_registry_path": "enums/compatibility_adapter_eligibility_state"
+    },
+    {
+      "reference": "enum:compatibility_branch_id",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/compatibility_branch_id/ref",
+      "target_registry_path": "enums/compatibility_branch_id"
+    },
+    {
+      "reference": "enum:compatibility_issue_code",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/compatibility_issue_codes/items_ref",
+      "target_registry_path": "enums/compatibility_issue_code"
+    },
+    {
+      "reference": "enum:compatibility_json_decoder_state",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/compatibility_json_decoder_state/ref",
+      "target_registry_path": "enums/compatibility_json_decoder_state"
+    },
+    {
+      "reference": "enum:compatibility_level_a_status",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/compatibility_level_a_status/ref",
+      "target_registry_path": "enums/compatibility_level_a_status"
+    },
+    {
+      "reference": "enum:measurement_terminal_state",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/compatibility_measurement_terminal_state/ref",
+      "target_registry_path": "enums/measurement_terminal_state"
+    },
+    {
+      "reference": "enum:compatibility_parse_state",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/compatibility_parse_state/ref",
+      "target_registry_path": "enums/compatibility_parse_state"
+    },
+    {
+      "reference": "enum:content_type_resolution_state",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/content_type_resolution_state/ref",
+      "target_registry_path": "enums/content_type_resolution_state"
+    },
+    {
+      "reference": "enum:curl_completion_category",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/curl_completion_category/ref",
+      "target_registry_path": "enums/curl_completion_category"
+    },
+    {
+      "reference": "enum:header_extraction_issue_code",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/header_extraction_issue_codes/items_ref",
+      "target_registry_path": "enums/header_extraction_issue_code"
+    },
+    {
+      "reference": "enum:header_extraction_state",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/header_extraction_state/ref",
+      "target_registry_path": "enums/header_extraction_state"
+    },
+    {
+      "reference": "enum:http_analysis_state",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/http_analysis_state/ref",
+      "target_registry_path": "enums/http_analysis_state"
+    },
+    {
+      "reference": "enum:no_content_type_body_domain_state",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/no_content_type_body_domain_state/ref",
+      "target_registry_path": "enums/no_content_type_body_domain_state"
+    },
+    {
+      "reference": "enum:http_protocol_observed",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_analysis/fields/observed_selected_http_protocol/ref",
+      "target_registry_path": "enums/http_protocol_observed"
+    },
+    {
+      "reference": "enum:float_conversion_state",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_decoded_points/fields/point_ts_conversion_state/ref",
+      "target_registry_path": "enums/float_conversion_state"
+    },
+    {
+      "reference": "enum:timestamp_float_class",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_decoded_points/fields/point_ts_float_class/ref",
+      "target_registry_path": "enums/timestamp_float_class"
+    },
+    {
+      "reference": "enum:float_conversion_state",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_decoded_points/fields/price_conversion_state/ref",
+      "target_registry_path": "enums/float_conversion_state"
+    },
+    {
+      "reference": "enum:timestamp_float_class",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_decoded_points/fields/price_float_class/ref",
+      "target_registry_path": "enums/timestamp_float_class"
+    },
+    {
+      "reference": "enum:compatibility_token_echo_mode",
+      "resolved": true,
+      "source_path": "table_schemas/canonical_compatibility_decoded_points/fields/token_echo_mode/ref",
+      "target_registry_path": "enums/compatibility_token_echo_mode"
+    },
+    {
+      "reference": "enum:capture_evidence_state",
+      "resolved": true,
+      "source_path": "table_schemas/capture_events/fields/body_evidence_state/ref",
+      "target_registry_path": "enums/capture_evidence_state"
+    },
+    {
+      "reference": "enum:capture_event_state",
+      "resolved": true,
+      "source_path": "table_schemas/capture_events/fields/capture_event_state/ref",
+      "target_registry_path": "enums/capture_event_state"
+    },
+    {
+      "reference": "enum:curl_completion_category",
+      "resolved": true,
+      "source_path": "table_schemas/capture_events/fields/curl_completion_category/ref",
+      "target_registry_path": "enums/curl_completion_category"
+    },
+    {
+      "reference": "enum:capture_evidence_state",
+      "resolved": true,
+      "source_path": "table_schemas/capture_events/fields/header_evidence_state/ref",
+      "target_registry_path": "enums/capture_evidence_state"
+    },
+    {
+      "reference": "enum:http_code_evidence_state",
+      "resolved": true,
+      "source_path": "table_schemas/capture_events/fields/http_code_evidence_state/ref",
+      "target_registry_path": "enums/http_code_evidence_state"
+    },
+    {
+      "reference": "enum:capture_interruption_reason_code",
+      "resolved": true,
+      "source_path": "table_schemas/capture_events/fields/interruption_reason_code/ref",
+      "target_registry_path": "enums/capture_interruption_reason_code"
+    },
+    {
+      "reference": "enum:capture_evidence_state",
+      "resolved": true,
+      "source_path": "table_schemas/capture_events/fields/stderr_evidence_state/ref",
+      "target_registry_path": "enums/capture_evidence_state"
+    },
+    {
+      "reference": "enum:comparison_code",
+      "resolved": true,
+      "source_path": "table_schemas/comparison_rows/fields/comparison_code/ref",
+      "target_registry_path": "enums/comparison_code"
+    },
+    {
+      "reference": "enum:condition_pair_state",
+      "resolved": true,
+      "source_path": "table_schemas/comparison_rows/fields/current_state/ref",
+      "target_registry_path": "enums/condition_pair_state"
+    },
+    {
+      "reference": "enum:prior_level_b_state",
+      "resolved": true,
+      "source_path": "table_schemas/comparison_rows/fields/prior_state/ref",
+      "target_registry_path": "enums/prior_level_b_state"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "table_schemas/comparison_rows/fields/subclass/ref",
+      "target_registry_path": "enums/subclass"
+    },
+    {
+      "reference": "enum:comparison_transition_direction",
+      "resolved": true,
+      "source_path": "table_schemas/comparison_rows/fields/transition_direction/ref",
+      "target_registry_path": "enums/comparison_transition_direction"
+    },
+    {
+      "reference": "enum:comparison_code",
+      "resolved": true,
+      "source_path": "table_schemas/condition_pair_analysis/fields/comparison_code/ref",
+      "target_registry_path": "enums/comparison_code"
+    },
+    {
+      "reference": "enum:condition_pair_state",
+      "resolved": true,
+      "source_path": "table_schemas/condition_pair_analysis/fields/current_pair_state/ref",
+      "target_registry_path": "enums/condition_pair_state"
+    },
+    {
+      "reference": "enum:prior_level_b_state",
+      "resolved": true,
+      "source_path": "table_schemas/condition_pair_analysis/fields/prior_level_b_state/ref",
+      "target_registry_path": "enums/prior_level_b_state"
+    },
+    {
+      "reference": "enum:measurement_terminal_state",
+      "resolved": true,
+      "source_path": "table_schemas/condition_pair_analysis/fields/side_0_compatibility_measurement_state/ref",
+      "target_registry_path": "enums/measurement_terminal_state"
+    },
+    {
+      "reference": "enum:measurement_terminal_state",
+      "resolved": true,
+      "source_path": "table_schemas/condition_pair_analysis/fields/side_1_compatibility_measurement_state/ref",
+      "target_registry_path": "enums/measurement_terminal_state"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "table_schemas/condition_pair_analysis/fields/subclass/ref",
+      "target_registry_path": "enums/subclass"
+    },
+    {
+      "reference": "enum:comparison_code",
+      "resolved": true,
+      "source_path": "table_schemas/current_pair_states/fields/comparison_code/ref",
+      "target_registry_path": "enums/comparison_code"
+    },
+    {
+      "reference": "enum:condition_pair_state",
+      "resolved": true,
+      "source_path": "table_schemas/current_pair_states/fields/current_pair_state/ref",
+      "target_registry_path": "enums/condition_pair_state"
+    },
+    {
+      "reference": "enum:prior_level_b_state",
+      "resolved": true,
+      "source_path": "table_schemas/current_pair_states/fields/prior_level_b_state/ref",
+      "target_registry_path": "enums/prior_level_b_state"
+    },
+    {
+      "reference": "enum:measurement_terminal_state",
+      "resolved": true,
+      "source_path": "table_schemas/current_pair_states/fields/side_0_compatibility_measurement_state/ref",
+      "target_registry_path": "enums/measurement_terminal_state"
+    },
+    {
+      "reference": "enum:measurement_terminal_state",
+      "resolved": true,
+      "source_path": "table_schemas/current_pair_states/fields/side_1_compatibility_measurement_state/ref",
+      "target_registry_path": "enums/measurement_terminal_state"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "table_schemas/current_pair_states/fields/subclass/ref",
+      "target_registry_path": "enums/subclass"
+    },
+    {
+      "reference": "enum:http_status_reconciliation_issue_code",
+      "resolved": true,
+      "source_path": "table_schemas/http_status_reconciliation/fields/issue_code/ref",
+      "target_registry_path": "enums/http_status_reconciliation_issue_code"
+    },
+    {
+      "reference": "enum:operational_audit_event_type",
+      "resolved": true,
+      "source_path": "table_schemas/operational_audit_events/fields/event_type/ref",
+      "target_registry_path": "enums/operational_audit_event_type"
+    },
+    {
+      "reference": "enum:stop_code",
+      "resolved": true,
+      "source_path": "table_schemas/operational_audit_events/fields/stop_code/ref",
+      "target_registry_path": "enums/stop_code"
+    },
+    {
+      "reference": "enum:evidence_source_id",
+      "resolved": true,
+      "source_path": "table_schemas/policy_observations/fields/evidence_source_id/ref",
+      "target_registry_path": "enums/evidence_source_id"
+    },
+    {
+      "reference": "enum:policy_observed_json_type",
+      "resolved": true,
+      "source_path": "table_schemas/policy_observations/fields/observed_json_type/ref",
+      "target_registry_path": "enums/policy_observed_json_type"
+    },
+    {
+      "reference": "enum:policy_field",
+      "resolved": true,
+      "source_path": "table_schemas/policy_observations/fields/policy_field/ref",
+      "target_registry_path": "enums/policy_field"
+    },
+    {
+      "reference": "enum:policy_presence_state",
+      "resolved": true,
+      "source_path": "table_schemas/policy_observations/fields/presence_state/ref",
+      "target_registry_path": "enums/policy_presence_state"
+    },
+    {
+      "reference": "enum:policy_observation_validation_state",
+      "resolved": true,
+      "source_path": "table_schemas/policy_observations/fields/validation_state/ref",
+      "target_registry_path": "enums/policy_observation_validation_state"
+    },
+    {
+      "reference": "enum:policy_expected_type",
+      "resolved": true,
+      "source_path": "table_schemas/policy_resolution/fields/expected_type/ref",
+      "target_registry_path": "enums/policy_expected_type"
+    },
+    {
+      "reference": "enum:policy_field",
+      "resolved": true,
+      "source_path": "table_schemas/policy_resolution/fields/policy_field/ref",
+      "target_registry_path": "enums/policy_field"
+    },
+    {
+      "reference": "enum:evidence_source_id",
+      "resolved": true,
+      "source_path": "table_schemas/policy_resolution/fields/required_evidence_source_ids/items_ref",
+      "target_registry_path": "enums/evidence_source_id"
+    },
+    {
+      "reference": "enum:policy_resolution_basis",
+      "resolved": true,
+      "source_path": "table_schemas/policy_resolution/fields/resolution_basis/ref",
+      "target_registry_path": "enums/policy_resolution_basis"
+    },
+    {
+      "reference": "enum:policy_resolution_state",
+      "resolved": true,
+      "source_path": "table_schemas/policy_resolution/fields/resolution_state/ref",
+      "target_registry_path": "enums/policy_resolution_state"
+    },
+    {
+      "reference": "enum:policy_target_object",
+      "resolved": true,
+      "source_path": "table_schemas/policy_resolution/fields/target_object/ref",
+      "target_registry_path": "enums/policy_target_object"
+    },
+    {
+      "reference": "enum:policy_validator_id",
+      "resolved": true,
+      "source_path": "table_schemas/policy_resolution/fields/validator_id/ref",
+      "target_registry_path": "enums/policy_validator_id"
+    },
+    {
+      "reference": "enum:policy_validator_result",
+      "resolved": true,
+      "source_path": "table_schemas/policy_resolution/fields/validator_result/ref",
+      "target_registry_path": "enums/policy_validator_result"
+    },
+    {
+      "reference": "enum:residue_class",
+      "resolved": true,
+      "source_path": "table_schemas/quarantine_index/fields/residue_class/ref",
+      "target_registry_path": "enums/residue_class"
+    },
+    {
+      "reference": "enum:measurement_terminal_state",
+      "resolved": true,
+      "source_path": "table_schemas/request_disposition/fields/compatibility_measurement_terminal_state/ref",
+      "target_registry_path": "enums/measurement_terminal_state"
+    },
+    {
+      "reference": "enum:request_disposition_reason_code",
+      "resolved": true,
+      "source_path": "table_schemas/request_disposition/fields/reason_code/ref",
+      "target_registry_path": "enums/request_disposition_reason_code"
+    },
+    {
+      "reference": "enum:request_disposition_state",
+      "resolved": true,
+      "source_path": "table_schemas/request_disposition/fields/request_disposition_state/ref",
+      "target_registry_path": "enums/request_disposition_state"
+    },
+    {
+      "reference": "enum:selected_attempt_basis",
+      "resolved": true,
+      "source_path": "table_schemas/request_disposition/fields/selected_attempt_basis/ref",
+      "target_registry_path": "enums/selected_attempt_basis"
+    },
+    {
+      "reference": "enum:strict_audit_agreement_state",
+      "resolved": true,
+      "source_path": "table_schemas/request_disposition/fields/strict_audit_agreement_state/ref",
+      "target_registry_path": "enums/strict_audit_agreement_state"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "table_schemas/request_manifest/fields/subclass/ref",
+      "target_registry_path": "enums/subclass"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "table_schemas/request_plan/fields/subclass/ref",
+      "target_registry_path": "enums/subclass"
+    },
+    {
+      "reference": "enum:resume_action",
+      "resolved": true,
+      "source_path": "table_schemas/resume_journal/fields/action/ref",
+      "target_registry_path": "enums/resume_action"
+    },
+    {
+      "reference": "enum:resume_reason_code",
+      "resolved": true,
+      "source_path": "table_schemas/resume_journal/fields/reason_code/ref",
+      "target_registry_path": "enums/resume_reason_code"
+    },
+    {
+      "reference": "enum:measurement_terminal_state",
+      "resolved": true,
+      "source_path": "table_schemas/selected_request_disposition/fields/compatibility_measurement_terminal_state/ref",
+      "target_registry_path": "enums/measurement_terminal_state"
+    },
+    {
+      "reference": "enum:request_disposition_reason_code",
+      "resolved": true,
+      "source_path": "table_schemas/selected_request_disposition/fields/reason_code/ref",
+      "target_registry_path": "enums/request_disposition_reason_code"
+    },
+    {
+      "reference": "enum:request_disposition_state",
+      "resolved": true,
+      "source_path": "table_schemas/selected_request_disposition/fields/request_disposition_state/ref",
+      "target_registry_path": "enums/request_disposition_state"
+    },
+    {
+      "reference": "enum:selected_attempt_basis",
+      "resolved": true,
+      "source_path": "table_schemas/selected_request_disposition/fields/selected_attempt_basis/ref",
+      "target_registry_path": "enums/selected_attempt_basis"
+    },
+    {
+      "reference": "enum:strict_audit_agreement_state",
+      "resolved": true,
+      "source_path": "table_schemas/selected_request_disposition/fields/strict_audit_agreement_state/ref",
+      "target_registry_path": "enums/strict_audit_agreement_state"
+    },
+    {
+      "reference": "enum:source_b_reachability",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_condition_normalized/fields/prior_condition_reachability/ref",
+      "target_registry_path": "enums/source_b_reachability"
+    },
+    {
+      "reference": "enum:source_b_level_a_status",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_condition_normalized/fields/prior_level_a_side_0/ref",
+      "target_registry_path": "enums/source_b_level_a_status"
+    },
+    {
+      "reference": "enum:source_b_level_a_status",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_condition_normalized/fields/prior_level_a_side_1/ref",
+      "target_registry_path": "enums/source_b_level_a_status"
+    },
+    {
+      "reference": "enum:prior_level_b_state",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_condition_normalized/fields/prior_level_b_state/ref",
+      "target_registry_path": "enums/prior_level_b_state"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_condition_normalized/fields/subclass/ref",
+      "target_registry_path": "enums/subclass"
+    },
+    {
+      "reference": "enum:invalid_window_reason",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_excluded_normalized/fields/invalid_window_reason/ref",
+      "target_registry_path": "enums/invalid_window_reason"
+    },
+    {
+      "reference": "enum:source_b_reason_class",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_excluded_normalized/fields/reason_class/ref",
+      "target_registry_path": "enums/source_b_reason_class"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_excluded_normalized/fields/subclass/ref",
+      "target_registry_path": "enums/subclass"
+    },
+    {
+      "reference": "enum:reconciliation_equality_state",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/decision_lower_anchor_equality/ref",
+      "target_registry_path": "enums/reconciliation_equality_state"
+    },
+    {
+      "reference": "enum:reconciliation_equality_state",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/eligibility_equality/ref",
+      "target_registry_path": "enums/reconciliation_equality_state"
+    },
+    {
+      "reference": "enum:reconciliation_equality_state",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/first_trade_anchor_equality/ref",
+      "target_registry_path": "enums/reconciliation_equality_state"
+    },
+    {
+      "reference": "enum:reconciliation_equality_state",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/invalid_reason_equality/ref",
+      "target_registry_path": "enums/reconciliation_equality_state"
+    },
+    {
+      "reference": "enum:reconciliation_equality_state",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/membership_equality/ref",
+      "target_registry_path": "enums/reconciliation_equality_state"
+    },
+    {
+      "reference": "enum:reconciliation_mismatch_code",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/mismatch_codes/items_ref",
+      "target_registry_path": "enums/reconciliation_mismatch_code"
+    },
+    {
+      "reference": "enum:reconciliation_overall_state",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/overall_reconciliation_state/ref",
+      "target_registry_path": "enums/reconciliation_overall_state"
+    },
+    {
+      "reference": "enum:reconciliation_equality_state",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/request_window_equality/ref",
+      "target_registry_path": "enums/reconciliation_equality_state"
+    },
+    {
+      "reference": "enum:reconciliation_equality_state",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/resolved_anchor_equality/ref",
+      "target_registry_path": "enums/reconciliation_equality_state"
+    },
+    {
+      "reference": "enum:invalid_window_reason",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/source_b_invalid_window_reason/ref",
+      "target_registry_path": "enums/invalid_window_reason"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/source_b_subclass/ref",
+      "target_registry_path": "enums/subclass"
+    },
+    {
+      "reference": "enum:invalid_window_reason",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/source_d_invalid_window_reason/ref",
+      "target_registry_path": "enums/invalid_window_reason"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/source_d_subclass/ref",
+      "target_registry_path": "enums/subclass"
+    },
+    {
+      "reference": "enum:reconciliation_equality_state",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/subclass_equality/ref",
+      "target_registry_path": "enums/reconciliation_equality_state"
+    },
+    {
+      "reference": "enum:reconciliation_equality_state",
+      "resolved": true,
+      "source_path": "table_schemas/source_b_source_d_reconciliation/fields/token_equality/ref",
+      "target_registry_path": "enums/reconciliation_equality_state"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "table_schemas/source_d_request/fields/subclass/ref",
+      "target_registry_path": "enums/subclass"
+    },
+    {
+      "reference": "enum:invalid_window_reason",
+      "resolved": true,
+      "source_path": "table_schemas/source_d_token/fields/invalid_window_reason/ref",
+      "target_registry_path": "enums/invalid_window_reason"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "table_schemas/source_d_token/fields/subclass/ref",
+      "target_registry_path": "enums/subclass"
+    },
+    {
+      "reference": "enum:analysis_issue_code",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_analysis/fields/analysis_issue_codes/items_ref",
+      "target_registry_path": "enums/analysis_issue_code"
+    },
+    {
+      "reference": "enum:analysis_state",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_analysis/fields/analysis_state/ref",
+      "target_registry_path": "enums/analysis_state"
+    },
+    {
+      "reference": "enum:curl_completion_category",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_analysis/fields/curl_completion_category/ref",
+      "target_registry_path": "enums/curl_completion_category"
+    },
+    {
+      "reference": "enum:echo_state",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_analysis/fields/echo_state/ref",
+      "target_registry_path": "enums/echo_state"
+    },
+    {
+      "reference": "enum:http_analysis_state",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_analysis/fields/http_analysis_state/ref",
+      "target_registry_path": "enums/http_analysis_state"
+    },
+    {
+      "reference": "enum:json_parse_state",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_analysis/fields/json_state/ref",
+      "target_registry_path": "enums/json_parse_state"
+    },
+    {
+      "reference": "enum:measurement_terminal_state",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_analysis/fields/measurement_terminal_state/ref",
+      "target_registry_path": "enums/measurement_terminal_state"
+    },
+    {
+      "reference": "enum:parse_state",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_analysis/fields/parse_state/ref",
+      "target_registry_path": "enums/parse_state"
+    },
+    {
+      "reference": "enum:point_validation_state",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_analysis/fields/point_validation_state/ref",
+      "target_registry_path": "enums/point_validation_state"
+    },
+    {
+      "reference": "enum:series_key_state",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_analysis/fields/series_key_state/ref",
+      "target_registry_path": "enums/series_key_state"
+    },
+    {
+      "reference": "enum:strict_audit_agreement_state",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_analysis/fields/strict_audit_agreement_state/ref",
+      "target_registry_path": "enums/strict_audit_agreement_state"
+    },
+    {
+      "reference": "enum:top_level_state",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_analysis/fields/top_level_state/ref",
+      "target_registry_path": "enums/top_level_state"
+    },
+    {
+      "reference": "enum:utf8_state",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_analysis/fields/utf8_state/ref",
+      "target_registry_path": "enums/utf8_state"
+    },
+    {
+      "reference": "enum:echo_original_json_type",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_decoded_points/fields/echo_original_json_type/ref",
+      "target_registry_path": "enums/echo_original_json_type"
+    },
+    {
+      "reference": "enum:point_timestamp_json_type",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_decoded_points/fields/point_ts_original_json_type/ref",
+      "target_registry_path": "enums/point_timestamp_json_type"
+    },
+    {
+      "reference": "enum:point_price_json_type",
+      "resolved": true,
+      "source_path": "table_schemas/strict_audit_decoded_points/fields/price_original_json_type/ref",
+      "target_registry_path": "enums/point_price_json_type"
+    },
+    {
+      "reference": "enum:invalid_window_reason",
+      "resolved": true,
+      "source_path": "table_schemas/token_manifest/fields/invalid_window_reason/ref",
+      "target_registry_path": "enums/invalid_window_reason"
+    },
+    {
+      "reference": "enum:subclass",
+      "resolved": true,
+      "source_path": "table_schemas/token_manifest/fields/subclass/ref",
+      "target_registry_path": "enums/subclass"
+    }
+  ],
+  "schema_version": "rev23_finding4_schema_reference_audit.v1",
+  "status": "PREFLIGHT_FOR_SENTINEL_REVIEW_NOT_ACCEPTED",
+  "unresolved_count": 0,
+  "unresolved_references": [],
+  "validation_result": "PASS"
+}
