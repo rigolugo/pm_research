@@ -8,17 +8,22 @@ Use the pm-research-implementing Skill. Skill invocation does not expand the aut
 - accepted scope: `REV23_FINDING4_I0A_SCOPE_REVISION_08`
 - accepted scope SHA-256: `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
 - authorization ID: `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`
-- verified pre-authorization commit: `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff`
+- accepted-scope canonical commit: `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff`
+- authorization-package installation commit: `b22e30a35f24d4af8b134925ed338a9dd4c2a3b0`
 - active package: `project_context/implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/`
+- source-gated implementation HEAD: the later canonical commit containing both this corrected handoff and the restored complete `HANDOFF_SHA256SUMS.txt`, after Sentinel verifies that commit
 
-Do not begin until Sentinel has verified the canonical commit containing this
-active package. Record that exact commit as the source-gated local HEAD.
+Neither `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff` nor
+`b22e30a35f24d4af8b134925ed338a9dd4c2a3b0` is the source-gated implementation
+HEAD. Do not begin until Sentinel verifies the later activation-correction commit
+and supplies its exact full SHA. Record that SHA and require local HEAD to equal it.
 
 ## Authorized stage
 
 Author implementation source and unexecuted test source only.
 
 ### Authorized source files
+
 - `pm_research/local_curl_per_side/__init__.py`
 - `pm_research/local_curl_per_side/canonical.py`
 - `pm_research/local_curl_per_side/governing_package.py`
@@ -27,6 +32,7 @@ Author implementation source and unexecuted test source only.
 - `pm_research/local_curl_per_side/claim_hashes.py`
 
 ### Authorized test-source files
+
 - `tests/local_curl_per_side/test_canonical_i0a.py`
 - `tests/local_curl_per_side/test_governing_package_i0a.py`
 - `tests/local_curl_per_side/test_finding4_registry_i0a.py`
@@ -50,7 +56,7 @@ No other path may be created, edited, deleted, renamed, or generated. All twelve
 
 ## Preconditions
 
-Read root `START_HERE.md`, `project_context/START_HERE.md`, the full canonical read order, accepted contract, accepted Revision 08 scope, and the active authorization package. Verify local HEAD, clean worktree, create-only path absence, hashes, file matrix, activity matrix, and governing bytes. Apply the exact ordered halt domain.
+Read root `START_HERE.md`, `project_context/START_HERE.md`, the full canonical read order, accepted contract, accepted Revision 08 scope, and the active authorization package. Obtain the exact Sentinel-verified activation-correction commit SHA. Verify local HEAD equals that SHA, the worktree is clean, every create-only path is absent, all governing hashes and checksum inventories match, and the file/activity matrices are exact. Apply the accepted ordered halt domain before writing any source file.
 
 ## Deliverable
 
