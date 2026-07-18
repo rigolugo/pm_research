@@ -1,258 +1,236 @@
 # DECISION LOG
 
-*Corrected history. The most important file in the project: it records what was tried, what was wrong, and what is now settled — so settled questions are not re-litigated.*
+*Corrected history and settled decisions. Do not re-litigate settled items
+without new authoritative evidence.*
 
 ---
 
-## Settled decisions (with corrected history)
+## Settled semantic and data decisions
 
-### Rank 1A decision policy: `first_price_after_warmup`
+### Rank 1A decision timestamp
 
-Chosen over fixed-lead-before-resolution because resolution time is derived from price convergence — a fixed lead would leak the outcome. Decision timestamp = first YES price >= 1h after first trade. Lookahead-safe.
+`first_price_after_warmup` is retained because fixed-lead-before-resolution
+would leak outcome information when resolution time is derived from price
+convergence.
 
-### OrderFilled topic order: topic2=maker, topic3=taker (RESOLVED)
+### OrderFilled topic order
 
-**History (3 reversals before settling):**
+Settled and Dune-verified:
 
-1. Initial decode assumed topic2=maker/topic3=taker.
-2. A buggy mid-pass showed "both roles" -> reversed to topic2=taker/topic3=maker.
-3. Reversal was based on an invalid comparison (local log_index 1227 vs Dune evt_index 1229 — different logs in a multi-fill tx).
-4. Resolved by exact-log-index Dune match across BOTH contracts: all rows showed Dune maker == topic2. Reverted to original (topic2=maker). Matches the CTF Exchange V2 source.
+`topic1 = orderHash`, `topic2 = maker`, `topic3 = taker`.
 
-**Settled:** `topic1=orderHash, topic2=maker, topic3=taker`. Verified, both contracts.
+The earlier 217/0 and 10/0 all-taker outputs were artifacts caused by an invalid
+join/topic reversal and uint256 CSV precision loss. They are not findings.
 
-### The 217/0 and 10/0 "all-taker" results were ARTIFACTS, not findings
+### Asset-ID precision
 
-- **217/0** (early OrderFilled sample-join): a join-logic artifact compounded by the topic swap.
-- **10/0** (first OrdersMatched run): an asset-id precision-loss bug — Dune web-UI CSV export floated 78-digit token IDs into scientific notation and turned `0` into `0.0`, breaking asset matching so no maker could be confirmed.
+Dune uint256 values must be cast to varchar, loaded as strings, canonicalized as
+integers, and rejected on scientific notation. The validated OrdersMatched
+maker-pairing result is retained.
 
-Lesson: all-one-role outputs are a red flag; validate against a known case before interpreting.
+### Data hygiene
 
-### Asset-id precision fix (two parts)
-
-- Dune query casts uint256 asset/amount fields to varchar.
-- Read those columns as `dtype=str`; compare via `canonical_int`; raise `DataExportPrecisionLoss` loudly on scientific notation.
-
-After fix + Dune-API CSV path: MAKER_PAIRING_VALIDATED (4/4), expanded run 100% recoverable / 0 precision-loss.
-
-### Fee-field diagnostic: SUPERSEDED
-
-Inconclusive (`NEED_MORE_SAMPLE`; fee sparse, ~9% nonzero, weak separator). Superseded by OrdersMatched, which gives economic role directly via `takerordermaker`. Artifact preserved; line closed.
-
-### Data hygiene (store contract)
-
-- Missing `condition_id` rows are persisted in raw parquet but DROPPED at analysis load. `save_wallet_trades` keeps them; `load_trades` drops null/blank `condition_id`.
-- Trade-id dedup prefers rows with populated semantic keys (tx_hash x4 + token_id x2 + outcome_index x1, stable mergesort).
-
-### Reference cross-checks (external, corroborated)
-
-- antflow Dune queries: OrdersMatched fires once per trade, OrderFilled twice per trade; volume = `LEAST(maker,taker amountFilled)/1e6`.
-- warproxxx/poly_data: confirms `/1e6` scaling, USDC side = `assetId == 0`, and the operator-leg filter.
-- ghost-hunter: off-chain matches can revert on-chain — a live-execution risk only; on-chain event data excludes ghosts by construction.
-
-### Named-binary semantics validated; probe BLOCKED on missing non-YES/NO outcomes (SETTLED)
-
-- Semantics/orientation validated. The yes_price → canonical_side_price rewrite is complete and audit-gated. Orientation reads token identity (not display label); orientation correctness rate = 1.0; token_id/outcome_index coverage = 0.99601. Classification contract pinned (`nb_contract_version = nb-contract-2026-06-28.1`).
-- Audit-reporting Issue A fixed. Schema selection now operates on the cleanly-mappable subset; unmappable rows stay blocked but no longer veto selection.
-- local `resolutions.parquet` is YES/NO-only. No team / UP-DOWN / OVER-UNDER winner value appears.
-- non-YES/NO named-binary outcomes are unresolvable locally.
-- named-binary probe remains BLOCKED until a validated non-YES/NO realized-outcome source exists.
-
-### Named-binary non-YES/NO outcome source implemented and audit-gated — Stage 4 ACCEPTED (SETTLED)
-
-The blocker above is now resolved as a data-availability matter. A Dune-sourced non-YES/NO realized-outcome pipeline (Stages 0–4) was built and accepted.
-
-- **Source.** `polymarket_polygon.ctf_evt_conditionresolution` exposes `payoutnumerators` keyed by `conditionid`; it covers the non-YES/NO named-binary universe. Winners derive ONLY from the payout vector, never from price convergence. Corroboration: `ctf_evt_payoutredemption`.
-- **Build.** Stage 3 produced 39,693 RESOLVED_SINGLE_WINNER rows; 253 AMBIGUOUS_MULTIPLE_WINNERS excluded + counted.
-- **Gate.** The legacy pooled-all `gate_state` remains BLOCKED_BY_RESOLUTION_MAPPING because local resolutions are YES/NO-only and YES_NO sparsity holds the pooled rate below the 0.99 floor. A separate non-YES/NO branch gate is `CLEAR_WITH_WARNINGS`: non_yesno_pooled_map_rate 0.99339 and each subclass ≥0.95.
-- **Probe still blocked.** `named_binary_probe_blocked = true` in all states. CLEAR_WITH_WARNINGS means the outcome source/audit is usable; it does NOT authorize a probe.
-
-### S1 Pass 1 price-source coverage: `S1_SOURCE_NOT_VIABLE` (ACCEPTED, sampled) — SETTLED
-
-The first stage of the per-side price-source build plan was implemented as a coverage-only, network-hard-gated, user-run test and completed with a NEGATIVE Pass-1 sampled result.
-
-- **Result.** Sample 300/300; 248 valid-window conditions measured; 52 invalid-window excluded; 496 side-token fetches; endpoint shape parsed cleanly. Level-B both-sides coverage cleared 0.95 in no subclass: UP_DOWN 19/50 = 0.38, OVER_UNDER 51/98 ≈ 0.5204, NAMED_OTHER 65/100 = 0.65. Verdict `S1_SOURCE_NOT_VIABLE`.
-- **Consequence.** CLOB `/prices-history` does not provide a usable decision-window per-side price for both sides across the sampled P0 universe. P1 remains BLOCKED with no `yes_price` fallback. This is Pass 1 sampled coverage only, not Pass 2 full-universe coverage. No Pass 2, S2, P1/P2/P3, probe, scoring, backfill, or gate change is authorized; `named_binary_probe_blocked` stays `true`.
-- **Artifact-vs-finding discipline.** The verdict was only trusted after request-window, invalid-window, and timestamp parsing defects were fixed.
-
-### S1-ALT Pass 1 (Option A local trade-print) price-source coverage: `S1ALT_SOURCE_NOT_VIABLE` (ACCEPTED, sampled) — SETTLED
-
-After the S1 negative, the first candidate alternative per-side price source — local trade-print reconstruction via `Store.load_trades()` — was implemented per `SPEC_price_source_alt_trade_prints.md` and completed with a NEGATIVE Pass-1 sampled result.
-
-- **Result.** Reused the exact accepted S1 Pass-1 300-condition sample (248 measured-eligible + 52 S1-invalid-window). Level-B class counts: BOTH_SIDES 124 / ONE_SIDE 65 / NEITHER 59. Level-B both-sides coverage cleared 0.95 in no subclass: UP_DOWN 13/50 = 0.26, OVER_UNDER 40/98 ≈ 0.4081632653, NAMED_OTHER 71/100 = 0.71. Verdict `S1ALT_SOURCE_NOT_VIABLE`.
-- **Consequence.** Local trade prints do not provide a usable decision-window per-side price source on the sampled P0 universe. P1 remains BLOCKED with no `yes_price` fallback and no `1 - price` synthesis. No Pass 2, Option C, S2, P1/P2/P3, probe, scoring, backfill, or gate change is authorized; `named_binary_probe_blocked` stays `true`.
-
-### Option B Phase B0 Data API `/trades`: original halt + artifact-missing diagnostic (SUPERSEDED BY CORRECTED B0 RESULT)
-
-`SPEC_price_source_option_b_data_api_review.md` was accepted as a pessimistic, falsification-minded review of the Polymarket Data API `/trades` endpoint as a per-side/token-identity price-source candidate.
-
-The original B0 run halted at `STOP_API_LOCAL_MISMATCH`: `api_count=1747`, `local_count=8`, `matched_count=0`, `mismatch_count=1755`; first mismatches were `API_ONLY` rows. A later local-only artifact inspection halted at `STOP_API_ARTIFACT_MISSING` because only `option_b_b0_manifest.json` had been persisted; no saved API rows, mismatch rows, reconciliation JSON, by-condition CSV, or full evidence ledgers existed.
-
-This original artifact-missing defect is now superseded by the accepted corrected B0 diagnostic result below. Do not reopen the original missing-artifact state as if it were still the final Option B state.
-
-### Option B B0 Failure Diagnostic spec: ACCEPTED / SPEC ONLY (SETTLED)
-
-`SPEC_option_b_b0_failure_diagnostic.md` is the accepted spec-only design for the corrected B0 diagnostic run. The spec targets the original root defect: the first B0 runner evaluated `STOP_API_LOCAL_MISMATCH` before persisting evidentiary artifacts.
-
-The corrected harness was later implemented and user-run under separate authorization. The completed result is recorded next.
-
-### Option B corrected B0 diagnostic result: `B0_MECHANICAL_TRUST_NOT_ESTABLISHED` (ACCEPTED) — SETTLED
-
-The corrected Option B B0 diagnostic harness was implemented and then user-run under separate authorization to repair the original persist-before-halt defect. The corrected run completed and persisted enough artifacts for offline diagnosis.
-
-**Accepted run result.** `artifact_status = API_ARTIFACT_COMPLETE`; `halt_code = null`; `manifest_conditions = 10`; `api_rows_primary = 13,009`; `api_rows_total_all_query_modes = 17,853`; `local_rows = 1,346`; `mismatches = 14,355`.
-
-**Classification counts.** `OVERLAP_API_LOCAL_MISMATCH = 7`; `OVERLAP_PAGINATION_PARTIAL = 3`; `OVERLAP_MATCHED = 0`; `NO_TEMPORAL_OVERLAP = 0`.
-
-**Mismatch counts.** `API_ONLY = 11,829`; `LOCAL_ONLY = 145`; `TX_HASH_AMBIGUOUS = 2,381`.
-
-**Pagination counts.** `COMPLETE_SHORT_FINAL_PAGE = 7`; `PARTIAL_RETRIEVAL = 3`.
-
-**Interpretation.** Corrected B0 did **not** establish Data API `/trades` mechanical trust. The earlier `STOP_API_ARTIFACT_MISSING` defect is closed for this corrected run, but the completed evidence is negative for B0 mechanical trust on the fixed manifest. This is B0 only; it is not a coverage verdict, not a price-source build authorization, and not a downstream gate input.
-
-**Metadata caveat.** `reconciliation.json` reports `takeronly_probe_conditions = 3`, while `offline_recompute_summary.json` reports `takeronly_probe_conditions = 10`. Core fields match; treat this as a metadata/recompute inconsistency only.
-
-**Standing consequence.** B1 remains not authorized. Option B must not proceed to B1/full Pass 1/S2/P1/P2/P3/probe. P1 remains BLOCKED on the absence of an accepted per-side/token-identity price source. `named_binary_probe_blocked` stays `true`.
-
-### Option C Revision 3: SPEC ACCEPTED — C0 candidate selected, C1 GUARDRAIL BLOCKED AT REVISION 3 (SETTLED — HISTORICAL; SUPERSEDED FOR C1 BY LATER C1R/C1A DECISIONS)
-
-After Option A/S1-ALT and Option B both closed negative, `SPEC_price_source_option_c_onchain.md` (Revision 3) was accepted as the third per-side/token-identity price-source candidate review: on-chain reconstruction via bounded, already-decoded Dune/vendor OrderFilled event tables.
-
-C0 (candidate/source-interface selection) remains accepted, spec-only. The Revision-3 C1 guardrail block is historical and superseded by C1R/C1A. The unsafe old C1 designs remain closed: local-`tx_hash`-only scoping cannot test missing coverage by construction, and broad independent condition/time-window event querying risks indexer-shaped work.
-
-### Option C C1R (C1 Revised) design addendum: SPEC ACCEPTED (SETTLED — CURRENT STATE FOR C1 DESIGN)
-
-`SPEC_price_source_option_c_onchain_C1R_addendum.md` (Patch 1) is the accepted design that resolves the Revision-3 C1 guardrail block via fixed selector manifest, subquery-wrapped SQL with per-condition cap+1 over-fetch, hard row-cap enforcement, empty-export detection, row-level evidence artifacts, and source-table validation. C1R remains SPEC ONLY by itself: no execution, no Claude run, no Dune/API/RPC call. Pure-logic tests: 50 passing. P1 remains BLOCKED. `named_binary_probe_blocked` stays `true`.
-
-### Option C C1A manifest + bounded canary: ACCEPTED VALID HALT — `C1_ROW_EXPLOSION` (SETTLED)
-
-The C1A implementation package implemented the C1R design. It was code/test-only, pure Python, no-network, with 50 pure-logic tests passing before user execution. The user then executed the bounded C1A flow locally and returned artifacts for review.
-
-**Accepted result.** Selector manifest construction succeeded with `resolved_count = 5` and `excluded_count = 0`. The bounded canary halted with `C1_ROW_EXPLOSION`: condition `0x00e0e2e768260268c59fd8c43d77f771b19cf1d70ddfcf51c0198e4f58e0fc8e` returned `2001` rows, exceeding `per_condition_row_cap = 2000`. This halt is valid and expected because the generated SQL intentionally uses `LIMIT per_condition_row_cap + 1`.
-
-**Interpretation.** This is a valid bounded-canary halt, not a price-source viability verdict. It does not compute or persist price. No C1B/C2/P1 conclusion follows.
-
-### Option C C1A-F1 and C1A-F2: mixed evidence accepted; artifacts insufficient for causal closure (SETTLED)
-
-C1A-F1 executed and produced reviewable mixed coverage/trust evidence: outcome `C1_CANARY_EXECUTED_NEEDS_REVIEW`; 133 total Dune rows in fixed windows; no row explosion; no unresolved side rows; 34 total Dune-only tx hashes; `NAMED_OTHER` = 104 Dune rows / 27 Dune-only / 2 overlap / 0 local-only / 0 unresolved; `UP_DOWN` = 29 Dune rows / 7 Dune-only / 4 overlap / 0 local-only / 0 unresolved; `OVER_UNDER` = 0 Dune rows / 0 Dune-only / 0 overlap / 2 local-only / 0 unresolved.
-
-C1A-F2 artifact review is accepted with result `C1F2_ARTIFACTS_INSUFFICIENT`: the C1A-F1 artifacts confirm the mixed summary plus safe selector/query/cap discipline, but the `OVER_UNDER` local-only evidence is too thin for safe causal classification because the two local-only rows lack local-side timestamp/token/outcome_index/side-match/row-identity/window-membership fields. No likely-cause label is accepted and no one-condition diagnostic is recommended.
-
-Option C is not viable, C1 is not design-clear, P1 remains BLOCKED, and `named_binary_probe_blocked` stays `true`.
-
-### Option C artifact-enrichment evidence-capture SPEC: ACCEPTED / SPEC ONLY — SETTLED
-
-`SPEC_price_source_option_c_artifact_enrichment.md` is accepted as SPEC ONLY. It defines minimum evidence-capture requirements for any possible future Option C / decoded `OrderFilled` diagnostic. It authorizes no implementation, tests, local data reads, Dune/API/RPC/network, SQL generation/modification/execution, additional canary, one-condition diagnostic, C1B/C2/P1/P2/P3/probe, scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, price artifact, gate change, cap change, row truncation, or side synthesis.
-
-### Option D L2 order-book vendor archive coverage spec: ACCEPTED / SPEC ONLY — SETTLED
-
-`SPEC_price_source_option_d_l2_archive.md` is accepted as a methodology/specification document only. It defines Option D as a coverage-only feasibility review for third-party L2 order-book/quote vendor archives as a fourth per-side/token-identity price-source candidate family after S1/S1-ALT/Option B negatives and unresolved Option C evidence.
-
-**Vendor scope.** PMXT scope is **PMXT v2 only**, with effective v2 L2 order-book archive start `2026-04-13T19:00:00Z`; PMXT v1 is out of scope and must not be silently used to extend coverage unless separately reviewed. Telonex L2 order-book/quote scope starts `2025-10-11T00:00:00Z`; Telonex on-chain fills from market inception are not L2 book coverage and must not be used to infer decision-time side prices.
-
-**Channel-mismatch guard.** The accepted guard labels are `VENDOR_HISTORY_NOT_L2_BOOK_RELEVANT` and `STOP_VENDOR_HISTORY_CHANNEL_MISMATCH`. Older or broader non-L2 channels — trades, fills, on-chain fills, metadata, or any other non-book history — must never be substituted for L2 book/quote depth. Better coverage from the wrong channel is not Option D coverage and does not unblock P1.
-
-**Price-basis discipline.** Best bid, best ask, and mid are diagnostics only in the coverage spec. No final canonical price basis is accepted. Any future price-basis decision would require a separately accepted build spec and audit.
-
-**Standing consequence.** Option D acceptance authorizes no implementation, tests, local temporal precheck, vendor/network fetch, PMXT raw archive download, Telonex fetch, vendor account/API key/paid action, Pass 1, Pass 2, price artifact build, canonical-side price computation, P1/P2/P3 continuation, probe execution, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis. P1 remains BLOCKED; `named_binary_probe_blocked` remains `true`.
-
-### Option D temporal in-range precheck SPEC: ACCEPTED / SPEC ONLY — SETTLED
-
-`SPEC_price_source_option_d_temporal_inrange_precheck.md` is accepted as SPEC ONLY. It defines a local-only/read-only timing-feasibility precheck design for Option D.
-
-**Purpose.** The spec asks only what fraction of accepted P0-eligible conditions have both `decision_ts = first_trade_ts + 3600s` and `resolved_at` inside the PMXT v2 and Telonex L2 archive windows.
-
-**Required universe discipline.** The spec must not assume `p0_preflight.json` contains condition-level rows. A future implementation, if separately authorized, must reconstruct and verify the exact P0 universe from the named-binary classification contract joined to `named_binary_resolution_source_rows.parquet`, then reconcile to `final_p0_eligible = 39,693`, with subclass denominators `UP_DOWN = 22,012`, `OVER_UNDER = 1,003`, and `NAMED_OTHER = 16,678`.
-
-**Timestamp discipline.** `first_trade_ts = min(traded_at)` per condition; `decision_ts = first_trade_ts + 3600s`; `resolved_at` comes from `named_binary_resolution_source_rows.parquet`; all timestamps must be normalized to timezone-aware UTC before comparison.
-
-**Vendor constants.** PMXT v2 start is `2026-04-13T19:00:00Z`; Telonex L2 start is `2025-10-11T00:00:00Z`; lower bounds are inclusive.
-
-**Interpretation.** Temporal in-range coverage does not establish vendor availability, token coverage, side coverage, both-side book state, book depth, price quality, mechanical trust, price-source viability, or P1 viability. A positive temporal result may only justify proposing a later separately authorized vendor-coverage SPEC. A negative temporal result may close or deprioritize Option D without touching P1.
-
-**Standing consequence.** This spec authorizes no implementation, tests, local data reads, precheck run, artifact generation, vendor/network fetch, PMXT raw archive download, Telonex fetch, vendor account/API key/paid action, Pass 1, Pass 2, price artifact build, price computation, canonical-side price computation, P1/P2/P3 continuation, probe execution, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis. P1 remains BLOCKED and `named_binary_probe_blocked` remains `true`.
-
-### Option D temporal in-range precheck result: COMPLETED / ACCEPTED — SETTLED
-
-The Option D local-only/read-only temporal in-range precheck was implemented after separate authorization, fixture-tested, user-run locally, and accepted.
-
-**Result label.** `OPTION_D_TEMPORAL_INRANGE_PRECHECK_COMPLETED_ACCEPTED`.
-
-**Run status.** `COMPLETED`; `halt_code = null`; `uniform_result_detected = false`.
-
-**Universe reconciliation.** Exact accepted P0 match: expected 39,693 / observed 39,693; subclass observed counts UP_DOWN 22,012, OVER_UNDER 1,003, NAMED_OTHER 16,678. No first-trade anchors were missing and no `resolved_at` values were missing.
-
-**Pooled temporal coverage.**
-- PMXT v2: 18,137 / 39,693 = 0.456932.
-- Telonex L2: 37,749 / 39,693 = 0.951024.
-
-**Subclass temporal coverage.**
-- UP_DOWN: PMXT v2 0.529211; Telonex L2 0.974696.
-- OVER_UNDER: PMXT v2 0.661017; Telonex L2 0.979063.
-- NAMED_OTHER: PMXT v2 0.349263; Telonex L2 0.918096.
-
-**Interpretation.** PMXT v2 is closed/deprioritized for broad full-P0 Option D coverage on timing grounds. A PMXT API key does not change the PMXT v2 archive start-date limitation. Any future PMXT work would require a separate narrow-subset SPEC ONLY authorization and must not be treated as broad P0 coverage. Telonex L2 remains plausible only for a later separately authorized SPEC ONLY vendor-coverage review: pooled temporal coverage narrowly clears 0.95, but NAMED_OTHER is below 0.95, so it is not a clean automatic pass.
-
-**Standing consequence.** Timing feasibility does not establish vendor availability, token coverage, side coverage, both-side book state, book depth, price quality, mechanical trust, price-source viability, or P1 viability. No vendor fetch, PMXT online/API-key test, Telonex fetch, account/API key/paid action, Pass 1, Pass 2, price artifact, bid/ask/mid/spread/depth/canonical-side price computation, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis follows. P1 remains BLOCKED and `named_binary_probe_blocked` remains `true`.
-
-### P0 Representativeness and Quality Audit: ACCEPTED — `P0_REPRESENTATIVENESS_CLEAR_WITH_LIMITATIONS`
-
-Spec `SPEC_p0_representativeness_quality_audit.md`, implementation `scripts/p0_representativeness_quality_audit.py`, tests `tests/test_p0_representativeness_quality_audit.py`. Local-only/read-only run authorized and completed; result accepted.
-
-**Accepted result.** Base P0 (39,693) is valid enough for later historical named-binary research framing, with limitations. The excluded/missing/ambiguous tail (264 conditions) is compositionally skewed relative to included P0, but the impact-weighted comparison `pre_resolution_candidate_vs_final_p0` is CLEAR, so that tail is too small to materially change final P0 composition.
-
-**Vendor subset-bias section.** §6 did not run; it correctly halted with `STOP_OPTION_D_CONDITION_LEDGER_ABSENT` because no condition-level Option D artifact exists. No Option D rerun, re-emission, or recomputation occurred.
-
-**Standing consequence.** This finding does not unblock P1, does not authorize vendor action, does not authorize price-source construction, does not authorize P1/P2/P3/probe, and does not change `named_binary_probe_blocked`. **DO NOT REOPEN** absent a new condition-level Option D artifact or a new representativeness question.
-
-### Local-curl per-side dataset verification Revision 23 with Amendment 03: SPEC ACCEPTED; bounded I0 implementation authoring authorized — SETTLED
-
-Revision 23 is accepted as the frozen Revision 23 package plus `REV23_AMENDMENT_01`, `REV23_AMENDMENT_02`, and `REV23_AMENDMENT_03`.
-
-Accepted effective hashes:
-
-- specification: `d4271f3bfb29924c3937a0569d3cee585ef32125604785ba474e837a2ca642b9`;
-- schema registry: `e9590fac64ce245dbebd7f0e0bcaca5cf8b263e907e202dbba779f1be9157f19`;
-- request-plan and authorization contract: `8095bb923742e8f7eafac61a1de52d9ff4e5537f8a03bb52af62eb795c9f0f7f`;
-- governing-package semantic hash: `6510bee82e4047bc3e035cfa27732556b313300f19368c8f02ed7cb8eda5c86b`;
-- governing-package manifest complete-file hash: `b2627541175ca3ccb225491c1a684e0d7c00eed20d40e30cd65da23136528afa`.
-
-Amendment 03 resolves the token-manifest lifecycle cycle, exact partition/request schemas, typed-tag and null rules, integer pre-run identity timestamp, total raw-evidence-bound HTTP reconciliation, and the completed-capture lifecycle path. Populations remain 600 token-manifest rows, 496 request-manifest rows, and 496 request-plan rows. The twelve-field `run_id`, denominators, thresholds, result ordering, guardrails, P1 block, and `named_binary_probe_blocked = true` remain unchanged.
-
-The prior I0 source/test-source authorization was tied to the Amendments-01/02 contract bytes and remains superseded. The previously submitted Claude implementation package was blocked and is not accepted as conformant.
-
-After accepted-contract commit `fad41de515572ca30b4440b060a69dd6bfc57e2b` was verified, Gustavo explicitly authorized one new bounded Amendment 03 I0 implementation-authoring stage on `2026-07-15`. The authorization was installed in canonical commit `d737aa9e12cbfa584b275e128c8624e01af72f61`.
-
-Claude then correctly returned `STOP_CANONICAL_SOURCE_UNAVAILABLE`: its clean local clone was at `226085ca9ba7fa41a8b666005499827d6fa6b9c5`, the later commits were absent from its object database, and fetch/pull/reset were expressly unauthorized. Sentinel accepts the stop. A further handoff defect was found: the first authorization package conflated the accepted-contract commit `fad41de515572ca30b4440b060a69dd6bfc57e2b` with the required working `HEAD`, although the authorization files exist only from `d737aa9e12cbfa584b275e128c8624e01af72f61` onward.
-
-**Corrected source model:** `fad41de515572ca30b4440b060a69dd6bfc57e2b` remains the immutable accepted-contract commit; `d737aa9e12cbfa584b275e128c8624e01af72f61` is the first authorization-anchor commit. The actual implementation baseline is the synchronized local `HEAD`, which must be `d737aa9e12cbfa584b275e128c8624e01af72f61` or a descendant, preserve the exact accepted-contract hashes, contain no prohibited source/test/dependency/accepted-contract drift since the anchor, and have all authorized new source/test files absent before authoring.
-
-**Current authorization:** exact source and unexecuted test-source authoring for one static Claude package remains authorized in principle, but the stage is blocked until canonical source synchronization is separately authorized and completed. Fetch/pull/reset/checkout or other source synchronization is not authorized by the existing implementation decision. Test execution, Python/project execution, local-data reads, curl/network/request execution, replay, empirical artifacts, CLI/dependencies, Git publication, P1/P2/P3, probe, scoring, price construction, wallet/PnL/trading, and gate changes remain unauthorized.
+- null or blank `condition_id` rows are dropped at analysis load;
+- trade-ID deduplication prefers rows with populated semantic keys;
+- all-one-role or all-one-direction output is a diagnostic warning, not a result.
 
 ---
 
-## DO NOT REOPEN unless explicitly asked
+## Named-binary decisions
 
-- Rung 1 price recalibration (closed negative).
-- Fee-field diagnostic (inconclusive, superseded).
-- OrderFilled topic-order debate (resolved: topic2=maker, Dune-verified).
-- The 217/0 and 10/0 taker artifacts (explained: join artifact + precision-loss bug, both fixed).
-- PnL-by-role / H1' (not authorized — separate phase).
-- Live / paper trading (permanently out of scope).
-- Named-binary semantics/orientation (validated) and Issue-A reporting fix (settled). Do not re-derive.
-- Named-binary non-YES/NO outcome source + Stage 4 gate integration (ACCEPTED). Do not re-derive the source, the build, or the gate-policy split. The legacy pooled-all gate stays BLOCKED_BY_RESOLUTION_MAPPING; the non-YES/NO branch is CLEAR_WITH_WARNINGS. The probe itself remains unauthorized.
-- S1 Pass 1 sampled coverage result (`S1_SOURCE_NOT_VIABLE`, ACCEPTED). Do not re-derive or re-litigate the sampled negative or per-subclass rates. It is Pass 1 sampled coverage only; a Pass 2 full-universe run or any alternative price source is a separate, explicitly-authorized step. P1 stays blocked with no `yes_price` fallback; the probe stays unauthorized.
-- S1-ALT Pass 1 sampled coverage result (`S1ALT_SOURCE_NOT_VIABLE`, ACCEPTED). Do not re-derive or re-litigate the sampled negative or per-subclass rates. It reused the exact accepted S1 Pass-1 sample and is Pass 1 sampled coverage only. P1 stays blocked with no `yes_price` fallback or `1 - price` synthesis; the probe stays unauthorized.
-- Option B corrected B0 state (`B0_MECHANICAL_TRUST_NOT_ESTABLISHED`). Do not re-litigate the original artifact-missing defect; the corrected run has enough evidence and is negative for B0 mechanical trust on the fixed manifest. B1 remains not authorized; no full Pass 1/S2/P1/P2/P3/probe/scoring/backfill is authorized.
-- Option C Revision 3 SPEC ONLY acceptance, C1R accepted design, C1A accepted valid halt, C1A-F1 mixed evidence, and C1A-F2 insufficient-artifact result. Do not reopen old unsafe C1 designs, do not mark C1 design-clear, and do not authorize C1B/C2/P1/P2/P3/probe from these findings.
-- Option D L2 order-book vendor archive coverage SPEC (`OPTION_D_SPEC_ACCEPTED_SPEC_ONLY`). Do not substitute non-L2 channels for L2 book depth; do not treat best bid/ask/mid diagnostics as an accepted price basis; P1 stays blocked.
-- Option D temporal in-range precheck SPEC and result (`OPTION_D_TEMPORAL_INRANGE_PRECHECK_COMPLETED_ACCEPTED`). Do not re-run or reinterpret the temporal precheck without explicit authorization. Do not treat timing feasibility as vendor availability, side/token coverage, book depth, price quality, mechanical trust, price-source viability, or P1 viability. PMXT v2 is closed/deprioritized for broad full-P0 coverage on timing grounds; Telonex L2 may only proceed to a separately authorized SPEC ONLY vendor-coverage review.
-- P0 Representativeness and Quality Audit result (`P0_REPRESENTATIVENESS_CLEAR_WITH_LIMITATIONS`). Do not reinterpret the excluded-tail skew as broad P0 bias; the impact-weighted pre-resolution-vs-final-P0 comparison is CLEAR. Do not use this result to unblock P1, authorize vendor action, authorize price-source construction, authorize P1/P2/P3/probe, or change gates.
-- REV23 Amendment 03 acceptance. Do not restore the old run-scoped token manifest, the six-field partition shorthand, conflicting request schemas, string-valued pre-run timestamp, partial HTTP mapping, or a completed-capture path that bypasses reconciliation.
-- REV23 Amendment 03 I0 implementation authorization and canonical-source stop. Do not conflate the accepted-contract commit with the authorization-anchor commit, bypass `STOP_CANONICAL_SOURCE_UNAVAILABLE`, broaden the exact source/test-source matrix, authorize source synchronization implicitly, execute tests or Python, read local data, invoke network/curl/request paths, create empirical artifacts, change dependencies/CLI, publish Git history, or continue downstream phases. The prior blocked packages remain non-authoritative.
+### Semantics and realized outcomes
+
+Named-binary orientation is accepted and must not be re-derived.
+
+The local resolution store is YES/NO-only. Non-YES/NO outcomes are accepted from
+the Dune payout-vector pipeline:
+
+- resolved single winners: `39,693`;
+- ambiguous multiple-winner exclusions: `253`;
+- non-YES/NO branch: `CLEAR_WITH_WARNINGS`;
+- legacy pooled-all gate: `BLOCKED_BY_RESOLUTION_MAPPING`.
+
+The source is usable for outcome mapping but does not authorize a probe.
+
+`named_binary_probe_blocked = true`.
+
+### P0
+
+P0 is accepted as `P0_CLEAR` with final eligible count `39,693`.
+
+The representativeness audit is accepted as
+`P0_REPRESENTATIVENESS_CLEAR_WITH_LIMITATIONS`. The excluded tail is
+compositionally skewed but too small to materially change the impact-weighted
+pre-resolution-versus-final-P0 comparison.
+
+Neither result authorizes P1, pricing, scoring, wallet work, or probe execution.
+
+### P1 price input
+
+P1 remains blocked on a two-side price source.
+
+`yes_price`, `1 - price`, and `1 - yes_price` are prohibited as named-binary
+unblock paths.
 
 ---
 
-## Self-correction discipline (meta)
+## Price-source decisions
 
-This project corrected itself repeatedly (217/0, topic swap, topic-order mismatch, asset-id precision loss, the original B0 persist-before-halt defect, the REV23 manifest size correction, and the Revision-23 I0 conformance/lifecycle contradictions). Each was caught by validating against authoritative source or persisted artifacts before concluding, not by trusting tooling. Maintain this: one row, one all-one-role output, one incomplete artifact set, or one unverified hash/size pair is never sufficient to conclude.
+### S1
+
+Accepted sampled result: `S1_SOURCE_NOT_VIABLE`.
+
+Do not reopen the sampled negative or silently escalate to Pass 2.
+
+### S1-ALT
+
+Accepted sampled result: `S1ALT_SOURCE_NOT_VIABLE`.
+
+Do not synthesize the missing side.
+
+### Option B
+
+Corrected B0 is accepted as `B0_MECHANICAL_TRUST_NOT_ESTABLISHED`.
+
+The original artifact-missing defect is superseded by the corrected diagnostic.
+B1 remains unauthorized.
+
+### Option C
+
+- Revision 3 spec and C1R design are accepted as historical/spec context.
+- Original C1A halt `C1_ROW_EXPLOSION` is accepted.
+- C1A-F1 is mixed diagnostic evidence only.
+- C1A-F2 result is `C1F2_ARTIFACTS_INSUFFICIENT`.
+- Option C is not accepted as viable.
+- C1 is not design-clear.
+- No further canary, C1B, C2, price artifact, or downstream phase is authorized.
+
+### Option D
+
+The L2 archive coverage methodology is accepted as SPEC ONLY.
+
+Accepted temporal results:
+
+- PMXT v2 pooled `0.456932`;
+- Telonex L2 pooled `0.951024`;
+- Telonex NAMED_OTHER `0.918096`.
+
+PMXT v2 is deprioritized for broad P0 coverage. Telonex L2 may only progress
+through a separately authorized SPEC-ONLY vendor-coverage review.
+
+Timing feasibility is not vendor availability, token/side coverage, price
+quality, mechanical trust, or P1 viability.
+
+---
+
+## Revision 23 lifecycle decisions
+
+### Amendment 03
+
+Revision 23 with Amendments 01–03 was previously accepted. Its earlier bounded
+I0 authorization later became stale relative to Finding 4.
+
+The accepted-contract commit and authorization-anchor commit were distinct:
+
+- accepted Amendment 03 contract: `fad41de515572ca30b4440b060a69dd6bfc57e2b`;
+- first Amendment 03 authorization anchor:
+  `d737aa9e12cbfa584b275e128c8624e01af72f61`.
+
+Claude's `STOP_CANONICAL_SOURCE_UNAVAILABLE` was valid.
+
+### Finding 4 specification and materialization
+
+Finding 4 was approved as the exact ordered stack:
+
+1. base amendment draft;
+2. bounded correction packet;
+3. delta packets 02 through 08.
+
+The distributed specification was frozen before materialization.
+
+The materialization preflight was accepted only after it proved:
+
+- all 18 support schemas;
+- the exact 30-role matrix;
+- eight structural prepared members;
+- separate descriptor-selected prepared object payloads;
+- complete path grammar;
+- zero unresolved references;
+- all twelve materialization obligations represented concretely.
+
+The final package was accepted with archive SHA-256:
+
+`9ec22f611a1f6b8a598725e0b60b7591503fd6271ae79eb366359e7e312099f8`.
+
+### Finding 4 canonical installation
+
+The Phase A installation is accepted.
+
+Authorized base:
+
+`f6cb60df66c2bbcdfb6d797119ed25ad79e06a11`
+
+Linear commits:
+
+- `3f8cc54dc12a5335472f00f5ffcf5c0d56d8d1ba`
+- `c394b9ab5eb5dc07f8d716818e02507994ce41d7`
+- `e83555ef23712cf6c846dc63a7103e0e0c7e4ed4`
+
+Finding 4 installation commit:
+
+`e83555ef23712cf6c846dc63a7103e0e0c7e4ed4`
+
+Verified installed hashes:
+
+- specification: `e52f70bb243bc431880c2eaabba7403f7a5d786b70d8a5e903b9026b4bde7a76`;
+- schema registry: `c9e8fe1b2c64f64e9cefd76e820c9589708723485ff7e54f4f69e3fe4ed49689`;
+- request/authorization contract: `926d1503f20965f2573e2b24d79e747438254f77200b2060bcb741f6279556d0`;
+- governing manifest: `8cd3c6c93b6f1bba1906b1b2b3f67f6e87846991368bb34b5da52044adbc1f38`;
+- governing semantic hash: `a1368d6f109bb6c1812c9f92d5dd72d4717287fd80fc441726a788a69ad07d9f`;
+- accepted checksum inventory: `be9fe20717a0dc54bd7c73558ea201eb90265bd760e1f7fb78202654cca533f9`.
+
+All 109 changed files were confined to:
+
+`project_context/implementation_handoffs/local_curl_rev23_i0/`
+
+No implementation, test, dependency, CLI/runtime, empirical, or research-data
+path changed.
+
+### Implementation supersession
+
+The earlier Amendment 03 I0 implementation authorization is superseded.
+
+Current implementation scope is:
+
+`DEFER — NOT AUTHORIZED`.
+
+No active Claude implementation prompt exists. Source synchronization,
+implementation, test authoring/execution, project-code execution, local-data
+reads, network/curl, replay, empirical work, P1/P2/P3, scoring, probe execution,
+and gate changes require separate future decisions.
+
+---
+
+## DO NOT REOPEN unless explicitly requested with new evidence
+
+- Rank 1A recalibration.
+- OrderFilled topic order.
+- The 217/0 and 10/0 artifacts.
+- Fee-field diagnostic.
+- Named-binary orientation and outcome-source derivation.
+- S1 and S1-ALT sampled negatives.
+- Option B corrected B0 negative.
+- Option C old unsafe C1 designs or a false `C1_CANARY_DESIGN_CLEAR`.
+- Option D temporal interpretation.
+- P0 representativeness result.
+- Amendment 03 versus authorization-anchor distinction.
+- Finding 4 approved source stack and accepted materialization.
+- The superseded Amendment 03 I0 implementation authorization.
+
+---
+
+## Self-correction discipline
+
+One row, one all-one output, one incomplete artifact set, one passing test suite,
+or one unverified hash is never sufficient to conclude. Verify authoritative
+bytes and contracts before accepting a finding.

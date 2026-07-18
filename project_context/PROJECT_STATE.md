@@ -1,104 +1,196 @@
 # PROJECT STATE
 
-*Current objective, environment, and active tasks. Source of truth for "what are we doing now."*
+*Current objective, environment, active blockers, and authorization state.*
 
 ---
 
-## Current Objective
+## Current objective
 
-Stay **Polymarket-native**. The wallet-edge thesis has been weakened across three angles (see CLOSED_FINDINGS), so effort moves to a larger, untested universe.
+Stay Polymarket-native and preserve the accepted research-only guardrails.
 
-- **Named-binary semantics layer: DONE / audit-gated.** The yes_price → canonical_side_price rewrite is implemented, tested, and validated on the full dataset (orientation 1.0, coverage 0.99601, YES/NO resolution 8,521/8,521). Classification contract pinned (`nb-contract-2026-06-28.1`).
-
-- **Non-YES/NO realized-outcome source: DONE / audit-gated (CLEAR_WITH_WARNINGS).** Dune `ctf_evt_conditionresolution` payout vectors source the non-YES/NO outcomes (Stages 0–4, accepted). Stage 3 built 39,693 RESOLVED_SINGLE_WINNER rows (253 ambiguous excluded + counted). Stage 4 added the additive `--resolution-source` audit flag. The **legacy pooled-all `gate_state` stays BLOCKED_BY_RESOLUTION_MAPPING** (local resolutions are YES/NO-only; YES_NO maps ~0.13, below the pooled floor). A **separate non-YES/NO branch gate is CLEAR_WITH_WARNINGS** (pooled 0.99339 ≥ 0.99; each subclass ≥ 0.95: UP_DOWN 0.99995 / NAMED_OTHER 0.98657 / OVER_UNDER 0.96535). Per-subclass counts separate missing_source_rows from AMBIGUOUS_MULTIPLE_WINNERS. Stage 4 local verification: 87 passed in 1.25s.
-
-- **Named-binary probe: NOT AUTHORIZED.** `named_binary_probe_blocked = true` in all gate states. CLEAR_WITH_WARNINGS means the outcome source/audit is usable — it does NOT authorize a probe. Do not conflate outcome-source scoreability with probe authorization.
-
-- **Named-binary offline probe spec: ACCEPTED / SPEC ONLY.** `SPEC_named_binary_probe.md` is the governing spec-only document for a future offline historical non-YES/NO named-binary forecast-vs-price probe. It authorizes no implementation, no data run, and no probe execution.
-
-- **Named-binary probe Stage P0 preflight: ACCEPTED / P0_CLEAR.** `scripts/named_binary_probe_p0_preflight.py` (read-only except for its P0 artifacts) was implemented, tested (22 passed), and accepted. On real data it emitted eligible/excluded universe counts ONLY: contract_eligible 39,957; resolved_single_winner 39,693; ambiguous_multiple_winners 253; source_rows 39,946; missing_source_rows 11; final_p0_eligible 39,693; `p0_state = P0_CLEAR`. `probe_execution_authorized = False`; `named_binary_probe_blocked` observed True, **not flipped**; gate not modified; no trades/prices, no decision timestamps, no canonical_side_price, no Brier/log-loss/calibration/reliability, no wallet discovery, no PnL. **P0 does NOT authorize P1/P2/P3 or probe execution** — it only verified the universe before any metric exists. Artifacts: `artifacts/named_binary_probe/p0_preflight.{json,md}` + `p0_excluded_counts.csv`.
-
-- **P0 representativeness and quality audit: ACCEPTED — result `P0_REPRESENTATIVENESS_CLEAR_WITH_LIMITATIONS`.** Base P0 (39,693) is valid enough for later historical named-binary research framing, with limitations. The excluded/missing/ambiguous tail (264 conditions) is compositionally skewed versus included P0, but the impact-weighted comparison against the pre-resolution candidate universe is CLEAR, so the tail is too small to materially change final P0 composition. §6 vendor-subset comparison halted `STOP_OPTION_D_CONDITION_LEDGER_ABSENT` because no condition-level Option D artifact exists. This does not unblock P1; does not authorize vendor action, price-source construction, P1/P2/P3/probe, scoring, wallet work, `OrdersMatched`, `log_index`, PnL, gate change, or side synthesis.
-
-- **Named-binary probe Stage P1 (feature assembly): BLOCKED on price input.** P1 was attempted, paused for data-contract review, and is now blocked on a proven data-availability gap. The accepted semantics layer's `OrientationContract.canonical_side_price(side_0_price, side_1_price)` requires **two per-side prices** in `outcome_index` order, but `Store.load_prices()` exposes only `[condition_id, ts, yes_price]` — a single scalar. **S0 price-input inspection: ACCEPTED.** `PRICE_INPUT_CONTRACT_named_binary_probe.md` proves from source (`pm_research/data/backfill.py`, `schemas.py`, `audit_market_structure.py`) that the local `yes_price` is a **YES/NO-only** construction (`price where outcome=="YES" else 1-price`), explicitly flagged **unsafe** for UP_DOWN / OVER_UNDER / NAMED_OTHER, and that **no local per-side/per-token price artifact exists**. The price *formula* is resolved (DATA_CONTRACTS §6); the price *input* is not derivable locally. `named_binary_probe_blocked` stays `true`. S0 produced no code changes and no probe artifacts (only the inspection report).
-
-- **S1 price-source coverage spec: ACCEPTED / SPEC ONLY.** `SPEC_price_source_s1_coverage.md` is the accepted, **coverage-only** plan for testing whether Polymarket CLOB `/prices-history` per token can cover the P0 universe with a usable decision-time per-side price for both sides. It does NOT unblock P1 by itself and authorizes no downstream work.
-
-- **S1 Pass 1 sampled coverage: COMPLETED / ACCEPTED — RESULT: `S1_SOURCE_NOT_VIABLE`.** On the accepted run: sample 300/300; 248 valid-window conditions measured; 52 invalid-window excluded; 496 side-token fetches; endpoint shape parsed cleanly. Level-B both-sides coverage cleared 0.95 in no subclass: UP_DOWN 19/50 = 0.38, OVER_UNDER 51/98 ≈ 0.5204, NAMED_OTHER 65/100 = 0.65. Verdict `S1_SOURCE_NOT_VIABLE`. This is Pass 1 sampled coverage only, not Pass 2 full-universe coverage. P1 remains BLOCKED with no `yes_price` fallback. No Pass 2, S2, P1/P2/P3, probe, scoring, backfill, wallet/OrdersMatched/log_index/PnL, or gate change is authorized; `named_binary_probe_blocked` stays `true`.
-
-- **S1-ALT Pass 1 (Option A local trade-print) sampled coverage: COMPLETED / ACCEPTED — RESULT: `S1ALT_SOURCE_NOT_VIABLE`.** The first candidate alternative after the S1 negative — local trade-print reconstruction via `Store.load_trades()` — was implemented per `SPEC_price_source_alt_trade_prints.md`, patched through review, user-run, and accepted as sampled coverage. It reused the exact accepted S1 Pass-1 300-condition sample. Level-B both-sides coverage again cleared 0.95 in no subclass: UP_DOWN 13/50 = 0.26, OVER_UNDER 40/98 ≈ 0.4082, NAMED_OTHER 71/100 = 0.71. Verdict `S1ALT_SOURCE_NOT_VIABLE`. P1 remains BLOCKED with no `yes_price` fallback and no `1 - price` synthesis. No Pass 2, Option C, S2, P1/P2/P3, probe, scoring, backfill, wallet/OrdersMatched/log_index/PnL, or gate change is authorized; `named_binary_probe_blocked` stays `true`.
-
-- **Option B Data API `/trades` corrected B0 diagnostic: COMPLETED / ACCEPTED — RESULT: `B0_MECHANICAL_TRUST_NOT_ESTABLISHED`.** Corrected B0 completed with `artifact_status = API_ARTIFACT_COMPLETE` and `halt_code = null`, but did not establish Data API `/trades` mechanical trust. Fixed 10-condition manifest result: `api_rows_primary = 13,009`, `api_rows_total_all_query_modes = 17,853`, `local_rows = 1,346`, `mismatches = 14,355`; classifications `OVERLAP_API_LOCAL_MISMATCH = 7`, `OVERLAP_PAGINATION_PARTIAL = 3`, `OVERLAP_MATCHED = 0`, `NO_TEMPORAL_OVERLAP = 0`; mismatches `API_ONLY = 11,829`, `LOCAL_ONLY = 145`, `TX_HASH_AMBIGUOUS = 2,381`; pagination `COMPLETE_SHORT_FINAL_PAGE = 7`, `PARTIAL_RETRIEVAL = 3`. Therefore corrected B0 did **not** establish Data API `/trades` mechanical trust. **B1 remains not authorized.** Option B must not proceed to B1/full Pass 1/S2/P1/P2/P3/probe. P1 remains BLOCKED on the absence of an accepted per-side/token-identity price source. No scoring, backfill, wallet discovery, OrdersMatched expansion, `log_index`, PnL, price-series artifact, or gate change is authorized. `named_binary_probe_blocked` stays `true`, not flipped. Minor metadata caveat: `reconciliation.json` reports `takeronly_probe_conditions = 3`, while `offline_recompute_summary.json` reports `takeronly_probe_conditions = 10`; core counts/statuses match and the caveat does not change the B0 negative finding.
-
-- **Option C (on-chain / decoded OrderFilled event tables) price-source diagnostics: C1A valid halt accepted; C1A-F1 executed and reviewable mixed evidence; C1A-F2 artifact review accepted insufficient.** `SPEC_price_source_option_c_onchain.md` remains accepted as the third candidate review after Option A/S1-ALT and Option B, both closed negative. C1R resolved the Revision-3 C1 guardrail block by fixed selector manifests, subquery-wrapped SQL, cap+1 over-fetch, hard row-cap enforcement, empty-export detection, row-level evidence, and decoded `OrderFilled` source-table validation. The original C1A user-run is accepted as a valid halt: manifest `resolved_count = 5`, `excluded_count = 0`; outcome `C1_ROW_EXPLOSION`; one condition returned 2001 rows against `per_condition_row_cap = 2000`. C1A-F1 later executed with reviewable mixed evidence: outcome `C1_CANARY_EXECUTED_NEEDS_REVIEW`; 133 total Dune rows in fixed windows; 34 total Dune-only tx hashes; no row explosion; no unresolved side rows; `NAMED_OTHER` and `UP_DOWN` had Dune rows, `OVER_UNDER` had two local-only tx hashes. C1A-F2 artifact review is accepted with result `C1F2_ARTIFACTS_INSUFFICIENT` because the `OVER_UNDER` local-only evidence lacks local-side row detail needed for causal classification. Option C is not marked viable; C1 is not design-clear; no price was computed or persisted; P1 remains BLOCKED; `named_binary_probe_blocked` stays `true`. **C1B full sampled coverage is not authorized. C2 reusable/production implementation is not authorized. P1/P2/P3/probe/scoring/backfill/wallet/OrdersMatched/`log_index`/PnL remain unauthorized.**
-
-- **Option C artifact-enrichment evidence-capture SPEC: ACCEPTED / SPEC ONLY — RESULT `ARTIFACT_ENRICHMENT_SPEC_ONLY`.** `SPEC_price_source_option_c_artifact_enrichment.md` defines the minimum evidence-capture requirements for any possible future Option C / decoded `OrderFilled` diagnostic. It authorizes no implementation, no tests, no local data reads, no Dune/API/RPC/network, no SQL generation/modification/execution, no C1A/C1A-F1 rerun, no additional canary, no one-condition diagnostic, no C1B/C2, no P1/P2/P3/probe, no scoring/backfill/wallet/OrdersMatched/`log_index`/PnL, no price artifact, no gate change, no cap change, no row truncation, no `yes_price`, and no side synthesis.
-
-- **Option D L2 order-book vendor archive coverage spec: ACCEPTED / SPEC ONLY — RESULT `OPTION_D_SPEC_ACCEPTED_SPEC_ONLY`.** `SPEC_price_source_option_d_l2_archive.md` defines a fourth per-side/token-identity candidate-source family after S1/S1-ALT/Option B negatives and unresolved Option C evidence: third-party L2 order-book/quote vendor archives. Candidate scope is **PMXT v2 only** (effective L2 book archive start `2026-04-13T19:00:00Z`; PMXT v1 is out of scope unless separately reviewed) and **Telonex L2 order-book/quote history** (operative start `2025-10-11T00:00:00Z`; Telonex on-chain fills from inception are not L2 book coverage). The accepted channel-mismatch guards are `VENDOR_HISTORY_NOT_L2_BOOK_RELEVANT` and `STOP_VENDOR_HISTORY_CHANNEL_MISMATCH`. Best bid, best ask, and mid are diagnostics only; no price-basis decision is accepted. This spec authorizes no implementation, tests, local temporal precheck, vendor/network fetch, PMXT raw archive download, Telonex fetch, vendor account/API key/paid action, Pass 1, Pass 2, price artifact build, canonical-side price computation, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis. P1 remains BLOCKED; `named_binary_probe_blocked` remains `true`.
-
-- **Option D temporal in-range precheck: COMPLETED / ACCEPTED — RESULT `OPTION_D_TEMPORAL_INRANGE_PRECHECK_COMPLETED_ACCEPTED`.** The local-only/read-only precheck ran once under explicit authorization and completed with no halt. P0 universe reconciliation was exact: expected 39,693 / observed 39,693; UP_DOWN 22,012; OVER_UNDER 1,003; NAMED_OTHER 16,678; no missing first-trade anchors; no missing `resolved_at`; `p0_state = P0_CLEAR`; `named_binary_probe_blocked_observed = true`. Pooled temporal in-range coverage: PMXT v2 18,137 / 39,693 = 0.456932; Telonex L2 37,749 / 39,693 = 0.951024. Subclass coverage: PMXT v2 — UP_DOWN 0.529211, OVER_UNDER 0.661017, NAMED_OTHER 0.349263; Telonex L2 — UP_DOWN 0.974696, OVER_UNDER 0.979063, NAMED_OTHER 0.918096. Interpretation: PMXT v2 is closed/deprioritized for broad full-P0 Option D coverage on timing grounds. Telonex L2 is plausible only for a later separately authorized SPEC ONLY vendor-coverage review; `NAMED_OTHER` below 0.95 prevents treating it as a clean automatic pass. Timing feasibility does not establish vendor availability, token coverage, side coverage, both-side book state, book depth, price quality, mechanical trust, price-source viability, or P1 viability. No vendor data, prices, P1/P2/P3/probe, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis follows. `named_binary_probe_blocked` remains `true`.
-
-- **Local-curl per-side dataset verification Revision 23: ACCEPTED / SPEC ONLY.** The frozen Revision 23 package plus `REV23_AMENDMENT_01`, `REV23_AMENDMENT_02`, and accepted `REV23_AMENDMENT_03` form the governing contract. Effective governing hashes: specification `d4271f3bfb29924c3937a0569d3cee585ef32125604785ba474e837a2ca642b9`; schema registry `e9590fac64ce245dbebd7f0e0bcaca5cf8b263e907e202dbba779f1be9157f19`; request/authorization contract `8095bb923742e8f7eafac61a1de52d9ff4e5537f8a03bb52af62eb795c9f0f7f`; governing-package semantic hash `6510bee82e4047bc3e035cfa27732556b313300f19368c8f02ed7cb8eda5c86b`; governing manifest file hash `b2627541175ca3ccb225491c1a684e0d7c00eed20d40e30cd65da23136528afa`. No empirical replay has been authorized or performed under this acceptance.
-
-- **REV23 Amendment 03 I0 implementation authoring: AUTHORIZED / BLOCKED ON CANONICAL SOURCE SYNC.** The accepted-contract commit is `fad41de515572ca30b4440b060a69dd6bfc57e2b` and the first canonical authorization-anchor commit is `d737aa9e12cbfa584b275e128c8624e01af72f61`. Claude correctly stopped with `STOP_CANONICAL_SOURCE_UNAVAILABLE` because its clean local clone was at `226085ca9ba7fa41a8b666005499827d6fa6b9c5` and lacked both later commits. The original handoff also incorrectly required `HEAD=fad41de515572ca30b4440b060a69dd6bfc57e2b` even though the authorization files exist only from `d737aa9e12cbfa584b275e128c8624e01af72f61` onward. The corrected gate requires the synchronized local `HEAD` to be `d737aa9e12cbfa584b275e128c8624e01af72f61` or a descendant, exact accepted-contract hashes, no prohibited source/test/dependency/accepted-contract drift since the anchor, and absence of all authorized new source/test files before authoring. The implementation stage remains authorized in principle but no authoring may begin until source synchronization is separately authorized and the gate passes. Tests, Python/project execution, local-data reads, curl/network/request execution, empirical artifacts, CLI/dependencies, Git publication, P1/P2/P3, probe, scoring, price construction, wallet/PnL/trading, and gate changes remain unauthorized.
-
-- **Chat2 Dune wallet cohort discovery: BLOCKED** unless separately authorized. It consumes the named-binary contract but is a distinct phase; do NOT conflate the now-usable outcome source with wallet discovery. Outcome-source scoreability does not unblock Chat2.
+The immediate project objective is to maintain the accepted Revision 23 +
+Finding 4 contract as the authoritative basis for any future bounded local-curl
+implementation decision. No implementation decision is active.
 
 ---
 
-## What is NOT authorized
+## Named-binary research state
 
-Outside the exact Amendment 03 I0 source/test-source file matrix, no implementation or implementation correction is authorized. Canonical source synchronization is also not authorized by the implementation stage and requires a separate explicit Gustavo decision. No test execution, lint, coverage, CI, Python/project-code execution, local research-data read, curl discovery, network or request execution, replay, empirical capture, compatibility/strict analysis, results/finalization, CLI integration, dependency change, Git publication, P1/P2/P3, probe, scoring, price construction, side synthesis, wallet/PnL/trading, or gate change is authorized. Subprocess use remains limited to the exact read-only local Git inspection and static hashing commands stated in the handoff unless a later source-sync decision explicitly adds bounded commands.
+### Semantics and realized outcomes
 
-No C1B full sampled coverage, C2 reusable/production implementation, P1/P2/P3 continuation, probe execution, scoring, backfill, wallet discovery, OrdersMatched expansion, `log_index`, PnL, gate change, cap increase, row truncation, additional canary, SQL modification, or price artifact follows from the accepted C1A-F1 result or accepted C1A-F2 artifact review.
+- Named-binary semantics/orientation: implemented, tested, and audit-gated.
+- Orientation correctness: `1.0`.
+- Token identity coverage: `0.99601`.
+- YES/NO local resolutions: `8,521 / 8,521`.
+- Non-YES/NO realized outcomes: accepted Dune payout-vector source.
+- Resolved single-winner rows: `39,693`.
+- Ambiguous multiple-winner exclusions: `253`.
+- Non-YES/NO branch gate: `CLEAR_WITH_WARNINGS`.
+- Legacy pooled-all gate: `BLOCKED_BY_RESOLUTION_MAPPING`.
+- `named_binary_probe_blocked = true`.
 
-Do not record `C1_CANARY_DESIGN_CLEAR` from the C1A-F1 run or C1A-F2 review. The observed C1A-F1 outcome is `C1_CANARY_EXECUTED_NEEDS_REVIEW`, and the accepted C1A-F2 review result is `C1F2_ARTIFACTS_INSUFFICIENT`.
+### P0 and P1
 
-No additional Option D run, rerun, ledger expansion, vendor/network fetch, PMXT online/API-key test, PMXT raw archive download, Telonex fetch, vendor account/API key/paid action, Pass 1, Pass 2, price artifact build, canonical-side price computation, P1/P2/P3 continuation, probe execution, scoring, wallet/OrdersMatched/`log_index`/PnL, gate change, or side synthesis follows from the accepted Option D temporal in-range result.
+- P0 preflight: `P0_CLEAR`.
+- Final P0 eligible universe: `39,693`.
+- Subclasses: UP_DOWN `22,012`; OVER_UNDER `1,003`; NAMED_OTHER `16,678`.
+- P0 representativeness result:
+  `P0_REPRESENTATIVENESS_CLEAR_WITH_LIMITATIONS`.
+- P1 remains blocked because the accepted orientation contract requires two
+  independently sourced per-side prices, while the local price store exposes only
+  `[condition_id, ts, yes_price]`.
+- `yes_price` is YES/NO-only and unsafe for UP_DOWN, OVER_UNDER, and NAMED_OTHER.
+- No local per-side/per-token decision-time price artifact is accepted.
 
-The P0 representativeness and quality audit result does not authorize vendor action, price-source construction, P1/P2/P3 continuation, probe execution, scoring, wallet discovery, OrdersMatched expansion, `log_index`, PnL, gate change, or side synthesis. It only supports historical named-binary P0 research framing with the stated limitations.
+---
 
-The only possible next Option D step, if explicitly authorized later, is a SPEC ONLY vendor-coverage review, with Telonex L2 the only broad candidate still plausible from timing coverage. Any future PMXT work must be explicitly framed as a narrow-subset SPEC ONLY review and must not be treated as broad full-P0 coverage.
+## Price-source candidate state
+
+### S1 — CLOB `/prices-history`
+
+Accepted sampled result: `S1_SOURCE_NOT_VIABLE`.
+
+Both-side Level-B coverage cleared `0.95` in no subclass:
+
+- UP_DOWN: `19 / 50 = 0.38`
+- OVER_UNDER: `51 / 98 ≈ 0.5204`
+- NAMED_OTHER: `65 / 100 = 0.65`
+
+No Pass 2 or downstream phase is authorized.
+
+### S1-ALT — local trade prints
+
+Accepted sampled result: `S1ALT_SOURCE_NOT_VIABLE`.
+
+- UP_DOWN: `13 / 50 = 0.26`
+- OVER_UNDER: `40 / 98 ≈ 0.4082`
+- NAMED_OTHER: `71 / 100 = 0.71`
+
+No side synthesis or downstream phase is authorized.
+
+### Option B — Data API `/trades`
+
+Accepted corrected B0 result: `B0_MECHANICAL_TRUST_NOT_ESTABLISHED`.
+
+- primary API rows: `13,009`
+- total API rows across query modes: `17,853`
+- local rows: `1,346`
+- mismatches: `14,355`
+- overlap matched: `0`
+- overlap API/local mismatch: `7`
+- overlap pagination partial: `3`
+
+B1 remains unauthorized.
+
+### Option C — decoded on-chain OrderFilled tables
+
+- Original C1A accepted valid halt: `C1_ROW_EXPLOSION`.
+- C1A-F1: reviewable mixed evidence only.
+- C1A-F2: `C1F2_ARTIFACTS_INSUFFICIENT`.
+- Option C is not accepted as viable.
+- C1 is not design-clear.
+- C1B, C2, P1/P2/P3, and probe execution remain unauthorized.
+
+### Option D — L2 archive candidates
+
+Accepted temporal in-range result:
+
+- PMXT v2 pooled: `18,137 / 39,693 = 0.456932`
+- Telonex L2 pooled: `37,749 / 39,693 = 0.951024`
+- Telonex NAMED_OTHER: `0.918096`
+
+PMXT v2 is closed/deprioritized for broad full-P0 coverage on timing grounds.
+Telonex L2 may only proceed through a separately authorized SPEC-ONLY
+vendor-coverage review. No vendor fetch or paid action is authorized.
+
+---
+
+## Revision 23 Finding 4 contract state
+
+Revision 23 with Amendments 01–03 and Finding 4 is accepted and installed.
+
+Installation base:
+
+`f6cb60df66c2bbcdfb6d797119ed25ad79e06a11`
+
+Linear installation commits:
+
+1. `3f8cc54dc12a5335472f00f5ffcf5c0d56d8d1ba`
+2. `c394b9ab5eb5dc07f8d716818e02507994ce41d7`
+3. `e83555ef23712cf6c846dc63a7103e0e0c7e4ed4`
+
+Finding 4 installation commit:
+
+`e83555ef23712cf6c846dc63a7103e0e0c7e4ed4`
+
+Installed effective hashes:
+
+- specification: `e52f70bb243bc431880c2eaabba7403f7a5d786b70d8a5e903b9026b4bde7a76`
+- schema registry: `c9e8fe1b2c64f64e9cefd76e820c9589708723485ff7e54f4f69e3fe4ed49689`
+- request/authorization contract: `926d1503f20965f2573e2b24d79e747438254f77200b2060bcb741f6279556d0`
+- governing manifest: `8cd3c6c93b6f1bba1906b1b2b3f67f6e87846991368bb34b5da52044adbc1f38`
+- governing semantic hash: `a1368d6f109bb6c1812c9f92d5dd72d4717287fd80fc441726a788a69ad07d9f`
+- accepted checksum inventory: `be9fe20717a0dc54bd7c73558ea201eb90265bd760e1f7fb78202654cca533f9`
+
+Installed path:
+
+`project_context/implementation_handoffs/local_curl_rev23_i0/`
+
+The installed tree includes:
+
+- complete effective accepted contract;
+- complete Finding 4 materialization/audit trail;
+- preflight evidence;
+- replacements and transformation evidence;
+- authorization supersession record;
+- implementation scope set to `DEFER — NOT AUTHORIZED`;
+- disabled Claude implementation prompt.
+
+No `pm_research/`, `tests/`, dependency, CLI/runtime, research-data, or empirical
+path changed during installation.
+
+---
+
+## Authorization state
+
+No implementation or source synchronization is authorized.
+
+Specifically unauthorized:
+
+- Claude source or test-source authoring;
+- tests, Python/project execution, lint, coverage, CI, or imports;
+- local research-data reads;
+- network, API, RPC, vendor, curl, or request execution;
+- replay, capture, analysis, result production, or empirical artifacts;
+- P1/P2/P3, scoring, probe execution, or gate changes;
+- wallet discovery, OrdersMatched expansion, `log_index`, PnL-by-role;
+- paper trading, live trading, wallet-copying, or full indexers;
+- Git writes by ChatGPT or Claude.
+
+A new bounded implementation stage requires:
+
+1. this Phase B canonical-document synchronization to be manually installed;
+2. Sentinel verification of that documentation commit;
+3. a separate explicit Gustavo implementation authorization;
+4. a new Sentinel handoff with exact files, allowed activities, and prohibited activities.
 
 ---
 
 ## Environment
 
-- **Execution:** Windows / Miniconda, local. conda env `pmresearch` (Python 3.11; pandas, pyarrow, numpy, scipy, sklearn, requests, pycryptodome present). NOT EC2 (OOM-prone).
-- **Project path:** `C:/b1/pm_research`
-- **Data path:** `C:/b1/data` (trades, prices, markets.parquet, resolutions.parquet)
-- **Artifacts path:** `C:/b1/pm_research/artifacts`
-- **PYTHONPATH:** set `$env:PYTHONPATH="C:/b1/pm_research"` once per PowerShell session for bare `python scripts\...` calls.
-- **Dune API CSV (full precision):** `curl.exe -H "x-dune-api-key: $env:DUNE_API_KEY" "https://api.dune.com/api/v1/query/<id>/results/csv?limit=5000" -o <out>.csv` — only if the saved query casts uint256 fields to varchar AND the query has been executed on Dune. Use `curl.exe` (not PowerShell's `curl` alias) and `$env:DUNE_API_KEY`.
-- **Dataset:** 16,505,185 trades / 288,684 conditions (distinct condition_ids present in `trades\*.parquet`, per the named-binary audit's reproducible `total_conditions`); key coverage (tx_hash/token_id/outcome_index) ~99.6%.
+- Local execution environment: Windows / Miniconda.
+- Project path: `C:/b1/pm_research`.
+- Data path: `C:/b1/data`.
+- Artifacts path: `C:/b1/pm_research/artifacts`.
+- Local research data remains unavailable to agents unless separately authorized.
 
 ---
 
-## Workflow
+## Next possible step
 
-- Claude may work under the Amendment 03 I0 handoff only after a separately authorized canonical-source synchronization completes and the corrected source gate passes; until then it must stop without authoring files.
-- For REV23 I0, exact source and unexecuted test-source authoring are authorized; tests, Python/project-code execution, and every runtime path remain unauthorized.
-- Future Claude, Sentinel, and Professor chats must read `project_context/implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`, `SENTINEL_ACCEPTANCE_DECISION.md`, and `IMPLEMENTATION_AUTHORIZATION_SCOPE.md`; chat memory and the superseded prior prompt are not authorization.
-- User runs locally only after a separate explicit authorization for the relevant stage, then pastes outputs back.
-- Each task closes with a **Claude-to-Orchestrator handoff memo**.
-- Start a fresh chat per task to keep context lean.
+Complete this Phase B documentation synchronization and return its commit SHA for
+Sentinel verification.
 
----
-
-## Completed — Non-YES/NO realized-outcome source (Stages 0–4, ACCEPTED)
-
-`SPEC_named_binary_resolution_source.md` is now implemented and accepted, Stages 0–4:
-
-- **Stage 0** — Dune schema inspection confirmed `ctf_evt_conditionresolution` (payoutnumerators array(uint256), keyed by conditionid) + `ctf_evt_payoutredemption` corroboration.
-- **Stage 1** — Dune SQL package + coverage measurement: non-YES/NO coverage ~1.0, exact-winner 0.965–0.99995 per subclass.
-- **Stage 2** — `pm_research/semantics/resolution_source.py`: pure payout-vector winner derivation + slot→token mapping + 8-status conflict model.
-- **Stage 3** — `scripts/build_named_binary_resolution_source.py`: 39,693 RESOLVED_SINGLE_WINNER rows; 253 ambiguous excluded + counted.
-- **Stage 4** — additive `--resolution-source` audit flag + non-YES/NO branch gate = CLEAR_WITH_WARNINGS; legacy pooled-all gate stays BLOCKED; probe stays blocked.
-
-Winners derive ONLY from payout numerators, never from price convergence. The named-binary probe remains NOT AUTHORIZED — a CLEAR* gate does not grant it. `SPEC_named_binary_probe.md` is ACCEPTED (spec only); its Stage P0 preflight is implemented and ACCEPTED (`P0_CLEAR`). Stage P1 remains BLOCKED on a proven price-input gap. The accepted C1A-F1 result is reviewable mixed coverage/trust evidence only, and the accepted C1A-F2 result is `C1F2_ARTIFACTS_INSUFFICIENT`; neither authorizes C1B/C2/P1/P2/P3/probe execution, another canary, scoring, backfill, wallet discovery, OrdersMatched expansion, `log_index`, PnL, a price artifact, or a gate change.
-
----
-
-## Blocked — Dune wallet cohort discovery (Chat2)
-
-Still BLOCKED; requires SEPARATE explicit authorization. The non-YES/NO outcome source is now usable, but outcome-source scoreability does NOT unblock Chat2 — wallet discovery is a distinct phase. When/if authorized: identify named-binary active wallets; classify maker/taker via OrdersMatched (validated machinery); strict discovery vs holdout split; no PnL-based selection without holdout; no copy-trading.
+After that verification, Gustavo may separately decide whether to authorize a
+new bounded Finding 4 implementation-authoring stage. Nothing proceeds
+automatically.
