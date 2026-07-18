@@ -1,28 +1,32 @@
-# HANDOFF — REV23 Amendment 03 I0 Implementation Authorized / Source-Gated
+# HANDOFF — REV23 Amendment 03 I0 Authorization — SUPERSEDED_INACTIVE
 
-Decision: **APPROVE — NARROW IMPLEMENTATION AUTHORING; BLOCKED ON SOURCE SYNC**
+Historical authorization date: `2026-07-15`.
 
-Accepted-contract commit: `fad41de515572ca30b4440b060a69dd6bfc57e2b`  
-First authorization-anchor commit: `d737aa9e12cbfa584b275e128c8624e01af72f61`  
-Authorization date: `2026-07-15`  
-Authorizing authority: Gustavo  
-Review authority: Sentinel  
-Implementation agent: Claude
+Status:
 
-Revision 23 with Amendments 01, 02, and 03 remains the accepted specification. Gustavo separately authorized one bounded Amendment 03 I0 pure deterministic contract-core implementation package.
+`SUPERSEDED_INACTIVE`
 
-Claude correctly returned `STOP_CANONICAL_SOURCE_UNAVAILABLE` from a clean local clone at `226085ca9ba7fa41a8b666005499827d6fa6b9c5`. Sentinel accepts the stop. The original handoff incorrectly required working `HEAD=fad41de515572ca30b4440b060a69dd6bfc57e2b`, although the authorization files exist only from `d737aa9e12cbfa584b275e128c8624e01af72f61` onward.
+Supersession reason:
 
-The controlling files are:
+`GOVERNING_CONTRACT_CHANGED_BY_FINDING4_AMENDMENT`
 
-- `project_context/implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
-- `project_context/implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_amendment_03_i0/SENTINEL_CANONICAL_SOURCE_GATE_CORRECTION.md`
-- `project_context/implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_amendment_03_i0/SOURCE_SYNC_AUTHORIZATION_STATUS.md`
+The earlier Amendment 03 I0 source/test-source authoring authorization and its
+source gate cannot be reused, satisfied, or treated as active.
 
-Authorized in principle: exact source and unexecuted test-source files listed in the scope, plus static package reports and checksums.
+Current canonical commit:
 
-Operational block: no authoring may begin until a separate explicit Gustavo decision authorizes canonical source synchronization and Claude's local repository passes the corrected source gate. The actual implementation baseline will be the verified synchronized local `HEAD`, which must be `d737aa9e12cbfa584b275e128c8624e01af72f61` or a descendant and preserve all exact accepted-contract hashes and path constraints.
+`d17684a5798724ecbc40b85ca8b1e5ebdb8c3b98`
 
-Still unauthorized: source synchronization, test/Python/project execution, local research-data reads, network/API/RPC/vendor/curl activity, request execution, empirical artifacts, full orchestration, CLI/dependency changes, Git publication, P1/P2/P3, probe, scoring, price construction, side synthesis, wallet/PnL/trading, and gate changes.
+Current state:
 
-Claude must use the `pm-research-implementing` Skill. Skill invocation does not expand authorization.
+- implementation authoring: false
+- source synchronization: false
+- test-source authoring: false
+- test execution: false
+- project-code execution: false
+- local research-data reads: false
+- network/curl/replay: false
+- P1/P2/P3, scoring, probe, and gate changes: false
+
+Any later implementation stage requires a new explicit Gustavo authorization and
+a new Sentinel handoff pinned to current governing hashes.

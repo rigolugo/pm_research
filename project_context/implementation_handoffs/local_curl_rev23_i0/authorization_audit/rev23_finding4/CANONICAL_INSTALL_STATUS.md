@@ -1,6 +1,6 @@
 # Canonical Installation Status — REV23 Finding 4
 
-Decision: **DEFER — PENDING MANUAL UPLOAD AND SENTINEL VERIFICATION**
+Decision: **APPROVE — INSTALLED AND VERIFIED**
 
 Accepted package SHA-256:
 
@@ -10,17 +10,20 @@ Authorized base commit:
 
 `f6cb60df66c2bbcdfb6d797119ed25ad79e06a11`
 
-The Phase A manual-upload bundle may install the accepted contract, complete
-Finding 4 audit trail, and authorization-supersession records. It may not add or
-modify implementation, tests, dependencies, CLI/runtime configuration, empirical
-artifacts, or research data.
+Finding 4 package installation commit:
 
-After Gustavo uploads and commits the bundle, Sentinel must verify:
+`e83555ef23712cf6c846dc63a7103e0e0c7e4ed4`
 
-1. the new commit is a descendant of the authorized base;
-2. only the expected canonical paths changed;
-3. every installed accepted-contract byte matches its registered hash;
-4. the Finding 4 audit package and handoff checksums reconcile;
-5. no implementation or execution authorization was introduced.
+Canonical documentation synchronization commit:
 
-Until that verification is accepted, no source synchronization or Claude work is authorized.
+`d17684a5798724ecbc40b85ca8b1e5ebdb8c3b98`
+
+Verified properties:
+
+1. linear descendant chain from the authorized base;
+2. accepted contract and audit bytes match registered hashes;
+3. implementation, tests, dependencies, CLI/runtime, research data, and empirical paths were not changed;
+4. Amendment 03 I0 is superseded and inactive;
+5. no source synchronization or implementation authority was introduced.
+
+Canonical installation does not authorize implementation.

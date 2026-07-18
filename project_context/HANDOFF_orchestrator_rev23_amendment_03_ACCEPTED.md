@@ -1,28 +1,21 @@
-# HANDOFF — REV23 Amendment 03 Accepted and Canonicalized
+# HANDOFF — REV23 Amendment 03 Historical Acceptance / Finding 4 Supersession
 
-Decision: **APPROVE**
+Status: **HISTORICAL — SUPERSEDED BY ACCEPTED FINDING 4 GOVERNING BYTES**
 
-Sentinel accepts `REV23_AMENDMENT_03` as a specification-only amendment to the effective Revision 23 local-curl per-side dataset-verification contract.
+The Amendment 03 acceptance remains historical audit evidence. Its effective
+contract hashes are not the current governing hashes after Finding 4.
 
-## Accepted effective hashes
+Current governing canonical commit:
 
-- specification: `d4271f3bfb29924c3937a0569d3cee585ef32125604785ba474e837a2ca642b9`
-- schema registry: `e9590fac64ce245dbebd7f0e0bcaca5cf8b263e907e202dbba779f1be9157f19`
-- request-plan and authorization contract: `8095bb923742e8f7eafac61a1de52d9ff4e5537f8a03bb52af62eb795c9f0f7f`
-- governing-package semantic hash: `6510bee82e4047bc3e035cfa27732556b313300f19368c8f02ed7cb8eda5c86b`
-- governing-manifest complete-file hash: `b2627541175ca3ccb225491c1a684e0d7c00eed20d40e30cd65da23136528afa`
-- accepted Professor materialization ZIP: `dc1a7ed8057bb8e670288f33d8884edb7f258e2a12af9d92d5933d0e9c48c9e1`
+`d17684a5798724ecbc40b85ca8b1e5ebdb8c3b98`
 
-## Accepted scope
+Current Finding 4 hashes:
 
-Amendment 03 resolves the token-manifest lifecycle cycle, partition/request schema conflicts, typed-cell/null rules, pre-run timestamp typing, raw-evidence-bound HTTP reconciliation, and completed-capture lifecycle routing. It preserves fixed populations, denominators, thresholds, twelve-field run identity, result ordering, guardrails, P1 blocking, and `named_binary_probe_blocked = true`.
+- specification: `e52f70bb243bc431880c2eaabba7403f7a5d786b70d8a5e903b9026b4bde7a76`
+- schema registry: `c9e8fe1b2c64f64e9cefd76e820c9589708723485ff7e54f4f69e3fe4ed49689`
+- request-plan and authorization contract: `926d1503f20965f2573e2b24d79e747438254f77200b2060bcb741f6279556d0`
+- governing manifest: `8cd3c6c93b6f1bba1906b1b2b3f67f6e87846991368bb34b5da52044adbc1f38`
+- governing semantic hash: `a1368d6f109bb6c1812c9f92d5dd72d4717287fd80fc441726a788a69ad07d9f`
 
-## Authorization state
-
-Specification acceptance and canonical installation do not authorize implementation. The prior I0 authorization applied to the Amendments-01/02 bytes and is superseded/inactive. The previously submitted Claude implementation package was not accepted.
-
-No implementation correction, source/test-source authoring, tests, project-code execution, local-data reads, curl/subprocess/network activity, reservation/request execution, replay, empirical work, P1/P2/P3, probe, scoring, price construction, wallet/PnL/trading, or gate change is authorized.
-
-## Next possible action
-
-After the manual canonical upload is committed and verified, Gustavo may separately decide whether to authorize a bounded Amendment-03 implementation stage. A new handoff must be pinned to the new canonical commit and exact accepted hashes.
+The historical Amendment 03 acceptance creates no current implementation,
+source-sync, test, execution, or downstream authorization.

@@ -1,28 +1,29 @@
-# REV23 Finding 4 Canonical Handoff — Installation Pending Verification
+# REV23 Finding 4 Canonical Handoff — Installed and Verified
 
-## Purpose
+## Current canonical state
 
-This directory contains the accepted effective Revision 23 contract with
-Finding 4 and the audit trail for its materialization.
+Finding 4 is accepted and canonically installed.
 
-The accepted Finding 4 package is approved, but this repository installation
-must still be manually committed by Gustavo and verified by Sentinel.
+- canonical HEAD after documentation synchronization: `d17684a5798724ecbc40b85ca8b1e5ebdb8c3b98`
+- Finding 4 installation commit: `e83555ef23712cf6c846dc63a7103e0e0c7e4ed4`
+- accepted package SHA-256: `9ec22f611a1f6b8a598725e0b60b7591503fd6271ae79eb366359e7e312099f8`
 
-## Read order
+## Required read order
 
 1. `SENTINEL_ACCEPTANCE_DECISION.md`
 2. `IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
 3. `authorization_audit/rev23_finding4/SENTINEL_ACCEPTANCE_DECISION_REV23_FINDING4.md`
 4. `authorization_audit/rev23_finding4/AUTHORIZATION_SUPERSESSION_REV23_FINDING4.md`
 5. `authorization_audit/rev23_finding4/CANONICAL_INSTALL_STATUS.md`
-6. root `START_HERE.md`, then `project_context/START_HERE.md`
-7. `accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`
-8. `accepted_contract/ACCEPTED_CONTRACT_SHA256SUMS.txt`
-9. `accepted_contract/SPEC_local_curl_per_side_price_dataset_verification_REV23.md`
-10. `accepted_contract/SCHEMA_REGISTRY_REV23.json`
-11. `accepted_contract/REQUEST_PLAN_AND_AUTHORIZATION_CONTRACT_REV23.md`
-12. `amendment_audit/rev23_finding4/README_FIRST.md`
-13. `amendment_audit/rev23_finding4/HANDOFF_SENTINEL_REV23_FINDING4.md`
+6. `authorization_audit/rev23_amendment_03_i0/SENTINEL_SUPERSESSION_REV23_FINDING4.md`
+7. root `START_HERE.md`, then `project_context/START_HERE.md`
+8. `accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`
+9. `accepted_contract/ACCEPTED_CONTRACT_SHA256SUMS.txt`
+10. `accepted_contract/SPEC_local_curl_per_side_price_dataset_verification_REV23.md`
+11. `accepted_contract/SCHEMA_REGISTRY_REV23.json`
+12. `accepted_contract/REQUEST_PLAN_AND_AUTHORIZATION_CONTRACT_REV23.md`
+13. `amendment_audit/rev23_finding4/README_FIRST.md`
+14. `amendment_audit/rev23_finding4/HANDOFF_SENTINEL_REV23_FINDING4.md`
 
 ## Effective hashes
 
@@ -32,15 +33,12 @@ must still be manually committed by Gustavo and verified by Sentinel.
 - governing manifest: `8cd3c6c93b6f1bba1906b1b2b3f67f6e87846991368bb34b5da52044adbc1f38`
 - governing semantic hash: `a1368d6f109bb6c1812c9f92d5dd72d4717287fd80fc441726a788a69ad07d9f`
 
-## Active authorization boundary
+## Authorization boundary
 
-No implementation prompt is active.
+No implementation prompt is active. Scope preparation is not implementation
+authorization.
 
-The prior Amendment 03 I0 implementation authorization is superseded by the
-accepted Finding 4 contract. A new bounded implementation authorization requires
-a separate explicit Gustavo decision after the canonical installation commit is
-verified.
-
-No source synchronization, implementation, test authoring/execution, project-code
+No source synchronization, source/test-source authoring, tests, project-code
 execution, local-data read, network/curl, replay, empirical work, P1/P2/P3,
-scoring, probe execution, Git publication by an agent, or gate change is authorized.
+scoring, probe execution, Git publication by an agent, or gate change is
+authorized.

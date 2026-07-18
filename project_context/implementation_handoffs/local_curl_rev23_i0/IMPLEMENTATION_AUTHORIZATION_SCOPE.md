@@ -1,23 +1,21 @@
 # Implementation Authorization Scope — REV23 Finding 4
 
-Decision: **DEFER — NOT AUTHORIZED**
+Decision: **DEFER — SCOPE PREPARATION ONLY; IMPLEMENTATION NOT AUTHORIZED**
 
-The earlier Amendment 03 I0 implementation-authoring authorization is
-superseded by the accepted Finding 4 contract.
+Canonical scope-preparation anchor:
 
-No source file, test-source file, dependency, CLI, runtime configuration,
-canonical project-context file, or empirical artifact may be authored under the
-superseded authorization.
+`d17684a5798724ecbc40b85ca8b1e5ebdb8c3b98`
 
-## Required next boundary
+The prior Amendment 03 I0 authorization is `SUPERSEDED_INACTIVE`.
 
-After the Finding 4 canonical installation commit is verified, Gustavo may make a
-separate explicit decision on whether to authorize a new bounded implementation
-stage. Sentinel must then issue a new exact file matrix and activity-status table
-pinned to the verified canonical commit and Finding 4 hashes.
+A bounded Finding 4 I0A scope may be drafted for Gustavo's review. Drafting,
+reviewing, or storing that proposal does not authorize Claude to synchronize
+sources, author files, write tests, execute code, or produce an implementation
+package.
 
-## Current status
+## Current activity status
 
+- Scope preparation: AUTHORIZED for Sentinel only.
 - Source synchronization: NOT AUTHORIZED.
 - Source authoring: NOT AUTHORIZED.
 - Test-source authoring: NOT AUTHORIZED.
@@ -25,10 +23,10 @@ pinned to the verified canonical commit and Finding 4 hashes.
 - Python/project-code execution or import: NOT AUTHORIZED.
 - Local research-data reads: NOT AUTHORIZED.
 - Network/API/RPC/vendor/curl: NOT AUTHORIZED.
-- Subprocess execution: NOT AUTHORIZED except Sentinel's own static package review already completed.
-- Artifact production: NOT AUTHORIZED except this canonical-document installation bundle.
+- Replay or empirical work: NOT AUTHORIZED.
 - Git history or remote writes by ChatGPT/Claude: NOT AUTHORIZED.
 - P1/P2/P3, scoring, probe execution, and gate changes: NOT AUTHORIZED.
 
-Claude must stop with `STOP_IMPLEMENTATION_NOT_AUTHORIZED` if asked to implement
-from the superseded Amendment 03 handoff.
+Claude must return `STOP_IMPLEMENTATION_NOT_AUTHORIZED` unless Gustavo later
+issues a separate explicit implementation decision and Sentinel installs a new
+active authorization package.
