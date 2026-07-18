@@ -8,9 +8,10 @@
 
 Stay Polymarket-native and preserve the accepted research-only guardrails.
 
-The immediate project objective is to install and verify the accepted Revision
-23 Finding 4 I0A scope as the authoritative basis for a later bounded
-implementation-authoring decision. No implementation decision is active.
+The immediate project objective is to install and verify the active Finding 4
+I0A authorization package, then complete bounded implementation-source and
+unexecuted test-source authoring under Revision 08. The accepted-scope commit
+`2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff` is verified.
 
 ---
 
@@ -162,44 +163,43 @@ Revision 08 is accepted as the bounded implementation-authoring scope.
 - canonical scope path:
   `project_context/implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/`
 - accepted maximum candidate matrix: six source paths and six test-source paths
-- implementation authoring: **NOT AUTHORIZED**
+- accepted-scope commit: `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff` — verified
+- implementation authoring: **AUTHORIZED AFTER ACTIVE-PACKAGE INSTALL VERIFICATION**
+- unexecuted test-source authoring: **AUTHORIZED AFTER ACTIVE-PACKAGE INSTALL VERIFICATION**
 - test execution: **NOT AUTHORIZED**
+- authorization ID: `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`
 
 The accepted scope contains exact API, schema, grammar, assurance, result,
 return-payload, hash, fixture, and static-contract obligations. No Revision 09
-follows for optional polish. A later scope amendment requires a concrete material
+follows for optional polish. A later amendment requires a concrete material
 contradiction that cannot be resolved from Revision 08.
-
-The commit containing this canonical update must be returned to Sentinel for
-exact installation verification.
 
 ---
 
 ## Authorization state
 
-No implementation or source synchronization is authorized.
+Gustavo has explicitly authorized bounded Finding 4 I0A implementation authoring.
+Sentinel has approved the exact twelve-path activity matrix. Activation requires
+manual installation and Sentinel verification of the authorization package.
 
-Specifically unauthorized:
+Authorized after activation:
 
-- Claude source or test-source authoring;
-- tests, Python/project execution, lint, coverage, CI, or imports;
-- local research-data reads;
-- network, API, RPC, vendor, curl, or request execution;
-- replay, capture, analysis, result production, or empirical artifacts;
-- P1/P2/P3, scoring, probe execution, or gate changes;
-- wallet discovery, OrdersMatched expansion, `log_index`, PnL-by-role;
-- paper trading, live trading, wallet-copying, or full indexers;
-- Git writes by ChatGPT or Claude.
+- read-only source synchronization to the source-gated HEAD;
+- implementation-source authoring in exactly six paths;
+- unexecuted test-source authoring in exactly six paths;
+- static file/JSON/hash/package validation within the active boundary;
+- implementation review ZIP, report, and checksum production.
 
-A new bounded implementation stage requires:
+Still unauthorized:
 
-1. manual installation of this accepted-scope canonical update;
-2. Sentinel verification of the resulting commit and clean repository state;
-3. a separate explicit Gustavo implementation authorization; and
-4. a new Sentinel handoff with exact files and activity boundaries.
+- test execution, lint, type checking, coverage, CI, compilation, or project imports;
+- local research-data or empirical-artifact reads;
+- API, RPC, vendor, Dune, curl, or general network use;
+- replay, scoring, P1/P2/P3, probe execution, or gate changes;
+- dependencies, CLI/config, generated code, additional paths, caches, or bytecode;
+- Git commit, branch/ref, push, PR, merge, or other history/remote write.
 
-Scope acceptance does not authorize tests, local-data reads, network use,
-artifact production, or Git writes.
+The active authorization ID is `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`.
 
 ---
 
@@ -215,9 +215,9 @@ artifact production, or Git writes.
 
 ## Next possible step
 
-Manually upload and commit this accepted-scope canonical update, then return the
+Manually upload and commit the active I0A authorization package, then return the
 commit SHA to Sentinel for verification.
 
-After verification, Gustavo may separately decide whether to authorize bounded
-Finding 4 I0A implementation-source and test-source authoring. Nothing proceeds
-automatically.
+After verification, Claude may begin only the bounded implementation-source and
+unexecuted test-source authoring stage. Test execution remains a separate future
+decision.

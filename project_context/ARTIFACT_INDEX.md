@@ -175,7 +175,7 @@ Installation commits:
 - `scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
 
 Current implementation state:
-`I0A SCOPE REVISION 08 ACCEPTED — IMPLEMENTATION NOT AUTHORIZED`.
+`REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01 — AUTHORIZED; ACTIVATION PENDING AUTHORIZATION-PACKAGE INSTALL VERIFICATION`.
 
 ### `accepted_contract/`
 
@@ -237,9 +237,23 @@ Accepted source archive SHA-256:
 
 `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
 
-The accepted maximum candidate matrix contains six source and six test-source
-paths. It is inactive until a separate Gustavo implementation decision and a new
-Sentinel implementation handoff.
+The accepted maximum matrix contains six source and six test-source paths.
+
+### `authorization_audit/rev23_finding4_i0a/`
+
+Active bounded authoring package:
+
+- `README_FIRST.md`
+- `GUSTAVO_AUTHORIZATION_RECORD.md`
+- `SENTINEL_IMPLEMENTATION_AUTHORIZATION.md`
+- `AUTHORIZATION_MANIFEST.json`
+- `AUTHORIZED_FILE_MATRIX.md`
+- `ACTIVITY_BOUNDARIES.md`
+- `SOURCE_GATE.md`
+- `SHA256SUMS.txt`
+
+Authorization ID: `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`. The package becomes active after Sentinel verifies
+the canonical commit containing it. Tests and project execution remain unauthorized.
 
 ### Historical Amendment 03 authorization audit
 

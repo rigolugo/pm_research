@@ -1,17 +1,20 @@
 # Sentinel review status — REV23 Finding 4 I0A
 
-Revision 08 scope is accepted.
+Revision 08 scope is accepted and canonical at commit `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff`.
+Gustavo has authorized bounded implementation-source and unexecuted test-source
+authoring. Sentinel authorization package:
 
-- review anchor: `88362521fe9ef247708e4d7b5f90753784b8b88e`
-- accepted archive SHA-256: `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
-- canonical scope path:
-  `scope_authoring/rev23_finding4_i0a/`
+`authorization_audit/rev23_finding4_i0a/`
 
-Current boundary: verify the manual canonical installation commit. Do not open a
-Revision 09 for optional polish.
+Authorization ID: `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`.
 
-After exact installation verification, Gustavo may separately decide whether to
-authorize bounded implementation-source and test-source authoring. No test
-execution, project code, local-data read, network/curl, replay, empirical work,
-P1/P2/P3, scoring, probe execution, Git writes by agents, or gate change is
-authorized unless separately and explicitly stated.
+Current boundary: verify the manual canonical installation commit containing the
+active authorization package. After verification, Claude may author only the
+exact twelve paths under the declared activity boundaries. Test execution,
+project imports/execution, research-data reads, empirical work, general network
+access, Git history/remote writes, P1/P2/P3, scoring, probe execution, and gate
+changes remain unauthorized.
+
+Future Sentinel review compares Claude's implementation ZIP against the accepted
+Revision 08 scope and active package, not Claude's explanation. Passing static
+checks does not authorize test execution.

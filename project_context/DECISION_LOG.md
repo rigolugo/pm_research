@@ -216,18 +216,26 @@ contradiction that cannot be resolved from the accepted Revision 08 contract.
 The commit containing the accepted-scope canonical installation must be returned
 to Sentinel for verification before any implementation authorization.
 
-### Implementation supersession and current boundary
+### Finding 4 I0A implementation-authoring authorization
 
-The earlier Amendment 03 I0 implementation authorization remains superseded.
+On `2026-07-18`, Gustavo explicitly authorized the bounded Finding 4 I0A
+implementation-authoring stage. Sentinel approves authorization ID
+`REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01` pinned to verified accepted-scope commit `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff`.
 
-The current state is:
+Authorized after canonical installation and Sentinel verification of the active
+package:
 
-`I0A SCOPE REVISION 08 ACCEPTED — IMPLEMENTATION NOT AUTHORIZED`.
+- read-only source sync to the source-gated HEAD;
+- exact six implementation-source paths;
+- exact six unexecuted test-source paths;
+- static inspection, checksums, and implementation review packaging.
 
-No active Claude implementation prompt exists. Source synchronization,
-implementation, test authoring/execution, project-code execution, local-data
-reads, network/curl, replay, empirical work, P1/P2/P3, scoring, probe execution,
-and gate changes require separate future decisions.
+Test execution, project imports/execution, research data, general network/API/curl,
+empirical work, dependencies/CLI/config, additional paths, Git history/remote
+writes, P1/P2/P3, scoring, probe execution, and gate changes remain unauthorized.
+
+The earlier Amendment 03 I0 authorization remains superseded. Revision 08 remains
+the accepted scope; no Revision 09 follows for optional polish.
 
 ---
 

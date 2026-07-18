@@ -1,0 +1,50 @@
+{
+  "activation_condition": "Sentinel verifies the canonical commit containing this exact package",
+  "activity_status": {
+    "artifact_production": "IMPLEMENTATION_REVIEW_PACKAGE_ONLY",
+    "git_history_or_remote_writes": "NOT_AUTHORIZED",
+    "implementation_source_authoring": "AUTHORIZED_EXACT_PATHS_ONLY",
+    "network": "READ_ONLY_GIT_GITHUB_SYNC_ONLY",
+    "project_imports_or_execution": "NOT_AUTHORIZED",
+    "research_data_reads": "NOT_AUTHORIZED",
+    "source_sync": "AUTHORIZED_READ_ONLY_TO_SOURCE_GATED_HEAD",
+    "subprocess": "STATIC_FILE_GIT_STATUS_DIFF_HASH_ZIP_ONLY",
+    "test_execution": "NOT_AUTHORIZED",
+    "test_source_authoring": "AUTHORIZED_UNEXECUTED_EXACT_PATHS_ONLY",
+    "working_tree_writes": "EXACT_TWELVE_PATHS_ONLY"
+  },
+  "authorization_id": "REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01",
+  "authorized_source_paths": [
+    "pm_research/local_curl_per_side/__init__.py",
+    "pm_research/local_curl_per_side/canonical.py",
+    "pm_research/local_curl_per_side/governing_package.py",
+    "pm_research/local_curl_per_side/finding4_registry.py",
+    "pm_research/local_curl_per_side/prepared_evidence.py",
+    "pm_research/local_curl_per_side/claim_hashes.py"
+  ],
+  "authorized_test_source_paths": [
+    "tests/local_curl_per_side/test_canonical_i0a.py",
+    "tests/local_curl_per_side/test_governing_package_i0a.py",
+    "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+    "tests/local_curl_per_side/test_prepared_evidence_i0a.py",
+    "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+    "tests/local_curl_per_side/test_i0a_public_contract.py"
+  ],
+  "decision": "APPROVE",
+  "governing_hashes": {
+    "governing_manifest": "8cd3c6c93b6f1bba1906b1b2b3f67f6e87846991368bb34b5da52044adbc1f38",
+    "governing_semantic_sha256": "a1368d6f109bb6c1812c9f92d5dd72d4717287fd80fc441726a788a69ad07d9f",
+    "request_authorization_contract": "926d1503f20965f2573e2b24d79e747438254f77200b2060bcb741f6279556d0",
+    "schema_registry": "c9e8fe1b2c64f64e9cefd76e820c9589708723485ff7e54f4f69e3fe4ed49689",
+    "specification": "e52f70bb243bc431880c2eaabba7403f7a5d786b70d8a5e903b9026b4bde7a76"
+  },
+  "gustavo_authorization_date": "2026-07-18",
+  "implementation_package_required": true,
+  "implementation_package_review_required": true,
+  "schema_version": "rev23_finding4_i0a_implementation_authorization.v1",
+  "scope_archive_sha256": "004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876",
+  "scope_id": "REV23_FINDING4_I0A_SCOPE_REVISION_08",
+  "scope_review_anchor": "88362521fe9ef247708e4d7b5f90753784b8b88e",
+  "tests_remain_separately_authorized": true,
+  "verified_pre_authorization_commit": "2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff"
+}

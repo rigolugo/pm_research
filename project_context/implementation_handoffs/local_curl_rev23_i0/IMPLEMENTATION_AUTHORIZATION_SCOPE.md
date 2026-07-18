@@ -1,54 +1,52 @@
 # Implementation Authorization Scope — REV23 Finding 4 I0A
 
-Decision: **DEFER — REVISION 08 SCOPE ACCEPTED; IMPLEMENTATION NOT AUTHORIZED**
+Decision: **APPROVE — BOUNDED IMPLEMENTATION-SOURCE AND UNEXECUTED TEST-SOURCE AUTHORING AUTHORIZED**
 
-## Accepted scope identity
+## Authorization identity
 
-- canonical scope-review anchor: `88362521fe9ef247708e4d7b5f90753784b8b88e`
-- scope: `REV23_FINDING4_I0A_SCOPE_REVISION_08`
-- reviewed archive SHA-256: `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
-- canonical scope path:
-  `scope_authoring/rev23_finding4_i0a/`
-- accepted maximum candidate matrix: six source paths and six test-source paths
+- authorization ID: `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`
+- verified pre-authorization canonical commit: `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff`
+- accepted scope: `REV23_FINDING4_I0A_SCOPE_REVISION_08`
+- scope-review anchor: `88362521fe9ef247708e4d7b5f90753784b8b88e`
+- accepted scope archive SHA-256: `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
+- active authorization package:
+  `authorization_audit/rev23_finding4_i0a/`
 
-The prior Amendment 03 I0 authorization is `SUPERSEDED_INACTIVE`.
+Gustavo explicitly authorized the bounded Finding 4 I0A implementation-authoring
+stage on `2026-07-18`. Sentinel approves the exact bounded stage recorded here.
 
-Revision 08 scope acceptance does not authorize Claude to synchronize sources,
-author files, write tests, execute code, or produce an implementation package.
-The commit containing this scope installation must first be returned to Sentinel
-for verification.
+## Activation
 
-## Current activity status
+The authorization becomes active when Sentinel verifies the canonical commit
+containing this exact package. That verified commit is the required source-gated
+local HEAD. No further specification revision is required.
 
-- Scope preparation/review: COMPLETE — Revision 08 accepted.
-- Canonical manual upload by Gustavo: REQUIRED.
-- Sentinel verification of the resulting commit: REQUIRED.
-- Source synchronization: NOT AUTHORIZED.
-- Implementation-source authoring: NOT AUTHORIZED.
-- Test-source authoring: NOT AUTHORIZED.
+## Activity status
+
+- Source synchronization: AUTHORIZED — read-only to source-gated HEAD only.
+- Implementation-source authoring: AUTHORIZED — exact six source paths only.
+- Test-source authoring: AUTHORIZED — exact six unexecuted test paths only.
 - Test execution: NOT AUTHORIZED.
 - Python/project-code execution or import: NOT AUTHORIZED.
-- Local research-data reads: NOT AUTHORIZED.
-- Network/API/RPC/vendor/curl: NOT AUTHORIZED.
-- Replay, regeneration, or empirical work: NOT AUTHORIZED.
-- Artifact production: NOT AUTHORIZED.
-- Git writes by ChatGPT or Claude: NOT AUTHORIZED.
+- Static standard-library validation: AUTHORIZED within `ACTIVITY_BOUNDARIES.md`.
+- Local repository source reads: AUTHORIZED.
+- Research/local data reads: NOT AUTHORIZED.
+- Network: LIMITED to read-only Git/GitHub synchronization.
+- Subprocess/shell: LIMITED to static file/git-status/diff/hash/ZIP operations.
+- Artifact production: LIMITED to implementation review package/report/checksums.
+- Working-tree writes: AUTHORIZED only for the exact twelve paths.
+- Git history or remote writes: NOT AUTHORIZED.
 - P1/P2/P3, scoring, probe execution, and gate changes: NOT AUTHORIZED.
 
-## Future implementation boundary
+## Exact files
 
-A later bounded implementation-authoring stage requires all of the following:
+The exact create-only matrix is `authorization_audit/rev23_finding4_i0a/AUTHORIZED_FILE_MATRIX.md`.
+No additional path is permitted.
 
-1. Sentinel verification of the canonical commit containing this scope package;
-2. Gustavo's separate explicit implementation authorization;
-3. a new active Sentinel handoff pinned to that verified commit;
-4. the exact accepted twelve-path matrix and no additional paths;
-5. explicit status for source sync, test-source authoring, test execution,
-   project imports, local-data reads, network/subprocess use, artifact production,
-   and Git writes.
+## Required procedure
 
-Specification acceptance is not implementation authorization. Implementation
-source acceptance would not authorize tests or execution.
-
-Claude must return `STOP_IMPLEMENTATION_NOT_AUTHORIZED` unless and until the
-future active implementation package satisfies every boundary above.
+Claude must use the `pm-research-implementing` Skill. Skill invocation does not
+expand this authorization. Claude must evaluate the accepted ordered source gate
+before authoring and must stop on the first applicable halt. The completed
+implementation package returns to Sentinel for static conformance review. Tests
+and project execution require a later separate decision.

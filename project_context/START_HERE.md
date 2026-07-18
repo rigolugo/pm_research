@@ -35,12 +35,16 @@ Read these before doing anything:
 11. `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`
 12. `implementation_handoffs/local_curl_rev23_i0/SENTINEL_ACCEPTANCE_DECISION.md`
 13. `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
-14. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/README_FIRST.md`
-15. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
-16. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
-17. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_08/README_FIRST.md`
-18. `implementation_handoffs/local_curl_rev23_i0/accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`
-19. The remaining files required by the handoff and accepted-scope read orders.
+14. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/README_FIRST.md`
+15. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/SENTINEL_IMPLEMENTATION_AUTHORIZATION.md`
+16. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/AUTHORIZATION_MANIFEST.json`
+17. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/AUTHORIZED_FILE_MATRIX.md`
+18. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/ACTIVITY_BOUNDARIES.md`
+19. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/SOURCE_GATE.md`
+20. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/README_FIRST.md`
+21. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_08/README_FIRST.md`
+22. `implementation_handoffs/local_curl_rev23_i0/accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`
+23. The remaining files required by the handoff, authorization, and accepted-scope read orders.
 
 ---
 
@@ -86,12 +90,14 @@ Revision 08 is accepted as the bounded implementation-authoring scope.
 - accepted archive SHA-256: `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
 - canonical scope path:
   `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/`
-- implementation authorization: **NOT ACTIVE**
+- accepted-scope canonical commit: `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff` — Sentinel verified
+- implementation-source authoring: **AUTHORIZED AFTER AUTHORIZATION-PACKAGE INSTALL VERIFICATION**
+- unexecuted test-source authoring: **AUTHORIZED AFTER AUTHORIZATION-PACKAGE INSTALL VERIFICATION**
 - test execution: **UNAUTHORIZED**
 
-The commit containing this scope installation must be returned to Sentinel for
-verification before Gustavo may issue a separate implementation authorization.
-Scope acceptance does not activate the twelve-path matrix.
+Gustavo authorized the bounded authoring stage on `2026-07-18`. The active package is
+`implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/`.
+No Revision 09 is required.
 
 ---
 
@@ -113,20 +119,20 @@ Scope acceptance does not activate the twelve-path matrix.
 
 ## Implementation authorization state
 
-No Claude implementation prompt is active.
+A bounded Claude implementation-authoring prompt is installed but becomes active
+only after Sentinel verifies the canonical commit containing the authorization
+package.
 
-The earlier Amendment 03 I0 implementation authorization remains superseded.
-Revision 08 scope acceptance does not authorize source synchronization,
-implementation-source authoring, test-source authoring, tests, project-code
-execution, local-data reads, network/curl, replay, empirical artifacts,
-P1/P2/P3, scoring, probe execution, Git writes by agents, or gate changes.
+The earlier Amendment 03 I0 authorization remains superseded. Current Gustavo
+and Sentinel authorization permits read-only source synchronization and authoring
+of exactly six source plus six unexecuted test-source paths. Tests, project
+imports/execution, research-data reads, general network/API/curl, empirical work,
+Git history/remote writes, P1/P2/P3, scoring, probe execution, and gate changes
+remain unauthorized.
 
-The next boundary requires:
-
-1. manual upload and commit of this canonical scope package;
-2. Sentinel verification of the resulting commit;
-3. a separate explicit Gustavo implementation decision; and
-4. a new Sentinel handoff pinned to the verified commit.
+The next boundary is manual installation and Sentinel verification of the active
+authorization package. After that verification Claude may author under the exact
+source gate; no test execution follows automatically.
 
 ---
 
