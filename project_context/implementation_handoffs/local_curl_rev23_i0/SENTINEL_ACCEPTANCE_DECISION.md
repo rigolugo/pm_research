@@ -1,25 +1,30 @@
-# Sentinel Accepted Specification Decision — Revision 23 Amendments 01–03
+# Sentinel Accepted Specification Decision — Revision 23 with Finding 4
 
 Decision: **APPROVE**
 
-Revision 23 with `REV23_AMENDMENT_01`, `REV23_AMENDMENT_02`, and `REV23_AMENDMENT_03` is accepted as the governing SPEC ONLY contract.
-
-Blocking findings at specification acceptance: none.
+Revision 23 with Amendments 01–03 and accepted Finding 4 is the governing SPEC ONLY contract.
 
 ## Effective hashes
 
-- specification: `d4271f3bfb29924c3937a0569d3cee585ef32125604785ba474e837a2ca642b9`
-- schema registry: `e9590fac64ce245dbebd7f0e0bcaca5cf8b263e907e202dbba779f1be9157f19`
-- request-plan and authorization contract: `8095bb923742e8f7eafac61a1de52d9ff4e5537f8a03bb52af62eb795c9f0f7f`
-- governing-package semantic hash: `6510bee82e4047bc3e035cfa27732556b313300f19368c8f02ed7cb8eda5c86b`
-- governing-manifest complete-file hash: `b2627541175ca3ccb225491c1a684e0d7c00eed20d40e30cd65da23136528afa`
+- specification: `e52f70bb243bc431880c2eaabba7403f7a5d786b70d8a5e903b9026b4bde7a76`
+- schema registry: `c9e8fe1b2c64f64e9cefd76e820c9589708723485ff7e54f4f69e3fe4ed49689`
+- request-plan and authorization contract: `926d1503f20965f2573e2b24d79e747438254f77200b2060bcb741f6279556d0`
+- governing-package semantic hash: `a1368d6f109bb6c1812c9f92d5dd72d4717287fd80fc441726a788a69ad07d9f`
+- governing-manifest complete-file hash: `8cd3c6c93b6f1bba1906b1b2b3f67f6e87846991368bb34b5da52044adbc1f38`
+
+## Installation state
+
+Package acceptance is complete. Canonical installation is pending Gustavo's
+manual commit and Sentinel's post-commit verification.
 
 ## Authorization boundary
 
-This acceptance authorizes specification installation only. It does not authorize implementation, correction of the prior Claude package, source/test-source authoring, tests, execution, local reads, curl/subprocess/network activity, replay, empirical artifacts, P1/P2/P3, probe, scoring, wallet/PnL/trading, or gate changes.
+This acceptance authorizes canonical specification installation only.
 
-The prior narrow I0 implementation authorization applied only to the Amendments-01/02 bytes and remains superseded.
+The earlier Amendment 03 I0 implementation authorization does not carry forward
+through Finding 4 and is superseded. No implementation, test-source authoring,
+tests, project-code execution, local reads, source synchronization, curl/network,
+replay, empirical artifacts, P1/P2/P3, probe, scoring, wallet/PnL/trading, or gate
+change is authorized.
 
-After accepted-contract commit `fad41de515572ca30b4440b060a69dd6bfc57e2b` was verified, Gustavo separately authorized one bounded Amendment 03 I0 implementation-authoring stage on `2026-07-15`; the authorization was first installed in canonical commit `d737aa9e12cbfa584b275e128c8624e01af72f61`. That separate authorization is controlled by `IMPLEMENTATION_AUTHORIZATION_SCOPE.md` and the canonical-source correction record. It does not arise from specification acceptance, does not authorize source synchronization, and does not authorize tests or execution. Implementation authoring is currently blocked until a separately authorized source synchronization completes and the corrected source gate passes.
-
-The accepted specification remains non-empirical and does not unblock P1. `named_binary_probe_blocked = true`.
+`named_binary_probe_blocked = true`.
