@@ -41,6 +41,14 @@ Read these before doing anything:
 17. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/AUTHORIZED_FILE_MATRIX.md`
 18. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/ACTIVITY_BOUNDARIES.md`
 19. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/SOURCE_GATE.md`
+   Revision 09 R1 authorization insert:
+   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/README_FIRST.md`
+   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SENTINEL_AUTHORIZATION_DECISION.md`
+   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/AUTHORIZATION_MANIFEST.json`
+   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/AUTHORIZED_FILE_MATRIX.md`
+   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/REV23_FINDING4_I0A_R1_TWELVE_PATH_BASELINE_SHA256SUMS.txt`
+   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/ACTIVITY_BOUNDARIES.md`
+   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SOURCE_GATE.md`
 20. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/README_FIRST.md`
    Revision 09 controlling insert, before the historical Revision 08 item:
    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
@@ -92,17 +100,26 @@ The installed contract and Finding 4 audit trail live under:
 
 ### Controlling Revision 09 scope
 
-Revision 09 is Sentinel-accepted as the narrow controlling correction, pending manual canonical installation and Sentinel verification.
+Revision 09 is canonically installed and Sentinel-verified at
+`c4e8b1011c51272042decac4bc89e762d767a72a` as the narrow controlling
+correction.
 
 - accepted scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
 - Sentinel acceptance date: `2026-07-20`
 - accepted archive SHA-256: `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
 - accepted member count: `14`
 - installation base: `1e963bb6e8387aff071d697a416fa558956e571e`
-- immutable proposed directory: `accepted_scope_revision_09/`
+- verified canonical installation commit:
+  `c4e8b1011c51272042decac4bc89e762d767a72a`
+- immutable installed directory: `accepted_scope_revision_09/`
 - supersession boundary: private descriptor-set invariant contract only
 - Revision 08 remains immutable historical accepted evidence
-- Revision 09 implementation: **NOT AUTHORIZED**
+- R1 authorization
+  `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`: **ACCEPTED BUT
+  INACTIVE UNTIL ITS MANUAL INSTALLATION COMMIT IS SENTINEL-VERIFIED**
+- after activation, only
+  `pm_research/local_curl_per_side/prepared_evidence.py` is writable
+- Revision 09 test-source authoring and test execution: **UNAUTHORIZED**
 
 ### Historical Revision 08 scope record at installation base
 
@@ -143,9 +160,7 @@ No Revision 09 is required.
 
 ### Controlling Revision 09 state
 
-The Revision 08 implementation authorization does not automatically authorize Revision 09. No active Revision 09 Claude implementation prompt exists. Revision 09 source synchronization, implementation-source authoring, test-source authoring, tests, project imports/execution, research-data reads, empirical work, general network/API/curl, agent Git writes, P1/P2/P3, scoring, probe execution, and gate changes remain unauthorized.
-
-The current boundary is Sentinel static review, Gustavo's manual documentation commit after approval, and Sentinel verification of that commit. Any Revision 09 implementation requires a later separate Gustavo authorization and Sentinel handoff.
+Authorization ID `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01` is accepted for a single source-resume stage but is inactive until Gustavo manually commits the authorization package and Sentinel verifies that exact commit. After activation, only `pm_research/local_curl_per_side/prepared_evidence.py` may be edited from required starting SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`. The other eleven authored source/test paths are read-only. Test-source editing, test execution, project imports/execution, all other source edits, research-data reads, empirical work, general network/API/curl, Claude Git history/remote writes, R2, P1/P2/P3, scoring, probe execution, and gate changes remain unauthorized.
 
 ### Historical Revision 08 authorization record at installation base
 

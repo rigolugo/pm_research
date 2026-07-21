@@ -1,3 +1,76 @@
+# Revision 09 R1 Controlling Authorization Scope
+
+Decision: **APPROVE — CONDITIONAL ONE-FILE R1 SOURCE RESUME**
+
+Authorization ID:
+`REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`.
+
+Revision 09 is canonically installed and Sentinel-verified at
+`c4e8b1011c51272042decac4bc89e762d767a72a`.
+
+This authorization is inactive until Gustavo manually commits the accepted
+authorization package and Sentinel verifies the exact resulting commit. After
+activation, Claude may edit only:
+
+`pm_research/local_curl_per_side/prepared_evidence.py`
+
+Required starting SHA-256:
+
+`8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`
+
+The exact twelve-path starting state is the immutable
+`authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/REV23_FINDING4_I0A_R1_TWELVE_PATH_BASELINE_SHA256SUMS.txt`,
+SHA-256
+`061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7`.
+The other eleven paths are read-only.
+
+## Required implementation correction
+
+Within the sole writable file, Claude MUST:
+
+1. narrow `_PrivateDescriptorSetInvariantCode` to the exact five Revision 09
+   outcomes;
+2. remove the two obsolete logical-hash-nullability and partition-binding private
+   outcomes;
+3. remove obsolete silent-deferral comment or behavior;
+4. enforce the exact private reducer order and closed private result domain;
+5. ensure every `validate_prepared_descriptor_set` branch returns only an accepted
+   public-domain result, including malformed/missing partition-entry handling;
+6. statically revalidate the corrected cross-member comparison, path validation,
+   selected binding, seven-cell relation projection, descriptor-set ordering,
+   same-ordinal binding, and complete payload traversal;
+7. preserve all public interfaces, assurances, fixtures, hashes, role rows,
+   frozen bindings, and T001–T165 expectations.
+
+Fixtures and expected results MUST NOT be changed to accommodate implementation
+behavior.
+
+## Source gate and checkpoint
+
+The source gate requires local `HEAD` to equal the later Sentinel-verified
+authorization-installation commit and
+`git status --short --untracked-files=all` to contain exactly the twelve baseline
+paths, with exact hash equality and no thirteenth or other changed path. Only
+`prepared_evidence.py` may change after the gate.
+
+The edited existing `prepared_evidence.py` is the only source file submitted.
+The static source report, exact path inventory, diff summary, and checksums are
+returned as textual chat content and MUST NOT be created as repository files.
+Implementation ZIP reconstruction is prohibited.
+
+## Continuing prohibitions
+
+This package does not authorize R2, another source-file edit, test-source editing,
+test collection/discovery/execution, project imports or execution, compilation,
+lint, type checking, coverage, CI, dependencies, CLI/config, generated files,
+caches, bytecode, research data, empirical artifacts, API/RPC/vendor/Dune/curl or
+general network use, Claude Git history/remote writes, P1/P2/P3, scoring, probe
+execution, or gate changes.
+
+---
+
+## Historical pre-R1 Revision 09 status and Revision 08 authorization evidence
+
 # Revision 09 Controlling Authorization Status
 
 Decision: **STOP_IMPLEMENTATION_NOT_AUTHORIZED**

@@ -167,7 +167,8 @@ Installation commits:
 - `IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
 - `HANDOFF_INVENTORY.md`
 - `HANDOFF_SHA256SUMS.txt`
-- `HANDOFF_REVISION_09_INSTALL_SHA256SUMS.txt` — composite Revision 09 installation inventory covering new/replaced files and preserved Revision 08 scope identities.
+- `HANDOFF_REVISION_09_INSTALL_SHA256SUMS.txt` — historical focused Revision 09 scope-installation inventory.
+- `HANDOFF_REVISION_09_R1_AUTHORIZATION_SHA256SUMS.txt` — focused R1 authorization-installation inventory excluding itself and the complete handoff inventory.
 - `CANONICAL_REPOSITORY_POINTER.md`
 - `prompts/CLAUDE_NEW_CHAT_PROMPT.md`
 - `prompts/SENTINEL_NEW_CHAT_PROMPT.md`
@@ -180,7 +181,7 @@ Installation commits:
 Current implementation state:
 `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01 — AUTHORIZED; ACTIVATION PENDING AUTHORIZATION-PACKAGE INSTALL VERIFICATION`.
 
-Revision 09 controlling state: `SPECIFICATION ACCEPTED; CANONICAL INSTALLATION PENDING; IMPLEMENTATION NOT AUTHORIZED`. The Revision 08 authorization above is retained as historical evidence and does not carry forward to Revision 09.
+Revision 09 controlling state: `SPECIFICATION ACCEPTED; R1 ONE-FILE SOURCE RESUME AUTHORIZATION PENDING MANUAL INSTALLATION AND SENTINEL VERIFICATION`. Authorization ID `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01` permits only `prepared_evidence.py` after activation. Revision 08 authorization remains historical evidence and does not expand the R1 boundary.
 
 ### `accepted_contract/`
 
@@ -269,7 +270,39 @@ Active bounded authoring package:
 Authorization ID: `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`. The package becomes active after Sentinel verifies
 the canonical commit containing it. Tests and project execution remain unauthorized.
 
-This authorization package is specific to Revision 08 and does not authorize Revision 09 implementation. No active Revision 09 Claude prompt exists.
+This authorization package is specific to Revision 08 and does not authorize
+Revision 09 implementation. Its no-active-Revision-09-prompt statement is
+historical pre-R1 evidence and is superseded only by the conditional R1
+authorization below.
+
+### `authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/`
+
+Immutable documentation-only authorization record for
+`REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`:
+
+- `README_FIRST.md`
+- `GUSTAVO_AUTHORIZATION_RECORD.md`
+- `SENTINEL_AUTHORIZATION_DECISION.md`
+- `AUTHORIZED_FILE_MATRIX.md`
+- `ACTIVITY_BOUNDARIES.md`
+- `SOURCE_GATE.md`
+- `AUTHORIZATION_MANIFEST.json`
+- `REV23_FINDING4_I0A_R1_TWELVE_PATH_BASELINE_SHA256SUMS.txt` — immutable exact twelve-path starting baseline, SHA-256
+  `061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7`
+- `SHA256SUMS.txt`
+
+Baseline provenance:
+
+- `REV23_FINDING4_I0A_IMPLEMENTATION_REVIEW.zip` SHA-256
+  `e1a809600107796667c415a3b3a922040072f26be4ff9a97b99c294a25d5b7af`;
+- later `prepared_evidence.py` checkpoint SHA-256
+  `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`.
+
+The package activates only after Gustavo's manual commit and Sentinel
+verification. It authorizes one writable source path, prohibits test-source
+editing and test execution, and does not authorize R2 or downstream execution.
+The active prompt requires reports, inventories, diff summaries, and checksums
+to be returned as chat text rather than created as repository files.
 
 ### Historical Amendment 03 authorization audit
 

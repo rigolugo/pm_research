@@ -267,12 +267,47 @@ fixtures, hashes, role rows, frozen bindings, T001–T165 identities, and the
 maximum twelve-path matrix remain preserved except for directly required private
 traceability reconciliation.
 
-The Revision 08 implementation authorization
-`REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01` does not automatically carry
-forward. Revision 09 implementation, source/test authoring, source
-synchronization, and an active Claude implementation prompt remain unauthorized.
-Canonical installation requires Sentinel static review, Gustavo's manual commit,
-and Sentinel verification of the resulting commit.
+#### Historical pre-R1 authorization state
+
+Before the later R1 authorization, the Revision 08 implementation authorization
+`REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01` did not automatically carry
+forward. At that pre-R1 point, Revision 09 implementation, source/test authoring,
+source synchronization, and an active Claude implementation prompt were
+unauthorized. That paragraph is retained as historical state only.
+
+### Finding 4 I0A Revision 09 R1 source-resume authorization
+
+On `2026-07-21`, Gustavo explicitly authorized Claude's implementation resume and
+Sentinel accepted only authorization ID
+`REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`.
+
+The authorization is conditional on manual canonical installation and Sentinel
+verification of the resulting commit. Once activated, the sole writable path is:
+
+`pm_research/local_curl_per_side/prepared_evidence.py`
+
+Required starting SHA-256:
+
+`8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`
+
+Sentinel independently verified implementation-review archive SHA-256
+`e1a809600107796667c415a3b3a922040072f26be4ff9a97b99c294a25d5b7af`,
+all internal archive checksum entries, and the exact twelve-path composite
+baseline SHA-256
+`061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7`.
+
+The other eleven previously authored source/test paths remain read-only. The
+stage permits canonical Revision 09 reads, static AST/source/JSON/text/bytes/hash
+inspection, Git status/diff/path inventory/checksums, and one R1 source-only
+checkpoint. It does not authorize test-source editing, test collection or
+execution, project imports/execution, compilation, lint, type checking,
+coverage, CI, another source edit, dependencies/CLI/config/generated files,
+implementation ZIP reconstruction, research data, empirical artifacts,
+API/RPC/vendor/Dune/curl/general network use, Claude Git history/remote writes,
+R2, P1/P2/P3, scoring, probe execution, or gate changes.
+
+Revision 08 authorization remains historical evidence. It does not enlarge the
+Revision 09 R1 authorization.
 
 ---
 
@@ -293,6 +328,7 @@ and Sentinel verification of the resulting commit.
 - The superseded Amendment 03 I0 implementation authorization.
 - Revision 08 I0A scope, absent a concrete material contract contradiction.
 - Revision 09 private descriptor-set invariant correction, absent new authoritative evidence.
+- Revision 09 R1 one-file source-resume boundary, absent a later Gustavo authorization and Sentinel decision.
 
 ---
 

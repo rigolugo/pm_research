@@ -8,7 +8,16 @@
 
 ### Controlling Revision 09 installation objective
 
-Stay Polymarket-native and preserve the accepted research-only guardrails. The immediate objective is Sentinel static review of the documentation-only Revision 09 canonical installation package, followed only on approval by Gustavo's manual documentation commit and Sentinel verification of the resulting commit. No Revision 09 implementation activity is authorized.
+Stay Polymarket-native and preserve the accepted research-only guardrails.
+Revision 09 is canonically installed and verified at
+`c4e8b1011c51272042decac4bc89e762d767a72a`. The immediate objective is
+Sentinel static review of the documentation-only R1 source-resume authorization
+installation package. After Gustavo manually commits an accepted package and
+Sentinel verifies that exact commit, Claude may resume only the one-file R1
+source stage in `pm_research/local_curl_per_side/prepared_evidence.py` from
+required starting SHA-256
+`8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`.
+No other Revision 09 implementation or test activity is authorized.
 
 ### Historical Revision 08 objective at installation base
 
@@ -161,18 +170,26 @@ path changed during installation.
 
 ### Controlling Revision 09 scope
 
-Revision 09 is Sentinel-accepted as the narrow controlling correction, pending canonical installation and Sentinel verification of the resulting manual commit.
+Revision 09 is canonically installed and Sentinel-verified at
+`c4e8b1011c51272042decac4bc89e762d767a72a` as the narrow controlling
+correction.
 
 - Sentinel acceptance date: `2026-07-20`
 - controlling scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
 - accepted archive SHA-256: `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
 - accepted member count: `14`
 - canonical installation base: `1e963bb6e8387aff071d697a416fa558956e571e`
-- proposed immutable directory: `accepted_scope_revision_09/`
+- verified canonical installation commit:
+  `c4e8b1011c51272042decac4bc89e762d767a72a`
+- immutable installed directory: `accepted_scope_revision_09/`
 - Revision 08 directory: immutable historical accepted evidence
 - supersession boundary: private descriptor-set invariant contract only
-- Revision 09 implementation authoring: **NOT AUTHORIZED**
-- Revision 09 test-source authoring and test execution: **NOT AUTHORIZED**
+- R1 authorization
+  `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`: **ACCEPTED BUT
+  INACTIVE PENDING MANUAL INSTALLATION AND SENTINEL VERIFICATION**
+- after activation, sole writable path:
+  `pm_research/local_curl_per_side/prepared_evidence.py`
+- Revision 09 test-source authoring and test execution: **UNAUTHORIZED**
 
 ### Historical Revision 08 scope state at installation base
 
@@ -203,7 +220,7 @@ contradiction that cannot be resolved from Revision 08.
 
 ### Controlling Revision 09 authorization state
 
-Revision 09 implementation is not authorized. The Revision 08 authorization ID `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01` remains historical and does not automatically carry forward. No active Revision 09 Claude prompt, source synchronization, implementation-source authoring, or test-source authoring is authorized. The only current activity is documentation/checksum installation review and, after Sentinel approval, Gustavo's manual canonical commit.
+Gustavo explicitly authorized, and Sentinel accepted, authorization ID `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01` for a single R1 source resume. Activation is conditional on Gustavo's manual canonical commit of this authorization package and Sentinel verification of that exact commit. Once active, only `pm_research/local_curl_per_side/prepared_evidence.py` may be edited, and only from required starting SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`. The other eleven previously authored source/test paths are read-only. Test-source authoring, test execution, project imports/execution, all other source edits, implementation ZIP reconstruction, research-data access, empirical work, general network activity, Git history/remote writes by Claude, P1/P2/P3, scoring, probe execution, and gate changes remain unauthorized. Revision 08 authorization remains historical evidence and does not expand this R1 stage.
 
 ### Historical Revision 08 authorization state at installation base
 
@@ -246,7 +263,7 @@ The active authorization ID is `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`.
 
 ### Controlling Revision 09 next step
 
-Sentinel statically reviews the Revision 09 documentation-only installation package. On approval, Gustavo manually uploads the exact package files and commits them. Gustavo then returns the full commit SHA to Sentinel for exact path, byte, checksum, Revision 08 preservation, and no-source/test-change verification. Any Revision 09 implementation stage requires a later separate Gustavo authorization and Sentinel handoff.
+Sentinel statically reviews this documentation-only R1 authorization installation package. On approval, Gustavo manually uploads the exact files and commits them, then returns the full commit SHA to Sentinel. Sentinel must verify paths, bytes, checksums, the unchanged accepted Revision 09 scope, the one-file matrix, the required starting SHA-256, and absence of source/test edits in the authorization commit. Only after that verification may Claude perform the R1 source-only checkpoint. R2, test-source authoring, and test execution require later separate authorization.
 
 ### Historical Revision 08 next step at installation base
 

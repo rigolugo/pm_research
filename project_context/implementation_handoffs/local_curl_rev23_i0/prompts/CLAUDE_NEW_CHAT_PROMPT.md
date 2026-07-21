@@ -1,77 +1,129 @@
-# INACTIVE CLAUDE HANDOFF — REV23 Finding 4 I0A Revision 09
-
-Status: **STOP_IMPLEMENTATION_NOT_AUTHORIZED**
-
-Revision 09 was Sentinel-accepted on `2026-07-20` as a narrow SPEC-ONLY correction. This file is not an active implementation prompt. The Revision 08 authorization text below is retained verbatim for historical audit evidence and MUST NOT be executed for Revision 09.
-
-Do not synchronize sources, author implementation or test source, invoke the implementing skill, execute tests or project code, access research data, use network/vendor services, create empirical artifacts, or write Git. A later separate Gustavo authorization and Sentinel handoff are mandatory.
-
----
-
-## Historical Revision 08 prompt — preserved verbatim and non-operative
-
-# ACTIVE CLAUDE HANDOFF — REV23 Finding 4 I0A Implementation Authoring
-
 Use the pm-research-implementing Skill. Skill invocation does not expand the authorization below.
+
+# ACTIVE-AFTER-VERIFICATION CLAUDE HANDOFF — REV23 Finding 4 I0A Revision 09 R1
+
+Authorization ID:
+`REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`.
+
+## Activation gate
+
+Do not begin until Gustavo manually commits the accepted canonical authorization
+package and Sentinel supplies the exact verified installation commit SHA. Local
+`HEAD` MUST equal that SHA. Until then return
+`STOP_AUTHORIZATION_INSTALL_NOT_VERIFIED`.
+
+The complete source gate is
+`authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SOURCE_GATE.md`.
+It requires exactly the twelve authorized untracked paths, exact SHA-256 equality
+with the immutable twelve-path baseline, and no thirteenth or other changed path.
 
 ## Governing identity
 
-- canonical repository: `rigolugo/pm_research`
-- accepted scope: `REV23_FINDING4_I0A_SCOPE_REVISION_08`
-- accepted scope SHA-256: `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
-- authorization ID: `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`
-- accepted-scope canonical commit: `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff`
-- authorization-package installation commit: `b22e30a35f24d4af8b134925ed338a9dd4c2a3b0`
-- active package: `project_context/implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/`
-- source-gated implementation HEAD: the later canonical commit containing both this corrected handoff and the restored complete `HANDOFF_SHA256SUMS.txt`, after Sentinel verifies that commit
+- repository: `rigolugo/pm_research`;
+- controlling scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`;
+- accepted scope archive SHA-256:
+  `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`;
+- canonical authorization base:
+  `c4e8b1011c51272042decac4bc89e762d767a72a`;
+- implementation-review archive SHA-256:
+  `e1a809600107796667c415a3b3a922040072f26be4ff9a97b99c294a25d5b7af`;
+- twelve-path baseline SHA-256:
+  `061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7`;
+- authorization directory:
+  `project_context/implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/`.
 
-Neither `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff` nor
-`b22e30a35f24d4af8b134925ed338a9dd4c2a3b0` is the source-gated implementation
-HEAD. Do not begin until Sentinel verifies the later activation-correction commit
-and supplies its exact full SHA. Record that SHA and require local HEAD to equal it.
+## Sole writable path
 
-## Authorized stage
+`pm_research/local_curl_per_side/prepared_evidence.py`
 
-Author implementation source and unexecuted test source only.
+Required starting SHA-256:
 
-### Authorized source files
+`8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`
 
-- `pm_research/local_curl_per_side/__init__.py`
-- `pm_research/local_curl_per_side/canonical.py`
-- `pm_research/local_curl_per_side/governing_package.py`
-- `pm_research/local_curl_per_side/finding4_registry.py`
-- `pm_research/local_curl_per_side/prepared_evidence.py`
-- `pm_research/local_curl_per_side/claim_hashes.py`
+The other eleven paths in
+`REV23_FINDING4_I0A_R1_TWELVE_PATH_BASELINE_SHA256SUMS.txt` are read-only and
+MUST remain byte-identical throughout R1.
 
-### Authorized test-source files
+## Required R1 correction contract
 
-- `tests/local_curl_per_side/test_canonical_i0a.py`
-- `tests/local_curl_per_side/test_governing_package_i0a.py`
-- `tests/local_curl_per_side/test_finding4_registry_i0a.py`
-- `tests/local_curl_per_side/test_prepared_evidence_i0a.py`
-- `tests/local_curl_per_side/test_claim_hashes_i0a.py`
-- `tests/local_curl_per_side/test_i0a_public_contract.py`
+Within the sole writable path, conform exactly to accepted Revision 09:
 
-No other path may be created, edited, deleted, renamed, or generated. All twelve paths are create-only.
+1. Narrow `_PrivateDescriptorSetInvariantCode` to exactly:
+   - `PRIVATE_DESCRIPTOR_SET_INVARIANTS_VALID`;
+   - `PRIVATE_DESCRIPTOR_SET_ROLE_CARDINALITY_INVALID`;
+   - `PRIVATE_DESCRIPTOR_SET_ORDINAL_SEQUENCE_INVALID`;
+   - `PRIVATE_DESCRIPTOR_SET_CANONICAL_TARGET_DUPLICATE`;
+   - `PRIVATE_DESCRIPTOR_SET_SIDECAR_RELATION_INVALID`.
+2. Remove the obsolete private outcomes
+   `PRIVATE_DESCRIPTOR_SET_LOGICAL_HASH_NULLABILITY_INVALID` and
+   `PRIVATE_DESCRIPTOR_SET_PARTITION_BINDING_INVALID` from the enum, reducer,
+   result handling, and every private branch.
+3. Remove the obsolete silent-deferral comment and any corresponding silent
+   deferral behavior.
+4. Enforce the exact private reducer order:
+   role cardinality, ordinal sequence, canonical-target uniqueness, sidecar
+   relation, then valid. The private result domain is closed to those five
+   outcomes. Every private failure returns `summaries=None`; only valid returns
+   the complete ordinal-order summaries.
+5. Correct `validate_prepared_descriptor_set` so every branch returns only a code
+   in its accepted closed public result domain and follows its exact ordered
+   precedence. Distinguish invalid or non-canonical JSON bytes
+   (`ERR_CANONICAL_JSON_INVALID`) from selected-schema membership/type failures
+   (`ERR_SELECTED_SCHEMA_INVALID`) and ordinal failures
+   (`ERR_ORDINAL_SEQUENCE_INVALID`). Do not emit
+   `ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH` from this function. Resolve any remaining
+   nested partition-entry case from the accepted machine-readable contracts
+   rather than inventing or collapsing result categories; stop and report a
+   contradiction on genuine ambiguity. Same-ordinal partition path, identity,
+   or logical-hash mismatch MUST use
+   `ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH`. No private or out-of-domain code may
+   escape the public function.
+6. Revalidate by static source inspection the previously corrected:
+   - cross-member comparison;
+   - normalized path validation;
+   - selected binding;
+   - exact seven-cell partition-entry relation projection;
+   - descriptor-set ordering;
+   - same-ordinal partition binding;
+   - complete payload traversal.
+7. Preserve every public interface, signature, result domain, assurance tuple,
+   return-payload rule, fixture byte, physical or logical hash, role row, frozen
+   binding, and T001–T165 expected input/result identity.
+8. Fixtures, static case inputs, and expected results MUST NOT be changed to
+   accommodate implementation behavior.
 
-## Activity boundaries
+Stop and return a finding rather than editing another source or test file,
+changing a fixture, broadening a result domain, or inferring an unstated
+fallback.
 
-- Source synchronization: authorized read-only to the Sentinel-verified source-gated HEAD.
-- Test-source authoring: authorized for the six exact test files.
-- Test execution: not authorized.
-- Project imports/execution: not authorized.
-- Local research-data reads: not authorized.
-- Network: only read-only Git/GitHub source synchronization; no API/RPC/vendor/Dune/curl/general browsing.
-- Subprocess: only git status/diff, file listing/comparison, checksums, and ZIP packaging.
-- Artifact production: implementation review ZIP, static report, and SHA256SUMS only.
-- Git writes: local working-tree writes to the exact twelve paths only; no commit, branch, push, PR, merge, or remote write.
+## Authorized activity
 
-## Preconditions
+- read-only synchronization to the Sentinel-verified authorization-installation
+  commit;
+- canonical Revision 09 contract reads;
+- source editing only in the sole writable path;
+- static AST/source/JSON/text/bytes/SHA-256 inspection without importing or
+  executing project/authored modules;
+- `git status --short --untracked-files=all`, Git diff, exact path inventory, and
+  checksums;
+- one R1 source-only checkpoint.
 
-Read root `START_HERE.md`, `project_context/START_HERE.md`, the full canonical read order, accepted contract, accepted Revision 08 scope, and the active authorization package. Obtain the exact Sentinel-verified activation-correction commit SHA. Verify local HEAD equals that SHA, the worktree is clean, every create-only path is absent, all governing hashes and checksum inventories match, and the file/activity matrices are exact. Apply the accepted ordered halt domain before writing any source file.
+## Prohibited
 
-## Deliverable
+Test-source editing; test collection, discovery, or execution; project/authored
+module imports or execution; compilation, lint, type checking, coverage, CI;
+another source-file edit; dependencies, CLI, config, generated files, caches,
+bytecode; implementation ZIP reconstruction; research data or empirical
+artifacts; API/RPC/vendor/Dune/curl/general network activity; Git commits,
+branches, pushes, PRs, merges, or remote writes; R2; P1/P2/P3; scoring; probe
+execution; gate changes.
 
-Return one implementation review ZIP conforming to `IMPLEMENTATION_ZIP_LAYOUT_CONTRACT.md`. Include the exact twelve authored files, package-only static conformance report(s), and one `SHA256SUMS.txt` covering every other member exactly once. Record the governing hashes, scope-review anchor, active authorization identity, source-gated local HEAD, and final worktree/diff state.
+## Checkpoint deliverable
 
-Do not update canonical project-context files in the repo. If a canonical update is needed, return a finding only. Stop rather than infer permission on any ambiguity or required scope expansion.
+Submit only the existing edited
+`pm_research/local_curl_per_side/prepared_evidence.py` as a source file.
+
+Return the static source report, exact twelve-path inventory, diff summary, and
+checksums as textual checkpoint content in chat. Do not create repository files
+for those reports or inventories. Do not submit any test file and do not
+reconstruct an implementation ZIP.
