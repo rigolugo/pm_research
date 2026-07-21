@@ -1,3 +1,15 @@
+# INACTIVE CLAUDE HANDOFF — REV23 Finding 4 I0A Revision 09
+
+Status: **STOP_IMPLEMENTATION_NOT_AUTHORIZED**
+
+Revision 09 was Sentinel-accepted on `2026-07-20` as a narrow SPEC-ONLY correction. This file is not an active implementation prompt. The Revision 08 authorization text below is retained verbatim for historical audit evidence and MUST NOT be executed for Revision 09.
+
+Do not synchronize sources, author implementation or test source, invoke the implementing skill, execute tests or project code, access research data, use network/vendor services, create empirical artifacts, or write Git. A later separate Gustavo authorization and Sentinel handoff are mandatory.
+
+---
+
+## Historical Revision 08 prompt — preserved verbatim and non-operative
+
 # ACTIVE CLAUDE HANDOFF — REV23 Finding 4 I0A Implementation Authoring
 
 Use the pm-research-implementing Skill. Skill invocation does not expand the authorization below.

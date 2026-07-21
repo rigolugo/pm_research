@@ -1,3 +1,15 @@
+# Revision 09 Controlling Authorization Status
+
+Decision: **STOP_IMPLEMENTATION_NOT_AUTHORIZED**
+
+`REV23_FINDING4_I0A_SCOPE_REVISION_09` was accepted on `2026-07-20` as a narrow SPEC-ONLY correction. The Revision 08 authorization record retained below does not automatically carry forward and cannot authorize Revision 09 source synchronization, implementation-source authoring, test-source authoring, or an active Claude prompt. Any Revision 09 implementation stage requires a later separate Gustavo authorization and Sentinel handoff pinned to a verified post-install canonical commit.
+
+The only current activity is documentation/checksum installation review, Gustavo's manual commit after Sentinel approval, and Sentinel verification of that commit.
+
+---
+
+## Historical Revision 08 authorization record — preserved verbatim
+
 # Implementation Authorization Scope — REV23 Finding 4 I0A
 
 Decision: **APPROVE — BOUNDED IMPLEMENTATION-SOURCE AND UNEXECUTED TEST-SOURCE AUTHORING AUTHORIZED**

@@ -237,6 +237,43 @@ writes, P1/P2/P3, scoring, probe execution, and gate changes remain unauthorized
 The earlier Amendment 03 I0 authorization remains superseded. Revision 08 remains
 the accepted scope; no Revision 09 follows for optional polish.
 
+### Finding 4 I0A Revision 09 scope correction
+
+A concrete material contradiction reopened the accepted Revision 08 scope. The
+private helper `_validate_descriptor_set_invariants` was required to emit
+`PRIVATE_DESCRIPTOR_SET_LOGICAL_HASH_NULLABILITY_INVALID` and
+`PRIVATE_DESCRIPTOR_SET_PARTITION_BINDING_INVALID`, but its closed
+`_DescriptorSetInvariantInput` and `_DescriptorSetInvariantSummary` exposed
+neither logical-hash values nor partition-entry/binding information. Those
+outcomes were impossible to determine through the accepted private interface.
+
+Sentinel accepted `REV23_FINDING4_I0A_SCOPE_REVISION_09` on
+`2026-07-20` as the narrow SPEC-ONLY correction:
+
+- accepted archive SHA-256: `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`;
+- accepted member count: `14`;
+- canonical installation base: `1e963bb6e8387aff071d697a416fa558956e571e`;
+- `_validate_descriptor_set_invariants` is narrowed to role cardinality, ordinal
+  sequence, canonical-target uniqueness, sidecar relation, then valid;
+- logical-hash-nullability validation belongs to
+  `validate_prepared_object_descriptor`;
+- same-ordinal partition-entry binding belongs to
+  `validate_prepared_descriptor_set`.
+
+Revision 09 supersedes Revision 08 only for that private descriptor-set
+invariant contract. Revision 08 remains immutable historical accepted evidence.
+All public result codes, public assurances, public interfaces, precedence,
+fixtures, hashes, role rows, frozen bindings, T001–T165 identities, and the
+maximum twelve-path matrix remain preserved except for directly required private
+traceability reconciliation.
+
+The Revision 08 implementation authorization
+`REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01` does not automatically carry
+forward. Revision 09 implementation, source/test authoring, source
+synchronization, and an active Claude implementation prompt remain unauthorized.
+Canonical installation requires Sentinel static review, Gustavo's manual commit,
+and Sentinel verification of the resulting commit.
+
 ---
 
 ## DO NOT REOPEN unless explicitly requested with new evidence
@@ -255,6 +292,7 @@ the accepted scope; no Revision 09 follows for optional polish.
 - Finding 4 approved source stack and accepted materialization.
 - The superseded Amendment 03 I0 implementation authorization.
 - Revision 08 I0A scope, absent a concrete material contract contradiction.
+- Revision 09 private descriptor-set invariant correction, absent new authoritative evidence.
 
 ---
 

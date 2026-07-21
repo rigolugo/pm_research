@@ -1,3 +1,39 @@
+# REV23 Finding 4 Canonical Handoff — Revision 09 Installation Review
+
+## Revision 09 controlling installation state
+
+Revision 09 is Sentinel-accepted as a narrow SPEC-ONLY correction. Canonical installation is pending Sentinel static review, Gustavo's manual documentation commit, and Sentinel verification of the resulting commit.
+
+- accepted scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
+- Sentinel acceptance date: `2026-07-20`
+- accepted archive SHA-256: `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
+- accepted member count: `14`
+- installation base: `1e963bb6e8387aff071d697a416fa558956e571e`
+- immutable proposed directory: `scope_authoring/rev23_finding4_i0a/accepted_scope_revision_09/`
+- historical Revision 08 directory: unchanged
+- Revision 09 implementation authorization: **NONE**
+
+## Revision 09 read order
+
+1. `scope_authoring/rev23_finding4_i0a/README_FIRST.md`
+2. `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
+3. `scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
+4. `scope_authoring/rev23_finding4_i0a/accepted_scope_revision_09/README_FIRST.md`
+5. the remaining Revision 09 members in their own read order
+6. `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md`
+7. `scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST_REVISION_08.json`
+8. `scope_authoring/rev23_finding4_i0a/accepted_scope_revision_08/README_FIRST.md`
+9. `scope_authoring/rev23_finding4_i0a/SCOPE_SHA256SUMS.txt`
+10. `HANDOFF_REVISION_09_INSTALL_SHA256SUMS.txt`
+
+## Revision 09 authorization boundary
+
+The Revision 08 implementation authorization does not carry forward. No active Revision 09 Claude prompt, source synchronization, implementation/test-source authoring, tests, project execution, research-data access, empirical work, network/vendor activity, agent Git write, or downstream phase is authorized.
+
+---
+
+## Historical canonical handoff at installation base — preserved verbatim
+
 # REV23 Finding 4 Canonical Handoff — I0A Authoring Authorized
 
 ## Current canonical state

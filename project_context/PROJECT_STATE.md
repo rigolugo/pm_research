@@ -6,6 +6,12 @@
 
 ## Current objective
 
+### Controlling Revision 09 installation objective
+
+Stay Polymarket-native and preserve the accepted research-only guardrails. The immediate objective is Sentinel static review of the documentation-only Revision 09 canonical installation package, followed only on approval by Gustavo's manual documentation commit and Sentinel verification of the resulting commit. No Revision 09 implementation activity is authorized.
+
+### Historical Revision 08 objective at installation base
+
 Stay Polymarket-native and preserve the accepted research-only guardrails.
 
 The immediate project objective is to install and verify the active Finding 4
@@ -153,6 +159,23 @@ path changed during installation.
 
 ## Revision 23 Finding 4 I0A scope state
 
+### Controlling Revision 09 scope
+
+Revision 09 is Sentinel-accepted as the narrow controlling correction, pending canonical installation and Sentinel verification of the resulting manual commit.
+
+- Sentinel acceptance date: `2026-07-20`
+- controlling scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
+- accepted archive SHA-256: `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
+- accepted member count: `14`
+- canonical installation base: `1e963bb6e8387aff071d697a416fa558956e571e`
+- proposed immutable directory: `accepted_scope_revision_09/`
+- Revision 08 directory: immutable historical accepted evidence
+- supersession boundary: private descriptor-set invariant contract only
+- Revision 09 implementation authoring: **NOT AUTHORIZED**
+- Revision 09 test-source authoring and test execution: **NOT AUTHORIZED**
+
+### Historical Revision 08 scope state at installation base
+
 Revision 08 is accepted as the bounded implementation-authoring scope.
 
 - Sentinel decision: `APPROVE`
@@ -177,6 +200,12 @@ contradiction that cannot be resolved from Revision 08.
 ---
 
 ## Authorization state
+
+### Controlling Revision 09 authorization state
+
+Revision 09 implementation is not authorized. The Revision 08 authorization ID `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01` remains historical and does not automatically carry forward. No active Revision 09 Claude prompt, source synchronization, implementation-source authoring, or test-source authoring is authorized. The only current activity is documentation/checksum installation review and, after Sentinel approval, Gustavo's manual canonical commit.
+
+### Historical Revision 08 authorization state at installation base
 
 Gustavo has explicitly authorized bounded Finding 4 I0A implementation authoring.
 Sentinel has approved the exact twelve-path activity matrix. Activation requires
@@ -214,6 +243,12 @@ The active authorization ID is `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`.
 ---
 
 ## Next possible step
+
+### Controlling Revision 09 next step
+
+Sentinel statically reviews the Revision 09 documentation-only installation package. On approval, Gustavo manually uploads the exact package files and commits them. Gustavo then returns the full commit SHA to Sentinel for exact path, byte, checksum, Revision 08 preservation, and no-source/test-change verification. Any Revision 09 implementation stage requires a later separate Gustavo authorization and Sentinel handoff.
+
+### Historical Revision 08 next step at installation base
 
 Manually upload and commit the active I0A authorization package, then return the
 commit SHA to Sentinel for verification.

@@ -1,0 +1,767 @@
+{
+  "additional_properties": false,
+  "caller_digest_policy": "never trusted; always recompute from authorized representation",
+  "closed_top_level_fields": [
+    "schema_id",
+    "schema_version",
+    "scope_review_anchor",
+    "additional_properties",
+    "nested_additional_properties_policy",
+    "closed_top_level_fields",
+    "sha256_algorithm",
+    "caller_digest_policy",
+    "projection_common_rules",
+    "structural_schema_validation_disposition",
+    "implemented_schema_contracts",
+    "projections",
+    "public_digest_helper_assurance",
+    "cross_member_hash_rules",
+    "fixed_projection_error_precedence",
+    "schema_namespace_separation",
+    "result_assurance_rule",
+    "success_result_assurance_map",
+    "schema_identity_closure"
+  ],
+  "cross_member_hash_rules": {
+    "claim_scope_file_sha256": "SHA256 exact CLAIM_SCOPE.json canonical bytes; plan and unit copies must equal",
+    "claim_semantic_file_sha256": "SHA256 exact CLAIM_SEMANTIC.json canonical bytes; plan and unit copies must equal",
+    "objects_logical_sha256": "LF-join prepared_object_row in exact ordinal 0..M-1 order; no final LF; empty hashes empty bytes",
+    "plan_unit_cross_member": "run_id, unit_kind, subject_sequence, subject_family, expected predecessor, claim-scope hashes, claim-semantic schema/file/digest, and planned-vs-descriptor role/schema/mode/target tuples are typed-equal",
+    "planned_objects_logical_sha256": "LF-join planned_object_row in exact ordinal 0..M-1 order; no final LF; empty hashes empty bytes",
+    "preparation_plan_file_sha256": "SHA256 exact PREPARATION_PLAN.json canonical bytes",
+    "prepared_unit_id": "literal prep_ concatenated with lowercase preparation_plan_file_sha256; caller value recomputed and mismatch is ERR_PREPARED_UNIT_ID_MISMATCH",
+    "structural_sidecars": "A fixed structural sidecar is canonical JSON bound to an independently derived structural target path and independently supplied paired-target exact bytes. Success establishes only A3_EXACT_LENGTH_AND_SHA256_RECONCILED plus A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED; it never establishes A4, A6, A2, or filesystem facts."
+  },
+  "fixed_projection_error_precedence": {
+    "canonical_typed_cell_bytes": [
+      "ERR_CANONICAL_FIELD_NAME_INVALID",
+      "ERR_CANONICAL_TAG_INVALID",
+      "ERR_CANONICAL_TYPE_MISMATCH",
+      "ERR_CANONICAL_NON_NFC",
+      "ERR_CANONICAL_UINT_RANGE",
+      "ERR_CANONICAL_SHA256_FORMAT",
+      "ERR_CANONICAL_BYTES_FORMAT"
+    ],
+    "canonical_typed_row_bytes": [
+      "ERR_CANONICAL_ROW_ARITY",
+      "ERR_CANONICAL_FIELD_ORDER_INVALID",
+      "ERR_CANONICAL_TAG_INVALID",
+      "ERR_CANONICAL_TYPE_MISMATCH",
+      "ERR_CANONICAL_NON_NFC",
+      "ERR_CANONICAL_UINT_RANGE",
+      "ERR_CANONICAL_SHA256_FORMAT",
+      "ERR_CANONICAL_BYTES_FORMAT",
+      "ERR_CANONICAL_FIELD_NAME_INVALID"
+    ],
+    "fixed_digest_helpers": [
+      "ERR_CANONICAL_ROW_ARITY",
+      "ERR_CANONICAL_FIELD_ORDER_INVALID",
+      "ERR_CANONICAL_TAG_INVALID",
+      "ERR_CANONICAL_TYPE_MISMATCH",
+      "ERR_CANONICAL_NON_NFC",
+      "ERR_CANONICAL_UINT_RANGE",
+      "ERR_CANONICAL_SHA256_FORMAT",
+      "ERR_CANONICAL_BYTES_FORMAT",
+      "ERR_CANONICAL_FIELD_NAME_INVALID"
+    ],
+    "relation_digest_helpers": [
+      "ERR_DIGEST_INPUT_INVALID"
+    ],
+    "rule": "For multi-fault inputs return the first satisfied code in the listed order; within per-cell checks use lowest ordinal first."
+  },
+  "implemented_schema_contracts": {
+    "embedded:snapshot_claim_partition_entry_v23": {
+      "additional_fields": false,
+      "destination_exclusions": [],
+      "empty_relation_behavior": "SHA-256 of empty bytes",
+      "field_order": [
+        "partition_ordinal",
+        "partition_id",
+        "partition_path",
+        "partition_logical_sha256",
+        "row_count",
+        "first_key_canonical_json",
+        "last_key_canonical_json"
+      ],
+      "fields": {
+        "first_key_canonical_json": "STRING nullable iff row_count=0",
+        "last_key_canonical_json": "STRING nullable iff row_count=0",
+        "partition_id": "STRING regex ^part_[0-9a-f]{64}$ non-null",
+        "partition_logical_sha256": "SHA256 non-null",
+        "partition_ordinal": "UINT32 non-null",
+        "partition_path": "STRING non-null and compatible with selected PARTITION_PAYLOAD target grammar",
+        "row_count": "UINT64 non-null"
+      },
+      "final_lf_rule": "no final LF",
+      "lf_separator_rule": "LF byte 0x0a between canonical typed rows only",
+      "nullability": "first_key_canonical_json and last_key_canonical_json are both NULL iff row_count=0 and both non-null iff row_count>0; all other fields non-null",
+      "order": "partition_ordinal ascending exactly 0..N-1; partition_id and partition_path unique",
+      "row_order": "partition_ordinal ascending exactly 0..N-1",
+      "uniqueness": "partition_ordinal, partition_id, and partition_path each unique"
+    },
+    "i0a:prepared_claim_object_relation": {
+      "destination_exclusions": [],
+      "empty_relation": true,
+      "empty_relation_behavior": "SHA-256 of empty bytes",
+      "final_lf_rule": "no final LF",
+      "lf_separator_rule": "LF byte 0x0a between canonical typed rows only",
+      "nullability": "none nullable",
+      "order": "object_ordinal ascending exactly 0..M-1",
+      "row_fields": [
+        "object_ordinal UINT",
+        "object_role STRING",
+        "content_schema_id STRING",
+        "canonical_target_path STRING"
+      ],
+      "row_order": "object_ordinal ascending exactly 0..M-1",
+      "unique_key": [
+        "object_ordinal"
+      ],
+      "uniqueness": "object_ordinal unique"
+    },
+    "i0a:prepared_object_descriptor_relation": {
+      "destination_exclusions": [],
+      "empty_relation": true,
+      "empty_relation_behavior": "SHA-256 of empty bytes",
+      "final_lf_rule": "no final LF",
+      "lf_separator_rule": "LF byte 0x0a between canonical typed rows only",
+      "nullability": "logical_sha256 is NULL iff sidecar; sidecar_of_object_ordinal non-null iff sidecar and resolves to the exact paired non-sidecar; all other fields non-null",
+      "order": "object_ordinal ascending exactly 0..M-1",
+      "row_fields": [
+        "object_ordinal UINT",
+        "object_role STRING",
+        "content_schema_id STRING",
+        "publication_mode STRING",
+        "durable_source_path STRING",
+        "canonical_target_path STRING",
+        "file_size_bytes UINT",
+        "file_sha256 SHA256",
+        "logical_sha256 SHA256 or NULL",
+        "sidecar_of_object_ordinal UINT or NULL"
+      ],
+      "row_order": "object_ordinal ascending exactly 0..M-1",
+      "unique_key": [
+        "object_ordinal"
+      ],
+      "uniqueness": "object_ordinal unique; canonical_target_path unique"
+    },
+    "i0a:prepared_planned_object_relation": {
+      "destination_exclusions": [],
+      "empty_relation": true,
+      "empty_relation_behavior": "SHA-256 of empty bytes",
+      "final_lf_rule": "no final LF",
+      "lf_separator_rule": "LF byte 0x0a between canonical typed rows only",
+      "nullability": "none nullable",
+      "order": "object_ordinal ascending exactly 0..M-1",
+      "row_fields": [
+        "object_ordinal UINT",
+        "object_role STRING",
+        "content_schema_id STRING",
+        "publication_mode STRING",
+        "canonical_target_path STRING"
+      ],
+      "row_order": "object_ordinal ascending exactly 0..M-1",
+      "unique_key": [
+        "object_ordinal"
+      ],
+      "uniqueness": "object_ordinal unique"
+    },
+    "json:prepared_claim_object_v23": {
+      "additional_fields": false,
+      "field_order": [
+        "object_ordinal",
+        "object_role",
+        "content_schema_id",
+        "canonical_target_path"
+      ],
+      "fields": {
+        "canonical_target_path": "STRING non-null",
+        "content_schema_id": "STRING non-null",
+        "object_ordinal": "UINT32 non-null",
+        "object_role": "closed 30-role STRING non-null"
+      },
+      "order": "ordinal 0..M-1, unique"
+    },
+    "json:prepared_claim_scope_v23": {
+      "additional_fields": false,
+      "field_order": [
+        "schema_version",
+        "spec_revision",
+        "run_id",
+        "unit_kind",
+        "subject_family",
+        "subject_sequence",
+        "expected_predecessor_commit_sha256",
+        "object_claims",
+        "object_claims_logical_sha256"
+      ],
+      "field_order_semantics": "closed membership and typed projection only; not persisted JSON order",
+      "fields": {
+        "expected_predecessor_commit_sha256": "SHA256 null iff subject_sequence=0",
+        "object_claims": "ARRAY[prepared_claim_object_v23] non-null",
+        "object_claims_logical_sha256": "SHA256 non-null recomputed",
+        "run_id": "STRING regex ^run_[0-9a-f]{64}$",
+        "schema_version": "STRING const local_curl_prepared_claim_scope.v23",
+        "spec_revision": "UINT16 const 23",
+        "subject_family": "STRING non-null in capture,analysis_compatibility,analysis_strict",
+        "subject_sequence": "UINT64 non-null",
+        "unit_kind": "STRING const SNAPSHOT_PUBLICATION in I0A"
+      },
+      "persisted_key_order": "lexicographic Unicode code-point order"
+    },
+    "json:prepared_evidence_object_v23": {
+      "additional_fields": false,
+      "field_order": [
+        "object_ordinal",
+        "object_role",
+        "content_schema_id",
+        "publication_mode",
+        "durable_source_path",
+        "canonical_target_path",
+        "file_size_bytes",
+        "file_sha256",
+        "logical_sha256",
+        "sidecar_of_object_ordinal"
+      ],
+      "fields": {
+        "canonical_target_path": "STRING non-null",
+        "content_schema_id": "STRING non-null",
+        "durable_source_path": "STRING non-null",
+        "file_sha256": "SHA256 non-null",
+        "file_size_bytes": "UINT64 non-null",
+        "logical_sha256": "SHA256 nullable by role",
+        "object_ordinal": "UINT32 non-null",
+        "object_role": "closed 30-role STRING non-null",
+        "publication_mode": "closed mode STRING non-null",
+        "sidecar_of_object_ordinal": "UINT32 nullable by role"
+      }
+    },
+    "json:prepared_evidence_plan_v23": {
+      "additional_fields": false,
+      "field_order": [
+        "schema_version",
+        "spec_revision",
+        "run_id",
+        "unit_kind",
+        "subject_sequence",
+        "subject_family",
+        "expected_predecessor_commit_sha256",
+        "claim_scope_file_sha256",
+        "claim_scope_sha256",
+        "claim_semantic_schema_id",
+        "claim_semantic_file_sha256",
+        "claim_semantic_sha256",
+        "planned_objects",
+        "planned_objects_logical_sha256"
+      ],
+      "field_order_semantics": "closed membership and typed projection only; not persisted JSON order",
+      "fields": {
+        "claim_scope_file_sha256": "SHA256",
+        "claim_scope_sha256": "SHA256",
+        "claim_semantic_file_sha256": "SHA256",
+        "claim_semantic_schema_id": "STRING const local_curl_snapshot_publication_claim_semantic.v23",
+        "claim_semantic_sha256": "SHA256",
+        "expected_predecessor_commit_sha256": "SHA256 null iff sequence=0",
+        "planned_objects": "ARRAY[prepared_planned_object_v23]",
+        "planned_objects_logical_sha256": "SHA256 recomputed",
+        "run_id": "STRING regex ^run_[0-9a-f]{64}$",
+        "schema_version": "STRING const local_curl_prepared_evidence_plan.v23",
+        "spec_revision": "UINT16 const 23",
+        "subject_family": "STRING non-null in family domain",
+        "subject_sequence": "UINT64",
+        "unit_kind": "STRING const SNAPSHOT_PUBLICATION in I0A"
+      },
+      "persisted_key_order": "lexicographic Unicode code-point order"
+    },
+    "json:prepared_evidence_unit_v23": {
+      "additional_fields": false,
+      "field_order": [
+        "schema_version",
+        "spec_revision",
+        "run_id",
+        "prepared_unit_id",
+        "preparation_plan_file_sha256",
+        "unit_kind",
+        "subject_sequence",
+        "subject_family",
+        "expected_predecessor_commit_sha256",
+        "claim_scope_file_sha256",
+        "claim_scope_sha256",
+        "claim_semantic_schema_id",
+        "claim_semantic_file_sha256",
+        "claim_semantic_sha256",
+        "objects",
+        "objects_logical_sha256"
+      ],
+      "field_order_semantics": "closed membership and typed projection only; not persisted JSON order",
+      "fields": {
+        "claim_scope_file_sha256": "SHA256",
+        "claim_scope_sha256": "SHA256",
+        "claim_semantic_file_sha256": "SHA256",
+        "claim_semantic_schema_id": "STRING const local_curl_snapshot_publication_claim_semantic.v23",
+        "claim_semantic_sha256": "SHA256",
+        "expected_predecessor_commit_sha256": "SHA256 null iff sequence=0",
+        "objects": "ARRAY[prepared_evidence_object_v23]",
+        "objects_logical_sha256": "SHA256 recomputed",
+        "preparation_plan_file_sha256": "SHA256",
+        "prepared_unit_id": "STRING prep_ + plan hash",
+        "run_id": "STRING regex ^run_[0-9a-f]{64}$",
+        "schema_version": "STRING const local_curl_prepared_evidence_unit.v23",
+        "spec_revision": "UINT16 const 23",
+        "subject_family": "STRING non-null in family domain",
+        "subject_sequence": "UINT64",
+        "unit_kind": "STRING const SNAPSHOT_PUBLICATION in I0A"
+      },
+      "invariant": "all common metadata typed-equal to plan; ordinals 0..M-1",
+      "persisted_key_order": "lexicographic Unicode code-point order"
+    },
+    "json:prepared_planned_object_v23": {
+      "additional_fields": false,
+      "field_order": [
+        "object_ordinal",
+        "object_role",
+        "content_schema_id",
+        "publication_mode",
+        "canonical_target_path"
+      ],
+      "fields": {
+        "canonical_target_path": "STRING non-null",
+        "content_schema_id": "STRING non-null",
+        "object_ordinal": "UINT32 non-null",
+        "object_role": "closed role STRING",
+        "publication_mode": "closed mode STRING"
+      },
+      "order": "ordinal 0..M-1, unique"
+    },
+    "json:sha256_sidecar": {
+      "additional_fields": false,
+      "canonical_bytes_rule": "Persisted object keys are lexicographic: target_file_sha256 then target_path; compact UTF-8; no final LF. Schema field order is membership/projection metadata only.",
+      "canonical_json": "lexicographic keys, compact UTF-8, no final LF",
+      "field_order": [
+        "target_file_sha256",
+        "target_path"
+      ],
+      "fields": {
+        "target_file_sha256": {
+          "nullable": false,
+          "type": "SHA256"
+        },
+        "target_path": {
+          "nullable": false,
+          "type": "STRING"
+        }
+      }
+    },
+    "json:snapshot_publication_claim_semantic_v23": {
+      "additional_fields": false,
+      "field_order": [
+        "schema_version",
+        "spec_revision",
+        "run_id",
+        "audit_family",
+        "snapshot_sequence",
+        "previous_snapshot_file_sha256",
+        "previous_publication_commit_file_sha256",
+        "total_row_count",
+        "duplicate_key_count",
+        "first_key_canonical_json",
+        "last_key_canonical_json",
+        "partition_entries",
+        "partition_entries_semantic_logical_sha256",
+        "ordered_relation_logical_sha256",
+        "capture_coverage_state",
+        "covered_through_fence_sequence",
+        "capture_coverage_relation_logical_sha256"
+      ],
+      "field_order_semantics": "closed membership and typed projection only; not persisted JSON order",
+      "fields": {
+        "audit_family": "STRING in capture,analysis_compatibility,analysis_strict",
+        "capture_coverage_relation_logical_sha256": "SHA256 nullable by family/state",
+        "capture_coverage_state": "STRING in NOT_CAPTURE,CAPTURE_EMPTY_PREFIX_ORIGIN,CAPTURE_THROUGH_FENCE_SEQUENCE",
+        "covered_through_fence_sequence": "UINT64 nullable by coverage state",
+        "duplicate_key_count": "UINT64 const 0",
+        "first_key_canonical_json": "STRING nullable iff empty",
+        "last_key_canonical_json": "STRING nullable iff empty",
+        "ordered_relation_logical_sha256": "SHA256",
+        "partition_entries": "ARRAY[embedded:snapshot_claim_partition_entry_v23]",
+        "partition_entries_semantic_logical_sha256": "SHA256 recomputed",
+        "previous_publication_commit_file_sha256": "SHA256 nullable, null iff origin",
+        "previous_snapshot_file_sha256": "SHA256 nullable, null iff origin",
+        "run_id": "STRING regex ^run_[0-9a-f]{64}$",
+        "schema_version": "STRING const local_curl_snapshot_publication_claim_semantic.v23",
+        "snapshot_sequence": "UINT64",
+        "spec_revision": "UINT16 const 23",
+        "total_row_count": "UINT64"
+      },
+      "persisted_key_order": "lexicographic Unicode code-point order"
+    }
+  },
+  "nested_additional_properties_policy": "FORBIDDEN. Each implemented-schema and projection object has exactly the fields materialized for its named schema/projection; no hidden defaults, tags, destination fields, or separators exist.",
+  "projection_common_rules": {
+    "canonical_json_serialization": "UTF-8, no BOM, ensure_ascii=false, compact separators, no leading/trailing whitespace, no final LF; arrays retain registered order",
+    "domain_tag_rule": "domain_tag_hex is the exact byte prefix. Empty string means zero prefix bytes; no unstated tag or delimiter exists.",
+    "hash_input_rule": "Concatenate only the bytes explicitly named by the projection; do not hash prose labels, field names outside typed cells, destination hashes, paths, or a final LF unless explicitly listed.",
+    "integer_width_rule": "UINT16/UINT32/UINT64 constrain the accepted value range; all are encoded with typed tag UINT as unquoted JSON integers.",
+    "nfc_rule": "Every STRING is already NFC; validators reject non-NFC rather than normalize silently.",
+    "persisted_json_key_order_rule": "Persisted JSON objects use recursively lexicographic Unicode code-point key order. Exact schema field-order lists govern membership and typed projection order only.",
+    "typed_row_rule": "Every fixed projection declares exact ordered field names and tags. Constructors first verify arity, then field name at each ordinal, then tag and scalar encoding. Swapping equal-tag fields returns ERR_CANONICAL_FIELD_ORDER_INVALID, not a tag error."
+  },
+  "projections": {
+    "acquisition_race_scope_sha256": {
+      "domain_tag_hex": "",
+      "final_lf": false,
+      "ordered_fields": [
+        "schema_version STRING = local_curl_acquisition_race_scope.v23",
+        "spec_revision UINT = 23",
+        "run_id STRING",
+        "fence_sequence UINT",
+        "canonical_acquisition_target_path STRING",
+        "expected_predecessor_commit_sha256 SHA256 or NULL"
+      ]
+    },
+    "claim_scope_sha256": {
+      "domain_tag_hex": "",
+      "excluded_fields": [
+        "object_claims raw array",
+        "claim_scope_sha256 destination"
+      ],
+      "final_lf": false,
+      "ordered_fields": [
+        "schema_version STRING",
+        "spec_revision UINT",
+        "run_id STRING",
+        "unit_kind STRING",
+        "subject_family STRING or NULL",
+        "subject_sequence UINT",
+        "expected_predecessor_commit_sha256 SHA256 or NULL",
+        "object_claims_logical_sha256 SHA256"
+      ]
+    },
+    "object_claims_logical_sha256": {
+      "domain_tag_hex": "",
+      "empty_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rows": "prepared_claim_object_row in ordinal order 0..M-1",
+      "separator_hex": "0a",
+      "trailing_lf": false
+    },
+    "objects_logical_sha256": {
+      "domain_tag_hex": "",
+      "empty_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rows": "prepared_object_row in ordinal order 0..M-1",
+      "separator_hex": "0a",
+      "trailing_lf": false
+    },
+    "ordered_relation_logical_sha256": {
+      "domain_tag_hex": "",
+      "empty_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "physical_exclusions": [
+        "Parquet bytes",
+        "row-group metadata",
+        "compression",
+        "dictionary order",
+        "destination path",
+        "file size",
+        "destination row hash"
+      ],
+      "rows": "destination-excluded canonical typed row bytes in registered canonical row-key order",
+      "separator_hex": "0a",
+      "trailing_lf": false
+    },
+    "partition_entries_semantic_logical_sha256": {
+      "domain_tag_hex": "",
+      "empty_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exact_rev06_fixture": {
+        "fixture_name": "valid_snapshot_claim_one_partition_bytes",
+        "separator": "none for one row",
+        "seven_cell_field_order": [
+          "partition_ordinal UINT",
+          "partition_id STRING",
+          "partition_path STRING",
+          "partition_logical_sha256 SHA256",
+          "row_count UINT",
+          "first_key_canonical_json STRING",
+          "last_key_canonical_json STRING"
+        ],
+        "sha256": "bef068f484d8b9c230dae13031b96c4e4b7ae58a16fd08ff348f6f0d0299b58c",
+        "trailing_lf": false,
+        "typed_row_utf8": "[{\"n\":\"partition_ordinal\",\"t\":\"UINT\",\"v\":0},{\"n\":\"partition_id\",\"t\":\"STRING\",\"v\":\"part_baca56ed5f9d54828f86231ed320e5ffc0500f7ee74a3aafa92b4f1e82177d63\"},{\"n\":\"partition_path\",\"t\":\"STRING\",\"v\":\"artifacts/local_curl_per_side/runs/run_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/capture/partitions/part_baca56ed5f9d54828f86231ed320e5ffc0500f7ee74a3aafa92b4f1e82177d63.parquet\"},{\"n\":\"partition_logical_sha256\",\"t\":\"SHA256\",\"v\":\"b472da67c0017c932aae0b3d62e1abc68ac37ed27ad94c12a82d7f8a36b144d9\"},{\"n\":\"row_count\",\"t\":\"UINT\",\"v\":1},{\"n\":\"first_key_canonical_json\",\"t\":\"STRING\",\"v\":\"[0]\"},{\"n\":\"last_key_canonical_json\",\"t\":\"STRING\",\"v\":\"[0]\"}]"
+      },
+      "rows": "snapshot_claim_partition_entry_row in partition_ordinal order 0..N-1",
+      "separator_hex": "0a",
+      "trailing_lf": false
+    },
+    "physical_file_sha256": {
+      "domain_tag_hex": "",
+      "formula": "SHA256(bytes)",
+      "input": "exact complete caller-supplied bytes",
+      "normalization": "none"
+    },
+    "planned_object_row": {
+      "domain_tag_hex": "",
+      "final_lf": false,
+      "ordered_fields": [
+        "object_ordinal UINT",
+        "object_role STRING",
+        "content_schema_id STRING",
+        "publication_mode STRING",
+        "canonical_target_path STRING"
+      ]
+    },
+    "planned_objects_logical_sha256": {
+      "domain_tag_hex": "",
+      "empty_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rows": "planned_object_row in ordinal order 0..M-1",
+      "separator_hex": "0a",
+      "trailing_lf": false
+    },
+    "preparation_plan_file_sha256": {
+      "destination_exclusions": [],
+      "domain_tag_hex": "",
+      "final_lf": false,
+      "input": "complete canonical JSON bytes"
+    },
+    "prepared_claim_object_row": {
+      "domain_tag_hex": "",
+      "final_lf": false,
+      "ordered_fields": [
+        "object_ordinal UINT",
+        "object_role STRING",
+        "content_schema_id STRING",
+        "canonical_target_path STRING"
+      ]
+    },
+    "prepared_object_descriptor_semantic_sha256": {
+      "destination_exclusions": [],
+      "domain_tag_hex": "",
+      "final_lf": false,
+      "mode": "CANONICAL_TYPED_PROJECTION",
+      "ordered_fields": [
+        "object_ordinal UINT",
+        "object_role STRING",
+        "content_schema_id STRING",
+        "publication_mode STRING",
+        "durable_source_path STRING",
+        "canonical_target_path STRING",
+        "file_size_bytes UINT",
+        "file_sha256 SHA256",
+        "logical_sha256 SHA256 or NULL",
+        "sidecar_of_object_ordinal UINT or NULL"
+      ]
+    },
+    "prepared_object_row": {
+      "domain_tag_hex": "",
+      "final_lf": false,
+      "ordered_fields": [
+        "object_ordinal UINT",
+        "object_role STRING",
+        "content_schema_id STRING",
+        "publication_mode STRING",
+        "durable_source_path STRING",
+        "canonical_target_path STRING",
+        "file_size_bytes UINT",
+        "file_sha256 SHA256",
+        "logical_sha256 SHA256 or NULL",
+        "sidecar_of_object_ordinal UINT or NULL"
+      ]
+    },
+    "prepared_unit_id": {
+      "caller_digest_trusted": false,
+      "domain_tag_hex": "",
+      "formula": "prep_ + lowercase_hex(preparation_plan_file_sha256)"
+    },
+    "sha256_sidecar_file": {
+      "canonical_bytes_rule": "exact canonical JSON bytes of {\"target_file_sha256\":\"<64-lowercase-hex>\",\"target_path\":\"<exact registered relative path>\"}; lexicographic keys; no final LF",
+      "domain_tag_hex": "",
+      "logical_sha256": "NULL in prepared object descriptor",
+      "physical_sha256": "SHA256(complete sidecar bytes)"
+    },
+    "snapshot_claim_partition_entry_row": {
+      "domain_tag_hex": "",
+      "final_lf": false,
+      "ordered_fields": [
+        "partition_ordinal UINT",
+        "partition_id STRING",
+        "partition_path STRING",
+        "partition_logical_sha256 SHA256",
+        "row_count UINT",
+        "first_key_canonical_json STRING or NULL",
+        "last_key_canonical_json STRING or NULL"
+      ]
+    },
+    "snapshot_publication_claim_semantic_sha256": {
+      "destination_exclusions": [
+        "partition_entries raw array",
+        "claim semantic destination digest"
+      ],
+      "domain_tag_hex": "",
+      "final_lf": false,
+      "ordered_fields": [
+        "schema_version STRING",
+        "spec_revision UINT",
+        "run_id STRING",
+        "audit_family STRING",
+        "snapshot_sequence UINT",
+        "previous_snapshot_file_sha256 SHA256 or NULL",
+        "previous_publication_commit_file_sha256 SHA256 or NULL",
+        "total_row_count UINT",
+        "duplicate_key_count UINT",
+        "first_key_canonical_json STRING or NULL",
+        "last_key_canonical_json STRING or NULL",
+        "partition_entries_semantic_logical_sha256 SHA256",
+        "ordered_relation_logical_sha256 SHA256",
+        "capture_coverage_state STRING",
+        "covered_through_fence_sequence UINT or NULL",
+        "capture_coverage_relation_logical_sha256 SHA256 or NULL"
+      ]
+    },
+    "typed_cell_contract": {
+      "bytes_rules": "lowercase hexadecimal, even length; empty bytes represented by empty string",
+      "canonical_json": "UTF-8, no BOM, compact separators, object keys n,t,v in lexicographic order, no whitespace, no final LF",
+      "cell_object": {
+        "n": "field name as NFC STRING",
+        "t": "one of STRING,UINT,BOOL,SHA256,BYTES,NULL",
+        "v": "typed value"
+      },
+      "exact_examples": {
+        "bool": "{\"n\":\"flag\",\"t\":\"BOOL\",\"v\":false}",
+        "bytes": "{\"n\":\"payload\",\"t\":\"BYTES\",\"v\":\"00ff\"}",
+        "null": "{\"n\":\"field\",\"t\":\"NULL\",\"v\":null}",
+        "sha256": "{\"n\":\"digest\",\"t\":\"SHA256\",\"v\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+        "string": "{\"n\":\"run_id\",\"t\":\"STRING\",\"v\":\"run_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+        "uint": "{\"n\":\"spec_revision\",\"t\":\"UINT\",\"v\":23}"
+      },
+      "integer_rules": "JSON non-negative base-10 integer, no quotes, no sign, no leading zero except 0; field-range validation is separate",
+      "null_rules": "t=NULL and v=null; no typed null using another tag",
+      "relation_empty_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "relation_encoding": "row bytes joined with single 0x0A; no trailing LF; zero rows are zero bytes",
+      "row_encoding": "canonical JSON array of typed-cell objects in projection order; no LF",
+      "sha256_rules": "exactly 64 lowercase hex characters",
+      "string_rules": "Unicode NFC then UTF-8; reject non-NFC input rather than silently normalizing for validation claims"
+    }
+  },
+  "public_digest_helper_assurance": {
+    "assurance": "A0_NONE",
+    "failure_assurances": "empty tuple for every error",
+    "field_precedence": "row arity, then field order/name by ordinal, then tag, type, normalization/range/format",
+    "no_registry_membership": "digest helpers consume declared TypedFieldSpec or StructuralRelationSchemaId contracts; they never infer accepted-registry membership",
+    "success_codes": [
+      "I0A_BYTES_CONSTRUCTED_A0",
+      "I0A_DIGEST_CONSTRUCTED_A0"
+    ]
+  },
+  "result_assurance_rule": "Every result code is an exact I0AResultCode enum member. Every non-success result carries established_assurances=(); success tuples are defined by the public API contract.",
+  "schema_id": "i0a:hash_projection_contract.rev09",
+  "schema_identity_closure": {
+    "accepted_registry_membership_source": "exact RegistryDefinitionIndex from hash-bound SCHEMA_REGISTRY_REV23.json",
+    "required_invariants": [
+      "selected union subset accepted registry",
+      "role matrix union equals frozen binding union",
+      "no prohibited alias ID occurs"
+    ],
+    "selected_schema_ids_source": "I0A_ROLE_CONTENT_SCHEMA_DISPOSITION_MATRIX.json rows and frozen_production_bindings"
+  },
+  "schema_namespace_separation": {
+    "accepted_registry_ids": "json: and table: only; resolved from exact accepted SCHEMA_REGISTRY_REV23.json bytes",
+    "internal_relation_ids": "i0a: only; exactly the three keys in implemented_schema_contracts beginning i0a:",
+    "membership_claim": "internal relation IDs are never accepted-registry members",
+    "precedence": "wrong namespace -> ERR_SELECTED_SCHEMA_INVALID before any accepted-registry membership or logical-row validation",
+    "typed_inputs": "AcceptedRegistryLogicalValidationInput and StructuralRelationValidationInput are disjoint"
+  },
+  "schema_version": 9,
+  "scope_review_anchor": "88362521fe9ef247708e4d7b5f90753784b8b88e",
+  "sha256_algorithm": "FIPS 180-4 SHA-256; output lowercase hexadecimal",
+  "structural_schema_validation_disposition": {
+    "json:prepared_claim_scope_v23": {
+      "completion_rule": "closed fields, role/path claims, object_claims relation hash, and claim_scope projection all recompute from member bytes; no filesystem claim",
+      "highest_assurance": "A6_STRUCTURAL_SCHEMA_COMPLETE",
+      "highest_success": "I0A_VALID_A6_STRUCTURAL",
+      "input_representation": "raw canonical JSON bytes containing complete object_claims array"
+    },
+    "json:prepared_evidence_object_v23": {
+      "completion_rule": "descriptor schema/role/path/binding only; never selected payload validity",
+      "highest_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "highest_success": "I0A_VALID_A2_SINGLE",
+      "input_representation": "raw canonical JSON bytes"
+    },
+    "json:prepared_evidence_plan_v23": {
+      "completion_rule": "closed fields and planned_objects relation validate; referenced structural file bytes are not inputs, so A6 is not claimed",
+      "highest_assurance": "A4_DECODED_LOGICAL_ROWS_VALIDATED",
+      "highest_success": "I0A_VALID_A3_A4_STRUCTURAL_OBJECT",
+      "input_representation": "raw canonical JSON bytes"
+    },
+    "json:prepared_evidence_unit_v23": {
+      "completion_rule": "closed fields and objects descriptor relation validate; referenced plan/scope/claim/object bytes are not inputs, so A6/A8 are not claimed",
+      "highest_assurance": "A4_DECODED_LOGICAL_ROWS_VALIDATED",
+      "highest_success": "I0A_VALID_A3_A4_STRUCTURAL_OBJECT",
+      "input_representation": "raw canonical JSON bytes"
+    },
+    "json:sha256_sidecar": {
+      "completion_rule": "descriptor-selected: exact A2 set + binding + dual A3 exact proof; structural: canonical sidecar bytes + fixed structural member path + supplied paired structural target bytes. The two success domains are not interchangeable.",
+      "highest_assurance": "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE for descriptor-selected sidecars; A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED for fixed structural sidecars",
+      "highest_success_by_surface": {
+        "descriptor_selected": "I0A_VALID_A6_SELECTED",
+        "structural_member": "I0A_VALID_A3_STRUCTURAL_SIDECAR"
+      },
+      "input_representation": "SelectedJsonPayloadInput including sidecar bytes, its descriptor, paired descriptor, all unit descriptors, and UnitContext"
+    },
+    "json:snapshot_publication_claim_semantic_v23": {
+      "empty_relation_outcome": "I0A_VALID_A6_STRUCTURAL when partition_entries is empty, total_row_count=0, first/last are null, both relation digests are SHA256(empty), and all coverage/nullability rules hold",
+      "input_representation": "raw canonical JSON bytes",
+      "no_digest_trust": "partition entry aggregate and claim projection are recomputed in both branches; recomputation does not substitute for unavailable table rows",
+      "nonempty_relation_outcome": "STOP_PAYLOAD_LOGICAL_VALIDATION_OUT_OF_SCOPE with highest retained A2 because table rows needed to recompute ordered_relation_logical_sha256 are outside I0A"
+    },
+    "structural_sidecars": "Structural sidecars establish A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED only after exact sidecar bytes, exact paired target bytes, independently derived paired target path, and both expected length/SHA-256 checks. They never establish A4 or A6."
+  },
+  "success_result_assurance_map": {
+    "I0A_BINDING_RESOLVED_A1": [
+      "A1_LEXICAL_PATH_SHAPE",
+      "A1_REGISTRY_BINDING_RESOLVED"
+    ],
+    "I0A_BYTES_CONSTRUCTED_A0": [],
+    "I0A_DIGEST_CONSTRUCTED_A0": [],
+    "I0A_PINNED_GOVERNING_BYTES_VALIDATED_A3H": [
+      "A3_PINNED_GOVERNING_SHA256_VALIDATED"
+    ],
+    "I0A_REGISTRY_INDEX_MATERIALIZED_A3H": [
+      "A3_PINNED_GOVERNING_SHA256_VALIDATED"
+    ],
+    "I0A_VALID_A1_PATH": [
+      "A1_LEXICAL_PATH_SHAPE"
+    ],
+    "I0A_VALID_A2_SET": [
+      "A1_LEXICAL_PATH_SHAPE",
+      "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "A2_DESCRIPTOR_SET_COMPLETE"
+    ],
+    "I0A_VALID_A2_SINGLE": [
+      "A1_LEXICAL_PATH_SHAPE",
+      "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS"
+    ],
+    "I0A_VALID_A3_A4_STRUCTURAL_OBJECT": [
+      "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "A4_DECODED_LOGICAL_ROWS_VALIDATED"
+    ],
+    "I0A_VALID_A3_EXACT": [
+      "A3_EXACT_LENGTH_AND_SHA256_RECONCILED"
+    ],
+    "I0A_VALID_A3_STRUCTURAL_SIDECAR": [
+      "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED"
+    ],
+    "I0A_VALID_A4_INTERNAL_RELATION": [
+      "A4_DECODED_LOGICAL_ROWS_VALIDATED"
+    ],
+    "I0A_VALID_A6_SELECTED": [
+      "A1_LEXICAL_PATH_SHAPE",
+      "A1_REGISTRY_BINDING_RESOLVED",
+      "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "A2_DESCRIPTOR_SET_COMPLETE",
+      "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE"
+    ],
+    "I0A_VALID_A6_STRUCTURAL": [
+      "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "A6_STRUCTURAL_SCHEMA_COMPLETE"
+    ]
+  }
+}

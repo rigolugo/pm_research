@@ -1,0 +1,2620 @@
+{
+  "additional_properties": false,
+  "closed_top_level_fields": [
+    "schema_id",
+    "schema_version",
+    "scope_review_anchor",
+    "additional_properties",
+    "nested_additional_properties_policy",
+    "closed_top_level_fields",
+    "global_rules",
+    "modules"
+  ],
+  "global_rules": {
+    "all_result_codes": [
+      "I0A_BYTES_CONSTRUCTED_A0",
+      "I0A_DIGEST_CONSTRUCTED_A0",
+      "I0A_VALID_A1_PATH",
+      "I0A_BINDING_RESOLVED_A1",
+      "I0A_VALID_A2_SINGLE",
+      "I0A_VALID_A2_SET",
+      "I0A_VALID_A3_EXACT",
+      "I0A_PINNED_GOVERNING_BYTES_VALIDATED_A3H",
+      "I0A_REGISTRY_INDEX_MATERIALIZED_A3H",
+      "I0A_VALID_A3_STRUCTURAL_SIDECAR",
+      "I0A_VALID_A4_INTERNAL_RELATION",
+      "I0A_VALID_A3_A4_STRUCTURAL_OBJECT",
+      "I0A_VALID_A6_STRUCTURAL",
+      "I0A_VALID_A6_SELECTED",
+      "ERR_PATH_LEXICAL_INVALID",
+      "ERR_PATH_GRAMMAR_MISMATCH",
+      "ERR_CANONICAL_TAG_INVALID",
+      "ERR_CANONICAL_TYPE_MISMATCH",
+      "ERR_CANONICAL_NON_NFC",
+      "ERR_CANONICAL_UINT_RANGE",
+      "ERR_CANONICAL_SHA256_FORMAT",
+      "ERR_CANONICAL_BYTES_FORMAT",
+      "ERR_CANONICAL_FIELD_NAME_INVALID",
+      "ERR_CANONICAL_FIELD_ORDER_INVALID",
+      "ERR_CANONICAL_ROW_ARITY",
+      "ERR_DIGEST_INPUT_INVALID",
+      "ERR_CANONICAL_JSON_INVALID",
+      "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+      "ERR_BINDING_QUERY_INVALID",
+      "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+      "ERR_ROLE_DISPOSITION_INVALID",
+      "ERR_ROLE_CARDINALITY_INVALID",
+      "ERR_ORDINAL_SEQUENCE_INVALID",
+      "ERR_CANONICAL_TARGET_DUPLICATE",
+      "ERR_SIDECAR_RELATION_INVALID",
+      "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+      "ERR_PHYSICAL_EXPECTATION_INVALID",
+      "ERR_PHYSICAL_SIZE_MISMATCH",
+      "ERR_PHYSICAL_SHA256_MISMATCH",
+      "ERR_LOGICAL_ROWS_INVALID",
+      "ERR_LOGICAL_SHA256_MISMATCH",
+      "ERR_SELECTED_SCHEMA_INVALID",
+      "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+      "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+      "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+      "ERR_PREDECESSOR_RULE_INVALID",
+      "ERR_COVERAGE_STATE_INVALID",
+      "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+      "ERR_PREPARED_UNIT_ID_MISMATCH",
+      "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+      "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+      "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+      "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE",
+      "STOP_PAYLOAD_LOGICAL_VALIDATION_OUT_OF_SCOPE"
+    ],
+    "assurance_levels": [
+      "A0_NONE",
+      "A1_LEXICAL_PATH_SHAPE",
+      "A1_REGISTRY_BINDING_RESOLVED",
+      "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "A2_DESCRIPTOR_SET_COMPLETE",
+      "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "A3_PINNED_GOVERNING_SHA256_VALIDATED",
+      "A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED",
+      "A4_DECODED_LOGICAL_ROWS_VALIDATED",
+      "A5_FILESYSTEM_FACTS_VALIDATED",
+      "A6_STRUCTURAL_SCHEMA_COMPLETE",
+      "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE",
+      "A7_PREPARED_OBJECT_FULL",
+      "A8_PREPARED_UNIT_FULL"
+    ],
+    "binding_boundary": "Public binding resolution returns A1_REGISTRY_BINDING_RESOLVED and never A2. The private pure binding-set helper is typed, module-owned, unexported, and tested without mutating the frozen production table.",
+    "canonical_json_persistence": "Every persisted JSON object is UTF-8 canonical JSON with recursively lexicographic Unicode code-point key order, compact separators, ensure_ascii=false, no BOM, no leading/trailing whitespace, and no final LF. Schema field order governs closed membership and explicitly declared typed projections only; it never governs stored object-key order.",
+    "digest_boundary": "All public digest helpers are total A0 constructors with fixed field-name/order/tag precedence. Equal-tag field swaps are ERR_CANONICAL_FIELD_ORDER_INVALID.",
+    "dispatch_ownership": "dispatch_i0a_unit_validation is owned by prepared_evidence.py; finding4_registry imports only canonical.py and never imports prepared_evidence.py.",
+    "error_precedence_rule": "Every function materializes ordered_error_precedence. Multi-fault input returns the first satisfied code; repeated element faults choose the lowest canonical ordinal.",
+    "error_stop_assurance_invariant": "Every non-success I0AResultCode returns established_assurances=(). No partial assurance survives a non-success return.",
+    "established_assurance_policy": "Every result object carries established_assurances:tuple[AssuranceLevel,...]. Every function publishes a complete result-code-to-tuple map. All non-success results use the empty tuple; no unstated partial assurance survives failure.",
+    "exact_pinned_success_payloads": {
+      "accepted_registry_index": {
+        "json_schema_count": 118,
+        "registry_file_sha256": "c9e8fe1b2c64f64e9cefd76e820c9589708723485ff7e54f4f69e3fe4ed49689",
+        "schema_ids": [
+          "json:acquisition_race_scope_v23",
+          "json:all_one_counts_by_state",
+          "json:all_one_derivation_hashes",
+          "json:all_one_safeguard",
+          "json:all_one_vector_record",
+          "json:artifact_inventory_entry",
+          "json:artifact_inventory_entry_array",
+          "json:audit_snapshot_manifest",
+          "json:authorization_record_sidecar_v23",
+          "json:authorized_request_set_entry",
+          "json:authorized_request_set_entry_v23",
+          "json:authorized_request_set_sidecar_v23",
+          "json:authorized_request_set_v23",
+          "json:canonical_sampling_function_entry",
+          "json:canonical_sampling_function_provenance",
+          "json:capture_fence_continuation_entry_v23",
+          "json:capture_payload_intent_v23",
+          "json:comparison_code_counts",
+          "json:comparison_summary",
+          "json:compatibility_analysis_summary",
+          "json:compatibility_branch_counts",
+          "json:compatibility_edge_vector",
+          "json:compatibility_edge_vectors",
+          "json:conflict_group_v23",
+          "json:conflict_inventory_entry_v23",
+          "json:conflict_stop_inventory_v23",
+          "json:conflict_stop_marker_v23",
+          "json:curl_subprocess_contract",
+          "json:data_input_inventory_entry",
+          "json:detached_attachment_entry",
+          "json:detached_pre_run_attachment_hash",
+          "json:detached_pre_run_attachment_semantic",
+          "json:empty_object",
+          "json:fence_event_v23",
+          "json:fence_unit_claim_semantic_v23",
+          "json:fence_unit_manifest_v23",
+          "json:final_artifact_inventory",
+          "json:finalization_marker_v23",
+          "json:finalized_marker",
+          "json:fingerprint_readiness_v23",
+          "json:governing_package_manifest",
+          "json:governing_package_manifest_entry",
+          "json:http_status_reconciliation_vector_v22",
+          "json:http_status_reconciliation_vectors_v22",
+          "json:immutable_row_batch_v23",
+          "json:implementation_file_entry",
+          "json:implementation_provenance",
+          "json:network_authorization_record",
+          "json:network_authorization_record_v23",
+          "json:normal_finalization_claim_semantic_v23",
+          "json:p0_counts_pooled_projection",
+          "json:pre_run_attempt_identity_v23",
+          "json:pre_run_stop_envelope_v23",
+          "json:pre_run_stop_inventory_v23",
+          "json:pre_v7_metadata",
+          "json:prepared_claim_object_v23",
+          "json:prepared_claim_scope_v23",
+          "json:prepared_evidence_object_v23",
+          "json:prepared_evidence_plan_v23",
+          "json:prepared_evidence_unit_v23",
+          "json:prepared_planned_object_v23",
+          "json:reconciliation_mismatch_counts",
+          "json:replay_fixed_counts",
+          "json:replay_result",
+          "json:request_disposition_counts",
+          "json:request_disposition_summary",
+          "json:request_plan_hashes",
+          "json:requests_json_adapter_contract",
+          "json:requests_json_equivalence_contract",
+          "json:requests_json_equivalence_vector",
+          "json:requests_json_expected_adapter_outcome",
+          "json:requests_json_expected_requests_outcome",
+          "json:requests_json_pinned_runtime",
+          "json:requests_json_response_harness",
+          "json:requests_json_vector_execution_contract",
+          "json:requests_json_vector_headers",
+          "json:response_header_expected_outcome",
+          "json:response_header_extraction_contract",
+          "json:response_header_extraction_vectors",
+          "json:response_header_vector",
+          "json:result_summary_v23",
+          "json:run_attachment_manifest_v23",
+          "json:run_identity_semantic_object",
+          "json:run_identity_semantic_v23",
+          "json:run_identity_v23",
+          "json:run_policy_fingerprint",
+          "json:run_policy_fingerprint_component_hashes",
+          "json:runtime_package_entry",
+          "json:runtime_provenance",
+          "json:sha256_sidecar",
+          "json:snapshot_claim_partition_entry_v23",
+          "json:snapshot_current_view_commit_v23",
+          "json:snapshot_partition_entry",
+          "json:snapshot_publication_claim_semantic_v23",
+          "json:snapshot_publication_commit_v23",
+          "json:source_b_normalization_component_entry",
+          "json:source_b_normalization_summary",
+          "json:source_b_provenance_v23",
+          "json:source_b_reconciliation_summary",
+          "json:source_d_algorithm_contract",
+          "json:source_d_data_input_inventory",
+          "json:source_d_detached_provenance_v23",
+          "json:source_d_isolation_attestation",
+          "json:source_d_provenance_attestation",
+          "json:source_d_regeneration_summary",
+          "json:source_d_sample_counts",
+          "json:source_d_source_b_ordering_attestation",
+          "json:source_d_universe_counts",
+          "json:stop_artifact_inventory",
+          "json:stop_state",
+          "json:strict_audit_agreement_counts",
+          "json:strict_audit_summary",
+          "json:subclass_threshold_record",
+          "json:subclass_thresholds_array",
+          "json:token_not_found_entry",
+          "json:token_not_found_registry",
+          "json:transport_policy",
+          "json:url_serialization_policy",
+          "table:authorization_use_events",
+          "table:canonical_compatibility_analysis",
+          "table:canonical_compatibility_decoded_points",
+          "table:capture_events",
+          "table:comparison_rows",
+          "table:condition_pair_analysis",
+          "table:current_pair_states",
+          "table:endpoint_shape_observations",
+          "table:http_status_reconciliation",
+          "table:operational_audit_events",
+          "table:policy_observations",
+          "table:policy_resolution",
+          "table:quarantine_index",
+          "table:request_disposition",
+          "table:request_manifest",
+          "table:request_plan",
+          "table:resume_journal",
+          "table:selected_request_disposition",
+          "table:snapshot_partition",
+          "table:source_b_by_condition_raw",
+          "table:source_b_condition_normalized",
+          "table:source_b_excluded_normalized",
+          "table:source_b_excluded_raw",
+          "table:source_b_source_d_reconciliation",
+          "table:source_d_request",
+          "table:source_d_token",
+          "table:strict_audit_analysis",
+          "table:strict_audit_decoded_points",
+          "table:token_manifest"
+        ],
+        "schema_ids_logical_sha256": "5b1cebf772c53a187c6c48a5e6942d2d70bd7515773e8432286ab26043ac06eb",
+        "table_schema_count": 29,
+        "total_schema_count": 147
+      },
+      "analysis_compatibility_partition_binding": {
+        "binding_id": "BINDING_PARTITION_PAYLOAD_SNAPSHOT_PUBLICATION_SINGLE_AUTHORITATIVE_FILE_FA5B89416A4F",
+        "content_schema_id": "table:canonical_compatibility_analysis",
+        "logical_sha256_nullability": "NON_NULL",
+        "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+        "role": "PARTITION_PAYLOAD",
+        "sidecar_rule": "NO_SIDECAR_DESCRIPTOR",
+        "target_grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+        "unit_kind": "SNAPSHOT_PUBLICATION"
+      },
+      "analysis_strict_partition_binding": {
+        "binding_id": "BINDING_PARTITION_PAYLOAD_SNAPSHOT_PUBLICATION_SINGLE_AUTHORITATIVE_FILE_4A052BF4E0AB",
+        "content_schema_id": "table:strict_audit_analysis",
+        "logical_sha256_nullability": "NON_NULL",
+        "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+        "role": "PARTITION_PAYLOAD",
+        "sidecar_rule": "NO_SIDECAR_DESCRIPTOR",
+        "target_grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+        "unit_kind": "SNAPSHOT_PUBLICATION"
+      },
+      "canonical_typed_cell_bytes": {
+        "fixture_type": "ExactBytes",
+        "hex": "7b226e223a2272756e5f6964222c2274223a22535452494e47222c2276223a2272756e5f61616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161227d",
+        "length": 102,
+        "sha256": "e9fadff218898df01f6dea531208be81d77bf32690e533c80559588505897170",
+        "utf8": "{\"n\":\"run_id\",\"t\":\"STRING\",\"v\":\"run_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+      },
+      "canonical_typed_row_bytes": {
+        "cells_fixture": "exact_valid_claim_scope_cells",
+        "fixture_type": "ExactBytes",
+        "hex": "5b7b226e223a22736368656d615f76657273696f6e222c2274223a22535452494e47222c2276223a226c6f63616c5f6375726c5f70726570617265645f636c61696d5f73636f70652e763233227d2c7b226e223a22737065635f7265766973696f6e222c2274223a2255494e54222c2276223a32337d2c7b226e223a2272756e5f6964222c2274223a22535452494e47222c2276223a2272756e5f61616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161227d2c7b226e223a22756e69745f6b696e64222c2274223a22535452494e47222c2276223a22534e415053484f545f5055424c49434154494f4e227d2c7b226e223a227375626a6563745f66616d696c79222c2274223a22535452494e47222c2276223a2263617074757265227d2c7b226e223a227375626a6563745f73657175656e6365222c2274223a2255494e54222c2276223a307d2c7b226e223a2265787065637465645f7072656465636573736f725f636f6d6d69745f736861323536222c2274223a224e554c4c222c2276223a6e756c6c7d2c7b226e223a226f626a6563745f636c61696d735f6c6f676963616c5f736861323536222c2274223a22534841323536222c2276223a2231343133653363393335343966393632653034646262646138356162616430333965653732376130333661656531393561393431393661666662376561316431227d5d",
+        "length": 556,
+        "sha256": "0348081d83a0330b39a368bb6c8e199251600318c9d8394e48e7ce6186f2cb58",
+        "utf8": "[{\"n\":\"schema_version\",\"t\":\"STRING\",\"v\":\"local_curl_prepared_claim_scope.v23\"},{\"n\":\"spec_revision\",\"t\":\"UINT\",\"v\":23},{\"n\":\"run_id\",\"t\":\"STRING\",\"v\":\"run_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},{\"n\":\"unit_kind\",\"t\":\"STRING\",\"v\":\"SNAPSHOT_PUBLICATION\"},{\"n\":\"subject_family\",\"t\":\"STRING\",\"v\":\"capture\"},{\"n\":\"subject_sequence\",\"t\":\"UINT\",\"v\":0},{\"n\":\"expected_predecessor_commit_sha256\",\"t\":\"NULL\",\"v\":null},{\"n\":\"object_claims_logical_sha256\",\"t\":\"SHA256\",\"v\":\"1413e3c93549f962e04dbbda85abad039ee727a036aee195a94196affb7ea1d1\"}]"
+      },
+      "digest_outputs": {
+        "empty_relation_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exact_valid_acquisition_race_scope_sha256": "14a998bd9680a50b5c3919ab3476f85117613ec58d82358c1c0b68417cb7e0c8",
+        "exact_valid_claim_scope_sha256": "0348081d83a0330b39a368bb6c8e199251600318c9d8394e48e7ce6186f2cb58",
+        "exact_valid_snapshot_claim_semantic_sha256": "851f6d56df534e6da9b98e2006bf1b77fbd570079ac90be772b8051b7cd3f23e",
+        "one_claim_scope_row_relation_sha256": "0348081d83a0330b39a368bb6c8e199251600318c9d8394e48e7ce6186f2cb58"
+      },
+      "physical_payload_abc": {
+        "code": "I0A_VALID_A3_EXACT",
+        "established_assurances": [
+          "A3_EXACT_LENGTH_AND_SHA256_RECONCILED"
+        ],
+        "observed_sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+        "observed_size_bytes": 3
+      },
+      "schema_binding": {
+        "binding_id": "BINDING_PUBLICATION_MARKER_SNAPSHOT_PUBLICATION_ATOMIC_BUNDLE_MEMBER_00",
+        "content_schema_id": "json:snapshot_publication_commit_v23",
+        "logical_sha256_nullability": "NON_NULL",
+        "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+        "role": "PUBLICATION_MARKER",
+        "sidecar_rule": "REQUIRES_EXACTLY_ONE_PUBLICATION_MARKER_SIDECAR",
+        "target_grammar_id": "TARGET_PUBLICATION_MARKER_00",
+        "unit_kind": "SNAPSHOT_PUBLICATION"
+      }
+    },
+    "existing_module_modification": false,
+    "frozen_production_binding_count": 79,
+    "frozen_production_binding_schema_id_union": [
+      "json:audit_snapshot_manifest",
+      "json:capture_payload_intent_v23",
+      "json:fence_event_v23",
+      "json:fence_unit_manifest_v23",
+      "json:final_artifact_inventory",
+      "json:finalization_marker_v23",
+      "json:sha256_sidecar",
+      "json:snapshot_current_view_commit_v23",
+      "json:snapshot_publication_claim_semantic_v23",
+      "json:snapshot_publication_commit_v23",
+      "json:stop_artifact_inventory",
+      "table:authorization_use_events",
+      "table:canonical_compatibility_analysis",
+      "table:capture_events",
+      "table:snapshot_partition",
+      "table:strict_audit_analysis"
+    ],
+    "import_acyclicity": "canonical.py <- finding4_registry.py <- prepared_evidence.py; claim_hashes.py imports canonical.py only; __init__.py re-exports. No reverse import or runtime registration.",
+    "import_graph": {
+      "cycles": [],
+      "edges": [
+        "governing_package -> canonical",
+        "finding4_registry -> canonical",
+        "claim_hashes -> canonical",
+        "prepared_evidence -> canonical",
+        "prepared_evidence -> finding4_registry",
+        "prepared_evidence -> claim_hashes",
+        "__init__ -> canonical",
+        "__init__ -> governing_package",
+        "__init__ -> finding4_registry",
+        "__init__ -> prepared_evidence",
+        "__init__ -> claim_hashes"
+      ],
+      "rule": "No reverse import, runtime registration, or duplicated grammar/binding table."
+    },
+    "one_success_code_one_assurance_tuple_invariant": "For every I0AResultCode in success_result_codes, success_result_assurance_map contains exactly one tuple. Every public function must return that exact tuple for that code. No function-local override, prefix, subset, superset, or alternate tuple is permitted.",
+    "path_authority": "Callers cannot construct path grammars. FrozenPathGrammarId, all frozen target/prepared-unit tables, placeholder domains, and validate_normalized_relative_path are solely owned by finding4_registry.py.",
+    "physical_boundary": "Only reconcile_physical_payload establishes generic A3 and it uniformly verifies expected exact length plus expected complete-file SHA-256. Governing package/index surfaces use separate A3 pinned-hash assurance.",
+    "private_outcome_boundary": {
+      "_resolve_compatible_binding_set": "returns _PrivateBindingMatchResult only; no I0AResultCode or assurances",
+      "_validate_descriptor_set_invariants": "returns _PrivateDescriptorSetInvariantResult only; its closed interface can decide only role cardinality, ordinal sequence, canonical-target uniqueness, sidecar relation, or valid; it returns no I0AResultCode or assurances"
+    },
+    "private_result_payload_contracts": {
+      "_PrivateBindingMatchResult": {
+        "PRIVATE_BINDING_MATCH_EXACTLY_ONE": "matching_bindings is the exact one-element tuple containing the sole matching candidate",
+        "PRIVATE_BINDING_MATCH_INPUT_INVALID": "matching_bindings=()",
+        "PRIVATE_BINDING_MATCH_MULTIPLE": "matching_bindings is the exact candidate-order tuple of every matching injected candidate",
+        "PRIVATE_BINDING_MATCH_ZERO": "matching_bindings=()"
+      },
+      "_PrivateDescriptorSetInvariantResult": {
+        "PRIVATE_DESCRIPTOR_SET_INVARIANTS_VALID": "summaries is the exact non-null ordinal-order tuple consumed by the public wrapper",
+        "every_private_error": "for each of the exact four private failure codes, summaries=null; no partial summaries survive"
+      }
+    },
+    "public_function_count": 23,
+    "registry_membership_boundary": "Accepted-registry json:/table: schema IDs and internal i0a: structural relation IDs are disjoint typed domains. Accepted-registry membership is never claimed for an internal relation.",
+    "result_model": "Every public function returns exactly one closed typed result. No generic exception, boolean valid/success, permissive fallback, or untyped partial result.",
+    "result_payload_contracts": {
+      "BindingResolutionResult": {
+        "non_success": "binding=null and established_assurances=()",
+        "success": "binding is non-null exact frozen-production SchemaBinding; code/assurances equal the global mapping"
+      },
+      "CanonicalBytesResult": {
+        "non_success": "value=null and established_assurances=()",
+        "success": "value is non-null exact immutable bytes and code/assurances equal the global mapping"
+      },
+      "DigestResult": {
+        "non_success": "digest_sha256=null and established_assurances=()",
+        "success": "digest_sha256 is non-null exact 64-character lowercase hexadecimal SHA-256 and code/assurances equal the global mapping"
+      },
+      "PhysicalPayloadResult": {
+        "ERR_PHYSICAL_EXPECTATION_INVALID": "observed_size_bytes=null; observed_sha256=null because expectations fail before observation",
+        "ERR_PHYSICAL_SHA256_MISMATCH": "observed_size_bytes and observed_sha256 are both non-null actual observations",
+        "ERR_PHYSICAL_SIZE_MISMATCH": "observed_size_bytes and observed_sha256 are both non-null actual observations",
+        "other_non_success": "observed_size_bytes=null; observed_sha256=null; established_assurances=()",
+        "success": "observed_size_bytes and observed_sha256 are both non-null actual observations"
+      },
+      "RegistryDefinitionIndexResult": {
+        "non_success": "index=null and established_assurances=()",
+        "success": "index is non-null and every index field is fully populated; code/assurances equal the global mapping"
+      },
+      "ValidationResult": {
+        "non_success": "code is the exact first error/stop and established_assurances=()",
+        "success": "code is a declared success and established_assurances equals the unique global tuple; no value fields exist"
+      }
+    },
+    "schema_identity_closure": {
+      "analysis_partition_exact_bindings": [
+        {
+          "binding_id": "BINDING_PARTITION_PAYLOAD_SNAPSHOT_PUBLICATION_SINGLE_AUTHORITATIVE_FILE_FA5B89416A4F",
+          "content_schema_id": "table:canonical_compatibility_analysis",
+          "logical_sha256_nullability": "NON_NULL",
+          "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+          "role": "PARTITION_PAYLOAD",
+          "sidecar_rule": "NO_SIDECAR_DESCRIPTOR",
+          "target_grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+          "unit_kind": "SNAPSHOT_PUBLICATION"
+        },
+        {
+          "binding_id": "BINDING_PARTITION_PAYLOAD_SNAPSHOT_PUBLICATION_SINGLE_AUTHORITATIVE_FILE_4A052BF4E0AB",
+          "content_schema_id": "table:strict_audit_analysis",
+          "logical_sha256_nullability": "NON_NULL",
+          "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+          "role": "PARTITION_PAYLOAD",
+          "sidecar_rule": "NO_SIDECAR_DESCRIPTOR",
+          "target_grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+          "unit_kind": "SNAPSHOT_PUBLICATION"
+        }
+      ],
+      "exact_identity_agreement_rule": "role matrix selected schema union equals private frozen production binding schema union; both use exact string equality against accepted registry index",
+      "legacy_alias_count": 0,
+      "normal_final_marker_exact_bindings": [
+        {
+          "binding_id": "BINDING_NORMAL_FINAL_MARKER_NORMAL_FINALIZATION_SINGLE_AUTHORITATIVE_FILE_DA8169FC7783",
+          "content_schema_id": "json:finalization_marker_v23",
+          "logical_sha256_nullability": "NON_NULL",
+          "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+          "role": "NORMAL_FINAL_MARKER",
+          "sidecar_rule": "EXACTLY_ONE_NORMAL_FINAL_MARKER_SIDECAR",
+          "target_grammar_id": "TARGET_NORMAL_FINAL_MARKER_00",
+          "unit_kind": "NORMAL_FINALIZATION"
+        },
+        {
+          "binding_id": "BINDING_NORMAL_FINAL_MARKER_NORMAL_FINALIZATION_SINGLE_AUTHORITATIVE_FILE_AD75320BD2A9",
+          "content_schema_id": "json:finalization_marker_v23",
+          "logical_sha256_nullability": "NON_NULL",
+          "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+          "role": "NORMAL_FINAL_MARKER",
+          "sidecar_rule": "EXACTLY_ONE_NORMAL_FINAL_MARKER_SIDECAR",
+          "target_grammar_id": "TARGET_NORMAL_FINAL_MARKER_01",
+          "unit_kind": "NORMAL_FINALIZATION"
+        }
+      ],
+      "selected_content_schema_subset_rule": "union of role-matrix selected_content_schema_domain must be subset of exact accepted registry index"
+    },
+    "scope_expansion_rule": "Any need for another repository path, existing module edit, third-party dependency, CLI/config/generated code, filesystem adapter, caller-defined grammar, runtime binding mutation, or import cycle is a workflow scope-expansion halt.",
+    "sidecar_boundary": "Descriptor-selected sidecar A6 requires A2 set, A1 binding, selected exact A3, and paired-target exact A3. Fixed structural sidecars use the narrower A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED assurance and never imply A4, A6, descriptor assurance, or filesystem facts.",
+    "single_vs_set": "A2 single and A2 set are distinct. Snapshot PARTITION_PAYLOAD set cardinality derives only from exact validated claim-semantic bytes, never a count parameter.",
+    "success_result_assurance_map": {
+      "I0A_BINDING_RESOLVED_A1": [
+        "A1_LEXICAL_PATH_SHAPE",
+        "A1_REGISTRY_BINDING_RESOLVED"
+      ],
+      "I0A_BYTES_CONSTRUCTED_A0": [],
+      "I0A_DIGEST_CONSTRUCTED_A0": [],
+      "I0A_PINNED_GOVERNING_BYTES_VALIDATED_A3H": [
+        "A3_PINNED_GOVERNING_SHA256_VALIDATED"
+      ],
+      "I0A_REGISTRY_INDEX_MATERIALIZED_A3H": [
+        "A3_PINNED_GOVERNING_SHA256_VALIDATED"
+      ],
+      "I0A_VALID_A1_PATH": [
+        "A1_LEXICAL_PATH_SHAPE"
+      ],
+      "I0A_VALID_A2_SET": [
+        "A1_LEXICAL_PATH_SHAPE",
+        "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+        "A2_DESCRIPTOR_SET_COMPLETE"
+      ],
+      "I0A_VALID_A2_SINGLE": [
+        "A1_LEXICAL_PATH_SHAPE",
+        "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS"
+      ],
+      "I0A_VALID_A3_A4_STRUCTURAL_OBJECT": [
+        "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+        "A4_DECODED_LOGICAL_ROWS_VALIDATED"
+      ],
+      "I0A_VALID_A3_EXACT": [
+        "A3_EXACT_LENGTH_AND_SHA256_RECONCILED"
+      ],
+      "I0A_VALID_A3_STRUCTURAL_SIDECAR": [
+        "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+        "A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED"
+      ],
+      "I0A_VALID_A4_INTERNAL_RELATION": [
+        "A4_DECODED_LOGICAL_ROWS_VALIDATED"
+      ],
+      "I0A_VALID_A6_SELECTED": [
+        "A1_LEXICAL_PATH_SHAPE",
+        "A1_REGISTRY_BINDING_RESOLVED",
+        "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+        "A2_DESCRIPTOR_SET_COMPLETE",
+        "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+        "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE"
+      ],
+      "I0A_VALID_A6_STRUCTURAL": [
+        "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+        "A6_STRUCTURAL_SCHEMA_COMPLETE"
+      ]
+    },
+    "success_result_codes": [
+      "I0A_BYTES_CONSTRUCTED_A0",
+      "I0A_DIGEST_CONSTRUCTED_A0",
+      "I0A_VALID_A1_PATH",
+      "I0A_BINDING_RESOLVED_A1",
+      "I0A_VALID_A2_SINGLE",
+      "I0A_VALID_A2_SET",
+      "I0A_VALID_A3_EXACT",
+      "I0A_PINNED_GOVERNING_BYTES_VALIDATED_A3H",
+      "I0A_REGISTRY_INDEX_MATERIALIZED_A3H",
+      "I0A_VALID_A3_STRUCTURAL_SIDECAR",
+      "I0A_VALID_A4_INTERNAL_RELATION",
+      "I0A_VALID_A3_A4_STRUCTURAL_OBJECT",
+      "I0A_VALID_A6_STRUCTURAL",
+      "I0A_VALID_A6_SELECTED"
+    ]
+  },
+  "modules": [
+    {
+      "governing_schema_ids_and_sections": [
+        "Finding 4 §§3.4,5.1,5.3-5.5"
+      ],
+      "module": "pm_research.local_curl_per_side.canonical",
+      "module_responsibility": "closed assurance/result types and total canonical typed-byte constructors; no path grammar ownership",
+      "permitted_imports": [
+        "dataclasses",
+        "enum",
+        "hashlib",
+        "json",
+        "unicodedata",
+        "typing"
+      ],
+      "prohibited_imports": [
+        ".finding4_registry",
+        ".prepared_evidence",
+        ".governing_package",
+        ".claim_hashes"
+      ],
+      "prohibited_side_effects": [
+        "filesystem",
+        "network",
+        "subprocess",
+        "environment mutation",
+        "logging",
+        "project runtime imports"
+      ],
+      "public_symbols": [
+        {
+          "additional_properties": false,
+          "kind": "enum",
+          "name": "AssuranceLevel",
+          "values": [
+            "A0_NONE",
+            "A1_LEXICAL_PATH_SHAPE",
+            "A1_REGISTRY_BINDING_RESOLVED",
+            "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+            "A2_DESCRIPTOR_SET_COMPLETE",
+            "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+            "A3_PINNED_GOVERNING_SHA256_VALIDATED",
+            "A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED",
+            "A4_DECODED_LOGICAL_ROWS_VALIDATED",
+            "A5_FILESYSTEM_FACTS_VALIDATED",
+            "A6_STRUCTURAL_SCHEMA_COMPLETE",
+            "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE",
+            "A7_PREPARED_OBJECT_FULL",
+            "A8_PREPARED_UNIT_FULL"
+          ]
+        },
+        {
+          "additional_properties": false,
+          "kind": "enum",
+          "name": "I0AResultCode",
+          "values": [
+            "I0A_BYTES_CONSTRUCTED_A0",
+            "I0A_DIGEST_CONSTRUCTED_A0",
+            "I0A_VALID_A1_PATH",
+            "I0A_BINDING_RESOLVED_A1",
+            "I0A_VALID_A2_SINGLE",
+            "I0A_VALID_A2_SET",
+            "I0A_VALID_A3_EXACT",
+            "I0A_PINNED_GOVERNING_BYTES_VALIDATED_A3H",
+            "I0A_REGISTRY_INDEX_MATERIALIZED_A3H",
+            "I0A_VALID_A3_STRUCTURAL_SIDECAR",
+            "I0A_VALID_A4_INTERNAL_RELATION",
+            "I0A_VALID_A3_A4_STRUCTURAL_OBJECT",
+            "I0A_VALID_A6_STRUCTURAL",
+            "I0A_VALID_A6_SELECTED",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_CANONICAL_TAG_INVALID",
+            "ERR_CANONICAL_TYPE_MISMATCH",
+            "ERR_CANONICAL_NON_NFC",
+            "ERR_CANONICAL_UINT_RANGE",
+            "ERR_CANONICAL_SHA256_FORMAT",
+            "ERR_CANONICAL_BYTES_FORMAT",
+            "ERR_CANONICAL_FIELD_NAME_INVALID",
+            "ERR_CANONICAL_FIELD_ORDER_INVALID",
+            "ERR_CANONICAL_ROW_ARITY",
+            "ERR_DIGEST_INPUT_INVALID",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_BINDING_QUERY_INVALID",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_ROLE_CARDINALITY_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_CANONICAL_TARGET_DUPLICATE",
+            "ERR_SIDECAR_RELATION_INVALID",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH",
+            "ERR_LOGICAL_ROWS_INVALID",
+            "ERR_LOGICAL_SHA256_MISMATCH",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+            "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+            "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+            "ERR_PREPARED_UNIT_ID_MISMATCH",
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+            "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE",
+            "STOP_PAYLOAD_LOGICAL_VALIDATION_OUT_OF_SCOPE"
+          ]
+        },
+        {
+          "additional_properties": false,
+          "kind": "enum",
+          "name": "TypedCellTag",
+          "values": [
+            "STRING",
+            "UINT",
+            "BOOL",
+            "SHA256",
+            "BYTES",
+            "NULL"
+          ]
+        },
+        {
+          "additional_properties": false,
+          "kind": "enum",
+          "name": "StructuralRelationSchemaId",
+          "values": [
+            "i0a:prepared_claim_object_relation",
+            "i0a:prepared_planned_object_relation",
+            "i0a:prepared_object_descriptor_relation"
+          ]
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "name:str",
+            "type_tag:TypedCellTag",
+            "value:object"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "TypedCell"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "name:str",
+            "type_tag:TypedCellTag"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "TypedFieldSpec"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "code:I0AResultCode",
+            "established_assurances:tuple[AssuranceLevel,...]"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "ValidationResult",
+          "result_payload_contract": {
+            "non_success": "code is the exact first error/stop and established_assurances=()",
+            "success": "code is a declared success and established_assurances equals the unique global tuple; no value fields exist"
+          }
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "code:I0AResultCode",
+            "established_assurances:tuple[AssuranceLevel,...]",
+            "value:bytes|None"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "CanonicalBytesResult",
+          "result_payload_contract": {
+            "non_success": "value=null and established_assurances=()",
+            "success": "value is non-null exact immutable bytes and code/assurances equal the global mapping"
+          }
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "code:I0AResultCode",
+            "established_assurances:tuple[AssuranceLevel,...]",
+            "digest_sha256:str|None"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "DigestResult",
+          "result_payload_contract": {
+            "non_success": "digest_sha256=null and established_assurances=()",
+            "success": "digest_sha256 is non-null exact 64-character lowercase hexadecimal SHA-256 and code/assurances equal the global mapping"
+          }
+        },
+        {
+          "assurance": "A0_NONE",
+          "closed_result_or_exception_domain": [
+            "I0A_BYTES_CONSTRUCTED_A0",
+            "ERR_CANONICAL_FIELD_NAME_INVALID",
+            "ERR_CANONICAL_TAG_INVALID",
+            "ERR_CANONICAL_TYPE_MISMATCH",
+            "ERR_CANONICAL_NON_NFC",
+            "ERR_CANONICAL_UINT_RANGE",
+            "ERR_CANONICAL_SHA256_FORMAT",
+            "ERR_CANONICAL_BYTES_FORMAT"
+          ],
+          "established_assurances_by_result": {
+            "ERR_CANONICAL_BYTES_FORMAT": [],
+            "ERR_CANONICAL_FIELD_NAME_INVALID": [],
+            "ERR_CANONICAL_NON_NFC": [],
+            "ERR_CANONICAL_SHA256_FORMAT": [],
+            "ERR_CANONICAL_TAG_INVALID": [],
+            "ERR_CANONICAL_TYPE_MISMATCH": [],
+            "ERR_CANONICAL_UINT_RANGE": [],
+            "I0A_BYTES_CONSTRUCTED_A0": []
+          },
+          "establishes_assurance": "A0_NONE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "canonical_typed_cell_bytes",
+          "ordered_error_precedence": [
+            "ERR_CANONICAL_FIELD_NAME_INVALID",
+            "ERR_CANONICAL_TAG_INVALID",
+            "ERR_CANONICAL_TYPE_MISMATCH",
+            "ERR_CANONICAL_NON_NFC",
+            "ERR_CANONICAL_UINT_RANGE",
+            "ERR_CANONICAL_SHA256_FORMAT",
+            "ERR_CANONICAL_BYTES_FORMAT"
+          ],
+          "output_type": "CanonicalBytesResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.CanonicalBytesResult; no stale or partial values.",
+          "rule": "Total A0 constructor for one expected field name/tag and canonical scalar encoding",
+          "signature": "(cell: TypedCell, expected: TypedFieldSpec) -> CanonicalBytesResult",
+          "success": "I0A_BYTES_CONSTRUCTED_A0"
+        },
+        {
+          "assurance": "A0_NONE",
+          "closed_result_or_exception_domain": [
+            "I0A_BYTES_CONSTRUCTED_A0",
+            "ERR_CANONICAL_ROW_ARITY",
+            "ERR_CANONICAL_FIELD_ORDER_INVALID",
+            "ERR_CANONICAL_TAG_INVALID",
+            "ERR_CANONICAL_TYPE_MISMATCH",
+            "ERR_CANONICAL_NON_NFC",
+            "ERR_CANONICAL_UINT_RANGE",
+            "ERR_CANONICAL_SHA256_FORMAT",
+            "ERR_CANONICAL_BYTES_FORMAT",
+            "ERR_CANONICAL_FIELD_NAME_INVALID"
+          ],
+          "established_assurances_by_result": {
+            "ERR_CANONICAL_BYTES_FORMAT": [],
+            "ERR_CANONICAL_FIELD_NAME_INVALID": [],
+            "ERR_CANONICAL_FIELD_ORDER_INVALID": [],
+            "ERR_CANONICAL_NON_NFC": [],
+            "ERR_CANONICAL_ROW_ARITY": [],
+            "ERR_CANONICAL_SHA256_FORMAT": [],
+            "ERR_CANONICAL_TAG_INVALID": [],
+            "ERR_CANONICAL_TYPE_MISMATCH": [],
+            "ERR_CANONICAL_UINT_RANGE": [],
+            "I0A_BYTES_CONSTRUCTED_A0": []
+          },
+          "establishes_assurance": "A0_NONE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "canonical_typed_row_bytes",
+          "ordered_error_precedence": [
+            "ERR_CANONICAL_ROW_ARITY",
+            "ERR_CANONICAL_FIELD_ORDER_INVALID",
+            "ERR_CANONICAL_TAG_INVALID",
+            "ERR_CANONICAL_TYPE_MISMATCH",
+            "ERR_CANONICAL_NON_NFC",
+            "ERR_CANONICAL_UINT_RANGE",
+            "ERR_CANONICAL_SHA256_FORMAT",
+            "ERR_CANONICAL_BYTES_FORMAT",
+            "ERR_CANONICAL_FIELD_NAME_INVALID"
+          ],
+          "output_type": "CanonicalBytesResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.CanonicalBytesResult; no stale or partial values.",
+          "rule": "Total A0 row constructor. Exact field name/order is checked before tags; equal-tag swaps are field-order errors.",
+          "signature": "(cells: Sequence[TypedCell], expected_fields: Sequence[TypedFieldSpec]) -> CanonicalBytesResult",
+          "success": "I0A_BYTES_CONSTRUCTED_A0"
+        }
+      ]
+    },
+    {
+      "governing_schema_ids_and_sections": [
+        "canonical effective hash set"
+      ],
+      "module": "pm_research.local_curl_per_side.governing_package",
+      "module_responsibility": "pure fixed-hash reconciliation of caller-supplied governing bytes",
+      "permitted_imports": [
+        "dataclasses",
+        "hashlib",
+        "typing",
+        ".canonical"
+      ],
+      "prohibited_side_effects": [
+        "filesystem",
+        "network",
+        "subprocess",
+        "Git",
+        "project imports"
+      ],
+      "public_symbols": [
+        {
+          "additional_properties": false,
+          "fields": [
+            "spec_bytes:bytes",
+            "registry_bytes:bytes",
+            "request_authorization_bytes:bytes",
+            "manifest_bytes:bytes",
+            "accepted_checksum_inventory_bytes:bytes"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "GoverningPackageBytes"
+        },
+        {
+          "assurance": "A3_PINNED_GOVERNING_SHA256_VALIDATED",
+          "closed_result_or_exception_domain": [
+            "I0A_PINNED_GOVERNING_BYTES_VALIDATED_A3H",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+          ],
+          "established_assurances_by_result": {
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": [],
+            "I0A_PINNED_GOVERNING_BYTES_VALIDATED_A3H": [
+              "A3_PINNED_GOVERNING_SHA256_VALIDATED"
+            ]
+          },
+          "establishes_assurance": "A3_PINNED_GOVERNING_SHA256_VALIDATED",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Exactly one non-success predicate exists. Return that code iff its predicate is true; otherwise return the declared success/result. No multi-fault ambiguity exists.",
+          "name": "validate_governing_package_bytes",
+          "ordered_error_precedence": [
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+          ],
+          "output_type": "ValidationResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "Recompute the five pinned complete-file SHA-256 values. This is fixed-hash assurance, not generic A3 expected-length reconciliation.",
+          "signature": "(value: GoverningPackageBytes) -> ValidationResult",
+          "success": "I0A_PINNED_GOVERNING_BYTES_VALIDATED_A3H"
+        }
+      ]
+    },
+    {
+      "governing_schema_ids_and_sections": [
+        "Finding 4 §§3.4,5.1-5.3",
+        "accepted PATH_GRAMMAR_REGISTRY.json",
+        "accepted PREPARED_ROLE_MATRIX.json",
+        "accepted SCHEMA_REGISTRY_REV23.json"
+      ],
+      "module": "pm_research.local_curl_per_side.finding4_registry",
+      "module_responsibility": "sole owner of immutable target/prepared-unit path grammars, placeholder domains, accepted-registry parsing/indexing, and frozen schema-binding tables",
+      "permitted_imports": [
+        "dataclasses",
+        "enum",
+        "hashlib",
+        "json",
+        "re",
+        "unicodedata",
+        "typing",
+        ".canonical"
+      ],
+      "private_symbols": [
+        {
+          "additional_properties": false,
+          "kind": "enum",
+          "name": "_PrivateBindingMatchCode",
+          "values": [
+            "PRIVATE_BINDING_MATCH_EXACTLY_ONE",
+            "PRIVATE_BINDING_MATCH_ZERO",
+            "PRIVATE_BINDING_MATCH_MULTIPLE",
+            "PRIVATE_BINDING_MATCH_INPUT_INVALID"
+          ],
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "code:_PrivateBindingMatchCode",
+            "matching_bindings:tuple[SchemaBinding,...]"
+          ],
+          "invariants": [
+            "does not carry I0AResultCode",
+            "does not carry established_assurances",
+            "injected candidates can prove matching/cardinality logic only"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "_PrivateBindingMatchResult",
+          "result_payload_contract": {
+            "PRIVATE_BINDING_MATCH_EXACTLY_ONE": "matching_bindings is the exact one-element tuple containing the sole matching candidate",
+            "PRIVATE_BINDING_MATCH_INPUT_INVALID": "matching_bindings=()",
+            "PRIVATE_BINDING_MATCH_MULTIPLE": "matching_bindings is the exact candidate-order tuple of every matching injected candidate",
+            "PRIVATE_BINDING_MATCH_ZERO": "matching_bindings=()"
+          },
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        },
+        {
+          "additional_properties": false,
+          "kind": "function",
+          "name": "_resolve_compatible_binding_set",
+          "ordered_outcomes": [
+            "PRIVATE_BINDING_MATCH_INPUT_INVALID",
+            "PRIVATE_BINDING_MATCH_ZERO",
+            "PRIVATE_BINDING_MATCH_MULTIPLE",
+            "PRIVATE_BINDING_MATCH_EXACTLY_ONE"
+          ],
+          "output_type": "_PrivateBindingMatchResult",
+          "rule": "Pure private matching/cardinality helper. It validates the typed query shape needed for matching and returns the exact tuple of candidate bindings that match. It does not read accepted registry bytes, does not consult the frozen production table unless the public wrapper passes it after verification, establishes no A1 assurance, and never returns an I0AResultCode.",
+          "signature": "(value: _BindingSetResolutionInput) -> _PrivateBindingMatchResult",
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "query:BindingQuery",
+            "candidate_bindings:tuple[SchemaBinding,...]"
+          ],
+          "invariants": [
+            "private test-only pure helper input; no production-table mutation or injection"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "_BindingSetResolutionInput",
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "duplicate_key:str"
+          ],
+          "kind": "exception_type",
+          "name": "_DuplicateJsonKeyError",
+          "rule": "raised only inside the private accepted-registry parser and caught before any public return",
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        },
+        {
+          "additional_properties": false,
+          "kind": "function",
+          "name": "_reject_duplicate_json_object_pairs",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "iterate pairs in parser order; if a key already exists, raise _DuplicateJsonKeyError(key); otherwise insert exactly once and return the dict",
+          "signature": "(pairs: list[tuple[str,object]]) -> dict[str,object]",
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        },
+        {
+          "additional_properties": false,
+          "kind": "function",
+          "name": "_parse_accepted_registry_bytes",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "After pinned SHA-256 success only: registry_bytes.decode('utf-8','strict'); json.loads(text, object_pairs_hook=_reject_duplicate_json_object_pairs, parse_float=_reject_json_non_integer_number, parse_constant=_reject_json_constant); require json.dumps(value, ensure_ascii=False, separators=(',',':'), sort_keys=True).encode('utf-8') == registry_bytes. Any decode/parse/duplicate/non-integer/non-canonical mismatch maps to ERR_GOVERNING_PACKAGE_BYTES_MISMATCH.",
+          "signature": "(registry_bytes: bytes) -> object",
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        },
+        {
+          "additional_properties": false,
+          "kind": "function",
+          "name": "_reject_json_non_integer_number",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "raise ValueError",
+          "signature": "(token: str) -> NoReturn",
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        },
+        {
+          "additional_properties": false,
+          "kind": "function",
+          "name": "_reject_json_constant",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "raise ValueError for NaN, Infinity, or -Infinity",
+          "signature": "(token: str) -> NoReturn",
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        },
+        {
+          "additional_properties": false,
+          "cardinality": 79,
+          "exact_value_fixture": "exact_frozen_production_bindings",
+          "kind": "tuple_constant",
+          "name": "_FROZEN_PRODUCTION_BINDINGS",
+          "rule": "Generated only from the accepted role/path/schema contract in this scope package; immutable; no runtime registration, injection, or reverse import.",
+          "value_type": "tuple[SchemaBinding,...]",
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        }
+      ],
+      "prohibited_imports": [
+        ".prepared_evidence",
+        ".governing_package",
+        ".claim_hashes"
+      ],
+      "prohibited_side_effects": [
+        "filesystem",
+        "network",
+        "subprocess",
+        "import .prepared_evidence",
+        "runtime mutation of frozen binding/grammar tables"
+      ],
+      "public_symbols": [
+        {
+          "additional_properties": false,
+          "kind": "enum",
+          "name": "FrozenPathGrammarId",
+          "ownership": "finding4_registry.py sole owner; canonical.py does not define or import this enum",
+          "values": [
+            "TARGET_PARTITION_PAYLOAD_00",
+            "TARGET_HISTORY_MANIFEST_00",
+            "TARGET_HISTORY_MANIFEST_SIDECAR_00",
+            "TARGET_HISTORY_INDEX_00",
+            "TARGET_PUBLICATION_MARKER_00",
+            "TARGET_PUBLICATION_MARKER_SIDECAR_00",
+            "TARGET_CURRENT_GENERATION_MANIFEST_00",
+            "TARGET_CURRENT_GENERATION_MANIFEST_SIDECAR_00",
+            "TARGET_CURRENT_GENERATION_INDEX_00",
+            "TARGET_CURRENT_GENERATION_MARKER_00",
+            "TARGET_CURRENT_GENERATION_MARKER_SIDECAR_00",
+            "TARGET_LEGACY_CURRENT_MANIFEST_00",
+            "TARGET_LEGACY_CURRENT_MANIFEST_SIDECAR_00",
+            "TARGET_LEGACY_CURRENT_INDEX_00",
+            "TARGET_BOUND_PAYLOAD_INTENT_00",
+            "TARGET_BOUND_PAYLOAD_INTENT_SIDECAR_00",
+            "TARGET_BOUND_SNAPSHOT_CLAIM_SEMANTIC_00",
+            "TARGET_BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR_00",
+            "TARGET_FENCE_UNIT_MANIFEST_00",
+            "TARGET_FENCE_UNIT_MANIFEST_SIDECAR_00",
+            "TARGET_FENCE_EVENT_00",
+            "TARGET_FENCE_EVENT_SIDECAR_00",
+            "TARGET_AUTHORIZATION_USE_ROW_BATCH_00",
+            "TARGET_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_00",
+            "TARGET_CAPTURE_ROW_BATCH_00",
+            "TARGET_CAPTURE_ROW_BATCH_SIDECAR_00",
+            "TARGET_NORMAL_FINAL_INVENTORY_00",
+            "TARGET_NORMAL_FINAL_INVENTORY_01",
+            "TARGET_NORMAL_FINAL_INVENTORY_SIDECAR_00",
+            "TARGET_NORMAL_FINAL_INVENTORY_SIDECAR_01",
+            "TARGET_NORMAL_FINAL_MARKER_00",
+            "TARGET_NORMAL_FINAL_MARKER_01",
+            "TARGET_NORMAL_FINAL_MARKER_SIDECAR_00",
+            "TARGET_NORMAL_FINAL_MARKER_SIDECAR_01",
+            "PREPARED_CLAIM_SCOPE_JSON",
+            "PREPARED_CLAIM_SCOPE_SHA256",
+            "PREPARED_CLAIM_SEMANTIC_JSON",
+            "PREPARED_CLAIM_SEMANTIC_SHA256",
+            "PREPARED_PREPARATION_PLAN_JSON",
+            "PREPARED_PREPARATION_PLAN_SHA256",
+            "PREPARED_PREPARED_UNIT_JSON",
+            "PREPARED_PREPARED_UNIT_SHA256",
+            "PREPARED_OBJECT_BIN"
+          ]
+        },
+        {
+          "additional_properties": false,
+          "kind": "enum",
+          "name": "PreparedObjectRole",
+          "values": [
+            "PARTITION_PAYLOAD",
+            "HISTORY_MANIFEST",
+            "HISTORY_MANIFEST_SIDECAR",
+            "HISTORY_INDEX",
+            "PUBLICATION_MARKER",
+            "PUBLICATION_MARKER_SIDECAR",
+            "CURRENT_GENERATION_MANIFEST",
+            "CURRENT_GENERATION_MANIFEST_SIDECAR",
+            "CURRENT_GENERATION_INDEX",
+            "CURRENT_GENERATION_MARKER",
+            "CURRENT_GENERATION_MARKER_SIDECAR",
+            "LEGACY_CURRENT_MANIFEST",
+            "LEGACY_CURRENT_MANIFEST_SIDECAR",
+            "LEGACY_CURRENT_INDEX",
+            "BOUND_PAYLOAD_INTENT",
+            "BOUND_PAYLOAD_INTENT_SIDECAR",
+            "BOUND_SNAPSHOT_CLAIM_SEMANTIC",
+            "BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR",
+            "FENCE_UNIT_MANIFEST",
+            "FENCE_UNIT_MANIFEST_SIDECAR",
+            "FENCE_EVENT",
+            "FENCE_EVENT_SIDECAR",
+            "AUTHORIZATION_USE_ROW_BATCH",
+            "AUTHORIZATION_USE_ROW_BATCH_SIDECAR",
+            "CAPTURE_ROW_BATCH",
+            "CAPTURE_ROW_BATCH_SIDECAR",
+            "NORMAL_FINAL_INVENTORY",
+            "NORMAL_FINAL_INVENTORY_SIDECAR",
+            "NORMAL_FINAL_MARKER",
+            "NORMAL_FINAL_MARKER_SIDECAR"
+          ]
+        },
+        {
+          "additional_properties": false,
+          "kind": "enum",
+          "name": "PreparedUnitKind",
+          "values": [
+            "SNAPSHOT_PUBLICATION",
+            "FENCE_ACQUIRED",
+            "AUTHORIZATION_USE_EVENT_COMMITTED",
+            "REQUEST_RESERVED_COMMITTED",
+            "CAPTURE_STARTED_COMMITTED",
+            "CAPTURE_TERMINAL_COMMITTED",
+            "CAPTURE_SNAPSHOT_COMMITTED",
+            "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+            "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+            "FENCE_RELEASED",
+            "NORMAL_FINALIZATION"
+          ]
+        },
+        {
+          "additional_properties": false,
+          "kind": "enum",
+          "name": "I0AInputUnitKind",
+          "values": [
+            "SNAPSHOT_PUBLICATION"
+          ]
+        },
+        {
+          "additional_properties": false,
+          "kind": "enum",
+          "name": "PublicationMode",
+          "values": [
+            "ATOMIC_BUNDLE_MEMBER",
+            "SINGLE_AUTHORITATIVE_FILE",
+            "REUSE_IMMUTABLE_SOURCE",
+            "DERIVED_VIEW_TARGET"
+          ]
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "unit_kind:PreparedUnitKind",
+            "subject_family:Literal[capture,analysis_compatibility,analysis_strict]|None",
+            "subject_sequence:int"
+          ],
+          "invariants": [
+            "No partition-count field exists",
+            "SNAPSHOT_PUBLICATION requires non-null subject_family and subject_sequence UINT64",
+            "excluded unit kinds stop before role validation"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "UnitContext"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "registry_file_sha256:str",
+            "schema_ids:tuple[str,...]",
+            "json_schema_count:int",
+            "table_schema_count:int",
+            "total_schema_count:int",
+            "schema_ids_logical_sha256:str"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "RegistryDefinitionIndex"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "code:I0AResultCode",
+            "established_assurances:tuple[AssuranceLevel,...]",
+            "index:RegistryDefinitionIndex|None"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "RegistryDefinitionIndexResult",
+          "result_payload_contract": {
+            "non_success": "index=null and established_assurances=()",
+            "success": "index is non-null and every index field is fully populated; code/assurances equal the global mapping"
+          }
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "role:PreparedObjectRole",
+            "unit_kind:PreparedUnitKind",
+            "publication_mode:PublicationMode",
+            "canonical_target_path:str",
+            "content_schema_id:str",
+            "logical_sha256_is_null:bool",
+            "sidecar_of_object_ordinal_is_null:bool",
+            "paired_target_role:PreparedObjectRole|None",
+            "paired_target_content_schema_id:str|None",
+            "paired_target_canonical_target_path:str|None"
+          ],
+          "invariants": [
+            "sidecar query requires all three paired_target fields non-null; non-sidecar requires all three null",
+            "query is binding metadata only and cannot establish descriptor assurance"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "BindingQuery"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "binding_id:str",
+            "role:PreparedObjectRole",
+            "unit_kind:PreparedUnitKind",
+            "publication_mode:PublicationMode",
+            "target_grammar_id:FrozenPathGrammarId",
+            "content_schema_id:str",
+            "logical_sha256_nullability:str",
+            "sidecar_rule:str"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "SchemaBinding"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "code:I0AResultCode",
+            "established_assurances:tuple[AssuranceLevel,...]",
+            "binding:SchemaBinding|None"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "BindingResolutionResult",
+          "result_payload_contract": {
+            "non_success": "binding=null and established_assurances=()",
+            "success": "binding is non-null exact frozen-production SchemaBinding; code/assurances equal the global mapping"
+          }
+        },
+        {
+          "assurance": "A3_PINNED_GOVERNING_SHA256_VALIDATED",
+          "closed_result_or_exception_domain": [
+            "I0A_REGISTRY_INDEX_MATERIALIZED_A3H",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+          ],
+          "duplicate_key_rejection": "_reject_duplicate_json_object_pairs raises _DuplicateJsonKeyError on the first duplicate key in parser order",
+          "established_assurances_by_result": {
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": [],
+            "I0A_REGISTRY_INDEX_MATERIALIZED_A3H": [
+              "A3_PINNED_GOVERNING_SHA256_VALIDATED"
+            ]
+          },
+          "establishes_assurance": "A3_PINNED_GOVERNING_SHA256_VALIDATED",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Exactly one non-success predicate exists. Return that code iff its predicate is true; otherwise return the declared success/result. No multi-fault ambiguity exists.",
+          "name": "build_accepted_registry_schema_definition_index",
+          "ordered_error_precedence": [
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+          ],
+          "output_type": "RegistryDefinitionIndexResult",
+          "parsing_import": "import json",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); no partial parser assurance is retained.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.RegistryDefinitionIndexResult; no stale or partial values.",
+          "rule": "Hash-first fixed-byte API. First require exact accepted registry SHA-256. Then call _parse_accepted_registry_bytes using strict UTF-8 json.loads with object_pairs_hook duplicate rejection and canonical lexicographic-key reserialization equality. Enumerate the complete accepted json_schemas and table_schemas definition domains only after parsing succeeds.",
+          "signature": "(registry_bytes: bytes) -> RegistryDefinitionIndexResult",
+          "success": "I0A_REGISTRY_INDEX_MATERIALIZED_A3H"
+        },
+        {
+          "assurance": "A1_REGISTRY_BINDING_RESOLVED",
+          "closed_result_or_exception_domain": [
+            "I0A_BINDING_RESOLVED_A1",
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_BINDING_QUERY_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+          ],
+          "established_assurances_by_result": {
+            "ERR_BINDING_QUERY_INVALID": [],
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": [],
+            "ERR_PATH_GRAMMAR_MISMATCH": [],
+            "ERR_PATH_LEXICAL_INVALID": [],
+            "I0A_BINDING_RESOLVED_A1": [
+              "A1_LEXICAL_PATH_SHAPE",
+              "A1_REGISTRY_BINDING_RESOLVED"
+            ],
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID": [],
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED": [],
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+          },
+          "establishes_assurance": "A1_REGISTRY_BINDING_RESOLVED",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "resolve_selected_schema_binding",
+          "ordered_error_precedence": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_BINDING_QUERY_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+          ],
+          "output_type": "BindingResolutionResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.BindingResolutionResult; no stale or partial values.",
+          "rule": "Gate unit_kind first. Then validate pinned accepted-registry bytes, the complete BindingQuery, immutable grammar, accepted-registry membership, and exactly one compatible frozen binding. Internal i0a: relation IDs are invalid query schema IDs and never enter accepted-registry membership resolution. Exact aliases are forbidden. analysis_compatibility resolves only table:canonical_compatibility_analysis; analysis_strict resolves only table:strict_audit_analysis. Both normal-final marker paths bind exactly json:finalization_marker_v23 but remain unit-kind excluded from I0A.",
+          "signature": "(query: BindingQuery, accepted_registry_bytes: bytes) -> BindingResolutionResult",
+          "success": "I0A_BINDING_RESOLVED_A1"
+        },
+        {
+          "assurance": "A1_LEXICAL_PATH_SHAPE",
+          "closed_result_or_exception_domain": [
+            "I0A_VALID_A1_PATH",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH"
+          ],
+          "established_assurances_by_result": {
+            "ERR_PATH_GRAMMAR_MISMATCH": [],
+            "ERR_PATH_LEXICAL_INVALID": [],
+            "I0A_VALID_A1_PATH": [
+              "A1_LEXICAL_PATH_SHAPE"
+            ]
+          },
+          "establishes_assurance": "A1_LEXICAL_PATH_SHAPE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "validate_normalized_relative_path",
+          "ordered_error_precedence": [
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH"
+          ],
+          "output_type": "ValidationResult",
+          "ownership": "finding4_registry.py sole owner with immutable module-local grammar and placeholder tables",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "Resolve FrozenPathGrammarId only against immutable module-owned target/prepared-unit grammar tables and exact placeholder domains; lexical validation only; no filesystem facts and no caller-supplied template.",
+          "signature": "(path: str, grammar_id: FrozenPathGrammarId) -> ValidationResult",
+          "success": "I0A_VALID_A1_PATH"
+        }
+      ]
+    },
+    {
+      "governing_schema_ids_and_sections": [
+        "Finding 4 §§3.4-3.7,5.1-5.6"
+      ],
+      "import_rule": "May import FrozenPathGrammarId, validate_normalized_relative_path, binding types/functions, and frozen role tables from finding4_registry.py. finding4_registry.py never imports prepared_evidence.py.",
+      "module": "pm_research.local_curl_per_side.prepared_evidence",
+      "module_responsibility": "descriptor, descriptor-set, exact physical, decoded logical, structural, selected sidecar, and unit validation plus dispatch",
+      "permitted_imports": [
+        "dataclasses",
+        "enum",
+        "hashlib",
+        "json",
+        "typing",
+        ".canonical",
+        ".finding4_registry",
+        ".claim_hashes"
+      ],
+      "private_symbols": [
+        {
+          "additional_properties": false,
+          "kind": "enum",
+          "name": "_PrivateDescriptorSetInvariantCode",
+          "values": [
+            "PRIVATE_DESCRIPTOR_SET_INVARIANTS_VALID",
+            "PRIVATE_DESCRIPTOR_SET_ROLE_CARDINALITY_INVALID",
+            "PRIVATE_DESCRIPTOR_SET_ORDINAL_SEQUENCE_INVALID",
+            "PRIVATE_DESCRIPTOR_SET_CANONICAL_TARGET_DUPLICATE",
+            "PRIVATE_DESCRIPTOR_SET_SIDECAR_RELATION_INVALID"
+          ],
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "code:_PrivateDescriptorSetInvariantCode",
+            "summaries:tuple[_DescriptorSetInvariantSummary,...]|None"
+          ],
+          "invariants": [
+            "does not carry I0AResultCode",
+            "does not carry established_assurances",
+            "summaries is non-null only for PRIVATE_DESCRIPTOR_SET_INVARIANTS_VALID"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "_PrivateDescriptorSetInvariantResult",
+          "result_payload_contract": {
+            "PRIVATE_DESCRIPTOR_SET_INVARIANTS_VALID": "summaries is the exact non-null ordinal-order tuple consumed by the public wrapper",
+            "every_private_error": "for each of the exact four private failure codes, summaries=null; no partial summaries survive"
+          },
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        },
+        {
+          "additional_properties": false,
+          "kind": "function",
+          "name": "_validate_descriptor_set_invariants",
+          "ordered_outcomes": [
+            "PRIVATE_DESCRIPTOR_SET_ROLE_CARDINALITY_INVALID",
+            "PRIVATE_DESCRIPTOR_SET_ORDINAL_SEQUENCE_INVALID",
+            "PRIVATE_DESCRIPTOR_SET_CANONICAL_TARGET_DUPLICATE",
+            "PRIVATE_DESCRIPTOR_SET_SIDECAR_RELATION_INVALID",
+            "PRIVATE_DESCRIPTOR_SET_INVARIANTS_VALID"
+          ],
+          "output_type": "_PrivateDescriptorSetInvariantResult",
+          "rule": "Private invariant reducer over only _DescriptorSetInvariantInput. It decides role cardinality, ordinal sequence, canonical-target uniqueness, and sidecar relation, then returns private typed summary data. It MUST NOT inspect or decide logical-hash nullability or same-ordinal partition-entry binding because its closed input and summary contain neither value domain. The public wrapper establishes A1/A2 prerequisites and alone may return I0A_VALID_A2_SET.",
+          "signature": "(value: _DescriptorSetInvariantInput) -> _PrivateDescriptorSetInvariantResult",
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "object_ordinal:int",
+            "object_role:PreparedObjectRole",
+            "canonical_target_path:str",
+            "is_sidecar:bool",
+            "sidecar_of_object_ordinal:int|None"
+          ],
+          "invariants": [
+            "produced only after public role-local descriptor validation; used to evaluate set invariants without caller-defined grammar authority"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "_DescriptorSetInvariantSummary",
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "summaries:tuple[_DescriptorSetInvariantSummary,...]",
+            "expected_role_counts:Mapping[PreparedObjectRole,int]"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "_DescriptorSetInvariantInput",
+          "visibility": "private module symbol; absent from __all__ and public_symbols"
+        }
+      ],
+      "prohibited_imports": [
+        "filesystem libraries",
+        "network libraries",
+        "subprocess",
+        ".governing_package"
+      ],
+      "prohibited_side_effects": [
+        "filesystem",
+        "network",
+        "subprocess",
+        "Parquet dependency",
+        "project runtime imports"
+      ],
+      "public_symbols": [
+        {
+          "additional_properties": false,
+          "fields": [
+            "object_ordinal:int",
+            "object_role:PreparedObjectRole",
+            "content_schema_id:str",
+            "publication_mode:PublicationMode",
+            "durable_source_path:str",
+            "canonical_target_path:str",
+            "file_size_bytes:int",
+            "file_sha256:str",
+            "logical_sha256:str|None",
+            "sidecar_of_object_ordinal:int|None"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "PreparedObjectDescriptor"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "unit_context:UnitContext",
+            "descriptors:tuple[PreparedObjectDescriptor,...]",
+            "snapshot_claim_semantic_bytes:bytes|None"
+          ],
+          "invariants": [
+            "SNAPSHOT_PUBLICATION requires exact snapshot claim-semantic bytes",
+            "PARTITION_PAYLOAD count derives only from len(validated partition_entries)",
+            "other unit kinds require null snapshot_claim_semantic_bytes"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "DescriptorSetInput"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "code:I0AResultCode",
+            "established_assurances:tuple[AssuranceLevel,...]",
+            "observed_size_bytes:int|None",
+            "observed_sha256:str|None"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "PhysicalPayloadResult",
+          "result_payload_contract": {
+            "ERR_PHYSICAL_EXPECTATION_INVALID": "observed_size_bytes=null; observed_sha256=null because expectations fail before observation",
+            "ERR_PHYSICAL_SHA256_MISMATCH": "observed_size_bytes and observed_sha256 are both non-null actual observations",
+            "ERR_PHYSICAL_SIZE_MISMATCH": "observed_size_bytes and observed_sha256 are both non-null actual observations",
+            "other_non_success": "observed_size_bytes=null; observed_sha256=null; established_assurances=()",
+            "success": "observed_size_bytes and observed_sha256 are both non-null actual observations"
+          }
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "schema_id:str",
+            "decoded_rows:tuple[Mapping[str,object],...]|None",
+            "expected_logical_sha256:str",
+            "accepted_registry_bytes:bytes"
+          ],
+          "invariants": [
+            "schema_id must use json: or table: accepted-registry namespace; i0a: is rejected as ERR_SELECTED_SCHEMA_INVALID"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "AcceptedRegistryLogicalValidationInput"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "schema_id:StructuralRelationSchemaId",
+            "decoded_rows:tuple[Mapping[str,object],...]",
+            "expected_logical_sha256:str"
+          ],
+          "invariants": [
+            "schema_id is internal i0a: only and is never checked for accepted-registry membership"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "StructuralRelationValidationInput"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "descriptor_set_input:DescriptorSetInput",
+            "selected_object_ordinal:int",
+            "selected_payload_bytes:bytes",
+            "paired_target_payload_bytes:bytes|None",
+            "accepted_registry_bytes:bytes"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "SelectedJsonPayloadInput"
+        },
+        {
+          "additional_properties": false,
+          "kind": "enum",
+          "name": "StructuralMemberName",
+          "values": [
+            "CLAIM_SCOPE.json",
+            "CLAIM_SCOPE.sha256",
+            "CLAIM_SEMANTIC.json",
+            "CLAIM_SEMANTIC.sha256",
+            "PREPARATION_PLAN.json",
+            "PREPARATION_PLAN.sha256",
+            "PREPARED_UNIT.json",
+            "PREPARED_UNIT.sha256"
+          ]
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "unit_context:UnitContext",
+            "run_id:str",
+            "prepared_unit_id:str",
+            "member_name:StructuralMemberName",
+            "payload_bytes:bytes",
+            "expected_file_size_bytes:int",
+            "expected_file_sha256:str",
+            "paired_target_bytes:bytes|None",
+            "paired_target_expected_file_size_bytes:int|None",
+            "paired_target_expected_file_sha256:str|None"
+          ],
+          "invariants": [
+            "run_id matches ^run_[0-9a-f]{64}$ and prepared_unit_id matches ^prep_[0-9a-f]{64}$",
+            "exact full member path is derived only by finding4_registry.py from run_id, unit_context.unit_kind, prepared_unit_id, and member_name",
+            "persisted JSON object keys must be lexicographic Unicode code-point order; schema field order is membership/projection metadata only",
+            "sidecar target_path is validation data and must equal the independently derived paired target path",
+            "every member verifies exact expected byte length and exact complete-file SHA-256",
+            "sidecars additionally require paired target bytes plus exact paired expected length and SHA-256; non-sidecars require all paired fields null"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "StructuralJsonMemberInput"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "accepted_registry_bytes:bytes",
+            "unit_context:UnitContext",
+            "structural_members:Mapping[StructuralMemberName,bytes]",
+            "object_payload_bytes_by_ordinal:Mapping[int,bytes]"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "PreparedUnitStructureInput"
+        },
+        {
+          "additional_properties": false,
+          "kind": "enum",
+          "name": "FilesystemClaimKind",
+          "values": [
+            "SYMLINK_FREE_REGULAR_FILE",
+            "CANONICAL_TARGET_REOPENED",
+            "REUSE_IMMUTABLE_SOURCE_VALIDATED",
+            "PREPARED_OBJECT_FULL",
+            "PREPARED_UNIT_FULL"
+          ]
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "claim_kind:FilesystemClaimKind",
+            "claimed_path:str",
+            "caller_asserted_value:bool|None"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "FilesystemValidationRequest"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "selected_input:SelectedJsonPayloadInput",
+            "filesystem_request:FilesystemValidationRequest"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "FullPreparedObjectValidationRequest"
+        },
+        {
+          "additional_properties": false,
+          "fields": [
+            "unit_input:PreparedUnitStructureInput",
+            "filesystem_requests:tuple[FilesystemValidationRequest,...]"
+          ],
+          "kind": "frozen_dataclass",
+          "name": "FullPreparedUnitValidationRequest"
+        },
+        {
+          "assurance": "A0_NONE",
+          "boundary_fixture": "complete_snapshot_publication_unit",
+          "closed_result_or_exception_domain": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+            "ERR_PREPARED_UNIT_ID_MISMATCH",
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_ROLE_CARDINALITY_INVALID",
+            "ERR_CANONICAL_TARGET_DUPLICATE",
+            "ERR_SIDECAR_RELATION_INVALID",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH",
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A"
+          ],
+          "established_assurances_by_result": {
+            "ERR_CANONICAL_JSON_INVALID": [],
+            "ERR_CANONICAL_TARGET_DUPLICATE": [],
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH": [],
+            "ERR_COVERAGE_STATE_INVALID": [],
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": [],
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": [],
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID": [],
+            "ERR_ORDINAL_SEQUENCE_INVALID": [],
+            "ERR_PATH_GRAMMAR_MISMATCH": [],
+            "ERR_PATH_LEXICAL_INVALID": [],
+            "ERR_PHYSICAL_EXPECTATION_INVALID": [],
+            "ERR_PHYSICAL_SHA256_MISMATCH": [],
+            "ERR_PHYSICAL_SIZE_MISMATCH": [],
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH": [],
+            "ERR_PREDECESSOR_RULE_INVALID": [],
+            "ERR_PREPARED_UNIT_ID_MISMATCH": [],
+            "ERR_ROLE_CARDINALITY_INVALID": [],
+            "ERR_ROLE_DISPOSITION_INVALID": [],
+            "ERR_SELECTED_SCHEMA_INVALID": [],
+            "ERR_SIDECAR_RELATION_INVALID": [],
+            "ERR_STRUCTURAL_MEMBER_SET_INVALID": [],
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A": [],
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID": [],
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED": [],
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+          },
+          "establishes_assurance": "A0_NONE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "dispatch_i0a_unit_validation",
+          "ordered_error_precedence": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+            "ERR_PREPARED_UNIT_ID_MISMATCH",
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_ROLE_CARDINALITY_INVALID",
+            "ERR_CANONICAL_TARGET_DUPLICATE",
+            "ERR_SIDECAR_RELATION_INVALID",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH",
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A"
+          ],
+          "output_type": "ValidationResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "Owned by prepared_evidence.py; unit-kind gate precedes delegation to validate_prepared_unit_structure; no registry-to-prepared import. The complete canonical SNAPSHOT_PUBLICATION fixture clears all earlier structural, registry, descriptor-set, sidecar, and A3 checks and terminates at ordinal 0 with STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A for table:capture_events.",
+          "signature": "(value: PreparedUnitStructureInput) -> ValidationResult",
+          "success": "none"
+        },
+        {
+          "assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+          "closed_result_or_exception_domain": [
+            "I0A_VALID_A2_SINGLE",
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID"
+          ],
+          "established_assurances_by_result": {
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": [],
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID": [],
+            "ERR_PATH_GRAMMAR_MISMATCH": [],
+            "ERR_PATH_LEXICAL_INVALID": [],
+            "ERR_ROLE_DISPOSITION_INVALID": [],
+            "I0A_VALID_A2_SINGLE": [
+              "A1_LEXICAL_PATH_SHAPE",
+              "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS"
+            ],
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+          },
+          "establishes_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "validate_prepared_object_descriptor",
+          "ordered_error_precedence": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID"
+          ],
+          "output_type": "ValidationResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "Validates exactly one full descriptor, including role-specific logical_sha256 nullability from the complete descriptor. It returns ERR_LOGICAL_HASH_NULLABILITY_INVALID on the first nullability violation before any private descriptor-set reduction. It does not evaluate partition cardinality, ordinal completeness, target uniqueness, complete sidecar graph, or same-ordinal partition-entry binding.",
+          "signature": "(descriptor: PreparedObjectDescriptor, unit_context: UnitContext) -> ValidationResult",
+          "success": "I0A_VALID_A2_SINGLE"
+        },
+        {
+          "assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+          "closed_result_or_exception_domain": [
+            "I0A_VALID_A2_SET",
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_LOGICAL_SHA256_MISMATCH",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_ROLE_CARDINALITY_INVALID",
+            "ERR_CANONICAL_TARGET_DUPLICATE",
+            "ERR_SIDECAR_RELATION_INVALID",
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH"
+          ],
+          "established_assurances_by_result": {
+            "ERR_CANONICAL_JSON_INVALID": [],
+            "ERR_CANONICAL_TARGET_DUPLICATE": [],
+            "ERR_COVERAGE_STATE_INVALID": [],
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": [],
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID": [],
+            "ERR_LOGICAL_SHA256_MISMATCH": [],
+            "ERR_ORDINAL_SEQUENCE_INVALID": [],
+            "ERR_PATH_GRAMMAR_MISMATCH": [],
+            "ERR_PATH_LEXICAL_INVALID": [],
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH": [],
+            "ERR_PREDECESSOR_RULE_INVALID": [],
+            "ERR_ROLE_CARDINALITY_INVALID": [],
+            "ERR_ROLE_DISPOSITION_INVALID": [],
+            "ERR_SELECTED_SCHEMA_INVALID": [],
+            "ERR_SIDECAR_RELATION_INVALID": [],
+            "I0A_VALID_A2_SET": [
+              "A1_LEXICAL_PATH_SHAPE",
+              "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+              "A2_DESCRIPTOR_SET_COMPLETE"
+            ],
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+          },
+          "establishes_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "validate_prepared_descriptor_set",
+          "ordered_error_precedence": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_LOGICAL_SHA256_MISMATCH",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_ROLE_CARDINALITY_INVALID",
+            "ERR_CANONICAL_TARGET_DUPLICATE",
+            "ERR_SIDECAR_RELATION_INVALID",
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH"
+          ],
+          "output_type": "ValidationResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "For SNAPSHOT_PUBLICATION first validates exact snapshot claim-semantic bytes, derives partition cardinality from partition_entries, and itself binds each PARTITION_PAYLOAD descriptor to the exact same-ordinal claim entry path, partition identity, and logical hash before invoking the private set-invariant reducer. Same-ordinal path, identity, or logical-hash mismatch returns ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH. It then validates every remaining descriptor and the four private full-set invariants.",
+          "signature": "(value: DescriptorSetInput) -> ValidationResult",
+          "success": "I0A_VALID_A2_SET"
+        },
+        {
+          "assurance": "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+          "closed_result_or_exception_domain": [
+            "I0A_VALID_A3_EXACT",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH"
+          ],
+          "established_assurances_by_result": {
+            "ERR_PHYSICAL_EXPECTATION_INVALID": [],
+            "ERR_PHYSICAL_SHA256_MISMATCH": [],
+            "ERR_PHYSICAL_SIZE_MISMATCH": [],
+            "I0A_VALID_A3_EXACT": [
+              "A3_EXACT_LENGTH_AND_SHA256_RECONCILED"
+            ]
+          },
+          "establishes_assurance": "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "reconcile_physical_payload",
+          "ordered_error_precedence": [
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH"
+          ],
+          "output_type": "PhysicalPayloadResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.PhysicalPayloadResult; no stale or partial values.",
+          "rule": "Uniform generic A3: validate expected length/hash syntax, compare exact byte length, then recompute complete-file SHA-256. No descriptor/unit/binding assurance.",
+          "signature": "(expected_file_size_bytes: int, expected_file_sha256: str, payload_bytes: bytes) -> PhysicalPayloadResult",
+          "success": "I0A_VALID_A3_EXACT"
+        },
+        {
+          "assurance": "A0_NONE",
+          "closed_result_or_exception_domain": [
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+            "STOP_PAYLOAD_LOGICAL_VALIDATION_OUT_OF_SCOPE"
+          ],
+          "established_assurances_by_result": {
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": [],
+            "ERR_SELECTED_SCHEMA_INVALID": [],
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A": [],
+            "STOP_PAYLOAD_LOGICAL_VALIDATION_OUT_OF_SCOPE": [],
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED": []
+          },
+          "establishes_assurance": "A0_NONE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "validate_payload_logical_representation",
+          "ordered_error_precedence": [
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+            "STOP_PAYLOAD_LOGICAL_VALIDATION_OUT_OF_SCOPE"
+          ],
+          "output_type": "ValidationResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "Accepted-registry json:/table: membership surface only. Internal i0a: relation IDs return ERR_SELECTED_SCHEMA_INVALID before membership lookup. I0A implements no accepted-registry table payload decoder, so valid table IDs stop without A4.",
+          "signature": "(value: AcceptedRegistryLogicalValidationInput) -> ValidationResult",
+          "success": "none"
+        },
+        {
+          "assurance": "A4_DECODED_LOGICAL_ROWS_VALIDATED",
+          "closed_result_or_exception_domain": [
+            "I0A_VALID_A4_INTERNAL_RELATION",
+            "ERR_LOGICAL_ROWS_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_LOGICAL_SHA256_MISMATCH"
+          ],
+          "established_assurances_by_result": {
+            "ERR_LOGICAL_ROWS_INVALID": [],
+            "ERR_LOGICAL_SHA256_MISMATCH": [],
+            "ERR_ORDINAL_SEQUENCE_INVALID": [],
+            "I0A_VALID_A4_INTERNAL_RELATION": [
+              "A4_DECODED_LOGICAL_ROWS_VALIDATED"
+            ]
+          },
+          "establishes_assurance": "A4_DECODED_LOGICAL_ROWS_VALIDATED",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate exact internal-relation precedence; lowest row ordinal wins; success only after no error applies.",
+          "name": "validate_structural_relation",
+          "ordered_error_precedence": [
+            "ERR_LOGICAL_ROWS_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_LOGICAL_SHA256_MISMATCH"
+          ],
+          "output_type": "ValidationResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "Validates only the three internal StructuralRelationSchemaId domains. It performs no accepted-registry membership lookup and cannot accept json:/table: IDs.",
+          "signature": "(value: StructuralRelationValidationInput) -> ValidationResult",
+          "success": "I0A_VALID_A4_INTERNAL_RELATION"
+        },
+        {
+          "assurance": "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE",
+          "closed_result_or_exception_domain": [
+            "I0A_VALID_A6_SELECTED",
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_ROLE_CARDINALITY_INVALID",
+            "ERR_CANONICAL_TARGET_DUPLICATE",
+            "ERR_SIDECAR_RELATION_INVALID",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+            "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+            "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH"
+          ],
+          "established_assurances_by_result": {
+            "ERR_CANONICAL_JSON_INVALID": [],
+            "ERR_CANONICAL_TARGET_DUPLICATE": [],
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": [],
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": [],
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID": [],
+            "ERR_ORDINAL_SEQUENCE_INVALID": [],
+            "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH": [],
+            "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED": [],
+            "ERR_PATH_GRAMMAR_MISMATCH": [],
+            "ERR_PATH_LEXICAL_INVALID": [],
+            "ERR_PHYSICAL_EXPECTATION_INVALID": [],
+            "ERR_PHYSICAL_SHA256_MISMATCH": [],
+            "ERR_PHYSICAL_SIZE_MISMATCH": [],
+            "ERR_ROLE_CARDINALITY_INVALID": [],
+            "ERR_ROLE_DISPOSITION_INVALID": [],
+            "ERR_SELECTED_SCHEMA_INVALID": [],
+            "ERR_SIDECAR_RELATION_INVALID": [],
+            "I0A_VALID_A6_SELECTED": [
+              "A1_LEXICAL_PATH_SHAPE",
+              "A1_REGISTRY_BINDING_RESOLVED",
+              "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+              "A2_DESCRIPTOR_SET_COMPLETE",
+              "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+              "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE"
+            ],
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A": [],
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID": [],
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED": [],
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+          },
+          "establishes_assurance": "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "validate_selected_json_payload",
+          "ordered_error_precedence": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_ROLE_CARDINALITY_INVALID",
+            "ERR_CANONICAL_TARGET_DUPLICATE",
+            "ERR_SIDECAR_RELATION_INVALID",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+            "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+            "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH"
+          ],
+          "output_type": "ValidationResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "Only json:sha256_sidecar is selected-schema implemented. Revalidate A2 set and binding, reconcile sidecar and paired target independently at generic A3, then validate exact canonical sidecar fields/path/hash.",
+          "signature": "(value: SelectedJsonPayloadInput) -> ValidationResult",
+          "success": "I0A_VALID_A6_SELECTED"
+        },
+        {
+          "assurance": "member-dependent A3 structural-sidecar, A4 structural object, or A6 structural object",
+          "closed_result_or_exception_domain": [
+            "I0A_VALID_A3_A4_STRUCTURAL_OBJECT",
+            "I0A_VALID_A3_STRUCTURAL_SIDECAR",
+            "I0A_VALID_A6_STRUCTURAL",
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_LOGICAL_ROWS_INVALID",
+            "ERR_LOGICAL_SHA256_MISMATCH",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_PREPARED_UNIT_ID_MISMATCH",
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH"
+          ],
+          "established_assurances_by_result": {
+            "ERR_CANONICAL_JSON_INVALID": [],
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH": [],
+            "ERR_COVERAGE_STATE_INVALID": [],
+            "ERR_LOGICAL_ROWS_INVALID": [],
+            "ERR_LOGICAL_SHA256_MISMATCH": [],
+            "ERR_ORDINAL_SEQUENCE_INVALID": [],
+            "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED": [],
+            "ERR_PHYSICAL_EXPECTATION_INVALID": [],
+            "ERR_PHYSICAL_SHA256_MISMATCH": [],
+            "ERR_PHYSICAL_SIZE_MISMATCH": [],
+            "ERR_PREDECESSOR_RULE_INVALID": [],
+            "ERR_PREPARED_UNIT_ID_MISMATCH": [],
+            "ERR_SELECTED_SCHEMA_INVALID": [],
+            "I0A_VALID_A3_A4_STRUCTURAL_OBJECT": [
+              "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+              "A4_DECODED_LOGICAL_ROWS_VALIDATED"
+            ],
+            "I0A_VALID_A3_STRUCTURAL_SIDECAR": [
+              "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+              "A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED"
+            ],
+            "I0A_VALID_A6_STRUCTURAL": [
+              "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+              "A6_STRUCTURAL_SCHEMA_COMPLETE"
+            ],
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+          },
+          "establishes_assurance": "member-dependent exact map",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "validate_structural_json_member",
+          "ordered_error_precedence": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_LOGICAL_ROWS_INVALID",
+            "ERR_LOGICAL_SHA256_MISMATCH",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_PREPARED_UNIT_ID_MISMATCH",
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH"
+          ],
+          "output_type": "ValidationResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "Gate unit_kind first. Derive exact structural target paths from run_id, unit_context.unit_kind, prepared_unit_id, and member_name through finding4_registry-owned frozen grammars. Reconcile every member's expected length and complete-file SHA-256. For sidecars require paired target bytes plus exact paired expected length/SHA-256 and require sidecar target_path to equal the independently derived paired target path. Persisted JSON is parsed with duplicate rejection and lexicographic-key canonical byte equality. Sidecars never receive A4.",
+          "signature": "(value: StructuralJsonMemberInput) -> ValidationResult",
+          "success": "member-dependent exact result",
+          "success_by_member": {
+            "CLAIM_SCOPE.json": "I0A_VALID_A6_STRUCTURAL",
+            "CLAIM_SCOPE.sha256": "I0A_VALID_A3_STRUCTURAL_SIDECAR",
+            "CLAIM_SEMANTIC.json": "I0A_VALID_A6_STRUCTURAL",
+            "CLAIM_SEMANTIC.sha256": "I0A_VALID_A3_STRUCTURAL_SIDECAR",
+            "PREPARATION_PLAN.json": "I0A_VALID_A3_A4_STRUCTURAL_OBJECT",
+            "PREPARATION_PLAN.sha256": "I0A_VALID_A3_STRUCTURAL_SIDECAR",
+            "PREPARED_UNIT.json": "I0A_VALID_A3_A4_STRUCTURAL_OBJECT",
+            "PREPARED_UNIT.sha256": "I0A_VALID_A3_STRUCTURAL_SIDECAR"
+          },
+          "success_condition_by_member": {
+            "CLAIM_SCOPE.json": "exact canonical closed claim-scope object, predecessor rule, claim-object relation, and semantic digest validate after A3",
+            "CLAIM_SCOPE.sha256": "sidecar and independently supplied claim-scope target each pass exact physical proof; sidecar fields equal independently derived paired path and target digest",
+            "CLAIM_SEMANTIC.json": "exact canonical snapshot claim-semantic object, predecessor/coverage rules, exact seven-cell partition-entry relation, and semantic digest validate after A3; table payload rows are not validated",
+            "CLAIM_SEMANTIC.sha256": "sidecar and independently supplied claim-semantic target each pass exact physical proof; sidecar fields equal independently derived paired path and target digest",
+            "PREPARATION_PLAN.json": "exact canonical plan object and planned-object relation validate after A3",
+            "PREPARATION_PLAN.sha256": "sidecar and independently supplied plan target each pass exact physical proof; sidecar fields equal independently derived paired path and target digest",
+            "PREPARED_UNIT.json": "exact canonical prepared-unit object and descriptor relation validate after A3",
+            "PREPARED_UNIT.sha256": "sidecar and independently supplied prepared-unit target each pass exact physical proof; sidecar fields equal independently derived paired path and target digest"
+          }
+        },
+        {
+          "assurance": "A6_STRUCTURAL_SCHEMA_COMPLETE maximum retained; never A8",
+          "boundary_fixture": "complete_snapshot_publication_unit",
+          "closed_result_or_exception_domain": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+            "ERR_PREPARED_UNIT_ID_MISMATCH",
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_ROLE_CARDINALITY_INVALID",
+            "ERR_CANONICAL_TARGET_DUPLICATE",
+            "ERR_SIDECAR_RELATION_INVALID",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH",
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A"
+          ],
+          "established_assurances_by_result": {
+            "ERR_CANONICAL_JSON_INVALID": [],
+            "ERR_CANONICAL_TARGET_DUPLICATE": [],
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH": [],
+            "ERR_COVERAGE_STATE_INVALID": [],
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": [],
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": [],
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID": [],
+            "ERR_ORDINAL_SEQUENCE_INVALID": [],
+            "ERR_PATH_GRAMMAR_MISMATCH": [],
+            "ERR_PATH_LEXICAL_INVALID": [],
+            "ERR_PHYSICAL_EXPECTATION_INVALID": [],
+            "ERR_PHYSICAL_SHA256_MISMATCH": [],
+            "ERR_PHYSICAL_SIZE_MISMATCH": [],
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH": [],
+            "ERR_PREDECESSOR_RULE_INVALID": [],
+            "ERR_PREPARED_UNIT_ID_MISMATCH": [],
+            "ERR_ROLE_CARDINALITY_INVALID": [],
+            "ERR_ROLE_DISPOSITION_INVALID": [],
+            "ERR_SELECTED_SCHEMA_INVALID": [],
+            "ERR_SIDECAR_RELATION_INVALID": [],
+            "ERR_STRUCTURAL_MEMBER_SET_INVALID": [],
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A": [],
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID": [],
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED": [],
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+          },
+          "establishes_assurance": "A6_STRUCTURAL_SCHEMA_COMPLETE maximum retained; never A8",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "validate_prepared_unit_structure",
+          "ordered_error_precedence": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+            "ERR_PREPARED_UNIT_ID_MISMATCH",
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_ROLE_CARDINALITY_INVALID",
+            "ERR_CANONICAL_TARGET_DUPLICATE",
+            "ERR_SIDECAR_RELATION_INVALID",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH",
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A"
+          ],
+          "output_type": "ValidationResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "Validates exact eight-member structure and cross-member invariants, derives descriptor set from PREPARED_UNIT plus exact CLAIM_SEMANTIC bytes, then validates object payloads in ordinal order. A complete snapshot unit stops at first non-sidecar selected schema outside I0A. The complete canonical SNAPSHOT_PUBLICATION fixture clears all earlier structural, registry, descriptor-set, sidecar, and A3 checks and terminates at ordinal 0 with STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A for table:capture_events.",
+          "signature": "(value: PreparedUnitStructureInput) -> ValidationResult",
+          "success": "none"
+        },
+        {
+          "assurance": "A0_NONE",
+          "closed_result_or_exception_domain": [
+            "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE"
+          ],
+          "established_assurances_by_result": {
+            "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE": []
+          },
+          "establishes_assurance": "A0_NONE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Exactly one non-success predicate exists. Return that code iff its predicate is true; otherwise return the declared success/result. No multi-fault ambiguity exists.",
+          "name": "validate_filesystem_facts",
+          "ordered_error_precedence": [
+            "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE"
+          ],
+          "output_type": "ValidationResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "Always returns typed out-of-scope stop; caller booleans do not establish filesystem facts.",
+          "signature": "(request: FilesystemValidationRequest) -> ValidationResult",
+          "success": "none"
+        },
+        {
+          "assurance": "A0_NONE",
+          "closed_result_or_exception_domain": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE"
+          ],
+          "established_assurances_by_result": {
+            "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE": [],
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+          },
+          "establishes_assurance": "A0_NONE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Read only the nested unit_kind discriminant. Return STOP_UNIT_KIND_NOT_ACCEPTED_I0A first for any non-SNAPSHOT_PUBLICATION; otherwise return STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE without evaluating caller filesystem assertions or nested validation details.",
+          "name": "validate_full_prepared_object",
+          "ordered_error_precedence": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE"
+          ],
+          "output_type": "ValidationResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "A7 unreachable because independent filesystem facts are unauthorized.",
+          "signature": "(request: FullPreparedObjectValidationRequest) -> ValidationResult",
+          "success": "none"
+        },
+        {
+          "assurance": "A0_NONE",
+          "closed_result_or_exception_domain": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE"
+          ],
+          "established_assurances_by_result": {
+            "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE": [],
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+          },
+          "establishes_assurance": "A0_NONE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Read only the nested unit_kind discriminant. Return STOP_UNIT_KIND_NOT_ACCEPTED_I0A first for any non-SNAPSHOT_PUBLICATION; otherwise return STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE without evaluating caller filesystem assertions or nested validation details.",
+          "name": "validate_full_prepared_unit",
+          "ordered_error_precedence": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE"
+          ],
+          "output_type": "ValidationResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.ValidationResult; no stale or partial values.",
+          "rule": "A8 unreachable because independent filesystem facts and unimplemented selected schemas remain outside I0A.",
+          "signature": "(request: FullPreparedUnitValidationRequest) -> ValidationResult",
+          "success": "none"
+        }
+      ]
+    },
+    {
+      "governing_schema_ids_and_sections": [
+        "Finding 4 §§5.1,5.4-5.6"
+      ],
+      "module": "pm_research.local_curl_per_side.claim_hashes",
+      "module_responsibility": "total fixed A0 hash constructors only; validators own semantic invariants",
+      "permitted_imports": [
+        "hashlib",
+        "typing",
+        ".canonical"
+      ],
+      "prohibited_side_effects": [
+        "filesystem",
+        "network",
+        "subprocess",
+        "registry imports",
+        "prepared_evidence imports"
+      ],
+      "public_symbols": [
+        {
+          "assurance": "A0_NONE",
+          "closed_result_or_exception_domain": [
+            "I0A_DIGEST_CONSTRUCTED_A0",
+            "ERR_DIGEST_INPUT_INVALID"
+          ],
+          "established_assurances_by_result": {
+            "ERR_DIGEST_INPUT_INVALID": [],
+            "I0A_DIGEST_CONSTRUCTED_A0": []
+          },
+          "establishes_assurance": "A0_NONE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Exactly one non-success predicate exists. Return that code iff its predicate is true; otherwise return the declared success/result. No multi-fault ambiguity exists.",
+          "name": "hash_typed_relation",
+          "ordered_error_precedence": [
+            "ERR_DIGEST_INPUT_INVALID"
+          ],
+          "output_type": "DigestResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.DigestResult; no stale or partial values.",
+          "rule": "A0 LF-join constructor over already-constructed successful row bytes; no relation-order or uniqueness assurance.",
+          "signature": "(rows: Sequence[CanonicalBytesResult]) -> DigestResult",
+          "success": "I0A_DIGEST_CONSTRUCTED_A0"
+        },
+        {
+          "assurance": "A0_NONE",
+          "closed_result_or_exception_domain": [
+            "I0A_DIGEST_CONSTRUCTED_A0",
+            "ERR_CANONICAL_ROW_ARITY",
+            "ERR_CANONICAL_FIELD_ORDER_INVALID",
+            "ERR_CANONICAL_TAG_INVALID",
+            "ERR_CANONICAL_TYPE_MISMATCH",
+            "ERR_CANONICAL_NON_NFC",
+            "ERR_CANONICAL_UINT_RANGE",
+            "ERR_CANONICAL_SHA256_FORMAT",
+            "ERR_CANONICAL_BYTES_FORMAT",
+            "ERR_CANONICAL_FIELD_NAME_INVALID"
+          ],
+          "established_assurances_by_result": {
+            "ERR_CANONICAL_BYTES_FORMAT": [],
+            "ERR_CANONICAL_FIELD_NAME_INVALID": [],
+            "ERR_CANONICAL_FIELD_ORDER_INVALID": [],
+            "ERR_CANONICAL_NON_NFC": [],
+            "ERR_CANONICAL_ROW_ARITY": [],
+            "ERR_CANONICAL_SHA256_FORMAT": [],
+            "ERR_CANONICAL_TAG_INVALID": [],
+            "ERR_CANONICAL_TYPE_MISMATCH": [],
+            "ERR_CANONICAL_UINT_RANGE": [],
+            "I0A_DIGEST_CONSTRUCTED_A0": []
+          },
+          "establishes_assurance": "A0_NONE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "compute_claim_scope_sha256",
+          "ordered_error_precedence": [
+            "ERR_CANONICAL_ROW_ARITY",
+            "ERR_CANONICAL_FIELD_ORDER_INVALID",
+            "ERR_CANONICAL_TAG_INVALID",
+            "ERR_CANONICAL_TYPE_MISMATCH",
+            "ERR_CANONICAL_NON_NFC",
+            "ERR_CANONICAL_UINT_RANGE",
+            "ERR_CANONICAL_SHA256_FORMAT",
+            "ERR_CANONICAL_BYTES_FORMAT",
+            "ERR_CANONICAL_FIELD_NAME_INVALID"
+          ],
+          "output_type": "DigestResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.DigestResult; no stale or partial values.",
+          "rule": "Exact eight-field/name/tag A0 projection constructor.",
+          "signature": "(cells: Sequence[TypedCell]) -> DigestResult",
+          "success": "I0A_DIGEST_CONSTRUCTED_A0"
+        },
+        {
+          "assurance": "A0_NONE",
+          "closed_result_or_exception_domain": [
+            "I0A_DIGEST_CONSTRUCTED_A0",
+            "ERR_CANONICAL_ROW_ARITY",
+            "ERR_CANONICAL_FIELD_ORDER_INVALID",
+            "ERR_CANONICAL_TAG_INVALID",
+            "ERR_CANONICAL_TYPE_MISMATCH",
+            "ERR_CANONICAL_NON_NFC",
+            "ERR_CANONICAL_UINT_RANGE",
+            "ERR_CANONICAL_SHA256_FORMAT",
+            "ERR_CANONICAL_BYTES_FORMAT",
+            "ERR_CANONICAL_FIELD_NAME_INVALID"
+          ],
+          "established_assurances_by_result": {
+            "ERR_CANONICAL_BYTES_FORMAT": [],
+            "ERR_CANONICAL_FIELD_NAME_INVALID": [],
+            "ERR_CANONICAL_FIELD_ORDER_INVALID": [],
+            "ERR_CANONICAL_NON_NFC": [],
+            "ERR_CANONICAL_ROW_ARITY": [],
+            "ERR_CANONICAL_SHA256_FORMAT": [],
+            "ERR_CANONICAL_TAG_INVALID": [],
+            "ERR_CANONICAL_TYPE_MISMATCH": [],
+            "ERR_CANONICAL_UINT_RANGE": [],
+            "I0A_DIGEST_CONSTRUCTED_A0": []
+          },
+          "establishes_assurance": "A0_NONE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "compute_acquisition_race_scope_sha256",
+          "ordered_error_precedence": [
+            "ERR_CANONICAL_ROW_ARITY",
+            "ERR_CANONICAL_FIELD_ORDER_INVALID",
+            "ERR_CANONICAL_TAG_INVALID",
+            "ERR_CANONICAL_TYPE_MISMATCH",
+            "ERR_CANONICAL_NON_NFC",
+            "ERR_CANONICAL_UINT_RANGE",
+            "ERR_CANONICAL_SHA256_FORMAT",
+            "ERR_CANONICAL_BYTES_FORMAT",
+            "ERR_CANONICAL_FIELD_NAME_INVALID"
+          ],
+          "output_type": "DigestResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.DigestResult; no stale or partial values.",
+          "rule": "Exact six-field/name/tag A0 projection constructor; no FENCE_ACQUIRED reachability claim.",
+          "signature": "(cells: Sequence[TypedCell]) -> DigestResult",
+          "success": "I0A_DIGEST_CONSTRUCTED_A0"
+        },
+        {
+          "assurance": "A0_NONE",
+          "closed_result_or_exception_domain": [
+            "I0A_DIGEST_CONSTRUCTED_A0",
+            "ERR_DIGEST_INPUT_INVALID"
+          ],
+          "established_assurances_by_result": {
+            "ERR_DIGEST_INPUT_INVALID": [],
+            "I0A_DIGEST_CONSTRUCTED_A0": []
+          },
+          "establishes_assurance": "A0_NONE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Exactly one non-success predicate exists. Return that code iff its predicate is true; otherwise return the declared success/result. No multi-fault ambiguity exists.",
+          "name": "compute_ordered_relation_logical_sha256",
+          "ordered_error_precedence": [
+            "ERR_DIGEST_INPUT_INVALID"
+          ],
+          "output_type": "DigestResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.DigestResult; no stale or partial values.",
+          "rule": "A0 LF-join constructor; order/uniqueness/schema assurance remains with validator.",
+          "signature": "(ordered_rows: Sequence[CanonicalBytesResult]) -> DigestResult",
+          "success": "I0A_DIGEST_CONSTRUCTED_A0"
+        },
+        {
+          "assurance": "A0_NONE",
+          "closed_result_or_exception_domain": [
+            "I0A_DIGEST_CONSTRUCTED_A0",
+            "ERR_CANONICAL_ROW_ARITY",
+            "ERR_CANONICAL_FIELD_ORDER_INVALID",
+            "ERR_CANONICAL_TAG_INVALID",
+            "ERR_CANONICAL_TYPE_MISMATCH",
+            "ERR_CANONICAL_NON_NFC",
+            "ERR_CANONICAL_UINT_RANGE",
+            "ERR_CANONICAL_SHA256_FORMAT",
+            "ERR_CANONICAL_BYTES_FORMAT",
+            "ERR_CANONICAL_FIELD_NAME_INVALID"
+          ],
+          "established_assurances_by_result": {
+            "ERR_CANONICAL_BYTES_FORMAT": [],
+            "ERR_CANONICAL_FIELD_NAME_INVALID": [],
+            "ERR_CANONICAL_FIELD_ORDER_INVALID": [],
+            "ERR_CANONICAL_NON_NFC": [],
+            "ERR_CANONICAL_ROW_ARITY": [],
+            "ERR_CANONICAL_SHA256_FORMAT": [],
+            "ERR_CANONICAL_TAG_INVALID": [],
+            "ERR_CANONICAL_TYPE_MISMATCH": [],
+            "ERR_CANONICAL_UINT_RANGE": [],
+            "I0A_DIGEST_CONSTRUCTED_A0": []
+          },
+          "establishes_assurance": "A0_NONE",
+          "exceptions": "none",
+          "kind": "function",
+          "multi_fault_rule": "Evaluate preconditions and faults in ordered_error_precedence order; return the first satisfied code. For repeated row/cell/descriptor faults, lowest canonical ordinal wins. Success is evaluated only after no listed error/stop applies.",
+          "name": "compute_snapshot_claim_semantic_sha256",
+          "ordered_error_precedence": [
+            "ERR_CANONICAL_ROW_ARITY",
+            "ERR_CANONICAL_FIELD_ORDER_INVALID",
+            "ERR_CANONICAL_TAG_INVALID",
+            "ERR_CANONICAL_TYPE_MISMATCH",
+            "ERR_CANONICAL_NON_NFC",
+            "ERR_CANONICAL_UINT_RANGE",
+            "ERR_CANONICAL_SHA256_FORMAT",
+            "ERR_CANONICAL_BYTES_FORMAT",
+            "ERR_CANONICAL_FIELD_NAME_INVALID"
+          ],
+          "output_type": "DigestResult",
+          "partial_assurance_policy": "Every non-success result returns established_assurances=(); partial checks are discarded and never retained implicitly.",
+          "result_payload_rule": "Return payload fields exactly according to global_rules.result_payload_contracts.DigestResult; no stale or partial values.",
+          "rule": "Exact sixteen-field/name/tag A0 projection constructor.",
+          "signature": "(cells: Sequence[TypedCell]) -> DigestResult",
+          "success": "I0A_DIGEST_CONSTRUCTED_A0"
+        }
+      ]
+    },
+    {
+      "governing_schema_ids_and_sections": [
+        "this API contract"
+      ],
+      "module": "pm_research.local_curl_per_side",
+      "module_responsibility": "side-effect-free re-export only",
+      "permitted_imports": [
+        "relative imports from the five candidate source modules only"
+      ],
+      "prohibited_side_effects": [
+        "runtime registration",
+        "filesystem",
+        "network",
+        "subprocess"
+      ],
+      "public_symbols": [
+        {
+          "establishes_assurance": "none",
+          "kind": "tuple[str,...]",
+          "name": "__all__",
+          "rule": "exact export list; private helper and private types are absent",
+          "values": [
+            "AcceptedRegistryLogicalValidationInput",
+            "AssuranceLevel",
+            "BindingQuery",
+            "BindingResolutionResult",
+            "CanonicalBytesResult",
+            "DescriptorSetInput",
+            "DigestResult",
+            "FilesystemClaimKind",
+            "FilesystemValidationRequest",
+            "FrozenPathGrammarId",
+            "FullPreparedObjectValidationRequest",
+            "FullPreparedUnitValidationRequest",
+            "GoverningPackageBytes",
+            "I0AInputUnitKind",
+            "I0AResultCode",
+            "PhysicalPayloadResult",
+            "PreparedObjectDescriptor",
+            "PreparedObjectRole",
+            "PreparedUnitKind",
+            "PreparedUnitStructureInput",
+            "PublicationMode",
+            "RegistryDefinitionIndex",
+            "RegistryDefinitionIndexResult",
+            "SchemaBinding",
+            "SelectedJsonPayloadInput",
+            "StructuralJsonMemberInput",
+            "StructuralMemberName",
+            "StructuralRelationSchemaId",
+            "StructuralRelationValidationInput",
+            "TypedCell",
+            "TypedCellTag",
+            "TypedFieldSpec",
+            "UnitContext",
+            "ValidationResult",
+            "build_accepted_registry_schema_definition_index",
+            "canonical_typed_cell_bytes",
+            "canonical_typed_row_bytes",
+            "compute_acquisition_race_scope_sha256",
+            "compute_claim_scope_sha256",
+            "compute_ordered_relation_logical_sha256",
+            "compute_snapshot_claim_semantic_sha256",
+            "dispatch_i0a_unit_validation",
+            "hash_typed_relation",
+            "reconcile_physical_payload",
+            "resolve_selected_schema_binding",
+            "validate_filesystem_facts",
+            "validate_full_prepared_object",
+            "validate_full_prepared_unit",
+            "validate_governing_package_bytes",
+            "validate_normalized_relative_path",
+            "validate_payload_logical_representation",
+            "validate_prepared_descriptor_set",
+            "validate_prepared_object_descriptor",
+            "validate_prepared_unit_structure",
+            "validate_selected_json_payload",
+            "validate_structural_json_member",
+            "validate_structural_relation"
+          ]
+        }
+      ]
+    }
+  ],
+  "nested_additional_properties_policy": "FORBIDDEN_UNLESS_DECLARED",
+  "schema_id": "i0a:public_api_contract.rev09",
+  "schema_version": 9,
+  "scope_review_anchor": "88362521fe9ef247708e4d7b5f90753784b8b88e"
+}

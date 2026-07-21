@@ -1,0 +1,3325 @@
+{
+  "accepted_registry_schema_definition_domain": {
+    "canonical_complete_file_sha256": "c9e8fe1b2c64f64e9cefd76e820c9589708723485ff7e54f4f69e3fe4ed49689",
+    "canonical_reserialization_rule": "json.dumps(parsed, ensure_ascii=False, separators=(',',':'), sort_keys=True).encode('utf-8') must equal the exact pinned registry bytes",
+    "canonical_source_path": "project_context/implementation_handoffs/local_curl_rev23_i0/accepted_contract/SCHEMA_REGISTRY_REV23.json",
+    "completeness_rule": "membership is determined only from this complete hash-bound index; prepared-role rows, binding rows, implemented-schema rows, fixtures, and caller assertions may not be used to infer registry membership",
+    "definition_namespaces": [
+      "json_schemas",
+      "table_schemas"
+    ],
+    "input_requirement": "exact caller-supplied registry bytes; recompute complete-file SHA-256; reject any mismatch before parsing",
+    "internal_relation_exclusion": "i0a: structural relation IDs are not accepted-registry members and are validated only through StructuralRelationSchemaId/validate_structural_relation",
+    "known_valid_incompatible_counterexample": {
+      "known_definition_basis": "direct key prepared_claim_scope_v23 exists under accepted registry json_schemas",
+      "query_role": "PUBLICATION_MARKER",
+      "query_target": ".../audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.json",
+      "result": "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+      "schema_id": "json:prepared_claim_scope_v23"
+    },
+    "materialization_algorithm": [
+      "parse the exact hash-matched registry bytes as canonical JSON with duplicate object keys rejected",
+      "emit json:<key> for every and only direct key of top-level json_schemas",
+      "emit table:<key> for every and only direct key of top-level table_schemas",
+      "sort emitted schema IDs by unsigned UTF-8 bytes",
+      "require emitted IDs unique and compute schema_ids_logical_sha256 as SHA-256 of LF-joined UTF-8 IDs with no trailing LF; empty is SHA-256 of empty bytes"
+    ],
+    "materialization_function": "build_accepted_registry_schema_definition_index",
+    "parse_rule": "After exact accepted registry SHA-256 success, finding4_registry imports json and calls json.loads on strict UTF-8 with object_pairs_hook=_reject_duplicate_json_object_pairs, parse_float=_reject_json_non_integer_number, parse_constant=_reject_json_constant; duplicate keys or canonical reserialization inequality are rejected.",
+    "unresolved_rule": "content_schema_id absent from the complete index -> STOP_SCHEMA_REFERENCE_UNRESOLVED",
+    "valid_but_incompatible_rule": "content_schema_id present in the complete index but compatible binding count is zero or greater than one -> STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+  },
+  "additional_properties": false,
+  "assurance_separation_rule": {
+    "binding": "A1_REGISTRY_BINDING_RESOLVED proves only exact complete-registry membership plus one compatible frozen binding; it is not descriptor assurance",
+    "complete_descriptor_set": "A2_DESCRIPTOR_SET_COMPLETE requires the complete descriptor array and, for SNAPSHOT_PUBLICATION, exact canonical snapshot claim-semantic bytes. PARTITION_PAYLOAD cardinality is derived only as len(validated snapshot_claim.partition_entries)",
+    "physical_exact": "A3_EXACT_LENGTH_AND_SHA256_RECONCILED requires explicit expected byte length, explicit expected complete-file SHA-256, and supplied bytes; both expectations are verified uniformly",
+    "pinned_governing": "A3_PINNED_GOVERNING_SHA256_VALIDATED is a separate fixed-hash assurance for exact accepted governing-package bytes and does not imply generic expected-length reconciliation",
+    "selected_sidecar": "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE for json:sha256_sidecar requires A2_DESCRIPTOR_SET_COMPLETE, A1_REGISTRY_BINDING_RESOLVED, and independent A3 exact-length/hash reconciliation for both selected sidecar bytes and exact paired-target bytes",
+    "single_descriptor": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS validates one complete descriptor only; it never establishes unit cardinality, descriptor-set completeness, canonical-target uniqueness, or a complete sidecar graph",
+    "structural_sidecar": "A fixed structural sidecar establishes only A3_EXACT_LENGTH_AND_SHA256_RECONCILED plus A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED after independently derived target-path and paired-target exact-byte proof; it does not establish A4, either A6, A2, A7, or A8",
+    "structural_sidecars": "All four structural sidecars can establish only A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED after dual exact A3 and derived-target-path validation; they never establish A4 or A6."
+  },
+  "binding_resolution_rule": {
+    "compatible_binding_required_count": 1,
+    "exact_compatible_but_unimplemented_result": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+    "fixed_bin_payload_schema_forbidden": "json:prepared_evidence_object_v23",
+    "frozen_production_table": "frozen_production_bindings",
+    "full_registry_definition_membership_required": true,
+    "implemented_selected_schema_ids": [
+      "json:sha256_sidecar"
+    ],
+    "multiple_compatible_binding_result": "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+    "private_candidate_matching_boundary": "_resolve_compatible_binding_set returns only private match/cardinality outcomes and establishes no accepted-registry/frozen-production assurance",
+    "public_success_binding": "pinned_binding_resolution_success",
+    "schema_identity_precondition": "query.content_schema_id must be in exact accepted registry index and exact frozen-production binding row; role-row subset is never an alternative registry authority",
+    "zero_compatible_binding_result": "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+    "zero_definition_result": "STOP_SCHEMA_REFERENCE_UNRESOLVED"
+  },
+  "canonical_role_count": 30,
+  "closed_top_level_fields": [
+    "schema_id",
+    "schema_version",
+    "scope_review_anchor",
+    "additional_properties",
+    "nested_additional_properties_policy",
+    "closed_top_level_fields",
+    "canonical_role_count",
+    "role_order",
+    "narrowed_i0a_input_unit_kinds",
+    "assurance_separation_rule",
+    "accepted_registry_schema_definition_domain",
+    "binding_resolution_rule",
+    "disposition_axis_domains",
+    "implemented_selected_schema_ids",
+    "implemented_structural_schema_ids",
+    "unreachable_assurance_levels",
+    "rows",
+    "path_placeholder_domains",
+    "path_grammar_ownership",
+    "frozen_target_grammars",
+    "frozen_production_bindings",
+    "partition_payload_cardinality_authority",
+    "prepared_unit_path_grammars",
+    "internal_structural_relation_schema_domain",
+    "pinned_binding_resolution_success",
+    "schema_identity_invariants"
+  ],
+  "disposition_axis_domains": {
+    "descriptor_set_status": [
+      "A2_SET_REACHABLE",
+      "UNREACHABLE_A0"
+    ],
+    "interpretation": "axes are independent; no single-descriptor result implies complete-set assurance, and no physical result implies descriptor or binding assurance",
+    "selected_schema_status": [
+      "FULLY_IMPLEMENTED_A6",
+      "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A"
+    ],
+    "single_descriptor_status": [
+      "A2_SINGLE_REACHABLE",
+      "UNREACHABLE_A0"
+    ]
+  },
+  "frozen_production_bindings": [
+    {
+      "binding_id": "BINDING_AUTHORIZATION_USE_ROW_BATCH_AUTHORIZATION_USE_EVENT_COMMITTED_ATOMIC_BUNDLE_MEMBER_66044DE9D271",
+      "content_schema_id": "table:authorization_use_events",
+      "logical_sha256_nullability": "NON_NULL_WHEN_PRESENT",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "AUTHORIZATION_USE_ROW_BATCH",
+      "sidecar_rule": "EXACTLY_ONE_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_IFF_PRESENT",
+      "target_grammar_id": "TARGET_AUTHORIZATION_USE_ROW_BATCH_00",
+      "unit_kind": "AUTHORIZATION_USE_EVENT_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_AUTHORIZATION_USE_ROW_BATCH_CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED_ATOMIC_BUNDLE_MEMBER_7C944EBB1C6F",
+      "content_schema_id": "table:authorization_use_events",
+      "logical_sha256_nullability": "NON_NULL_WHEN_PRESENT",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "AUTHORIZATION_USE_ROW_BATCH",
+      "sidecar_rule": "EXACTLY_ONE_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_IFF_PRESENT",
+      "target_grammar_id": "TARGET_AUTHORIZATION_USE_ROW_BATCH_00",
+      "unit_kind": "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_AUTHORIZATION_USE_ROW_BATCH_CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED_ATOMIC_BUNDLE_MEMBER_B423FA9E771D",
+      "content_schema_id": "table:authorization_use_events",
+      "logical_sha256_nullability": "NON_NULL_WHEN_PRESENT",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "AUTHORIZATION_USE_ROW_BATCH",
+      "sidecar_rule": "EXACTLY_ONE_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_IFF_PRESENT",
+      "target_grammar_id": "TARGET_AUTHORIZATION_USE_ROW_BATCH_00",
+      "unit_kind": "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_AUTHORIZATION_USE_ROW_BATCH_REQUEST_RESERVED_COMMITTED_ATOMIC_BUNDLE_MEMBER_3F66CD2FF8CD",
+      "content_schema_id": "table:authorization_use_events",
+      "logical_sha256_nullability": "NON_NULL_WHEN_PRESENT",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "AUTHORIZATION_USE_ROW_BATCH",
+      "sidecar_rule": "EXACTLY_ONE_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_IFF_PRESENT",
+      "target_grammar_id": "TARGET_AUTHORIZATION_USE_ROW_BATCH_00",
+      "unit_kind": "REQUEST_RESERVED_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_AUTHORIZATION_USE_EVENT_COMMITTED_ATOMIC_BUNDLE_MEMBER_9993F6A31407",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "AUTHORIZATION_USE_ROW_BATCH_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_AUTHORIZATION_USE_ROW_BATCH_ORDINAL",
+      "target_grammar_id": "TARGET_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_00",
+      "unit_kind": "AUTHORIZATION_USE_EVENT_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED_ATOMIC_BUNDLE_MEMBER_9F92E8409D45",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "AUTHORIZATION_USE_ROW_BATCH_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_AUTHORIZATION_USE_ROW_BATCH_ORDINAL",
+      "target_grammar_id": "TARGET_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_00",
+      "unit_kind": "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED_ATOMIC_BUNDLE_MEMBER_A62FF1C4783E",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "AUTHORIZATION_USE_ROW_BATCH_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_AUTHORIZATION_USE_ROW_BATCH_ORDINAL",
+      "target_grammar_id": "TARGET_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_00",
+      "unit_kind": "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_REQUEST_RESERVED_COMMITTED_ATOMIC_BUNDLE_MEMBER_A749EFA8B3A1",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "AUTHORIZATION_USE_ROW_BATCH_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_AUTHORIZATION_USE_ROW_BATCH_ORDINAL",
+      "target_grammar_id": "TARGET_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_00",
+      "unit_kind": "REQUEST_RESERVED_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_BOUND_PAYLOAD_INTENT_FENCE_ACQUIRED_ATOMIC_BUNDLE_MEMBER_5120A88260E3",
+      "content_schema_id": "json:capture_payload_intent_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "BOUND_PAYLOAD_INTENT",
+      "sidecar_rule": "EXACTLY_ONE_BOUND_PAYLOAD_INTENT_SIDECAR",
+      "target_grammar_id": "TARGET_BOUND_PAYLOAD_INTENT_00",
+      "unit_kind": "FENCE_ACQUIRED"
+    },
+    {
+      "binding_id": "BINDING_BOUND_PAYLOAD_INTENT_SIDECAR_FENCE_ACQUIRED_ATOMIC_BUNDLE_MEMBER_B7B23A20BDA8",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "BOUND_PAYLOAD_INTENT_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_BOUND_PAYLOAD_INTENT_ORDINAL",
+      "target_grammar_id": "TARGET_BOUND_PAYLOAD_INTENT_SIDECAR_00",
+      "unit_kind": "FENCE_ACQUIRED"
+    },
+    {
+      "binding_id": "BINDING_BOUND_SNAPSHOT_CLAIM_SEMANTIC_FENCE_ACQUIRED_ATOMIC_BUNDLE_MEMBER_6CCC301FC56D",
+      "content_schema_id": "json:snapshot_publication_claim_semantic_v23",
+      "logical_sha256_nullability": "NON_NULL_WHEN_PRESENT",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "BOUND_SNAPSHOT_CLAIM_SEMANTIC",
+      "sidecar_rule": "EXACTLY_ONE_BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR_IFF_PRESENT",
+      "target_grammar_id": "TARGET_BOUND_SNAPSHOT_CLAIM_SEMANTIC_00",
+      "unit_kind": "FENCE_ACQUIRED"
+    },
+    {
+      "binding_id": "BINDING_BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR_FENCE_ACQUIRED_ATOMIC_BUNDLE_MEMBER_BE05D238F7A6",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_BOUND_SNAPSHOT_CLAIM_SEMANTIC_ORDINAL",
+      "target_grammar_id": "TARGET_BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR_00",
+      "unit_kind": "FENCE_ACQUIRED"
+    },
+    {
+      "binding_id": "BINDING_CAPTURE_ROW_BATCH_CAPTURE_STARTED_COMMITTED_ATOMIC_BUNDLE_MEMBER_33CD925701BB",
+      "content_schema_id": "table:capture_events",
+      "logical_sha256_nullability": "NON_NULL_WHEN_PRESENT",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "CAPTURE_ROW_BATCH",
+      "sidecar_rule": "EXACTLY_ONE_CAPTURE_ROW_BATCH_SIDECAR_IFF_PRESENT",
+      "target_grammar_id": "TARGET_CAPTURE_ROW_BATCH_00",
+      "unit_kind": "CAPTURE_STARTED_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_CAPTURE_ROW_BATCH_CAPTURE_TERMINAL_COMMITTED_ATOMIC_BUNDLE_MEMBER_75771354BD63",
+      "content_schema_id": "table:capture_events",
+      "logical_sha256_nullability": "NON_NULL_WHEN_PRESENT",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "CAPTURE_ROW_BATCH",
+      "sidecar_rule": "EXACTLY_ONE_CAPTURE_ROW_BATCH_SIDECAR_IFF_PRESENT",
+      "target_grammar_id": "TARGET_CAPTURE_ROW_BATCH_00",
+      "unit_kind": "CAPTURE_TERMINAL_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_CAPTURE_ROW_BATCH_SIDECAR_CAPTURE_STARTED_COMMITTED_ATOMIC_BUNDLE_MEMBER_1220611A77D5",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "CAPTURE_ROW_BATCH_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_CAPTURE_ROW_BATCH_ORDINAL",
+      "target_grammar_id": "TARGET_CAPTURE_ROW_BATCH_SIDECAR_00",
+      "unit_kind": "CAPTURE_STARTED_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_CAPTURE_ROW_BATCH_SIDECAR_CAPTURE_TERMINAL_COMMITTED_ATOMIC_BUNDLE_MEMBER_4926D847C130",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "CAPTURE_ROW_BATCH_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_CAPTURE_ROW_BATCH_ORDINAL",
+      "target_grammar_id": "TARGET_CAPTURE_ROW_BATCH_SIDECAR_00",
+      "unit_kind": "CAPTURE_TERMINAL_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_CURRENT_GENERATION_INDEX_SNAPSHOT_PUBLICATION_ATOMIC_BUNDLE_MEMBER_B63F690AC092",
+      "content_schema_id": "table:snapshot_partition",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "CURRENT_GENERATION_INDEX",
+      "sidecar_rule": "NO_SIDECAR_DESCRIPTOR",
+      "target_grammar_id": "TARGET_CURRENT_GENERATION_INDEX_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_CURRENT_GENERATION_MANIFEST_SNAPSHOT_PUBLICATION_ATOMIC_BUNDLE_MEMBER_B6A16DC646EF",
+      "content_schema_id": "json:audit_snapshot_manifest",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "CURRENT_GENERATION_MANIFEST",
+      "sidecar_rule": "EXACTLY_ONE_CURRENT_GENERATION_MANIFEST_SIDECAR",
+      "target_grammar_id": "TARGET_CURRENT_GENERATION_MANIFEST_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_CURRENT_GENERATION_MANIFEST_SIDECAR_SNAPSHOT_PUBLICATION_ATOMIC_BUNDLE_MEMBER_54AACF951B03",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "CURRENT_GENERATION_MANIFEST_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_CURRENT_GENERATION_MANIFEST_ORDINAL",
+      "target_grammar_id": "TARGET_CURRENT_GENERATION_MANIFEST_SIDECAR_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_CURRENT_GENERATION_MARKER_SNAPSHOT_PUBLICATION_ATOMIC_BUNDLE_MEMBER_2CA192270524",
+      "content_schema_id": "json:snapshot_current_view_commit_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "CURRENT_GENERATION_MARKER",
+      "sidecar_rule": "EXACTLY_ONE_CURRENT_GENERATION_MARKER_SIDECAR",
+      "target_grammar_id": "TARGET_CURRENT_GENERATION_MARKER_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_CURRENT_GENERATION_MARKER_SIDECAR_SNAPSHOT_PUBLICATION_ATOMIC_BUNDLE_MEMBER_C5525C913847",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "CURRENT_GENERATION_MARKER_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_CURRENT_GENERATION_MARKER_ORDINAL",
+      "target_grammar_id": "TARGET_CURRENT_GENERATION_MARKER_SIDECAR_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_AUTHORIZATION_USE_EVENT_COMMITTED_ATOMIC_BUNDLE_MEMBER_6B5B853E2CEA",
+      "content_schema_id": "json:fence_event_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_EVENT_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_EVENT_00",
+      "unit_kind": "AUTHORIZATION_USE_EVENT_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED_ATOMIC_BUNDLE_MEMBER_9496756BE658",
+      "content_schema_id": "json:fence_event_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_EVENT_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_EVENT_00",
+      "unit_kind": "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_CAPTURE_SNAPSHOT_COMMITTED_ATOMIC_BUNDLE_MEMBER_5BF92C13216F",
+      "content_schema_id": "json:fence_event_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_EVENT_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_EVENT_00",
+      "unit_kind": "CAPTURE_SNAPSHOT_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_CAPTURE_STARTED_COMMITTED_ATOMIC_BUNDLE_MEMBER_1D314434C28B",
+      "content_schema_id": "json:fence_event_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_EVENT_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_EVENT_00",
+      "unit_kind": "CAPTURE_STARTED_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_CAPTURE_TERMINAL_COMMITTED_ATOMIC_BUNDLE_MEMBER_FD774B6ACA0E",
+      "content_schema_id": "json:fence_event_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_EVENT_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_EVENT_00",
+      "unit_kind": "CAPTURE_TERMINAL_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED_ATOMIC_BUNDLE_MEMBER_440EB71EB8B7",
+      "content_schema_id": "json:fence_event_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_EVENT_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_EVENT_00",
+      "unit_kind": "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_FENCE_ACQUIRED_ATOMIC_BUNDLE_MEMBER_496BA9556D21",
+      "content_schema_id": "json:fence_event_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_EVENT_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_EVENT_00",
+      "unit_kind": "FENCE_ACQUIRED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_FENCE_RELEASED_ATOMIC_BUNDLE_MEMBER_A89A4D840A44",
+      "content_schema_id": "json:fence_event_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_EVENT_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_EVENT_00",
+      "unit_kind": "FENCE_RELEASED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_REQUEST_RESERVED_COMMITTED_ATOMIC_BUNDLE_MEMBER_69DC34C15B7D",
+      "content_schema_id": "json:fence_event_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_EVENT_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_EVENT_00",
+      "unit_kind": "REQUEST_RESERVED_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_SIDECAR_AUTHORIZATION_USE_EVENT_COMMITTED_ATOMIC_BUNDLE_MEMBER_55428E95FCBF",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_EVENT_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_EVENT_SIDECAR_00",
+      "unit_kind": "AUTHORIZATION_USE_EVENT_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_SIDECAR_CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED_ATOMIC_BUNDLE_MEMBER_9A5D4F63CDFD",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_EVENT_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_EVENT_SIDECAR_00",
+      "unit_kind": "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_SIDECAR_CAPTURE_SNAPSHOT_COMMITTED_ATOMIC_BUNDLE_MEMBER_BEC064C4022C",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_EVENT_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_EVENT_SIDECAR_00",
+      "unit_kind": "CAPTURE_SNAPSHOT_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_SIDECAR_CAPTURE_STARTED_COMMITTED_ATOMIC_BUNDLE_MEMBER_ACC81A33B18C",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_EVENT_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_EVENT_SIDECAR_00",
+      "unit_kind": "CAPTURE_STARTED_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_SIDECAR_CAPTURE_TERMINAL_COMMITTED_ATOMIC_BUNDLE_MEMBER_2049DF7B85F7",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_EVENT_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_EVENT_SIDECAR_00",
+      "unit_kind": "CAPTURE_TERMINAL_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_SIDECAR_CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED_ATOMIC_BUNDLE_MEMBER_6716E8BC0A42",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_EVENT_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_EVENT_SIDECAR_00",
+      "unit_kind": "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_SIDECAR_FENCE_ACQUIRED_ATOMIC_BUNDLE_MEMBER_46651336CCA6",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_EVENT_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_EVENT_SIDECAR_00",
+      "unit_kind": "FENCE_ACQUIRED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_SIDECAR_FENCE_RELEASED_ATOMIC_BUNDLE_MEMBER_BB1DEE2ED098",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_EVENT_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_EVENT_SIDECAR_00",
+      "unit_kind": "FENCE_RELEASED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_EVENT_SIDECAR_REQUEST_RESERVED_COMMITTED_ATOMIC_BUNDLE_MEMBER_914E48CD1888",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_EVENT_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_EVENT_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_EVENT_SIDECAR_00",
+      "unit_kind": "REQUEST_RESERVED_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_AUTHORIZATION_USE_EVENT_COMMITTED_ATOMIC_BUNDLE_MEMBER_85939247A8EF",
+      "content_schema_id": "json:fence_unit_manifest_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_UNIT_MANIFEST_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_00",
+      "unit_kind": "AUTHORIZATION_USE_EVENT_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED_ATOMIC_BUNDLE_MEMBER_60C99612F823",
+      "content_schema_id": "json:fence_unit_manifest_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_UNIT_MANIFEST_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_00",
+      "unit_kind": "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_CAPTURE_SNAPSHOT_COMMITTED_ATOMIC_BUNDLE_MEMBER_4E0BD0433BC7",
+      "content_schema_id": "json:fence_unit_manifest_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_UNIT_MANIFEST_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_00",
+      "unit_kind": "CAPTURE_SNAPSHOT_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_CAPTURE_STARTED_COMMITTED_ATOMIC_BUNDLE_MEMBER_C74127053B80",
+      "content_schema_id": "json:fence_unit_manifest_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_UNIT_MANIFEST_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_00",
+      "unit_kind": "CAPTURE_STARTED_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_CAPTURE_TERMINAL_COMMITTED_ATOMIC_BUNDLE_MEMBER_26BB66B6A210",
+      "content_schema_id": "json:fence_unit_manifest_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_UNIT_MANIFEST_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_00",
+      "unit_kind": "CAPTURE_TERMINAL_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED_ATOMIC_BUNDLE_MEMBER_88F47006983B",
+      "content_schema_id": "json:fence_unit_manifest_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_UNIT_MANIFEST_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_00",
+      "unit_kind": "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_FENCE_ACQUIRED_ATOMIC_BUNDLE_MEMBER_FA313973876B",
+      "content_schema_id": "json:fence_unit_manifest_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_UNIT_MANIFEST_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_00",
+      "unit_kind": "FENCE_ACQUIRED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_FENCE_RELEASED_ATOMIC_BUNDLE_MEMBER_C195FE83C2AA",
+      "content_schema_id": "json:fence_unit_manifest_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_UNIT_MANIFEST_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_00",
+      "unit_kind": "FENCE_RELEASED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_REQUEST_RESERVED_COMMITTED_ATOMIC_BUNDLE_MEMBER_9E282AE48370",
+      "content_schema_id": "json:fence_unit_manifest_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST",
+      "sidecar_rule": "EXACTLY_ONE_FENCE_UNIT_MANIFEST_SIDECAR",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_00",
+      "unit_kind": "REQUEST_RESERVED_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_SIDECAR_AUTHORIZATION_USE_EVENT_COMMITTED_ATOMIC_BUNDLE_MEMBER_0E83A3C584E1",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_UNIT_MANIFEST_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_SIDECAR_00",
+      "unit_kind": "AUTHORIZATION_USE_EVENT_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_SIDECAR_CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED_ATOMIC_BUNDLE_MEMBER_86736C866FFD",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_UNIT_MANIFEST_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_SIDECAR_00",
+      "unit_kind": "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_SIDECAR_CAPTURE_SNAPSHOT_COMMITTED_ATOMIC_BUNDLE_MEMBER_E2D36F155F2F",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_UNIT_MANIFEST_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_SIDECAR_00",
+      "unit_kind": "CAPTURE_SNAPSHOT_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_SIDECAR_CAPTURE_STARTED_COMMITTED_ATOMIC_BUNDLE_MEMBER_B092F739E193",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_UNIT_MANIFEST_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_SIDECAR_00",
+      "unit_kind": "CAPTURE_STARTED_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_SIDECAR_CAPTURE_TERMINAL_COMMITTED_ATOMIC_BUNDLE_MEMBER_D13DEA7BAA84",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_UNIT_MANIFEST_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_SIDECAR_00",
+      "unit_kind": "CAPTURE_TERMINAL_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_SIDECAR_CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED_ATOMIC_BUNDLE_MEMBER_182CC9E07754",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_UNIT_MANIFEST_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_SIDECAR_00",
+      "unit_kind": "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_SIDECAR_FENCE_ACQUIRED_ATOMIC_BUNDLE_MEMBER_B03A1EA57EAA",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_UNIT_MANIFEST_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_SIDECAR_00",
+      "unit_kind": "FENCE_ACQUIRED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_SIDECAR_FENCE_RELEASED_ATOMIC_BUNDLE_MEMBER_E843D66880FE",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_UNIT_MANIFEST_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_SIDECAR_00",
+      "unit_kind": "FENCE_RELEASED"
+    },
+    {
+      "binding_id": "BINDING_FENCE_UNIT_MANIFEST_SIDECAR_REQUEST_RESERVED_COMMITTED_ATOMIC_BUNDLE_MEMBER_1B06771086F7",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "FENCE_UNIT_MANIFEST_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_FENCE_UNIT_MANIFEST_ORDINAL",
+      "target_grammar_id": "TARGET_FENCE_UNIT_MANIFEST_SIDECAR_00",
+      "unit_kind": "REQUEST_RESERVED_COMMITTED"
+    },
+    {
+      "binding_id": "BINDING_HISTORY_INDEX_SNAPSHOT_PUBLICATION_ATOMIC_BUNDLE_MEMBER_8F8230BE3214",
+      "content_schema_id": "table:snapshot_partition",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "HISTORY_INDEX",
+      "sidecar_rule": "NO_SIDECAR_DESCRIPTOR",
+      "target_grammar_id": "TARGET_HISTORY_INDEX_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_HISTORY_MANIFEST_SNAPSHOT_PUBLICATION_ATOMIC_BUNDLE_MEMBER_AD3799C09C37",
+      "content_schema_id": "json:audit_snapshot_manifest",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "HISTORY_MANIFEST",
+      "sidecar_rule": "EXACTLY_ONE_HISTORY_MANIFEST_SIDECAR_IN_SAME_UNIT",
+      "target_grammar_id": "TARGET_HISTORY_MANIFEST_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_HISTORY_MANIFEST_SIDECAR_SNAPSHOT_PUBLICATION_ATOMIC_BUNDLE_MEMBER_BE12A8D2204A",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "HISTORY_MANIFEST_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_HISTORY_MANIFEST_ORDINAL_IN_SAME_UNIT",
+      "target_grammar_id": "TARGET_HISTORY_MANIFEST_SIDECAR_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_LEGACY_CURRENT_INDEX_SNAPSHOT_PUBLICATION_DERIVED_VIEW_TARGET_2C133E2B157A",
+      "content_schema_id": "table:snapshot_partition",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "DERIVED_VIEW_TARGET",
+      "role": "LEGACY_CURRENT_INDEX",
+      "sidecar_rule": "NO_SIDECAR_DESCRIPTOR",
+      "target_grammar_id": "TARGET_LEGACY_CURRENT_INDEX_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_LEGACY_CURRENT_MANIFEST_SNAPSHOT_PUBLICATION_DERIVED_VIEW_TARGET_B22960D32DD2",
+      "content_schema_id": "json:audit_snapshot_manifest",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "DERIVED_VIEW_TARGET",
+      "role": "LEGACY_CURRENT_MANIFEST",
+      "sidecar_rule": "EXACTLY_ONE_LEGACY_CURRENT_MANIFEST_SIDECAR",
+      "target_grammar_id": "TARGET_LEGACY_CURRENT_MANIFEST_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_LEGACY_CURRENT_MANIFEST_SIDECAR_SNAPSHOT_PUBLICATION_DERIVED_VIEW_TARGET_364C9029C9F1",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "DERIVED_VIEW_TARGET",
+      "role": "LEGACY_CURRENT_MANIFEST_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_LEGACY_CURRENT_MANIFEST_ORDINAL",
+      "target_grammar_id": "TARGET_LEGACY_CURRENT_MANIFEST_SIDECAR_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_NORMAL_FINAL_INVENTORY_NORMAL_FINALIZATION_SINGLE_AUTHORITATIVE_FILE_A6B996733CBD",
+      "content_schema_id": "json:final_artifact_inventory",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "role": "NORMAL_FINAL_INVENTORY",
+      "sidecar_rule": "EXACTLY_ONE_NORMAL_FINAL_INVENTORY_SIDECAR",
+      "target_grammar_id": "TARGET_NORMAL_FINAL_INVENTORY_00",
+      "unit_kind": "NORMAL_FINALIZATION"
+    },
+    {
+      "binding_id": "BINDING_NORMAL_FINAL_INVENTORY_NORMAL_FINALIZATION_SINGLE_AUTHORITATIVE_FILE_37268682CB33",
+      "content_schema_id": "json:stop_artifact_inventory",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "role": "NORMAL_FINAL_INVENTORY",
+      "sidecar_rule": "EXACTLY_ONE_NORMAL_FINAL_INVENTORY_SIDECAR",
+      "target_grammar_id": "TARGET_NORMAL_FINAL_INVENTORY_01",
+      "unit_kind": "NORMAL_FINALIZATION"
+    },
+    {
+      "binding_id": "BINDING_NORMAL_FINAL_INVENTORY_SIDECAR_NORMAL_FINALIZATION_SINGLE_AUTHORITATIVE_FILE_8F47EF3312A9",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "role": "NORMAL_FINAL_INVENTORY_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_NORMAL_FINAL_INVENTORY_ORDINAL",
+      "target_grammar_id": "TARGET_NORMAL_FINAL_INVENTORY_SIDECAR_00",
+      "unit_kind": "NORMAL_FINALIZATION"
+    },
+    {
+      "binding_id": "BINDING_NORMAL_FINAL_INVENTORY_SIDECAR_NORMAL_FINALIZATION_SINGLE_AUTHORITATIVE_FILE_595FACE66AA9",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "role": "NORMAL_FINAL_INVENTORY_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_NORMAL_FINAL_INVENTORY_ORDINAL",
+      "target_grammar_id": "TARGET_NORMAL_FINAL_INVENTORY_SIDECAR_01",
+      "unit_kind": "NORMAL_FINALIZATION"
+    },
+    {
+      "binding_id": "BINDING_NORMAL_FINAL_MARKER_NORMAL_FINALIZATION_SINGLE_AUTHORITATIVE_FILE_DA8169FC7783",
+      "content_schema_id": "json:finalization_marker_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "role": "NORMAL_FINAL_MARKER",
+      "sidecar_rule": "EXACTLY_ONE_NORMAL_FINAL_MARKER_SIDECAR",
+      "target_grammar_id": "TARGET_NORMAL_FINAL_MARKER_00",
+      "unit_kind": "NORMAL_FINALIZATION"
+    },
+    {
+      "binding_id": "BINDING_NORMAL_FINAL_MARKER_NORMAL_FINALIZATION_SINGLE_AUTHORITATIVE_FILE_AD75320BD2A9",
+      "content_schema_id": "json:finalization_marker_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "role": "NORMAL_FINAL_MARKER",
+      "sidecar_rule": "EXACTLY_ONE_NORMAL_FINAL_MARKER_SIDECAR",
+      "target_grammar_id": "TARGET_NORMAL_FINAL_MARKER_01",
+      "unit_kind": "NORMAL_FINALIZATION"
+    },
+    {
+      "binding_id": "BINDING_NORMAL_FINAL_MARKER_SIDECAR_NORMAL_FINALIZATION_SINGLE_AUTHORITATIVE_FILE_ACDCE34023A3",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "role": "NORMAL_FINAL_MARKER_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_NORMAL_FINAL_MARKER_ORDINAL",
+      "target_grammar_id": "TARGET_NORMAL_FINAL_MARKER_SIDECAR_00",
+      "unit_kind": "NORMAL_FINALIZATION"
+    },
+    {
+      "binding_id": "BINDING_NORMAL_FINAL_MARKER_SIDECAR_NORMAL_FINALIZATION_SINGLE_AUTHORITATIVE_FILE_E0311F925D02",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "role": "NORMAL_FINAL_MARKER_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_NORMAL_FINAL_MARKER_ORDINAL",
+      "target_grammar_id": "TARGET_NORMAL_FINAL_MARKER_SIDECAR_01",
+      "unit_kind": "NORMAL_FINALIZATION"
+    },
+    {
+      "binding_id": "BINDING_PARTITION_PAYLOAD_SNAPSHOT_PUBLICATION_REUSE_IMMUTABLE_SOURCE_A73AD56484B6",
+      "content_schema_id": "table:canonical_compatibility_analysis",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "REUSE_IMMUTABLE_SOURCE",
+      "role": "PARTITION_PAYLOAD",
+      "sidecar_rule": "NO_SIDECAR_DESCRIPTOR",
+      "target_grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_PARTITION_PAYLOAD_SNAPSHOT_PUBLICATION_REUSE_IMMUTABLE_SOURCE_30CD326A81AD",
+      "content_schema_id": "table:capture_events",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "REUSE_IMMUTABLE_SOURCE",
+      "role": "PARTITION_PAYLOAD",
+      "sidecar_rule": "NO_SIDECAR_DESCRIPTOR",
+      "target_grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_PARTITION_PAYLOAD_SNAPSHOT_PUBLICATION_REUSE_IMMUTABLE_SOURCE_62B9FB259ABE",
+      "content_schema_id": "table:strict_audit_analysis",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "REUSE_IMMUTABLE_SOURCE",
+      "role": "PARTITION_PAYLOAD",
+      "sidecar_rule": "NO_SIDECAR_DESCRIPTOR",
+      "target_grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_PARTITION_PAYLOAD_SNAPSHOT_PUBLICATION_SINGLE_AUTHORITATIVE_FILE_FA5B89416A4F",
+      "content_schema_id": "table:canonical_compatibility_analysis",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "role": "PARTITION_PAYLOAD",
+      "sidecar_rule": "NO_SIDECAR_DESCRIPTOR",
+      "target_grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_PARTITION_PAYLOAD_SNAPSHOT_PUBLICATION_SINGLE_AUTHORITATIVE_FILE_544EF4C313B7",
+      "content_schema_id": "table:capture_events",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "role": "PARTITION_PAYLOAD",
+      "sidecar_rule": "NO_SIDECAR_DESCRIPTOR",
+      "target_grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_PARTITION_PAYLOAD_SNAPSHOT_PUBLICATION_SINGLE_AUTHORITATIVE_FILE_4A052BF4E0AB",
+      "content_schema_id": "table:strict_audit_analysis",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "SINGLE_AUTHORITATIVE_FILE",
+      "role": "PARTITION_PAYLOAD",
+      "sidecar_rule": "NO_SIDECAR_DESCRIPTOR",
+      "target_grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_PUBLICATION_MARKER_SNAPSHOT_PUBLICATION_ATOMIC_BUNDLE_MEMBER_00",
+      "content_schema_id": "json:snapshot_publication_commit_v23",
+      "logical_sha256_nullability": "NON_NULL",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "PUBLICATION_MARKER",
+      "sidecar_rule": "REQUIRES_EXACTLY_ONE_PUBLICATION_MARKER_SIDECAR",
+      "target_grammar_id": "TARGET_PUBLICATION_MARKER_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    },
+    {
+      "binding_id": "BINDING_PUBLICATION_MARKER_SIDECAR_SNAPSHOT_PUBLICATION_ATOMIC_BUNDLE_MEMBER_14622BB549F9",
+      "content_schema_id": "json:sha256_sidecar",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+      "role": "PUBLICATION_MARKER_SIDECAR",
+      "sidecar_rule": "SIDECAR_OF_EXACTLY_ONE_PUBLICATION_MARKER",
+      "target_grammar_id": "TARGET_PUBLICATION_MARKER_SIDECAR_00",
+      "unit_kind": "SNAPSHOT_PUBLICATION"
+    }
+  ],
+  "frozen_target_grammars": [
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "table:capture_events",
+        "table:canonical_compatibility_analysis",
+        "table:strict_audit_analysis"
+      ],
+      "grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+      "object_role": "PARTITION_PAYLOAD",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root",
+        "partition_id"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/partitions/<partition_id>.parquet"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:audit_snapshot_manifest"
+      ],
+      "grammar_id": "TARGET_HISTORY_MANIFEST_00",
+      "object_role": "HISTORY_MANIFEST",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root",
+        "snapshot_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.json"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_HISTORY_MANIFEST_SIDECAR_00",
+      "object_role": "HISTORY_MANIFEST_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root",
+        "snapshot_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "table:snapshot_partition"
+      ],
+      "grammar_id": "TARGET_HISTORY_INDEX_00",
+      "object_role": "HISTORY_INDEX",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root",
+        "snapshot_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/snapshot_partitions.parquet"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:snapshot_publication_commit_v23"
+      ],
+      "grammar_id": "TARGET_PUBLICATION_MARKER_00",
+      "object_role": "PUBLICATION_MARKER",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root",
+        "snapshot_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.json"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_PUBLICATION_MARKER_SIDECAR_00",
+      "object_role": "PUBLICATION_MARKER_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root",
+        "snapshot_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:audit_snapshot_manifest"
+      ],
+      "grammar_id": "TARGET_CURRENT_GENERATION_MANIFEST_00",
+      "object_role": "CURRENT_GENERATION_MANIFEST",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root",
+        "snapshot_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.json"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_CURRENT_GENERATION_MANIFEST_SIDECAR_00",
+      "object_role": "CURRENT_GENERATION_MANIFEST_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root",
+        "snapshot_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "table:snapshot_partition"
+      ],
+      "grammar_id": "TARGET_CURRENT_GENERATION_INDEX_00",
+      "object_role": "CURRENT_GENERATION_INDEX",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root",
+        "snapshot_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/snapshot_partitions.parquet"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:snapshot_current_view_commit_v23"
+      ],
+      "grammar_id": "TARGET_CURRENT_GENERATION_MARKER_00",
+      "object_role": "CURRENT_GENERATION_MARKER",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root",
+        "snapshot_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.json"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_CURRENT_GENERATION_MARKER_SIDECAR_00",
+      "object_role": "CURRENT_GENERATION_MARKER_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root",
+        "snapshot_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:audit_snapshot_manifest"
+      ],
+      "grammar_id": "TARGET_LEGACY_CURRENT_MANIFEST_00",
+      "object_role": "LEGACY_CURRENT_MANIFEST",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.json"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_LEGACY_CURRENT_MANIFEST_SIDECAR_00",
+      "object_role": "LEGACY_CURRENT_MANIFEST_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "table:snapshot_partition"
+      ],
+      "grammar_id": "TARGET_LEGACY_CURRENT_INDEX_00",
+      "object_role": "LEGACY_CURRENT_INDEX",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "family_root"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/snapshot_partitions.parquet"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:capture_payload_intent_v23"
+      ],
+      "grammar_id": "TARGET_BOUND_PAYLOAD_INTENT_00",
+      "object_role": "BOUND_PAYLOAD_INTENT",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "fence_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.json"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_BOUND_PAYLOAD_INTENT_SIDECAR_00",
+      "object_role": "BOUND_PAYLOAD_INTENT_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "fence_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:snapshot_publication_claim_semantic_v23"
+      ],
+      "grammar_id": "TARGET_BOUND_SNAPSHOT_CLAIM_SEMANTIC_00",
+      "object_role": "BOUND_SNAPSHOT_CLAIM_SEMANTIC",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "fence_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.json"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR_00",
+      "object_role": "BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "fence_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:fence_unit_manifest_v23"
+      ],
+      "grammar_id": "TARGET_FENCE_UNIT_MANIFEST_00",
+      "object_role": "FENCE_UNIT_MANIFEST",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "fence_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.json"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_FENCE_UNIT_MANIFEST_SIDECAR_00",
+      "object_role": "FENCE_UNIT_MANIFEST_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "fence_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:fence_event_v23"
+      ],
+      "grammar_id": "TARGET_FENCE_EVENT_00",
+      "object_role": "FENCE_EVENT",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "fence_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.json"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_FENCE_EVENT_SIDECAR_00",
+      "object_role": "FENCE_EVENT_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "fence_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "table:authorization_use_events"
+      ],
+      "grammar_id": "TARGET_AUTHORIZATION_USE_ROW_BATCH_00",
+      "object_role": "AUTHORIZATION_USE_ROW_BATCH",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "fence_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.parquet"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_00",
+      "object_role": "AUTHORIZATION_USE_ROW_BATCH_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "fence_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "table:capture_events"
+      ],
+      "grammar_id": "TARGET_CAPTURE_ROW_BATCH_00",
+      "object_role": "CAPTURE_ROW_BATCH",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "fence_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.parquet"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_CAPTURE_ROW_BATCH_SIDECAR_00",
+      "object_role": "CAPTURE_ROW_BATCH_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "fence_sequence_20d"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:final_artifact_inventory"
+      ],
+      "grammar_id": "TARGET_NORMAL_FINAL_INVENTORY_00",
+      "object_role": "NORMAL_FINAL_INVENTORY",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.json"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:stop_artifact_inventory"
+      ],
+      "grammar_id": "TARGET_NORMAL_FINAL_INVENTORY_01",
+      "object_role": "NORMAL_FINAL_INVENTORY",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.json"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_NORMAL_FINAL_INVENTORY_SIDECAR_00",
+      "object_role": "NORMAL_FINAL_INVENTORY_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_NORMAL_FINAL_INVENTORY_SIDECAR_01",
+      "object_role": "NORMAL_FINAL_INVENTORY_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:finalization_marker_v23"
+      ],
+      "grammar_id": "TARGET_NORMAL_FINAL_MARKER_00",
+      "object_role": "NORMAL_FINAL_MARKER",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.json"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:finalization_marker_v23"
+      ],
+      "grammar_id": "TARGET_NORMAL_FINAL_MARKER_01",
+      "object_role": "NORMAL_FINAL_MARKER",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.json"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_NORMAL_FINAL_MARKER_SIDECAR_00",
+      "object_role": "NORMAL_FINAL_MARKER_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "content_schema_ids": [
+        "json:sha256_sidecar"
+      ],
+      "grammar_id": "TARGET_NORMAL_FINAL_MARKER_SIDECAR_01",
+      "object_role": "NORMAL_FINAL_MARKER_SIDECAR",
+      "owner": "FROZEN_TARGET_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id"
+      ],
+      "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no runtime registration",
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.sha256"
+    }
+  ],
+  "implemented_selected_schema_ids": [
+    "json:sha256_sidecar"
+  ],
+  "implemented_structural_schema_ids": [
+    "json:prepared_claim_scope_v23",
+    "json:snapshot_publication_claim_semantic_v23",
+    "json:prepared_evidence_plan_v23",
+    "json:prepared_evidence_unit_v23",
+    "json:prepared_evidence_object_v23",
+    "json:sha256_sidecar"
+  ],
+  "internal_structural_relation_schema_domain": {
+    "accepted_registry_membership": false,
+    "namespace": "i0a:",
+    "ownership": "pm_research.local_curl_per_side.claim_hashes and prepared_evidence.validate_structural_relation",
+    "prohibited_cross_domain_rule": "No i0a: identifier may be passed to accepted-registry binding or membership APIs; json:/table: identifiers may not be passed to validate_structural_relation.",
+    "schema_ids": [
+      "i0a:prepared_claim_object_relation",
+      "i0a:prepared_planned_object_relation",
+      "i0a:prepared_object_descriptor_relation"
+    ],
+    "typed_input": "StructuralRelationValidationInput"
+  },
+  "narrowed_i0a_input_unit_kinds": [
+    "SNAPSHOT_PUBLICATION"
+  ],
+  "nested_additional_properties_policy": "FORBIDDEN_UNLESS_A_NESTED_SCHEMA_EXPLICITLY_LISTS_FIELDS",
+  "partition_payload_cardinality_authority": {
+    "derivation": "required PARTITION_PAYLOAD descriptor count = len(exact validated snapshot_claim.partition_entries); each descriptor at partition_ordinal k must bind the exact entry k",
+    "exact_descriptor_entry_binding": [
+      "descriptor ordinal for PARTITION_PAYLOAD corresponds to the claim entry partition_ordinal under the complete descriptor ordering rule",
+      "descriptor canonical_target_path equals partition_entry.partition_path byte-for-byte",
+      "partition_id parsed from the frozen PARTITION_PAYLOAD grammar equals partition_entry.partition_id",
+      "descriptor logical_sha256 equals partition_entry.partition_logical_sha256",
+      "no independent count, path, identity, or logical-hash authority exists"
+    ],
+    "failure_order": [
+      "ERR_CANONICAL_JSON_INVALID",
+      "ERR_SELECTED_SCHEMA_INVALID",
+      "ERR_ORDINAL_SEQUENCE_INVALID",
+      "ERR_LOGICAL_SHA256_MISMATCH",
+      "ERR_COVERAGE_STATE_INVALID",
+      "ERR_ROLE_CARDINALITY_INVALID"
+    ],
+    "prohibited_field": "snapshot_partition_count",
+    "sole_authority": "exact canonical snapshot_publication_claim_semantic_v23 bytes supplied in DescriptorSetInput.snapshot_claim_semantic_bytes, fully validated and hash-bound before cardinality and descriptor-to-entry binding"
+  },
+  "path_grammar_ownership": {
+    "authority_rule": "I0A materializes exact frozen grammar IDs and templates from the canonical sources. Callers may select only a declared grammar ID; callers cannot construct, inject, override, or extend a grammar or placeholder domain.",
+    "canonical_json_rule": "Persisted JSON object keys are lexicographic Unicode code-point order; schema field order is not stored key order.",
+    "canonical_sources": [
+      "amendment_audit/rev23_finding4/preflight_approved/PATH_GRAMMAR_REGISTRY.json",
+      "amendment_audit/rev23_finding4/preflight_approved/PREPARED_ROLE_MATRIX.json"
+    ],
+    "import_rule": "canonical.py <- finding4_registry.py <- prepared_evidence.py; no reverse import, duplicate table, caller-supplied grammar, or runtime registration.",
+    "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+    "prepared_unit_grammar_count": 9,
+    "prepared_unit_grammar_rule": "All eight structural members and the object member have exact immutable templates. Full structural paths are derived only from run_id, unit_kind, prepared_unit_id, and member name; object paths additionally use object_ordinal_10d. Sidecar payload target_path is validation data, never path authority.",
+    "validator_rule": "finding4_registry.validate_normalized_relative_path accepts FrozenPathGrammarId, resolves the immutable module-owned grammar and placeholder domains, and returns lexical assurance only. canonical.py owns no grammar table or path validator."
+  },
+  "path_placeholder_domains": {
+    "family_root": {
+      "lexical_domain": [
+        "capture",
+        "analysis_compatibility",
+        "analysis_strict"
+      ],
+      "normalization": "exact enum lexeme only",
+      "semantic_type": "PARTITION_FAMILY"
+    },
+    "fence_sequence_20d": {
+      "lexical_domain": "^[0-9]{20}$",
+      "numeric_domain": "0..18446744073709551615",
+      "rendering": "base-10, left padded to exactly 20 ASCII digits; parse then re-render must equal input",
+      "semantic_type": "UINT64"
+    },
+    "object_ordinal_10d": {
+      "lexical_domain": "^[0-9]{10}$",
+      "numeric_domain": "0..4294967295",
+      "rendering": "base-10, left padded to exactly 10 ASCII digits; parse then re-render must equal input",
+      "semantic_type": "UINT32"
+    },
+    "partition_id": {
+      "lexical_domain": "^part_[0-9a-f]{64}$",
+      "normalization": "none; lowercase ASCII is already canonical",
+      "semantic_type": "PARTITION_ID"
+    },
+    "prepared_unit_id": {
+      "lexical_domain": "^prep_[0-9a-f]{64}$",
+      "normalization": "none; exact preparation-plan-derived identifier",
+      "semantic_type": "PREPARED_UNIT_ID"
+    },
+    "run_id": {
+      "lexical_domain": "^run_[0-9a-f]{64}$",
+      "normalization": "none; lowercase ASCII is already canonical",
+      "semantic_type": "RUN_ID"
+    },
+    "snapshot_sequence_20d": {
+      "lexical_domain": "^[0-9]{20}$",
+      "numeric_domain": "0..18446744073709551615",
+      "rendering": "base-10, left padded to exactly 20 ASCII digits; parse then re-render must equal input",
+      "semantic_type": "UINT64"
+    },
+    "unit_kind": {
+      "lexical_domain": [
+        "SNAPSHOT_PUBLICATION",
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED",
+        "NORMAL_FINALIZATION"
+      ],
+      "normalization": "exact enum lexeme only",
+      "semantic_type": "PreparedUnitKind"
+    }
+  },
+  "pinned_binding_resolution_success": {
+    "binding_id": "BINDING_PUBLICATION_MARKER_SNAPSHOT_PUBLICATION_ATOMIC_BUNDLE_MEMBER_00",
+    "content_schema_id": "json:snapshot_publication_commit_v23",
+    "logical_sha256_nullability": "NON_NULL",
+    "publication_mode": "ATOMIC_BUNDLE_MEMBER",
+    "role": "PUBLICATION_MARKER",
+    "sidecar_rule": "REQUIRES_EXACTLY_ONE_PUBLICATION_MARKER_SIDECAR",
+    "target_grammar_id": "TARGET_PUBLICATION_MARKER_00",
+    "unit_kind": "SNAPSHOT_PUBLICATION"
+  },
+  "prepared_unit_path_grammars": [
+    {
+      "caller_constructible": false,
+      "grammar_id": "PREPARED_CLAIM_SCOPE_JSON",
+      "member_name": "CLAIM_SCOPE.json",
+      "owner": "FROZEN_PREPARED_UNIT_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "unit_kind",
+        "prepared_unit_id"
+      ],
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.json"
+    },
+    {
+      "caller_constructible": false,
+      "grammar_id": "PREPARED_CLAIM_SCOPE_SHA256",
+      "member_name": "CLAIM_SCOPE.sha256",
+      "owner": "FROZEN_PREPARED_UNIT_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "unit_kind",
+        "prepared_unit_id"
+      ],
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SCOPE.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "grammar_id": "PREPARED_CLAIM_SEMANTIC_JSON",
+      "member_name": "CLAIM_SEMANTIC.json",
+      "owner": "FROZEN_PREPARED_UNIT_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "unit_kind",
+        "prepared_unit_id"
+      ],
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.json"
+    },
+    {
+      "caller_constructible": false,
+      "grammar_id": "PREPARED_CLAIM_SEMANTIC_SHA256",
+      "member_name": "CLAIM_SEMANTIC.sha256",
+      "owner": "FROZEN_PREPARED_UNIT_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "unit_kind",
+        "prepared_unit_id"
+      ],
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/CLAIM_SEMANTIC.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "grammar_id": "PREPARED_PREPARATION_PLAN_JSON",
+      "member_name": "PREPARATION_PLAN.json",
+      "owner": "FROZEN_PREPARED_UNIT_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "unit_kind",
+        "prepared_unit_id"
+      ],
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.json"
+    },
+    {
+      "caller_constructible": false,
+      "grammar_id": "PREPARED_PREPARATION_PLAN_SHA256",
+      "member_name": "PREPARATION_PLAN.sha256",
+      "owner": "FROZEN_PREPARED_UNIT_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "unit_kind",
+        "prepared_unit_id"
+      ],
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARATION_PLAN.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "grammar_id": "PREPARED_PREPARED_UNIT_JSON",
+      "member_name": "PREPARED_UNIT.json",
+      "owner": "FROZEN_PREPARED_UNIT_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "unit_kind",
+        "prepared_unit_id"
+      ],
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.json"
+    },
+    {
+      "caller_constructible": false,
+      "grammar_id": "PREPARED_PREPARED_UNIT_SHA256",
+      "member_name": "PREPARED_UNIT.sha256",
+      "owner": "FROZEN_PREPARED_UNIT_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "unit_kind",
+        "prepared_unit_id"
+      ],
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/PREPARED_UNIT.sha256"
+    },
+    {
+      "caller_constructible": false,
+      "grammar_id": "PREPARED_OBJECT_BIN",
+      "member_name": "objects/<object_ordinal_10d>.bin",
+      "owner": "FROZEN_PREPARED_UNIT_GRAMMARS",
+      "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+      "placeholder_domains": [
+        "run_id",
+        "unit_kind",
+        "prepared_unit_id",
+        "object_ordinal_10d"
+      ],
+      "template": "artifacts/local_curl_per_side/runs/<run_id>/prepared_evidence/<unit_kind>/<prepared_unit_id>/objects/<object_ordinal_10d>.bin"
+    }
+  ],
+  "role_order": [
+    "PARTITION_PAYLOAD",
+    "HISTORY_MANIFEST",
+    "HISTORY_MANIFEST_SIDECAR",
+    "HISTORY_INDEX",
+    "PUBLICATION_MARKER",
+    "PUBLICATION_MARKER_SIDECAR",
+    "CURRENT_GENERATION_MANIFEST",
+    "CURRENT_GENERATION_MANIFEST_SIDECAR",
+    "CURRENT_GENERATION_INDEX",
+    "CURRENT_GENERATION_MARKER",
+    "CURRENT_GENERATION_MARKER_SIDECAR",
+    "LEGACY_CURRENT_MANIFEST",
+    "LEGACY_CURRENT_MANIFEST_SIDECAR",
+    "LEGACY_CURRENT_INDEX",
+    "BOUND_PAYLOAD_INTENT",
+    "BOUND_PAYLOAD_INTENT_SIDECAR",
+    "BOUND_SNAPSHOT_CLAIM_SEMANTIC",
+    "BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR",
+    "FENCE_UNIT_MANIFEST",
+    "FENCE_UNIT_MANIFEST_SIDECAR",
+    "FENCE_EVENT",
+    "FENCE_EVENT_SIDECAR",
+    "AUTHORIZATION_USE_ROW_BATCH",
+    "AUTHORIZATION_USE_ROW_BATCH_SIDECAR",
+    "CAPTURE_ROW_BATCH",
+    "CAPTURE_ROW_BATCH_SIDECAR",
+    "NORMAL_FINAL_INVENTORY",
+    "NORMAL_FINAL_INVENTORY_SIDECAR",
+    "NORMAL_FINAL_MARKER",
+    "NORMAL_FINAL_MARKER_SIDECAR"
+  ],
+  "rows": [
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "table:capture_events",
+            "table:canonical_compatibility_analysis",
+            "table:strict_audit_analysis"
+          ],
+          "grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+          "object_role": "PARTITION_PAYLOAD",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root",
+            "partition_id"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/partitions/<partition_id>.parquet"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/partitions/<partition_id>.parquet"
+      ],
+      "claim_partition_entry_binding": {
+        "cardinality_authority": "validated snapshot claim bytes only",
+        "failure_code": "ERR_ROLE_CARDINALITY_INVALID for missing/extra entry; ERR_PATH_GRAMMAR_MISMATCH for malformed path; ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH for path/partition identity/logical hash mismatch after both sides validate",
+        "logical_hash_equality": "logical_sha256 == partition_entry.partition_logical_sha256",
+        "partition_identity_equality": "partition_id parsed from canonical_target_path == partition_entry.partition_id",
+        "path_equality": "canonical_target_path == partition_entry.partition_path"
+      },
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly len(validated snapshot_claim.partition_entries); one-to-one by partition_ordinal",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "DESCRIPTOR_AND_PHYSICAL_ONLY_SELECTED_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "NOT_APPLICABLE_TO_NON_SIDECAR_ROLE",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "SINGLE_AUTHORITATIVE_FILE",
+        "REUSE_IMMUTABLE_SOURCE"
+      ],
+      "role": "PARTITION_PAYLOAD",
+      "selected_content_schema_domain": [
+        "table:capture_events",
+        "table:canonical_compatibility_analysis",
+        "table:strict_audit_analysis"
+      ],
+      "selected_schema_status": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "sidecar_requirement_and_relationship": "no sidecar descriptor",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:audit_snapshot_manifest"
+          ],
+          "grammar_id": "TARGET_HISTORY_MANIFEST_00",
+          "object_role": "HISTORY_MANIFEST",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root",
+            "snapshot_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.json"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.json"
+      ],
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "DESCRIPTOR_AND_PHYSICAL_ONLY_SELECTED_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "NOT_APPLICABLE_TO_NON_SIDECAR_ROLE",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "HISTORY_MANIFEST",
+      "selected_content_schema_domain": [
+        "json:audit_snapshot_manifest"
+      ],
+      "selected_schema_status": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "sidecar_requirement_and_relationship": "exactly one HISTORY_MANIFEST_SIDECAR in same unit",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_HISTORY_MANIFEST_SIDECAR_00",
+          "object_role": "HISTORY_MANIFEST_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root",
+            "snapshot_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256"
+      ],
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE",
+      "highest_assurance_level_reachable_i0a": "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "FULLY_IMPLEMENTED_SELECTED_SCHEMA_WITHIN_I0A_BOUNDARY",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "paired_target_physical_proof_requirement": "REQUIRED: selected sidecar bytes and exact paired target bytes are each independently reconciled to their own descriptor at A3; the sidecar target_path and target_file_sha256 then bind to the paired descriptor and observed paired-target digest",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "HISTORY_MANIFEST_SIDECAR",
+      "selected_content_schema_domain": [
+        "json:sha256_sidecar"
+      ],
+      "selected_schema_status": "FULLY_IMPLEMENTED_A6",
+      "sidecar_requirement_and_relationship": "sidecar_of exactly one HISTORY_MANIFEST ordinal in same unit",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "table:snapshot_partition"
+          ],
+          "grammar_id": "TARGET_HISTORY_INDEX_00",
+          "object_role": "HISTORY_INDEX",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root",
+            "snapshot_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/snapshot_partitions.parquet"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/snapshot_partitions.parquet"
+      ],
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "DESCRIPTOR_AND_PHYSICAL_ONLY_SELECTED_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "NOT_APPLICABLE_TO_NON_SIDECAR_ROLE",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "HISTORY_INDEX",
+      "selected_content_schema_domain": [
+        "table:snapshot_partition"
+      ],
+      "selected_schema_status": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "sidecar_requirement_and_relationship": "no sidecar descriptor",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:snapshot_publication_commit_v23"
+          ],
+          "grammar_id": "TARGET_PUBLICATION_MARKER_00",
+          "object_role": "PUBLICATION_MARKER",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root",
+            "snapshot_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.json"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.json"
+      ],
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "DESCRIPTOR_AND_PHYSICAL_ONLY_SELECTED_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "NOT_APPLICABLE_TO_NON_SIDECAR_ROLE",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "PUBLICATION_MARKER",
+      "selected_content_schema_domain": [
+        "json:snapshot_publication_commit_v23"
+      ],
+      "selected_schema_status": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "sidecar_requirement_and_relationship": "exactly one PUBLICATION_MARKER_SIDECAR",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_PUBLICATION_MARKER_SIDECAR_00",
+          "object_role": "PUBLICATION_MARKER_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root",
+            "snapshot_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.sha256"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_history/<snapshot_sequence_20d>/PUBLICATION_COMMITTED.sha256"
+      ],
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE",
+      "highest_assurance_level_reachable_i0a": "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "FULLY_IMPLEMENTED_SELECTED_SCHEMA_WITHIN_I0A_BOUNDARY",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "paired_target_physical_proof_requirement": "REQUIRED: selected sidecar bytes and exact paired target bytes are each independently reconciled to their own descriptor at A3; the sidecar target_path and target_file_sha256 then bind to the paired descriptor and observed paired-target digest",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "PUBLICATION_MARKER_SIDECAR",
+      "selected_content_schema_domain": [
+        "json:sha256_sidecar"
+      ],
+      "selected_schema_status": "FULLY_IMPLEMENTED_A6",
+      "sidecar_requirement_and_relationship": "sidecar_of exactly one PUBLICATION_MARKER ordinal",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:audit_snapshot_manifest"
+          ],
+          "grammar_id": "TARGET_CURRENT_GENERATION_MANIFEST_00",
+          "object_role": "CURRENT_GENERATION_MANIFEST",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root",
+            "snapshot_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.json"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.json"
+      ],
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "DESCRIPTOR_AND_PHYSICAL_ONLY_SELECTED_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "NOT_APPLICABLE_TO_NON_SIDECAR_ROLE",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "CURRENT_GENERATION_MANIFEST",
+      "selected_content_schema_domain": [
+        "json:audit_snapshot_manifest"
+      ],
+      "selected_schema_status": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "sidecar_requirement_and_relationship": "exactly one CURRENT_GENERATION_MANIFEST_SIDECAR",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_CURRENT_GENERATION_MANIFEST_SIDECAR_00",
+          "object_role": "CURRENT_GENERATION_MANIFEST_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root",
+            "snapshot_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/audit_snapshot_manifest.sha256"
+      ],
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE",
+      "highest_assurance_level_reachable_i0a": "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "FULLY_IMPLEMENTED_SELECTED_SCHEMA_WITHIN_I0A_BOUNDARY",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "paired_target_physical_proof_requirement": "REQUIRED: selected sidecar bytes and exact paired target bytes are each independently reconciled to their own descriptor at A3; the sidecar target_path and target_file_sha256 then bind to the paired descriptor and observed paired-target digest",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "CURRENT_GENERATION_MANIFEST_SIDECAR",
+      "selected_content_schema_domain": [
+        "json:sha256_sidecar"
+      ],
+      "selected_schema_status": "FULLY_IMPLEMENTED_A6",
+      "sidecar_requirement_and_relationship": "sidecar_of exactly one CURRENT_GENERATION_MANIFEST ordinal",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "table:snapshot_partition"
+          ],
+          "grammar_id": "TARGET_CURRENT_GENERATION_INDEX_00",
+          "object_role": "CURRENT_GENERATION_INDEX",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root",
+            "snapshot_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/snapshot_partitions.parquet"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/snapshot_partitions.parquet"
+      ],
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "DESCRIPTOR_AND_PHYSICAL_ONLY_SELECTED_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "NOT_APPLICABLE_TO_NON_SIDECAR_ROLE",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "CURRENT_GENERATION_INDEX",
+      "selected_content_schema_domain": [
+        "table:snapshot_partition"
+      ],
+      "selected_schema_status": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "sidecar_requirement_and_relationship": "no sidecar descriptor",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:snapshot_current_view_commit_v23"
+          ],
+          "grammar_id": "TARGET_CURRENT_GENERATION_MARKER_00",
+          "object_role": "CURRENT_GENERATION_MARKER",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root",
+            "snapshot_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.json"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.json"
+      ],
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "DESCRIPTOR_AND_PHYSICAL_ONLY_SELECTED_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "NOT_APPLICABLE_TO_NON_SIDECAR_ROLE",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "CURRENT_GENERATION_MARKER",
+      "selected_content_schema_domain": [
+        "json:snapshot_current_view_commit_v23"
+      ],
+      "selected_schema_status": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "sidecar_requirement_and_relationship": "exactly one CURRENT_GENERATION_MARKER_SIDECAR",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_CURRENT_GENERATION_MARKER_SIDECAR_00",
+          "object_role": "CURRENT_GENERATION_MARKER_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root",
+            "snapshot_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.sha256"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/current_view_generations/<snapshot_sequence_20d>/CURRENT_VIEW_COMMITTED.sha256"
+      ],
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE",
+      "highest_assurance_level_reachable_i0a": "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "FULLY_IMPLEMENTED_SELECTED_SCHEMA_WITHIN_I0A_BOUNDARY",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "paired_target_physical_proof_requirement": "REQUIRED: selected sidecar bytes and exact paired target bytes are each independently reconciled to their own descriptor at A3; the sidecar target_path and target_file_sha256 then bind to the paired descriptor and observed paired-target digest",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "CURRENT_GENERATION_MARKER_SIDECAR",
+      "selected_content_schema_domain": [
+        "json:sha256_sidecar"
+      ],
+      "selected_schema_status": "FULLY_IMPLEMENTED_A6",
+      "sidecar_requirement_and_relationship": "sidecar_of exactly one CURRENT_GENERATION_MARKER ordinal",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:audit_snapshot_manifest"
+          ],
+          "grammar_id": "TARGET_LEGACY_CURRENT_MANIFEST_00",
+          "object_role": "LEGACY_CURRENT_MANIFEST",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.json"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.json"
+      ],
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "DESCRIPTOR_AND_PHYSICAL_ONLY_SELECTED_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "NOT_APPLICABLE_TO_NON_SIDECAR_ROLE",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "DERIVED_VIEW_TARGET"
+      ],
+      "role": "LEGACY_CURRENT_MANIFEST",
+      "selected_content_schema_domain": [
+        "json:audit_snapshot_manifest"
+      ],
+      "selected_schema_status": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "sidecar_requirement_and_relationship": "exactly one LEGACY_CURRENT_MANIFEST_SIDECAR",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_LEGACY_CURRENT_MANIFEST_SIDECAR_00",
+          "object_role": "LEGACY_CURRENT_MANIFEST_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.sha256"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/audit_snapshot_manifest.sha256"
+      ],
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE",
+      "highest_assurance_level_reachable_i0a": "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "FULLY_IMPLEMENTED_SELECTED_SCHEMA_WITHIN_I0A_BOUNDARY",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "paired_target_physical_proof_requirement": "REQUIRED: selected sidecar bytes and exact paired target bytes are each independently reconciled to their own descriptor at A3; the sidecar target_path and target_file_sha256 then bind to the paired descriptor and observed paired-target digest",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "DERIVED_VIEW_TARGET"
+      ],
+      "role": "LEGACY_CURRENT_MANIFEST_SIDECAR",
+      "selected_content_schema_domain": [
+        "json:sha256_sidecar"
+      ],
+      "selected_schema_status": "FULLY_IMPLEMENTED_A6",
+      "sidecar_requirement_and_relationship": "sidecar_of exactly one LEGACY_CURRENT_MANIFEST ordinal",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "table:snapshot_partition"
+          ],
+          "grammar_id": "TARGET_LEGACY_CURRENT_INDEX_00",
+          "object_role": "LEGACY_CURRENT_INDEX",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "family_root"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/snapshot_partitions.parquet"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/<family_root>/snapshot_partitions.parquet"
+      ],
+      "complete_descriptor_set_assurance": "A2_DESCRIPTOR_SET_COMPLETE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "exact ordinal set/order, all conditional role cardinalities, canonical-target uniqueness, logical-hash nullability, and complete same-unit sidecar graph",
+      "descriptor_structural_status": "AVAILABLE_THROUGH_A3",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+      "i0a_input_reachability": "REACHABLE",
+      "i0a_validation_status": "DESCRIPTOR_AND_PHYSICAL_ONLY_SELECTED_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "NOT_APPLICABLE_TO_NON_SIDECAR_ROLE",
+      "permitted_unit_kinds": [
+        "SNAPSHOT_PUBLICATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "DERIVED_VIEW_TARGET"
+      ],
+      "role": "LEGACY_CURRENT_INDEX",
+      "selected_content_schema_domain": [
+        "table:snapshot_partition"
+      ],
+      "selected_schema_status": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "sidecar_requirement_and_relationship": "no sidecar descriptor",
+      "single_descriptor_assurance": "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+      "single_descriptor_scope": "closed descriptor fields, role/unit/mode/path-shape, hash syntax, and role-local nullability only; never unit cardinality, target uniqueness, or a complete sidecar graph"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:capture_payload_intent_v23"
+          ],
+          "grammar_id": "TARGET_BOUND_PAYLOAD_INTENT_00",
+          "object_role": "BOUND_PAYLOAD_INTENT",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "fence_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.json"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.json"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "BOUND_PAYLOAD_INTENT",
+      "selected_content_schema_domain": [
+        "json:capture_payload_intent_v23"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "exactly one BOUND_PAYLOAD_INTENT_SIDECAR",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_BOUND_PAYLOAD_INTENT_SIDECAR_00",
+          "object_role": "BOUND_PAYLOAD_INTENT_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "fence_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.sha256"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_payload_intent.sha256"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "BOUND_PAYLOAD_INTENT_SIDECAR",
+      "selected_content_schema_domain": [
+        "json:sha256_sidecar"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "sidecar_of exactly one BOUND_PAYLOAD_INTENT ordinal",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:snapshot_publication_claim_semantic_v23"
+          ],
+          "grammar_id": "TARGET_BOUND_SNAPSHOT_CLAIM_SEMANTIC_00",
+          "object_role": "BOUND_SNAPSHOT_CLAIM_SEMANTIC",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "fence_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.json"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.json"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1 iff bound_payload_event_kind in {CAPTURE_SNAPSHOT_COMMITTED,CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED,CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED}; otherwise 0",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NON_NULL_WHEN_PRESENT",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "BOUND_SNAPSHOT_CLAIM_SEMANTIC",
+      "selected_content_schema_domain": [
+        "json:snapshot_publication_claim_semantic_v23"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "exactly one BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR iff present",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR_00",
+          "object_role": "BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "fence_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.sha256"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/bound_snapshot_claim_semantic.sha256"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1 iff paired JSON present; otherwise 0",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "BOUND_SNAPSHOT_CLAIM_SEMANTIC_SIDECAR",
+      "selected_content_schema_domain": [
+        "json:sha256_sidecar"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "sidecar_of exactly one BOUND_SNAPSHOT_CLAIM_SEMANTIC ordinal",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:fence_unit_manifest_v23"
+          ],
+          "grammar_id": "TARGET_FENCE_UNIT_MANIFEST_00",
+          "object_role": "FENCE_UNIT_MANIFEST",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "fence_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.json"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.json"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "FENCE_UNIT_MANIFEST",
+      "selected_content_schema_domain": [
+        "json:fence_unit_manifest_v23"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "exactly one FENCE_UNIT_MANIFEST_SIDECAR",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_FENCE_UNIT_MANIFEST_SIDECAR_00",
+          "object_role": "FENCE_UNIT_MANIFEST_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "fence_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.sha256"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/FENCE_UNIT.sha256"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "FENCE_UNIT_MANIFEST_SIDECAR",
+      "selected_content_schema_domain": [
+        "json:sha256_sidecar"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "sidecar_of exactly one FENCE_UNIT_MANIFEST ordinal",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:fence_event_v23"
+          ],
+          "grammar_id": "TARGET_FENCE_EVENT_00",
+          "object_role": "FENCE_EVENT",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "fence_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.json"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.json"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "FENCE_EVENT",
+      "selected_content_schema_domain": [
+        "json:fence_event_v23"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "exactly one FENCE_EVENT_SIDECAR",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_FENCE_EVENT_SIDECAR_00",
+          "object_role": "FENCE_EVENT_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "fence_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.sha256"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/fence_event.sha256"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "FENCE_ACQUIRED",
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED",
+        "CAPTURE_SNAPSHOT_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED",
+        "FENCE_RELEASED"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "FENCE_EVENT_SIDECAR",
+      "selected_content_schema_domain": [
+        "json:sha256_sidecar"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "sidecar_of exactly one FENCE_EVENT ordinal",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "table:authorization_use_events"
+          ],
+          "grammar_id": "TARGET_AUTHORIZATION_USE_ROW_BATCH_00",
+          "object_role": "AUTHORIZATION_USE_ROW_BATCH",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "fence_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.parquet"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.parquet"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1 for authorization-row payload branch; otherwise 0",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NON_NULL_WHEN_PRESENT",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "AUTHORIZATION_USE_ROW_BATCH",
+      "selected_content_schema_domain": [
+        "table:authorization_use_events"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "exactly one AUTHORIZATION_USE_ROW_BATCH_SIDECAR iff present",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_AUTHORIZATION_USE_ROW_BATCH_SIDECAR_00",
+          "object_role": "AUTHORIZATION_USE_ROW_BATCH_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "fence_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.sha256"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/authorization_use_events.sha256"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1 iff batch present; otherwise 0",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "AUTHORIZATION_USE_EVENT_COMMITTED",
+        "REQUEST_RESERVED_COMMITTED",
+        "CANCELLATION_CHECKPOINT_AND_ROW_COMMITTED",
+        "CONTINUATION_CHECKPOINT_AND_ACTIVATION_COMMITTED"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "AUTHORIZATION_USE_ROW_BATCH_SIDECAR",
+      "selected_content_schema_domain": [
+        "json:sha256_sidecar"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "sidecar_of exactly one AUTHORIZATION_USE_ROW_BATCH ordinal",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "table:capture_events"
+          ],
+          "grammar_id": "TARGET_CAPTURE_ROW_BATCH_00",
+          "object_role": "CAPTURE_ROW_BATCH",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "fence_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.parquet"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.parquet"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1 for STARTED or terminal row payload branch; otherwise 0",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NON_NULL_WHEN_PRESENT",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "CAPTURE_ROW_BATCH",
+      "selected_content_schema_domain": [
+        "table:capture_events"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "exactly one CAPTURE_ROW_BATCH_SIDECAR iff present",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_CAPTURE_ROW_BATCH_SIDECAR_00",
+          "object_role": "CAPTURE_ROW_BATCH_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id",
+            "fence_sequence_20d"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.sha256"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/capture/commit_fence_history/<fence_sequence_20d>/rows/capture_events.sha256"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1 iff batch present; otherwise 0",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "CAPTURE_STARTED_COMMITTED",
+        "CAPTURE_TERMINAL_COMMITTED"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "ATOMIC_BUNDLE_MEMBER"
+      ],
+      "role": "CAPTURE_ROW_BATCH_SIDECAR",
+      "selected_content_schema_domain": [
+        "json:sha256_sidecar"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "sidecar_of exactly one CAPTURE_ROW_BATCH ordinal",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:final_artifact_inventory"
+          ],
+          "grammar_id": "TARGET_NORMAL_FINAL_INVENTORY_00",
+          "object_role": "NORMAL_FINAL_INVENTORY",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.json"
+        },
+        {
+          "content_schema_ids": [
+            "json:stop_artifact_inventory"
+          ],
+          "grammar_id": "TARGET_NORMAL_FINAL_INVENTORY_01",
+          "object_role": "NORMAL_FINAL_INVENTORY",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.json"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.json"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1; selected target branch is replay inventory or clean-stop inventory, never both",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "SINGLE_AUTHORITATIVE_FILE"
+      ],
+      "role": "NORMAL_FINAL_INVENTORY",
+      "selected_content_schema_domain": [
+        "json:final_artifact_inventory",
+        "json:stop_artifact_inventory"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "exactly one NORMAL_FINAL_INVENTORY_SIDECAR",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_NORMAL_FINAL_INVENTORY_SIDECAR_00",
+          "object_role": "NORMAL_FINAL_INVENTORY_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.sha256"
+        },
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_NORMAL_FINAL_INVENTORY_SIDECAR_01",
+          "object_role": "NORMAL_FINAL_INVENTORY_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.sha256"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/final_artifact_inventory.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/stop_artifact_inventory.sha256"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1 paired to selected inventory branch",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "SINGLE_AUTHORITATIVE_FILE"
+      ],
+      "role": "NORMAL_FINAL_INVENTORY_SIDECAR",
+      "selected_content_schema_domain": [
+        "json:sha256_sidecar"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "sidecar_of exactly one NORMAL_FINAL_INVENTORY ordinal",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:finalization_marker_v23"
+          ],
+          "grammar_id": "TARGET_NORMAL_FINAL_MARKER_00",
+          "object_role": "NORMAL_FINAL_MARKER",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.json"
+        },
+        {
+          "content_schema_ids": [
+            "json:finalization_marker_v23"
+          ],
+          "grammar_id": "TARGET_NORMAL_FINAL_MARKER_01",
+          "object_role": "NORMAL_FINAL_MARKER",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.json"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.json",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.json"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1; selected target branch is replay marker or clean-stop marker, never both",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NON_NULL",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "SINGLE_AUTHORITATIVE_FILE"
+      ],
+      "role": "NORMAL_FINAL_MARKER",
+      "selected_content_schema_domain": [
+        "json:finalization_marker_v23"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "exactly one NORMAL_FINAL_MARKER_SIDECAR",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    },
+    {
+      "canonical_target_grammar_bindings": [
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_NORMAL_FINAL_MARKER_SIDECAR_00",
+          "object_role": "NORMAL_FINAL_MARKER_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.sha256"
+        },
+        {
+          "content_schema_ids": [
+            "json:sha256_sidecar"
+          ],
+          "grammar_id": "TARGET_NORMAL_FINAL_MARKER_SIDECAR_01",
+          "object_role": "NORMAL_FINAL_MARKER_SIDECAR",
+          "owner": "FROZEN_TARGET_GRAMMARS",
+          "placeholder_domains": [
+            "run_id"
+          ],
+          "schema_identity_source": "accepted PATH_GRAMMAR_REGISTRY.json at scope_review_anchor; no name inference",
+          "template": "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.sha256"
+        }
+      ],
+      "canonical_target_grammars": [
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.sha256",
+        "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.sha256"
+      ],
+      "complete_descriptor_set_assurance": "A0_NONE",
+      "conditional_cardinality": "exactly 1 paired to selected marker branch",
+      "descriptor_set_scope": "unreachable under narrowed input unit-kind domain",
+      "descriptor_structural_status": "UNREACHABLE_A0",
+      "exact_non_success_when_fuller_validation_unavailable": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "highest_assurance_level_reachable_i0a": "A0_NONE",
+      "i0a_input_reachability": "UNREACHABLE_UNIT_KIND_EXCLUDED",
+      "i0a_validation_status": "UNREACHABLE_UNDER_NARROWED_I0A_INPUT_CONTRACT",
+      "logical_sha256_nullability": "NULL_REQUIRED",
+      "paired_target_physical_proof_requirement": "UNREACHABLE",
+      "permitted_unit_kinds": [
+        "NORMAL_FINALIZATION"
+      ],
+      "persisted_json_key_order_rule": "lexicographic Unicode code-point order for every json:* payload; schema field order controls membership/projection only",
+      "physical_sha256_requirement": "A3 exact requires descriptor expected file_size_bytes, descriptor expected complete-file file_sha256, and supplied bytes; both are independently recomputed",
+      "publication_modes": [
+        "SINGLE_AUTHORITATIVE_FILE"
+      ],
+      "role": "NORMAL_FINAL_MARKER_SIDECAR",
+      "selected_content_schema_domain": [
+        "json:sha256_sidecar"
+      ],
+      "selected_schema_status": "UNREACHABLE_STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "sidecar_requirement_and_relationship": "sidecar_of exactly one NORMAL_FINAL_MARKER ordinal",
+      "single_descriptor_assurance": "A0_NONE",
+      "single_descriptor_scope": "unreachable under narrowed input unit-kind domain"
+    }
+  ],
+  "schema_id": "i0a:role_content_schema_disposition_matrix.rev09",
+  "schema_identity_invariants": {
+    "accepted_registry_schema_id_domain_count": 147,
+    "frozen_binding_schema_id_union": [
+      "json:audit_snapshot_manifest",
+      "json:capture_payload_intent_v23",
+      "json:fence_event_v23",
+      "json:fence_unit_manifest_v23",
+      "json:final_artifact_inventory",
+      "json:finalization_marker_v23",
+      "json:sha256_sidecar",
+      "json:snapshot_current_view_commit_v23",
+      "json:snapshot_publication_claim_semantic_v23",
+      "json:snapshot_publication_commit_v23",
+      "json:stop_artifact_inventory",
+      "table:authorization_use_events",
+      "table:canonical_compatibility_analysis",
+      "table:capture_events",
+      "table:snapshot_partition",
+      "table:strict_audit_analysis"
+    ],
+    "frozen_bindings_minus_role_matrix": [],
+    "identity_agreement_invariant": "role-matrix selected schema union equals frozen-production-binding schema union; every member exists in exact accepted RegistryDefinitionIndex",
+    "normal_final_marker_branch_bindings": [
+      {
+        "canonical_evidence": "PATH_GRAMMAR_REGISTRY.json NORMAL_REPLAY_FINALIZED_JSON",
+        "content_schema_id": "json:finalization_marker_v23",
+        "grammar_id": "TARGET_NORMAL_FINAL_MARKER_00",
+        "target": "artifacts/local_curl_per_side/runs/<run_id>/finalization/REPLAY_FINALIZED.json"
+      },
+      {
+        "canonical_evidence": "PATH_GRAMMAR_REGISTRY.json NORMAL_STOP_FINALIZED_JSON",
+        "content_schema_id": "json:finalization_marker_v23",
+        "grammar_id": "TARGET_NORMAL_FINAL_MARKER_01",
+        "target": "artifacts/local_curl_per_side/runs/<run_id>/finalization/STOP_FINALIZED.json"
+      }
+    ],
+    "role_matrix_minus_frozen_bindings": [],
+    "selected_content_schema_domain_union": [
+      "json:audit_snapshot_manifest",
+      "json:capture_payload_intent_v23",
+      "json:fence_event_v23",
+      "json:fence_unit_manifest_v23",
+      "json:final_artifact_inventory",
+      "json:finalization_marker_v23",
+      "json:sha256_sidecar",
+      "json:snapshot_current_view_commit_v23",
+      "json:snapshot_publication_claim_semantic_v23",
+      "json:snapshot_publication_commit_v23",
+      "json:stop_artifact_inventory",
+      "table:authorization_use_events",
+      "table:canonical_compatibility_analysis",
+      "table:capture_events",
+      "table:snapshot_partition",
+      "table:strict_audit_analysis"
+    ],
+    "selected_content_schema_domain_union_count": 16,
+    "selected_union_minus_accepted_registry": [],
+    "subset_invariant": "union(rows[*].selected_content_schema_domain) is a subset of exact accepted RegistryDefinitionIndex.schema_ids"
+  },
+  "schema_version": 9,
+  "scope_review_anchor": "88362521fe9ef247708e4d7b5f90753784b8b88e",
+  "unreachable_assurance_levels": [
+    "A5_FILESYSTEM_FACTS_VALIDATED",
+    "A7_PREPARED_OBJECT_FULL",
+    "A8_PREPARED_UNIT_FULL"
+  ]
+}

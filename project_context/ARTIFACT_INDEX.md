@@ -167,15 +167,20 @@ Installation commits:
 - `IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
 - `HANDOFF_INVENTORY.md`
 - `HANDOFF_SHA256SUMS.txt`
+- `HANDOFF_REVISION_09_INSTALL_SHA256SUMS.txt` — composite Revision 09 installation inventory covering new/replaced files and preserved Revision 08 scope identities.
 - `CANONICAL_REPOSITORY_POINTER.md`
 - `prompts/CLAUDE_NEW_CHAT_PROMPT.md`
 - `prompts/SENTINEL_NEW_CHAT_PROMPT.md`
 - `scope_authoring/rev23_finding4_i0a/README_FIRST.md`
 - `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
 - `scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
+- `scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST_REVISION_08.json` — byte-identical historical copy.
+- `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md` — byte-identical historical copy.
 
 Current implementation state:
 `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01 — AUTHORIZED; ACTIVATION PENDING AUTHORIZATION-PACKAGE INSTALL VERIFICATION`.
+
+Revision 09 controlling state: `SPECIFICATION ACCEPTED; CANONICAL INSTALLATION PENDING; IMPLEMENTATION NOT AUTHORIZED`. The Revision 08 authorization above is retained as historical evidence and does not carry forward to Revision 09.
 
 ### `accepted_contract/`
 
@@ -232,12 +237,21 @@ Accepted bounded implementation-authoring scope.
 - `SCOPE_SHA256SUMS.txt`
 - `accepted_scope_revision_08/` — exact `14`-member canonical copy
   of `REV23_FINDING4_I0A_SCOPE_REVISION_08.zip`
+- `accepted_scope_revision_09/` — proposed immutable exact `14`-member canonical copy of `REV23_FINDING4_I0A_SCOPE_REVISION_09.zip`
+- `ACCEPTED_SCOPE_MANIFEST_REVISION_08.json` — historical accepted manifest copy
+- `SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md` — historical accepted decision copy
 
 Accepted source archive SHA-256:
 
 `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
 
 The accepted maximum matrix contains six source and six test-source paths.
+
+Revision 09 accepted source archive SHA-256:
+
+`4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
+
+Sentinel acceptance date: `2026-07-20`. Revision 09 supersedes Revision 08 only for the private descriptor-set invariant contract. Revision 08 remains immutable historical evidence. `SCOPE_SHA256SUMS.txt` is the composite scope inventory.
 
 ### `authorization_audit/rev23_finding4_i0a/`
 
@@ -254,6 +268,8 @@ Active bounded authoring package:
 
 Authorization ID: `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`. The package becomes active after Sentinel verifies
 the canonical commit containing it. Tests and project execution remain unauthorized.
+
+This authorization package is specific to Revision 08 and does not authorize Revision 09 implementation. No active Revision 09 Claude prompt exists.
 
 ### Historical Amendment 03 authorization audit
 
