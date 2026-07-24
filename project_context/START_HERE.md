@@ -35,13 +35,13 @@ Read these before doing anything:
 11. `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`
 12. `implementation_handoffs/local_curl_rev23_i0/SENTINEL_ACCEPTANCE_DECISION.md`
 13. `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
-14. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/README_FIRST.md`
+14. Historical Revision 08 authorization evidence: `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/README_FIRST.md`
 15. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/SENTINEL_IMPLEMENTATION_AUTHORIZATION.md`
 16. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/AUTHORIZATION_MANIFEST.json`
 17. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/AUTHORIZED_FILE_MATRIX.md`
 18. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/ACTIVITY_BOUNDARIES.md`
 19. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/SOURCE_GATE.md`
-   Revision 09 R1 authorization insert:
+   Historical Revision 09 R1 authorization evidence — does not carry forward:
    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/README_FIRST.md`
    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SENTINEL_AUTHORIZATION_DECISION.md`
    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SENTINEL_ACTIVATION_VERIFICATION.md`
@@ -51,9 +51,12 @@ Read these before doing anything:
    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/ACTIVITY_BOUNDARIES.md`
    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SOURCE_GATE.md`
 20. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/README_FIRST.md`
-   Revision 09 controlling insert, before the historical Revision 08 item:
+   Revision 10 controlling insert, before historical revisions:
    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
+   - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_10/README_FIRST.md`
+   - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_09.md`
+   - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST_REVISION_09.json`
    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_09/README_FIRST.md`
    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md`
    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST_REVISION_08.json`
@@ -106,24 +109,30 @@ The installed contract and Finding 4 audit trail live under:
 
 ## Accepted Finding 4 I0A scope
 
-### Controlling Revision 09 scope
+### Controlling Revision 10 scope
 
-Revision 09 is canonically installed and Sentinel-verified at
-`c4e8b1011c51272042decac4bc89e762d767a72a` as the narrow controlling correction.
+Sentinel accepted `REV23_FINDING4_I0A_SCOPE_REVISION_10` from Candidate 11 on `2026-07-24`. Canonical installation is pending Gustavo's manual commit and Sentinel verification.
 
-- accepted scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
-- Sentinel acceptance date: `2026-07-20`
+- accepted base: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
+- accepted archive SHA-256: `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`
+- accepted member count: `15`
+- canonical installation base: `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`
+- proposed immutable directory: `accepted_scope_revision_10/`
+- implementation authorized: **NO**
+- Revision 10 implementation start selected: **NO**
+
+Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification package. Revision 09 and Revision 08 remain immutable historical accepted evidence.
+
+The preserved `fcf406c4...` checkpoint remains unaccepted and non-authorizing. The historical Revision 09 R1 authorization does not carry forward.
+
+### Historical Revision 09 scope record
+
+- scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
 - accepted archive SHA-256: `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
-- accepted member count: `14`
-- installation base: `1e963bb6e8387aff071d697a416fa558956e571e`
 - verified canonical installation commit: `c4e8b1011c51272042decac4bc89e762d767a72a`
 - immutable installed directory: `accepted_scope_revision_09/`
-- supersession boundary: private descriptor-set invariant contract only
-- Revision 08 remains immutable historical accepted evidence
-- R1 authorization `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`: **ACTIVE — SENTINEL VERIFIED**
-- verified source-gated commit: `1e1afb29791f42c286b45d3b576f74926add8dce`
-- sole writable path: `pm_research/local_curl_per_side/prepared_evidence.py`
-- Revision 09 test-source authoring and test execution: **UNAUTHORIZED**
+- historical R1 checkpoint source-gated commit: `1e1afb29791f42c286b45d3b576f74926add8dce`
+- historical R1 authorization carries forward: **NO**
 
 ### Historical Revision 08 scope record at installation base
 
@@ -163,16 +172,13 @@ No Revision 09 is required.
 
 ## Implementation authorization state
 
-### Controlling Revision 09 state
+### Controlling Revision 10 state
 
-Authorization ID `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01` is active for one R1 source-resume checkpoint at
-source-gated commit `1e1afb29791f42c286b45d3b576f74926add8dce`. Only
-`pm_research/local_curl_per_side/prepared_evidence.py` may be edited from
-required starting SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`. The other eleven authored source/test
-paths are read-only. Test-source editing, test execution, project
-imports/execution, all other source edits, research-data reads, empirical work,
-general network/API/curl, Claude Git history/remote writes, R2, P1/P2/P3,
-scoring, probe execution, and gate changes remain unauthorized. Preserving an implementation checkpoint does not expand this authorization.
+`STOP_IMPLEMENTATION_NOT_AUTHORIZED`
+
+Revision 10 specification acceptance does not authorize source synchronization, source/test authoring, tests, project execution, rollback, restoration, overwrite, checkpoint promotion, data/network access, Git writes by Claude, R2, P1/P2/P3, scoring, probe execution, or gate changes.
+
+No Revision 10 implementation starting SHA or source-gated commit is selected. The Revision 09 R1 and Revision 08 authorizations remain historical and do not carry forward.
 
 ### Historical Revision 08 authorization record at installation base
 
@@ -204,5 +210,5 @@ source gate; no test execution follows automatically.
 - Claude must not edit canonical project-context files.
 - Never silently reverse a settled decision or reactivate superseded material.
 - Preserve material unaccepted implementation progress as an evidence-only canonical checkpoint before chat/model/session transitions; never place it at the executable source path until separately accepted and authorized.
-- Do not open Revision 09 for optional polish; reopen only for a concrete material contradiction.
-- Revision 09 was accepted only for the concrete private descriptor-set invariant contradiction; no later revision follows without new authoritative evidence.
+- Revision 10 is specification-only; no implementation follows without separate Gustavo authorization and Sentinel handoff.
+- Do not treat the historical `8b8e9320...` start or preserved `fcf406c4...` checkpoint as a current implementation start.

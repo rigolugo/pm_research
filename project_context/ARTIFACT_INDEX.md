@@ -168,6 +168,7 @@ Installation commits:
 - `HANDOFF_INVENTORY.md`
 - `HANDOFF_SHA256SUMS.txt`
 - `HANDOFF_REVISION_09_INSTALL_SHA256SUMS.txt` — historical focused Revision 09 scope-installation inventory.
+- `HANDOFF_REVISION_10_INSTALL_SHA256SUMS.txt` — focused pending Revision 10 scope-installation inventory.
 - `HANDOFF_REVISION_09_R1_AUTHORIZATION_SHA256SUMS.txt` — focused active R1 authorization inventory excluding itself and the complete handoff inventory.
 - `CANONICAL_REPOSITORY_POINTER.md`
 - `prompts/CLAUDE_NEW_CHAT_PROMPT.md`
@@ -179,9 +180,9 @@ Installation commits:
 - `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md` — byte-identical historical copy.
 
 Current implementation state:
-`REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01 — ACTIVE; ONE-FILE R1 SOURCE CHECKPOINT AUTHORIZED`.
+`STOP_IMPLEMENTATION_NOT_AUTHORIZED`.
 
-Revision 09 controlling state: `SPECIFICATION ACCEPTED; R1 ONE-FILE SOURCE RESUME ACTIVE AT 1e1afb29791f42c286b45d3b576f74926add8dce`. Only `prepared_evidence.py` is writable. Revision 08 authorization remains historical evidence and does not expand the R1 boundary.
+Revision 10 controlling state: `SPECIFICATION ACCEPTED; CANONICAL INSTALLATION PENDING`. No implementation starting SHA, writable path, source/test authoring, test execution, rollback, promotion, or downstream stage is authorized. Revision 09 R1 and Revision 08 authorizations are historical and do not carry forward.
 
 
 ### `implementation_checkpoints/`
@@ -273,6 +274,9 @@ Accepted bounded implementation-authoring scope.
 - `accepted_scope_revision_08/` — exact `14`-member canonical copy
   of `REV23_FINDING4_I0A_SCOPE_REVISION_08.zip`
 - `accepted_scope_revision_09/` — immutable exact `14`-member canonical copy of `REV23_FINDING4_I0A_SCOPE_REVISION_09.zip`
+- `accepted_scope_revision_10/` — proposed immutable exact `15`-member copy of accepted `REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11.zip`; archive SHA-256 `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`; pending manual commit and Sentinel verification.
+- `ACCEPTED_SCOPE_MANIFEST_REVISION_09.json` — historical Revision 09 controlling manifest copy.
+- `SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_09.md` — historical Revision 09 controlling decision copy.
 - `ACCEPTED_SCOPE_MANIFEST_REVISION_08.json` — historical accepted manifest copy
 - `SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md` — historical accepted decision copy
 
@@ -286,7 +290,7 @@ Revision 09 accepted source archive SHA-256:
 
 `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
 
-Sentinel acceptance date: `2026-07-20`. Revision 09 supersedes Revision 08 only for the private descriptor-set invariant contract. Revision 08 remains immutable historical evidence. `SCOPE_SHA256SUMS.txt` is the composite scope inventory.
+Sentinel accepted Revision 10 on `2026-07-24`. Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification package; Revision 09 and Revision 08 remain immutable historical evidence. `SCOPE_SHA256SUMS.txt` is the composite scope inventory. No implementation authorization follows.
 
 ### `authorization_audit/rev23_finding4_i0a/`
 

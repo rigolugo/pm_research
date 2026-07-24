@@ -1,0 +1,356 @@
+{
+  "additional_properties": false,
+  "affected_frozen_grammar_ids": [
+    "TARGET_PARTITION_PAYLOAD_00",
+    "TARGET_HISTORY_MANIFEST_00",
+    "TARGET_HISTORY_MANIFEST_SIDECAR_00",
+    "TARGET_HISTORY_INDEX_00",
+    "TARGET_PUBLICATION_MARKER_00",
+    "TARGET_PUBLICATION_MARKER_SIDECAR_00",
+    "TARGET_CURRENT_GENERATION_MANIFEST_00",
+    "TARGET_CURRENT_GENERATION_MANIFEST_SIDECAR_00",
+    "TARGET_CURRENT_GENERATION_INDEX_00",
+    "TARGET_CURRENT_GENERATION_MARKER_00",
+    "TARGET_CURRENT_GENERATION_MARKER_SIDECAR_00",
+    "TARGET_LEGACY_CURRENT_MANIFEST_00",
+    "TARGET_LEGACY_CURRENT_MANIFEST_SIDECAR_00",
+    "TARGET_LEGACY_CURRENT_INDEX_00"
+  ],
+  "affected_role_rows": [
+    "PARTITION_PAYLOAD",
+    "HISTORY_MANIFEST",
+    "HISTORY_MANIFEST_SIDECAR",
+    "HISTORY_INDEX",
+    "PUBLICATION_MARKER",
+    "PUBLICATION_MARKER_SIDECAR",
+    "CURRENT_GENERATION_MANIFEST",
+    "CURRENT_GENERATION_MANIFEST_SIDECAR",
+    "CURRENT_GENERATION_INDEX",
+    "CURRENT_GENERATION_MARKER",
+    "CURRENT_GENERATION_MARKER_SIDECAR",
+    "LEGACY_CURRENT_MANIFEST",
+    "LEGACY_CURRENT_MANIFEST_SIDECAR",
+    "LEGACY_CURRENT_INDEX"
+  ],
+  "amendment_mode": "NAMED_MERGE_OVER_ACCEPTED_REVISION_09",
+  "authority_chain": {
+    "candidate_05": {
+      "status": "EARLIER_NON_AUTHORITATIVE_DRAFTING_EVIDENCE",
+      "zip_sha256": "e4cfdbd8a152c3d771ee35216415c37e9d01c108e410694497a8b2b11ea21613"
+    },
+    "candidate_06": {
+      "status": "EARLIER_NON_AUTHORITATIVE_DRAFTING_AND_REVIEW_EVIDENCE",
+      "zip_sha256": "9e421457f37645a9b9148ffb64bdf2b82ab630d34bb70c70ae184558a5d40bbb"
+    },
+    "candidate_07": {
+      "status": "EARLIER_REJECTED_DRAFTING_AND_REVIEW_EVIDENCE",
+      "zip_sha256": "1c7a2b39793a46475c4d5e8c951fa79ba9ef92568777e91d3235c89a038ed715"
+    },
+    "candidate_08": {
+      "status": "EARLIER_REJECTED_DRAFTING_AND_REVIEW_EVIDENCE",
+      "zip_sha256": "6217815e0d5124215a67eae2db30537e3629d0b7a7591899df69219bad1d66e4"
+    },
+    "candidate_09": {
+      "status": "EARLIER_NON_CONTROLLING_HISTORICAL_DRAFTING_OR_REVIEW_EVIDENCE",
+      "zip_sha256": "106defc5d274a0dc01a2b644eee700e43f3812c8ef143171e11fd7acbfe6accd"
+    },
+    "candidate_10": {
+      "status": "DIRECT_NON_AUTHORITATIVE_DRAFTING_PREDECESSOR_AND_REVIEW_EVIDENCE",
+      "zip_sha256": "d5aa07180aae9685b21499d50e944ba5962379c77aa9cd5661ba7bde3dfb8979"
+    },
+    "candidate_11": {
+      "control_condition": "becomes controlling only after Sentinel acceptance and later canonical installation",
+      "status": "DRAFT_REVIEW_CANDIDATE_NOT_CONTROLLING"
+    },
+    "candidates_01_through_04": {
+      "status": "CLOSED_REJECTED_HISTORICAL_REVIEW_EVIDENCE_ONLY"
+    },
+    "controlling_accepted_specification": {
+      "archive_sha256": "4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0",
+      "id": "REV23_FINDING4_I0A_SCOPE_REVISION_09",
+      "status": "CONTROLLING_ACCEPTED_CANONICAL_SPECIFICATION"
+    },
+    "requirement_retention_rule": "Every retained requirement is restated in Candidate 11 and justified against accepted Revision 09 plus Sentinel correction decisions; no unnamed rejected-candidate requirement controls."
+  },
+  "authorization_boundary": "Planning/specification only. No role row, source path, test path, or twelve-file baseline member is authorized for editing.",
+  "base_contract": {
+    "path": "I0A_ROLE_CONTENT_SCHEMA_DISPOSITION_MATRIX.json",
+    "scope": "REV23_FINDING4_I0A_SCOPE_REVISION_09",
+    "sha256": "d8c524dc95efba13b6ea81ac32396690cc665a3d3e3e57e1adcbda5206b3cd8a"
+  },
+  "candidate_id": "REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11",
+  "canonical_checkpoint_state": {
+    "acceptance_state": "NOT_ACCEPTED",
+    "authorization_effect": "NONE",
+    "canonical_installation_state": "INSTALLED_AND_SENTINEL_VERIFIED",
+    "canonical_repository_head": "d3bd79f8fdb81c95340761aac27b3e3580d3e23d",
+    "checkpoint_id": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4",
+    "checkpoint_payload_sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da",
+    "checkpoint_payload_size_bytes": 112338,
+    "checkpoint_preservation_installation_commit": "58acbac493840c45d84c6b7e33c583d722f4d559",
+    "conformance_state": "BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW",
+    "controlling_implementation": false,
+    "historical_revision09_authorized_start_sha256": "8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07",
+    "no_rollback_or_promotion_instruction": true,
+    "preservation_state": "CANONICALLY_PRESERVED",
+    "promotion_instruction": "NONE",
+    "revision10_implementation_starting_point": "NOT_AUTHORIZED_AND_NOT_YET_SELECTED",
+    "rollback_instruction": "NONE",
+    "sentinel_verification_record_commit": "d3bd79f8fdb81c95340761aac27b3e3580d3e23d"
+  },
+  "canonical_repository_commit": "d3bd79f8fdb81c95340761aac27b3e3580d3e23d",
+  "closed_top_level_fields": [
+    "additional_properties",
+    "affected_frozen_grammar_ids",
+    "affected_role_rows",
+    "amendment_mode",
+    "authority_chain",
+    "authorization_boundary",
+    "base_contract",
+    "candidate_id",
+    "canonical_checkpoint_state",
+    "canonical_repository_commit",
+    "closed_top_level_fields",
+    "decision_role_split",
+    "descriptor_family_binding_algorithm",
+    "drafting_predecessor_evidence",
+    "family_neutral_non_partition_content_schemas",
+    "family_path_mapping",
+    "family_root_placeholder_contract",
+    "global_path_fault_precedence",
+    "implementation_gate_ownership_contract",
+    "partition_content_schema_family_binding",
+    "preserved_exact_analysis_fixture_identities",
+    "reuse_immutable_source_contract",
+    "schema_binding_selection_key",
+    "schema_id",
+    "schema_version",
+    "semantic_family_domain",
+    "status",
+    "t177_canonical_binding_proof"
+  ],
+  "decision_role_split": {
+    "draft_and_revision_owner": "Professor",
+    "implementation_and_execution_authorization_owner": "Gustavo",
+    "implementation_owner_after_acceptance_and_authorization": "Claude",
+    "professor_self_approval_permitted": false,
+    "specification_review_and_decision_owner": "Sentinel"
+  },
+  "descriptor_family_binding_algorithm": [
+    "validate UnitContext family domain",
+    "resolve exact frozen role/unit/mode/content-schema binding",
+    "match and decompose canonical_target_path with the binding target grammar",
+    "match and decompose durable_source_path with PREPARED_OBJECT_BIN for non-reuse or the same target grammar for reuse",
+    "for partition-specific schemas require selected schema family equals UnitContext family",
+    "for every descriptor require canonical-target parsed family equals UnitContext family",
+    "when claim bytes are present require claim audit_family equals UnitContext family and every canonical-target parsed family",
+    "return ERR_SEMANTIC_FAMILY_BINDING_MISMATCH on the first lowest descriptor ordinal mismatch"
+  ],
+  "drafting_predecessor_evidence": {
+    "candidate_10_zip_sha256": "d5aa07180aae9685b21499d50e944ba5962379c77aa9cd5661ba7bde3dfb8979",
+    "earlier_candidates_status": "Candidate 09 and earlier candidates are non-controlling historical drafting or review evidence",
+    "status": "NON_AUTHORITATIVE"
+  },
+  "family_neutral_non_partition_content_schemas": {
+    "rule": "these schemas never choose or override family; target-path parsed family is bound to UnitContext and, when claim bytes are present, claim audit_family",
+    "schema_ids": [
+      "json:audit_snapshot_manifest",
+      "json:sha256_sidecar",
+      "table:snapshot_partition",
+      "json:snapshot_publication_commit_v23",
+      "json:snapshot_current_view_commit_v23"
+    ],
+    "wrong_family_result": "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH"
+  },
+  "family_path_mapping": {
+    "analysis_compatibility": {
+      "path_components": [
+        "analysis",
+        "compatibility"
+      ],
+      "path_lexeme": "analysis/compatibility"
+    },
+    "analysis_strict": {
+      "path_components": [
+        "strict"
+      ],
+      "path_lexeme": "strict"
+    },
+    "capture": {
+      "path_components": [
+        "capture"
+      ],
+      "path_lexeme": "capture"
+    }
+  },
+  "family_root_placeholder_contract": {
+    "forward_mapping_required": true,
+    "kind": "SEMANTIC_TO_PATH_COMPONENT_EXPANSION",
+    "literal_single_segment_enum": false,
+    "path_lexemes_in_semantic_fields_forbidden": [
+      "analysis/compatibility",
+      "strict"
+    ],
+    "reverse_mapping_required": true,
+    "reverse_mapping_unique": true,
+    "semantic_aliases_in_paths_forbidden": [
+      "analysis_compatibility",
+      "analysis_strict"
+    ]
+  },
+  "global_path_fault_precedence": {
+    "fields": [
+      "canonical_target_path",
+      "durable_source_path"
+    ],
+    "result_order": [
+      "ERR_PATH_LEXICAL_INVALID",
+      "ERR_PATH_GRAMMAR_MISMATCH"
+    ],
+    "reuse_equality_follows_path_collection": true,
+    "role_disposition_precedes_path_collection": true,
+    "set_scope": "all descriptors; lexical anywhere outranks grammar anywhere"
+  },
+  "implementation_gate_ownership_contract": {
+    "accepted_base_contract_path": "I0A_PUBLIC_API_CONTRACT.json",
+    "accepted_base_sha256": "935289dbf48a004f334773895da80537b71f4e50b09a4ce7a2e77a01e0ef16cc",
+    "binding_query_invalid_through_wrapper": "STATICALLY_UNREACHABLE_BY_TYPED_PROJECTION",
+    "binding_query_projection_symbol": "_project_selected_binding_query",
+    "partial_assurance_rule": "wrapper stop returns established_assurances=(); resolver A1 assurances do not survive the non-success wrapper return",
+    "resolver_closed_result_or_exception_domain": [
+      "I0A_BINDING_RESOLVED_A1",
+      "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+      "ERR_BINDING_QUERY_INVALID",
+      "ERR_PATH_LEXICAL_INVALID",
+      "ERR_PATH_GRAMMAR_MISMATCH",
+      "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+      "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+    ],
+    "resolver_forbidden_result": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+    "resolver_name": "resolve_selected_schema_binding",
+    "resolver_ordered_error_precedence": [
+      "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+      "ERR_BINDING_QUERY_INVALID",
+      "ERR_PATH_LEXICAL_INVALID",
+      "ERR_PATH_GRAMMAR_MISMATCH",
+      "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+      "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+    ],
+    "resolver_output_type": "BindingResolutionResult",
+    "resolver_signature": "resolve_selected_schema_binding(query: BindingQuery, accepted_registry_bytes: bytes) -> BindingResolutionResult",
+    "resolver_success": "I0A_BINDING_RESOLVED_A1",
+    "wrapper_owner": "validate_selected_json_payload",
+    "wrapper_result": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+    "wrapper_rule": "after resolver returns I0A_BINDING_RESOLVED_A1, test selected binding content_schema_id against the closed implemented I0A selected-schema set; outside-set returns the stop with empty assurances",
+    "wrapper_stage_id": "selected_schema_implementation_gate"
+  },
+  "partition_content_schema_family_binding": {
+    "table:canonical_compatibility_analysis": "analysis_compatibility",
+    "table:capture_events": "capture",
+    "table:strict_audit_analysis": "analysis_strict"
+  },
+  "preserved_exact_analysis_fixture_identities": {
+    "analysis_compatibility": {
+      "claim_scope_file_sha256": "283b2def31f9f6d3d55d78cdbe571d808101660b95d984970d22f09ab7f88a16",
+      "claim_scope_sha256": "b5bb405b0068543417bf2ed279c638c97fdaf3dca9ac69cab7f67413362b18f8",
+      "claim_semantic_file_sha256": "8e786e8c1c01dd72e921dee484cd6836a2dc5a6197ff9097814d39f7cf695305",
+      "claim_semantic_sha256": "fe448923f0e301029caf0d5e9120c6d71b9c1b062b5c97105f478f9baec80853",
+      "expected_terminal_result": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "expected_terminal_result_owner": "validate_selected_json_payload wrapper after I0A_BINDING_RESOLVED_A1",
+      "objects_logical_sha256": "f9bd7d63de0361008ec31beb4e9971cecc15efdeb9db9658a64a4695a325a03f",
+      "partition_content_schema_id": "table:canonical_compatibility_analysis",
+      "partition_entries_semantic_logical_sha256": "49ebb27cc39bf81040bcbf2ce20287c5d39ef84b7a3428e1f872fb5d97465f16",
+      "partition_id": "part_a0ad13b70c443bd1833e52b0faa26901b7c4108a5cb2a26b76af9e21c10011c3",
+      "partition_logical_sha256": "150c1a6aa3b2fbda896340cca32d8a614789a13bb395625cb6cd43b539c96870",
+      "partition_path": "artifacts/local_curl_per_side/runs/run_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/analysis/compatibility/partitions/part_a0ad13b70c443bd1833e52b0faa26901b7c4108a5cb2a26b76af9e21c10011c3.parquet",
+      "preparation_plan_file_sha256": "d9ec5aad28238f177372e605bcd5cbfff58c637696fad0454d531620016c181f",
+      "prepared_unit_file_sha256": "9e3153c59fef06fd183f9f1daca427c46978bd07d299d3283f9aece30424b50a",
+      "prepared_unit_id": "prep_d9ec5aad28238f177372e605bcd5cbfff58c637696fad0454d531620016c181f",
+      "subject_family": "analysis_compatibility"
+    },
+    "analysis_strict": {
+      "claim_scope_file_sha256": "c16381cbe149fbfebd9964ab250711711f28c501bd75dde43bb44bf5c0182fa9",
+      "claim_scope_sha256": "edf7e616fa56d4b7c2f6bdf0f8fd7f685e7a4030e8b2117e85e80c5febd8998b",
+      "claim_semantic_file_sha256": "0b6f6e1bbc9bd84b257356581d1acf705499d107e6a382d90cf821b912974840",
+      "claim_semantic_sha256": "b2b285cacfd42a64f286f3321c9d0970f3663a191d8b9addb7a4c277db6f79c5",
+      "expected_terminal_result": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+      "expected_terminal_result_owner": "validate_selected_json_payload wrapper after I0A_BINDING_RESOLVED_A1",
+      "objects_logical_sha256": "470f9856d3defd9daf12c36f65c3d89f705611ba6d2448122f8289b15a31b580",
+      "partition_content_schema_id": "table:strict_audit_analysis",
+      "partition_entries_semantic_logical_sha256": "3a3864b07ad5c7fba6d226a7d20029fc51d05a5101ad50d586494e5df3893184",
+      "partition_id": "part_e4f80c2cbb94e7e47808f1fd5a51a25d479f563569efd45d55b0a5c06048d256",
+      "partition_logical_sha256": "88a24ec1cc18605a02b6437cd63eebc551a3c69b1bbbba9c9d37e030fcf351b2",
+      "partition_path": "artifacts/local_curl_per_side/runs/run_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/strict/partitions/part_e4f80c2cbb94e7e47808f1fd5a51a25d479f563569efd45d55b0a5c06048d256.parquet",
+      "preparation_plan_file_sha256": "f89eb9dd02bf2b8cc8fd8d941adadf006d17c1f6b710e2b853a3d442313e471a",
+      "prepared_unit_file_sha256": "a41fca7d35939732458de1b82d01ad9c01ee93a032566fc285ba0f702a37fd2e",
+      "prepared_unit_id": "prep_f89eb9dd02bf2b8cc8fd8d941adadf006d17c1f6b710e2b853a3d442313e471a",
+      "subject_family": "analysis_strict"
+    }
+  },
+  "reuse_immutable_source_contract": {
+    "canonical_target_grammar": "TARGET_PARTITION_PAYLOAD_00",
+    "durable_source_grammar": "TARGET_PARTITION_PAYLOAD_00",
+    "durable_source_path_rule": "exactly byte-equal to canonical_target_path",
+    "equality_precedes_family_and_run_binding": true,
+    "permitted_content_schema_ids": [
+      "table:capture_events",
+      "table:canonical_compatibility_analysis",
+      "table:strict_audit_analysis"
+    ],
+    "permitted_role": "PARTITION_PAYLOAD",
+    "permitted_unit_kind": "SNAPSHOT_PUBLICATION",
+    "precedence": "after both path lexical/grammar validations; before semantic-family and run binding",
+    "publication_mode": "REUSE_IMMUTABLE_SOURCE",
+    "unequal_grammar_valid_result": "ERR_REUSE_SOURCE_TARGET_MISMATCH"
+  },
+  "schema_binding_selection_key": {
+    "actual_logical_sha256_nullability_is_selection_input": false,
+    "actual_logical_sha256_nullability_used_for_selection": false,
+    "exact_match_count": 1,
+    "expected_nullability_handoff": "selected SchemaBinding.logical_sha256_nullability is evaluated after path, reuse, family, and run checks",
+    "fields": [
+      "descriptor.object_role",
+      "unit_context.unit_kind",
+      "descriptor.publication_mode",
+      "descriptor.content_schema_id"
+    ],
+    "type": "tuple[PreparedObjectRole, PreparedUnitKind, PublicationMode, str]",
+    "zero_or_multiple_result": "ERR_ROLE_DISPOSITION_INVALID"
+  },
+  "schema_id": "i0a:role_content_schema_disposition_matrix.revision_10_candidate_11",
+  "schema_version": 10,
+  "semantic_family_domain": [
+    "capture",
+    "analysis_compatibility",
+    "analysis_strict"
+  ],
+  "status": "AMENDMENT_CANDIDATE_NOT_ACCEPTED",
+  "t177_canonical_binding_proof": {
+    "binding_id": "BINDING_PARTITION_PAYLOAD_SNAPSHOT_PUBLICATION_REUSE_IMMUTABLE_SOURCE_30CD326A81AD",
+    "canonical_target_grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+    "claim_run_id": "run_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "content_schema_id": "table:capture_events",
+    "durable_source_grammar_id": "TARGET_PARTITION_PAYLOAD_00",
+    "fixture_name": "descriptor_set_partition_reuse_equal_paths_other_run",
+    "fixture_sha256": "13d0ca9684f1ec9481987158f617b5cfff80458dd588fceca37d6e21f2ff5d65",
+    "intended_result": "ERR_RUN_ID_BINDING_MISMATCH",
+    "parsed_durable_run_id": "run_bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "parsed_semantic_family": "capture",
+    "parsed_target_run_id": "run_bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "preconditions_proven": [
+      "frozen production binding exists for PARTITION_PAYLOAD/SNAPSHOT_PUBLICATION/REUSE_IMMUTABLE_SOURCE/table:capture_events",
+      "role disposition passes",
+      "canonical target grammar passes",
+      "durable source grammar passes",
+      "durable_source_path equals canonical_target_path byte-for-byte",
+      "parsed target and durable semantic family are capture and equal UnitContext/claim family",
+      "parsed target and durable run IDs equal each other but differ from claim run_id"
+    ],
+    "publication_mode": "REUSE_IMMUTABLE_SOURCE",
+    "reuse_equality": true,
+    "role": "PARTITION_PAYLOAD",
+    "unit_kind": "SNAPSHOT_PUBLICATION"
+  }
+}

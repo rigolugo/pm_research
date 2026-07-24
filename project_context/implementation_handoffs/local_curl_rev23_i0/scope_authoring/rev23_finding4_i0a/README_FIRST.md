@@ -1,73 +1,47 @@
 # README FIRST — Accepted REV23 Finding 4 I0A Scope
 
-## Controlling Revision 09 status
+## Controlling Revision 10 status
 
-Revision 09 is Sentinel-accepted as the narrow controlling scope correction, pending canonical installation and Sentinel verification of the resulting manual commit.
+Revision 10 Candidate 11 is Sentinel-accepted as `REV23_FINDING4_I0A_SCOPE_REVISION_10`, pending manual canonical installation and Sentinel verification of the resulting commit.
 
 - decision: `APPROVE`
-- Sentinel acceptance date: `2026-07-20`
-- controlling scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
-- accepted base: `REV23_FINDING4_I0A_SCOPE_REVISION_08`
-- review anchor: `88362521fe9ef247708e4d7b5f90753784b8b88e`
-- accepted Revision 09 archive SHA-256: `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
-- accepted member count: `14`
-- installation base: `1e963bb6e8387aff071d697a416fa558956e571e`
-- immutable proposed directory: `accepted_scope_revision_09/`
+- Sentinel acceptance date: `2026-07-24`
+- accepted base: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
+- accepted source archive: `REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11.zip`
+- accepted archive SHA-256: `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`
+- accepted member count: `15`
+- canonical installation base: `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`
+- proposed immutable directory: `accepted_scope_revision_10/`
 
-Revision 09 supersedes Revision 08 only for the private descriptor-set invariant contract. Revision 08 remains immutable historical accepted evidence.
+The inner Candidate 11 files remain exact submitted bytes and therefore retain `NOT_ACCEPTED` wording. `SENTINEL_SCOPE_ACCEPTANCE_DECISION.md` and `ACCEPTED_SCOPE_MANIFEST.json` supply controlling acceptance. Candidate 11's non-authorization statements remain in force.
+
+Revision 10 supersedes Revision 09 for the complete accepted Finding 4 I0A specification package. Revision 09 and Revision 08 remain immutable historical accepted evidence.
 
 ## Controlling read order
 
 1. `SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
 2. `ACCEPTED_SCOPE_MANIFEST.json`
-3. `accepted_scope_revision_09/README_FIRST.md`
-4. the remaining Revision 09 files in their own read order
-5. `SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md`
-6. `ACCEPTED_SCOPE_MANIFEST_REVISION_08.json`
-7. `accepted_scope_revision_08/README_FIRST.md`
-8. the remaining historical Revision 08 files in their own read order
-9. `SCOPE_SHA256SUMS.txt`
+3. `accepted_scope_revision_10/README_FIRST.md`
+4. the remaining Revision 10 files in Candidate 11's own read order
+5. `SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_09.md`
+6. `ACCEPTED_SCOPE_MANIFEST_REVISION_09.json`
+7. `accepted_scope_revision_09/README_FIRST.md`
+8. the remaining historical Revision 09 files in their own read order
+9. `SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md`
+10. `ACCEPTED_SCOPE_MANIFEST_REVISION_08.json`
+11. `accepted_scope_revision_08/README_FIRST.md`
+12. the remaining historical Revision 08 files in their own read order
+13. `SCOPE_SHA256SUMS.txt`
 
-## Revision 09 implementation boundary
+## Revision 10 implementation boundary
 
-Scope acceptance and canonical installation do not authorize implementation. The Revision 08 implementation authorization does not automatically carry forward. No active Revision 09 Claude prompt, source synchronization, source/test authoring, tests, project execution, local-data access, network/vendor activity, empirical artifact, agent Git write, P1/P2/P3, scoring, probe execution, or gate change is authorized.
+Scope acceptance and installation do not authorize implementation. No Revision 10 implementation starting SHA is selected. The historical Revision 09 R1 source-resume authorization does not carry forward and must not be reused.
 
----
+The canonically preserved checkpoint remains unaccepted evidence only:
 
-## Historical Revision 08 scope README — preserved verbatim
+- checkpoint: `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`
+- payload SHA-256: `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`
+- acceptance: `NOT_ACCEPTED`
+- authorization effect: `NONE`
 
-# README FIRST — Accepted REV23 Finding 4 I0A Scope
-
-## Status
-
-Revision 08 is the accepted bounded implementation-authoring scope.
-
-- decision: `APPROVE`
-- canonical review anchor: `88362521fe9ef247708e4d7b5f90753784b8b88e`
-- accepted source archive: `REV23_FINDING4_I0A_SCOPE_REVISION_08.zip`
-- accepted source archive SHA-256: `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
-- accepted package directory: `accepted_scope_revision_08/`
-
-The commit containing this canonical update must be returned to Sentinel for
-verification before any implementation authorization may be issued.
-
-## Read order
-
-1. `SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
-2. `ACCEPTED_SCOPE_MANIFEST.json`
-3. `accepted_scope_revision_08/README_FIRST.md`
-4. the remaining files in the accepted scope's own read order
-5. `SCOPE_SHA256SUMS.txt`
-
-## Boundary
-
-Scope acceptance is not implementation authorization.
-
-No source synchronization, implementation-source authoring, test-source
-authoring, test execution, project import or execution, local-data read,
-network/curl, replay, empirical artifact generation, Git write by an agent,
-P1/P2/P3, scoring, probe execution, or gate change is authorized.
-
-No Revision 09 should be opened for optional polish. A later amendment requires
-a concrete material contradiction that cannot be resolved from the accepted
-Revision 08 contract.
+No source synchronization, source/test authoring, rollback, promotion, tests, project execution, data/network activity, agent Git write, R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.

@@ -6,22 +6,13 @@
 
 ## Current objective
 
-### Controlling Revision 09 R1 objective
+### Controlling Revision 10 installation objective
 
-Stay Polymarket-native and preserve the accepted research-only guardrails.
-Revision 09 is canonically installed and verified at
-`c4e8b1011c51272042decac4bc89e762d767a72a`. Authorization ID `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01` is active at source-gated commit
-`1e1afb29791f42c286b45d3b576f74926add8dce` for one source-only R1 checkpoint in
-`pm_research/local_curl_per_side/prepared_evidence.py`, from required starting
-SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`.
+Sentinel accepted `REV23_FINDING4_I0A_SCOPE_REVISION_10` from Candidate 11, archive SHA-256 `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`, on `2026-07-24`.
 
-The exact latest known implementation bytes are canonically preserved in
-checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` at SHA-256 `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da` and size `112338` bytes.
-Sentinel verified the checkpoint installation commit
-`58acbac493840c45d84c6b7e33c583d722f4d559`. The immediate objective is formal review of Candidate 09 and
-the remaining contract/provenance blockers. No rollback, additional Claude edit,
-test-source authoring, test execution, R2, or other Revision 09 implementation
-activity is authorized.
+The immediate objective is documentation-only canonical installation against base `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`, followed by Sentinel verification of the manual commit.
+
+No Revision 10 implementation start is selected or authorized. The preserved checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` / `fcf406c4...` remains canonically preserved, `NOT_ACCEPTED`, and authorization effect `NONE`. No rollback, additional source edit, test-source authoring, test execution, R2, or downstream activity is authorized.
 
 ### Historical Revision 08 objective at installation base
 
@@ -163,7 +154,7 @@ The installed tree includes:
 - preflight evidence;
 - replacements and transformation evidence;
 - authorization supersession record;
-- active bounded Revision 09 R1 Claude handoff.
+- inactive Revision 10 specification-installation handoff; no implementation authorization.
 
 No `pm_research/`, `tests/`, dependency, CLI/runtime, research-data, or empirical
 path changed during documentation installation.
@@ -172,24 +163,28 @@ path changed during documentation installation.
 
 ## Revision 23 Finding 4 I0A scope state
 
-### Controlling Revision 09 scope
+### Controlling Revision 10 scope
 
-Revision 09 is canonically installed and Sentinel-verified at
-`c4e8b1011c51272042decac4bc89e762d767a72a` as the narrow controlling correction.
+- decision: `APPROVE`
+- scope: `REV23_FINDING4_I0A_SCOPE_REVISION_10`
+- accepted source: Candidate 11
+- archive SHA-256: `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`
+- member count: `15`
+- acceptance date: `2026-07-24`
+- canonical installation base: `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`
+- installation state: `PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION`
+- implementation authorization: `NONE`
+- implementation starting SHA: `NOT_AUTHORIZED_AND_NOT_YET_SELECTED`
 
-- Sentinel acceptance date: `2026-07-20`
-- controlling scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
-- accepted archive SHA-256: `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
-- accepted member count: `14`
-- canonical installation base: `1e963bb6e8387aff071d697a416fa558956e571e`
-- verified canonical installation commit: `c4e8b1011c51272042decac4bc89e762d767a72a`
-- immutable installed directory: `accepted_scope_revision_09/`
-- Revision 08 directory: immutable historical accepted evidence
-- supersession boundary: private descriptor-set invariant contract only
-- R1 authorization `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`: **ACTIVE — SENTINEL VERIFIED**
-- source-gated commit: `1e1afb29791f42c286b45d3b576f74926add8dce`
-- sole writable path: `pm_research/local_curl_per_side/prepared_evidence.py`
-- Revision 09 test-source authoring and test execution: **UNAUTHORIZED**
+Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification package. Revision 09 and Revision 08 remain immutable historical accepted evidence.
+
+### Historical Revision 09 scope state
+
+- accepted scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
+- archive SHA-256: `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
+- verified installation commit: `c4e8b1011c51272042decac4bc89e762d767a72a`
+- historical R1 source-gated commit: `1e1afb29791f42c286b45d3b576f74926add8dce`
+- authorization carries forward: `false`
 
 ### Historical Revision 08 scope state at installation base
 
@@ -218,22 +213,13 @@ contradiction that cannot be resolved from Revision 08.
 
 ## Authorization state
 
-### Controlling Revision 09 authorization state
+### Controlling Revision 10 authorization state
 
-Gustavo explicitly authorized, Sentinel accepted, and Sentinel activated
-authorization ID `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01` for one R1 source resume at source-gated commit
-`1e1afb29791f42c286b45d3b576f74926add8dce`. Only
-`pm_research/local_curl_per_side/prepared_evidence.py` may be edited, and only
-from required starting SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`. The other eleven previously
-authored source/test paths are read-only.
+`STOP_IMPLEMENTATION_NOT_AUTHORIZED`
 
-Test-source authoring, test execution, project imports/execution, all other
-source edits, implementation ZIP reconstruction, research-data access, empirical
-work, general network activity, Git history/remote writes by Claude, R2,
-P1/P2/P3, scoring, probe execution, and gate changes remain unauthorized.
-Revision 08 authorization remains historical evidence and does not expand this
-R1 stage.
+No Revision 10 implementation authorization, source gate, writable path set, test-source stage, test execution, project execution, data/network activity, or Git write is active.
 
+The historical Revision 09 R1 authorization and Revision 08 implementation authorization do not carry forward. The `fcf406c4...` checkpoint is evidence only and must not be restored, overwritten, promoted, or used as a continuation start without a later explicit decision.
 
 ### Preserved unreviewed R1 implementation checkpoint
 
@@ -250,14 +236,16 @@ Exact recovered payload:
 - preservation state: `CANONICALLY_PRESERVED`
 - canonical installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
 - verified installation commit: `58acbac493840c45d84c6b7e33c583d722f4d559`
-- conformance state: `BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW`
+- conformance state: `BLOCKED_PENDING_REVISION10_INSTALLATION_VERIFICATION_AND_PROVENANCE_REVIEW`
 - acceptance state: `NOT_ACCEPTED`
 - authorization effect: `NONE`
 
 The checkpoint preserves exact bytes against chat/session loss. It does not
-promote those bytes to the executable source tree. T107/T153 reachability,
-Candidate 09, cumulative activity lineage, and the current twelve-path worktree
-inventory remain separate unresolved review matters.
+promote those bytes to the executable source tree. Revision 10 resolves the
+T107/T153 specification reachability contradictions. Remaining checkpoint
+blockers are incomplete multi-round activity lineage, absence of an independently
+captured current twelve-path worktree inventory, and implementation conformance
+review against the verified canonical Revision 10 package.
 
 ### Historical Revision 08 authorization state at installation base
 
@@ -282,7 +270,7 @@ Still unauthorized:
 - dependencies, CLI/config, generated code, additional paths, caches, or bytecode;
 - Git commit, branch/ref, push, PR, merge, or other history/remote write.
 
-The active authorization ID is `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`.
+The historical authorization ID is `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`; it is not active under Revision 10.
 
 ---
 
@@ -298,14 +286,11 @@ The active authorization ID is `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`.
 
 ## Next possible step
 
-### Controlling Revision 09 next step
+### Controlling Revision 10 next step
 
-Review Candidate 09 separately against the current canonical repository and the
-preserved checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`. Determine whether the corrected specification
-resolves the T107/T153 reachability blockers and whether additional provenance
-evidence is required before implementation conformance can be decided. No
-promotion, further Claude edit, rollback, R2, test-source authoring, or test
-execution follows automatically.
+Manually install and commit the documentation-only Revision 10 acceptance package against `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`, then return the full commit SHA to Sentinel. Sentinel verifies exact paths, member bytes, checksums, historical-scope preservation, checkpoint payload immutability, and absence of source/test changes.
+
+No implementation, test-source authoring, test execution, rollback, promotion, R2, or downstream activity follows automatically.
 
 ### Historical Revision 08 next step at installation base
 

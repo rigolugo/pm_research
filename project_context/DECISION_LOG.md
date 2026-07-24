@@ -379,6 +379,25 @@ effect `NONE`.
 
 ---
 
+### Finding 4 I0A Revision 10 scope acceptance
+
+On `2026-07-24`, Sentinel accepted Candidate 11 as `REV23_FINDING4_I0A_SCOPE_REVISION_10`.
+
+- accepted archive: `REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11.zip`
+- accepted archive SHA-256: `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`
+- accepted member count: `15`
+- canonical review/install base: `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`
+- controlling accepted base: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
+- installation state: pending Gustavo manual commit and Sentinel verification
+
+Revision 10 resolves the T107 and T153 reachability contradictions, closes public result inventories, materializes T166–T230 and the 169-ID fixture namespace, closes all 23 caller–callee edges, and makes the twelve-path future-impact matrix identical across all eight declared representations.
+
+Revision 10 selects no implementation starting SHA. The historical Revision 09 start `8b8e9320...` is not current. The preserved `fcf406c4...` checkpoint remains `NOT_ACCEPTED`, non-controlling, and authorization effect `NONE`. No rollback, restore, overwrite, promotion, implementation, tests, execution, data/network activity, Git write, R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.
+
+Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification package. Revision 09 and Revision 08 remain immutable historical accepted evidence. Their implementation authorizations do not carry forward.
+
+---
+
 ## DO NOT REOPEN unless explicitly requested with new evidence
 
 - Rank 1A recalibration.
@@ -395,8 +414,9 @@ effect `NONE`.
 - Finding 4 approved source stack and accepted materialization.
 - The superseded Amendment 03 I0 implementation authorization.
 - Revision 08 I0A scope, absent a concrete material contract contradiction.
-- Revision 09 private descriptor-set invariant correction, absent new authoritative evidence.
-- Revision 09 R1 one-file source-resume boundary, absent a later Gustavo authorization and Sentinel decision.
+- Revision 09 private descriptor-set invariant correction, now historical under accepted Revision 10.
+- Revision 09 R1 one-file source-resume boundary, now historical and non-reusable under Revision 10.
+- Revision 10 T107/T153 reachability, result-domain closure, T166–T230, fixture namespace, call-edge closure, and twelve-path matrix, absent new authoritative evidence.
 
 ---
 

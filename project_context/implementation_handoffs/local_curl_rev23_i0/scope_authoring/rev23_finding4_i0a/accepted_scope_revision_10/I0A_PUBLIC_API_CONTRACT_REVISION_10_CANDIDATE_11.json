@@ -1,0 +1,4303 @@
+{
+  "accepted_physical_payload_helper_contract": {
+    "accepted_base_contract_path": "I0A_PUBLIC_API_CONTRACT.json",
+    "accepted_base_sha256": "935289dbf48a004f334773895da80537b71f4e50b09a4ce7a2e77a01e0ef16cc",
+    "amendment_status": "PRESERVED_EXACT_NO_SIGNATURE_OR_DOMAIN_AMENDMENT",
+    "closed_result_or_exception_domain": [
+      "I0A_VALID_A3_EXACT",
+      "ERR_PHYSICAL_EXPECTATION_INVALID",
+      "ERR_PHYSICAL_SIZE_MISMATCH",
+      "ERR_PHYSICAL_SHA256_MISMATCH"
+    ],
+    "name": "reconcile_physical_payload",
+    "ordered_error_precedence": [
+      "ERR_PHYSICAL_EXPECTATION_INVALID",
+      "ERR_PHYSICAL_SIZE_MISMATCH",
+      "ERR_PHYSICAL_SHA256_MISMATCH"
+    ],
+    "output_type": "PhysicalPayloadResult",
+    "result_payload_contract": {
+      "ERR_PHYSICAL_EXPECTATION_INVALID": "observed_size_bytes=null; observed_sha256=null; established_assurances=()",
+      "ERR_PHYSICAL_SHA256_MISMATCH": "observed_size_bytes and observed_sha256 are non-null actual observations; established_assurances=()",
+      "ERR_PHYSICAL_SIZE_MISMATCH": "observed_size_bytes and observed_sha256 are non-null actual observations; established_assurances=()",
+      "I0A_VALID_A3_EXACT": "observed_size_bytes and observed_sha256 are non-null actual observations; established_assurances=(A3_EXACT_LENGTH_AND_SHA256_RECONCILED,)"
+    },
+    "signature": "reconcile_physical_payload(expected_file_size_bytes: int, expected_file_sha256: str, payload_bytes: bytes) -> PhysicalPayloadResult"
+  },
+  "accepted_schema_binding_contract": {
+    "accepted_base_sha256": "935289dbf48a004f334773895da80537b71f4e50b09a4ce7a2e77a01e0ef16cc",
+    "excluded_from_selection": [
+      "canonical_target_path",
+      "descriptor.logical_sha256 actual nullability",
+      "descriptor.sidecar_of_object_ordinal",
+      "durable_source_path",
+      "file_sha256",
+      "file_size_bytes"
+    ],
+    "frozen_dataclass_fields": [
+      "binding_id:str",
+      "role:PreparedObjectRole",
+      "unit_kind:PreparedUnitKind",
+      "publication_mode:PublicationMode",
+      "target_grammar_id:FrozenPathGrammarId",
+      "content_schema_id:str",
+      "logical_sha256_nullability:str",
+      "sidecar_rule:str"
+    ],
+    "logical_nullability_handoff": "descriptor.logical_sha256 actual nullability is never a binding-selection input; selected_binding.logical_sha256_nullability is passed to _validate_prepared_object_descriptor_logical_hash_nullability only after path, reuse, family, and run validation",
+    "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+    "replacement_rule": "Every Candidate 02 FrozenProductionBinding reference is superseded by this accepted SchemaBinding type.",
+    "selection_algorithm": "construct exactly the four-field key above and require exactly one accepted SchemaBinding row with typed equality",
+    "selection_key_fields": [
+      "descriptor.object_role",
+      "unit_context.unit_kind",
+      "descriptor.publication_mode",
+      "descriptor.content_schema_id"
+    ],
+    "selection_key_type": "tuple[PreparedObjectRole, PreparedUnitKind, PublicationMode, str]",
+    "type_name": "SchemaBinding",
+    "zero_or_multiple_match_result": "ERR_ROLE_DISPOSITION_INVALID"
+  },
+  "additional_properties": false,
+  "amendment_mode": "NAMED_MERGE_OVER_ACCEPTED_REVISION_09",
+  "authority_chain": {
+    "candidate_05": {
+      "status": "EARLIER_NON_AUTHORITATIVE_DRAFTING_EVIDENCE",
+      "zip_sha256": "e4cfdbd8a152c3d771ee35216415c37e9d01c108e410694497a8b2b11ea21613"
+    },
+    "candidate_06": {
+      "status": "EARLIER_NON_AUTHORITATIVE_DRAFTING_AND_REVIEW_EVIDENCE",
+      "zip_sha256": "9e421457f37645a9b9148ffb64bdf2b82ab630d34bb70c70ae184558a5d40bbb"
+    },
+    "candidate_07": {
+      "status": "EARLIER_REJECTED_DRAFTING_AND_REVIEW_EVIDENCE",
+      "zip_sha256": "1c7a2b39793a46475c4d5e8c951fa79ba9ef92568777e91d3235c89a038ed715"
+    },
+    "candidate_08": {
+      "status": "EARLIER_REJECTED_DRAFTING_AND_REVIEW_EVIDENCE",
+      "zip_sha256": "6217815e0d5124215a67eae2db30537e3629d0b7a7591899df69219bad1d66e4"
+    },
+    "candidate_09": {
+      "status": "EARLIER_NON_CONTROLLING_HISTORICAL_DRAFTING_OR_REVIEW_EVIDENCE",
+      "zip_sha256": "106defc5d274a0dc01a2b644eee700e43f3812c8ef143171e11fd7acbfe6accd"
+    },
+    "candidate_10": {
+      "status": "DIRECT_NON_AUTHORITATIVE_DRAFTING_PREDECESSOR_AND_REVIEW_EVIDENCE",
+      "zip_sha256": "d5aa07180aae9685b21499d50e944ba5962379c77aa9cd5661ba7bde3dfb8979"
+    },
+    "candidate_11": {
+      "control_condition": "becomes controlling only after Sentinel acceptance and later canonical installation",
+      "status": "DRAFT_REVIEW_CANDIDATE_NOT_CONTROLLING"
+    },
+    "candidates_01_through_04": {
+      "status": "CLOSED_REJECTED_HISTORICAL_REVIEW_EVIDENCE_ONLY"
+    },
+    "controlling_accepted_specification": {
+      "archive_sha256": "4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0",
+      "id": "REV23_FINDING4_I0A_SCOPE_REVISION_09",
+      "status": "CONTROLLING_ACCEPTED_CANONICAL_SPECIFICATION"
+    },
+    "requirement_retention_rule": "Every retained requirement is restated in Candidate 11 and justified against accepted Revision 09 plus Sentinel correction decisions; no unnamed rejected-candidate requirement controls."
+  },
+  "authorization_boundary": "SPEC ONLY. No implementation, test-source editing, execution, project imports, twelve-file baseline mutation, data access, network activity, runtime artifact, or Git write is authorized.",
+  "base_contract": {
+    "accepted_archive_sha256": "4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0",
+    "path": "I0A_PUBLIC_API_CONTRACT.json",
+    "scope": "REV23_FINDING4_I0A_SCOPE_REVISION_09",
+    "sha256": "935289dbf48a004f334773895da80537b71f4e50b09a4ce7a2e77a01e0ef16cc"
+  },
+  "caller_callee_closure_inventory": [
+    {
+      "callee": "_project_selected_binding_query",
+      "callee_closed_non_success_domain": [],
+      "caller": "validate_selected_json_payload",
+      "caller_propagated_results": [],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 0,
+        "propagated": 0,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "selected_binding_query_projection",
+      "downstream_callers_that_must_propagate": [],
+      "edge_id": "E01_PROJECT_BINDING_QUERY_TO_SELECTED_WRAPPER",
+      "edge_kind": "SUCCESS_ONLY_PRIVATE_HELPER",
+      "input_preconditions": [
+        "unit_context passed UnitContext validation",
+        "selected_descriptor was found by exact object_ordinal in a descriptor set that returned I0A_VALID_A2_SET",
+        "selected descriptor closed fields, exact four-field SchemaBinding disposition, path grammar, reuse, family, run, nullability, ordinal, cardinality, duplicate-target, and sidecar relation all passed",
+        "paired_descriptor is the exact sidecar_of_object_ordinal target when selected descriptor is a sidecar; otherwise paired_descriptor is null"
+      ],
+      "performs_translation": false,
+      "raises_public_result": false,
+      "results_unreachable_through_caller": {},
+      "success_output": "_SelectedBindingQueryProjectionResult(code=PRIVATE_SELECTED_BINDING_QUERY_PROJECTION_VALID, query=non-null BindingQuery)",
+      "success_output_non_null": true,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "build_accepted_registry_schema_definition_index",
+      "callee_closed_non_success_domain": [
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+      ],
+      "caller": "resolve_selected_schema_binding",
+      "caller_propagated_results": [
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 1,
+        "propagated": 1,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "accepted_registry_index",
+      "downstream_callers_that_must_propagate": [
+        "validate_selected_json_payload",
+        "validate_prepared_unit_structure",
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E02_REGISTRY_BUILDER_TO_RESOLVER",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "build_accepted_registry_schema_definition_index",
+      "callee_closed_non_success_domain": [
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+      ],
+      "caller": "validate_selected_json_payload",
+      "caller_propagated_results": [
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 1,
+        "propagated": 1,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "accepted_registry_bytes_validation",
+      "downstream_callers_that_must_propagate": [
+        "validate_prepared_unit_structure",
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E03_REGISTRY_BUILDER_TO_SELECTED_WRAPPER",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "build_accepted_registry_schema_definition_index",
+      "callee_closed_non_success_domain": [
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+      ],
+      "caller": "validate_prepared_unit_structure",
+      "caller_propagated_results": [
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 1,
+        "propagated": 1,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "accepted_registry_bytes",
+      "downstream_callers_that_must_propagate": [
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E04_REGISTRY_BUILDER_TO_UNIT",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "_match_and_decompose_normalized_relative_path",
+      "callee_closed_non_success_domain": [
+        "PRIVATE_PATH_LEXICAL_INVALID",
+        "PRIVATE_PATH_GRAMMAR_MISMATCH"
+      ],
+      "caller": "validate_normalized_relative_path",
+      "caller_propagated_results": [],
+      "caller_translated_results": {
+        "PRIVATE_PATH_GRAMMAR_MISMATCH": "ERR_PATH_GRAMMAR_MISMATCH",
+        "PRIVATE_PATH_LEXICAL_INVALID": "ERR_PATH_LEXICAL_INVALID"
+      },
+      "closure_cardinality": {
+        "callee_non_success": 2,
+        "propagated": 0,
+        "translated": 2,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "sole path call",
+      "downstream_callers_that_must_propagate": [],
+      "edge_id": "E05_PATH_MATCHER_TO_PUBLIC_PATH_VALIDATOR",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "_match_and_decompose_normalized_relative_path",
+      "callee_closed_non_success_domain": [
+        "PRIVATE_PATH_LEXICAL_INVALID",
+        "PRIVATE_PATH_GRAMMAR_MISMATCH"
+      ],
+      "caller": "resolve_selected_schema_binding",
+      "caller_propagated_results": [],
+      "caller_translated_results": {
+        "PRIVATE_PATH_GRAMMAR_MISMATCH": "ERR_PATH_GRAMMAR_MISMATCH",
+        "PRIVATE_PATH_LEXICAL_INVALID": "ERR_PATH_LEXICAL_INVALID"
+      },
+      "closure_cardinality": {
+        "callee_non_success": 2,
+        "propagated": 0,
+        "translated": 2,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "binding target path",
+      "downstream_callers_that_must_propagate": [
+        "validate_selected_json_payload",
+        "validate_prepared_unit_structure",
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E06_PATH_MATCHER_TO_RESOLVER",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "_match_and_decompose_normalized_relative_path",
+      "callee_closed_non_success_domain": [
+        "PRIVATE_PATH_LEXICAL_INVALID",
+        "PRIVATE_PATH_GRAMMAR_MISMATCH"
+      ],
+      "caller": "_validate_prepared_object_descriptor_pre_binding",
+      "caller_propagated_results": [],
+      "caller_translated_results": {
+        "PRIVATE_PATH_GRAMMAR_MISMATCH": "PRIVATE_DESCRIPTOR_PATH_GRAMMAR_MISMATCH",
+        "PRIVATE_PATH_LEXICAL_INVALID": "PRIVATE_DESCRIPTOR_PATH_LEXICAL_INVALID"
+      },
+      "closure_cardinality": {
+        "callee_non_success": 2,
+        "propagated": 0,
+        "translated": 2,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "both descriptor paths",
+      "downstream_callers_that_must_propagate": [],
+      "edge_id": "E07_PATH_MATCHER_TO_PREBINDING",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "resolve_selected_schema_binding",
+      "callee_closed_non_success_domain": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "ERR_BINDING_QUERY_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+      ],
+      "caller": "validate_selected_json_payload",
+      "caller_propagated_results": [
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 7,
+        "propagated": 4,
+        "translated": 0,
+        "unreachable": 3
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "binding_resolution_delegate",
+      "downstream_callers_that_must_propagate": [
+        "validate_prepared_unit_structure",
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E08_RESOLVER_TO_SELECTED_WRAPPER",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {
+        "ERR_BINDING_QUERY_INVALID": "_project_selected_binding_query excludes every invalid-query state",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": "wrapper accepted-registry bytes validation already passed",
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": "wrapper unit-kind gate already passed"
+      },
+      "success_output": null,
+      "unreachable_invariants": {
+        "ERR_BINDING_QUERY_INVALID": "selected_binding_query_projection_contract.invalid_query_state_exclusions",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": "selected wrapper predicate 3 success",
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": "selected wrapper predicate 1 success"
+      }
+    },
+    {
+      "callee": "_validate_prepared_object_descriptor_pre_binding",
+      "callee_closed_non_success_domain": [
+        "PRIVATE_DESCRIPTOR_PATH_LEXICAL_INVALID",
+        "PRIVATE_DESCRIPTOR_PATH_GRAMMAR_MISMATCH",
+        "PRIVATE_DESCRIPTOR_REUSE_SOURCE_TARGET_MISMATCH",
+        "PRIVATE_DESCRIPTOR_SEMANTIC_FAMILY_BINDING_MISMATCH"
+      ],
+      "caller": "validate_prepared_object_descriptor",
+      "caller_propagated_results": [],
+      "caller_translated_results": {
+        "PRIVATE_DESCRIPTOR_PATH_GRAMMAR_MISMATCH": "ERR_PATH_GRAMMAR_MISMATCH",
+        "PRIVATE_DESCRIPTOR_PATH_LEXICAL_INVALID": "ERR_PATH_LEXICAL_INVALID",
+        "PRIVATE_DESCRIPTOR_REUSE_SOURCE_TARGET_MISMATCH": "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "PRIVATE_DESCRIPTOR_SEMANTIC_FAMILY_BINDING_MISMATCH": "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH"
+      },
+      "closure_cardinality": {
+        "callee_non_success": 4,
+        "propagated": 0,
+        "translated": 4,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "pre_binding_inspection",
+      "downstream_callers_that_must_propagate": [],
+      "edge_id": "E09_PREBINDING_TO_SINGLE_DESCRIPTOR",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "_validate_prepared_object_descriptor_pre_binding",
+      "callee_closed_non_success_domain": [
+        "PRIVATE_DESCRIPTOR_PATH_LEXICAL_INVALID",
+        "PRIVATE_DESCRIPTOR_PATH_GRAMMAR_MISMATCH",
+        "PRIVATE_DESCRIPTOR_REUSE_SOURCE_TARGET_MISMATCH",
+        "PRIVATE_DESCRIPTOR_SEMANTIC_FAMILY_BINDING_MISMATCH"
+      ],
+      "caller": "_reduce_descriptor_pre_binding_results",
+      "caller_propagated_results": [],
+      "caller_translated_results": {
+        "PRIVATE_DESCRIPTOR_PATH_GRAMMAR_MISMATCH": "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_PATH_GRAMMAR_MISMATCH",
+        "PRIVATE_DESCRIPTOR_PATH_LEXICAL_INVALID": "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_PATH_LEXICAL_INVALID",
+        "PRIVATE_DESCRIPTOR_REUSE_SOURCE_TARGET_MISMATCH": "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_REUSE_SOURCE_TARGET_MISMATCH",
+        "PRIVATE_DESCRIPTOR_SEMANTIC_FAMILY_BINDING_MISMATCH": "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_SEMANTIC_FAMILY_BINDING_MISMATCH"
+      },
+      "closure_cardinality": {
+        "callee_non_success": 4,
+        "propagated": 0,
+        "translated": 4,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "ordered result tuple",
+      "downstream_callers_that_must_propagate": [],
+      "edge_id": "E10_PREBINDING_TO_REDUCTION",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "_reduce_descriptor_pre_binding_results",
+      "callee_closed_non_success_domain": [
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_PATH_LEXICAL_INVALID",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_PATH_GRAMMAR_MISMATCH",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_REUSE_SOURCE_TARGET_MISMATCH",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_SEMANTIC_FAMILY_BINDING_MISMATCH"
+      ],
+      "caller": "validate_prepared_descriptor_set",
+      "caller_propagated_results": [],
+      "caller_translated_results": {
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_PATH_GRAMMAR_MISMATCH": "ERR_PATH_GRAMMAR_MISMATCH",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_PATH_LEXICAL_INVALID": "ERR_PATH_LEXICAL_INVALID",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_REUSE_SOURCE_TARGET_MISMATCH": "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_SEMANTIC_FAMILY_BINDING_MISMATCH": "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH"
+      },
+      "closure_cardinality": {
+        "callee_non_success": 4,
+        "propagated": 0,
+        "translated": 4,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "global pre-binding reduction",
+      "downstream_callers_that_must_propagate": [
+        "validate_selected_json_payload",
+        "validate_prepared_unit_structure",
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E11_REDUCTION_TO_DESCRIPTOR_SET",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "_validate_prepared_object_descriptor_logical_hash_nullability",
+      "callee_closed_non_success_domain": [
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID"
+      ],
+      "caller": "validate_prepared_object_descriptor",
+      "caller_propagated_results": [
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 1,
+        "propagated": 1,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "logical_hash_nullability",
+      "downstream_callers_that_must_propagate": [],
+      "edge_id": "E12_NULLABILITY_HELPER_TO_SINGLE_DESCRIPTOR",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "validate_prepared_object_descriptor",
+      "callee_closed_non_success_domain": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID"
+      ],
+      "caller": "validate_prepared_descriptor_set",
+      "caller_propagated_results": [
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 9,
+        "propagated": 1,
+        "translated": 0,
+        "unreachable": 8
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "descriptor_validator_delegate",
+      "downstream_callers_that_must_propagate": [
+        "validate_selected_json_payload",
+        "validate_prepared_unit_structure",
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E13_DESCRIPTOR_VALIDATOR_TO_DESCRIPTOR_SET",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": "all descriptor closed-field validation passed",
+        "ERR_PATH_GRAMMAR_MISMATCH": "global all-descriptor grammar reduction passed",
+        "ERR_PATH_LEXICAL_INVALID": "global all-descriptor lexical reduction passed",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH": "global reuse equality passed",
+        "ERR_ROLE_DISPOSITION_INVALID": "all exact four-field SchemaBinding selection passed",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH": "global semantic-family binding passed",
+        "ERR_UNIT_CONTEXT_INVALID": "descriptor-set UnitContext validation passed",
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": "descriptor-set unit-kind gate passed"
+      },
+      "success_output": null,
+      "unreachable_invariants": {
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": "all descriptor closed-field validation passed",
+        "ERR_PATH_GRAMMAR_MISMATCH": "global all-descriptor grammar reduction passed",
+        "ERR_PATH_LEXICAL_INVALID": "global all-descriptor lexical reduction passed",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH": "global reuse equality passed",
+        "ERR_ROLE_DISPOSITION_INVALID": "all exact four-field SchemaBinding selection passed",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH": "global semantic-family binding passed",
+        "ERR_UNIT_CONTEXT_INVALID": "descriptor-set UnitContext validation passed",
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": "descriptor-set unit-kind gate passed"
+      }
+    },
+    {
+      "callee": "_validate_descriptor_set_invariants",
+      "callee_closed_non_success_domain": [
+        "PRIVATE_DESCRIPTOR_SET_ROLE_CARDINALITY_INVALID",
+        "PRIVATE_DESCRIPTOR_SET_CANONICAL_TARGET_DUPLICATE",
+        "PRIVATE_DESCRIPTOR_SET_SIDECAR_RELATION_INVALID"
+      ],
+      "caller": "validate_prepared_descriptor_set",
+      "caller_propagated_results": [],
+      "caller_translated_results": {
+        "PRIVATE_DESCRIPTOR_SET_CANONICAL_TARGET_DUPLICATE": "ERR_CANONICAL_TARGET_DUPLICATE",
+        "PRIVATE_DESCRIPTOR_SET_ROLE_CARDINALITY_INVALID": "ERR_ROLE_CARDINALITY_INVALID",
+        "PRIVATE_DESCRIPTOR_SET_SIDECAR_RELATION_INVALID": "ERR_SIDECAR_RELATION_INVALID"
+      },
+      "closure_cardinality": {
+        "callee_non_success": 3,
+        "propagated": 0,
+        "translated": 3,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "fixed role, duplicate target, sidecar relation",
+      "downstream_callers_that_must_propagate": [
+        "validate_selected_json_payload",
+        "validate_prepared_unit_structure",
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E14_PRIVATE_SET_REDUCER_TO_DESCRIPTOR_SET",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "validate_prepared_descriptor_set",
+      "callee_closed_non_success_domain": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH"
+      ],
+      "caller": "validate_selected_json_payload",
+      "caller_propagated_results": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 20,
+        "propagated": 20,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "descriptor_set_delegate",
+      "downstream_callers_that_must_propagate": [
+        "validate_prepared_unit_structure",
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E15_DESCRIPTOR_SET_TO_SELECTED_WRAPPER",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "reconcile_physical_payload",
+      "callee_closed_non_success_domain": [
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "caller": "validate_selected_json_payload",
+      "caller_propagated_results": [
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 3,
+        "propagated": 3,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "selected-side physical reconciliation",
+      "downstream_callers_that_must_propagate": [
+        "validate_prepared_unit_structure",
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E16_SELECTED_PHYSICAL_TO_SELECTED_WRAPPER",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "reconcile_physical_payload",
+      "callee_closed_non_success_domain": [
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "caller": "validate_selected_json_payload",
+      "caller_propagated_results": [
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 3,
+        "propagated": 3,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "paired-target physical reconciliation",
+      "downstream_callers_that_must_propagate": [
+        "validate_prepared_unit_structure",
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E17_PAIRED_PHYSICAL_TO_SELECTED_WRAPPER",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "reconcile_physical_payload",
+      "callee_closed_non_success_domain": [
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "caller": "validate_structural_json_member",
+      "caller_propagated_results": [
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 3,
+        "propagated": 3,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "structural selected-member physical reconciliation",
+      "downstream_callers_that_must_propagate": [
+        "validate_prepared_unit_structure",
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E18_SELECTED_PHYSICAL_TO_STRUCTURAL_MEMBER",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "reconcile_physical_payload",
+      "callee_closed_non_success_domain": [
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "caller": "validate_structural_json_member",
+      "caller_propagated_results": [
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 3,
+        "propagated": 3,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "structural sidecar paired-target physical reconciliation",
+      "downstream_callers_that_must_propagate": [
+        "validate_prepared_unit_structure",
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E19_PAIRED_PHYSICAL_TO_STRUCTURAL_MEMBER",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "validate_structural_json_member",
+      "callee_closed_non_success_domain": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_ROWS_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_PREPARED_UNIT_ID_MISMATCH",
+        "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH"
+      ],
+      "caller": "validate_prepared_unit_structure",
+      "caller_propagated_results": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_ROWS_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_PREPARED_UNIT_ID_MISMATCH",
+        "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 15,
+        "propagated": 15,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "structural_member_validation",
+      "downstream_callers_that_must_propagate": [
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E20_STRUCTURAL_MEMBER_TO_UNIT",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "validate_prepared_descriptor_set",
+      "callee_closed_non_success_domain": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH"
+      ],
+      "caller": "validate_prepared_unit_structure",
+      "caller_propagated_results": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 20,
+        "propagated": 20,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "descriptor_set_delegate",
+      "downstream_callers_that_must_propagate": [
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E21_DESCRIPTOR_SET_TO_UNIT",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "validate_selected_json_payload",
+      "callee_closed_non_success_domain": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "caller": "validate_prepared_unit_structure",
+      "caller_propagated_results": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 29,
+        "propagated": 29,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "selected_payload_iteration",
+      "downstream_callers_that_must_propagate": [
+        "dispatch_i0a_unit_validation"
+      ],
+      "edge_id": "E22_SELECTED_WRAPPER_TO_UNIT",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    },
+    {
+      "callee": "validate_prepared_unit_structure",
+      "callee_closed_non_success_domain": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_ROWS_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_PREPARED_UNIT_ID_MISMATCH",
+        "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+        "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH"
+      ],
+      "caller": "dispatch_i0a_unit_validation",
+      "caller_propagated_results": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_ROWS_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_PREPARED_UNIT_ID_MISMATCH",
+        "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+        "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH"
+      ],
+      "caller_translated_results": {},
+      "closure_cardinality": {
+        "callee_non_success": 33,
+        "propagated": 33,
+        "translated": 0,
+        "unreachable": 0
+      },
+      "closure_equation_holds": true,
+      "delegated_stage_or_predicate": "structure_delegate",
+      "downstream_callers_that_must_propagate": [],
+      "edge_id": "E23_UNIT_TO_DISPATCH",
+      "edge_kind": "DELEGATED_CALL",
+      "input_preconditions": [],
+      "results_unreachable_through_caller": {},
+      "success_output": null,
+      "unreachable_invariants": {}
+    }
+  ],
+  "candidate_id": "REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11",
+  "canonical_checkpoint_state": {
+    "acceptance_state": "NOT_ACCEPTED",
+    "authorization_effect": "NONE",
+    "canonical_installation_state": "INSTALLED_AND_SENTINEL_VERIFIED",
+    "canonical_repository_head": "d3bd79f8fdb81c95340761aac27b3e3580d3e23d",
+    "checkpoint_id": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4",
+    "checkpoint_payload_sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da",
+    "checkpoint_payload_size_bytes": 112338,
+    "checkpoint_preservation_installation_commit": "58acbac493840c45d84c6b7e33c583d722f4d559",
+    "conformance_state": "BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW",
+    "controlling_implementation": false,
+    "historical_revision09_authorized_start_sha256": "8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07",
+    "no_rollback_or_promotion_instruction": true,
+    "preservation_state": "CANONICALLY_PRESERVED",
+    "promotion_instruction": "NONE",
+    "revision10_implementation_starting_point": "NOT_AUTHORIZED_AND_NOT_YET_SELECTED",
+    "rollback_instruction": "NONE",
+    "sentinel_verification_record_commit": "d3bd79f8fdb81c95340761aac27b3e3580d3e23d"
+  },
+  "canonical_repository_commit": "d3bd79f8fdb81c95340761aac27b3e3580d3e23d",
+  "closed_top_level_fields": [
+    "accepted_physical_payload_helper_contract",
+    "accepted_schema_binding_contract",
+    "additional_properties",
+    "amendment_mode",
+    "authority_chain",
+    "authorization_boundary",
+    "base_contract",
+    "caller_callee_closure_inventory",
+    "candidate_id",
+    "canonical_checkpoint_state",
+    "canonical_repository_commit",
+    "closed_top_level_fields",
+    "closure_self_attack",
+    "decision_role_split",
+    "delegation_domain_closure_contract",
+    "delegation_inspection_seam_contract",
+    "descriptor_set_invariant_authority",
+    "drafting_predecessor_evidence",
+    "effective_public_result_codes",
+    "final_sidecar_semantic_relation_contract",
+    "future_implementation_impact_matrix",
+    "global_path_fault_precedence_contract",
+    "logical_hash_nullability_helper_contract",
+    "new_public_result_codes",
+    "preservation",
+    "private_descriptor_pre_binding_contract",
+    "private_path_match_contract",
+    "private_reducer_revision_10_contract",
+    "public_functions",
+    "resolver_and_wrapper_implementation_gate_contract",
+    "reuse_source_target_contract",
+    "run_identity_binding_contract",
+    "schema_id",
+    "schema_version",
+    "scope_review_anchor",
+    "selected_binding_query_projection_contract",
+    "selected_payload_physical_reconciliation_contract",
+    "semantic_family_binding_contract",
+    "status",
+    "supersession_boundary",
+    "total_public_result_mapping",
+    "unit_context_contract"
+  ],
+  "closure_self_attack": {
+    "acceptance_owner": "Sentinel",
+    "professor_self_approval": false,
+    "rejection_hypotheses": [
+      "A fixture reference is outside the declared current namespace.",
+      "A callee emits a reachable result absent from its caller.",
+      "A delegated-result case is intercepted by an earlier predicate.",
+      "A rejected candidate is represented as controlling.",
+      "A future path has conflicting status in two normative files.",
+      "Two files disagree about final case ID or total count."
+    ],
+    "result": "NO_UNRESOLVED_CONTRADICTION_FOUND_BY_PROFESSOR_SELF_ATTACK"
+  },
+  "decision_role_split": {
+    "draft_and_revision_owner": "Professor",
+    "implementation_and_execution_authorization_owner": "Gustavo",
+    "implementation_owner_after_acceptance_and_authorization": "Claude",
+    "professor_self_approval_permitted": false,
+    "specification_review_and_decision_owner": "Sentinel"
+  },
+  "delegation_domain_closure_contract": {
+    "edge_count": 23,
+    "equation": "callee reachable non-success domain = caller propagated results + caller translated results + statically proven unreachable results",
+    "no_implicit_drop_translation_or_success_substitution": true,
+    "scope": "Every named public/private delegated call edge introduced, invoked, or relied upon by Candidate 11.",
+    "sets_are_pairwise_disjoint": true,
+    "success_only_helper_rule": "A success-only helper has an empty non-success domain and must still appear as an edge.",
+    "unreachability_standard": "Exact typed invariant; absence of a fixture is insufficient."
+  },
+  "delegation_inspection_seam_contract": {
+    "exact_callee_evidence_partition": {
+      "T221": {
+        "callee": "validate_prepared_descriptor_set",
+        "full_behavioral_reachability_case_id": "T229"
+      },
+      "T222": {
+        "callee": "validate_prepared_unit_structure",
+        "full_behavioral_reachability_case_id": "T230"
+      },
+      "originating_stage_rule": "The exact-callee case proves the same non-success at the named callee; lower-level origin is separately proven by T229 and T221."
+    },
+    "full_behavioral_reachability_requirement": "full_behavioral_reachability_case_id resolves to a direct public behavioral case for the seam’s exact named callee and the same non-success result code. The behavioral case need not produce the result at the same internal delegated stage; originating-stage reachability is proven separately by the applicable lower-level behavioral case and call-edge seam case.",
+    "input_type": {
+      "additional_properties": false,
+      "fields": [
+        {
+          "name": "caller",
+          "nullable": false,
+          "type": "Literal[validate_prepared_unit_structure,dispatch_i0a_unit_validation]"
+        },
+        {
+          "name": "callee",
+          "nullable": false,
+          "type": "Literal[validate_prepared_descriptor_set,validate_prepared_unit_structure]"
+        },
+        {
+          "name": "delegated_stage",
+          "nullable": false,
+          "type": "Literal[descriptor_set_delegate,structure_delegate]"
+        },
+        {
+          "name": "caller_input",
+          "nullable": false,
+          "type": "PreparedUnitStructureInput"
+        },
+        {
+          "name": "prior_stage_evidence",
+          "nullable": false,
+          "type": "_DelegationPriorStageEvidence"
+        },
+        {
+          "name": "injected_callee_result",
+          "nullable": false,
+          "type": "ValidationResult"
+        },
+        {
+          "name": "full_behavioral_reachability_case_id",
+          "nullable": false,
+          "type": "str"
+        }
+      ],
+      "kind": "frozen_dataclass",
+      "name": "_DelegationInspectionInput"
+    },
+    "kind": "PRIVATE_CONTRACT_INSPECTION_SEAM_NOT_PRODUCTION",
+    "non_success_domain": "exact injected callee non-success domain",
+    "output_contract": "Return injected_callee_result unchanged; no translation, success substitution, or assurance retention.",
+    "owner_module": "tests.local_curl_per_side.test_prepared_evidence_i0a",
+    "owner_path": "tests/local_curl_per_side/test_prepared_evidence_i0a.py",
+    "preconditions": [
+      "caller_input is a complete PreparedUnitStructureInput, not a PASS assertion",
+      "every listed prior-stage result is supported by the exact caller_input bytes and accepted Revision 09 pins",
+      "injected_callee_result is non-success, belongs to the exact callee domain, and has established_assurances=()",
+      "full_behavioral_reachability_case_id resolves to a direct public behavioral case for the seam’s exact named callee and the same non-success result code. The behavioral case need not produce the result at the same internal delegated stage; originating-stage reachability is proven separately by the applicable lower-level behavioral case and call-edge seam case."
+    ],
+    "prior_stage_evidence_type": {
+      "dispatch_structure_delegate_required_values": {
+        "unit_context_validation": "PRIVATE_UNIT_CONTEXT_VALID",
+        "unit_delegate_result_source_case_id": "T221",
+        "unit_kind_gate": "PRIVATE_UNIT_KIND_GATE_VALID"
+      },
+      "kind": "closed_mapping",
+      "name": "_DelegationPriorStageEvidence",
+      "unit_descriptor_set_delegate_required_values": {
+        "accepted_registry_bytes_validation": "PRIVATE_ACCEPTED_REGISTRY_BYTES_VALID",
+        "structural_member_set_validation": "PRIVATE_STRUCTURAL_MEMBER_SET_VALID",
+        "structural_member_validation": "PRIVATE_STRUCTURAL_MEMBER_VALIDATION_COMPLETE",
+        "unit_context_validation": "PRIVATE_UNIT_CONTEXT_VALID",
+        "unit_kind_gate": "PRIVATE_UNIT_KIND_GATE_VALID"
+      }
+    },
+    "production_reachability": false,
+    "signature": "_inspect_delegated_non_success(value: _DelegationInspectionInput) -> ValidationResult",
+    "success_domain": [],
+    "symbol": "_inspect_delegated_non_success",
+    "test_classification": "CONTRACT_INSPECTION_ONLY",
+    "twelve_path_closure": "owner_path is an existing retained twelve-path test-source path; no thirteenth path is introduced."
+  },
+  "descriptor_set_invariant_authority": {
+    "descriptor_local_validation_delegate": {
+      "callee": "validate_prepared_object_descriptor",
+      "only_reachable_non_success": "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+      "position": "after global path, reuse, semantic-family, and run binding; before public ordinal sequence"
+    },
+    "private_fixed_role_and_graph_invariants": {
+      "excludes": [
+        "ordinal sequence",
+        "variable PARTITION_PAYLOAD cardinality",
+        "logical-hash nullability",
+        "semantic-family binding",
+        "run-identity binding",
+        "same-ordinal partition binding"
+      ],
+      "ordered_decisions": [
+        "fixed-role cardinality",
+        "canonical-target uniqueness",
+        "sidecar relation",
+        "valid"
+      ],
+      "owner": "_validate_descriptor_set_invariants"
+    },
+    "wrapper_public_ordinal_sequence": {
+      "owner": "validate_prepared_descriptor_set",
+      "result": "ERR_ORDINAL_SEQUENCE_INVALID",
+      "rule": "validate exact descriptor ordinal set/order 0..M-1 before any cardinality decision"
+    },
+    "wrapper_same_ordinal_partition_binding": {
+      "owner": "validate_prepared_descriptor_set",
+      "precondition": "_validate_descriptor_set_invariants returned PRIVATE_DESCRIPTOR_SET_INVARIANTS_VALID",
+      "result": "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+      "rule": "compare descriptor and claim partition path, parsed partition_id, and logical_sha256 for each ordinal only after all earlier wrapper and private stages succeed"
+    },
+    "wrapper_variable_partition_payload_cardinality": {
+      "owner": "validate_prepared_descriptor_set",
+      "result": "ERR_ROLE_CARDINALITY_INVALID",
+      "rule": "require PARTITION_PAYLOAD count exactly len(validated claim.partition_entries); the private reducer does not receive or decide this variable count"
+    }
+  },
+  "drafting_predecessor_evidence": {
+    "candidate_10_zip_sha256": "d5aa07180aae9685b21499d50e944ba5962379c77aa9cd5661ba7bde3dfb8979",
+    "earlier_candidates_status": "Candidate 09 and earlier candidates are non-controlling historical drafting or review evidence",
+    "status": "NON_AUTHORITATIVE"
+  },
+  "effective_public_result_codes": [
+    "I0A_BYTES_CONSTRUCTED_A0",
+    "I0A_DIGEST_CONSTRUCTED_A0",
+    "I0A_VALID_A1_PATH",
+    "I0A_BINDING_RESOLVED_A1",
+    "I0A_VALID_A2_SINGLE",
+    "I0A_VALID_A2_SET",
+    "I0A_VALID_A3_EXACT",
+    "I0A_PINNED_GOVERNING_BYTES_VALIDATED_A3H",
+    "I0A_REGISTRY_INDEX_MATERIALIZED_A3H",
+    "I0A_VALID_A3_STRUCTURAL_SIDECAR",
+    "I0A_VALID_A4_INTERNAL_RELATION",
+    "I0A_VALID_A3_A4_STRUCTURAL_OBJECT",
+    "I0A_VALID_A6_STRUCTURAL",
+    "I0A_VALID_A6_SELECTED",
+    "ERR_PATH_LEXICAL_INVALID",
+    "ERR_PATH_GRAMMAR_MISMATCH",
+    "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+    "ERR_CANONICAL_TAG_INVALID",
+    "ERR_CANONICAL_TYPE_MISMATCH",
+    "ERR_CANONICAL_NON_NFC",
+    "ERR_CANONICAL_UINT_RANGE",
+    "ERR_CANONICAL_SHA256_FORMAT",
+    "ERR_CANONICAL_BYTES_FORMAT",
+    "ERR_CANONICAL_FIELD_NAME_INVALID",
+    "ERR_CANONICAL_FIELD_ORDER_INVALID",
+    "ERR_CANONICAL_ROW_ARITY",
+    "ERR_DIGEST_INPUT_INVALID",
+    "ERR_CANONICAL_JSON_INVALID",
+    "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+    "ERR_BINDING_QUERY_INVALID",
+    "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+    "ERR_ROLE_DISPOSITION_INVALID",
+    "ERR_ROLE_CARDINALITY_INVALID",
+    "ERR_ORDINAL_SEQUENCE_INVALID",
+    "ERR_CANONICAL_TARGET_DUPLICATE",
+    "ERR_SIDECAR_RELATION_INVALID",
+    "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+    "ERR_PHYSICAL_EXPECTATION_INVALID",
+    "ERR_PHYSICAL_SIZE_MISMATCH",
+    "ERR_PHYSICAL_SHA256_MISMATCH",
+    "ERR_LOGICAL_ROWS_INVALID",
+    "ERR_LOGICAL_SHA256_MISMATCH",
+    "ERR_SELECTED_SCHEMA_INVALID",
+    "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+    "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+    "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+    "ERR_PREDECESSOR_RULE_INVALID",
+    "ERR_COVERAGE_STATE_INVALID",
+    "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+    "ERR_PREPARED_UNIT_ID_MISMATCH",
+    "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+    "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+    "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+    "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+    "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+    "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE",
+    "STOP_PAYLOAD_LOGICAL_VALIDATION_OUT_OF_SCOPE",
+    "ERR_UNIT_CONTEXT_INVALID",
+    "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+    "ERR_RUN_ID_BINDING_MISMATCH"
+  ],
+  "final_sidecar_semantic_relation_contract": {
+    "assurances": [],
+    "candidate_04_relationship": "supersedes Candidate 04 incorrect ERR_SELECTED_SCHEMA_INVALID mapping",
+    "exact_relation": [
+      "sidecar.target_path equals paired target descriptor canonical_target_path exactly",
+      "sidecar.target_file_sha256 equals paired PhysicalPayloadResult.observed_sha256 exactly",
+      "paired observed_sha256 already equals paired descriptor expected_file_sha256 by successful reconciliation"
+    ],
+    "failure_result": "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+    "preconditions": [
+      "descriptor-set validation succeeded",
+      "selected sidecar canonical JSON and selected-schema validation succeeded",
+      "resolver returned I0A_BINDING_RESOLVED_A1 and wrapper implementation gate passed",
+      "paired proof presence and descriptor pairing succeeded",
+      "selected reconcile_physical_payload returned I0A_VALID_A3_EXACT",
+      "paired reconcile_physical_payload returned I0A_VALID_A3_EXACT"
+    ],
+    "predicate_id": "final_sidecar_target_path_and_hash_relation",
+    "revision_09_relationship": "preserves the existing ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH semantic category but supersedes Revision 09 predicate order by evaluating the final relation only after both independent physical reconciliations"
+  },
+  "future_implementation_impact_matrix": {
+    "comparison_members": [
+      "REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11.md#section-10",
+      "I0A_IMPLEMENTATION_IMPACT_MATRIX_REVISION_10_CANDIDATE_11.md",
+      "I0A_PUBLIC_API_CONTRACT_REVISION_10_CANDIDATE_11.json#/future_implementation_impact_matrix",
+      "PACKAGE_MANIFEST.json#/future_implementation_impact_matrix",
+      "PROPOSED_ACTIVITY_STATUS_REVISION_10_CANDIDATE_11.md",
+      "PROPOSED_AUTHORIZED_FILE_MATRIX_REVISION_10_CANDIDATE_11.md",
+      "PROPOSED_CLAUDE_HANDOFF_INACTIVE_REVISION_10_CANDIDATE_11.md",
+      "I0A_STATIC_TEST_CASE_MATRIX_REVISION_10_CANDIDATE_11.json#/fixture_catalog_delta/caller_callee_closure_inventory_static_assertion"
+    ],
+    "consistency_requirement": "The identical canonical row array and SHA-256 MUST be represented by all eight comparison members, including primary specification Section 10 and T228 closure evidence.",
+    "matrix_sha256": "0f0dbcde71d358380280e519e4f6c95987a2b8493d31cb640a9ec27ac9df211b",
+    "row_count": 12,
+    "rows": [
+      {
+        "baseline_sha256": "200019940bbd2c2b8dbac7d322722c7eae43926264c1438ec4a60cfc26e12c93",
+        "candidate_11_implementation_starting_sha256": "NOT_APPLICABLE",
+        "candidate_11_implies_future_change": false,
+        "classification": "SOURCE",
+        "current_revision09_r1_status": "R1_READ_ONLY_BASELINE",
+        "future_change_requirement": "NOT_IMPLICATED",
+        "historical_revision09_authorized_start_sha256": null,
+        "later_authorization_required": false,
+        "latest_preserved_unaccepted_checkpoint_id": null,
+        "latest_preserved_unaccepted_checkpoint_sha256": null,
+        "no_restore_or_overwrite_instruction": "NOT_APPLICABLE",
+        "path": "pm_research/local_curl_per_side/__init__.py",
+        "reason": "No public symbol or re-export change is required; private helpers remain unexported."
+      },
+      {
+        "baseline_sha256": "60f3141184753d294b8e708a77f381bdd40d04e39c6d1101f2cc14de9a9704b3",
+        "candidate_11_implementation_starting_sha256": "NOT_APPLICABLE",
+        "candidate_11_implies_future_change": true,
+        "classification": "SOURCE",
+        "current_revision09_r1_status": "R1_READ_ONLY_BASELINE",
+        "future_change_requirement": "MANDATORY",
+        "historical_revision09_authorized_start_sha256": null,
+        "later_authorization_required": true,
+        "latest_preserved_unaccepted_checkpoint_id": null,
+        "latest_preserved_unaccepted_checkpoint_sha256": null,
+        "no_restore_or_overwrite_instruction": "NOT_APPLICABLE",
+        "path": "pm_research/local_curl_per_side/canonical.py",
+        "reason": "Materialize four Revision 10 public result codes and their total empty-assurance mappings."
+      },
+      {
+        "baseline_sha256": "e9153abcbdb073a37d516056ff6fd657742c4d87620f557363855b3c6d728a3d",
+        "candidate_11_implementation_starting_sha256": "NOT_APPLICABLE",
+        "candidate_11_implies_future_change": false,
+        "classification": "SOURCE",
+        "current_revision09_r1_status": "R1_READ_ONLY_BASELINE",
+        "future_change_requirement": "NOT_IMPLICATED",
+        "historical_revision09_authorized_start_sha256": null,
+        "later_authorization_required": false,
+        "latest_preserved_unaccepted_checkpoint_id": null,
+        "latest_preserved_unaccepted_checkpoint_sha256": null,
+        "no_restore_or_overwrite_instruction": "NOT_APPLICABLE",
+        "path": "pm_research/local_curl_per_side/claim_hashes.py",
+        "reason": "No accepted hash projection or constructor algorithm changes."
+      },
+      {
+        "baseline_sha256": "06fd23245017fb538d06841d2b2b61f309f533959d16449ace588ccb6080e529",
+        "candidate_11_implementation_starting_sha256": "NOT_APPLICABLE",
+        "candidate_11_implies_future_change": true,
+        "classification": "SOURCE",
+        "current_revision09_r1_status": "R1_READ_ONLY_BASELINE",
+        "future_change_requirement": "MANDATORY",
+        "historical_revision09_authorized_start_sha256": null,
+        "later_authorization_required": true,
+        "latest_preserved_unaccepted_checkpoint_id": null,
+        "latest_preserved_unaccepted_checkpoint_sha256": null,
+        "no_restore_or_overwrite_instruction": "NOT_APPLICABLE",
+        "path": "pm_research/local_curl_per_side/finding4_registry.py",
+        "reason": "Materialize semantic-family path mapping, sole path decomposition, exact four-field SchemaBinding key, and unchanged resolver domain."
+      },
+      {
+        "baseline_sha256": "75c9b5a19023d737d016bfd0e3e5b9b62ea7730355da7d555aa073192df79fec",
+        "candidate_11_implementation_starting_sha256": "NOT_APPLICABLE",
+        "candidate_11_implies_future_change": false,
+        "classification": "SOURCE",
+        "current_revision09_r1_status": "R1_READ_ONLY_BASELINE",
+        "future_change_requirement": "NOT_IMPLICATED",
+        "historical_revision09_authorized_start_sha256": null,
+        "later_authorization_required": false,
+        "latest_preserved_unaccepted_checkpoint_id": null,
+        "latest_preserved_unaccepted_checkpoint_sha256": null,
+        "no_restore_or_overwrite_instruction": "NOT_APPLICABLE",
+        "path": "pm_research/local_curl_per_side/governing_package.py",
+        "reason": "Pinned governing-package bytes and validation behavior remain unchanged."
+      },
+      {
+        "baseline_sha256": "8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07",
+        "candidate_11_implementation_starting_sha256": "UNSELECTED_PENDING_SENTINEL_DECISION_AND_GUSTAVO_AUTHORIZATION",
+        "candidate_11_implies_future_change": true,
+        "classification": "SOURCE",
+        "current_revision09_r1_status": "R1_CHECKPOINT_CANONICALLY_PRESERVED_NOT_ACCEPTED",
+        "future_change_requirement": "MANDATORY",
+        "historical_revision09_authorized_start_sha256": "8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07",
+        "later_authorization_required": true,
+        "latest_preserved_unaccepted_checkpoint_id": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4",
+        "latest_preserved_unaccepted_checkpoint_sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da",
+        "no_restore_or_overwrite_instruction": "Candidate 11 creates no rollback, restore, overwrite, promotion, or implementation-start instruction.",
+        "path": "pm_research/local_curl_per_side/prepared_evidence.py",
+        "reason": "Potential later materialization of UnitContext, global path reduction, reuse/family/run binding, descriptor-set propagation, selected-sidecar ordering, typed projection, and caller pass-through. This is planning evidence only. The preserved fcf406c4 checkpoint is not accepted or authorized, the historical 8b8e9320 start is not the current implementation starting point, and no restore or overwrite is directed."
+      },
+      {
+        "baseline_sha256": "9122ee3a0a4aa93f485a7dc35dbd7420e59b07eeed646007baff4ef5ac652bcd",
+        "candidate_11_implementation_starting_sha256": "NOT_APPLICABLE",
+        "candidate_11_implies_future_change": true,
+        "classification": "TEST_SOURCE",
+        "current_revision09_r1_status": "R1_READ_ONLY_BASELINE",
+        "future_change_requirement": "MANDATORY",
+        "historical_revision09_authorized_start_sha256": null,
+        "later_authorization_required": true,
+        "latest_preserved_unaccepted_checkpoint_id": null,
+        "latest_preserved_unaccepted_checkpoint_sha256": null,
+        "no_restore_or_overwrite_instruction": "NOT_APPLICABLE",
+        "path": "tests/local_curl_per_side/test_canonical_i0a.py",
+        "reason": "Conformance coverage for new public result-code and assurance inventories."
+      },
+      {
+        "baseline_sha256": "4e2c8d6d663238c8bd7d3a4f40047bf0888b2ccf64cd5fcf37ce85cd2f158878",
+        "candidate_11_implementation_starting_sha256": "NOT_APPLICABLE",
+        "candidate_11_implies_future_change": false,
+        "classification": "TEST_SOURCE",
+        "current_revision09_r1_status": "R1_READ_ONLY_BASELINE",
+        "future_change_requirement": "NOT_IMPLICATED",
+        "historical_revision09_authorized_start_sha256": null,
+        "later_authorization_required": false,
+        "latest_preserved_unaccepted_checkpoint_id": null,
+        "latest_preserved_unaccepted_checkpoint_sha256": null,
+        "no_restore_or_overwrite_instruction": "NOT_APPLICABLE",
+        "path": "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+        "reason": "No hash helper behavior changes."
+      },
+      {
+        "baseline_sha256": "fe7a602684b4861db1cb825c0b70f712c9242ef61386d1a76f80ea8f4fed42f8",
+        "candidate_11_implementation_starting_sha256": "NOT_APPLICABLE",
+        "candidate_11_implies_future_change": true,
+        "classification": "TEST_SOURCE",
+        "current_revision09_r1_status": "R1_READ_ONLY_BASELINE",
+        "future_change_requirement": "MANDATORY",
+        "historical_revision09_authorized_start_sha256": null,
+        "later_authorization_required": true,
+        "latest_preserved_unaccepted_checkpoint_id": null,
+        "latest_preserved_unaccepted_checkpoint_sha256": null,
+        "no_restore_or_overwrite_instruction": "NOT_APPLICABLE",
+        "path": "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+        "reason": "Conformance coverage for family mapping, path decomposition, binding key, direct resolver domain, and typed impossibility boundary."
+      },
+      {
+        "baseline_sha256": "c1b6a221a997e9c7d5aae0bf5c5bf98f38d0d1e8183bcabbebc8c7f1ac0550e4",
+        "candidate_11_implementation_starting_sha256": "NOT_APPLICABLE",
+        "candidate_11_implies_future_change": false,
+        "classification": "TEST_SOURCE",
+        "current_revision09_r1_status": "R1_READ_ONLY_BASELINE",
+        "future_change_requirement": "NOT_IMPLICATED",
+        "historical_revision09_authorized_start_sha256": null,
+        "later_authorization_required": false,
+        "latest_preserved_unaccepted_checkpoint_id": null,
+        "latest_preserved_unaccepted_checkpoint_sha256": null,
+        "no_restore_or_overwrite_instruction": "NOT_APPLICABLE",
+        "path": "tests/local_curl_per_side/test_governing_package_i0a.py",
+        "reason": "No governing-package behavior changes."
+      },
+      {
+        "baseline_sha256": "c8e69789fc63eebff3d87f14ca6c94748872483e8fcffd541243ffa32e114679",
+        "candidate_11_implementation_starting_sha256": "NOT_APPLICABLE",
+        "candidate_11_implies_future_change": true,
+        "classification": "TEST_SOURCE",
+        "current_revision09_r1_status": "R1_READ_ONLY_BASELINE",
+        "future_change_requirement": "MANDATORY",
+        "historical_revision09_authorized_start_sha256": null,
+        "later_authorization_required": true,
+        "latest_preserved_unaccepted_checkpoint_id": null,
+        "latest_preserved_unaccepted_checkpoint_sha256": null,
+        "no_restore_or_overwrite_instruction": "NOT_APPLICABLE",
+        "path": "tests/local_curl_per_side/test_i0a_public_contract.py",
+        "reason": "Contract closure, private types, precedence, authority chain, fixture namespace, case counts, and twelve-path consistency."
+      },
+      {
+        "baseline_sha256": "c9c5f9e09136f70902dc70e809d82177303319f431f532126b5aee8d04c2ae37",
+        "candidate_11_implementation_starting_sha256": "NOT_APPLICABLE",
+        "candidate_11_implies_future_change": true,
+        "classification": "TEST_SOURCE",
+        "current_revision09_r1_status": "R1_READ_ONLY_BASELINE",
+        "future_change_requirement": "MANDATORY",
+        "historical_revision09_authorized_start_sha256": null,
+        "later_authorization_required": true,
+        "latest_preserved_unaccepted_checkpoint_id": null,
+        "latest_preserved_unaccepted_checkpoint_sha256": null,
+        "no_restore_or_overwrite_instruction": "NOT_APPLICABLE",
+        "path": "tests/local_curl_per_side/test_prepared_evidence_i0a.py",
+        "reason": "Behavioral and seam coverage for T166–T230, including sidecar-first unit reachability and delegated failures."
+      }
+    ]
+  },
+  "global_path_fault_precedence_contract": {
+    "decision_order": [
+      "ERR_PATH_LEXICAL_INVALID",
+      "ERR_PATH_GRAMMAR_MISMATCH",
+      "PATHS_VALID"
+    ],
+    "evaluation": [
+      "evaluate lexical status for both path fields of every eligible descriptor",
+      "evaluate selected grammar for each lexically valid path field even when another field or descriptor has a lexical fault",
+      "collect all applicable lexical and grammar fault observations before selecting the public path result"
+    ],
+    "evidence_tie_break": "lowest object_ordinal, then canonical_target_path before durable_source_path, then lexical before grammar; evidence selection does not alter result-class precedence",
+    "precondition": "descriptor closed fields and exact role/unit/mode/schema disposition resolve first",
+    "scope": "canonical_target_path and durable_source_path for every descriptor on single and set surfaces",
+    "set_scope_rule": "a lexical fault on any descriptor outranks a grammar fault on any other descriptor"
+  },
+  "logical_hash_nullability_helper_contract": {
+    "accepted_return_type": "ValidationResult from pm_research.local_curl_per_side.canonical",
+    "call_precondition": "global path, reuse, semantic-family, and three-way run binding have all passed for every descriptor before set validation invokes this helper",
+    "closed_result_domain": [
+      "I0A_VALID_A2_SINGLE",
+      "ERR_LOGICAL_HASH_NULLABILITY_INVALID"
+    ],
+    "evaluation_order": "after global path reduction, reuse equality, semantic-family binding, and three-way run binding; before ordinal and set invariants",
+    "expected_nullability_source": "selected_binding.logical_sha256_nullability",
+    "name": "_validate_prepared_object_descriptor_logical_hash_nullability",
+    "selection_separation": "descriptor.logical_sha256 actual nullability MUST NOT participate in SchemaBinding lookup or produce ERR_ROLE_DISPOSITION_INVALID",
+    "signature": "_validate_prepared_object_descriptor_logical_hash_nullability(descriptor: PreparedObjectDescriptor, selected_binding: SchemaBinding) -> ValidationResult"
+  },
+  "new_public_result_codes": [
+    "ERR_UNIT_CONTEXT_INVALID",
+    "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+    "ERR_RUN_ID_BINDING_MISMATCH",
+    "ERR_REUSE_SOURCE_TARGET_MISMATCH"
+  ],
+  "preservation": {
+    "assurance_levels_changed": [],
+    "candidate_10_authority_status": "NON_AUTHORITATIVE_DRAFTING_PREDECESSOR",
+    "candidate_10_substantive_contract_preserved_except_primary_specification_section10_and_t228_mechanical_identity_updates": true,
+    "existing_public_result_codes_removed": [],
+    "public_signatures_changed": [],
+    "revision_09_behavior_preserved_except_named_supersession": true,
+    "t107_fixture_bytes_preserved_from_candidate_01": true,
+    "t153_fixture_bytes_preserved_from_candidate_01": true
+  },
+  "private_descriptor_pre_binding_contract": {
+    "code_type": {
+      "full_domain": [
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_VALID",
+        "PRIVATE_DESCRIPTOR_PATH_LEXICAL_INVALID",
+        "PRIVATE_DESCRIPTOR_PATH_GRAMMAR_MISMATCH",
+        "PRIVATE_DESCRIPTOR_REUSE_SOURCE_TARGET_MISMATCH",
+        "PRIVATE_DESCRIPTOR_SEMANTIC_FAMILY_BINDING_MISMATCH"
+      ],
+      "kind": "private_enum",
+      "name": "_DescriptorPreBindingCode"
+    },
+    "fault_evidence_type": {
+      "additional_properties": false,
+      "fields": [
+        {
+          "name": "object_ordinal",
+          "nullable": false,
+          "type": "int"
+        },
+        {
+          "name": "path_field",
+          "nullable": true,
+          "type": "Literal['canonical_target_path','durable_source_path'] | None"
+        },
+        {
+          "name": "source_code",
+          "nullable": false,
+          "type": "_DescriptorPreBindingCode"
+        }
+      ],
+      "kind": "frozen_dataclass",
+      "name": "_DescriptorPreBindingFaultEvidence",
+      "path_field_nullability": "non-null for lexical/grammar evidence; null for reuse or family evidence"
+    },
+    "function": {
+      "behavior": "inspect both paths without short-circuiting the other field; apply local lexical-before-grammar class, then reuse equality, then semantic-family binding",
+      "name": "_validate_prepared_object_descriptor_pre_binding",
+      "preconditions": [
+        "unit-kind gate passed",
+        "UnitContext passed",
+        "descriptor closed fields passed",
+        "selected_binding is the unique accepted SchemaBinding for exact four-field SchemaBinding key (object_role, unit_kind, publication_mode, content_schema_id)"
+      ],
+      "signature": "_validate_prepared_object_descriptor_pre_binding(unit_context: UnitContext, descriptor: PreparedObjectDescriptor, selected_binding: SchemaBinding) -> _DescriptorPreBindingResult"
+    },
+    "reduction_code_type": {
+      "full_domain": [
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_VALID",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_PATH_LEXICAL_INVALID",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_PATH_GRAMMAR_MISMATCH",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_REUSE_SOURCE_TARGET_MISMATCH",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_SEMANTIC_FAMILY_BINDING_MISMATCH"
+      ],
+      "kind": "private_enum",
+      "name": "_DescriptorPreBindingReductionCode"
+    },
+    "reduction_result_type": {
+      "additional_properties": false,
+      "failure_nullability": {
+        "fault_evidence": "non-null, non-empty, contains every fault in the selected highest-precedence class",
+        "ordered_results": null
+      },
+      "fields": [
+        {
+          "name": "code",
+          "nullable": false,
+          "type": "_DescriptorPreBindingReductionCode"
+        },
+        {
+          "name": "fault_evidence",
+          "nullable": true,
+          "type": "tuple[_DescriptorPreBindingFaultEvidence, ...] | None"
+        },
+        {
+          "name": "ordered_results",
+          "nullable": true,
+          "type": "tuple[_DescriptorPreBindingResult, ...] | None"
+        }
+      ],
+      "kind": "frozen_dataclass",
+      "name": "_DescriptorPreBindingReductionResult",
+      "success_nullability": {
+        "code": "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_VALID",
+        "fault_evidence": null,
+        "ordered_results": "non-null exact input tuple; every member code PRIVATE_DESCRIPTOR_PRE_BINDING_VALID"
+      }
+    },
+    "result_type": {
+      "additional_properties": false,
+      "failure_nullability": "all five fields non-null; each nested path-match bindings field follows _PathMatchResult lexical/grammar nullability",
+      "fields": [
+        {
+          "name": "code",
+          "nullable": false,
+          "type": "_DescriptorPreBindingCode"
+        },
+        {
+          "name": "object_ordinal",
+          "nullable": false,
+          "range": "0..4294967295; exact descriptor value without coercion",
+          "type": "int"
+        },
+        {
+          "name": "selected_binding",
+          "nullable": false,
+          "type": "SchemaBinding"
+        },
+        {
+          "name": "canonical_target_match",
+          "nullable": false,
+          "type": "_PathMatchResult"
+        },
+        {
+          "name": "durable_source_match",
+          "nullable": false,
+          "type": "_PathMatchResult"
+        }
+      ],
+      "kind": "frozen_dataclass",
+      "name": "_DescriptorPreBindingResult",
+      "success_nullability": "all five fields non-null; both path-match bindings non-null"
+    },
+    "set_reduction": {
+      "assurance_behavior": "every mapped public non-success returns ValidationResult(code=<mapped code>, established_assurances=()); valid reduction itself establishes no public assurance",
+      "evidence_order": "all evidence in the selected class sorted by numeric object_ordinal, then canonical_target_path before durable_source_path; duplicate ordinals are retained and no single winner is selected",
+      "input_preconditions": [
+        "every result has a non-coerced object_ordinal copied from its descriptor",
+        "results may contain duplicate or noncontiguous ordinals because public ordinal validation occurs later"
+      ],
+      "name": "_reduce_descriptor_pre_binding_results",
+      "no_tie_break_claim": "the reducer returns the complete selected-class evidence set and does not choose one descriptor as authoritative",
+      "ordered_reduction": [
+        "any lexical evidence -> PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_PATH_LEXICAL_INVALID",
+        "else any grammar evidence -> PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_PATH_GRAMMAR_MISMATCH",
+        "else any reuse evidence -> PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_REUSE_SOURCE_TARGET_MISMATCH",
+        "else any family evidence -> PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "else PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_VALID"
+      ],
+      "public_mapping": {
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_PATH_GRAMMAR_MISMATCH": "ERR_PATH_GRAMMAR_MISMATCH",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_PATH_LEXICAL_INVALID": "ERR_PATH_LEXICAL_INVALID",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_REUSE_SOURCE_TARGET_MISMATCH": "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_SEMANTIC_FAMILY_BINDING_MISMATCH": "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "PRIVATE_DESCRIPTOR_PRE_BINDING_REDUCTION_VALID": "no public return; continue"
+      },
+      "signature": "_reduce_descriptor_pre_binding_results(results: tuple[_DescriptorPreBindingResult, ...]) -> _DescriptorPreBindingReductionResult"
+    }
+  },
+  "private_path_match_contract": {
+    "bindings_type": {
+      "closed_fields": [
+        "grammar_id",
+        "run_id",
+        "semantic_family",
+        "snapshot_sequence",
+        "partition_id",
+        "fence_sequence",
+        "unit_kind",
+        "prepared_unit_id",
+        "object_ordinal"
+      ],
+      "field_contracts": {
+        "fence_sequence": {
+          "null_iff": "the selected grammar contains no fence_sequence_20d placeholder",
+          "nullable": true,
+          "type": "int"
+        },
+        "grammar_id": {
+          "nullable": false,
+          "type": "FrozenPathGrammarId"
+        },
+        "object_ordinal": {
+          "null_iff": "the selected grammar contains no object_ordinal_10d placeholder",
+          "nullable": true,
+          "type": "int"
+        },
+        "partition_id": {
+          "null_iff": "the selected grammar contains no partition_id placeholder",
+          "nullable": true,
+          "type": "str"
+        },
+        "prepared_unit_id": {
+          "null_iff": "the selected grammar contains no prepared_unit_id placeholder",
+          "nullable": true,
+          "type": "str"
+        },
+        "run_id": {
+          "nullable": false,
+          "type": "str"
+        },
+        "semantic_family": {
+          "null_iff": "the selected grammar contains no family_root placeholder",
+          "nullable": true,
+          "type": "Literal[capture,analysis_compatibility,analysis_strict]"
+        },
+        "snapshot_sequence": {
+          "null_iff": "the selected grammar contains no snapshot_sequence_20d placeholder",
+          "nullable": true,
+          "type": "int"
+        },
+        "unit_kind": {
+          "null_iff": "the selected grammar contains no unit_kind placeholder",
+          "nullable": true,
+          "type": "PreparedUnitKind"
+        }
+      },
+      "type_name": "_FrozenPathBindings"
+    },
+    "forbidden_alternatives": [
+      "regex alias outside the frozen grammar",
+      "string split as an authority",
+      "prefix slicing",
+      "first run_-looking substring",
+      "caller-supplied path grammar",
+      "runtime grammar registration",
+      "a second decomposition implementation"
+    ],
+    "input_contract": {
+      "grammar_id": "exact FrozenPathGrammarId enum member; caller-supplied grammar tables are forbidden",
+      "path": "exact caller-supplied Python str; no coercion or normalization before validation"
+    },
+    "ordered_outcomes": [
+      {
+        "bindings": null,
+        "code": "PRIVATE_PATH_LEXICAL_INVALID",
+        "condition": "normalized-relative-path lexical contract fails before grammar selection"
+      },
+      {
+        "bindings": null,
+        "code": "PRIVATE_PATH_GRAMMAR_MISMATCH",
+        "condition": "lexical path cannot match the exact selected frozen grammar, placeholder domain, or semantic-family path expansion"
+      },
+      {
+        "bindings": "_FrozenPathBindings with every grammar placeholder populated exactly once and every absent placeholder null",
+        "code": "PRIVATE_PATH_MATCH_VALID",
+        "condition": "lexical and exact selected frozen grammar validation both pass"
+      }
+    ],
+    "other_consumers": [
+      "resolve_selected_schema_binding",
+      "_validate_prepared_object_descriptor_pre_binding",
+      "validate_prepared_descriptor_set"
+    ],
+    "owner_module": "pm_research.local_curl_per_side.finding4_registry",
+    "private_code_domain": [
+      "PRIVATE_PATH_LEXICAL_INVALID",
+      "PRIVATE_PATH_GRAMMAR_MISMATCH",
+      "PRIVATE_PATH_MATCH_VALID"
+    ],
+    "relationship_to_validate_normalized_relative_path": "validate_normalized_relative_path MUST call this private symbol exactly once, map PRIVATE_PATH_LEXICAL_INVALID to ERR_PATH_LEXICAL_INVALID, map PRIVATE_PATH_GRAMMAR_MISMATCH to ERR_PATH_GRAMMAR_MISMATCH, map PRIVATE_PATH_MATCH_VALID to I0A_VALID_A1_PATH, and discard the private bindings. No second matcher or parser is permitted.",
+    "signature": "_match_and_decompose_normalized_relative_path(path: str, grammar_id: FrozenPathGrammarId) -> _PathMatchResult",
+    "sole_symbol": "_match_and_decompose_normalized_relative_path",
+    "typed_output": {
+      "bindings_type": "_FrozenPathBindings | None",
+      "closed_fields": [
+        "code",
+        "bindings"
+      ],
+      "code_type": "_PrivatePathMatchCode",
+      "type_name": "_PathMatchResult"
+    },
+    "visibility": "PRIVATE_UNEXPORTED"
+  },
+  "private_reducer_revision_10_contract": {
+    "code_type": {
+      "name": "_PrivateDescriptorSetInvariantCode",
+      "values": [
+        "PRIVATE_DESCRIPTOR_SET_INVARIANTS_VALID",
+        "PRIVATE_DESCRIPTOR_SET_ROLE_CARDINALITY_INVALID",
+        "PRIVATE_DESCRIPTOR_SET_CANONICAL_TARGET_DUPLICATE",
+        "PRIVATE_DESCRIPTOR_SET_SIDECAR_RELATION_INVALID"
+      ]
+    },
+    "input_type": {
+      "closed_fields": [
+        "summaries",
+        "expected_fixed_role_counts"
+      ],
+      "expected_fixed_role_counts_rule": "contains only fixed-cardinality roles; PARTITION_PAYLOAD is prohibited",
+      "name": "_DescriptorSetInvariantInput"
+    },
+    "ordered_outcomes": [
+      "PRIVATE_DESCRIPTOR_SET_ROLE_CARDINALITY_INVALID",
+      "PRIVATE_DESCRIPTOR_SET_CANONICAL_TARGET_DUPLICATE",
+      "PRIVATE_DESCRIPTOR_SET_SIDECAR_RELATION_INVALID",
+      "PRIVATE_DESCRIPTOR_SET_INVARIANTS_VALID"
+    ],
+    "result_type": {
+      "closed_fields": [
+        "code",
+        "summaries"
+      ],
+      "failure_rule": "every failure returns summaries=None",
+      "name": "_PrivateDescriptorSetInvariantResult",
+      "success_rule": "valid returns complete ordinal-order summaries"
+    },
+    "revision_09_supersession": "removes PRIVATE_DESCRIPTOR_SET_ORDINAL_SEQUENCE_INVALID from the private reducer because public ordinal validation has one sole wrapper owner",
+    "summary_type": {
+      "closed_fields": [
+        "object_ordinal",
+        "object_role",
+        "canonical_target_path",
+        "is_sidecar",
+        "sidecar_of_object_ordinal"
+      ],
+      "name": "_DescriptorSetInvariantSummary"
+    }
+  },
+  "public_functions": {
+    "build_accepted_registry_schema_definition_index": {
+      "accepted_revision09_rule": "Hash-first fixed-byte API. First require exact accepted registry SHA-256. Then call _parse_accepted_registry_bytes using strict UTF-8 json.loads with object_pairs_hook duplicate rejection and canonical lexicographic-key reserialization equality. Enumerate the complete accepted json_schemas and table_schemas definition domains only after parsing succeeds.",
+      "accepted_success": "I0A_REGISTRY_INDEX_MATERIALIZED_A3H",
+      "closed_result_or_exception_domain": [
+        "I0A_REGISTRY_INDEX_MATERIALIZED_A3H",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+      ],
+      "established_assurances_by_result": {
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": [],
+        "I0A_REGISTRY_INDEX_MATERIALIZED_A3H": [
+          "A3_PINNED_GOVERNING_SHA256_VALIDATED"
+        ]
+      },
+      "ordered_error_precedence": [
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+      ],
+      "ordered_validation_stages": [],
+      "output_type": "RegistryDefinitionIndexResult",
+      "signature": "(registry_bytes: bytes) -> RegistryDefinitionIndexResult",
+      "unit_context_applicability": "NOT_UNIT_CONTEXT_APPLICABLE"
+    },
+    "dispatch_i0a_unit_validation": {
+      "closed_result_or_exception_domain": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_ROWS_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_PREPARED_UNIT_ID_MISMATCH",
+        "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+        "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH"
+      ],
+      "established_assurances_by_result": {
+        "ERR_CANONICAL_JSON_INVALID": [],
+        "ERR_CANONICAL_TARGET_DUPLICATE": [],
+        "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH": [],
+        "ERR_COVERAGE_STATE_INVALID": [],
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": [],
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": [],
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID": [],
+        "ERR_LOGICAL_ROWS_INVALID": [],
+        "ERR_LOGICAL_SHA256_MISMATCH": [],
+        "ERR_ORDINAL_SEQUENCE_INVALID": [],
+        "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH": [],
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED": [],
+        "ERR_PATH_GRAMMAR_MISMATCH": [],
+        "ERR_PATH_LEXICAL_INVALID": [],
+        "ERR_PHYSICAL_EXPECTATION_INVALID": [],
+        "ERR_PHYSICAL_SHA256_MISMATCH": [],
+        "ERR_PHYSICAL_SIZE_MISMATCH": [],
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH": [],
+        "ERR_PREDECESSOR_RULE_INVALID": [],
+        "ERR_PREPARED_UNIT_ID_MISMATCH": [],
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH": [],
+        "ERR_ROLE_CARDINALITY_INVALID": [],
+        "ERR_ROLE_DISPOSITION_INVALID": [],
+        "ERR_RUN_ID_BINDING_MISMATCH": [],
+        "ERR_SELECTED_SCHEMA_INVALID": [],
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH": [],
+        "ERR_SIDECAR_RELATION_INVALID": [],
+        "ERR_STRUCTURAL_MEMBER_SET_INVALID": [],
+        "ERR_UNIT_CONTEXT_INVALID": [],
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A": [],
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID": [],
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED": [],
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+      },
+      "includes_new_codes": [
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH"
+      ],
+      "ordered_error_precedence": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_ROWS_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_PREPARED_UNIT_ID_MISMATCH",
+        "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+        "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH"
+      ],
+      "ordered_validation_stages": [
+        {
+          "failure_or_success_result": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+          "stage_id": "unit_kind_gate"
+        },
+        {
+          "failure_or_success_result": "ERR_UNIT_CONTEXT_INVALID",
+          "stage_id": "unit_context"
+        },
+        {
+          "caller_propagation_rule": "return every unit-validator non-success unchanged",
+          "propagated_non_success_domain": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_UNIT_CONTEXT_INVALID",
+            "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_LOGICAL_ROWS_INVALID",
+            "ERR_LOGICAL_SHA256_MISMATCH",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_PREPARED_UNIT_ID_MISMATCH",
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+            "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+            "ERR_RUN_ID_BINDING_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+            "ERR_ROLE_CARDINALITY_INVALID",
+            "ERR_CANONICAL_TARGET_DUPLICATE",
+            "ERR_SIDECAR_RELATION_INVALID",
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+            "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH"
+          ],
+          "propagates_exact_order_from": "validate_prepared_unit_structure",
+          "stage_id": "structure_delegate"
+        }
+      ],
+      "revision_10_candidate_05_status": "AMENDED",
+      "signature": "(value: PreparedUnitStructureInput) -> ValidationResult",
+      "unit_context_applicability": "DIRECT_OR_TRANSITIVE_REQUIRED"
+    },
+    "reconcile_physical_payload": {
+      "closed_result_or_exception_domain": [
+        "I0A_VALID_A3_EXACT",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "domain_amended": false,
+      "established_assurances_by_result": {
+        "ERR_PHYSICAL_EXPECTATION_INVALID": [],
+        "ERR_PHYSICAL_SHA256_MISMATCH": [],
+        "ERR_PHYSICAL_SIZE_MISMATCH": [],
+        "I0A_VALID_A3_EXACT": [
+          "A3_EXACT_LENGTH_AND_SHA256_RECONCILED"
+        ]
+      },
+      "ordered_error_precedence": [
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "output_type": "PhysicalPayloadResult",
+      "revision_10_candidate_05_status": "PRESERVED_EXACT_ACCEPTED_PUBLIC_CONTRACT",
+      "signature": "reconcile_physical_payload(expected_file_size_bytes: int, expected_file_sha256: str, payload_bytes: bytes) -> PhysicalPayloadResult",
+      "signature_amended": false,
+      "success": "I0A_VALID_A3_EXACT"
+    },
+    "resolve_selected_schema_binding": {
+      "closed_result_or_exception_domain": [
+        "I0A_BINDING_RESOLVED_A1",
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "ERR_BINDING_QUERY_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+      ],
+      "domain_expanded": false,
+      "established_assurances_by_result": {
+        "ERR_BINDING_QUERY_INVALID": [],
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": [],
+        "ERR_PATH_GRAMMAR_MISMATCH": [],
+        "ERR_PATH_LEXICAL_INVALID": [],
+        "I0A_BINDING_RESOLVED_A1": [
+          "A1_LEXICAL_PATH_SHAPE",
+          "A1_REGISTRY_BINDING_RESOLVED"
+        ],
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID": [],
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED": [],
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+      },
+      "forbidden_results": [
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A"
+      ],
+      "ordered_error_precedence": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "ERR_BINDING_QUERY_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+      ],
+      "output_type": "BindingResolutionResult",
+      "revision_10_candidate_05_status": "PRESERVED_EXACT_ACCEPTED_PUBLIC_DOMAIN",
+      "signature": "resolve_selected_schema_binding(query: BindingQuery, accepted_registry_bytes: bytes) -> BindingResolutionResult",
+      "success": "I0A_BINDING_RESOLVED_A1"
+    },
+    "validate_full_prepared_object": {
+      "closed_result_or_exception_domain": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE"
+      ],
+      "established_assurances_by_result": {
+        "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE": [],
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+      },
+      "excludes_new_codes": {
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH": "No UnitContext or descriptor-set delegation occurs before STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE.",
+        "ERR_RUN_ID_BINDING_MISMATCH": "No UnitContext or descriptor-set delegation occurs before STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE.",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH": "No UnitContext or descriptor-set delegation occurs before STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE.",
+        "ERR_UNIT_CONTEXT_INVALID": "No UnitContext or descriptor-set delegation occurs before STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE."
+      },
+      "includes_new_codes": [],
+      "ordered_error_precedence": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE"
+      ],
+      "ordered_validation_stages": [
+        {
+          "failure_or_success_result": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+          "stage_id": "nested_unit_kind_discriminant_only"
+        },
+        {
+          "failure_or_success_result": "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE",
+          "stage_id": "filesystem_boundary_stop"
+        }
+      ],
+      "revision_10_candidate_05_status": "EXPLICITLY_EXCLUDED",
+      "signature": "(request: FullPreparedObjectValidationRequest) -> ValidationResult",
+      "unit_context_applicability": "EXCLUDED_NO_UNIT_CONTEXT_OR_DESCRIPTOR_DELEGATION"
+    },
+    "validate_full_prepared_unit": {
+      "closed_result_or_exception_domain": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE"
+      ],
+      "established_assurances_by_result": {
+        "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE": [],
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+      },
+      "excludes_new_codes": {
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH": "No UnitContext or descriptor-set delegation occurs before STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE.",
+        "ERR_RUN_ID_BINDING_MISMATCH": "No UnitContext or descriptor-set delegation occurs before STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE.",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH": "No UnitContext or descriptor-set delegation occurs before STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE.",
+        "ERR_UNIT_CONTEXT_INVALID": "No UnitContext or descriptor-set delegation occurs before STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE."
+      },
+      "includes_new_codes": [],
+      "ordered_error_precedence": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE"
+      ],
+      "ordered_validation_stages": [
+        {
+          "failure_or_success_result": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+          "stage_id": "nested_unit_kind_discriminant_only"
+        },
+        {
+          "failure_or_success_result": "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE",
+          "stage_id": "filesystem_boundary_stop"
+        }
+      ],
+      "revision_10_candidate_05_status": "EXPLICITLY_EXCLUDED",
+      "signature": "(request: FullPreparedUnitValidationRequest) -> ValidationResult",
+      "unit_context_applicability": "EXCLUDED_NO_UNIT_CONTEXT_OR_DESCRIPTOR_DELEGATION"
+    },
+    "validate_normalized_relative_path": {
+      "accepted_revision09_rule": "Resolve FrozenPathGrammarId only against immutable module-owned target/prepared-unit grammar tables and exact placeholder domains; lexical validation only; no filesystem facts and no caller-supplied template.",
+      "accepted_success": "I0A_VALID_A1_PATH",
+      "closed_result_or_exception_domain": [
+        "I0A_VALID_A1_PATH",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH"
+      ],
+      "established_assurances_by_result": {
+        "ERR_PATH_GRAMMAR_MISMATCH": [],
+        "ERR_PATH_LEXICAL_INVALID": [],
+        "I0A_VALID_A1_PATH": [
+          "A1_LEXICAL_PATH_SHAPE"
+        ]
+      },
+      "ordered_error_precedence": [
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH"
+      ],
+      "ordered_validation_stages": [],
+      "output_type": "ValidationResult",
+      "signature": "(path: str, grammar_id: FrozenPathGrammarId) -> ValidationResult",
+      "unit_context_applicability": "NOT_UNIT_CONTEXT_APPLICABLE"
+    },
+    "validate_prepared_descriptor_set": {
+      "closed_result_or_exception_domain": [
+        "I0A_VALID_A2_SET",
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH"
+      ],
+      "established_assurances_by_result": {
+        "ERR_CANONICAL_JSON_INVALID": [],
+        "ERR_CANONICAL_TARGET_DUPLICATE": [],
+        "ERR_COVERAGE_STATE_INVALID": [],
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": [],
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID": [],
+        "ERR_LOGICAL_SHA256_MISMATCH": [],
+        "ERR_ORDINAL_SEQUENCE_INVALID": [],
+        "ERR_PATH_GRAMMAR_MISMATCH": [],
+        "ERR_PATH_LEXICAL_INVALID": [],
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH": [],
+        "ERR_PREDECESSOR_RULE_INVALID": [],
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH": [],
+        "ERR_ROLE_CARDINALITY_INVALID": [],
+        "ERR_ROLE_DISPOSITION_INVALID": [],
+        "ERR_RUN_ID_BINDING_MISMATCH": [],
+        "ERR_SELECTED_SCHEMA_INVALID": [],
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH": [],
+        "ERR_SIDECAR_RELATION_INVALID": [],
+        "ERR_UNIT_CONTEXT_INVALID": [],
+        "I0A_VALID_A2_SET": [
+          "A1_LEXICAL_PATH_SHAPE",
+          "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+          "A2_DESCRIPTOR_SET_COMPLETE"
+        ],
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+      },
+      "includes_new_codes": [
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH"
+      ],
+      "invariant_authority": {
+        "forbidden_duplicate_authority": [
+          "private ordinal decision",
+          "private variable partition-cardinality decision",
+          "private same-ordinal partition binding"
+        ],
+        "private_reducer": [
+          "fixed-role cardinality",
+          "canonical-target uniqueness",
+          "sidecar relation"
+        ],
+        "wrapper": [
+          "public ordinal sequence",
+          "variable PARTITION_PAYLOAD cardinality",
+          "semantic family binding",
+          "three-way run binding",
+          "same-ordinal partition binding after private success"
+        ]
+      },
+      "ordered_error_precedence": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH"
+      ],
+      "ordered_validation_stages": [
+        {
+          "failure_or_success_result": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+          "owner": "wrapper",
+          "stage_id": "unit_kind_gate"
+        },
+        {
+          "failure_or_success_result": "ERR_UNIT_CONTEXT_INVALID",
+          "owner": "wrapper",
+          "stage_id": "unit_context"
+        },
+        {
+          "failure_or_success_result": "ERR_CANONICAL_JSON_INVALID",
+          "owner": "wrapper",
+          "stage_id": "snapshot_claim_canonical_json"
+        },
+        {
+          "failure_or_success_result": "ERR_SELECTED_SCHEMA_INVALID",
+          "owner": "wrapper",
+          "stage_id": "snapshot_claim_selected_schema"
+        },
+        {
+          "failure_or_success_result": "ERR_PREDECESSOR_RULE_INVALID",
+          "owner": "wrapper",
+          "stage_id": "snapshot_claim_predecessor"
+        },
+        {
+          "failure_or_success_result": "ERR_COVERAGE_STATE_INVALID",
+          "owner": "wrapper",
+          "stage_id": "snapshot_claim_coverage"
+        },
+        {
+          "failure_or_success_result": "ERR_LOGICAL_SHA256_MISMATCH",
+          "owner": "wrapper",
+          "stage_id": "snapshot_claim_semantic_digest"
+        },
+        {
+          "failure_or_success_result": "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+          "owner": "wrapper",
+          "stage_id": "all_descriptor_closed_fields",
+          "tie_break": "lowest object_ordinal"
+        },
+        {
+          "failure_or_success_result": "ERR_ROLE_DISPOSITION_INVALID",
+          "owner": "wrapper",
+          "stage_id": "all_role_dispositions_and_schema_bindings",
+          "success_payload_type": "tuple[SchemaBinding,...]",
+          "tie_break": "lowest object_ordinal"
+        },
+        {
+          "collects": "both fields for every descriptor whose role binding resolved",
+          "owner": "_validate_prepared_object_descriptor_pre_binding",
+          "stage_id": "inspect_all_target_and_source_paths"
+        },
+        {
+          "failure_or_success_result": "ERR_PATH_LEXICAL_INVALID",
+          "owner": "_reduce_descriptor_pre_binding_results",
+          "stage_id": "global_path_lexical_reduction"
+        },
+        {
+          "failure_or_success_result": "ERR_PATH_GRAMMAR_MISMATCH",
+          "owner": "_reduce_descriptor_pre_binding_results",
+          "stage_id": "global_path_grammar_reduction"
+        },
+        {
+          "failure_or_success_result": "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+          "owner": "_reduce_descriptor_pre_binding_results",
+          "stage_id": "global_reuse_source_target_equality"
+        },
+        {
+          "failure_or_success_result": "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+          "owner": "wrapper",
+          "stage_id": "semantic_family_binding"
+        },
+        {
+          "failure_or_success_result": "ERR_RUN_ID_BINDING_MISMATCH",
+          "owner": "wrapper",
+          "stage_id": "three_way_run_identity_binding"
+        },
+        {
+          "callee_closed_non_success_domain": [
+            "I0A_VALID_A2_SINGLE",
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_UNIT_CONTEXT_INVALID",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+            "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID"
+          ],
+          "caller_propagated_results": [
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID"
+          ],
+          "iteration_order": "ascending object_ordinal",
+          "owner": "validate_prepared_object_descriptor",
+          "precedence_rule": "This delegate occurs only after global path/reuse/family/run reductions; it cannot preempt those reductions.",
+          "stage_id": "descriptor_validator_delegate",
+          "statically_unreachable_results": {
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": "all descriptor closed fields passed",
+            "ERR_PATH_GRAMMAR_MISMATCH": "global all-descriptor grammar reduction passed",
+            "ERR_PATH_LEXICAL_INVALID": "global all-descriptor lexical reduction passed",
+            "ERR_REUSE_SOURCE_TARGET_MISMATCH": "global reuse equality passed",
+            "ERR_ROLE_DISPOSITION_INVALID": "all exact four-field SchemaBinding selections passed",
+            "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH": "global semantic-family binding passed",
+            "ERR_UNIT_CONTEXT_INVALID": "descriptor-set UnitContext validation passed",
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": "descriptor-set unit-kind gate passed"
+          }
+        },
+        {
+          "failure_or_success_result": "ERR_ORDINAL_SEQUENCE_INVALID",
+          "owner": "wrapper",
+          "stage_id": "public_ordinal_sequence"
+        },
+        {
+          "failure_or_success_result": "ERR_ROLE_CARDINALITY_INVALID",
+          "owner": "wrapper",
+          "stage_id": "variable_partition_payload_cardinality"
+        },
+        {
+          "failure_or_success_result": "ERR_ROLE_CARDINALITY_INVALID",
+          "owner": "private_reducer",
+          "stage_id": "fixed_role_cardinality"
+        },
+        {
+          "failure_or_success_result": "ERR_CANONICAL_TARGET_DUPLICATE",
+          "owner": "private_reducer",
+          "stage_id": "canonical_target_uniqueness"
+        },
+        {
+          "failure_or_success_result": "ERR_SIDECAR_RELATION_INVALID",
+          "owner": "private_reducer",
+          "stage_id": "sidecar_relation"
+        },
+        {
+          "failure_or_success_result": "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+          "owner": "wrapper_after_private_success",
+          "stage_id": "same_ordinal_partition_binding"
+        },
+        {
+          "failure_or_success_result": "I0A_VALID_A2_SET",
+          "owner": "wrapper",
+          "stage_id": "success"
+        }
+      ],
+      "revision_10_candidate_05_status": "AMENDED",
+      "signature": "(value: DescriptorSetInput) -> ValidationResult",
+      "unit_context_applicability": "DIRECT_OR_TRANSITIVE_REQUIRED"
+    },
+    "validate_prepared_object_descriptor": {
+      "closed_result_or_exception_domain": [
+        "I0A_VALID_A2_SINGLE",
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID"
+      ],
+      "established_assurances_by_result": {
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": [],
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID": [],
+        "ERR_PATH_GRAMMAR_MISMATCH": [],
+        "ERR_PATH_LEXICAL_INVALID": [],
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH": [],
+        "ERR_ROLE_DISPOSITION_INVALID": [],
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH": [],
+        "ERR_UNIT_CONTEXT_INVALID": [],
+        "I0A_VALID_A2_SINGLE": [
+          "A1_LEXICAL_PATH_SHAPE",
+          "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS"
+        ],
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+      },
+      "excludes_new_codes": {
+        "ERR_RUN_ID_BINDING_MISMATCH": "No claim run_id is in the public input; three-way run binding is not established by A2_SINGLE."
+      },
+      "includes_new_codes": [
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH"
+      ],
+      "ordered_error_precedence": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID"
+      ],
+      "ordered_validation_stages": [
+        {
+          "failure_or_success_result": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+          "owner": "public_wrapper",
+          "stage_id": "unit_kind_gate"
+        },
+        {
+          "failure_or_success_result": "ERR_UNIT_CONTEXT_INVALID",
+          "owner": "public_wrapper",
+          "stage_id": "unit_context"
+        },
+        {
+          "failure_or_success_result": "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+          "owner": "public_wrapper",
+          "stage_id": "descriptor_closed_fields"
+        },
+        {
+          "failure_or_success_result": "ERR_ROLE_DISPOSITION_INVALID",
+          "owner": "public_wrapper",
+          "stage_id": "role_disposition_and_schema_binding",
+          "success_payload_type": "SchemaBinding"
+        },
+        {
+          "collects": [
+            "canonical_target_path lexical/grammar",
+            "durable_source_path lexical/grammar"
+          ],
+          "owner": "_validate_prepared_object_descriptor_pre_binding",
+          "stage_id": "inspect_both_path_fields"
+        },
+        {
+          "failure_or_success_result": "ERR_PATH_LEXICAL_INVALID",
+          "owner": "public_wrapper",
+          "stage_id": "global_path_lexical_reduction"
+        },
+        {
+          "failure_or_success_result": "ERR_PATH_GRAMMAR_MISMATCH",
+          "owner": "public_wrapper",
+          "stage_id": "global_path_grammar_reduction"
+        },
+        {
+          "failure_or_success_result": "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+          "owner": "public_wrapper",
+          "stage_id": "reuse_source_target_equality"
+        },
+        {
+          "failure_or_success_result": "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+          "owner": "public_wrapper",
+          "stage_id": "semantic_family_binding"
+        },
+        {
+          "failure_or_success_result": "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+          "owner": "_validate_prepared_object_descriptor_logical_hash_nullability",
+          "stage_id": "logical_hash_nullability"
+        },
+        {
+          "failure_or_success_result": "I0A_VALID_A2_SINGLE",
+          "owner": "public_wrapper",
+          "stage_id": "success"
+        }
+      ],
+      "revision_10_candidate_05_status": "AMENDED",
+      "signature": "(descriptor: PreparedObjectDescriptor, unit_context: UnitContext) -> ValidationResult",
+      "unit_context_applicability": "DIRECT_OR_TRANSITIVE_REQUIRED"
+    },
+    "validate_prepared_unit_structure": {
+      "closed_result_or_exception_domain": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_ROWS_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_PREPARED_UNIT_ID_MISMATCH",
+        "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+        "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH"
+      ],
+      "established_assurances_by_result": {
+        "ERR_CANONICAL_JSON_INVALID": [],
+        "ERR_CANONICAL_TARGET_DUPLICATE": [],
+        "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH": [],
+        "ERR_COVERAGE_STATE_INVALID": [],
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": [],
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": [],
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID": [],
+        "ERR_LOGICAL_ROWS_INVALID": [],
+        "ERR_LOGICAL_SHA256_MISMATCH": [],
+        "ERR_ORDINAL_SEQUENCE_INVALID": [],
+        "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH": [],
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED": [],
+        "ERR_PATH_GRAMMAR_MISMATCH": [],
+        "ERR_PATH_LEXICAL_INVALID": [],
+        "ERR_PHYSICAL_EXPECTATION_INVALID": [],
+        "ERR_PHYSICAL_SHA256_MISMATCH": [],
+        "ERR_PHYSICAL_SIZE_MISMATCH": [],
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH": [],
+        "ERR_PREDECESSOR_RULE_INVALID": [],
+        "ERR_PREPARED_UNIT_ID_MISMATCH": [],
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH": [],
+        "ERR_ROLE_CARDINALITY_INVALID": [],
+        "ERR_ROLE_DISPOSITION_INVALID": [],
+        "ERR_RUN_ID_BINDING_MISMATCH": [],
+        "ERR_SELECTED_SCHEMA_INVALID": [],
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH": [],
+        "ERR_SIDECAR_RELATION_INVALID": [],
+        "ERR_STRUCTURAL_MEMBER_SET_INVALID": [],
+        "ERR_UNIT_CONTEXT_INVALID": [],
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A": [],
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID": [],
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED": [],
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+      },
+      "includes_new_codes": [
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH"
+      ],
+      "ordered_error_precedence": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_ROWS_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_PREPARED_UNIT_ID_MISMATCH",
+        "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+        "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH"
+      ],
+      "ordered_validation_stages": [
+        {
+          "failure_or_success_result": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+          "stage_id": "unit_kind_gate"
+        },
+        {
+          "failure_or_success_result": "ERR_UNIT_CONTEXT_INVALID",
+          "stage_id": "unit_context"
+        },
+        {
+          "failure_or_success_result": "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+          "stage_id": "structural_member_set"
+        },
+        {
+          "failure_or_success_result": "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+          "stage_id": "accepted_registry_bytes"
+        },
+        {
+          "ordered_results": [
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+            "ERR_PREPARED_UNIT_ID_MISMATCH",
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH"
+          ],
+          "propagated_non_success_domain": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_UNIT_CONTEXT_INVALID",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_LOGICAL_ROWS_INVALID",
+            "ERR_LOGICAL_SHA256_MISMATCH",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_PREPARED_UNIT_ID_MISMATCH",
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH"
+          ],
+          "propagates_exact_order_from": "validate_structural_json_member",
+          "stage_id": "structural_member_validation"
+        },
+        {
+          "propagated_non_success_domain": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_UNIT_CONTEXT_INVALID",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_LOGICAL_SHA256_MISMATCH",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+            "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+            "ERR_RUN_ID_BINDING_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_ROLE_CARDINALITY_INVALID",
+            "ERR_CANONICAL_TARGET_DUPLICATE",
+            "ERR_SIDECAR_RELATION_INVALID",
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH"
+          ],
+          "propagates_exact_order_from": "validate_prepared_descriptor_set",
+          "stage_id": "descriptor_set_delegate"
+        },
+        {
+          "callee_closed_non_success_domain": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_UNIT_CONTEXT_INVALID",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_LOGICAL_SHA256_MISMATCH",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+            "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+            "ERR_RUN_ID_BINDING_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_ROLE_CARDINALITY_INVALID",
+            "ERR_CANONICAL_TARGET_DUPLICATE",
+            "ERR_SIDECAR_RELATION_INVALID",
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+            "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+            "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH"
+          ],
+          "caller_propagation_rule": "return any validate_selected_json_payload non-success code unchanged; no success substitution or translation",
+          "ordered_results": [
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+            "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+            "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH"
+          ],
+          "propagated_non_success_domain": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_UNIT_CONTEXT_INVALID",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_LOGICAL_SHA256_MISMATCH",
+            "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+            "ERR_ROLE_DISPOSITION_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+            "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+            "ERR_RUN_ID_BINDING_MISMATCH",
+            "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_ROLE_CARDINALITY_INVALID",
+            "ERR_CANONICAL_TARGET_DUPLICATE",
+            "ERR_SIDECAR_RELATION_INVALID",
+            "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+            "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+            "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+            "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH"
+          ],
+          "propagates_exact_order_from": "validate_selected_json_payload",
+          "stage_id": "selected_payload_iteration"
+        }
+      ],
+      "repeated_result_rule": "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH may arise at the earlier structural cross-member stage or the later descriptor-set same-ordinal stage; stage order, not code spelling alone, controls precedence.",
+      "revision_10_candidate_05_status": "AMENDED",
+      "signature": "(value: PreparedUnitStructureInput) -> ValidationResult",
+      "unit_context_applicability": "DIRECT_OR_TRANSITIVE_REQUIRED"
+    },
+    "validate_selected_json_payload": {
+      "closed_result_or_exception_domain": [
+        "I0A_VALID_A6_SELECTED",
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "established_assurances_by_result": {
+        "ERR_CANONICAL_JSON_INVALID": [],
+        "ERR_CANONICAL_TARGET_DUPLICATE": [],
+        "ERR_COVERAGE_STATE_INVALID": [],
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": [],
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": [],
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID": [],
+        "ERR_LOGICAL_SHA256_MISMATCH": [],
+        "ERR_ORDINAL_SEQUENCE_INVALID": [],
+        "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH": [],
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED": [],
+        "ERR_PATH_GRAMMAR_MISMATCH": [],
+        "ERR_PATH_LEXICAL_INVALID": [],
+        "ERR_PHYSICAL_EXPECTATION_INVALID": [],
+        "ERR_PHYSICAL_SHA256_MISMATCH": [],
+        "ERR_PHYSICAL_SIZE_MISMATCH": [],
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH": [],
+        "ERR_PREDECESSOR_RULE_INVALID": [],
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH": [],
+        "ERR_ROLE_CARDINALITY_INVALID": [],
+        "ERR_ROLE_DISPOSITION_INVALID": [],
+        "ERR_RUN_ID_BINDING_MISMATCH": [],
+        "ERR_SELECTED_SCHEMA_INVALID": [],
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH": [],
+        "ERR_SIDECAR_RELATION_INVALID": [],
+        "ERR_UNIT_CONTEXT_INVALID": [],
+        "I0A_VALID_A6_SELECTED": [
+          "A1_LEXICAL_PATH_SHAPE",
+          "A1_REGISTRY_BINDING_RESOLVED",
+          "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+          "A2_DESCRIPTOR_SET_COMPLETE",
+          "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+          "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE"
+        ],
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A": [],
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID": [],
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED": [],
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+      },
+      "includes_new_codes": [
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH"
+      ],
+      "ordered_error_precedence": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "ERR_ROLE_DISPOSITION_INVALID",
+        "ERR_PATH_LEXICAL_INVALID",
+        "ERR_PATH_GRAMMAR_MISMATCH",
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "ERR_RUN_ID_BINDING_MISMATCH",
+        "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_ROLE_CARDINALITY_INVALID",
+        "ERR_CANONICAL_TARGET_DUPLICATE",
+        "ERR_SIDECAR_RELATION_INVALID",
+        "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+        "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+        "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH"
+      ],
+      "ordered_error_precedence_role": "compatibility unique-code projection only; repeated-code predicate order is controlled solely by ordered_predicate_precedence",
+      "ordered_predicate_precedence": [
+        {
+          "ordinal": 1,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "unit_kind_gate",
+          "result_code": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A"
+        },
+        {
+          "ordinal": 2,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "unit_context_validation",
+          "result_code": "ERR_UNIT_CONTEXT_INVALID"
+        },
+        {
+          "ordinal": 3,
+          "owner": "build_accepted_registry_schema_definition_index",
+          "predicate_id": "accepted_registry_bytes_validation",
+          "result_code": "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+        },
+        {
+          "ordinal": 4,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "selected_sidecar_canonical_json_parse",
+          "result_code": "ERR_CANONICAL_JSON_INVALID"
+        },
+        {
+          "ordinal": 5,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "selected_descriptor_lookup",
+          "result_code": "ERR_SELECTED_SCHEMA_INVALID"
+        },
+        {
+          "ordinal": 6,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "selected_sidecar_closed_schema_membership_and_types",
+          "result_code": "ERR_SELECTED_SCHEMA_INVALID"
+        },
+        {
+          "delegated_order": "validate_prepared_descriptor_set ordered predicate precedence",
+          "ordinal": 7,
+          "owner": "validate_prepared_descriptor_set",
+          "predicate_id": "descriptor_set_delegate",
+          "result_code": "EXACT_DELEGATED_DOMAIN"
+        },
+        {
+          "delegated_order": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_BINDING_QUERY_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+          ],
+          "ordinal": 8,
+          "owner": "resolve_selected_schema_binding",
+          "predicate_id": "binding_resolution_delegate",
+          "result_code": "EXACT_DELEGATED_DOMAIN",
+          "success_result": "I0A_BINDING_RESOLVED_A1"
+        },
+        {
+          "ordinal": 9,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "selected_schema_implementation_gate",
+          "result_code": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A"
+        },
+        {
+          "ordinal": 10,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "paired_target_physical_proof_presence",
+          "result_code": "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED"
+        },
+        {
+          "ordinal": 11,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "paired_target_descriptor_selection_and_pairing",
+          "result_code": "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH"
+        },
+        {
+          "ordinal": 12,
+          "owner": "reconcile_physical_payload",
+          "predicate_id": "selected_sidecar_expected_size_and_sha_syntax",
+          "result_code": "ERR_PHYSICAL_EXPECTATION_INVALID"
+        },
+        {
+          "ordinal": 13,
+          "owner": "reconcile_physical_payload",
+          "predicate_id": "selected_sidecar_observed_size",
+          "result_code": "ERR_PHYSICAL_SIZE_MISMATCH"
+        },
+        {
+          "ordinal": 14,
+          "owner": "reconcile_physical_payload",
+          "predicate_id": "selected_sidecar_observed_sha256",
+          "result_code": "ERR_PHYSICAL_SHA256_MISMATCH"
+        },
+        {
+          "ordinal": 15,
+          "owner": "reconcile_physical_payload",
+          "predicate_id": "paired_target_expected_size_and_sha_syntax",
+          "result_code": "ERR_PHYSICAL_EXPECTATION_INVALID"
+        },
+        {
+          "ordinal": 16,
+          "owner": "reconcile_physical_payload",
+          "predicate_id": "paired_target_observed_size",
+          "result_code": "ERR_PHYSICAL_SIZE_MISMATCH"
+        },
+        {
+          "ordinal": 17,
+          "owner": "reconcile_physical_payload",
+          "predicate_id": "paired_target_observed_sha256",
+          "result_code": "ERR_PHYSICAL_SHA256_MISMATCH"
+        },
+        {
+          "ordinal": 18,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "final_sidecar_target_path_and_hash_relation",
+          "result_code": "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH"
+        },
+        {
+          "ordinal": 19,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "selected_payload_success",
+          "result_code": "I0A_VALID_A6_SELECTED"
+        }
+      ],
+      "ordered_validation_stages": [
+        {
+          "ordinal": 1,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "unit_kind_gate",
+          "result_code": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A"
+        },
+        {
+          "ordinal": 2,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "unit_context_validation",
+          "result_code": "ERR_UNIT_CONTEXT_INVALID"
+        },
+        {
+          "ordinal": 3,
+          "owner": "build_accepted_registry_schema_definition_index",
+          "predicate_id": "accepted_registry_bytes_validation",
+          "result_code": "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH"
+        },
+        {
+          "ordinal": 4,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "selected_sidecar_canonical_json_parse",
+          "result_code": "ERR_CANONICAL_JSON_INVALID"
+        },
+        {
+          "ordinal": 5,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "selected_descriptor_lookup",
+          "result_code": "ERR_SELECTED_SCHEMA_INVALID"
+        },
+        {
+          "ordinal": 6,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "selected_sidecar_closed_schema_membership_and_types",
+          "result_code": "ERR_SELECTED_SCHEMA_INVALID"
+        },
+        {
+          "delegated_order": "validate_prepared_descriptor_set ordered predicate precedence",
+          "ordinal": 7,
+          "owner": "validate_prepared_descriptor_set",
+          "predicate_id": "descriptor_set_delegate",
+          "result_code": "EXACT_DELEGATED_DOMAIN"
+        },
+        {
+          "callee_closed_non_success_domain": [
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+            "ERR_BINDING_QUERY_INVALID",
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+          ],
+          "delegated_order": [
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+          ],
+          "ordinal": 8,
+          "owner": "resolve_selected_schema_binding",
+          "predicate_id": "binding_resolution_delegate",
+          "projection_symbol": "_project_selected_binding_query",
+          "reachable_propagated_results": [
+            "ERR_PATH_LEXICAL_INVALID",
+            "ERR_PATH_GRAMMAR_MISMATCH",
+            "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+            "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+          ],
+          "result_code": "EXACT_DELEGATED_DOMAIN",
+          "statically_unreachable_results": {
+            "ERR_BINDING_QUERY_INVALID": "_project_selected_binding_query typed impossibility proof",
+            "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": "accepted registry bytes already passed",
+            "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": "unit-kind gate already passed"
+          },
+          "success_result": "I0A_BINDING_RESOLVED_A1"
+        },
+        {
+          "ordinal": 9,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "selected_schema_implementation_gate",
+          "result_code": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A"
+        },
+        {
+          "ordinal": 10,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "paired_target_physical_proof_presence",
+          "result_code": "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED"
+        },
+        {
+          "ordinal": 11,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "paired_target_descriptor_selection_and_pairing",
+          "result_code": "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH"
+        },
+        {
+          "ordinal": 12,
+          "owner": "reconcile_physical_payload",
+          "predicate_id": "selected_sidecar_expected_size_and_sha_syntax",
+          "result_code": "ERR_PHYSICAL_EXPECTATION_INVALID"
+        },
+        {
+          "ordinal": 13,
+          "owner": "reconcile_physical_payload",
+          "predicate_id": "selected_sidecar_observed_size",
+          "result_code": "ERR_PHYSICAL_SIZE_MISMATCH"
+        },
+        {
+          "ordinal": 14,
+          "owner": "reconcile_physical_payload",
+          "predicate_id": "selected_sidecar_observed_sha256",
+          "result_code": "ERR_PHYSICAL_SHA256_MISMATCH"
+        },
+        {
+          "ordinal": 15,
+          "owner": "reconcile_physical_payload",
+          "predicate_id": "paired_target_expected_size_and_sha_syntax",
+          "result_code": "ERR_PHYSICAL_EXPECTATION_INVALID"
+        },
+        {
+          "ordinal": 16,
+          "owner": "reconcile_physical_payload",
+          "predicate_id": "paired_target_observed_size",
+          "result_code": "ERR_PHYSICAL_SIZE_MISMATCH"
+        },
+        {
+          "ordinal": 17,
+          "owner": "reconcile_physical_payload",
+          "predicate_id": "paired_target_observed_sha256",
+          "result_code": "ERR_PHYSICAL_SHA256_MISMATCH"
+        },
+        {
+          "ordinal": 18,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "final_sidecar_target_path_and_hash_relation",
+          "result_code": "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH"
+        },
+        {
+          "ordinal": 19,
+          "owner": "validate_selected_json_payload",
+          "predicate_id": "selected_payload_success",
+          "result_code": "I0A_VALID_A6_SELECTED"
+        }
+      ],
+      "precedence_authority": "ordered_predicate_precedence",
+      "required_existing_propagation": "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+      "revision_10_candidate_05_status": "AMENDED_ORDERED_PREDICATE_PRECEDENCE",
+      "selected_payload_multi_fault_rule": "evaluate ordered_predicate_precedence by ordinal; selected physical predicates 12-14 precede paired physical predicates 15-17; all paired physical predicates precede final semantic predicate 18; repeated public codes at predicates 5/6 and 11/18 do not collapse stage identity",
+      "signature": "(value: SelectedJsonPayloadInput) -> ValidationResult",
+      "unit_context_applicability": "DIRECT_OR_TRANSITIVE_REQUIRED"
+    },
+    "validate_structural_json_member": {
+      "closed_result_or_exception_domain": [
+        "I0A_VALID_A3_A4_STRUCTURAL_OBJECT",
+        "I0A_VALID_A3_STRUCTURAL_SIDECAR",
+        "I0A_VALID_A6_STRUCTURAL",
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_ROWS_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_PREPARED_UNIT_ID_MISMATCH",
+        "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH"
+      ],
+      "direct_unit_context_case": "T204",
+      "established_assurances_by_result": {
+        "ERR_CANONICAL_JSON_INVALID": [],
+        "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH": [],
+        "ERR_COVERAGE_STATE_INVALID": [],
+        "ERR_LOGICAL_ROWS_INVALID": [],
+        "ERR_LOGICAL_SHA256_MISMATCH": [],
+        "ERR_ORDINAL_SEQUENCE_INVALID": [],
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED": [],
+        "ERR_PHYSICAL_EXPECTATION_INVALID": [],
+        "ERR_PHYSICAL_SHA256_MISMATCH": [],
+        "ERR_PHYSICAL_SIZE_MISMATCH": [],
+        "ERR_PREDECESSOR_RULE_INVALID": [],
+        "ERR_PREPARED_UNIT_ID_MISMATCH": [],
+        "ERR_SELECTED_SCHEMA_INVALID": [],
+        "ERR_UNIT_CONTEXT_INVALID": [],
+        "I0A_VALID_A3_A4_STRUCTURAL_OBJECT": [
+          "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+          "A4_DECODED_LOGICAL_ROWS_VALIDATED"
+        ],
+        "I0A_VALID_A3_STRUCTURAL_SIDECAR": [
+          "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+          "A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED"
+        ],
+        "I0A_VALID_A6_STRUCTURAL": [
+          "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+          "A6_STRUCTURAL_SCHEMA_COMPLETE"
+        ],
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": []
+      },
+      "excludes_new_codes": {
+        "ERR_REUSE_SOURCE_TARGET_MISMATCH": "This API does not validate descriptor REUSE_IMMUTABLE_SOURCE path equality.",
+        "ERR_RUN_ID_BINDING_MISMATCH": "This API derives one structural path from its explicit run_id and does not receive claim/target/durable descriptor triples.",
+        "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH": "This single structural-member API does not receive the complete descriptor set and does not establish descriptor family binding."
+      },
+      "includes_new_codes": [
+        "ERR_UNIT_CONTEXT_INVALID"
+      ],
+      "ordered_error_precedence": [
+        "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "ERR_UNIT_CONTEXT_INVALID",
+        "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "ERR_PHYSICAL_SIZE_MISMATCH",
+        "ERR_PHYSICAL_SHA256_MISMATCH",
+        "ERR_CANONICAL_JSON_INVALID",
+        "ERR_SELECTED_SCHEMA_INVALID",
+        "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "ERR_PREDECESSOR_RULE_INVALID",
+        "ERR_COVERAGE_STATE_INVALID",
+        "ERR_LOGICAL_ROWS_INVALID",
+        "ERR_LOGICAL_SHA256_MISMATCH",
+        "ERR_ORDINAL_SEQUENCE_INVALID",
+        "ERR_PREPARED_UNIT_ID_MISMATCH",
+        "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH"
+      ],
+      "ordered_validation_stages": [
+        {
+          "failure_or_success_result": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+          "stage_id": "unit_kind_gate"
+        },
+        {
+          "failure_or_success_result": "ERR_UNIT_CONTEXT_INVALID",
+          "stage_id": "unit_context"
+        },
+        {
+          "ordered_results": [
+            "ERR_PHYSICAL_EXPECTATION_INVALID",
+            "ERR_PHYSICAL_SIZE_MISMATCH",
+            "ERR_PHYSICAL_SHA256_MISMATCH",
+            "ERR_CANONICAL_JSON_INVALID",
+            "ERR_SELECTED_SCHEMA_INVALID",
+            "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+            "ERR_PREDECESSOR_RULE_INVALID",
+            "ERR_COVERAGE_STATE_INVALID",
+            "ERR_LOGICAL_ROWS_INVALID",
+            "ERR_LOGICAL_SHA256_MISMATCH",
+            "ERR_ORDINAL_SEQUENCE_INVALID",
+            "ERR_PREPARED_UNIT_ID_MISMATCH",
+            "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH"
+          ],
+          "stage_id": "existing_revision_09_member_stages"
+        },
+        {
+          "stage_id": "member_dependent_success",
+          "success_results": [
+            "I0A_VALID_A3_A4_STRUCTURAL_OBJECT",
+            "I0A_VALID_A3_STRUCTURAL_SIDECAR",
+            "I0A_VALID_A6_STRUCTURAL"
+          ]
+        }
+      ],
+      "physical_multifault_case": "T205",
+      "physical_multifault_precedence": "ERR_PHYSICAL_EXPECTATION_INVALID, then ERR_PHYSICAL_SIZE_MISMATCH, then ERR_PHYSICAL_SHA256_MISMATCH, all before canonical JSON/schema faults.",
+      "revision_10_candidate_05_status": "AMENDED",
+      "signature": "(value: StructuralJsonMemberInput) -> ValidationResult",
+      "unit_context_applicability": "DIRECT_OR_TRANSITIVE_REQUIRED"
+    }
+  },
+  "resolver_and_wrapper_implementation_gate_contract": {
+    "accepted_base_contract_path": "I0A_PUBLIC_API_CONTRACT.json",
+    "accepted_base_sha256": "935289dbf48a004f334773895da80537b71f4e50b09a4ce7a2e77a01e0ef16cc",
+    "partial_assurance_rule": "wrapper stop returns established_assurances=(); resolver A1 assurances do not survive the non-success wrapper return",
+    "resolver_closed_result_or_exception_domain": [
+      "I0A_BINDING_RESOLVED_A1",
+      "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+      "ERR_BINDING_QUERY_INVALID",
+      "ERR_PATH_LEXICAL_INVALID",
+      "ERR_PATH_GRAMMAR_MISMATCH",
+      "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+      "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+    ],
+    "resolver_forbidden_result": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+    "resolver_name": "resolve_selected_schema_binding",
+    "resolver_ordered_error_precedence": [
+      "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+      "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+      "ERR_BINDING_QUERY_INVALID",
+      "ERR_PATH_LEXICAL_INVALID",
+      "ERR_PATH_GRAMMAR_MISMATCH",
+      "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+      "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+    ],
+    "resolver_output_type": "BindingResolutionResult",
+    "resolver_signature": "resolve_selected_schema_binding(query: BindingQuery, accepted_registry_bytes: bytes) -> BindingResolutionResult",
+    "resolver_success": "I0A_BINDING_RESOLVED_A1",
+    "wrapper_owner": "validate_selected_json_payload",
+    "wrapper_result": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+    "wrapper_rule": "after resolver returns I0A_BINDING_RESOLVED_A1, test selected binding content_schema_id against the closed implemented I0A selected-schema set; outside-set returns the stop with empty assurances",
+    "wrapper_stage_id": "selected_schema_implementation_gate"
+  },
+  "reuse_source_target_contract": {
+    "applies_when": "selected SchemaBinding publication_mode is REUSE_IMMUTABLE_SOURCE",
+    "failure_result": "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+    "forbidden_mapping": "ERR_ROLE_DISPOSITION_INVALID MUST NOT represent post-path reuse inequality",
+    "precedence": "after global lexical and grammar fault selection; before semantic-family binding, run binding, logical-hash nullability, and set invariants",
+    "preconditions": [
+      "both path fields are lexical-valid",
+      "both path fields match the selected target grammar"
+    ],
+    "required_behavior": "durable_source_path MUST equal canonical_target_path as exact Unicode strings and UTF-8 bytes"
+  },
+  "run_identity_binding_contract": {
+    "applies_to": "every accepted descriptor, every role, and every publication mode including REUSE_IMMUTABLE_SOURCE",
+    "malformed_path_distinction": {
+      "grammar_valid_cross_input": "ERR_RUN_ID_BINDING_MISMATCH",
+      "lexical": "ERR_PATH_LEXICAL_INVALID",
+      "selected_grammar": "ERR_PATH_GRAMMAR_MISMATCH"
+    },
+    "owner": "validate_prepared_descriptor_set",
+    "precedence": "after lexical, grammar, reuse-equality, and semantic-family binding; before logical-hash nullability",
+    "required_equality": [
+      "parsed claim run_id",
+      "canonical-target decomposed run_id",
+      "durable-source decomposed run_id"
+    ],
+    "result": "ERR_RUN_ID_BINDING_MISMATCH",
+    "reuse_rule": "for REUSE_IMMUTABLE_SOURCE, role disposition must permit reuse, both paths must match the selected target grammar, and durable_source_path must equal canonical_target_path byte-for-byte before run binding is evaluated"
+  },
+  "schema_id": "i0a:public_api_contract.revision_10_candidate_11",
+  "schema_version": 10,
+  "scope_review_anchor": "88362521fe9ef247708e4d7b5f90753784b8b88e",
+  "selected_binding_query_projection_contract": {
+    "candidate_status": "CANDIDATE_10_RETAINED_TYPED_IMPOSSIBILITY_DESIGN",
+    "code_type": {
+      "full_domain": [
+        "PRIVATE_SELECTED_BINDING_QUERY_PROJECTION_VALID"
+      ],
+      "kind": "private_enum",
+      "name": "_SelectedBindingQueryProjectionCode"
+    },
+    "exact_field_projection": {
+      "canonical_target_path": "selected_descriptor.canonical_target_path",
+      "content_schema_id": "selected_descriptor.content_schema_id",
+      "logical_sha256_is_null": "selected_descriptor.logical_sha256 is None",
+      "paired_target_canonical_target_path": "paired_descriptor.canonical_target_path iff selected descriptor is a sidecar; else null",
+      "paired_target_content_schema_id": "paired_descriptor.content_schema_id iff selected descriptor is a sidecar; else null",
+      "paired_target_role": "paired_descriptor.object_role iff selected descriptor is a sidecar; else null",
+      "publication_mode": "selected_descriptor.publication_mode",
+      "role": "selected_descriptor.object_role",
+      "sidecar_of_object_ordinal_is_null": "selected_descriptor.sidecar_of_object_ordinal is None",
+      "unit_kind": "unit_context.unit_kind"
+    },
+    "invalid_query_state_exclusions": [
+      {
+        "invariant": "constructor instantiates the accepted closed BindingQuery dataclass with every field exactly once",
+        "state": "non-BindingQuery object, extra field, or missing field"
+      },
+      {
+        "invariant": "values are copied from validated UnitContext and validated PreparedObjectDescriptor enums",
+        "state": "invalid role, unit_kind, or publication_mode type/domain"
+      },
+      {
+        "invariant": "descriptor closed fields and selected binding passed before projection",
+        "state": "invalid canonical_target_path or content_schema_id type"
+      },
+      {
+        "invariant": "both are computed Python identity predicates and are exact bool values",
+        "state": "non-bool logical_sha256_is_null or sidecar_of_object_ordinal_is_null"
+      },
+      {
+        "invariant": "descriptor-set sidecar relation passed and paired_descriptor is resolved before projection",
+        "state": "sidecar has missing or partial paired-target tuple"
+      },
+      {
+        "invariant": "non-sidecar branch writes all three paired-target fields as null",
+        "state": "non-sidecar has non-null paired-target field"
+      },
+      {
+        "invariant": "all three values are copied from the validated paired descriptor",
+        "state": "paired-target field has invalid type/domain"
+      }
+    ],
+    "owner_module": "pm_research.local_curl_per_side.prepared_evidence",
+    "preconditions": [
+      "unit_context passed UnitContext validation",
+      "selected_descriptor was found by exact object_ordinal in a descriptor set that returned I0A_VALID_A2_SET",
+      "selected descriptor closed fields, exact four-field SchemaBinding disposition, path grammar, reuse, family, run, nullability, ordinal, cardinality, duplicate-target, and sidecar relation all passed",
+      "paired_descriptor is the exact sidecar_of_object_ordinal target when selected descriptor is a sidecar; otherwise paired_descriptor is null"
+    ],
+    "public_assurance_behavior": "private projection establishes no public assurance; any later non-success returns empty assurances",
+    "resolver_outcomes_reachable_through_wrapper": [
+      "I0A_BINDING_RESOLVED_A1",
+      "ERR_PATH_LEXICAL_INVALID",
+      "ERR_PATH_GRAMMAR_MISMATCH",
+      "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+      "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID"
+    ],
+    "resolver_outcomes_unreachable_at_delegated_call": {
+      "ERR_BINDING_QUERY_INVALID": "closed projection and listed typed invariants exclude every invalid-query state",
+      "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": "wrapper accepted-registry bytes validation completed before projection",
+      "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": "wrapper unit-kind gate completed before projection"
+    },
+    "result_type": {
+      "additional_properties": false,
+      "failure_nullability": "no failure result exists after stated preconditions; callers MUST NOT invoke outside them",
+      "fields": [
+        {
+          "name": "code",
+          "nullable": false,
+          "type": "_SelectedBindingQueryProjectionCode"
+        },
+        {
+          "name": "query",
+          "nullable": true,
+          "type": "BindingQuery | None"
+        }
+      ],
+      "kind": "frozen_dataclass",
+      "name": "_SelectedBindingQueryProjectionResult",
+      "success_nullability": {
+        "code": "PRIVATE_SELECTED_BINDING_QUERY_PROJECTION_VALID",
+        "query": "non-null exact BindingQuery"
+      }
+    },
+    "signature": "_project_selected_binding_query(unit_context: UnitContext, selected_descriptor: PreparedObjectDescriptor, paired_descriptor: PreparedObjectDescriptor | None) -> _SelectedBindingQueryProjectionResult",
+    "symbol": "_project_selected_binding_query",
+    "visibility": "PRIVATE_UNEXPORTED"
+  },
+  "selected_payload_physical_reconciliation_contract": {
+    "final_semantic_relation": {
+      "assurances": [],
+      "candidate_04_relationship": "supersedes Candidate 04 incorrect ERR_SELECTED_SCHEMA_INVALID mapping",
+      "exact_relation": [
+        "sidecar.target_path equals paired target descriptor canonical_target_path exactly",
+        "sidecar.target_file_sha256 equals paired PhysicalPayloadResult.observed_sha256 exactly",
+        "paired observed_sha256 already equals paired descriptor expected_file_sha256 by successful reconciliation"
+      ],
+      "failure_result": "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+      "preconditions": [
+        "descriptor-set validation succeeded",
+        "selected sidecar canonical JSON and selected-schema validation succeeded",
+        "resolver returned I0A_BINDING_RESOLVED_A1 and wrapper implementation gate passed",
+        "paired proof presence and descriptor pairing succeeded",
+        "selected reconcile_physical_payload returned I0A_VALID_A3_EXACT",
+        "paired reconcile_physical_payload returned I0A_VALID_A3_EXACT"
+      ],
+      "predicate_id": "final_sidecar_target_path_and_hash_relation",
+      "revision_09_relationship": "preserves the existing ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH semantic category but supersedes Revision 09 predicate order by evaluating the final relation only after both independent physical reconciliations"
+    },
+    "helper": "reconcile_physical_payload(expected_file_size_bytes: int, expected_file_sha256: str, payload_bytes: bytes) -> PhysicalPayloadResult",
+    "helper_output": "PhysicalPayloadResult",
+    "independence_rule": "two separate calls; selected success never supplies paired observations or assurance",
+    "no_partial_assurance": "every non-success result returns empty assurances",
+    "ordered_predicates": [
+      {
+        "ordinal": 12,
+        "owner": "reconcile_physical_payload",
+        "predicate_id": "selected_sidecar_expected_size_and_sha_syntax",
+        "result_code": "ERR_PHYSICAL_EXPECTATION_INVALID"
+      },
+      {
+        "ordinal": 13,
+        "owner": "reconcile_physical_payload",
+        "predicate_id": "selected_sidecar_observed_size",
+        "result_code": "ERR_PHYSICAL_SIZE_MISMATCH"
+      },
+      {
+        "ordinal": 14,
+        "owner": "reconcile_physical_payload",
+        "predicate_id": "selected_sidecar_observed_sha256",
+        "result_code": "ERR_PHYSICAL_SHA256_MISMATCH"
+      },
+      {
+        "ordinal": 15,
+        "owner": "reconcile_physical_payload",
+        "predicate_id": "paired_target_expected_size_and_sha_syntax",
+        "result_code": "ERR_PHYSICAL_EXPECTATION_INVALID"
+      },
+      {
+        "ordinal": 16,
+        "owner": "reconcile_physical_payload",
+        "predicate_id": "paired_target_observed_size",
+        "result_code": "ERR_PHYSICAL_SIZE_MISMATCH"
+      },
+      {
+        "ordinal": 17,
+        "owner": "reconcile_physical_payload",
+        "predicate_id": "paired_target_observed_sha256",
+        "result_code": "ERR_PHYSICAL_SHA256_MISMATCH"
+      },
+      {
+        "ordinal": 18,
+        "owner": "validate_selected_json_payload",
+        "predicate_id": "final_sidecar_target_path_and_hash_relation",
+        "result_code": "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH"
+      }
+    ],
+    "owner": "validate_selected_json_payload",
+    "paired_target": {
+      "bytes_source": "value.paired_target_payload_bytes",
+      "expectation_source": "uniquely paired target descriptor file_size_bytes and file_sha256",
+      "predicates": [
+        15,
+        16,
+        17
+      ]
+    },
+    "selected_sidecar": {
+      "bytes_source": "value.selected_payload_bytes",
+      "expectation_source": "selected descriptor file_size_bytes and file_sha256",
+      "predicates": [
+        12,
+        13,
+        14
+      ]
+    }
+  },
+  "semantic_family_binding_contract": {
+    "family_neutral_behavior": "A family-neutral schema supplies no family. Its canonical-target parsed family MUST equal UnitContext subject_family in single-descriptor validation and MUST equal both UnitContext subject_family and parsed claim audit_family in descriptor-set validation.",
+    "family_neutral_non_partition_content_schemas": [
+      "json:audit_snapshot_manifest",
+      "json:sha256_sidecar",
+      "table:snapshot_partition",
+      "json:snapshot_publication_commit_v23",
+      "json:snapshot_current_view_commit_v23"
+    ],
+    "family_path_mapping": {
+      "analysis_compatibility": {
+        "path_components": [
+          "analysis",
+          "compatibility"
+        ],
+        "path_lexeme": "analysis/compatibility"
+      },
+      "analysis_strict": {
+        "path_components": [
+          "strict"
+        ],
+        "path_lexeme": "strict"
+      },
+      "capture": {
+        "path_components": [
+          "capture"
+        ],
+        "path_lexeme": "capture"
+      }
+    },
+    "grammar_valid_wrong_family_behavior": "a target valid under its role grammar but mapped to a different semantic family returns ERR_SEMANTIC_FAMILY_BINDING_MISMATCH, not a path error",
+    "owner": {
+      "descriptor_set": "validate_prepared_descriptor_set validates exact three-way equality among UnitContext family, parsed claim audit_family, and every canonical-target parsed family",
+      "single_descriptor": "_validate_prepared_object_descriptor_pre_binding validates UnitContext family against parsed target family and any partition-specific schema family"
+    },
+    "partition_content_schema_family": {
+      "table:canonical_compatibility_analysis": "analysis_compatibility",
+      "table:capture_events": "capture",
+      "table:strict_audit_analysis": "analysis_strict"
+    },
+    "precedence": "after both path grammars and REUSE_IMMUTABLE_SOURCE equality pass; before three-way run binding and logical-hash nullability",
+    "result": "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+    "semantic_family_domain": [
+      "capture",
+      "analysis_compatibility",
+      "analysis_strict"
+    ]
+  },
+  "status": "AMENDMENT_CANDIDATE_NOT_ACCEPTED",
+  "supersession_boundary": [
+    "inspection seam owner metadata only",
+    "T222 exact-callee behavioral evidence reference and appended T230 only",
+    "mechanically derived counts, fixture identities, manifests, and checksums"
+  ],
+  "total_public_result_mapping": {
+    "ERR_BINDING_QUERY_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_BINDING_QUERY_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_CANONICAL_BYTES_FORMAT": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_CANONICAL_BYTES_FORMAT",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_CANONICAL_FIELD_NAME_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_CANONICAL_FIELD_NAME_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_CANONICAL_FIELD_ORDER_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_CANONICAL_FIELD_ORDER_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_CANONICAL_JSON_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_CANONICAL_JSON_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_CANONICAL_NON_NFC": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_CANONICAL_NON_NFC",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_CANONICAL_ROW_ARITY": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_CANONICAL_ROW_ARITY",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_CANONICAL_SHA256_FORMAT": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_CANONICAL_SHA256_FORMAT",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_CANONICAL_TAG_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_CANONICAL_TAG_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_CANONICAL_TARGET_DUPLICATE": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_CANONICAL_TARGET_DUPLICATE",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_CANONICAL_TYPE_MISMATCH": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_CANONICAL_TYPE_MISMATCH",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_CANONICAL_UINT_RANGE": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_CANONICAL_UINT_RANGE",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_CLAIM_SEMANTIC_SCHEMA_MISMATCH",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_COVERAGE_STATE_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_COVERAGE_STATE_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_DESCRIPTOR_CLOSED_FIELD_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_DIGEST_INPUT_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_DIGEST_INPUT_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_GOVERNING_PACKAGE_BYTES_MISMATCH",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_LOGICAL_HASH_NULLABILITY_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_LOGICAL_HASH_NULLABILITY_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_LOGICAL_ROWS_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_LOGICAL_ROWS_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_LOGICAL_SHA256_MISMATCH": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_LOGICAL_SHA256_MISMATCH",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_ORDINAL_SEQUENCE_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_ORDINAL_SEQUENCE_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_PAIRED_TARGET_DESCRIPTOR_MISMATCH",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_PAIRED_TARGET_PHYSICAL_PROOF_REQUIRED",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_PATH_GRAMMAR_MISMATCH": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_PATH_GRAMMAR_MISMATCH",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_PATH_LEXICAL_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_PATH_LEXICAL_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_PHYSICAL_EXPECTATION_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_PHYSICAL_EXPECTATION_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_PHYSICAL_SHA256_MISMATCH": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_PHYSICAL_SHA256_MISMATCH",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_PHYSICAL_SIZE_MISMATCH": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_PHYSICAL_SIZE_MISMATCH",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_PLAN_UNIT_CROSS_MEMBER_MISMATCH",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_PREDECESSOR_RULE_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_PREDECESSOR_RULE_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_PREPARED_UNIT_ID_MISMATCH": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_PREPARED_UNIT_ID_MISMATCH",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_REUSE_SOURCE_TARGET_MISMATCH": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_REUSE_SOURCE_TARGET_MISMATCH",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "No additional payload fields."
+    },
+    "ERR_ROLE_CARDINALITY_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_ROLE_CARDINALITY_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_ROLE_DISPOSITION_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_ROLE_DISPOSITION_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_RUN_ID_BINDING_MISMATCH": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_RUN_ID_BINDING_MISMATCH",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_SELECTED_SCHEMA_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_SELECTED_SCHEMA_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_SEMANTIC_FAMILY_BINDING_MISMATCH",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_SIDECAR_RELATION_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_SIDECAR_RELATION_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_STRUCTURAL_MEMBER_SET_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_STRUCTURAL_MEMBER_SET_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "ERR_UNIT_CONTEXT_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "ERR_UNIT_CONTEXT_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_BINDING_RESOLVED_A1": {
+      "established_assurances": [
+        "A1_LEXICAL_PATH_SHAPE",
+        "A1_REGISTRY_BINDING_RESOLVED"
+      ],
+      "payload": {
+        "code": "I0A_BINDING_RESOLVED_A1",
+        "established_assurances": [
+          "A1_LEXICAL_PATH_SHAPE",
+          "A1_REGISTRY_BINDING_RESOLVED"
+        ]
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_BYTES_CONSTRUCTED_A0": {
+      "established_assurances": [],
+      "payload": {
+        "code": "I0A_BYTES_CONSTRUCTED_A0",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_DIGEST_CONSTRUCTED_A0": {
+      "established_assurances": [],
+      "payload": {
+        "code": "I0A_DIGEST_CONSTRUCTED_A0",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_PINNED_GOVERNING_BYTES_VALIDATED_A3H": {
+      "established_assurances": [
+        "A3_PINNED_GOVERNING_SHA256_VALIDATED"
+      ],
+      "payload": {
+        "code": "I0A_PINNED_GOVERNING_BYTES_VALIDATED_A3H",
+        "established_assurances": [
+          "A3_PINNED_GOVERNING_SHA256_VALIDATED"
+        ]
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_REGISTRY_INDEX_MATERIALIZED_A3H": {
+      "established_assurances": [
+        "A3_PINNED_GOVERNING_SHA256_VALIDATED"
+      ],
+      "payload": {
+        "code": "I0A_REGISTRY_INDEX_MATERIALIZED_A3H",
+        "established_assurances": [
+          "A3_PINNED_GOVERNING_SHA256_VALIDATED"
+        ]
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_VALID_A1_PATH": {
+      "established_assurances": [
+        "A1_LEXICAL_PATH_SHAPE"
+      ],
+      "payload": {
+        "code": "I0A_VALID_A1_PATH",
+        "established_assurances": [
+          "A1_LEXICAL_PATH_SHAPE"
+        ]
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_VALID_A2_SET": {
+      "established_assurances": [
+        "A1_LEXICAL_PATH_SHAPE",
+        "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+        "A2_DESCRIPTOR_SET_COMPLETE"
+      ],
+      "payload": {
+        "code": "I0A_VALID_A2_SET",
+        "established_assurances": [
+          "A1_LEXICAL_PATH_SHAPE",
+          "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+          "A2_DESCRIPTOR_SET_COMPLETE"
+        ]
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_VALID_A2_SINGLE": {
+      "established_assurances": [
+        "A1_LEXICAL_PATH_SHAPE",
+        "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS"
+      ],
+      "payload": {
+        "code": "I0A_VALID_A2_SINGLE",
+        "established_assurances": [
+          "A1_LEXICAL_PATH_SHAPE",
+          "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS"
+        ]
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_VALID_A3_A4_STRUCTURAL_OBJECT": {
+      "established_assurances": [
+        "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+        "A4_DECODED_LOGICAL_ROWS_VALIDATED"
+      ],
+      "payload": {
+        "code": "I0A_VALID_A3_A4_STRUCTURAL_OBJECT",
+        "established_assurances": [
+          "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+          "A4_DECODED_LOGICAL_ROWS_VALIDATED"
+        ]
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_VALID_A3_EXACT": {
+      "established_assurances": [
+        "A3_EXACT_LENGTH_AND_SHA256_RECONCILED"
+      ],
+      "payload": {
+        "code": "I0A_VALID_A3_EXACT",
+        "established_assurances": [
+          "A3_EXACT_LENGTH_AND_SHA256_RECONCILED"
+        ]
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_VALID_A3_STRUCTURAL_SIDECAR": {
+      "established_assurances": [
+        "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+        "A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED"
+      ],
+      "payload": {
+        "code": "I0A_VALID_A3_STRUCTURAL_SIDECAR",
+        "established_assurances": [
+          "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+          "A3_STRUCTURAL_SIDECAR_PAIR_RECONCILED"
+        ]
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_VALID_A4_INTERNAL_RELATION": {
+      "established_assurances": [
+        "A4_DECODED_LOGICAL_ROWS_VALIDATED"
+      ],
+      "payload": {
+        "code": "I0A_VALID_A4_INTERNAL_RELATION",
+        "established_assurances": [
+          "A4_DECODED_LOGICAL_ROWS_VALIDATED"
+        ]
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_VALID_A6_SELECTED": {
+      "established_assurances": [
+        "A1_LEXICAL_PATH_SHAPE",
+        "A1_REGISTRY_BINDING_RESOLVED",
+        "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+        "A2_DESCRIPTOR_SET_COMPLETE",
+        "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+        "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE"
+      ],
+      "payload": {
+        "code": "I0A_VALID_A6_SELECTED",
+        "established_assurances": [
+          "A1_LEXICAL_PATH_SHAPE",
+          "A1_REGISTRY_BINDING_RESOLVED",
+          "A2_SINGLE_DESCRIPTOR_CLOSED_FIELDS",
+          "A2_DESCRIPTOR_SET_COMPLETE",
+          "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+          "A6_DESCRIPTOR_SELECTED_SCHEMA_COMPLETE"
+        ]
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "I0A_VALID_A6_STRUCTURAL": {
+      "established_assurances": [
+        "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+        "A6_STRUCTURAL_SCHEMA_COMPLETE"
+      ],
+      "payload": {
+        "code": "I0A_VALID_A6_STRUCTURAL",
+        "established_assurances": [
+          "A3_EXACT_LENGTH_AND_SHA256_RECONCILED",
+          "A6_STRUCTURAL_SCHEMA_COMPLETE"
+        ]
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A": {
+      "established_assurances": [],
+      "payload": {
+        "code": "STOP_CONTENT_SCHEMA_NOT_IMPLEMENTED_I0A",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID": {
+      "established_assurances": [],
+      "payload": {
+        "code": "STOP_CONTENT_SCHEMA_TARGET_BINDING_INVALID",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE": {
+      "established_assurances": [],
+      "payload": {
+        "code": "STOP_FILESYSTEM_FACTS_OUT_OF_SCOPE",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "STOP_PAYLOAD_LOGICAL_VALIDATION_OUT_OF_SCOPE": {
+      "established_assurances": [],
+      "payload": {
+        "code": "STOP_PAYLOAD_LOGICAL_VALIDATION_OUT_OF_SCOPE",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "STOP_SCHEMA_REFERENCE_UNRESOLVED": {
+      "established_assurances": [],
+      "payload": {
+        "code": "STOP_SCHEMA_REFERENCE_UNRESOLVED",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    },
+    "STOP_UNIT_KIND_NOT_ACCEPTED_I0A": {
+      "established_assurances": [],
+      "payload": {
+        "code": "STOP_UNIT_KIND_NOT_ACCEPTED_I0A",
+        "established_assurances": []
+      },
+      "payload_extension_rule": "Any Revision 09 code-specific success payload fields remain required and unchanged; non-success results have no additional payload fields unless Revision 09 expressly defines them."
+    }
+  },
+  "unit_context_contract": {
+    "established_assurances": [],
+    "invalid_result": "ERR_UNIT_CONTEXT_INVALID",
+    "owner": "every public function whose unit_context_applicability is DIRECT_OR_TRANSITIVE_REQUIRED",
+    "snapshot_publication": {
+      "subject_family": {
+        "domain": [
+          "capture",
+          "analysis_compatibility",
+          "analysis_strict"
+        ],
+        "nullable": false,
+        "path_form_aliases_forbidden": [
+          "analysis/compatibility",
+          "strict"
+        ]
+      },
+      "subject_sequence": {
+        "inclusive_maximum": 18446744073709551615,
+        "inclusive_minimum": 0,
+        "nullable": false,
+        "type_rule": "type(value) is int; bool is invalid"
+      }
+    },
+    "validation_point": "after STOP_UNIT_KIND_NOT_ACCEPTED_I0A and before claim parsing, structural JSON parsing, descriptor validation, registry-byte validation, or nested delegation"
+  }
+}

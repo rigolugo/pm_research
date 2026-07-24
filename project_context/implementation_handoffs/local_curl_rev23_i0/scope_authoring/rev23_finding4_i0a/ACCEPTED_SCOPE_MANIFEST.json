@@ -1,185 +1,125 @@
 {
-  "accepted_scope_archive": "REV23_FINDING4_I0A_SCOPE_REVISION_09.zip",
-  "accepted_scope_archive_sha256": "4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0",
-  "accepted_scope_member_count": 14,
+  "accepted_scope_archive": "REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11.zip",
+  "accepted_scope_archive_sha256": "8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202",
+  "accepted_scope_member_count": 15,
   "accepted_scope_members": [
     {
-      "path": "I0A_HASH_PROJECTION_CONTRACT.json",
-      "sha256": "5bd9ce049995088501ab07d645f3248a4af445ed9b2997c17ba592644ba1b41b",
-      "size_bytes": 34854
+      "path": "I0A_HASH_PROJECTION_CONTRACT_REVISION_10_CANDIDATE_11.json",
+      "sha256": "d2f50758eb749db109953668391573a401b93843a188953b3cc7ee1c784442cc",
+      "size_bytes": 30792
     },
     {
-      "path": "I0A_PUBLIC_API_CONTRACT.json",
-      "sha256": "935289dbf48a004f334773895da80537b71f4e50b09a4ce7a2e77a01e0ef16cc",
-      "size_bytes": 131517
+      "path": "I0A_IMPLEMENTATION_IMPACT_MATRIX_REVISION_10_CANDIDATE_11.md",
+      "sha256": "804eab65eb7fc5b63adc411495fa9c1de954f8ea52951f27f8021743eb99499e",
+      "size_bytes": 6046
     },
     {
-      "path": "I0A_ROLE_CONTENT_SCHEMA_DISPOSITION_MATRIX.json",
-      "sha256": "d8c524dc95efba13b6ea81ac32396690cc665a3d3e3e57e1adcbda5206b3cd8a",
-      "size_bytes": 171236
+      "path": "I0A_PUBLIC_API_CONTRACT_REVISION_10_CANDIDATE_11.json",
+      "sha256": "f29fdfc92110a5300268ceb5c7123ae58333f9422ea414116ddc1aab6fc9d3e2",
+      "size_bytes": 191236
     },
     {
-      "path": "I0A_STATIC_TEST_CASE_MATRIX.json",
-      "sha256": "162661e09f7d19fcc7ba4b635f5f452b469c3ecfd1d6fc9d8d85a999885f5021",
-      "size_bytes": 1389084
+      "path": "I0A_ROLE_CONTENT_SCHEMA_DISPOSITION_MATRIX_REVISION_10_CANDIDATE_11.json",
+      "sha256": "7251e87537fe567400eba836e4d85b5a93efff8dc2023c0f01c8d23f8c4f6f3f",
+      "size_bytes": 17912
     },
     {
-      "path": "I0A_STOP_AND_RESULT_DOMAIN.md",
-      "sha256": "6a16695f7ffbc01fdd8a119844df5ffb6f83268eda4a70838f86c05b3c9a573a",
-      "size_bytes": 10619
+      "path": "I0A_STATIC_TEST_CASE_MATRIX_REVISION_10_CANDIDATE_11.json",
+      "sha256": "6eb65ccc5a521b6c1c46f54b918c193f257a154bb7f3bb40750fcecaf28286d0",
+      "size_bytes": 1172972
     },
     {
-      "path": "I0A_VALIDATION_ASSURANCE_LEVELS.md",
-      "sha256": "9bf2907d3af4de2f7e0aec0fb648229d72e9af26366a8c167cf77b8d4a51cd43",
-      "size_bytes": 6039
+      "path": "I0A_STOP_AND_RESULT_DOMAIN_REVISION_10_CANDIDATE_11.md",
+      "sha256": "25b2eefe2165c69007eea0ad985711664c2d10b07a02e0ea477fcc3d3d629959",
+      "size_bytes": 2858
     },
     {
-      "path": "IMPLEMENTATION_ZIP_LAYOUT_CONTRACT.md",
-      "sha256": "bf794ed366e585f76891eb6853854a0f7b79c676a80e6b1b8f8379dfb6e9182d",
-      "size_bytes": 1529
+      "path": "I0A_VALIDATION_ASSURANCE_LEVELS_REVISION_10_CANDIDATE_11.md",
+      "sha256": "8e62648b421c3def6d2460f92442f1c5897bbbdc06523e73fdcd73897bff1634",
+      "size_bytes": 2012
     },
     {
-      "path": "PROPOSED_ACTIVITY_STATUS.md",
-      "sha256": "bee726841f476b6518acaab18682a62bd00e2b336c55bf9fedb1624e44c84e24",
-      "size_bytes": 2269
+      "path": "PACKAGE_MANIFEST.json",
+      "sha256": "1d9aa21d800848183ecf1902df964d26717c04c4e461e4d964236bbc66ae3b84",
+      "size_bytes": 24380
     },
     {
-      "path": "PROPOSED_AUTHORIZED_FILE_MATRIX.md",
-      "sha256": "7be93c05d7442fa409095fcaf242aba104c0e1758300162a1ea8fdd8e3869293",
-      "size_bytes": 2397
+      "path": "PROPOSED_ACTIVITY_STATUS_REVISION_10_CANDIDATE_11.md",
+      "sha256": "81a1adb09d5fba3cf7ccae9098d3df961afd71060bc2df86a4166858c217eec2",
+      "size_bytes": 6231
     },
     {
-      "path": "PROPOSED_CLAUDE_HANDOFF_INACTIVE.md",
-      "sha256": "39865dc09bb8055fbd8fab429557ec726725299cd2624e0e39cc5b97efeac9c4",
-      "size_bytes": 1489
+      "path": "PROPOSED_AUTHORIZED_FILE_MATRIX_REVISION_10_CANDIDATE_11.md",
+      "sha256": "013f4ff1f00413e6121985904a93fb52e903dc4e65b3fe29c48a676153fc3d17",
+      "size_bytes": 6062
+    },
+    {
+      "path": "PROPOSED_CLAUDE_HANDOFF_INACTIVE_REVISION_10_CANDIDATE_11.md",
+      "sha256": "98054960758c9f65d6ab2463dba5c92f5c96d2ae36571539058d3ba1eab95e0e",
+      "size_bytes": 6360
     },
     {
       "path": "README_FIRST.md",
-      "sha256": "b761e2c4cca1088d10a4347dea73add70244b098d8a55fb0fae0fe5749d137d9",
-      "size_bytes": 3630
+      "sha256": "3d0766214ae93d0e8361db787a6b5efd2806e884d880e500b5d32b90be85f9b8",
+      "size_bytes": 2546
     },
     {
-      "path": "REV23_FINDING4_I0A_SCOPE_REVISION_09.md",
-      "sha256": "b788476fd6e8387f93048a36b3ae3a0d291da3f2338c62d98b87f63ae2f55c96",
-      "size_bytes": 27842
+      "path": "REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11.md",
+      "sha256": "cf8f1681eb0fccc62fe12ebd5cbce6f7770e9624dbd0d827795436764ff4b85f",
+      "size_bytes": 18573
     },
     {
-      "path": "SCOPE_REVISION_CHANGE_LEDGER.md",
-      "sha256": "54a33e00633d3341a21b34bde872cc06d0b48efc49d7e5d9bca34635ff3b2d60",
-      "size_bytes": 4426
+      "path": "SCOPE_REVISION_CHANGE_LEDGER_REVISION_10_CANDIDATE_11.md",
+      "sha256": "dc6d62e0c600803dd3588f9deec102e188b109a5eba2b5633a4a7b6bc736a681",
+      "size_bytes": 1870
     },
     {
       "path": "SHA256SUMS.txt",
-      "sha256": "92ffaf11233f903afb90fc98768b14b26d5b3784acdc9e358b93dc80109f75f2",
-      "size_bytes": 1292
+      "sha256": "afcca6fafbbf5f67646b02528525d8069b137401836fa51b69e6c5b6544b7ec7",
+      "size_bytes": 1694
     }
   ],
-  "canonical_installation_base_commit": "1e963bb6e8387aff071d697a416fa558956e571e",
+  "canonical_installation_base_commit": "d3bd79f8fdb81c95340761aac27b3e3580d3e23d",
   "canonical_installation_commit": null,
-  "canonical_installation_status": "PENDING_SENTINEL_STATIC_REVIEW_AND_MANUAL_COMMIT",
-  "canonical_review_anchor": "88362521fe9ef247708e4d7b5f90753784b8b88e",
-  "decision": "APPROVE",
-  "historical_revision_08_manifest": {
-    "accepted_scope_archive": "REV23_FINDING4_I0A_SCOPE_REVISION_08.zip",
-    "accepted_scope_archive_sha256": "004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876",
-    "accepted_scope_member_count": 14,
-    "accepted_scope_members": [
-      {
-        "path": "I0A_HASH_PROJECTION_CONTRACT.json",
-        "sha256": "16ebbb41b9cf4a1c03f6d8847a61d32b95982e57ae5cb21d289323eb22e50548",
-        "size_bytes": 34854
-      },
-      {
-        "path": "I0A_PUBLIC_API_CONTRACT.json",
-        "sha256": "f61837c09bf2b220749c45217a42b631a19a015a6fff448a0dafaee026befc4e",
-        "size_bytes": 130865
-      },
-      {
-        "path": "I0A_ROLE_CONTENT_SCHEMA_DISPOSITION_MATRIX.json",
-        "sha256": "aec048818e49755b4ced7045686134bdc2e019bb3466214f5cd77312797f0a38",
-        "size_bytes": 171236
-      },
-      {
-        "path": "I0A_STATIC_TEST_CASE_MATRIX.json",
-        "sha256": "b38fd25bb4e0868f639f0f72e366ea5796f853f7f47dbb2e51ee0c6df88c0239",
-        "size_bytes": 1387706
-      },
-      {
-        "path": "I0A_STOP_AND_RESULT_DOMAIN.md",
-        "sha256": "d42ce7c59e002a082d7a629cd7b822a653d3ba89e85a54966b6064f587c6ec11",
-        "size_bytes": 9166
-      },
-      {
-        "path": "I0A_VALIDATION_ASSURANCE_LEVELS.md",
-        "sha256": "7786b3c1a9d28ac274f2e545796a776b56d4ab81ce2a41399babab4f6ed56ac5",
-        "size_bytes": 5701
-      },
-      {
-        "path": "IMPLEMENTATION_ZIP_LAYOUT_CONTRACT.md",
-        "sha256": "66535e241d6731b55ad35eff4891b3e491f9f05239122e750a1765ceedaa973b",
-        "size_bytes": 1140
-      },
-      {
-        "path": "PROPOSED_ACTIVITY_STATUS.md",
-        "sha256": "cf9bf286a6fba755d5690f2064a6a022af02187e46b1d37c6c029ace8cc04191",
-        "size_bytes": 1535
-      },
-      {
-        "path": "PROPOSED_AUTHORIZED_FILE_MATRIX.md",
-        "sha256": "e87cb7525e8ecdeac3131afccc7c203bcad29ab6b2f98ef12dd99fe702164bf7",
-        "size_bytes": 2307
-      },
-      {
-        "path": "PROPOSED_CLAUDE_HANDOFF_INACTIVE.md",
-        "sha256": "0364a44cad783e41c371540e40c266dc14989fc76f756c1edab1e3455daa5145",
-        "size_bytes": 1455
-      },
-      {
-        "path": "README_FIRST.md",
-        "sha256": "c9c3dcc1916bd0c9cd301d6fa842601f63455a72108b289b7e3339abba9a1975",
-        "size_bytes": 3310
-      },
-      {
-        "path": "REV23_FINDING4_I0A_SCOPE_REVISION_08.md",
-        "sha256": "1f2f4ac240ea9d6501593e9d5a37b681ba9fc2b3d715465b89e910f975a1a9a0",
-        "size_bytes": 22818
-      },
-      {
-        "path": "SCOPE_REVISION_CHANGE_LEDGER.md",
-        "sha256": "8b11e02d2d97e4be26965a612e67f77517db3df3ed3c3da53af94298618da638",
-        "size_bytes": 1411
-      },
-      {
-        "path": "SHA256SUMS.txt",
-        "sha256": "790e1324b417656224aa9ae1d01c83cff1d08679accccbdde2a9c1b2e1f378f0",
-        "size_bytes": 1292
-      }
-    ],
-    "canonical_review_anchor": "88362521fe9ef247708e4d7b5f90753784b8b88e",
-    "decision": "APPROVE",
-    "implementation_authorized": false,
-    "schema_version": "rev23_finding4_i0a_accepted_scope_manifest.v1",
-    "scope_id": "REV23_FINDING4_I0A_SCOPE_REVISION_08",
-    "scope_status": "ACCEPTED_PENDING_INSTALL_COMMIT_VERIFICATION",
-    "sentinel_decision_date": "2026-07-18",
-    "test_execution_authorized": false
+  "canonical_installation_status": "PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION",
+  "canonical_review_anchor": "d3bd79f8fdb81c95340761aac27b3e3580d3e23d",
+  "checkpoint_state": {
+    "checkpoint_id": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4",
+    "payload_sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da",
+    "preservation_state": "CANONICALLY_PRESERVED",
+    "acceptance_state": "NOT_ACCEPTED",
+    "authorization_effect": "NONE",
+    "controlling_implementation": false,
+    "revision_10_implementation_start": "NOT_AUTHORIZED_AND_NOT_YET_SELECTED"
   },
-  "historical_revision_08_scope_commit": "2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff",
+  "decision": "APPROVE",
+  "historical_revision_09_manifest": {
+    "path": "ACCEPTED_SCOPE_MANIFEST_REVISION_09.json",
+    "scope_id": "REV23_FINDING4_I0A_SCOPE_REVISION_09",
+    "accepted_scope_archive": "REV23_FINDING4_I0A_SCOPE_REVISION_09.zip",
+    "accepted_scope_archive_sha256": "4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0",
+    "accepted_scope_member_count": 14,
+    "verified_canonical_installation_commit": "c4e8b1011c51272042decac4bc89e762d767a72a",
+    "preserved_as_historical_accepted_evidence": true
+  },
+  "historical_revision_09_scope_directory": "accepted_scope_revision_09/",
   "historical_revision_08_scope_directory": "accepted_scope_revision_08/",
   "implementation_authorized": false,
-  "revision_08_implementation_authorization_carries_forward": false,
-  "schema_version": "rev23_finding4_i0a_accepted_scope_manifest.v2",
-  "scope_id": "REV23_FINDING4_I0A_SCOPE_REVISION_09",
+  "revision_09_r1_authorization_carries_forward": false,
+  "schema_version": "rev23_finding4_i0a_accepted_scope_manifest.v3",
+  "scope_id": "REV23_FINDING4_I0A_SCOPE_REVISION_10",
   "scope_status": "SENTINEL_ACCEPTED_PENDING_CANONICAL_INSTALLATION",
-  "sentinel_decision_date": "2026-07-20",
+  "sentinel_decision_date": "2026-07-24",
   "supersession": {
-    "scope": "PRIVATE_DESCRIPTOR_SET_INVARIANT_CONTRACT_ONLY",
-    "supersedes_scope_id": "REV23_FINDING4_I0A_SCOPE_REVISION_08",
+    "scope": "COMPLETE_FINDING4_I0A_REVISION10_SPECIFICATION_PACKAGE",
+    "supersedes_scope_id": "REV23_FINDING4_I0A_SCOPE_REVISION_09",
+    "revision_09_preserved_as_historical_accepted_evidence": true,
     "revision_08_preserved_as_historical_accepted_evidence": true,
-    "public_result_codes_preserved": true,
-    "public_assurances_preserved": true,
-    "public_interfaces_preserved": true,
-    "maximum_twelve_path_matrix_preserved": true
+    "t107_reachability_resolved": true,
+    "t153_reachability_resolved": true,
+    "public_result_inventory_closed": true,
+    "twelve_path_matrix_closed": true,
+    "implementation_start_selected": false
   },
   "test_execution_authorized": false
 }
