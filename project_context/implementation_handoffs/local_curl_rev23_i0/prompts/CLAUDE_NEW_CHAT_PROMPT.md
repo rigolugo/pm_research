@@ -1,16 +1,18 @@
 Use the pm-research-implementing Skill. Skill invocation does not expand the authorization below.
 
-# ACTIVE-AFTER-VERIFICATION CLAUDE HANDOFF — REV23 Finding 4 I0A Revision 09 R1
+# ACTIVE CLAUDE HANDOFF — REV23 Finding 4 I0A Revision 09 R1
 
 Authorization ID:
 `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`.
 
-## Activation gate
+## Active source gate
 
-Do not begin until Gustavo manually commits the accepted canonical authorization
-package and Sentinel supplies the exact verified installation commit SHA. Local
-`HEAD` MUST equal that SHA. Until then return
-`STOP_AUTHORIZATION_INSTALL_NOT_VERIFIED`.
+Sentinel verified the exact authorization-installation and source-gated commit:
+
+`1e1afb29791f42c286b45d3b576f74926add8dce`
+
+Local `HEAD` MUST equal that exact SHA. If it does not, return
+`STOP_AUTHORIZATION_INSTALL_NOT_VERIFIED` without editing.
 
 The complete source gate is
 `authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SOURCE_GATE.md`.
@@ -23,8 +25,10 @@ with the immutable twelve-path baseline, and no thirteenth or other changed path
 - controlling scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`;
 - accepted scope archive SHA-256:
   `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`;
-- canonical authorization base:
+- canonical Revision 09 installation commit:
   `c4e8b1011c51272042decac4bc89e762d767a72a`;
+- source-gated authorization commit:
+  `1e1afb29791f42c286b45d3b576f74926add8dce`;
 - implementation-review archive SHA-256:
   `e1a809600107796667c415a3b3a922040072f26be4ff9a97b99c294a25d5b7af`;
 - twelve-path baseline SHA-256:
@@ -98,8 +102,7 @@ fallback.
 
 ## Authorized activity
 
-- read-only synchronization to the Sentinel-verified authorization-installation
-  commit;
+- read-only synchronization to the source-gated commit;
 - canonical Revision 09 contract reads;
 - source editing only in the sole writable path;
 - static AST/source/JSON/text/bytes/SHA-256 inspection without importing or
@@ -127,3 +130,7 @@ Return the static source report, exact twelve-path inventory, diff summary, and
 checksums as textual checkpoint content in chat. Do not create repository files
 for those reports or inventories. Do not submit any test file and do not
 reconstruct an implementation ZIP.
+
+Do not update canonical project-context files in the repo. If a canonical doc
+update is needed, return a handoff or finding only. ChatGPT will prepare complete
+replacement files for Gustavo to upload manually.

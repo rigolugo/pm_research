@@ -1,6 +1,6 @@
 # Revision 09 R1 Controlling Authorization Scope
 
-Decision: **APPROVE — CONDITIONAL ONE-FILE R1 SOURCE RESUME**
+Decision: **APPROVE — ACTIVE ONE-FILE R1 SOURCE RESUME**
 
 Authorization ID:
 `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`.
@@ -8,9 +8,12 @@ Authorization ID:
 Revision 09 is canonically installed and Sentinel-verified at
 `c4e8b1011c51272042decac4bc89e762d767a72a`.
 
-This authorization is inactive until Gustavo manually commits the accepted
-authorization package and Sentinel verifies the exact resulting commit. After
-activation, Claude may edit only:
+Sentinel verified the exact authorization-installation and source-gated commit:
+
+`1e1afb29791f42c286b45d3b576f74926add8dce`
+
+Gustavo explicitly authorized the R1 handoff to Claude on `2026-07-24`.
+Claude may edit only:
 
 `pm_research/local_curl_per_side/prepared_evidence.py`
 
@@ -47,8 +50,8 @@ behavior.
 
 ## Source gate and checkpoint
 
-The source gate requires local `HEAD` to equal the later Sentinel-verified
-authorization-installation commit and
+The source gate requires local `HEAD` to equal
+`1e1afb29791f42c286b45d3b576f74926add8dce` and
 `git status --short --untracked-files=all` to contain exactly the twelve baseline
 paths, with exact hash equality and no thirteenth or other changed path. Only
 `prepared_evidence.py` may change after the gate.

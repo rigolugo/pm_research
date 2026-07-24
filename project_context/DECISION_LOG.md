@@ -281,8 +281,7 @@ On `2026-07-21`, Gustavo explicitly authorized Claude's implementation resume an
 Sentinel accepted only authorization ID
 `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`.
 
-The authorization is conditional on manual canonical installation and Sentinel
-verification of the resulting commit. Once activated, the sole writable path is:
+The sole writable path is:
 
 `pm_research/local_curl_per_side/prepared_evidence.py`
 
@@ -291,10 +290,8 @@ Required starting SHA-256:
 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`
 
 Sentinel independently verified implementation-review archive SHA-256
-`e1a809600107796667c415a3b3a922040072f26be4ff9a97b99c294a25d5b7af`,
-all internal archive checksum entries, and the exact twelve-path composite
-baseline SHA-256
-`061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7`.
+`e1a809600107796667c415a3b3a922040072f26be4ff9a97b99c294a25d5b7af`, all internal archive checksum entries, and the exact
+twelve-path composite baseline SHA-256 `061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7`.
 
 The other eleven previously authored source/test paths remain read-only. The
 stage permits canonical Revision 09 reads, static AST/source/JSON/text/bytes/hash
@@ -308,6 +305,20 @@ R2, P1/P2/P3, scoring, probe execution, or gate changes.
 
 Revision 08 authorization remains historical evidence. It does not enlarge the
 Revision 09 R1 authorization.
+
+### Finding 4 I0A Revision 09 R1 activation and Claude handoff
+
+On `2026-07-24`, Sentinel verified the exact authorization-installation commit
+`1e1afb29791f42c286b45d3b576f74926add8dce` and accepted the one-file R1 stage as active. Gustavo then
+explicitly authorized the R1 handoff to Claude.
+
+The exact source-gated local `HEAD` is `1e1afb29791f42c286b45d3b576f74926add8dce`. Only
+`pm_research/local_curl_per_side/prepared_evidence.py` may change, from starting
+SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`. The other eleven baseline paths remain byte-identical.
+
+This activation does not authorize tests, test-source editing, R2, another
+source edit, project execution, research data, network activity, empirical work,
+P1/P2/P3, scoring, probe execution, or a gate change.
 
 ---
 

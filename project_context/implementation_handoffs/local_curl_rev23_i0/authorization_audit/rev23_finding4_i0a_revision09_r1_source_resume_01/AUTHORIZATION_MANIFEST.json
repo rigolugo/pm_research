@@ -1,8 +1,11 @@
 {
   "accepted_scope_archive_sha256": "4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0",
-  "activation_condition": "GUSTAVO_MANUAL_COMMIT_AND_SENTINEL_VERIFICATION",
+  "activation_condition": "SATISFIED_SENTINEL_VERIFIED",
+  "activation_record": "SENTINEL_ACTIVATION_VERIFICATION.md",
+  "activation_verification_date": "2026-07-24",
   "authorization_date": "2026-07-21",
   "authorization_id": "REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01",
+  "authorization_installation_commit": "1e1afb29791f42c286b45d3b576f74926add8dce",
   "baseline_artifact": "REV23_FINDING4_I0A_R1_TWELVE_PATH_BASELINE_SHA256SUMS.txt",
   "baseline_entry_count": 12,
   "baseline_sha256": "061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7",
@@ -20,14 +23,16 @@
   },
   "controlling_scope": "REV23_FINDING4_I0A_SCOPE_REVISION_09",
   "expected_untracked_path_count_at_gate": 12,
+  "gustavo_handoff_authorization_date": "2026-07-24",
   "implementation_review_archive_sha256": "e1a809600107796667c415a3b3a922040072f26be4ff9a97b99c294a25d5b7af",
   "other_previously_authored_paths_status": "READ_ONLY",
   "project_import_or_execution_authorized": false,
   "r2_authorized": false,
   "required_starting_sha256": "8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07",
-  "schema_version": "rev23_finding4_i0a_revision09_r1_authorization.v2",
+  "schema_version": "rev23_finding4_i0a_revision09_r1_authorization.v3",
   "sole_writable_path": "pm_research/local_curl_per_side/prepared_evidence.py",
-  "status": "ACCEPTED_PENDING_MANUAL_INSTALL_AND_SENTINEL_VERIFICATION",
+  "source_gated_head": "1e1afb29791f42c286b45d3b576f74926add8dce",
+  "status": "ACTIVE_SENTINEL_VERIFIED",
   "test_execution_authorized": false,
   "test_source_editing_authorized": false,
   "twelve_path_baseline": [
@@ -59,7 +64,7 @@
     {
       "path": "pm_research/local_curl_per_side/prepared_evidence.py",
       "sha256": "8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07",
-      "stage_status": "WRITABLE_AFTER_ACTIVATION"
+      "stage_status": "SOLE_WRITABLE_PATH"
     },
     {
       "path": "tests/local_curl_per_side/test_canonical_i0a.py",

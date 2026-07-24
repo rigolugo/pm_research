@@ -6,18 +6,18 @@
 
 ## Current objective
 
-### Controlling Revision 09 installation objective
+### Controlling Revision 09 R1 objective
 
 Stay Polymarket-native and preserve the accepted research-only guardrails.
 Revision 09 is canonically installed and verified at
-`c4e8b1011c51272042decac4bc89e762d767a72a`. The immediate objective is
-Sentinel static review of the documentation-only R1 source-resume authorization
-installation package. After Gustavo manually commits an accepted package and
-Sentinel verifies that exact commit, Claude may resume only the one-file R1
-source stage in `pm_research/local_curl_per_side/prepared_evidence.py` from
-required starting SHA-256
-`8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`.
-No other Revision 09 implementation or test activity is authorized.
+`c4e8b1011c51272042decac4bc89e762d767a72a`. Authorization ID `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01` is active at source-gated commit
+`1e1afb29791f42c286b45d3b576f74926add8dce` for one source-only R1 checkpoint in
+`pm_research/local_curl_per_side/prepared_evidence.py`, from required starting
+SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`.
+
+The immediate objective is Claude's bounded R1 source correction and textual
+checkpoint return to Sentinel. No test-source authoring, test execution, R2, or
+other Revision 09 implementation activity is authorized.
 
 ### Historical Revision 08 objective at installation base
 
@@ -159,10 +159,10 @@ The installed tree includes:
 - preflight evidence;
 - replacements and transformation evidence;
 - authorization supersession record;
-- disabled Claude implementation prompt.
+- active bounded Revision 09 R1 Claude handoff.
 
 No `pm_research/`, `tests/`, dependency, CLI/runtime, research-data, or empirical
-path changed during installation.
+path changed during documentation installation.
 
 ---
 
@@ -171,24 +171,20 @@ path changed during installation.
 ### Controlling Revision 09 scope
 
 Revision 09 is canonically installed and Sentinel-verified at
-`c4e8b1011c51272042decac4bc89e762d767a72a` as the narrow controlling
-correction.
+`c4e8b1011c51272042decac4bc89e762d767a72a` as the narrow controlling correction.
 
 - Sentinel acceptance date: `2026-07-20`
 - controlling scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
 - accepted archive SHA-256: `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
 - accepted member count: `14`
 - canonical installation base: `1e963bb6e8387aff071d697a416fa558956e571e`
-- verified canonical installation commit:
-  `c4e8b1011c51272042decac4bc89e762d767a72a`
+- verified canonical installation commit: `c4e8b1011c51272042decac4bc89e762d767a72a`
 - immutable installed directory: `accepted_scope_revision_09/`
 - Revision 08 directory: immutable historical accepted evidence
 - supersession boundary: private descriptor-set invariant contract only
-- R1 authorization
-  `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`: **ACCEPTED BUT
-  INACTIVE PENDING MANUAL INSTALLATION AND SENTINEL VERIFICATION**
-- after activation, sole writable path:
-  `pm_research/local_curl_per_side/prepared_evidence.py`
+- R1 authorization `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`: **ACTIVE — SENTINEL VERIFIED**
+- source-gated commit: `1e1afb29791f42c286b45d3b576f74926add8dce`
+- sole writable path: `pm_research/local_curl_per_side/prepared_evidence.py`
 - Revision 09 test-source authoring and test execution: **UNAUTHORIZED**
 
 ### Historical Revision 08 scope state at installation base
@@ -220,7 +216,19 @@ contradiction that cannot be resolved from Revision 08.
 
 ### Controlling Revision 09 authorization state
 
-Gustavo explicitly authorized, and Sentinel accepted, authorization ID `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01` for a single R1 source resume. Activation is conditional on Gustavo's manual canonical commit of this authorization package and Sentinel verification of that exact commit. Once active, only `pm_research/local_curl_per_side/prepared_evidence.py` may be edited, and only from required starting SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`. The other eleven previously authored source/test paths are read-only. Test-source authoring, test execution, project imports/execution, all other source edits, implementation ZIP reconstruction, research-data access, empirical work, general network activity, Git history/remote writes by Claude, P1/P2/P3, scoring, probe execution, and gate changes remain unauthorized. Revision 08 authorization remains historical evidence and does not expand this R1 stage.
+Gustavo explicitly authorized, Sentinel accepted, and Sentinel activated
+authorization ID `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01` for one R1 source resume at source-gated commit
+`1e1afb29791f42c286b45d3b576f74926add8dce`. Only
+`pm_research/local_curl_per_side/prepared_evidence.py` may be edited, and only
+from required starting SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`. The other eleven previously
+authored source/test paths are read-only.
+
+Test-source authoring, test execution, project imports/execution, all other
+source edits, implementation ZIP reconstruction, research-data access, empirical
+work, general network activity, Git history/remote writes by Claude, R2,
+P1/P2/P3, scoring, probe execution, and gate changes remain unauthorized.
+Revision 08 authorization remains historical evidence and does not expand this
+R1 stage.
 
 ### Historical Revision 08 authorization state at installation base
 
@@ -263,7 +271,12 @@ The active authorization ID is `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`.
 
 ### Controlling Revision 09 next step
 
-Sentinel statically reviews this documentation-only R1 authorization installation package. On approval, Gustavo manually uploads the exact files and commits them, then returns the full commit SHA to Sentinel. Sentinel must verify paths, bytes, checksums, the unchanged accepted Revision 09 scope, the one-file matrix, the required starting SHA-256, and absence of source/test edits in the authorization commit. Only after that verification may Claude perform the R1 source-only checkpoint. R2, test-source authoring, and test execution require later separate authorization.
+Send Claude the canonical active R1 prompt at
+`project_context/implementation_handoffs/local_curl_rev23_i0/prompts/CLAUDE_NEW_CHAT_PROMPT.md`
+and require local `HEAD` `1e1afb29791f42c286b45d3b576f74926add8dce`. Claude may perform only the
+one-file source checkpoint and must return it to Sentinel for static review.
+R2, test-source authoring, and test execution require later separate
+authorization.
 
 ### Historical Revision 08 next step at installation base
 

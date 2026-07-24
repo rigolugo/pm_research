@@ -44,6 +44,7 @@ Read these before doing anything:
    Revision 09 R1 authorization insert:
    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/README_FIRST.md`
    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SENTINEL_AUTHORIZATION_DECISION.md`
+   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SENTINEL_ACTIVATION_VERIFICATION.md`
    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/AUTHORIZATION_MANIFEST.json`
    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/AUTHORIZED_FILE_MATRIX.md`
    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/REV23_FINDING4_I0A_R1_TWELVE_PATH_BASELINE_SHA256SUMS.txt`
@@ -101,24 +102,20 @@ The installed contract and Finding 4 audit trail live under:
 ### Controlling Revision 09 scope
 
 Revision 09 is canonically installed and Sentinel-verified at
-`c4e8b1011c51272042decac4bc89e762d767a72a` as the narrow controlling
-correction.
+`c4e8b1011c51272042decac4bc89e762d767a72a` as the narrow controlling correction.
 
 - accepted scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
 - Sentinel acceptance date: `2026-07-20`
 - accepted archive SHA-256: `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
 - accepted member count: `14`
 - installation base: `1e963bb6e8387aff071d697a416fa558956e571e`
-- verified canonical installation commit:
-  `c4e8b1011c51272042decac4bc89e762d767a72a`
+- verified canonical installation commit: `c4e8b1011c51272042decac4bc89e762d767a72a`
 - immutable installed directory: `accepted_scope_revision_09/`
 - supersession boundary: private descriptor-set invariant contract only
 - Revision 08 remains immutable historical accepted evidence
-- R1 authorization
-  `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`: **ACCEPTED BUT
-  INACTIVE UNTIL ITS MANUAL INSTALLATION COMMIT IS SENTINEL-VERIFIED**
-- after activation, only
-  `pm_research/local_curl_per_side/prepared_evidence.py` is writable
+- R1 authorization `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`: **ACTIVE — SENTINEL VERIFIED**
+- verified source-gated commit: `1e1afb29791f42c286b45d3b576f74926add8dce`
+- sole writable path: `pm_research/local_curl_per_side/prepared_evidence.py`
 - Revision 09 test-source authoring and test execution: **UNAUTHORIZED**
 
 ### Historical Revision 08 scope record at installation base
@@ -160,7 +157,14 @@ No Revision 09 is required.
 
 ### Controlling Revision 09 state
 
-Authorization ID `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01` is accepted for a single source-resume stage but is inactive until Gustavo manually commits the authorization package and Sentinel verifies that exact commit. After activation, only `pm_research/local_curl_per_side/prepared_evidence.py` may be edited from required starting SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`. The other eleven authored source/test paths are read-only. Test-source editing, test execution, project imports/execution, all other source edits, research-data reads, empirical work, general network/API/curl, Claude Git history/remote writes, R2, P1/P2/P3, scoring, probe execution, and gate changes remain unauthorized.
+Authorization ID `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01` is active for one R1 source-resume checkpoint at
+source-gated commit `1e1afb29791f42c286b45d3b576f74926add8dce`. Only
+`pm_research/local_curl_per_side/prepared_evidence.py` may be edited from
+required starting SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`. The other eleven authored source/test
+paths are read-only. Test-source editing, test execution, project
+imports/execution, all other source edits, research-data reads, empirical work,
+general network/API/curl, Claude Git history/remote writes, R2, P1/P2/P3,
+scoring, probe execution, and gate changes remain unauthorized.
 
 ### Historical Revision 08 authorization record at installation base
 

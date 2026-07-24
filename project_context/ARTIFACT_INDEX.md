@@ -168,7 +168,7 @@ Installation commits:
 - `HANDOFF_INVENTORY.md`
 - `HANDOFF_SHA256SUMS.txt`
 - `HANDOFF_REVISION_09_INSTALL_SHA256SUMS.txt` — historical focused Revision 09 scope-installation inventory.
-- `HANDOFF_REVISION_09_R1_AUTHORIZATION_SHA256SUMS.txt` — focused R1 authorization-installation inventory excluding itself and the complete handoff inventory.
+- `HANDOFF_REVISION_09_R1_AUTHORIZATION_SHA256SUMS.txt` — focused active R1 authorization inventory excluding itself and the complete handoff inventory.
 - `CANONICAL_REPOSITORY_POINTER.md`
 - `prompts/CLAUDE_NEW_CHAT_PROMPT.md`
 - `prompts/SENTINEL_NEW_CHAT_PROMPT.md`
@@ -179,9 +179,9 @@ Installation commits:
 - `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md` — byte-identical historical copy.
 
 Current implementation state:
-`REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01 — AUTHORIZED; ACTIVATION PENDING AUTHORIZATION-PACKAGE INSTALL VERIFICATION`.
+`REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01 — ACTIVE; ONE-FILE R1 SOURCE CHECKPOINT AUTHORIZED`.
 
-Revision 09 controlling state: `SPECIFICATION ACCEPTED; R1 ONE-FILE SOURCE RESUME AUTHORIZATION PENDING MANUAL INSTALLATION AND SENTINEL VERIFICATION`. Authorization ID `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01` permits only `prepared_evidence.py` after activation. Revision 08 authorization remains historical evidence and does not expand the R1 boundary.
+Revision 09 controlling state: `SPECIFICATION ACCEPTED; R1 ONE-FILE SOURCE RESUME ACTIVE AT 1e1afb29791f42c286b45d3b576f74926add8dce`. Only `prepared_evidence.py` is writable. Revision 08 authorization remains historical evidence and does not expand the R1 boundary.
 
 ### `accepted_contract/`
 
@@ -238,7 +238,7 @@ Accepted bounded implementation-authoring scope.
 - `SCOPE_SHA256SUMS.txt`
 - `accepted_scope_revision_08/` — exact `14`-member canonical copy
   of `REV23_FINDING4_I0A_SCOPE_REVISION_08.zip`
-- `accepted_scope_revision_09/` — proposed immutable exact `14`-member canonical copy of `REV23_FINDING4_I0A_SCOPE_REVISION_09.zip`
+- `accepted_scope_revision_09/` — immutable exact `14`-member canonical copy of `REV23_FINDING4_I0A_SCOPE_REVISION_09.zip`
 - `ACCEPTED_SCOPE_MANIFEST_REVISION_08.json` — historical accepted manifest copy
 - `SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md` — historical accepted decision copy
 
@@ -256,7 +256,7 @@ Sentinel acceptance date: `2026-07-20`. Revision 09 supersedes Revision 08 only 
 
 ### `authorization_audit/rev23_finding4_i0a/`
 
-Active bounded authoring package:
+Historical bounded Revision 08 authoring package:
 
 - `README_FIRST.md`
 - `GUSTAVO_AUTHORIZATION_RECORD.md`
@@ -267,22 +267,22 @@ Active bounded authoring package:
 - `SOURCE_GATE.md`
 - `SHA256SUMS.txt`
 
-Authorization ID: `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`. The package becomes active after Sentinel verifies
-the canonical commit containing it. Tests and project execution remain unauthorized.
+Authorization ID: `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`. The package became active after Sentinel verified the canonical commit containing it. Tests and project execution remained unauthorized.
 
 This authorization package is specific to Revision 08 and does not authorize
 Revision 09 implementation. Its no-active-Revision-09-prompt statement is
-historical pre-R1 evidence and is superseded only by the conditional R1
-authorization below.
+historical pre-R1 evidence and is superseded only by the active R1 authorization
+below.
 
 ### `authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/`
 
-Immutable documentation-only authorization record for
+Active documentation-only authorization record for
 `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`:
 
 - `README_FIRST.md`
 - `GUSTAVO_AUTHORIZATION_RECORD.md`
 - `SENTINEL_AUTHORIZATION_DECISION.md`
+- `SENTINEL_ACTIVATION_VERIFICATION.md`
 - `AUTHORIZED_FILE_MATRIX.md`
 - `ACTIVITY_BOUNDARIES.md`
 - `SOURCE_GATE.md`
@@ -298,13 +298,13 @@ Baseline provenance:
 - later `prepared_evidence.py` checkpoint SHA-256
   `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`.
 
-The package activates only after Gustavo's manual commit and Sentinel
-verification. It authorizes one writable source path, prohibits test-source
-editing and test execution, and does not authorize R2 or downstream execution.
-The active prompt requires reports, inventories, diff summaries, and checksums
-to be returned as chat text rather than created as repository files.
+The package is active at source-gated commit `1e1afb29791f42c286b45d3b576f74926add8dce`. It authorizes
+one writable source path, prohibits test-source editing and test execution, and
+does not authorize R2 or downstream execution. The active prompt requires
+reports, inventories, diff summaries, and checksums to be returned as chat text
+rather than created as repository files.
 
-### Historical Amendment 03 authorization audit
+### `authorization_audit/rev23_amendment_03_i0/`
 
 `authorization_audit/rev23_amendment_03_i0/` remains preserved for history.
 
