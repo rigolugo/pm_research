@@ -43,9 +43,10 @@ on `2026-07-24`. The R1 one-file source stage is **ACTIVE**.
 16. `implementation_checkpoints/LATEST_ACCEPTED_CHECKPOINT.json`
 17. `implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/README_FIRST.md`
 18. `implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/CHECKPOINT_MANIFEST.json`
-19. `HANDOFF_REVISION_09_INSTALL_SHA256SUMS.txt`
-20. `HANDOFF_REVISION_09_R1_AUTHORIZATION_SHA256SUMS.txt`
-21. `HANDOFF_SHA256SUMS.txt`
+19. `implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_INSTALLATION_VERIFICATION.md`
+20. `HANDOFF_REVISION_09_INSTALL_SHA256SUMS.txt`
+21. `HANDOFF_REVISION_09_R1_AUTHORIZATION_SHA256SUMS.txt`
+22. `HANDOFF_SHA256SUMS.txt`
 
 ## Active Revision 09 R1 boundary
 
@@ -73,8 +74,9 @@ writable target without changing the executable source path.
 
 - evidence payload SHA-256: `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`
 - evidence payload size: `112338` bytes
-- preservation state: `PAYLOAD_VERIFIED_PRE_INSTALL`
-- canonical installation state: `PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION`
+- preservation state: `CANONICALLY_PRESERVED`
+- canonical installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
+- verified installation commit: `58acbac493840c45d84c6b7e33c583d722f4d559`
 - conformance state: `BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW`
 - acceptance state: `NOT_ACCEPTED`
 - authorization effect: `NONE`

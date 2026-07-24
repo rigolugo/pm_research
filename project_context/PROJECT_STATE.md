@@ -15,12 +15,13 @@ Revision 09 is canonically installed and verified at
 `pm_research/local_curl_per_side/prepared_evidence.py`, from required starting
 SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`.
 
-The exact latest known implementation bytes were recovered at SHA-256
-`fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da` and size `112338` bytes. The immediate objective is to
-install the evidence-only canonical checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`, return the
-manual commit SHA to Sentinel, and verify that exact documentation/evidence
-commit. No rollback, additional Claude edit, test-source authoring, test
-execution, R2, or other Revision 09 implementation activity is authorized.
+The exact latest known implementation bytes are canonically preserved in
+checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` at SHA-256 `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da` and size `112338` bytes.
+Sentinel verified the checkpoint installation commit
+`58acbac493840c45d84c6b7e33c583d722f4d559`. The immediate objective is formal review of Candidate 09 and
+the remaining contract/provenance blockers. No rollback, additional Claude edit,
+test-source authoring, test execution, R2, or other Revision 09 implementation
+activity is authorized.
 
 ### Historical Revision 08 objective at installation base
 
@@ -246,8 +247,9 @@ Exact recovered payload:
 - evidence-only payload path: `implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/payload_exact/pm_research/local_curl_per_side/prepared_evidence.py`
 - SHA-256: `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`
 - size: `112338` bytes
-- preservation state: `PAYLOAD_VERIFIED_PRE_INSTALL`
-- canonical installation state: `PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION`
+- preservation state: `CANONICALLY_PRESERVED`
+- canonical installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
+- verified installation commit: `58acbac493840c45d84c6b7e33c583d722f4d559`
 - conformance state: `BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW`
 - acceptance state: `NOT_ACCEPTED`
 - authorization effect: `NONE`
@@ -298,12 +300,12 @@ The active authorization ID is `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`.
 
 ### Controlling Revision 09 next step
 
-Manually install the evidence-only checkpoint package prepared against canonical
-base `80430225af793b10864ef2b43486d718c9872dee`, commit it without changing any executable source or test
-path, and return the full commit SHA to Sentinel. Sentinel verifies exact paths,
-bytes, checksums, status labels, and non-authorization. Candidate 09 review is a
-separate decision. No further Claude edit, rollback, R2, test-source authoring,
-or test execution follows automatically.
+Review Candidate 09 separately against the current canonical repository and the
+preserved checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`. Determine whether the corrected specification
+resolves the T107/T153 reachability blockers and whether additional provenance
+evidence is required before implementation conformance can be decided. No
+promotion, further Claude edit, rollback, R2, test-source authoring, or test
+execution follows automatically.
 
 ### Historical Revision 08 next step at installation base
 

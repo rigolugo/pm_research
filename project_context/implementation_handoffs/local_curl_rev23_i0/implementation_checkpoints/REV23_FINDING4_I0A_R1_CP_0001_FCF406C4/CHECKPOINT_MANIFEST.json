@@ -4,7 +4,7 @@
   "additional_properties": false,
   "authorization_effect": "NONE",
   "authorization_id": "REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01",
-  "canonical_installation_state": "PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION",
+  "canonical_installation_state": "INSTALLED_AND_SENTINEL_VERIFIED",
   "checkpoint_id": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4",
   "checkpoint_members": [
     "README_FIRST.md",
@@ -12,6 +12,7 @@
     "BASELINE_AND_LINEAGE.md",
     "ACTIVITY_BOUNDARY_STATUS.md",
     "KNOWN_FINDINGS.md",
+    "SENTINEL_INSTALLATION_VERIFICATION.md",
     "SHA256SUMS.txt",
     "payload_exact/pm_research/local_curl_per_side/prepared_evidence.py"
   ],
@@ -49,9 +50,11 @@
     "size_bytes": 112338,
     "source_submission_filename": "prepared_evidence_r1_corrective_v7(1).py"
   },
-  "preservation_state": "PAYLOAD_VERIFIED_PRE_INSTALL",
+  "preservation_state": "CANONICALLY_PRESERVED",
   "recovery_pointer_only": true,
   "schema_id": "pm_research_implementation_checkpoint_manifest.v1",
   "source_gate_commit": "1e1afb29791f42c286b45d3b576f74926add8dce",
-  "twelve_path_baseline_sha256": "061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7"
+  "twelve_path_baseline_sha256": "061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7",
+  "verification_date": "2026-07-24",
+  "verified_installation_commit": "58acbac493840c45d84c6b7e33c583d722f4d559"
 }

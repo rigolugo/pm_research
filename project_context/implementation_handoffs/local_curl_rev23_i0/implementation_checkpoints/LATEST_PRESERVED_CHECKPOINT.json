@@ -1,10 +1,12 @@
 {
   "accepted": false,
   "authorization_effect": "NONE",
-  "canonical_installation_state": "PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION",
+  "canonical_installation_state": "INSTALLED_AND_SENTINEL_VERIFIED",
   "checkpoint_id": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4",
   "controlling_implementation": false,
   "payload_sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da",
+  "preservation_state": "CANONICALLY_PRESERVED",
   "recovery_pointer_only": true,
-  "schema_id": "pm_research_latest_preserved_checkpoint.v1"
+  "schema_id": "pm_research_latest_preserved_checkpoint.v1",
+  "verified_installation_commit": "58acbac493840c45d84c6b7e33c583d722f4d559"
 }

@@ -338,8 +338,9 @@ The first prepared checkpoint is:
 - payload size: `112338` bytes
 - governing scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
 - source-gated commit: `1e1afb29791f42c286b45d3b576f74926add8dce`
-- preservation state: `PAYLOAD_VERIFIED_PRE_INSTALL`
-- canonical installation state: `PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION`
+- preservation state: `CANONICALLY_PRESERVED`
+- canonical installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
+- verified installation commit: `58acbac493840c45d84c6b7e33c583d722f4d559`
 - conformance state: `BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW`
 - acceptance state: `NOT_ACCEPTED`
 - authorization effect: `NONE`
@@ -350,6 +351,31 @@ authorized. Candidate 09 remains non-authoritative until Sentinel decides it.
 The checkpoint does not authorize rollback, another source edit, tests, project
 execution, network/data access, Git writes by Claude, R2, P1/P2/P3, scoring,
 probe execution, or a gate change.
+
+### Checkpoint installation verification
+
+On `2026-07-24`, Sentinel verified canonical commit
+`58acbac493840c45d84c6b7e33c583d722f4d559` as exactly one linear documentation/evidence-only commit after
+`80430225af793b10864ef2b43486d718c9872dee`.
+
+The commit changed exactly the declared `19` `project_context/` paths: eight
+canonical documentation replacements and eleven new checkpoint files. It changed
+no live `pm_research/` source path, no `tests/` path, and no accepted scope,
+authorization, data, artifact, dependency, or runtime path.
+
+The preserved payload is byte-identical to the recovered submission:
+
+- evidence path:
+  `implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/payload_exact/pm_research/local_curl_per_side/prepared_evidence.py`
+- SHA-256: `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`
+- size: `112338` bytes
+- Git blob SHA: `d25a0fe58e84db526e6d68b4d14e764c59f6d46c`
+
+Sentinel verified the checkpoint manifest, index, latest-preserved pointer,
+accepted-checkpoint-null pointer, nested checksum inventory, and non-authorization
+labels. The checkpoint is therefore `CANONICALLY_PRESERVED` and
+`INSTALLED_AND_SENTINEL_VERIFIED`, but remains `NOT_ACCEPTED` with authorization
+effect `NONE`.
 
 ---
 

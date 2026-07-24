@@ -65,6 +65,7 @@ Read these before doing anything:
    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/LATEST_ACCEPTED_CHECKPOINT.json`
    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/README_FIRST.md`
    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/CHECKPOINT_MANIFEST.json`
+   - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_INSTALLATION_VERIFICATION.md`
 24. The remaining files required by the handoff, authorization, accepted-scope, and selected checkpoint read orders.
 
 ---
@@ -156,7 +157,7 @@ No Revision 09 is required.
 - Option B corrected B0: `B0_MECHANICAL_TRUST_NOT_ESTABLISHED`; B1 unauthorized.
 - Option C: mixed/incomplete evidence; `C1F2_ARTIFACTS_INSUFFICIENT`; C1B/C2 unauthorized.
 - Option D temporal precheck: accepted; PMXT v2 deprioritized for broad P0 coverage; Telonex L2 may only proceed through a separately authorized SPEC-ONLY vendor-coverage review.
-- Recovered unreviewed R1 implementation evidence: checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`, payload SHA-256 `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`, size `112338` bytes; evidence-only, not accepted, and authorizes nothing.
+- Recovered unreviewed R1 implementation evidence: checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`, payload SHA-256 `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`, size `112338` bytes; canonically preserved and Sentinel-verified at commit `58acbac493840c45d84c6b7e33c583d722f4d559`, evidence-only, not accepted, and authorizes nothing.
 
 ---
 

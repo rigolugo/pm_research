@@ -74,4 +74,6 @@ must not update this directory directly.
 - acceptance state: `NOT_ACCEPTED`
 - authorization effect: `NONE`
 - installation package base: `80430225af793b10864ef2b43486d718c9872dee`
-- canonical installation verification: pending Gustavo's commit and Sentinel review
+- preservation state: `CANONICALLY_PRESERVED`
+- canonical installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
+- verified installation commit: `58acbac493840c45d84c6b7e33c583d722f4d559`

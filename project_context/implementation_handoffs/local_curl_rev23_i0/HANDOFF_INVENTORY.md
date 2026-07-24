@@ -31,5 +31,6 @@ source-resume authorization **ACTIVE — SENTINEL VERIFIED** at source-gated com
 - `implementation_checkpoints/CHECKPOINT_INDEX.json` — checkpoint inventory with separate preservation, conformance, acceptance, and authorization states.
 - `implementation_checkpoints/LATEST_PRESERVED_CHECKPOINT.json` — recovery pointer to the newest exact preserved bytes.
 - `implementation_checkpoints/LATEST_ACCEPTED_CHECKPOINT.json` — accepted-checkpoint pointer; currently no accepted checkpoint exists.
-- `implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/` — exact recovered unreviewed R1 source checkpoint, payload SHA-256 `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`, size `112338` bytes.
+- `implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/` — exact recovered unreviewed R1 source checkpoint, payload SHA-256 `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`, size `112338` bytes; installed and Sentinel-verified at `58acbac493840c45d84c6b7e33c583d722f4d559`.
+- `implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_INSTALLATION_VERIFICATION.md` — immutable Sentinel verification of checkpoint installation commit `58acbac493840c45d84c6b7e33c583d722f4d559` and non-authorization boundary.
 - Claude returns checkpoint reports and files to Sentinel; ChatGPT prepares canonical evidence-only checkpoint files for Gustavo's manual commit. Checkpoint presence does not authorize promotion, tests, execution, or another edit.

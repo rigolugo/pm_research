@@ -205,6 +205,7 @@ Current preserved checkpoint:
 - `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/ACTIVITY_BOUNDARY_STATUS.md`
 - `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/KNOWN_FINDINGS.md`
 - `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SHA256SUMS.txt`
+- `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_INSTALLATION_VERIFICATION.md`
 - `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/payload_exact/pm_research/local_curl_per_side/prepared_evidence.py`
 
 Exact payload identity:
@@ -213,7 +214,8 @@ Exact payload identity:
 - size: `112338` bytes
 - acceptance state: `NOT_ACCEPTED`
 - authorization effect: `NONE`
-- installation state: pending Gustavo's manual commit and Sentinel verification
+- installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
+- verified installation commit: `58acbac493840c45d84c6b7e33c583d722f4d559`
 
 ### `accepted_contract/`
 

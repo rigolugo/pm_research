@@ -3,8 +3,9 @@
 ## Status
 
 - authority class: `EVIDENCE_ONLY`
-- preservation state: `PAYLOAD_VERIFIED_PRE_INSTALL`
-- canonical installation state: `PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION`
+- preservation state: `CANONICALLY_PRESERVED`
+- canonical installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
+- verified installation commit: `58acbac493840c45d84c6b7e33c583d722f4d559`
 - conformance state: `BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW`
 - acceptance state: `NOT_ACCEPTED`
 - authorization effect: `NONE`
@@ -27,6 +28,13 @@ is not the live source path and must not be treated as accepted or executable.
 - R1 authorization ID: `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`
 - R1 source-gated commit: `1e1afb29791f42c286b45d3b576f74926add8dce`
 - checkpoint installation-package base: `80430225af793b10864ef2b43486d718c9872dee`
+
+## Installation verification
+
+Read `SENTINEL_INSTALLATION_VERIFICATION.md`. Sentinel verified the exact
+checkpoint installation commit `58acbac493840c45d84c6b7e33c583d722f4d559`. Verification establishes
+canonical byte preservation only; it does not establish conformance or
+acceptance.
 
 ## Review boundary
 
