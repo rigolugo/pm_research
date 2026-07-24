@@ -183,6 +183,38 @@ Current implementation state:
 
 Revision 09 controlling state: `SPECIFICATION ACCEPTED; R1 ONE-FILE SOURCE RESUME ACTIVE AT 1e1afb29791f42c286b45d3b576f74926add8dce`. Only `prepared_evidence.py` is writable. Revision 08 authorization remains historical evidence and does not expand the R1 boundary.
 
+
+### `implementation_checkpoints/`
+
+Evidence-only canonical preservation area for exact unaccepted implementation
+progress. Checkpoint presence is not implementation acceptance and authorizes
+nothing.
+
+Controlling index files:
+
+- `README_FIRST.md`
+- `CHECKPOINT_INDEX.json`
+- `LATEST_PRESERVED_CHECKPOINT.json`
+- `LATEST_ACCEPTED_CHECKPOINT.json`
+
+Current preserved checkpoint:
+
+- `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/README_FIRST.md`
+- `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/CHECKPOINT_MANIFEST.json`
+- `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/BASELINE_AND_LINEAGE.md`
+- `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/ACTIVITY_BOUNDARY_STATUS.md`
+- `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/KNOWN_FINDINGS.md`
+- `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SHA256SUMS.txt`
+- `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/payload_exact/pm_research/local_curl_per_side/prepared_evidence.py`
+
+Exact payload identity:
+
+- SHA-256: `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`
+- size: `112338` bytes
+- acceptance state: `NOT_ACCEPTED`
+- authorization effect: `NONE`
+- installation state: pending Gustavo's manual commit and Sentinel verification
+
 ### `accepted_contract/`
 
 Complete effective Finding 4 contract.
@@ -332,5 +364,5 @@ Pinned canonical files:
 - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/README_FIRST.md`
 - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
 
-Keep canonical repository files and the Claude Project Files panel synchronized.
+Keep canonical repository files and the Claude Project Files panel synchronized. Preserve material implementation progress through `implementation_checkpoints/`; do not use chat-only state as the sole recovery source.
 The private repository remains authoritative.

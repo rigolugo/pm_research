@@ -126,6 +126,47 @@ For any canonical documentation update:
 
 ---
 
+## Canonical implementation-progress checkpoints
+
+Material implementation progress must not depend only on a chat session, model
+memory, untracked local files, or an agent's private workspace.
+
+When exact work must be preserved before acceptance, ChatGPT prepares an
+**evidence-only checkpoint** under the relevant canonical handoff directory:
+
+`implementation_checkpoints/<checkpoint_id>/`
+
+The checkpoint must:
+
+1. store exact submitted bytes under `payload_exact/`, never at the executable source path;
+2. record byte length and SHA-256;
+3. record governing scope, authorization ID, source gate, and strongest available baseline;
+4. separate preservation, conformance, acceptance, and authorization states;
+5. label missing lineage or activity evidence as unknown rather than infer it;
+6. include a checksum inventory;
+7. update the checkpoint index and latest-preserved pointer;
+8. state explicitly that checkpoint presence authorizes nothing.
+
+Checkpoint capture is required at material handoff boundaries, including before
+changing implementation chats or models, before a known session limit, after a
+material correction round, before rollback or restoration, and whenever an
+agent reports readiness for Sentinel review.
+
+Claude returns exact files and textual evidence only. ChatGPT reviews and
+packages the canonical checkpoint. The user manually commits it. Sentinel then
+verifies the exact installation commit.
+
+A preserved checkpoint must not be promoted to the executable source path unless:
+
+- the governing specification is accepted;
+- Sentinel accepts implementation conformance;
+- Gustavo explicitly authorizes promotion or the next implementation stage.
+
+Preservation does not imply conformance, acceptance, execution permission, test
+permission, or downstream-phase authorization.
+
+---
+
 ## Claude prompt constraint
 
 Any future prompt to Claude that references canonical docs should include this constraint when relevant:

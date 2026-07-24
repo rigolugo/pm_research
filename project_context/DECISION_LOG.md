@@ -320,6 +320,37 @@ This activation does not authorize tests, test-source editing, R2, another
 source edit, project execution, research data, network activity, empirical work,
 P1/P2/P3, scoring, probe execution, or a gate change.
 
+
+---
+
+### Canonical evidence-only implementation checkpoint system
+
+On `2026-07-24`, Sentinel approved a canonical progress-preservation mechanism for
+unaccepted implementation work. Exact submitted bytes are stored under the
+relevant handoff's `implementation_checkpoints/` directory, mirrored under
+`payload_exact/` rather than written to the executable source path.
+
+The first prepared checkpoint is:
+
+- checkpoint ID: `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`
+- intended target: `pm_research/local_curl_per_side/prepared_evidence.py`
+- exact payload SHA-256: `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`
+- payload size: `112338` bytes
+- governing scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
+- source-gated commit: `1e1afb29791f42c286b45d3b576f74926add8dce`
+- preservation state: `PAYLOAD_VERIFIED_PRE_INSTALL`
+- canonical installation state: `PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION`
+- conformance state: `BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW`
+- acceptance state: `NOT_ACCEPTED`
+- authorization effect: `NONE`
+
+Checkpoint preservation and implementation promotion are separate decisions.
+Presence of newer bytes does not make them controlling, accepted, executable, or
+authorized. Candidate 09 remains non-authoritative until Sentinel decides it.
+The checkpoint does not authorize rollback, another source edit, tests, project
+execution, network/data access, Git writes by Claude, R2, P1/P2/P3, scoring,
+probe execution, or a gate change.
+
 ---
 
 ## DO NOT REOPEN unless explicitly requested with new evidence

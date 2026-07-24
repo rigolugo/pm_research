@@ -15,9 +15,12 @@ Revision 09 is canonically installed and verified at
 `pm_research/local_curl_per_side/prepared_evidence.py`, from required starting
 SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`.
 
-The immediate objective is Claude's bounded R1 source correction and textual
-checkpoint return to Sentinel. No test-source authoring, test execution, R2, or
-other Revision 09 implementation activity is authorized.
+The exact latest known implementation bytes were recovered at SHA-256
+`fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da` and size `112338` bytes. The immediate objective is to
+install the evidence-only canonical checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`, return the
+manual commit SHA to Sentinel, and verify that exact documentation/evidence
+commit. No rollback, additional Claude edit, test-source authoring, test
+execution, R2, or other Revision 09 implementation activity is authorized.
 
 ### Historical Revision 08 objective at installation base
 
@@ -230,6 +233,30 @@ P1/P2/P3, scoring, probe execution, and gate changes remain unauthorized.
 Revision 08 authorization remains historical evidence and does not expand this
 R1 stage.
 
+
+### Preserved unreviewed R1 implementation checkpoint
+
+Checkpoint ID:
+
+`REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`
+
+Exact recovered payload:
+
+- intended target path: `pm_research/local_curl_per_side/prepared_evidence.py`
+- evidence-only payload path: `implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/payload_exact/pm_research/local_curl_per_side/prepared_evidence.py`
+- SHA-256: `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`
+- size: `112338` bytes
+- preservation state: `PAYLOAD_VERIFIED_PRE_INSTALL`
+- canonical installation state: `PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION`
+- conformance state: `BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW`
+- acceptance state: `NOT_ACCEPTED`
+- authorization effect: `NONE`
+
+The checkpoint preserves exact bytes against chat/session loss. It does not
+promote those bytes to the executable source tree. T107/T153 reachability,
+Candidate 09, cumulative activity lineage, and the current twelve-path worktree
+inventory remain separate unresolved review matters.
+
 ### Historical Revision 08 authorization state at installation base
 
 Gustavo has explicitly authorized bounded Finding 4 I0A implementation authoring.
@@ -271,12 +298,12 @@ The active authorization ID is `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`.
 
 ### Controlling Revision 09 next step
 
-Send Claude the canonical active R1 prompt at
-`project_context/implementation_handoffs/local_curl_rev23_i0/prompts/CLAUDE_NEW_CHAT_PROMPT.md`
-and require local `HEAD` `1e1afb29791f42c286b45d3b576f74926add8dce`. Claude may perform only the
-one-file source checkpoint and must return it to Sentinel for static review.
-R2, test-source authoring, and test execution require later separate
-authorization.
+Manually install the evidence-only checkpoint package prepared against canonical
+base `80430225af793b10864ef2b43486d718c9872dee`, commit it without changing any executable source or test
+path, and return the full commit SHA to Sentinel. Sentinel verifies exact paths,
+bytes, checksums, status labels, and non-authorization. Candidate 09 review is a
+separate decision. No further Claude edit, rollback, R2, test-source authoring,
+or test execution follows automatically.
 
 ### Historical Revision 08 next step at installation base
 

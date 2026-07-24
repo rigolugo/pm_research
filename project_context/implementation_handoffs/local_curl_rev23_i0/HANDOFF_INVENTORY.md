@@ -27,4 +27,9 @@ source-resume authorization **ACTIVE — SENTINEL VERIFIED** at source-gated com
 - `HANDOFF_SHA256SUMS.txt` — controlling complete post-activation handoff inventory excluding itself.
 - `HANDOFF_REVISION_09_INSTALL_SHA256SUMS.txt` — historical focused Revision 09 scope-installation inventory.
 - `HANDOFF_REVISION_09_R1_AUTHORIZATION_SHA256SUMS.txt` — controlling focused active R1 authorization inventory excluding itself and `HANDOFF_SHA256SUMS.txt`.
-- R1 checkpoint reports, path inventories, diff summaries, and checksums are returned as chat text; they are not repository files.
+- `implementation_checkpoints/README_FIRST.md` — evidence-only checkpoint policy and read order.
+- `implementation_checkpoints/CHECKPOINT_INDEX.json` — checkpoint inventory with separate preservation, conformance, acceptance, and authorization states.
+- `implementation_checkpoints/LATEST_PRESERVED_CHECKPOINT.json` — recovery pointer to the newest exact preserved bytes.
+- `implementation_checkpoints/LATEST_ACCEPTED_CHECKPOINT.json` — accepted-checkpoint pointer; currently no accepted checkpoint exists.
+- `implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/` — exact recovered unreviewed R1 source checkpoint, payload SHA-256 `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`, size `112338` bytes.
+- Claude returns checkpoint reports and files to Sentinel; ChatGPT prepares canonical evidence-only checkpoint files for Gustavo's manual commit. Checkpoint presence does not authorize promotion, tests, execution, or another edit.

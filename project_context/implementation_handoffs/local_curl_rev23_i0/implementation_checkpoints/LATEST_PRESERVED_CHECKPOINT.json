@@ -1,0 +1,10 @@
+{
+  "accepted": false,
+  "authorization_effect": "NONE",
+  "canonical_installation_state": "PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION",
+  "checkpoint_id": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4",
+  "controlling_implementation": false,
+  "payload_sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da",
+  "recovery_pointer_only": true,
+  "schema_id": "pm_research_latest_preserved_checkpoint.v1"
+}

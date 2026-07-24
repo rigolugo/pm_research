@@ -59,7 +59,13 @@ Read these before doing anything:
    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST_REVISION_08.json`
 21. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_08/README_FIRST.md`
 22. `implementation_handoffs/local_curl_rev23_i0/accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`
-23. The remaining files required by the handoff, authorization, and accepted-scope read orders.
+23. `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/README_FIRST.md`
+   - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/CHECKPOINT_INDEX.json`
+   - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/LATEST_PRESERVED_CHECKPOINT.json`
+   - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/LATEST_ACCEPTED_CHECKPOINT.json`
+   - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/README_FIRST.md`
+   - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/CHECKPOINT_MANIFEST.json`
+24. The remaining files required by the handoff, authorization, accepted-scope, and selected checkpoint read orders.
 
 ---
 
@@ -150,6 +156,7 @@ No Revision 09 is required.
 - Option B corrected B0: `B0_MECHANICAL_TRUST_NOT_ESTABLISHED`; B1 unauthorized.
 - Option C: mixed/incomplete evidence; `C1F2_ARTIFACTS_INSUFFICIENT`; C1B/C2 unauthorized.
 - Option D temporal precheck: accepted; PMXT v2 deprioritized for broad P0 coverage; Telonex L2 may only proceed through a separately authorized SPEC-ONLY vendor-coverage review.
+- Recovered unreviewed R1 implementation evidence: checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`, payload SHA-256 `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`, size `112338` bytes; evidence-only, not accepted, and authorizes nothing.
 
 ---
 
@@ -164,7 +171,7 @@ required starting SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098a
 paths are read-only. Test-source editing, test execution, project
 imports/execution, all other source edits, research-data reads, empirical work,
 general network/API/curl, Claude Git history/remote writes, R2, P1/P2/P3,
-scoring, probe execution, and gate changes remain unauthorized.
+scoring, probe execution, and gate changes remain unauthorized. Preserving an implementation checkpoint does not expand this authorization.
 
 ### Historical Revision 08 authorization record at installation base
 
@@ -195,5 +202,6 @@ source gate; no test execution follows automatically.
   and uploaded manually by Gustavo.
 - Claude must not edit canonical project-context files.
 - Never silently reverse a settled decision or reactivate superseded material.
+- Preserve material unaccepted implementation progress as an evidence-only canonical checkpoint before chat/model/session transitions; never place it at the executable source path until separately accepted and authorized.
 - Do not open Revision 09 for optional polish; reopen only for a concrete material contradiction.
 - Revision 09 was accepted only for the concrete private descriptor-set invariant contradiction; no later revision follows without new authoritative evidence.

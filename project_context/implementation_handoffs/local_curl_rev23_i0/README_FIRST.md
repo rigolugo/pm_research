@@ -37,9 +37,15 @@ on `2026-07-24`. The R1 one-file source stage is **ACTIVE**.
 10. `scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST_REVISION_08.json`
 11. `scope_authoring/rev23_finding4_i0a/accepted_scope_revision_08/README_FIRST.md`
 12. `scope_authoring/rev23_finding4_i0a/SCOPE_SHA256SUMS.txt`
-13. `HANDOFF_REVISION_09_INSTALL_SHA256SUMS.txt`
-14. `HANDOFF_REVISION_09_R1_AUTHORIZATION_SHA256SUMS.txt`
-15. `HANDOFF_SHA256SUMS.txt`
+13. `implementation_checkpoints/README_FIRST.md`
+14. `implementation_checkpoints/CHECKPOINT_INDEX.json`
+15. `implementation_checkpoints/LATEST_PRESERVED_CHECKPOINT.json`
+16. `implementation_checkpoints/LATEST_ACCEPTED_CHECKPOINT.json`
+17. `implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/README_FIRST.md`
+18. `implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/CHECKPOINT_MANIFEST.json`
+19. `HANDOFF_REVISION_09_INSTALL_SHA256SUMS.txt`
+20. `HANDOFF_REVISION_09_R1_AUTHORIZATION_SHA256SUMS.txt`
+21. `HANDOFF_SHA256SUMS.txt`
 
 ## Active Revision 09 R1 boundary
 
@@ -51,11 +57,31 @@ untracked paths, exact equality with the immutable twelve-path baseline, and no
 thirteenth or other changed path. The other eleven authored paths are read-only.
 
 The edited existing `prepared_evidence.py` is the only submitted source file.
-Static source report, exact path inventory, diff summary, and checksums are chat
-text and MUST NOT be created as repository files. Test-source editing, tests,
+Claude returns static reports, path inventory, diff summary, and checksums as
+chat text and does not create canonical repository files. After Sentinel review,
+ChatGPT may prepare an evidence-only checkpoint under `implementation_checkpoints/`
+for Gustavo's manual commit. Test-source editing, tests,
 project imports/execution, another source edit, implementation ZIP
 reconstruction, research data, empirical work, general network/vendor activity,
 Git history/remote writes, R2, and downstream phases remain unauthorized.
+
+
+## Preserved unreviewed implementation evidence
+
+Checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` preserves exact recovered bytes for the sole R1
+writable target without changing the executable source path.
+
+- evidence payload SHA-256: `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`
+- evidence payload size: `112338` bytes
+- preservation state: `PAYLOAD_VERIFIED_PRE_INSTALL`
+- canonical installation state: `PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION`
+- conformance state: `BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW`
+- acceptance state: `NOT_ACCEPTED`
+- authorization effect: `NONE`
+
+Read the checkpoint only after the governing scope and authorization package.
+Do not use it as a new edit base, do not roll back to it, and do not promote it
+to `pm_research/` without a later Sentinel decision and Gustavo authorization.
 
 ---
 
