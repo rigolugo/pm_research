@@ -80,8 +80,8 @@
     }
   ],
   "canonical_installation_base_commit": "d3bd79f8fdb81c95340761aac27b3e3580d3e23d",
-  "canonical_installation_commit": null,
-  "canonical_installation_status": "PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION",
+  "canonical_installation_commit": "3d6fbe5eda504c32d94fed72be99adb9485fe1b1",
+  "canonical_installation_status": "INSTALLED_AND_SENTINEL_VERIFIED",
   "canonical_review_anchor": "d3bd79f8fdb81c95340761aac27b3e3580d3e23d",
   "checkpoint_state": {
     "checkpoint_id": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4",
@@ -90,7 +90,18 @@
     "acceptance_state": "NOT_ACCEPTED",
     "authorization_effect": "NONE",
     "controlling_implementation": false,
-    "revision_10_implementation_start": "NOT_AUTHORIZED_AND_NOT_YET_SELECTED"
+    "revision_10_implementation_start": "NOT_AUTHORIZED_AND_NOT_YET_SELECTED",
+    "conformance_state": "BLOCKED_PENDING_PROVENANCE_AND_REVISION10_IMPLEMENTATION_CONFORMANCE_REVIEW",
+    "remaining_blockers": [
+      "MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE",
+      "CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED",
+      "REVISION10_IMPLEMENTATION_CONFORMANCE_NOT_REVIEWED"
+    ],
+    "resolved_specification_blockers": [
+      "T107_FIXTURE_REACHABILITY_CONTRADICTION",
+      "T153_FIXTURE_REACHABILITY_CONTRADICTION",
+      "CANDIDATE_09_NOT_ACCEPTED"
+    ]
   },
   "decision": "APPROVE",
   "historical_revision_09_manifest": {
@@ -108,7 +119,7 @@
   "revision_09_r1_authorization_carries_forward": false,
   "schema_version": "rev23_finding4_i0a_accepted_scope_manifest.v3",
   "scope_id": "REV23_FINDING4_I0A_SCOPE_REVISION_10",
-  "scope_status": "SENTINEL_ACCEPTED_PENDING_CANONICAL_INSTALLATION",
+  "scope_status": "ACCEPTED_CANONICALLY_INSTALLED_AND_SENTINEL_VERIFIED",
   "sentinel_decision_date": "2026-07-24",
   "supersession": {
     "scope": "COMPLETE_FINDING4_I0A_REVISION10_SPECIFICATION_PACKAGE",
@@ -121,5 +132,8 @@
     "twelve_path_matrix_closed": true,
     "implementation_start_selected": false
   },
-  "test_execution_authorized": false
+  "test_execution_authorized": false,
+  "canonical_installation_commit_parent": "d3bd79f8fdb81c95340761aac27b3e3580d3e23d",
+  "sentinel_installation_verification_date": "2026-07-24",
+  "sentinel_installation_verification_record": "SENTINEL_SCOPE_INSTALLATION_VERIFICATION_REVISION_10.md"
 }

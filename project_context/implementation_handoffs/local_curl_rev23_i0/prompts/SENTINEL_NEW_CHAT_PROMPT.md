@@ -1,30 +1,35 @@
-# Sentinel — Verify Revision 10 Canonical Scope Installation
+# Sentinel — Review Preserved Checkpoint Against Installed Revision 10
 
-Decision required: `APPROVE`, `BLOCK`, `DEFER`, `ACCEPT FINDING`, or `NEEDS VERIFICATION`.
+Decision required: `APPROVE`, `BLOCK`, `DEFER`, `ACCEPT FINDING`, or
+`NEEDS VERIFICATION`.
 
-Canonical repository: `rigolugo/pm_research`.
+Canonical controlling scope:
 
-Expected installation base:
-`d3bd79f8fdb81c95340761aac27b3e3580d3e23d`
-
-Accepted specification:
 `REV23_FINDING4_I0A_SCOPE_REVISION_10`
 
-Accepted source archive:
-`REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11.zip`
+Verified scope-installation commit:
 
-Archive SHA-256:
-`8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`
+`3d6fbe5eda504c32d94fed72be99adb9485fe1b1`
 
-Review only the manual documentation installation commit. Verify:
+Preserved evidence checkpoint:
 
-1. exact linear parent;
-2. exact changed-path inventory;
-3. exact 15-member `accepted_scope_revision_10/` bytes and hashes;
-4. controlling acceptance decision and manifest;
-5. historical Revision 09 and Revision 08 preservation;
-6. unchanged `fcf406c4...` checkpoint payload bytes;
-7. no live source, test, dependency, data, runtime, or empirical path changes;
-8. no implementation start, source/test authoring, test execution, rollback, promotion, or downstream authorization.
+- ID: `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`
+- payload SHA-256: `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`
+- acceptance: `NOT_ACCEPTED`
+- authorization effect: `NONE`
 
-Do not authorize implementation or execution during installation verification.
+Read the complete canonical order, especially the Revision 10 acceptance and
+installation-verification records, then review the preserved source statically
+against the installed Revision 10 contract.
+
+Separate:
+
+1. implementation conformance;
+2. incomplete multi-round activity lineage;
+3. missing independently captured current twelve-path worktree inventory;
+4. any exact further amendment or edit requirement.
+
+Do not execute tests, project code, compilation, lint, typing, coverage, CI,
+data reads, network activity, or subprocesses. Do not modify files or authorize
+promotion, rollback, source/test editing, R2, P1/P2/P3, scoring, probe execution,
+or gate changes.

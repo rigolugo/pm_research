@@ -168,8 +168,8 @@ Installation commits:
 - `HANDOFF_INVENTORY.md`
 - `HANDOFF_SHA256SUMS.txt`
 - `HANDOFF_REVISION_09_INSTALL_SHA256SUMS.txt` — historical focused Revision 09 scope-installation inventory.
-- `HANDOFF_REVISION_10_INSTALL_SHA256SUMS.txt` — focused pending Revision 10 scope-installation inventory.
-- `HANDOFF_REVISION_09_R1_AUTHORIZATION_SHA256SUMS.txt` — focused active R1 authorization inventory excluding itself and the complete handoff inventory.
+- `HANDOFF_REVISION_10_INSTALL_SHA256SUMS.txt` — focused verified Revision 10 scope-installation and post-install status inventory.
+- `HANDOFF_REVISION_09_R1_AUTHORIZATION_SHA256SUMS.txt` — historical Revision 09 R1 authorization inventory; inactive under Revision 10.
 - `CANONICAL_REPOSITORY_POINTER.md`
 - `prompts/CLAUDE_NEW_CHAT_PROMPT.md`
 - `prompts/SENTINEL_NEW_CHAT_PROMPT.md`
@@ -182,7 +182,7 @@ Installation commits:
 Current implementation state:
 `STOP_IMPLEMENTATION_NOT_AUTHORIZED`.
 
-Revision 10 controlling state: `SPECIFICATION ACCEPTED; CANONICAL INSTALLATION PENDING`. No implementation starting SHA, writable path, source/test authoring, test execution, rollback, promotion, or downstream stage is authorized. Revision 09 R1 and Revision 08 authorizations are historical and do not carry forward.
+Revision 10 controlling state: `SPECIFICATION ACCEPTED; INSTALLED_AND_SENTINEL_VERIFIED AT 3d6fbe5eda504c32d94fed72be99adb9485fe1b1`. No implementation starting SHA, writable path, source/test authoring, test execution, rollback, promotion, or downstream stage is authorized. Revision 09 R1 and Revision 08 authorizations are historical and do not carry forward.
 
 
 ### `implementation_checkpoints/`
@@ -274,9 +274,10 @@ Accepted bounded implementation-authoring scope.
 - `accepted_scope_revision_08/` — exact `14`-member canonical copy
   of `REV23_FINDING4_I0A_SCOPE_REVISION_08.zip`
 - `accepted_scope_revision_09/` — immutable exact `14`-member canonical copy of `REV23_FINDING4_I0A_SCOPE_REVISION_09.zip`
-- `accepted_scope_revision_10/` — proposed immutable exact `15`-member copy of accepted `REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11.zip`; archive SHA-256 `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`; pending manual commit and Sentinel verification.
+- `accepted_scope_revision_10/` — immutable exact `15`-member canonical copy of accepted `REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11.zip`; archive SHA-256 `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`; installed and Sentinel-verified at `3d6fbe5eda504c32d94fed72be99adb9485fe1b1`.
 - `ACCEPTED_SCOPE_MANIFEST_REVISION_09.json` — historical Revision 09 controlling manifest copy.
 - `SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_09.md` — historical Revision 09 controlling decision copy.
+- `SENTINEL_SCOPE_INSTALLATION_VERIFICATION_REVISION_10.md` — immutable Sentinel verification of Revision 10 installation commit `3d6fbe5eda504c32d94fed72be99adb9485fe1b1` and its non-authorization boundary.
 - `ACCEPTED_SCOPE_MANIFEST_REVISION_08.json` — historical accepted manifest copy
 - `SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md` — historical accepted decision copy
 
@@ -307,14 +308,12 @@ Historical bounded Revision 08 authoring package:
 
 Authorization ID: `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`. The package became active after Sentinel verified the canonical commit containing it. Tests and project execution remained unauthorized.
 
-This authorization package is specific to Revision 08 and does not authorize
-Revision 09 implementation. Its no-active-Revision-09-prompt statement is
-historical pre-R1 evidence and is superseded only by the active R1 authorization
-below.
+This authorization package is specific to Revision 08. It remains historical
+evidence and is inactive under Revision 10.
 
 ### `authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/`
 
-Active documentation-only authorization record for
+Historical, non-reusable authorization record for
 `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`:
 
 - `README_FIRST.md`
@@ -336,11 +335,10 @@ Baseline provenance:
 - later `prepared_evidence.py` checkpoint SHA-256
   `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`.
 
-The package is active at source-gated commit `1e1afb29791f42c286b45d3b576f74926add8dce`. It authorizes
-one writable source path, prohibits test-source editing and test execution, and
-does not authorize R2 or downstream execution. The active prompt requires
-reports, inventories, diff summaries, and checksums to be returned as chat text
-rather than created as repository files.
+The package was historically activated at source-gated commit
+`1e1afb29791f42c286b45d3b576f74926add8dce`. Revision 10 supersedes it for
+current authority. It cannot authorize another edit, rollback, restoration,
+overwrite, promotion, test stage, execution stage, R2, or downstream activity.
 
 ### `authorization_audit/rev23_amendment_03_i0/`
 

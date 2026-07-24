@@ -398,6 +398,36 @@ Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification 
 
 ---
 
+### Finding 4 I0A Revision 10 canonical installation verification
+
+On `2026-07-24`, Sentinel verified commit
+`3d6fbe5eda504c32d94fed72be99adb9485fe1b1` as the exact documentation-only installation of
+`REV23_FINDING4_I0A_SCOPE_REVISION_10`.
+
+- parent/install base: `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`
+- changed paths: `32`, all under `project_context/`
+- accepted source archive SHA-256: `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`
+- accepted member count: `15`
+- live source/test changes: `0`
+- checkpoint payload changed: `false`
+- implementation authorization effect: `NONE`
+
+Revision 10 is now the controlling accepted and canonically installed Finding 4
+I0A specification. T107, T153, and Candidate 09 are no longer open
+specification-layer blockers for checkpoint review. They are removed from the
+checkpoint blocker list without implying implementation conformance.
+
+The checkpoint remains `NOT_ACCEPTED`, non-controlling, and authorization effect
+`NONE`. Remaining blockers are incomplete multi-round activity lineage, absence
+of an independently captured current twelve-path worktree inventory, and static
+implementation-conformance review against Revision 10.
+
+No implementation start, rollback, restoration, overwrite, promotion, source or
+test edit, test execution, project execution, data/network activity, Git write,
+R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.
+
+---
+
 ## DO NOT REOPEN unless explicitly requested with new evidence
 
 - Rank 1A recalibration.

@@ -7,16 +7,14 @@
       "authorization_id": "REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01",
       "canonical_installation_state": "INSTALLED_AND_SENTINEL_VERIFIED",
       "checkpoint_id": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4",
-      "checkpoint_manifest_sha256": "9efc56eece5f230e5ad0bcf41b51996c91a9afb4fd501ab02fdceec8dc3111c6",
-      "checkpoint_sha256s_sha256": "f915db0d392d2ad97f282c188647facba6aca8ac188ec75d2080956843c0cbd6",
-      "conformance_state": "BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW",
+      "checkpoint_manifest_sha256": "080a52cc470a3dabff35d006e3c6200c8894ce803b4a33949f54979baf8896f0",
+      "checkpoint_sha256s_sha256": "1be8464b07d3758a018d490fbbeeb8aaf676eaf3ef81c5b8555a0967c35614ab",
+      "conformance_state": "BLOCKED_PENDING_PROVENANCE_AND_REVISION10_IMPLEMENTATION_CONFORMANCE_REVIEW",
       "directory": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4",
       "known_blockers": [
-        "T107_FIXTURE_REACHABILITY_CONTRADICTION",
-        "T153_FIXTURE_REACHABILITY_CONTRADICTION",
-        "CANDIDATE_09_NOT_ACCEPTED",
         "MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE",
-        "CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED"
+        "CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED",
+        "REVISION10_IMPLEMENTATION_CONFORMANCE_NOT_REVIEWED"
       ],
       "parent_checkpoint_id": null,
       "payload_sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da",
@@ -25,7 +23,15 @@
       "source_gate_commit": "1e1afb29791f42c286b45d3b576f74926add8dce",
       "target_path": "pm_research/local_curl_per_side/prepared_evidence.py",
       "verification_date": "2026-07-24",
-      "verified_installation_commit": "58acbac493840c45d84c6b7e33c583d722f4d559"
+      "verified_installation_commit": "58acbac493840c45d84c6b7e33c583d722f4d559",
+      "controlling_scope": "REV23_FINDING4_I0A_SCOPE_REVISION_10",
+      "controlling_scope_installation_commit": "3d6fbe5eda504c32d94fed72be99adb9485fe1b1",
+      "resolved_specification_blockers": [
+        "T107_FIXTURE_REACHABILITY_CONTRADICTION",
+        "T153_FIXTURE_REACHABILITY_CONTRADICTION",
+        "CANDIDATE_09_NOT_ACCEPTED"
+      ],
+      "authorization_status": "HISTORICAL_NOT_REUSABLE_UNDER_REVISION10"
     }
   ],
   "current_checkpoint_count": 1,

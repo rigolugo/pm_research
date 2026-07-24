@@ -16,8 +16,8 @@
     "SHA256SUMS.txt",
     "payload_exact/pm_research/local_curl_per_side/prepared_evidence.py"
   ],
-  "conformance_state": "BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW",
-  "controlling_scope": "REV23_FINDING4_I0A_SCOPE_REVISION_09",
+  "conformance_state": "BLOCKED_PENDING_PROVENANCE_AND_REVISION10_IMPLEMENTATION_CONFORMANCE_REVIEW",
+  "controlling_scope": "REV23_FINDING4_I0A_SCOPE_REVISION_10",
   "created_date": "2026-07-24",
   "evidence_labels": {
     "current_payload": "OBSERVED",
@@ -33,11 +33,9 @@
   },
   "installation_package_base_commit": "80430225af793b10864ef2b43486d718c9872dee",
   "known_blockers": [
-    "T107_FIXTURE_REACHABILITY_CONTRADICTION",
-    "T153_FIXTURE_REACHABILITY_CONTRADICTION",
-    "CANDIDATE_09_NOT_ACCEPTED",
     "MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE",
-    "CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED"
+    "CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED",
+    "REVISION10_IMPLEMENTATION_CONFORMANCE_NOT_REVIEWED"
   ],
   "original_authorized_start": {
     "bytes_available": false,
@@ -56,5 +54,13 @@
   "source_gate_commit": "1e1afb29791f42c286b45d3b576f74926add8dce",
   "twelve_path_baseline_sha256": "061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7",
   "verification_date": "2026-07-24",
-  "verified_installation_commit": "58acbac493840c45d84c6b7e33c583d722f4d559"
+  "verified_installation_commit": "58acbac493840c45d84c6b7e33c583d722f4d559",
+  "controlling_scope_installation_commit": "3d6fbe5eda504c32d94fed72be99adb9485fe1b1",
+  "resolved_specification_blockers": [
+    "T107_FIXTURE_REACHABILITY_CONTRADICTION",
+    "T153_FIXTURE_REACHABILITY_CONTRADICTION",
+    "CANDIDATE_09_NOT_ACCEPTED"
+  ],
+  "authorization_status": "HISTORICAL_NOT_REUSABLE_UNDER_REVISION10",
+  "revision_10_implementation_start": "NOT_AUTHORIZED_AND_NOT_YET_SELECTED"
 }

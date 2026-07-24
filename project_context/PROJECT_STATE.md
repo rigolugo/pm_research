@@ -6,13 +6,17 @@
 
 ## Current objective
 
-### Controlling Revision 10 installation objective
+### Controlling Revision 10 verified-installation objective
 
-Sentinel accepted `REV23_FINDING4_I0A_SCOPE_REVISION_10` from Candidate 11, archive SHA-256 `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`, on `2026-07-24`.
+Revision 10 is accepted, canonically installed, and Sentinel-verified at
+`3d6fbe5eda504c32d94fed72be99adb9485fe1b1`. Its accepted source archive SHA-256 is `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`.
 
-The immediate objective is documentation-only canonical installation against base `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`, followed by Sentinel verification of the manual commit.
+The immediate decision-bearing objective is static implementation-conformance
+review of preserved checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` / `fcf406c4...` against
+the installed Revision 10 contract and the remaining provenance evidence.
 
-No Revision 10 implementation start is selected or authorized. The preserved checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` / `fcf406c4...` remains canonically preserved, `NOT_ACCEPTED`, and authorization effect `NONE`. No rollback, additional source edit, test-source authoring, test execution, R2, or downstream activity is authorized.
+No implementation start, source/test edit, test execution, rollback, promotion,
+R2, or downstream activity is selected or authorized.
 
 ### Historical Revision 08 objective at installation base
 
@@ -172,11 +176,14 @@ path changed during documentation installation.
 - member count: `15`
 - acceptance date: `2026-07-24`
 - canonical installation base: `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`
-- installation state: `PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION`
+- verified canonical installation commit: `3d6fbe5eda504c32d94fed72be99adb9485fe1b1`
+- installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
+- immutable installed directory: `accepted_scope_revision_10/`
 - implementation authorization: `NONE`
 - implementation starting SHA: `NOT_AUTHORIZED_AND_NOT_YET_SELECTED`
 
-Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification package. Revision 09 and Revision 08 remain immutable historical accepted evidence.
+Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification
+package. Revision 09 and Revision 08 remain immutable historical accepted evidence.
 
 ### Historical Revision 09 scope state
 
@@ -236,43 +243,24 @@ Exact recovered payload:
 - preservation state: `CANONICALLY_PRESERVED`
 - canonical installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
 - verified installation commit: `58acbac493840c45d84c6b7e33c583d722f4d559`
-- conformance state: `BLOCKED_PENDING_REVISION10_INSTALLATION_VERIFICATION_AND_PROVENANCE_REVIEW`
+- conformance state: `BLOCKED_PENDING_PROVENANCE_AND_REVISION10_IMPLEMENTATION_CONFORMANCE_REVIEW`
 - acceptance state: `NOT_ACCEPTED`
 - authorization effect: `NONE`
 
 The checkpoint preserves exact bytes against chat/session loss. It does not
 promote those bytes to the executable source tree. Revision 10 resolves the
-T107/T153 specification reachability contradictions. Remaining checkpoint
-blockers are incomplete multi-round activity lineage, absence of an independently
-captured current twelve-path worktree inventory, and implementation conformance
-review against the verified canonical Revision 10 package.
+former T107/T153/Candidate 09 specification blockers. Remaining blockers are
+incomplete multi-round activity lineage, absence of an independently captured
+current twelve-path worktree inventory, and implementation-conformance review
+against the verified canonical Revision 10 package.
 
 ### Historical Revision 08 authorization state at installation base
 
-Gustavo has explicitly authorized bounded Finding 4 I0A implementation authoring.
-Sentinel has approved the exact twelve-path activity matrix. Activation requires
-manual installation and Sentinel verification of the authorization package.
-
-Authorized after activation:
-
-- read-only source synchronization to the source-gated HEAD;
-- implementation-source authoring in exactly six paths;
-- unexecuted test-source authoring in exactly six paths;
-- static file/JSON/hash/package validation within the active boundary;
-- implementation review ZIP, report, and checksum production.
-
-Still unauthorized:
-
-- test execution, lint, type checking, coverage, CI, compilation, or project imports;
-- local research-data or empirical-artifact reads;
-- API, RPC, vendor, Dune, curl, or general network use;
-- replay, scoring, P1/P2/P3, probe execution, or gate changes;
-- dependencies, CLI/config, generated code, additional paths, caches, or bytecode;
-- Git commit, branch/ref, push, PR, merge, or other history/remote write.
-
-The historical authorization ID is `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`; it is not active under Revision 10.
-
----
+The historical Revision 08 and Revision 09 R1 implementation-authoring records
+remain audit evidence only. Revision 10 supersedes them for current authority.
+They do not authorize source synchronization, source/test authoring, rollback,
+restoration, overwrite, promotion, tests, execution, data/network access, Git
+writes, or any downstream phase.
 
 ## Environment
 
@@ -288,15 +276,17 @@ The historical authorization ID is `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_
 
 ### Controlling Revision 10 next step
 
-Manually install and commit the documentation-only Revision 10 acceptance package against `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`, then return the full commit SHA to Sentinel. Sentinel verifies exact paths, member bytes, checksums, historical-scope preservation, checkpoint payload immutability, and absence of source/test changes.
+Sentinel statically reviews preserved checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` against the
+installed Revision 10 contract at verified installation commit `3d6fbe5eda504c32d94fed72be99adb9485fe1b1`.
+The review must separate specification conformance from incomplete provenance and
+must not execute tests, project code, data reads, network activity, or modify any
+file.
 
-No implementation, test-source authoring, test execution, rollback, promotion, R2, or downstream activity follows automatically.
+No promotion, source/test edit, rollback, R2, or downstream stage follows
+automatically.
 
 ### Historical Revision 08 next step at installation base
 
-Manually upload and commit the active I0A authorization package, then return the
-commit SHA to Sentinel for verification.
-
-After verification, Claude may begin only the bounded implementation-source and
-unexecuted test-source authoring stage. Test execution remains a separate future
-decision.
+No current action is authorized from the historical Revision 08 package. Any
+future implementation stage must be newly authorized under Revision 10 and may
+not reuse the historical Revision 08 or Revision 09 source gates.

@@ -1,17 +1,20 @@
-# REV23 Finding 4 Canonical Handoff — Revision 10 Accepted, Installation Pending
+# REV23 Finding 4 Canonical Handoff — Revision 10 Installed and Verified
 
 ## Controlling specification state
 
-Sentinel accepted `REV23_FINDING4_I0A_SCOPE_REVISION_10` from Candidate 11 on `2026-07-24`.
+Revision 10 is accepted, canonically installed, and Sentinel-verified.
 
-- accepted archive SHA-256: `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`
+- scope: `REV23_FINDING4_I0A_SCOPE_REVISION_10`
+- accepted source: `REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11.zip`
+- source archive SHA-256: `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`
 - accepted member count: `15`
-- accepted base: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
 - canonical installation base: `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`
-- proposed immutable scope directory: `scope_authoring/rev23_finding4_i0a/accepted_scope_revision_10/`
-- installation state: `PENDING_GUSTAVO_COMMIT_AND_SENTINEL_VERIFICATION`
+- verified installation commit: `3d6fbe5eda504c32d94fed72be99adb9485fe1b1`
+- immutable installed directory:
+  `scope_authoring/rev23_finding4_i0a/accepted_scope_revision_10/`
 
-Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification package. Revision 09 and Revision 08 remain historical accepted evidence.
+Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification
+package. Revision 09 and Revision 08 remain immutable historical accepted evidence.
 
 ## Required read order
 
@@ -19,31 +22,33 @@ Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification 
 2. `IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
 3. `scope_authoring/rev23_finding4_i0a/README_FIRST.md`
 4. `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
-5. `scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
-6. `scope_authoring/rev23_finding4_i0a/accepted_scope_revision_10/README_FIRST.md`
-7. the remaining Revision 10 members in Candidate 11's read order
-8. historical Revision 09 decision, manifest, and scope directory
-9. historical Revision 08 decision, manifest, and scope directory
-10. `scope_authoring/rev23_finding4_i0a/SCOPE_SHA256SUMS.txt`
-11. `implementation_checkpoints/README_FIRST.md`
-12. `implementation_checkpoints/CHECKPOINT_INDEX.json`
-13. `implementation_checkpoints/LATEST_PRESERVED_CHECKPOINT.json`
-14. `implementation_checkpoints/LATEST_ACCEPTED_CHECKPOINT.json`
-15. checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` metadata and verification record
-16. remaining files required by these read orders
+5. `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_INSTALLATION_VERIFICATION_REVISION_10.md`
+6. `scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
+7. `scope_authoring/rev23_finding4_i0a/accepted_scope_revision_10/README_FIRST.md`
+8. the remaining Revision 10 members in Candidate 11's read order
+9. `implementation_checkpoints/README_FIRST.md`
+10. `implementation_checkpoints/CHECKPOINT_INDEX.json`
+11. checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` only when implementation evidence is decision-bearing
+12. the remaining handoff and historical records required by those files
 
-## Implementation authorization state
+## Implementation state
 
 `STOP_IMPLEMENTATION_NOT_AUTHORIZED`
 
-No Revision 10 implementation start, source gate, writable path, test-source stage, or test execution is active.
+Revision 10 selects no implementation starting SHA, source gate, writable path,
+test-source stage, or test-execution stage.
 
-The historical Revision 09 R1 authorization and Revision 08 authoring authorization do not carry forward. The preserved `fcf406c4...` checkpoint remains exact evidence only, `NOT_ACCEPTED`, and authorization effect `NONE`.
+The historical Revision 09 R1 authorization and Revision 08 implementation
+authorization do not carry forward. The preserved `fcf406c4...`
+checkpoint remains exact evidence only, `NOT_ACCEPTED`, and authorization effect
+`NONE`.
 
-No rollback, restoration, overwrite, promotion, source/test edit, test execution, project execution, data/network activity, Git write by Claude, R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.
+Former T107/T153/Candidate 09 specification blockers are resolved by installed
+Revision 10. Remaining checkpoint blockers are incomplete round lineage, missing
+independent current twelve-path inventory, and implementation-conformance review.
 
-## Installation boundary
+## Next decision boundary
 
-This package changes documentation and accepted-scope records only. It must not change any live `pm_research/`, `tests/`, dependency, data, runtime, or empirical path.
-
-After Gustavo commits the exact package, return the full commit SHA to Sentinel for verification. Implementation remains blocked after installation verification unless Gustavo separately authorizes a bounded stage and Sentinel issues a new handoff.
+Sentinel may perform a static implementation-conformance review of the preserved
+checkpoint against Revision 10. That review authorizes no edit, tests, project
+execution, data/network access, promotion, rollback, R2, or downstream stage.

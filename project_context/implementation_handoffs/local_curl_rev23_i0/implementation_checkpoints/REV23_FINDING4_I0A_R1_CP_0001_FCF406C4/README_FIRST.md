@@ -5,13 +5,16 @@
 - authority class: `EVIDENCE_ONLY`
 - preservation state: `CANONICALLY_PRESERVED`
 - canonical installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
-- verified installation commit: `58acbac493840c45d84c6b7e33c583d722f4d559`
-- conformance state: `BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW`
+- verified checkpoint installation commit: `58acbac493840c45d84c6b7e33c583d722f4d559`
+- controlling specification: `REV23_FINDING4_I0A_SCOPE_REVISION_10`
+- controlling specification installation commit: `3d6fbe5eda504c32d94fed72be99adb9485fe1b1`
+- conformance state: `BLOCKED_PENDING_PROVENANCE_AND_REVISION10_IMPLEMENTATION_CONFORMANCE_REVIEW`
 - acceptance state: `NOT_ACCEPTED`
 - authorization effect: `NONE`
 
-This checkpoint preserves the exact recovered current implementation bytes. It
-is not the live source path and must not be treated as accepted or executable.
+This checkpoint preserves the exact recovered implementation bytes. It is not the
+live source path and must not be treated as accepted, executable, or selected as
+a Revision 10 implementation start.
 
 ## Exact payload
 
@@ -24,23 +27,19 @@ is not the live source path and must not be treated as accepted or executable.
 
 ## Governing context
 
-- controlling accepted scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
-- R1 authorization ID: `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`
-- R1 source-gated commit: `1e1afb29791f42c286b45d3b576f74926add8dce`
-- checkpoint installation-package base: `80430225af793b10864ef2b43486d718c9872dee`
+Revision 10 resolves the former T107, T153, and Candidate 09 specification-layer
+blockers. Historical Revision 09 R1 authorization identity and source-gate fields
+remain provenance only and are not reusable under Revision 10.
 
-## Installation verification
+## Remaining review boundary
 
-Read `SENTINEL_INSTALLATION_VERIFICATION.md`. Sentinel verified the exact
-checkpoint installation commit `58acbac493840c45d84c6b7e33c583d722f4d559`. Verification establishes
-canonical byte preservation only; it does not establish conformance or
-acceptance.
+Implementation acceptance remains blocked on:
 
-## Review boundary
+- incomplete multi-round activity lineage;
+- absence of an independently captured current twelve-path worktree inventory;
+- static implementation-conformance review against installed Revision 10.
 
-The exact bytes are recovered and statically parseable, and core Revision 09 R1
-changes are present. The implementation remains unaccepted because the current
-contract/fixture reachability issue, Candidate 09 decision, accumulated activity
-lineage, and current worktree inventory are not all resolved canonically.
-
-No rollback or additional edit is authorized by this checkpoint.
+Read the existing checkpoint installation verification for byte-preservation
+history and the Revision 10 scope installation verification for current contract
+status. No rollback, promotion, additional edit, test, execution, or downstream
+stage is authorized by this checkpoint.

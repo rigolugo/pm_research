@@ -77,3 +77,12 @@ must not update this directory directly.
 - preservation state: `CANONICALLY_PRESERVED`
 - canonical installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
 - verified installation commit: `58acbac493840c45d84c6b7e33c583d722f4d559`
+
+## Current governing contract
+
+- controlling specification: `REV23_FINDING4_I0A_SCOPE_REVISION_10`
+- verified scope-installation commit: `3d6fbe5eda504c32d94fed72be99adb9485fe1b1`
+- current checkpoint conformance state: `BLOCKED_PENDING_PROVENANCE_AND_REVISION10_IMPLEMENTATION_CONFORMANCE_REVIEW`
+
+Former T107/T153/Candidate 09 specification blockers are resolved. Checkpoint
+acceptance remains blocked on provenance and implementation-conformance review.

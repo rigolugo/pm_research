@@ -53,6 +53,7 @@ Read these before doing anything:
 20. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/README_FIRST.md`
    Revision 10 controlling insert, before historical revisions:
    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
+   - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_INSTALLATION_VERIFICATION_REVISION_10.md`
    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_10/README_FIRST.md`
    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_09.md`
@@ -111,19 +112,22 @@ The installed contract and Finding 4 audit trail live under:
 
 ### Controlling Revision 10 scope
 
-Sentinel accepted `REV23_FINDING4_I0A_SCOPE_REVISION_10` from Candidate 11 on `2026-07-24`. Canonical installation is pending Gustavo's manual commit and Sentinel verification.
+Revision 10 is accepted, canonically installed, and Sentinel-verified at
+`3d6fbe5eda504c32d94fed72be99adb9485fe1b1`.
 
+- scope: `REV23_FINDING4_I0A_SCOPE_REVISION_10`
 - accepted base: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
 - accepted archive SHA-256: `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`
 - accepted member count: `15`
 - canonical installation base: `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`
-- proposed immutable directory: `accepted_scope_revision_10/`
+- verified installation commit: `3d6fbe5eda504c32d94fed72be99adb9485fe1b1`
+- immutable installed directory: `accepted_scope_revision_10/`
 - implementation authorized: **NO**
 - Revision 10 implementation start selected: **NO**
 
 Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification package. Revision 09 and Revision 08 remain immutable historical accepted evidence.
 
-The preserved `fcf406c4...` checkpoint remains unaccepted and non-authorizing. The historical Revision 09 R1 authorization does not carry forward.
+The preserved `fcf406c4...` checkpoint remains unaccepted and non-authorizing. Revision 10 resolves its former T107/T153/Candidate 09 specification blockers, but provenance and implementation-conformance review remain open. Historical Revision 09 and Revision 08 implementation authorizations do not carry forward.
 
 ### Historical Revision 09 scope record
 
@@ -136,20 +140,14 @@ The preserved `fcf406c4...` checkpoint remains unaccepted and non-authorizing. T
 
 ### Historical Revision 08 scope record at installation base
 
-Revision 08 is accepted as the bounded implementation-authoring scope.
+Revision 08 remains immutable historical accepted evidence.
 
 - review anchor: `88362521fe9ef247708e4d7b5f90753784b8b88e`
 - accepted archive SHA-256: `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
-- canonical scope path:
-  `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/`
-- accepted-scope canonical commit: `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff` — Sentinel verified
-- implementation-source authoring: **AUTHORIZED AFTER AUTHORIZATION-PACKAGE INSTALL VERIFICATION**
-- unexecuted test-source authoring: **AUTHORIZED AFTER AUTHORIZATION-PACKAGE INSTALL VERIFICATION**
-- test execution: **UNAUTHORIZED**
-
-Gustavo authorized the bounded authoring stage on `2026-07-18`. The active package is
-`implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/`.
-No Revision 09 is required.
+- accepted-scope canonical commit: `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff`
+- historical implementation authorization carries forward: **NO**
+- current source/test authoring authorization: **NONE**
+- current test-execution authorization: **NONE**
 
 ---
 
@@ -182,20 +180,12 @@ No Revision 10 implementation starting SHA or source-gated commit is selected. T
 
 ### Historical Revision 08 authorization record at installation base
 
-A bounded Claude implementation-authoring prompt is installed but becomes active
-only after Sentinel verifies the canonical commit containing the authorization
-package.
-
-The earlier Amendment 03 I0 authorization remains superseded. Current Gustavo
-and Sentinel authorization permits read-only source synchronization and authoring
-of exactly six source plus six unexecuted test-source paths. Tests, project
-imports/execution, research-data reads, general network/API/curl, empirical work,
-Git history/remote writes, P1/P2/P3, scoring, probe execution, and gate changes
-remain unauthorized.
-
-The next boundary is manual installation and Sentinel verification of the active
-authorization package. After that verification Claude may author under the exact
-source gate; no test execution follows automatically.
+The historical Revision 08 implementation-authoring package and the later
+Revision 09 R1 one-file authorization remain preserved as audit evidence. Both
+are superseded and inactive under Revision 10. Neither may authorize source
+synchronization, source/test authoring, rollback, restoration, overwrite,
+promotion, tests, execution, data/network access, Git writes, or a downstream
+stage.
 
 ---
 

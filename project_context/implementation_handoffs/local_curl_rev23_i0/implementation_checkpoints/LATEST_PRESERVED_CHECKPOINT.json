@@ -8,5 +8,13 @@
   "preservation_state": "CANONICALLY_PRESERVED",
   "recovery_pointer_only": true,
   "schema_id": "pm_research_latest_preserved_checkpoint.v1",
-  "verified_installation_commit": "58acbac493840c45d84c6b7e33c583d722f4d559"
+  "verified_installation_commit": "58acbac493840c45d84c6b7e33c583d722f4d559",
+  "conformance_state": "BLOCKED_PENDING_PROVENANCE_AND_REVISION10_IMPLEMENTATION_CONFORMANCE_REVIEW",
+  "controlling_scope": "REV23_FINDING4_I0A_SCOPE_REVISION_10",
+  "controlling_scope_installation_commit": "3d6fbe5eda504c32d94fed72be99adb9485fe1b1",
+  "remaining_blockers": [
+    "MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE",
+    "CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED",
+    "REVISION10_IMPLEMENTATION_CONFORMANCE_NOT_REVIEWED"
+  ]
 }
