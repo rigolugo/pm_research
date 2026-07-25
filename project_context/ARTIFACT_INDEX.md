@@ -166,24 +166,33 @@ Installation commits:
 - `SENTINEL_ACCEPTANCE_DECISION.md`
 - `IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
 - `HANDOFF_INVENTORY.md`
-- `HANDOFF_SHA256SUMS.txt`
+- `HANDOFF_SHA256SUMS.txt` — historical complete inventory through the Revision 10 installation-verification state.
 - `HANDOFF_REVISION_09_INSTALL_SHA256SUMS.txt` — historical focused Revision 09 scope-installation inventory.
-- `HANDOFF_REVISION_10_INSTALL_SHA256SUMS.txt` — focused verified Revision 10 scope-installation and post-install status inventory.
+- `HANDOFF_REVISION_10_INSTALL_SHA256SUMS.txt` — historical focused verified Revision 10 scope-installation inventory.
+- `HANDOFF_REVISION_10_STATIC_CONFORMANCE_SHA256SUMS.txt` — focused inventory for the documentation-only `REVISION10_STATIC_CONFORMANCE_BLOCKED` record.
 - `HANDOFF_REVISION_09_R1_AUTHORIZATION_SHA256SUMS.txt` — historical Revision 09 R1 authorization inventory; inactive under Revision 10.
 - `CANONICAL_REPOSITORY_POINTER.md`
-- `prompts/CLAUDE_NEW_CHAT_PROMPT.md`
+- `prompts/CLAUDE_NEW_CHAT_PROMPT.md` — inactive stop notice only; not an implementation prompt.
 - `prompts/SENTINEL_NEW_CHAT_PROMPT.md`
 - `scope_authoring/rev23_finding4_i0a/README_FIRST.md`
 - `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
+- `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_INSTALLATION_VERIFICATION_REVISION_10.md`
 - `scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
-- `scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST_REVISION_08.json` — byte-identical historical copy.
-- `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md` — byte-identical historical copy.
 
 Current implementation state:
-`STOP_IMPLEMENTATION_NOT_AUTHORIZED`.
 
-Revision 10 controlling state: `SPECIFICATION ACCEPTED; INSTALLED_AND_SENTINEL_VERIFIED AT 3d6fbe5eda504c32d94fed72be99adb9485fe1b1`. No implementation starting SHA, writable path, source/test authoring, test execution, rollback, promotion, or downstream stage is authorized. Revision 09 R1 and Revision 08 authorizations are historical and do not carry forward.
+`STOP_IMPLEMENTATION_NOT_AUTHORIZED`
 
+Current static-conformance state:
+
+`BLOCK — REVISION10_STATIC_CONFORMANCE_BLOCKED`
+
+Revision 10 remains the controlling accepted specification, installed and
+Sentinel-verified at `3d6fbe5eda504c32d94fed72be99adb9485fe1b1`. No
+implementation starting SHA, source-gated commit, writable source/test path,
+test stage, rollback, promotion, or downstream stage is selected or authorized.
+Revision 09 R1 and Revision 08 authorizations are historical and do not carry
+forward.
 
 ### `implementation_checkpoints/`
 
@@ -205,18 +214,40 @@ Current preserved checkpoint:
 - `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/BASELINE_AND_LINEAGE.md`
 - `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/ACTIVITY_BOUNDARY_STATUS.md`
 - `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/KNOWN_FINDINGS.md`
-- `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SHA256SUMS.txt`
 - `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_INSTALLATION_VERIFICATION.md`
+- `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_STATIC_CONFORMANCE_REVIEW_REVISION_10.md`
+- `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SHA256SUMS.txt`
 - `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/payload_exact/pm_research/local_curl_per_side/prepared_evidence.py`
 
 Exact payload identity:
 
 - SHA-256: `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`
 - size: `112338` bytes
-- acceptance state: `NOT_ACCEPTED`
-- authorization effect: `NONE`
+- preservation state: `CANONICALLY_PRESERVED`
 - installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
-- verified installation commit: `58acbac493840c45d84c6b7e33c583d722f4d559`
+- acceptance state: `NOT_ACCEPTED`
+- controlling implementation: `false`
+- authorization effect: `NONE`
+- static-conformance state: `REVISION10_STATIC_CONFORMANCE_BLOCKED`
+- static review base: `3cf0871ae97d112324031190822756379d1236e8`
+
+The exact payload remains unchanged and is not included as replacement content in
+the documentation-only static-conformance installation package.
+
+Open provenance gaps:
+
+- `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`
+- `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`
+
+Resolved specification-layer matters:
+
+- `T107_FIXTURE_REACHABILITY_CONTRADICTION`
+- `T153_FIXTURE_REACHABILITY_CONTRADICTION`
+- `CANDIDATE_09_NOT_ACCEPTED`
+
+The immutable Sentinel review record identifies the failed Revision 10 contract
+areas. It does not select remediation, an implementation start, or a Claude
+implementation handoff.
 
 ### `accepted_contract/`
 
@@ -242,20 +273,11 @@ The accepted contract also includes the retained contracts/policies and
 
 ### `amendment_audit/rev23_finding4/`
 
-Complete accepted Finding 4 materialization package, including:
-
-- source inputs;
-- approved preflight artifacts;
-- materialized accepted-contract copy;
-- complete replacements;
-- RFC 6902 schema patch;
-- transformation manifest;
-- baseline-target integrity;
-- package manifest;
-- package-level `SHA256SUMS.txt`;
-- source-input checksum inventory;
-- static consistency report;
-- traceability, stop, change-ledger, handoff, and authorization records.
+Complete accepted Finding 4 materialization package, including source inputs,
+approved preflight artifacts, the materialized accepted-contract copy,
+replacements, RFC 6902 schema patch, transformation manifest, baseline-target
+integrity, package manifest, checksum inventories, static consistency report,
+traceability, stop, change-ledger, handoff, and authorization records.
 
 ### `authorization_audit/rev23_finding4/`
 
@@ -265,33 +287,29 @@ Complete accepted Finding 4 materialization package, including:
 
 ### `scope_authoring/rev23_finding4_i0a/`
 
-Accepted bounded implementation-authoring scope.
+Accepted bounded implementation-authoring scope history and current controlling
+specification.
 
 - `README_FIRST.md`
 - `SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
+- `SENTINEL_SCOPE_INSTALLATION_VERIFICATION_REVISION_10.md`
 - `ACCEPTED_SCOPE_MANIFEST.json`
 - `SCOPE_SHA256SUMS.txt`
-- `accepted_scope_revision_08/` — exact `14`-member canonical copy
-  of `REV23_FINDING4_I0A_SCOPE_REVISION_08.zip`
-- `accepted_scope_revision_09/` — immutable exact `14`-member canonical copy of `REV23_FINDING4_I0A_SCOPE_REVISION_09.zip`
-- `accepted_scope_revision_10/` — immutable exact `15`-member canonical copy of accepted `REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11.zip`; archive SHA-256 `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`; installed and Sentinel-verified at `3d6fbe5eda504c32d94fed72be99adb9485fe1b1`.
-- `ACCEPTED_SCOPE_MANIFEST_REVISION_09.json` — historical Revision 09 controlling manifest copy.
-- `SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_09.md` — historical Revision 09 controlling decision copy.
-- `SENTINEL_SCOPE_INSTALLATION_VERIFICATION_REVISION_10.md` — immutable Sentinel verification of Revision 10 installation commit `3d6fbe5eda504c32d94fed72be99adb9485fe1b1` and its non-authorization boundary.
-- `ACCEPTED_SCOPE_MANIFEST_REVISION_08.json` — historical accepted manifest copy
-- `SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md` — historical accepted decision copy
+- `accepted_scope_revision_08/` — immutable exact 14-member historical package
+- `accepted_scope_revision_09/` — immutable exact 14-member historical package
+- `accepted_scope_revision_10/` — immutable exact 15-member controlling package
+- `ACCEPTED_SCOPE_MANIFEST_REVISION_09.json`
+- `SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_09.md`
+- `ACCEPTED_SCOPE_MANIFEST_REVISION_08.json`
+- `SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md`
 
-Accepted source archive SHA-256:
+Revision 10 accepted source archive SHA-256:
 
-`004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
+`8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`
 
-The accepted maximum matrix contains six source and six test-source paths.
-
-Revision 09 accepted source archive SHA-256:
-
-`4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
-
-Sentinel accepted Revision 10 on `2026-07-24`. Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification package; Revision 09 and Revision 08 remain immutable historical evidence. `SCOPE_SHA256SUMS.txt` is the composite scope inventory. No implementation authorization follows.
+Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification
+package. Revision 09 and Revision 08 remain immutable historical evidence. No
+implementation authorization follows.
 
 ### `authorization_audit/rev23_finding4_i0a/`
 
@@ -306,15 +324,13 @@ Historical bounded Revision 08 authoring package:
 - `SOURCE_GATE.md`
 - `SHA256SUMS.txt`
 
-Authorization ID: `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`. The package became active after Sentinel verified the canonical commit containing it. Tests and project execution remained unauthorized.
-
-This authorization package is specific to Revision 08. It remains historical
-evidence and is inactive under Revision 10.
+Authorization ID: `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01`. The package
+is specific to Revision 08 and is inactive under Revision 10.
 
 ### `authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/`
 
 Historical, non-reusable authorization record for
-`REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`:
+`REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`.
 
 - `README_FIRST.md`
 - `GUSTAVO_AUTHORIZATION_RECORD.md`
@@ -324,28 +340,27 @@ Historical, non-reusable authorization record for
 - `ACTIVITY_BOUNDARIES.md`
 - `SOURCE_GATE.md`
 - `AUTHORIZATION_MANIFEST.json`
-- `REV23_FINDING4_I0A_R1_TWELVE_PATH_BASELINE_SHA256SUMS.txt` — immutable exact twelve-path starting baseline, SHA-256
-  `061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7`
+- `REV23_FINDING4_I0A_R1_TWELVE_PATH_BASELINE_SHA256SUMS.txt`
 - `SHA256SUMS.txt`
 
 Baseline provenance:
 
 - `REV23_FINDING4_I0A_IMPLEMENTATION_REVIEW.zip` SHA-256
-  `e1a809600107796667c415a3b3a922040072f26be4ff9a97b99c294a25d5b7af`;
-- later `prepared_evidence.py` checkpoint SHA-256
-  `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`.
+  `e1a809600107796667c415a3b3a922040072f26be4ff9a97b99c294a25d5b7af`
+- twelve-path baseline composite SHA-256
+  `061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7`
+- later historical `prepared_evidence.py` starting SHA-256
+  `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`
 
 The package was historically activated at source-gated commit
-`1e1afb29791f42c286b45d3b576f74926add8dce`. Revision 10 supersedes it for
-current authority. It cannot authorize another edit, rollback, restoration,
-overwrite, promotion, test stage, execution stage, R2, or downstream activity.
+`1e1afb29791f42c286b45d3b576f74926add8dce`. It cannot authorize another edit,
+rollback, restoration, overwrite, promotion, test stage, execution stage, R2,
+or downstream activity.
 
 ### `authorization_audit/rev23_amendment_03_i0/`
 
-`authorization_audit/rev23_amendment_03_i0/` remains preserved for history.
-
-Its implementation authorization is superseded. Its source-sync status records
-that no Claude synchronization or authoring is currently authorized.
+Preserved historical authorization evidence. Its implementation authorization is
+superseded and its source-sync status authorizes no current Claude activity.
 
 ---
 
@@ -368,5 +383,7 @@ Pinned canonical files:
 - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/README_FIRST.md`
 - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
 
-Keep canonical repository files and the Claude Project Files panel synchronized. Preserve material implementation progress through `implementation_checkpoints/`; do not use chat-only state as the sole recovery source.
-The private repository remains authoritative.
+Keep canonical repository files and the Claude Project Files panel synchronized.
+Preserve material unaccepted implementation progress through
+`implementation_checkpoints/`; do not use chat-only state as the sole recovery
+source. The private repository remains authoritative.

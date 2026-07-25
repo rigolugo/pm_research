@@ -13,17 +13,18 @@
     "ACTIVITY_BOUNDARY_STATUS.md",
     "KNOWN_FINDINGS.md",
     "SENTINEL_INSTALLATION_VERIFICATION.md",
+    "SENTINEL_STATIC_CONFORMANCE_REVIEW_REVISION_10.md",
     "SHA256SUMS.txt",
     "payload_exact/pm_research/local_curl_per_side/prepared_evidence.py"
   ],
-  "conformance_state": "BLOCKED_PENDING_PROVENANCE_AND_REVISION10_IMPLEMENTATION_CONFORMANCE_REVIEW",
+  "conformance_state": "REVISION10_STATIC_CONFORMANCE_BLOCKED",
   "controlling_scope": "REV23_FINDING4_I0A_SCOPE_REVISION_10",
   "created_date": "2026-07-24",
   "evidence_labels": {
     "current_payload": "OBSERVED",
     "latest_no_edit_stop": "SUBMITTED",
     "round_lineage": "INCOMPLETE",
-    "twelve_path_current_worktree": "SUBMITTED"
+    "twelve_path_current_worktree": "SUBMITTED_NOT_INDEPENDENTLY_CAPTURED"
   },
   "historic_comparison_base": {
     "archive_sha256": "e1a809600107796667c415a3b3a922040072f26be4ff9a97b99c294a25d5b7af",
@@ -31,11 +32,20 @@
     "file_sha256": "835a60c93a6ef82f2605a5fccd2a68ff88d7b67928f83a5218163a45bb16d807",
     "file_size_bytes": 63327
   },
-  "installation_package_base_commit": "80430225af793b10864ef2b43486d718c9872dee",
-  "known_blockers": [
+  "installation_package_base_commit": "3cf0871ae97d112324031190822756379d1236e8",
+  "remaining_provenance_gaps": [
     "MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE",
-    "CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED",
-    "REVISION10_IMPLEMENTATION_CONFORMANCE_NOT_REVIEWED"
+    "CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED"
+  ],
+  "verified_conformance_failures": [
+    "REVISION10_MANDATORY_SOURCE_PATHS_INCOMPLETE",
+    "REVISION10_PUBLIC_RESULT_CODES_NOT_MATERIALIZED",
+    "REVISION10_UNIT_CONTEXT_VALIDATION_MISSING",
+    "REVISION10_REGISTRY_PATH_DECOMPOSITION_AND_TYPED_BINDINGS_MISSING",
+    "REVISION10_DESCRIPTOR_PRE_BINDING_AND_GLOBAL_REDUCTIONS_MISSING",
+    "REVISION10_PRIVATE_REDUCER_SUPERSEDED_SHAPE_RETAINED",
+    "REVISION10_SELECTED_PAYLOAD_ORDER_AND_PROJECTION_NONCONFORMANT",
+    "REVISION10_UNIT_SELECTED_WRAPPER_PROPAGATION_MISSING"
   ],
   "original_authorized_start": {
     "bytes_available": false,
@@ -52,6 +62,13 @@
   "recovery_pointer_only": true,
   "schema_id": "pm_research_implementation_checkpoint_manifest.v1",
   "source_gate_commit": "1e1afb29791f42c286b45d3b576f74926add8dce",
+  "static_conformance_review": {
+    "decision": "BLOCK",
+    "finding": "REVISION10_STATIC_CONFORMANCE_BLOCKED",
+    "record": "SENTINEL_STATIC_CONFORMANCE_REVIEW_REVISION_10.md",
+    "review_base": "3cf0871ae97d112324031190822756379d1236e8",
+    "tests_executed": false
+  },
   "twelve_path_baseline_sha256": "061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7",
   "verification_date": "2026-07-24",
   "verified_installation_commit": "58acbac493840c45d84c6b7e33c583d722f4d559",
@@ -62,5 +79,5 @@
     "CANDIDATE_09_NOT_ACCEPTED"
   ],
   "authorization_status": "HISTORICAL_NOT_REUSABLE_UNDER_REVISION10",
-  "revision_10_implementation_start": "NOT_AUTHORIZED_AND_NOT_YET_SELECTED"
+  "revision_10_implementation_start": "NOT_AUTHORIZED_AND_NOT_SELECTED"
 }

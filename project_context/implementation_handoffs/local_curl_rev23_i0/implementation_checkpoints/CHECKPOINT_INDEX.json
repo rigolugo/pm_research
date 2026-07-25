@@ -7,14 +7,23 @@
       "authorization_id": "REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01",
       "canonical_installation_state": "INSTALLED_AND_SENTINEL_VERIFIED",
       "checkpoint_id": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4",
-      "checkpoint_manifest_sha256": "080a52cc470a3dabff35d006e3c6200c8894ce803b4a33949f54979baf8896f0",
-      "checkpoint_sha256s_sha256": "1be8464b07d3758a018d490fbbeeb8aaf676eaf3ef81c5b8555a0967c35614ab",
-      "conformance_state": "BLOCKED_PENDING_PROVENANCE_AND_REVISION10_IMPLEMENTATION_CONFORMANCE_REVIEW",
+      "checkpoint_manifest_sha256": "dbba5aa6595d5e13fa252a9b15fd648ab115a903027ff1eaeb06e902322b3130",
+      "checkpoint_sha256s_sha256": "6f7c6896431b27ab9b307bde33456c8551468dbb14a03aca32a9a8577b47c084",
+      "conformance_state": "REVISION10_STATIC_CONFORMANCE_BLOCKED",
       "directory": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4",
-      "known_blockers": [
+      "verified_conformance_failures": [
+        "REVISION10_MANDATORY_SOURCE_PATHS_INCOMPLETE",
+        "REVISION10_PUBLIC_RESULT_CODES_NOT_MATERIALIZED",
+        "REVISION10_UNIT_CONTEXT_VALIDATION_MISSING",
+        "REVISION10_REGISTRY_PATH_DECOMPOSITION_AND_TYPED_BINDINGS_MISSING",
+        "REVISION10_DESCRIPTOR_PRE_BINDING_AND_GLOBAL_REDUCTIONS_MISSING",
+        "REVISION10_PRIVATE_REDUCER_SUPERSEDED_SHAPE_RETAINED",
+        "REVISION10_SELECTED_PAYLOAD_ORDER_AND_PROJECTION_NONCONFORMANT",
+        "REVISION10_UNIT_SELECTED_WRAPPER_PROPAGATION_MISSING"
+      ],
+      "remaining_provenance_gaps": [
         "MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE",
-        "CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED",
-        "REVISION10_IMPLEMENTATION_CONFORMANCE_NOT_REVIEWED"
+        "CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED"
       ],
       "parent_checkpoint_id": null,
       "payload_sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da",
@@ -26,12 +35,15 @@
       "verified_installation_commit": "58acbac493840c45d84c6b7e33c583d722f4d559",
       "controlling_scope": "REV23_FINDING4_I0A_SCOPE_REVISION_10",
       "controlling_scope_installation_commit": "3d6fbe5eda504c32d94fed72be99adb9485fe1b1",
+      "static_conformance_review_base": "3cf0871ae97d112324031190822756379d1236e8",
+      "static_conformance_review_record": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_STATIC_CONFORMANCE_REVIEW_REVISION_10.md",
       "resolved_specification_blockers": [
         "T107_FIXTURE_REACHABILITY_CONTRADICTION",
         "T153_FIXTURE_REACHABILITY_CONTRADICTION",
         "CANDIDATE_09_NOT_ACCEPTED"
       ],
-      "authorization_status": "HISTORICAL_NOT_REUSABLE_UNDER_REVISION10"
+      "authorization_status": "HISTORICAL_NOT_REUSABLE_UNDER_REVISION10",
+      "revision_10_implementation_start": "NOT_AUTHORIZED_AND_NOT_SELECTED"
     }
   ],
   "current_checkpoint_count": 1,

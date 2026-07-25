@@ -1,40 +1,47 @@
 # Known Findings
 
-## Accepted preservation finding
+## Accepted identity findings
 
-The exact recovered checkpoint bytes remain preserved under evidence path only:
+- The checkpoint payload is exactly preserved at SHA-256
+  `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`.
+- Payload size is `112338` bytes.
+- The checkpoint is recoverable and contains useful historical Revision 09
+  implementation progress.
+- The checkpoint remains `NOT_ACCEPTED`, non-controlling, and authorization
+  effect `NONE`.
 
-- SHA-256: `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`
-- size: `112338` bytes
-- Git blob SHA: `d25a0fe58e84db526e6d68b4d14e764c59f6d46c`
+## Resolved specification matters
 
-The recovered file parses as Python source and contains the core Revision 09 R1
-private descriptor-set corrections. This is preservation evidence, not an
-implementation acceptance decision.
+- `T107_FIXTURE_REACHABILITY_CONTRADICTION` — resolved by installed Revision 10.
+- `T153_FIXTURE_REACHABILITY_CONTRADICTION` — resolved by installed Revision 10.
+- `CANDIDATE_09_NOT_ACCEPTED` — no longer an open specification blocker because
+  Revision 10 is controlling.
 
-## Resolved specification-layer matters
+## Verified Revision 10 conformance failures
 
-Installed Revision 10 resolves:
+1. `REVISION10_MANDATORY_SOURCE_PATHS_INCOMPLETE`
+2. `REVISION10_PUBLIC_RESULT_CODES_NOT_MATERIALIZED`
+3. `REVISION10_UNIT_CONTEXT_VALIDATION_MISSING`
+4. `REVISION10_REGISTRY_PATH_DECOMPOSITION_AND_TYPED_BINDINGS_MISSING`
+5. `REVISION10_DESCRIPTOR_PRE_BINDING_AND_GLOBAL_REDUCTIONS_MISSING`
+6. `REVISION10_PRIVATE_REDUCER_SUPERSEDED_SHAPE_RETAINED`
+7. `REVISION10_SELECTED_PAYLOAD_ORDER_AND_PROJECTION_NONCONFORMANT`
+8. `REVISION10_UNIT_SELECTED_WRAPPER_PROPAGATION_MISSING`
 
-1. T107 fixture reachability;
-2. T153 fixture reachability;
-3. Candidate 09's non-authoritative drafting status as an open blocker.
+Controlling result:
 
-Those items are removed from the checkpoint blocker list. Their resolution does
-not prove that the preserved implementation conforms to Revision 10.
+`BLOCK — REVISION10_STATIC_CONFORMANCE_BLOCKED`
 
-## Open implementation and provenance matters
+## Open provenance gaps
 
-1. The accumulated correction-round lineage and activity-boundary evidence are incomplete.
-2. The exact current twelve-path worktree inventory was submitted by Claude but is not independently materialized in this checkpoint.
-3. Static implementation-conformance review against installed Revision 10 has not been completed.
-4. The recovered source header still names Revision 08 despite later corrections; its materiality must be decided during conformance review.
+- `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`
+- `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`
 
-## Required handling
+The provenance gaps are not evidence that the checkpoint conforms or does not
+conform beyond the observed static defects. They remain separately open.
 
-- do not roll back the recovered payload;
-- do not promote it to the executable source path automatically;
-- do not select it as a Revision 10 implementation start without a separate decision;
-- do not reuse historical Revision 09 or Revision 08 authorization;
-- do not authorize another edit, test, execution, or downstream stage from checkpoint presence;
-- preserve any later implementation state as a new immutable checkpoint rather than replacing this directory.
+## Authorization effect
+
+None. No implementation start, rollback, restoration, overwrite, promotion,
+source/test edit, tests, execution, data/network access, Git writes by Claude,
+R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.

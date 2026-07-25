@@ -41,35 +41,36 @@ Read these before doing anything:
 17. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/AUTHORIZED_FILE_MATRIX.md`
 18. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/ACTIVITY_BOUNDARIES.md`
 19. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/SOURCE_GATE.md`
-   Historical Revision 09 R1 authorization evidence — does not carry forward:
-   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/README_FIRST.md`
-   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SENTINEL_AUTHORIZATION_DECISION.md`
-   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SENTINEL_ACTIVATION_VERIFICATION.md`
-   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/AUTHORIZATION_MANIFEST.json`
-   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/AUTHORIZED_FILE_MATRIX.md`
-   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/REV23_FINDING4_I0A_R1_TWELVE_PATH_BASELINE_SHA256SUMS.txt`
-   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/ACTIVITY_BOUNDARIES.md`
-   - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SOURCE_GATE.md`
+    Historical Revision 09 R1 authorization evidence — does not carry forward:
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/README_FIRST.md`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SENTINEL_AUTHORIZATION_DECISION.md`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SENTINEL_ACTIVATION_VERIFICATION.md`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/AUTHORIZATION_MANIFEST.json`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/AUTHORIZED_FILE_MATRIX.md`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/REV23_FINDING4_I0A_R1_TWELVE_PATH_BASELINE_SHA256SUMS.txt`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/ACTIVITY_BOUNDARIES.md`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SOURCE_GATE.md`
 20. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/README_FIRST.md`
-   Revision 10 controlling insert, before historical revisions:
-   - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
-   - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_INSTALLATION_VERIFICATION_REVISION_10.md`
-   - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
-   - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_10/README_FIRST.md`
-   - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_09.md`
-   - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST_REVISION_09.json`
-   - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_09/README_FIRST.md`
-   - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md`
-   - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST_REVISION_08.json`
+    Revision 10 controlling insert, before historical revisions:
+    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
+    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_INSTALLATION_VERIFICATION_REVISION_10.md`
+    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
+    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_10/README_FIRST.md`
+    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_09.md`
+    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST_REVISION_09.json`
+    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_09/README_FIRST.md`
+    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md`
+    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST_REVISION_08.json`
 21. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_08/README_FIRST.md`
 22. `implementation_handoffs/local_curl_rev23_i0/accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`
 23. `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/README_FIRST.md`
-   - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/CHECKPOINT_INDEX.json`
-   - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/LATEST_PRESERVED_CHECKPOINT.json`
-   - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/LATEST_ACCEPTED_CHECKPOINT.json`
-   - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/README_FIRST.md`
-   - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/CHECKPOINT_MANIFEST.json`
-   - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_INSTALLATION_VERIFICATION.md`
+    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/CHECKPOINT_INDEX.json`
+    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/LATEST_PRESERVED_CHECKPOINT.json`
+    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/LATEST_ACCEPTED_CHECKPOINT.json`
+    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/README_FIRST.md`
+    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/CHECKPOINT_MANIFEST.json`
+    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_INSTALLATION_VERIFICATION.md`
+    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_STATIC_CONFORMANCE_REVIEW_REVISION_10.md`
 24. The remaining files required by the handoff, authorization, accepted-scope, and selected checkpoint read orders.
 
 ---
@@ -125,9 +126,15 @@ Revision 10 is accepted, canonically installed, and Sentinel-verified at
 - implementation authorized: **NO**
 - Revision 10 implementation start selected: **NO**
 
-Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification package. Revision 09 and Revision 08 remain immutable historical accepted evidence.
+Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification
+package. Revision 09 and Revision 08 remain immutable historical accepted evidence.
 
-The preserved `fcf406c4...` checkpoint remains unaccepted and non-authorizing. Revision 10 resolves its former T107/T153/Candidate 09 specification blockers, but provenance and implementation-conformance review remain open. Historical Revision 09 and Revision 08 implementation authorizations do not carry forward.
+The preserved `fcf406c4...` checkpoint remains unaccepted and non-authorizing.
+Revision 10 resolves its former T107/T153/Candidate 09 specification blockers.
+Sentinel's static review at `3cf0871ae97d112324031190822756379d1236e8`
+records `REVISION10_STATIC_CONFORMANCE_BLOCKED`. The two provenance gaps remain
+open independently. Historical Revision 09 and Revision 08 implementation
+authorizations do not carry forward.
 
 ### Historical Revision 09 scope record
 
@@ -164,7 +171,9 @@ Revision 08 remains immutable historical accepted evidence.
 - Option B corrected B0: `B0_MECHANICAL_TRUST_NOT_ESTABLISHED`; B1 unauthorized.
 - Option C: mixed/incomplete evidence; `C1F2_ARTIFACTS_INSUFFICIENT`; C1B/C2 unauthorized.
 - Option D temporal precheck: accepted; PMXT v2 deprioritized for broad P0 coverage; Telonex L2 may only proceed through a separately authorized SPEC-ONLY vendor-coverage review.
-- Recovered unreviewed R1 implementation evidence: checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`, payload SHA-256 `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`, size `112338` bytes; canonically preserved and Sentinel-verified at commit `58acbac493840c45d84c6b7e33c583d722f4d559`, evidence-only, not accepted, and authorizes nothing.
+- Recovered R1 checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` remains exact, evidence-only, `NOT_ACCEPTED`, and non-authorizing.
+- Static checkpoint conformance: **BLOCKED — `REVISION10_STATIC_CONFORMANCE_BLOCKED`**.
+- Open provenance gaps: multi-round activity lineage and independently captured current twelve-path worktree.
 
 ---
 
@@ -174,9 +183,14 @@ Revision 08 remains immutable historical accepted evidence.
 
 `STOP_IMPLEMENTATION_NOT_AUTHORIZED`
 
-Revision 10 specification acceptance does not authorize source synchronization, source/test authoring, tests, project execution, rollback, restoration, overwrite, checkpoint promotion, data/network access, Git writes by Claude, R2, P1/P2/P3, scoring, probe execution, or gate changes.
+Revision 10 specification acceptance and the static-conformance finding do not
+authorize source synchronization, source/test authoring, tests, project execution,
+rollback, restoration, overwrite, checkpoint promotion, data/network access, Git
+writes by Claude, R2, P1/P2/P3, scoring, probe execution, or gate changes.
 
-No Revision 10 implementation starting SHA or source-gated commit is selected. The Revision 09 R1 and Revision 08 authorizations remain historical and do not carry forward.
+No Revision 10 implementation starting SHA or source-gated commit is selected.
+The Revision 09 R1 and Revision 08 authorizations remain historical and do not
+carry forward.
 
 ### Historical Revision 08 authorization record at installation base
 

@@ -1,4 +1,4 @@
-# Sentinel — Review Preserved Checkpoint Against Installed Revision 10
+# Sentinel — Verify Revision 10 Static-Conformance Record Installation
 
 Decision required: `APPROVE`, `BLOCK`, `DEFER`, `ACCEPT FINDING`, or
 `NEEDS VERIFICATION`.
@@ -7,9 +7,13 @@ Canonical controlling scope:
 
 `REV23_FINDING4_I0A_SCOPE_REVISION_10`
 
-Verified scope-installation commit:
+Static-conformance review finding:
 
-`3d6fbe5eda504c32d94fed72be99adb9485fe1b1`
+`BLOCK — REVISION10_STATIC_CONFORMANCE_BLOCKED`
+
+Review base:
+
+`3cf0871ae97d112324031190822756379d1236e8`
 
 Preserved evidence checkpoint:
 
@@ -18,18 +22,20 @@ Preserved evidence checkpoint:
 - acceptance: `NOT_ACCEPTED`
 - authorization effect: `NONE`
 
-Read the complete canonical order, especially the Revision 10 acceptance and
-installation-verification records, then review the preserved source statically
-against the installed Revision 10 contract.
+Read the complete canonical order and verify only the Gustavo-installed
+static-conformance documentation commit against the package manifest and exact
+changed-path boundary.
 
-Separate:
+Confirm:
 
-1. implementation conformance;
-2. incomplete multi-round activity lineage;
-3. missing independently captured current twelve-path worktree inventory;
-4. any exact further amendment or edit requirement.
+1. the parent is the required installation base;
+2. every changed path is inside the declared documentation-only boundary;
+3. the checkpoint payload remains byte-identical;
+4. no accepted Revision 10 member, live source, or test path changed;
+5. the review record and checksum inventories are exact;
+6. no implementation starting SHA or authorization was introduced.
 
 Do not execute tests, project code, compilation, lint, typing, coverage, CI,
-data reads, network activity, or subprocesses. Do not modify files or authorize
-promotion, rollback, source/test editing, R2, P1/P2/P3, scoring, probe execution,
-or gate changes.
+data reads, vendor/API/RPC/curl activity, or project subprocesses. Do not modify
+files or authorize implementation, rollback, promotion, R2, P1/P2/P3, scoring,
+probe execution, or gate changes.

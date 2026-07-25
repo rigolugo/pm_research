@@ -209,18 +209,16 @@ Revision 08 is accepted as the bounded implementation-authoring scope.
 - implementation authorization: not active;
 - test execution: unauthorized.
 
-The scope acceptance closes the revision loop. No Revision 09 should be opened
-for optional polish. A later scope amendment requires a concrete material
-contradiction that cannot be resolved from the accepted Revision 08 contract.
-
-The commit containing the accepted-scope canonical installation must be returned
-to Sentinel for verification before any implementation authorization.
+The scope acceptance closed the then-current revision loop. A later concrete
+material contradiction reopened the private reducer contract and produced
+Revision 09.
 
 ### Finding 4 I0A implementation-authoring authorization
 
 On `2026-07-18`, Gustavo explicitly authorized the bounded Finding 4 I0A
-implementation-authoring stage. Sentinel approves authorization ID
-`REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01` pinned to verified accepted-scope commit `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff`.
+implementation-authoring stage. Sentinel approved authorization ID
+`REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01` pinned to verified accepted-scope
+commit `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff`.
 
 Authorized after canonical installation and Sentinel verification of the active
 package:
@@ -232,10 +230,9 @@ package:
 
 Test execution, project imports/execution, research data, general network/API/curl,
 empirical work, dependencies/CLI/config, additional paths, Git history/remote
-writes, P1/P2/P3, scoring, probe execution, and gate changes remain unauthorized.
+writes, P1/P2/P3, scoring, probe execution, and gate changes remained unauthorized.
 
-The earlier Amendment 03 I0 authorization remains superseded. Revision 08 remains
-the accepted scope; no Revision 09 follows for optional polish.
+This authorization is historical and inactive under Revision 10.
 
 ### Finding 4 I0A Revision 09 scope correction
 
@@ -247,8 +244,8 @@ private helper `_validate_descriptor_set_invariants` was required to emit
 neither logical-hash values nor partition-entry/binding information. Those
 outcomes were impossible to determine through the accepted private interface.
 
-Sentinel accepted `REV23_FINDING4_I0A_SCOPE_REVISION_09` on
-`2026-07-20` as the narrow SPEC-ONLY correction:
+Sentinel accepted `REV23_FINDING4_I0A_SCOPE_REVISION_09` on `2026-07-20` as the
+narrow SPEC-ONLY correction:
 
 - accepted archive SHA-256: `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`;
 - accepted member count: `14`;
@@ -260,20 +257,19 @@ Sentinel accepted `REV23_FINDING4_I0A_SCOPE_REVISION_09` on
 - same-ordinal partition-entry binding belongs to
   `validate_prepared_descriptor_set`.
 
-Revision 09 supersedes Revision 08 only for that private descriptor-set
-invariant contract. Revision 08 remains immutable historical accepted evidence.
-All public result codes, public assurances, public interfaces, precedence,
-fixtures, hashes, role rows, frozen bindings, T001–T165 identities, and the
-maximum twelve-path matrix remain preserved except for directly required private
-traceability reconciliation.
+Revision 09 superseded Revision 08 only for that private descriptor-set invariant
+contract. Revision 08 remains immutable historical accepted evidence. All public
+result codes, public assurances, public interfaces, precedence, fixtures, hashes,
+role rows, frozen bindings, T001–T165 identities, and the maximum twelve-path
+matrix remained preserved except for directly required private traceability
+reconciliation.
 
 #### Historical pre-R1 authorization state
 
 Before the later R1 authorization, the Revision 08 implementation authorization
 `REV23_FINDING4_I0A_IMPLEMENTATION_AUTHORING_01` did not automatically carry
-forward. At that pre-R1 point, Revision 09 implementation, source/test authoring,
-source synchronization, and an active Claude implementation prompt were
-unauthorized. That paragraph is retained as historical state only.
+forward. Revision 09 implementation, source/test authoring, source
+synchronization, and an active Claude implementation prompt were unauthorized.
 
 ### Finding 4 I0A Revision 09 R1 source-resume authorization
 
@@ -281,7 +277,7 @@ On `2026-07-21`, Gustavo explicitly authorized Claude's implementation resume an
 Sentinel accepted only authorization ID
 `REV23_FINDING4_I0A_REVISION_09_R1_SOURCE_RESUME_01`.
 
-The sole writable path is:
+The sole writable path was:
 
 `pm_research/local_curl_per_side/prepared_evidence.py`
 
@@ -290,15 +286,17 @@ Required starting SHA-256:
 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`
 
 Sentinel independently verified implementation-review archive SHA-256
-`e1a809600107796667c415a3b3a922040072f26be4ff9a97b99c294a25d5b7af`, all internal archive checksum entries, and the exact
-twelve-path composite baseline SHA-256 `061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7`.
+`e1a809600107796667c415a3b3a922040072f26be4ff9a97b99c294a25d5b7af`,
+all internal archive checksum entries, and the exact twelve-path composite
+baseline SHA-256
+`061e6d2cc03ee60e4b47838e4a2c3d2ac4785201d72fd26c708aefc3263ef6f7`.
 
-The other eleven previously authored source/test paths remain read-only. The
-stage permits canonical Revision 09 reads, static AST/source/JSON/text/bytes/hash
+The other eleven previously authored source/test paths remained read-only. The
+stage permitted canonical Revision 09 reads, static AST/source/JSON/text/bytes/hash
 inspection, Git status/diff/path inventory/checksums, and one R1 source-only
-checkpoint. It does not authorize test-source editing, test collection or
-execution, project imports/execution, compilation, lint, type checking,
-coverage, CI, another source edit, dependencies/CLI/config/generated files,
+checkpoint. It did not authorize test-source editing, test collection or
+execution, project imports/execution, compilation, lint, type checking, coverage,
+CI, another source edit, dependencies/CLI/config/generated files,
 implementation ZIP reconstruction, research data, empirical artifacts,
 API/RPC/vendor/Dune/curl/general network use, Claude Git history/remote writes,
 R2, P1/P2/P3, scoring, probe execution, or gate changes.
@@ -309,17 +307,18 @@ Revision 09 R1 authorization.
 ### Finding 4 I0A Revision 09 R1 activation and Claude handoff
 
 On `2026-07-24`, Sentinel verified the exact authorization-installation commit
-`1e1afb29791f42c286b45d3b576f74926add8dce` and accepted the one-file R1 stage as active. Gustavo then
-explicitly authorized the R1 handoff to Claude.
+`1e1afb29791f42c286b45d3b576f74926add8dce` and accepted the one-file R1 stage
+as active. Gustavo then explicitly authorized the R1 handoff to Claude.
 
-The exact source-gated local `HEAD` is `1e1afb29791f42c286b45d3b576f74926add8dce`. Only
-`pm_research/local_curl_per_side/prepared_evidence.py` may change, from starting
-SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`. The other eleven baseline paths remain byte-identical.
+The exact source-gated local `HEAD` was
+`1e1afb29791f42c286b45d3b576f74926add8dce`. Only
+`pm_research/local_curl_per_side/prepared_evidence.py` could change, from starting
+SHA-256 `8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07`.
+The other eleven baseline paths remained byte-identical.
 
-This activation does not authorize tests, test-source editing, R2, another
-source edit, project execution, research data, network activity, empirical work,
+This activation did not authorize tests, test-source editing, R2, another source
+edit, project execution, research data, network activity, empirical work,
 P1/P2/P3, scoring, probe execution, or a gate change.
-
 
 ---
 
@@ -336,26 +335,25 @@ The first prepared checkpoint is:
 - intended target: `pm_research/local_curl_per_side/prepared_evidence.py`
 - exact payload SHA-256: `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`
 - payload size: `112338` bytes
-- governing scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
+- governing scope at creation: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
 - source-gated commit: `1e1afb29791f42c286b45d3b576f74926add8dce`
 - preservation state: `CANONICALLY_PRESERVED`
 - canonical installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
 - verified installation commit: `58acbac493840c45d84c6b7e33c583d722f4d559`
-- conformance state: `BLOCKED_PENDING_CONTRACT_AND_PROVENANCE_REVIEW`
 - acceptance state: `NOT_ACCEPTED`
 - authorization effect: `NONE`
 
 Checkpoint preservation and implementation promotion are separate decisions.
 Presence of newer bytes does not make them controlling, accepted, executable, or
-authorized. Candidate 09 remains non-authoritative until Sentinel decides it.
-The checkpoint does not authorize rollback, another source edit, tests, project
-execution, network/data access, Git writes by Claude, R2, P1/P2/P3, scoring,
-probe execution, or a gate change.
+authorized. The checkpoint does not authorize rollback, another source edit,
+tests, project execution, network/data access, Git writes by Claude, R2,
+P1/P2/P3, scoring, probe execution, or a gate change.
 
 ### Checkpoint installation verification
 
 On `2026-07-24`, Sentinel verified canonical commit
-`58acbac493840c45d84c6b7e33c583d722f4d559` as exactly one linear documentation/evidence-only commit after
+`58acbac493840c45d84c6b7e33c583d722f4d559` as exactly one linear
+documentation/evidence-only commit after
 `80430225af793b10864ef2b43486d718c9872dee`.
 
 The commit changed exactly the declared `19` `project_context/` paths: eight
@@ -381,28 +379,38 @@ effect `NONE`.
 
 ### Finding 4 I0A Revision 10 scope acceptance
 
-On `2026-07-24`, Sentinel accepted Candidate 11 as `REV23_FINDING4_I0A_SCOPE_REVISION_10`.
+On `2026-07-24`, Sentinel accepted Candidate 11 as
+`REV23_FINDING4_I0A_SCOPE_REVISION_10`.
 
 - accepted archive: `REV23_FINDING4_I0A_SCOPE_REVISION_10_CANDIDATE_11.zip`
 - accepted archive SHA-256: `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`
 - accepted member count: `15`
 - canonical review/install base: `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`
 - controlling accepted base: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
-- installation state: pending Gustavo manual commit and Sentinel verification
 
-Revision 10 resolves the T107 and T153 reachability contradictions, closes public result inventories, materializes T166–T230 and the 169-ID fixture namespace, closes all 23 caller–callee edges, and makes the twelve-path future-impact matrix identical across all eight declared representations.
+Revision 10 resolves the T107 and T153 reachability contradictions, closes public
+result inventories, materializes T166–T230 and the 169-ID fixture namespace,
+closes all 23 caller–callee edges, and makes the twelve-path future-impact matrix
+identical across all eight declared representations.
 
-Revision 10 selects no implementation starting SHA. The historical Revision 09 start `8b8e9320...` is not current. The preserved `fcf406c4...` checkpoint remains `NOT_ACCEPTED`, non-controlling, and authorization effect `NONE`. No rollback, restore, overwrite, promotion, implementation, tests, execution, data/network activity, Git write, R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.
+Revision 10 selects no implementation starting SHA. The historical Revision 09
+start `8b8e9320...` is not current. The preserved `fcf406c4...` checkpoint remains
+`NOT_ACCEPTED`, non-controlling, and authorization effect `NONE`. No rollback,
+restore, overwrite, promotion, implementation, tests, execution, data/network
+activity, Git write, R2, P1/P2/P3, scoring, probe execution, or gate change is
+authorized.
 
-Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification package. Revision 09 and Revision 08 remain immutable historical accepted evidence. Their implementation authorizations do not carry forward.
+Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification
+package. Revision 09 and Revision 08 remain immutable historical accepted evidence.
+Their implementation authorizations do not carry forward.
 
 ---
 
 ### Finding 4 I0A Revision 10 canonical installation verification
 
 On `2026-07-24`, Sentinel verified commit
-`3d6fbe5eda504c32d94fed72be99adb9485fe1b1` as the exact documentation-only installation of
-`REV23_FINDING4_I0A_SCOPE_REVISION_10`.
+`3d6fbe5eda504c32d94fed72be99adb9485fe1b1` as the exact documentation-only
+installation of `REV23_FINDING4_I0A_SCOPE_REVISION_10`.
 
 - parent/install base: `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`
 - changed paths: `32`, all under `project_context/`
@@ -418,13 +426,69 @@ specification-layer blockers for checkpoint review. They are removed from the
 checkpoint blocker list without implying implementation conformance.
 
 The checkpoint remains `NOT_ACCEPTED`, non-controlling, and authorization effect
-`NONE`. Remaining blockers are incomplete multi-round activity lineage, absence
-of an independently captured current twelve-path worktree inventory, and static
-implementation-conformance review against Revision 10.
+`NONE`. At that point, remaining blockers were incomplete multi-round activity
+lineage, absence of an independently captured current twelve-path worktree
+inventory, and static implementation-conformance review against Revision 10.
 
 No implementation start, rollback, restoration, overwrite, promotion, source or
 test edit, test execution, project execution, data/network activity, Git write,
-R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.
+R2, P1/P2/P3, scoring, probe execution, or gate change was authorized.
+
+---
+
+### Revision 10 checkpoint static-conformance decision
+
+On `2026-07-24`, Sentinel independently reviewed preserved checkpoint
+`REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` against the installed Revision 10
+contract at canonical review base
+`3cf0871ae97d112324031190822756379d1236e8`.
+
+Decision:
+
+`BLOCK — REVISION10_STATIC_CONFORMANCE_BLOCKED`
+
+Verified material defects:
+
+1. Revision 10 requires mandatory source changes in `canonical.py`,
+   `finding4_registry.py`, and `prepared_evidence.py`; the checkpoint preserves
+   only `prepared_evidence.py`.
+2. The checkpoint does not materialize `ERR_UNIT_CONTEXT_INVALID`,
+   `ERR_SEMANTIC_FAMILY_BINDING_MISMATCH`, `ERR_RUN_ID_BINDING_MISMATCH`, or
+   `ERR_REUSE_SOURCE_TARGET_MISMATCH`.
+3. Closed UnitContext validation is missing.
+4. Registry-owned path decomposition and typed binding outputs are missing;
+   private string/suffix parsing remains in `prepared_evidence.py`.
+5. Descriptor pre-binding and global path/reuse/family/run reduction helpers are
+   missing.
+6. The private descriptor-set reducer retains the superseded ordinal result and
+   `expected_role_counts` input.
+7. `validate_selected_json_payload` retains the old predicate order and direct
+   old `BindingQuery` construction; `_project_selected_binding_query` is absent.
+8. `validate_prepared_unit_structure` bypasses
+   `validate_selected_json_payload`, preventing required selected-wrapper
+   propagation.
+
+Resolved/non-blocking specification areas:
+
+- T107 reachability is resolved by Revision 10.
+- T153 reachability is resolved by Revision 10.
+- Candidate 09 is non-controlling.
+- The exact checkpoint payload remains recoverable and useful as historical
+  Revision 09 progress.
+
+Open provenance gaps remain separate:
+
+- `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`;
+- `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`.
+
+The checkpoint remains `NOT_ACCEPTED`, non-controlling, and authorization effect
+`NONE`. No implementation starting SHA is selected. No remediation, implementation,
+tests, rollback, promotion, data/network access, Git write by Claude, R2,
+P1/P2/P3, scoring, probe execution, or gate change is authorized.
+
+The only immediate next action is Gustavo's manual installation of the complete
+documentation-only review record package at the exact review base, followed by
+Sentinel verification of the resulting commit.
 
 ---
 
@@ -447,6 +511,9 @@ R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.
 - Revision 09 private descriptor-set invariant correction, now historical under accepted Revision 10.
 - Revision 09 R1 one-file source-resume boundary, now historical and non-reusable under Revision 10.
 - Revision 10 T107/T153 reachability, result-domain closure, T166–T230, fixture namespace, call-edge closure, and twelve-path matrix, absent new authoritative evidence.
+- The `REVISION10_STATIC_CONFORMANCE_BLOCKED` finding for checkpoint
+  `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`, absent new implementation bytes or
+  authoritative evidence that changes the reviewed payload or controlling contract.
 
 ---
 

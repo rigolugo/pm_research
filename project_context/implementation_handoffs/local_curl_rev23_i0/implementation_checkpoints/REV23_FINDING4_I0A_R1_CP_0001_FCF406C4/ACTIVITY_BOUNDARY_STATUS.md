@@ -1,39 +1,43 @@
 # Activity Boundary Status
 
-## Evidence status
+## Observed checkpoint payload
 
-| Question | Status | Evidence |
-|---|---|---|
-| Exact current source bytes recovered | YES | OBSERVED |
-| Current payload SHA-256 verified | YES | OBSERVED |
-| Latest Claude stop made no new edit | YES | SUBMITTED |
-| Eleven read-only paths remained byte-identical at latest stop | YES | SUBMITTED; not independently captured in this checkpoint |
-| No thirteenth worktree path at latest stop | YES | SUBMITTED; not independently captured in this checkpoint |
-| Cumulative test execution across all correction rounds | UNKNOWN | Evidence incomplete |
-| Cumulative project-module execution across all rounds | UNKNOWN | Evidence incomplete |
-| Cumulative network/data activity across all rounds | UNKNOWN | Evidence incomplete |
-| Cumulative Git writes by Claude across all rounds | UNKNOWN | Evidence incomplete |
-| Exact round-by-round authorization lineage | UNKNOWN | Evidence incomplete |
-| Static conformance against installed Revision 10 | NOT REVIEWED | Separate Sentinel decision required |
+- exact payload SHA-256:
+  `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`
+- exact size: `112338` bytes
+- intended target:
+  `pm_research/local_curl_per_side/prepared_evidence.py`
+- preservation: `CANONICALLY_PRESERVED`
 
-## Authorization facts
+## Static conformance
 
-Revision 10 is installed and verified, but no Revision 10 implementation
-authorization exists. Historical Revision 09 R1 and Revision 08 authorizations
-are not reusable.
+- review base: `3cf0871ae97d112324031190822756379d1236e8`
+- controlling scope: `REV23_FINDING4_I0A_SCOPE_REVISION_10`
+- result: `REVISION10_STATIC_CONFORMANCE_BLOCKED`
+- tests executed: `false`
+- project code executed: `false`
+- source/test paths modified by review: `false`
 
-Unauthorized activities include:
+The observed one-file payload cannot satisfy Revision 10's mandatory three-source
+impact boundary and retains superseded interfaces and predicate ownership.
 
-- source or test-source editing;
-- test discovery, collection, or execution;
-- project imports or execution;
-- compilation, lint, typing, coverage, or CI;
-- rollback, restoration, overwrite, or checkpoint promotion;
-- generated files, caches, or bytecode;
-- research-data or empirical-artifact access;
-- API, RPC, vendor, Dune, curl, or general network activity;
-- Claude Git commits, branches, pushes, pull requests, merges, or remote writes;
-- R2, P1/P2/P3, scoring, probe execution, or gate changes.
+## Provenance status
 
-Unknown accumulated activity and unreviewed Revision 10 conformance prevent
-implementation acceptance but do not affect exact byte preservation.
+- latest no-edit stop: `SUBMITTED`
+- multi-round activity lineage: `INCOMPLETE`
+- current twelve-path worktree: `SUBMITTED_NOT_INDEPENDENTLY_CAPTURED`
+- exact current worktree hash set: `UNKNOWN`
+- cumulative shell/network/subprocess activity across all implementation rounds:
+  `UNKNOWN`
+
+Open provenance gaps:
+
+1. `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`
+2. `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`
+
+These gaps remain open independently of the verified conformance failure.
+
+## Authorization boundary
+
+No implementation or execution boundary is open. No implementation starting SHA,
+source-gated commit, or writable source/test path is selected.

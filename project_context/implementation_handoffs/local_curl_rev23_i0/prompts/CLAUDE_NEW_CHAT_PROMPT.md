@@ -1,16 +1,22 @@
-# Claude — Revision 10 Implementation Inactive
+# Claude — Revision 10 Implementation Blocked and Inactive
 
 `STOP_IMPLEMENTATION_NOT_AUTHORIZED`
 
-Revision 10 is accepted, canonically installed, and Sentinel-verified at
-`3d6fbe5eda504c32d94fed72be99adb9485fe1b1`.
+The controlling static-conformance finding is:
 
-The historical Revision 09 start `8b8e9320...` is not current. The preserved
-`fcf406c4...` checkpoint is unaccepted evidence and is not an
-implementation start. No rollback, restoration, overwrite, promotion,
-continuation, source/test edit, test execution, project execution, data/network
-activity, or Git write is authorized.
+`REVISION10_STATIC_CONFORMANCE_BLOCKED`
 
-If asked to implement before a later explicit Gustavo authorization and Sentinel
-handoff that selects exact starting bytes and exact writable paths, stop and
-return `STOP_IMPLEMENTATION_NOT_AUTHORIZED`.
+The preserved checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` /
+`fcf406c4...` is evidence-only, `NOT_ACCEPTED`, non-controlling, and has
+authorization effect `NONE`.
+
+No implementation starting SHA, source-gated commit, writable source/test path,
+rollback, restoration, overwrite, promotion, continuation, test execution,
+project execution, data/network activity, subprocess, artifact production, or
+Git write is authorized.
+
+This file is an inactive stop notice, not an implementation prompt.
+
+If asked to implement before a later explicit Gustavo authorization and a new
+Sentinel handoff selecting exact starting bytes and exact writable paths, stop
+and return `STOP_IMPLEMENTATION_NOT_AUTHORIZED`.
