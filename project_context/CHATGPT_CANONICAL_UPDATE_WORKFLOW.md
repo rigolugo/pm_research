@@ -126,6 +126,107 @@ For any canonical documentation update:
 
 ---
 
+## Canonical update delivery-method selection
+
+Use the least complex delivery method that preserves the required review boundary.
+
+### Browser branch — default for documentation-only work
+
+A temporary GitHub browser branch is the default when all changed files are ordinary text documentation or specification files, no binary or ignored file is involved, and browser upload limits are not exceeded.
+
+Required sequence:
+
+1. create the temporary branch from the exact package base;
+2. upload only the package's complete replacement and new files;
+3. create one branch commit with the exact approved message;
+4. return the exact branch commit to Sentinel;
+5. do not merge or update canonical `main` until Sentinel verifies the commit and Gustavo separately authorizes the merge;
+6. after merge, return the exact canonical commit for Sentinel installation verification.
+
+A browser branch commit is not canonical installation. Sentinel branch review does not authorize merge automatically.
+
+Direct browser commits to canonical `main` are exceptional and limited to trivial, low-risk corrections after explicit Sentinel approval. They are not the default for multi-file packages.
+
+### Local Git — required for higher-risk or byte-gated work
+
+Use local Git when any of the following applies:
+
+- live source or test paths change;
+- a binary, ZIP, ignored file, or non-text evidence artifact is committed;
+- exact pre-publication byte, Git-mode, staged-blob, or commit-tree verification is decision-bearing;
+- the change exceeds browser limits;
+- authorized local tests or other local verification must be tied to the exact candidate commit;
+- the accepted package explicitly requires a local commit gate.
+
+Required sequence:
+
+1. install exact authorized bytes at the exact base;
+2. create one local commit only;
+3. stop before push;
+4. return the exact local commit to Sentinel;
+5. Sentinel reviews the parent, message, changed paths, statuses, modes, and committed blobs;
+6. Gustavo separately authorizes the exact push;
+7. perform one ordinary non-force fast-forward push only;
+8. return the remote commit for Sentinel installation verification.
+
+Local commit authorization is not push authorization. Sentinel approval of a local commit is not push authorization. A push or merge never follows automatically.
+
+---
+
+## Commit, review, push, and canonical verification are separate boundaries
+
+The following are distinct and must not be inferred from one another:
+
+1. package acceptance;
+2. package installation or local/branch commit authorization;
+3. exact commit review;
+4. push or merge authorization;
+5. push or merge execution;
+6. canonical remote installation verification.
+
+If the remote base changes before a push or merge, stop. Do not pull, merge, rebase, reset, restore, force, repair, or widen scope automatically.
+
+Every approved push must identify the exact reviewed commit, exact parent/remote base, exact branch or refspec, exact changed paths, and non-force behavior.
+
+---
+
+## Planned reusable manifest-driven local Git tool
+
+A future reusable administrative tool may reside outside the research repository at:
+
+`C:\b1\tools\pm_canonical_git\`
+
+Preferred design:
+
+- PowerShell implementation engine;
+- optional thin `.cmd` launchers;
+- separate install and push runners;
+- package-specific closed JSON authorization files;
+- separately versioned tool repository or immutable release archive;
+- exact tool release and SHA-256 recorded in each operation authorization;
+- structured results written outside `pm_research`.
+
+Decision-bearing values must be explicit in JSON, including:
+
+- required repository and base commit;
+- package path and SHA-256;
+- exact replacement and new-file paths;
+- commit message;
+- reviewed local commit;
+- exact remote parent, branch, and refspec;
+- force behavior;
+- authorized action.
+
+Environment variables may provide convenience defaults such as tool, package, or repository directories. They must not control decision-bearing authorization fields.
+
+The install runner must always stop before push. The push runner must require a separate exact push authorization. A combined install-and-push mode and an install `-Push` switch are prohibited.
+
+The presence, design, or accepted release of this tool authorizes nothing. Tool specification, implementation, synthetic pilot execution, real repository use, local commit, and push each require their own accepted and authorized boundary.
+
+No executable tool is included or authorized by this documentation rule.
+
+---
+
 ## Canonical implementation-progress checkpoints
 
 Material implementation progress must not depend only on a chat session, model

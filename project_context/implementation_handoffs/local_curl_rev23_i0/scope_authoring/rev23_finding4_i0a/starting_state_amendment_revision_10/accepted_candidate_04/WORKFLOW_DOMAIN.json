@@ -1,0 +1,4503 @@
+{
+  "additional_properties": false,
+  "amendment_id": "REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04",
+  "candidate03_status": "BLOCKED_NOT_ACCEPTED_NON_CONTROLLING",
+  "canonical_base": "bc957fe05096b790052d0515773b9e0a2dc88a60",
+  "closed_enums": {
+    "AuthorizationEffect": [
+      "NONE",
+      "WORKSPACE_PREPARATION_ONLY",
+      "SOURCE_AUTHORING_ONLY",
+      "SOURCE_LOCAL_COMMIT_CREATION_ONLY",
+      "SOURCE_PUSH_ONLY",
+      "TEST_WORKSPACE_PREPARATION_ONLY",
+      "TEST_AUTHORING_ONLY",
+      "TEST_LOCAL_COMMIT_CREATION_ONLY",
+      "TEST_PUSH_ONLY",
+      "EXECUTION_ONLY"
+    ],
+    "DecisionOwner": [
+      "SENTINEL",
+      "GUSTAVO",
+      "GUSTAVO_MANUAL_INSTALLER",
+      "CLAUDE",
+      "NO_OWNER"
+    ],
+    "ObservationStatus": [
+      "EXPECTED",
+      "SATISFIED",
+      "FALSE",
+      "MISSING",
+      "MALFORMED",
+      "AMBIGUOUS",
+      "STALE",
+      "CONFLICTING"
+    ],
+    "RetryEligibility": [
+      "SAME_AUTHORIZATION_FRESH_GATE",
+      "NEW_SENTINEL_DECISION_REQUIRED",
+      "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+      "NEW_PUSH_AUTHORIZATION_REQUIRED",
+      "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+      "MANUAL_CANONICAL_REPAIR_AND_NEW_AUTHORIZATION",
+      "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+      "NOT_APPLICABLE"
+    ],
+    "ReviewDecision": [
+      "APPROVE",
+      "BLOCK",
+      "DEFER",
+      "ACCEPT_FINDING",
+      "NEEDS_VERIFICATION"
+    ],
+    "WorkflowStage": [
+      "SPEC_REVIEW",
+      "SPEC_CANONICAL_INSTALLATION_CONFIRMATION",
+      "WORKSPACE_PREPARATION",
+      "SOURCE_AUTHORING",
+      "SOURCE_STATIC_REVIEW",
+      "SOURCE_LOCAL_COMMIT_CREATION",
+      "SOURCE_LOCAL_COMMIT_REVIEW",
+      "SOURCE_PUSH_AUTHORIZATION",
+      "SOURCE_FAST_FORWARD_PUSH",
+      "SOURCE_REMOTE_INSTALLATION_VERIFICATION",
+      "TEST_SCOPE_REVIEW",
+      "TEST_WORKSPACE_PREPARATION",
+      "TEST_AUTHORING",
+      "TEST_STATIC_REVIEW",
+      "TEST_LOCAL_COMMIT_CREATION",
+      "TEST_LOCAL_COMMIT_REVIEW",
+      "TEST_PUSH_AUTHORIZATION",
+      "TEST_FAST_FORWARD_PUSH",
+      "TEST_REMOTE_INSTALLATION_VERIFICATION",
+      "EXECUTION_AUTHORIZATION"
+    ],
+    "WorkflowState": [
+      "C04_DRAFT_NOT_ACCEPTED",
+      "C04_SPEC_ACCEPTED_PENDING_EXTERNAL_CANONICAL_INSTALLATION",
+      "C04_SPEC_CANONICALLY_INSTALLED_NOT_AUTHORIZED",
+      "C04_SOURCE_WORKSPACE_READY",
+      "C04_SOURCE_CANDIDATE_SUBMITTED",
+      "C04_SOURCE_STATIC_ACCEPTED_NOT_MATERIALIZED",
+      "C04_SOURCE_LOCAL_COMMIT_CREATED_PENDING_REVIEW",
+      "C04_SOURCE_LOCAL_COMMIT_REVIEWED_NOT_PUSH_AUTHORIZED",
+      "C04_SOURCE_PUSH_AUTHORIZED_NOT_PUSHED",
+      "C04_SOURCE_PUSHED_PENDING_REMOTE_VERIFICATION",
+      "C04_SOURCE_REMOTE_MATERIALIZED_VERIFIED",
+      "C04_TEST_SCOPE_ACCEPTED_NOT_AUTHORIZED",
+      "C04_TEST_WORKSPACE_READY",
+      "C04_TEST_CANDIDATE_SUBMITTED",
+      "C04_TEST_STATIC_ACCEPTED_NOT_MATERIALIZED",
+      "C04_TEST_LOCAL_COMMIT_CREATED_PENDING_REVIEW",
+      "C04_TEST_LOCAL_COMMIT_REVIEWED_NOT_PUSH_AUTHORIZED",
+      "C04_TEST_PUSH_AUTHORIZED_NOT_PUSHED",
+      "C04_TEST_PUSHED_PENDING_REMOTE_VERIFICATION",
+      "C04_TEST_REMOTE_MATERIALIZED_VERIFIED",
+      "C04_EXECUTION_AUTHORIZED_OUTSIDE_C04"
+    ],
+    "WorkflowStopCode": [
+      "STOP_C04_ATOMIC_SOURCE_RESULT_UNAVAILABLE",
+      "STOP_C04_AUTHORIZATION_NOT_ACTIVE",
+      "STOP_C04_CANONICAL_HEAD_MISMATCH",
+      "STOP_C04_CAPTURE_BYTE_IDENTITY_MISMATCH",
+      "STOP_C04_CAPTURE_PACKAGE_IDENTITY_MISMATCH",
+      "STOP_C04_CAPTURE_PATH_SET_MISMATCH",
+      "STOP_C04_CONTROLLING_CONTRACT_UNAVAILABLE",
+      "STOP_C04_EXECUTION_AUTHORIZATION_INCOMPLETE",
+      "STOP_C04_FAILED_GATE_REPAIR_ATTEMPT",
+      "STOP_C04_LOCAL_COMMIT_AUTHORIZATION_NOT_ACTIVE",
+      "STOP_C04_LOCAL_COMMIT_BASE_OR_BRANCH_MISMATCH",
+      "STOP_C04_LOCAL_COMMIT_IDENTITY_MISMATCH",
+      "STOP_C04_LOCAL_COMMIT_PARENT_MISMATCH",
+      "STOP_C04_LOCAL_COMMIT_PROHIBITED_OPERATION",
+      "STOP_C04_LOCAL_COMMIT_PUSH_OCCURRED",
+      "STOP_C04_LOCAL_COMMIT_REVIEW_NOT_APPROVED",
+      "STOP_C04_LOCAL_COMMIT_WORKTREE_NOT_CLEAN",
+      "STOP_C04_MANDATORY_FILE_UNAVAILABLE",
+      "STOP_C04_MATERIALIZATION_BYTE_IDENTITY_MISMATCH",
+      "STOP_C04_MATERIALIZATION_GIT_MODE_INVALID",
+      "STOP_C04_MATERIALIZATION_PATH_SET_MISMATCH",
+      "STOP_C04_MATERIALIZATION_TARGET_PRESENT",
+      "STOP_C04_NEW_FILE_OR_ADDITIONAL_PATH_REQUIRED",
+      "STOP_C04_PUSH_AHEAD_BEHIND_MISMATCH",
+      "STOP_C04_PUSH_AUTHORIZATION_IDENTITY_MISMATCH",
+      "STOP_C04_PUSH_AUTHORIZATION_NOT_ACTIVE",
+      "STOP_C04_PUSH_BRANCH_REFSPEC_MISMATCH",
+      "STOP_C04_PUSH_BYTE_OR_MODE_MISMATCH",
+      "STOP_C04_PUSH_CHANGED_PATHS_OR_STATUSES_MISMATCH",
+      "STOP_C04_PUSH_COMMIT_MISMATCH",
+      "STOP_C04_PUSH_FAILED",
+      "STOP_C04_PUSH_FORCE_OR_REPAIR_ATTEMPT",
+      "STOP_C04_PUSH_REMOTE_ADVANCED",
+      "STOP_C04_PUSH_WORKTREE_NOT_CLEAN",
+      "STOP_C04_READ_ONLY_PATH_MUTATED",
+      "STOP_C04_RECORD_CROSS_FIELD_MISMATCH",
+      "STOP_C04_RECORD_SCHEMA_INVALID",
+      "STOP_C04_REMOTE_INSTALLATION_IDENTITY_MISMATCH",
+      "STOP_C04_REMOTE_INSTALLATION_NOT_VERIFIED",
+      "STOP_C04_SOURCE_CANDIDATE_IDENTITY_MISMATCH",
+      "STOP_C04_SOURCE_REVIEW_NOT_APPROVED",
+      "STOP_C04_SOURCE_TEST_BOUNDARY_VIOLATION",
+      "STOP_C04_SPEC_CANONICAL_BASE_MISMATCH",
+      "STOP_C04_SPEC_CANONICAL_INSTALLATION_LIVE_PATH_CHANGE",
+      "STOP_C04_SPEC_CANONICAL_INSTALLATION_NOT_APPROVED",
+      "STOP_C04_SPEC_CANONICAL_INSTALLATION_NOT_VERIFIED",
+      "STOP_C04_SPEC_CANONICAL_INSTALLATION_RECORD_MISSING",
+      "STOP_C04_SPEC_DELIVERY_MECHANICS_NOT_EXTERNAL",
+      "STOP_C04_SPEC_PACKAGE_IDENTITY_MISMATCH",
+      "STOP_C04_SPEC_PRESERVED_CONTRACT_MISMATCH",
+      "STOP_C04_SPEC_REPRESENTATION_MISMATCH",
+      "STOP_C04_SPEC_REVIEW_NOT_APPROVED",
+      "STOP_C04_SPEC_SCOPE_DRIFT",
+      "STOP_C04_SPEC_SELF_AUTHORIZED_DELIVERY_ATTEMPT",
+      "STOP_C04_SPEC_SUPERSESSION_INCOMPLETE",
+      "STOP_C04_SPEC_WORKFLOW_DOMAIN_NOT_TOTAL",
+      "STOP_C04_STAGE_STATE_MISMATCH",
+      "STOP_C04_TEST_AUTHORING_RESULT_UNAVAILABLE",
+      "STOP_C04_TEST_CANDIDATE_IDENTITY_MISMATCH",
+      "STOP_C04_TEST_REVIEW_NOT_APPROVED",
+      "STOP_C04_TEST_SCOPE_NOT_APPROVED",
+      "STOP_C04_TEST_WORKSPACE_SOURCE_IDENTITY_MISMATCH",
+      "STOP_C04_TRUSTED_MULTI_ROUND_LINEAGE_REQUIRED",
+      "STOP_C04_UNAUTHORIZED_EXECUTION_ACTIVITY",
+      "STOP_C04_UNAUTHORIZED_GIT_WRITE",
+      "STOP_C04_WORKSPACE_ALIAS_OR_LINK_INVALID",
+      "STOP_C04_WORKSPACE_EXTRA_OR_MISSING_PATH",
+      "STOP_C04_WORKSPACE_MEMBER_IDENTITY_INVALID",
+      "STOP_C04_WORKSPACE_NOT_EMPTY",
+      "STOP_C04_WORKSPACE_ROOT_INVALID"
+    ],
+    "WorkflowSuccessCode": [
+      "CLEAR_C04_SPEC_REVIEW_APPROVED",
+      "CLEAR_C04_SPEC_CANONICAL_INSTALLATION_CONFIRMED",
+      "CLEAR_C04_SOURCE_WORKSPACE_PREPARED",
+      "CLEAR_C04_SOURCE_CANDIDATE_SUBMITTED",
+      "CLEAR_C04_SOURCE_STATIC_REVIEW_APPROVED",
+      "CLEAR_C04_SOURCE_LOCAL_COMMIT_CREATED",
+      "CLEAR_C04_SOURCE_LOCAL_COMMIT_REVIEW_APPROVED",
+      "CLEAR_C04_SOURCE_PUSH_SEPARATELY_AUTHORIZED",
+      "CLEAR_C04_SOURCE_FAST_FORWARD_PUSH_COMPLETED",
+      "CLEAR_C04_SOURCE_REMOTE_INSTALLATION_VERIFIED",
+      "CLEAR_C04_TEST_SCOPE_REVIEW_APPROVED",
+      "CLEAR_C04_TEST_WORKSPACE_PREPARED",
+      "CLEAR_C04_TEST_CANDIDATE_SUBMITTED",
+      "CLEAR_C04_TEST_STATIC_REVIEW_APPROVED",
+      "CLEAR_C04_TEST_LOCAL_COMMIT_CREATED",
+      "CLEAR_C04_TEST_LOCAL_COMMIT_REVIEW_APPROVED",
+      "CLEAR_C04_TEST_PUSH_SEPARATELY_AUTHORIZED",
+      "CLEAR_C04_TEST_FAST_FORWARD_PUSH_COMPLETED",
+      "CLEAR_C04_TEST_REMOTE_INSTALLATION_VERIFIED",
+      "CLEAR_C04_EXECUTION_AUTHORIZATION_RECORDED_OUTSIDE_C04"
+    ]
+  },
+  "documentation_installation_boundary": {
+    "candidate04_authorizes_commit": false,
+    "candidate04_authorizes_merge": false,
+    "candidate04_authorizes_push": false,
+    "candidate04_authorizes_ref_update": false,
+    "mechanics_authority": "project_context/CHATGPT_CANONICAL_UPDATE_WORKFLOW.md"
+  },
+  "record_schemas": {
+    "cross_field_contract": "WORKFLOW_RECORD_CROSS_FIELD_RULES.md",
+    "halt": {
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "filename": "WORKFLOW_HALT_RECORD.schema.json",
+      "schema_id": "rev10_candidate04_workflow_halt.v1"
+    },
+    "success": {
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "filename": "WORKFLOW_SUCCESS_RECORD.schema.json",
+      "schema_id": "rev10_candidate04_workflow_success.v1"
+    }
+  },
+  "record_validation_contract": {
+    "evidence_sha256_projection": {
+      "canonicalization": "RFC_8785_JSON_CANONICALIZATION_SCHEME_UTF8",
+      "digest": "SHA-256",
+      "encoding": "lowercase_hex_64",
+      "ordered_object_members": [
+        "expected",
+        "observed",
+        "affected_paths",
+        "authoring_started",
+        "git_write_observed",
+        "execution_activity_observed"
+      ]
+    },
+    "halt_rules": [
+      "stage MUST identify one exact stage_specs row.",
+      "predicate_id and predicate_ordinal MUST identify one exact predicate in that stage.",
+      "stop_code, decision_owner, retry_eligibility, and retry_owner MUST exactly equal that predicate applicability row.",
+      "authorization_effect MUST equal NONE and record_kind MUST equal HALT.",
+      "If predicate_ordinal is 1 and stop_code is STOP_C04_STAGE_STATE_MISMATCH, state MUST be a closed WorkflowState different from the stage from_state.",
+      "For every other halt, state MUST exactly equal the stage from_state.",
+      "expected.condition and observed.condition MUST exactly equal the predicate condition_for_success.",
+      "expected.status MUST equal EXPECTED; observed.status MUST be one of FALSE, MISSING, MALFORMED, AMBIGUOUS, STALE, or CONFLICTING.",
+      "expected.facts MUST contain exact stage, predicate_id, predicate_ordinal, and condition_for_success facts.",
+      "observed.facts MUST contain exact predicate_satisfied=false, authoring_started, git_write_observed, and execution_activity_observed facts matching the top-level booleans.",
+      "affected_paths MUST equal the sorted unique union of every PATH and PATH_ARRAY value in observed.facts.",
+      "Fact keys MUST be unique and lexicographically ascending; every array Fact MUST satisfy its declared ordering.",
+      "evidence_sha256 MUST equal SHA-256 of RFC 8785 canonical JSON for the evidence projection defined below."
+    ],
+    "invalid_record_effect": [
+      "A structurally invalid or cross-field-invalid record is not a workflow halt or success.",
+      "An invalid record MUST NOT change state, authorize retry, authorize push, authorize repair, or serve as review evidence.",
+      "Sentinel MAY issue a separate review finding citing STOP_C04_RECORD_SCHEMA_INVALID or STOP_C04_RECORD_CROSS_FIELD_MISMATCH, but the invalid record itself is never normalized or repaired in place."
+    ],
+    "success_rules": [
+      "stage MUST identify one exact stage_specs row.",
+      "from_state, to_state, success_code, and decision_owner MUST exactly equal that stage row.",
+      "predicate_count MUST equal the number of predicates in that stage.",
+      "completed_predicate_ids MUST exactly equal the stage predicate_id list in ascending predicate_ordinal with no omission, duplication, or reordering.",
+      "authorization_effect MUST equal NONE and record_kind MUST equal SUCCESS.",
+      "expected.condition and observed.condition MUST equal ALL_STAGE_PREDICATES_TRUE:<stage>.",
+      "expected.status MUST equal EXPECTED; observed.status MUST equal SATISFIED.",
+      "expected.facts MUST contain exact stage, from_state, to_state, success_code, and predicate_count facts.",
+      "observed.facts MUST contain exact all_predicates_satisfied=true, authoring_started, git_write_observed, and execution_activity_observed facts matching the stage row and top-level booleans.",
+      "affected_paths MUST exactly equal the stage success_affected_paths array.",
+      "authoring_started, git_write_observed, and execution_activity_observed MUST exactly equal the stage success booleans.",
+      "Fact keys MUST be unique and lexicographically ascending; every array Fact MUST satisfy its declared ordering.",
+      "evidence_sha256 MUST equal SHA-256 of RFC 8785 canonical JSON for the evidence projection defined below."
+    ],
+    "validation_order": [
+      "Parse JSON as UTF-8 without duplicate object member names.",
+      "Validate the record against the exact referenced Draft 2020-12 JSON Schema.",
+      "Validate every x-ordering and x-uniqueBy annotation normatively.",
+      "Validate the record against the exact WorkflowStage transition or predicate applicability row.",
+      "Recompute evidence_sha256 from the exact evidence projection and compare lowercase hex."
+    ]
+  },
+  "schema_id": "rev23_finding4_i0a_revision10_candidate04_workflow_domain.v1",
+  "selection_algorithm": [
+    "Resolve the requested stage as an exact WorkflowStage enum member.",
+    "Require current WorkflowState to equal that stage's exact from_state; otherwise the stage's first predicate returns STOP_C04_STAGE_STATE_MISMATCH.",
+    "Evaluate predicates in strictly ascending predicate_ordinal.",
+    "Treat false, missing, malformed, ambiguous, stale, or conflicting evidence as predicate failure.",
+    "On first failure, emit exactly one schema-valid halt record bound to the exact applicability row and evaluate no later predicate.",
+    "If every predicate succeeds, emit exactly one schema-valid success record bound to the exact stage transition row.",
+    "A halt or success record that fails its JSON Schema or normative cross-field rules is invalid and cannot move state.",
+    "No halt may trigger repair, fallback, deletion, overwrite, reset, restore, rollback, pull, merge, rebase, force, or automatic repair."
+  ],
+  "stage_specs": {
+    "EXECUTION_AUTHORIZATION": {
+      "from_state": "C04_TEST_REMOTE_MATERIALIZED_VERIFIED",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_TEST_REMOTE_MATERIALIZED_VERIFIED for stage EXECUTION_AUTHORIZATION.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EXECUTION_AUTHORIZATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "Source and test installations are both Sentinel-verified and exact.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EA01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_EXECUTION_AUTHORIZATION_INCOMPLETE"
+        },
+        {
+          "condition_for_success": "A separate execution specification names exact commands, environment, limits, inputs, outputs, and prohibited activities.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EA02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_EXECUTION_AUTHORIZATION_INCOMPLETE"
+        },
+        {
+          "condition_for_success": "Gustavo separately authorizes that exact execution specification.",
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "EA03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_EXECUTION_AUTHORIZATION_INCOMPLETE"
+        },
+        {
+          "condition_for_success": "Sentinel issues an active execution handoff distinct from Candidate 04.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EA04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_EXECUTION_AUTHORIZATION_INCOMPLETE"
+        },
+        {
+          "condition_for_success": "No data, network, credential, artifact, downstream, or Git-write authority is inferred unless the separate execution specification explicitly and validly names it.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EA05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_EXECUTION_AUTHORIZATION_INCOMPLETE"
+        },
+        {
+          "condition_for_success": "No test or project execution occurred before the separate execution authorization became active.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EA06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_EXECUTION_ACTIVITY"
+        },
+        {
+          "condition_for_success": "No unauthorized Git write occurred.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EA07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_GIT_WRITE"
+        }
+      ],
+      "required_authorization_effect": "EXECUTION_ONLY",
+      "success_affected_paths": [],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_EXECUTION_AUTHORIZATION_RECORDED_OUTSIDE_C04",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_EXECUTION_AUTHORIZED_OUTSIDE_C04"
+    },
+    "SOURCE_AUTHORING": {
+      "from_state": "C04_SOURCE_WORKSPACE_READY",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_SOURCE_WORKSPACE_READY for stage SOURCE_AUTHORING.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_AUTHORING_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "A distinct source-authoring authorization and active Sentinel handoff name the exact gated workspace.",
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "SA01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_AUTHORIZATION_NOT_ACTIVE"
+        },
+        {
+          "condition_for_success": "All twelve workspace members still match the gated starting identities before write opening.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_WORKSPACE_MEMBER_IDENTITY_INVALID"
+        },
+        {
+          "condition_for_success": "Exactly canonical.py, finding4_registry.py, and prepared_evidence.py are writable.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_SOURCE_TEST_BOUNDARY_VIOLATION"
+        },
+        {
+          "condition_for_success": "All nine protected paths remain byte-identical and no baseline-support path is edited.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_READ_ONLY_PATH_MUTATED"
+        },
+        {
+          "condition_for_success": "No new workspace member, repository file, dependency, configuration, export, fixture, documentation path, or adjacent path is required.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_NEW_FILE_OR_ADDITIONAL_PATH_REQUIRED"
+        },
+        {
+          "condition_for_success": "No source/test boundary violation occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_SOURCE_TEST_BOUNDARY_VIOLATION"
+        },
+        {
+          "condition_for_success": "No Git write occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_GIT_WRITE"
+        },
+        {
+          "condition_for_success": "No test, import, compilation, project execution, data access, network activity, or project artifact generation occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_EXECUTION_ACTIVITY"
+        },
+        {
+          "condition_for_success": "No implementation choice depends on trusted multi-round lineage.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_TRUSTED_MULTI_ROUND_LINEAGE_REQUIRED"
+        },
+        {
+          "condition_for_success": "All three writable files are returned, each ending hash differs from its start, and all eight remediation defects are addressed atomically.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_ATOMIC_SOURCE_RESULT_UNAVAILABLE"
+        },
+        {
+          "condition_for_success": "The source review package contains exact starts, ends, nine unchanged identities, three payloads, requirement mapping, activity declarations, checksums, and detached archive identity.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "CLAUDE",
+          "stop_code_on_false": "STOP_C04_SOURCE_CANDIDATE_IDENTITY_MISMATCH"
+        }
+      ],
+      "required_authorization_effect": "SOURCE_AUTHORING_ONLY",
+      "success_affected_paths": [
+        "pm_research/local_curl_per_side/canonical.py",
+        "pm_research/local_curl_per_side/finding4_registry.py",
+        "pm_research/local_curl_per_side/prepared_evidence.py"
+      ],
+      "success_authoring_started": true,
+      "success_code": "CLEAR_C04_SOURCE_CANDIDATE_SUBMITTED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_SOURCE_CANDIDATE_SUBMITTED"
+    },
+    "SOURCE_FAST_FORWARD_PUSH": {
+      "from_state": "C04_SOURCE_PUSH_AUTHORIZED_NOT_PUSHED",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_SOURCE_PUSH_AUTHORIZED_NOT_PUSHED for stage SOURCE_FAST_FORWARD_PUSH.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_FAST_FORWARD_PUSH_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The separate source push authorization and active Sentinel push handoff are exact and currently active.",
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "SFP01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_AUTHORIZATION_NOT_ACTIVE"
+        },
+        {
+          "condition_for_success": "Local HEAD equals the exact reviewed local source commit SHA.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_COMMIT_MISMATCH"
+        },
+        {
+          "condition_for_success": "The local branch and exact push refspec equal the authorization.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_BRANCH_REFSPEC_MISMATCH"
+        },
+        {
+          "condition_for_success": "The local commit has the exact authorized parent, six A-status source paths, committed bytes, and Git modes.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_CHANGED_PATHS_OR_STATUSES_MISMATCH"
+        },
+        {
+          "condition_for_success": "The local worktree and index are clean.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_WORKTREE_NOT_CLEAN"
+        },
+        {
+          "condition_for_success": "A fresh fetch shows the exact remote branch still equals the authorized parent/remote base.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_PUSH_REMOTE_ADVANCED"
+        },
+        {
+          "condition_for_success": "After the fresh fetch, local is exactly one commit ahead and zero commits behind the authorized remote branch.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_PUSH_AHEAD_BEHIND_MISMATCH"
+        },
+        {
+          "condition_for_success": "Force is disabled and no pull, merge, rebase, reset, restore, rollback, checkout repair, or automatic repair is attempted.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_FORCE_OR_REPAIR_ATTEMPT"
+        },
+        {
+          "condition_for_success": "Exactly one ordinary non-force fast-forward push is issued for the exact refspec.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_FAILED"
+        },
+        {
+          "condition_for_success": "The push reports success without rejection, non-fast-forward handling, ref rewrite, or additional ref update.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_FAILED"
+        },
+        {
+          "condition_for_success": "No project test, import, compilation, execution, data access, project artifact generation, or network activity beyond the authorized fetch and push occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_EXECUTION_ACTIVITY"
+        },
+        {
+          "condition_for_success": "Git writes are limited to the exact authorized push; no other local or remote Git mutation occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP12",
+          "predicate_ordinal": 13,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_GIT_WRITE"
+        }
+      ],
+      "required_authorization_effect": "SOURCE_PUSH_ONLY",
+      "success_affected_paths": [
+        "pm_research/local_curl_per_side/__init__.py",
+        "pm_research/local_curl_per_side/canonical.py",
+        "pm_research/local_curl_per_side/claim_hashes.py",
+        "pm_research/local_curl_per_side/finding4_registry.py",
+        "pm_research/local_curl_per_side/governing_package.py",
+        "pm_research/local_curl_per_side/prepared_evidence.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_SOURCE_FAST_FORWARD_PUSH_COMPLETED",
+      "success_decision_owner": "GUSTAVO_MANUAL_INSTALLER",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": true,
+      "to_state": "C04_SOURCE_PUSHED_PENDING_REMOTE_VERIFICATION"
+    },
+    "SOURCE_LOCAL_COMMIT_CREATION": {
+      "from_state": "C04_SOURCE_STATIC_ACCEPTED_NOT_MATERIALIZED",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_SOURCE_STATIC_ACCEPTED_NOT_MATERIALIZED for stage SOURCE_LOCAL_COMMIT_CREATION.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_LOCAL_COMMIT_CREATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "A separate Gustavo authorization and active Sentinel handoff authorize only local source materialization commit creation for the exact Sentinel-approved source candidate.",
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "SLC01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_AUTHORIZATION_NOT_ACTIVE"
+        },
+        {
+          "condition_for_success": "The exact source candidate has a prior Sentinel APPROVE decision and its byte identities remain unchanged.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SOURCE_REVIEW_NOT_APPROVED"
+        },
+        {
+          "condition_for_success": "The local repository, branch, clean worktree, authorized parent commit, and local HEAD match the exact local-commit package.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_BASE_OR_BRANCH_MISMATCH"
+        },
+        {
+          "condition_for_success": "All six canonical source targets are absent from the authorized parent tree, local index, and local worktree before materialization.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_MATERIALIZATION_TARGET_PRESENT"
+        },
+        {
+          "condition_for_success": "The materialization set is exactly six source CREATE actions and contains no test or extra path.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_MATERIALIZATION_PATH_SET_MISMATCH"
+        },
+        {
+          "condition_for_success": "The three mandatory source files match the Sentinel-approved final bytes and the three support files match the exact accepted capture bytes.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_MATERIALIZATION_BYTE_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "All six created source paths are Git regular files with mode 100644.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_MATERIALIZATION_GIT_MODE_INVALID"
+        },
+        {
+          "condition_for_success": "The five baseline-support paths remain unedited; only exact-byte creation is performed for the three source support paths.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_READ_ONLY_PATH_MUTATED"
+        },
+        {
+          "condition_for_success": "Exactly one ordinary non-merge local commit is created with the exact authorized parent and exactly six source CREATE entries.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "MANUAL_CANONICAL_REPAIR_AND_NEW_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The worktree and index are clean after local commit creation.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "MANUAL_CANONICAL_REPAIR_AND_NEW_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_WORKTREE_NOT_CLEAN"
+        },
+        {
+          "condition_for_success": "No push, pull, merge, rebase, reset, restore, rollback, checkout repair, force action, or automatic repair occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_PROHIBITED_OPERATION"
+        },
+        {
+          "condition_for_success": "Git writes are performed only by Gustavo's manual installer under the exact local-commit authorization.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC12",
+          "predicate_ordinal": 13,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_GIT_WRITE"
+        },
+        {
+          "condition_for_success": "No test, import, compilation, project execution, data access, network activity, or project artifact generation occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC13",
+          "predicate_ordinal": 14,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_EXECUTION_ACTIVITY"
+        }
+      ],
+      "required_authorization_effect": "SOURCE_LOCAL_COMMIT_CREATION_ONLY",
+      "success_affected_paths": [
+        "pm_research/local_curl_per_side/__init__.py",
+        "pm_research/local_curl_per_side/canonical.py",
+        "pm_research/local_curl_per_side/claim_hashes.py",
+        "pm_research/local_curl_per_side/finding4_registry.py",
+        "pm_research/local_curl_per_side/governing_package.py",
+        "pm_research/local_curl_per_side/prepared_evidence.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_SOURCE_LOCAL_COMMIT_CREATED",
+      "success_decision_owner": "GUSTAVO_MANUAL_INSTALLER",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": true,
+      "to_state": "C04_SOURCE_LOCAL_COMMIT_CREATED_PENDING_REVIEW"
+    },
+    "SOURCE_LOCAL_COMMIT_REVIEW": {
+      "from_state": "C04_SOURCE_LOCAL_COMMIT_CREATED_PENDING_REVIEW",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_SOURCE_LOCAL_COMMIT_CREATED_PENDING_REVIEW for stage SOURCE_LOCAL_COMMIT_REVIEW.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_LOCAL_COMMIT_REVIEW_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The submitted local source commit SHA is exact and identifies the same bytes produced by the authorized local-commit stage.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The local commit has exactly one parent equal to the authorized parent and is not a merge commit.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_PARENT_MISMATCH"
+        },
+        {
+          "condition_for_success": "The reviewed local branch is the exact branch named by the local-commit package.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_BASE_OR_BRANCH_MISMATCH"
+        },
+        {
+          "condition_for_success": "The commit changes exactly six source paths, each with status A, and no other path.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_PUSH_CHANGED_PATHS_OR_STATUSES_MISMATCH"
+        },
+        {
+          "condition_for_success": "The committed source bytes and Git modes exactly match the authorized materialization identities.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_PUSH_BYTE_OR_MODE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The local worktree and index are clean and local HEAD equals the submitted commit.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_WORKTREE_NOT_CLEAN"
+        },
+        {
+          "condition_for_success": "No push has occurred and no remote ref is claimed to contain the local commit.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_PUSH_OCCURRED"
+        },
+        {
+          "condition_for_success": "The review evidence contains no pull, merge, rebase, reset, restore, rollback, force, or automatic-repair operation.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_PROHIBITED_OPERATION"
+        },
+        {
+          "condition_for_success": "Sentinel decision on the exact local source commit is exactly APPROVE.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_REVIEW_NOT_APPROVED"
+        }
+      ],
+      "required_authorization_effect": "NONE",
+      "success_affected_paths": [
+        "pm_research/local_curl_per_side/__init__.py",
+        "pm_research/local_curl_per_side/canonical.py",
+        "pm_research/local_curl_per_side/claim_hashes.py",
+        "pm_research/local_curl_per_side/finding4_registry.py",
+        "pm_research/local_curl_per_side/governing_package.py",
+        "pm_research/local_curl_per_side/prepared_evidence.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_SOURCE_LOCAL_COMMIT_REVIEW_APPROVED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_SOURCE_LOCAL_COMMIT_REVIEWED_NOT_PUSH_AUTHORIZED"
+    },
+    "SOURCE_PUSH_AUTHORIZATION": {
+      "from_state": "C04_SOURCE_LOCAL_COMMIT_REVIEWED_NOT_PUSH_AUTHORIZED",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_SOURCE_LOCAL_COMMIT_REVIEWED_NOT_PUSH_AUTHORIZED for stage SOURCE_PUSH_AUTHORIZATION.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_PUSH_AUTHORIZATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The exact local source commit has a prior Sentinel APPROVE decision.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPA01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_REVIEW_NOT_APPROVED"
+        },
+        {
+          "condition_for_success": "Gustavo separately authorizes exactly one push of the exact reviewed local commit; no local-commit or review authorization is reused.",
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "SPA02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_AUTHORIZATION_NOT_ACTIVE"
+        },
+        {
+          "condition_for_success": "The push authorization pins the exact local commit SHA, exact parent and remote base, exact branch, exact refspec, six A-status paths, committed byte hashes, and Git modes.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPA03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_AUTHORIZATION_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The push authorization permits force=false, one ordinary fast-forward push, and only the read-only fetch needed for the push gate.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPA04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_FORCE_OR_REPAIR_ATTEMPT"
+        },
+        {
+          "condition_for_success": "The push authorization prohibits pull, merge, rebase, reset, restore, rollback, checkout repair, branch rewrite, and automatic repair.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPA05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_FORCE_OR_REPAIR_ATTEMPT"
+        },
+        {
+          "condition_for_success": "Sentinel issues an active push handoff containing the exact authorization identity and all pinned push facts.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPA06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_PUSH_AUTHORIZATION_NOT_ACTIVE"
+        }
+      ],
+      "required_authorization_effect": "NONE",
+      "success_affected_paths": [
+        "pm_research/local_curl_per_side/__init__.py",
+        "pm_research/local_curl_per_side/canonical.py",
+        "pm_research/local_curl_per_side/claim_hashes.py",
+        "pm_research/local_curl_per_side/finding4_registry.py",
+        "pm_research/local_curl_per_side/governing_package.py",
+        "pm_research/local_curl_per_side/prepared_evidence.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_SOURCE_PUSH_SEPARATELY_AUTHORIZED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_SOURCE_PUSH_AUTHORIZED_NOT_PUSHED"
+    },
+    "SOURCE_REMOTE_INSTALLATION_VERIFICATION": {
+      "from_state": "C04_SOURCE_PUSHED_PENDING_REMOTE_VERIFICATION",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_SOURCE_PUSHED_PENDING_REMOTE_VERIFICATION for stage SOURCE_REMOTE_INSTALLATION_VERIFICATION.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_REMOTE_INSTALLATION_VERIFICATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The canonical remote branch head equals the exact reviewed and authorized local source commit SHA.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SRV01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_REMOTE_INSTALLATION_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The remote commit has the exact authorized parent and forms one ordinary fast-forward commit from the authorized remote base.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SRV02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_REMOTE_INSTALLATION_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The remote commit changes exactly six source paths with status A and no test or extra path.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SRV03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_REMOTE_INSTALLATION_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "All six remote source bytes and Git modes exactly match the Sentinel-reviewed local commit.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SRV04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_REMOTE_INSTALLATION_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "No force update, merge, rebase, rewritten parent, extra commit, extra ref, or automatic repair is present.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SRV05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_PUSH_FORCE_OR_REPAIR_ATTEMPT"
+        },
+        {
+          "condition_for_success": "Sentinel independently verifies the exact canonical remote installation.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SRV06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_REMOTE_INSTALLATION_NOT_VERIFIED"
+        }
+      ],
+      "required_authorization_effect": "NONE",
+      "success_affected_paths": [
+        "pm_research/local_curl_per_side/__init__.py",
+        "pm_research/local_curl_per_side/canonical.py",
+        "pm_research/local_curl_per_side/claim_hashes.py",
+        "pm_research/local_curl_per_side/finding4_registry.py",
+        "pm_research/local_curl_per_side/governing_package.py",
+        "pm_research/local_curl_per_side/prepared_evidence.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_SOURCE_REMOTE_INSTALLATION_VERIFIED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_SOURCE_REMOTE_MATERIALIZED_VERIFIED"
+    },
+    "SOURCE_STATIC_REVIEW": {
+      "from_state": "C04_SOURCE_CANDIDATE_SUBMITTED",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_SOURCE_CANDIDATE_SUBMITTED for stage SOURCE_STATIC_REVIEW.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_STATIC_REVIEW_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The submitted source package identity and checksum closure are exact.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SOURCE_CANDIDATE_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The changed-path set is exactly the three mandatory source paths and all nine protected paths are unchanged.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SOURCE_TEST_BOUNDARY_VIOLATION"
+        },
+        {
+          "condition_for_success": "All eight verified Revision 10 defects are statically satisfied in the same candidate.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_ATOMIC_SOURCE_RESULT_UNAVAILABLE"
+        },
+        {
+          "condition_for_success": "No prohibited new file, dependency, configuration, export, fixture, adjacent refactor, or baseline-support edit is present.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_NEW_FILE_OR_ADDITIONAL_PATH_REQUIRED"
+        },
+        {
+          "condition_for_success": "The activity report establishes no Git write, execution, test, import, data, network, or project artifact activity.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SOURCE_CANDIDATE_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The package makes no checkpoint-acceptance or lineage-closure claim.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_TRUSTED_MULTI_ROUND_LINEAGE_REQUIRED"
+        },
+        {
+          "condition_for_success": "Sentinel decision is exactly APPROVE.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SOURCE_REVIEW_NOT_APPROVED"
+        }
+      ],
+      "required_authorization_effect": "NONE",
+      "success_affected_paths": [
+        "pm_research/local_curl_per_side/canonical.py",
+        "pm_research/local_curl_per_side/finding4_registry.py",
+        "pm_research/local_curl_per_side/prepared_evidence.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_SOURCE_STATIC_REVIEW_APPROVED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_SOURCE_STATIC_ACCEPTED_NOT_MATERIALIZED"
+    },
+    "SPEC_CANONICAL_INSTALLATION_CONFIRMATION": {
+      "from_state": "C04_SPEC_ACCEPTED_PENDING_EXTERNAL_CANONICAL_INSTALLATION",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_SPEC_ACCEPTED_PENDING_EXTERNAL_CANONICAL_INSTALLATION for stage SPEC_CANONICAL_INSTALLATION_CONFIRMATION.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPEC_CANONICAL_INSTALLATION_CONFIRMATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The exact Candidate 04 package has a prior Sentinel APPROVE decision.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SCI01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_CANONICAL_INSTALLATION_NOT_APPROVED"
+        },
+        {
+          "condition_for_success": "The controlling project_context/CHATGPT_CANONICAL_UPDATE_WORKFLOW.md was used as the sole delivery-mechanics authority.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SCI02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_DELIVERY_MECHANICS_NOT_EXTERNAL"
+        },
+        {
+          "condition_for_success": "A canonical installation record identifies the exact accepted Candidate 04 bytes and exact canonical installation commit.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SCI03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_CANONICAL_INSTALLATION_RECORD_MISSING"
+        },
+        {
+          "condition_for_success": "Candidate 04 itself did not authorize or prescribe its own commit, merge, push, ref update, or remote mutation.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SCI04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_SELF_AUTHORIZED_DELIVERY_ATTEMPT"
+        },
+        {
+          "condition_for_success": "No live source, test, data, dependency, runtime, or project artifact path changed during documentation installation.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SCI05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_CANONICAL_INSTALLATION_LIVE_PATH_CHANGE"
+        },
+        {
+          "condition_for_success": "Sentinel independently verified the exact documentation-only canonical installation.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SCI06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_CANONICAL_INSTALLATION_NOT_VERIFIED"
+        }
+      ],
+      "required_authorization_effect": "NONE",
+      "success_affected_paths": [],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_SPEC_CANONICAL_INSTALLATION_CONFIRMED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_SPEC_CANONICALLY_INSTALLED_NOT_AUTHORIZED"
+    },
+    "SPEC_REVIEW": {
+      "from_state": "C04_DRAFT_NOT_ACCEPTED",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_DRAFT_NOT_ACCEPTED for stage SPEC_REVIEW.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPEC_REVIEW_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "Candidate 04 package identity, complete member inventory, member checksums, and detached ZIP identity are exact.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_PACKAGE_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "Canonical base is exactly bc957fe05096b790052d0515773b9e0a2dc88a60 and all controlling canonical identities are available.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_CANONICAL_BASE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The Candidate 03 architecture is preserved except for the two expressly authorized Candidate 04 corrections.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_SCOPE_DRIFT"
+        },
+        {
+          "condition_for_success": "The accepted-scope supersession contract and exact twelve-path byte matrix are unchanged in substance.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_PRESERVED_CONTRACT_MISMATCH"
+        },
+        {
+          "condition_for_success": "WORKFLOW_HALT_RECORD.schema.json and WORKFLOW_SUCCESS_RECORD.schema.json are valid closed Draft 2020-12 JSON Schemas.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_RECORD_SCHEMA_INVALID"
+        },
+        {
+          "condition_for_success": "The normative cross-field record rules make any applicability-row or success-transition mismatch invalid.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_RECORD_CROSS_FIELD_MISMATCH"
+        },
+        {
+          "condition_for_success": "The workflow separates local commit creation, Sentinel local review, separate push authorization, one non-force push, and Sentinel remote verification for both source and test materialization.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_WORKFLOW_DOMAIN_NOT_TOTAL"
+        },
+        {
+          "condition_for_success": "Candidate 04 documentation delivery mechanics are deferred exclusively to project_context/CHATGPT_CANONICAL_UPDATE_WORKFLOW.md.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_DELIVERY_MECHANICS_NOT_EXTERNAL"
+        },
+        {
+          "condition_for_success": "Every Markdown and JSON representation agrees on enums, states, stages, stops, successes, predicates, paths, schemas, and authorization fields.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_REPRESENTATION_MISMATCH"
+        },
+        {
+          "condition_for_success": "Sentinel decision is exactly APPROVE.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_REVIEW_NOT_APPROVED"
+        }
+      ],
+      "required_authorization_effect": "NONE",
+      "success_affected_paths": [],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_SPEC_REVIEW_APPROVED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_SPEC_ACCEPTED_PENDING_EXTERNAL_CANONICAL_INSTALLATION"
+    },
+    "TEST_AUTHORING": {
+      "from_state": "C04_TEST_WORKSPACE_READY",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_TEST_WORKSPACE_READY for stage TEST_AUTHORING.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_AUTHORING_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "A distinct test-authoring authorization and active Sentinel handoff name the exact gated test workspace.",
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "TA01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_AUTHORIZATION_NOT_ACTIVE"
+        },
+        {
+          "condition_for_success": "All twelve members still match the gated starts before write opening.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_WORKSPACE_MEMBER_IDENTITY_INVALID"
+        },
+        {
+          "condition_for_success": "Exactly the four mandatory test paths are writable.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_SOURCE_TEST_BOUNDARY_VIOLATION"
+        },
+        {
+          "condition_for_success": "All six source paths and two support-test paths remain byte-identical.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_READ_ONLY_PATH_MUTATED"
+        },
+        {
+          "condition_for_success": "No new member, repository file, fixture path, dependency, configuration, or adjacent path is required.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_NEW_FILE_OR_ADDITIONAL_PATH_REQUIRED"
+        },
+        {
+          "condition_for_success": "No Git write occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_GIT_WRITE"
+        },
+        {
+          "condition_for_success": "No test collection/execution, project import, compilation, project execution, data, network, or project artifact activity occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_EXECUTION_ACTIVITY"
+        },
+        {
+          "condition_for_success": "All four writable test files are returned with changed ending hashes and the complete accepted test obligations.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_TEST_AUTHORING_RESULT_UNAVAILABLE"
+        },
+        {
+          "condition_for_success": "The test review package contains exact starts, ends, eight unchanged identities, four payloads, obligation mapping, activity declarations, checksums, and detached archive identity.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "CLAUDE",
+          "stop_code_on_false": "STOP_C04_TEST_CANDIDATE_IDENTITY_MISMATCH"
+        }
+      ],
+      "required_authorization_effect": "TEST_AUTHORING_ONLY",
+      "success_affected_paths": [
+        "tests/local_curl_per_side/test_canonical_i0a.py",
+        "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+        "tests/local_curl_per_side/test_i0a_public_contract.py",
+        "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+      ],
+      "success_authoring_started": true,
+      "success_code": "CLEAR_C04_TEST_CANDIDATE_SUBMITTED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_TEST_CANDIDATE_SUBMITTED"
+    },
+    "TEST_FAST_FORWARD_PUSH": {
+      "from_state": "C04_TEST_PUSH_AUTHORIZED_NOT_PUSHED",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_TEST_PUSH_AUTHORIZED_NOT_PUSHED for stage TEST_FAST_FORWARD_PUSH.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_FAST_FORWARD_PUSH_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The separate test push authorization and active Sentinel push handoff are exact and currently active.",
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "TFP01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_AUTHORIZATION_NOT_ACTIVE"
+        },
+        {
+          "condition_for_success": "Local HEAD equals the exact reviewed local test commit SHA.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_COMMIT_MISMATCH"
+        },
+        {
+          "condition_for_success": "The local branch and exact push refspec equal the authorization.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_BRANCH_REFSPEC_MISMATCH"
+        },
+        {
+          "condition_for_success": "The local commit has the exact authorized parent, six A-status test paths, committed bytes, and Git modes; source paths remain unchanged.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_CHANGED_PATHS_OR_STATUSES_MISMATCH"
+        },
+        {
+          "condition_for_success": "The local worktree and index are clean.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_WORKTREE_NOT_CLEAN"
+        },
+        {
+          "condition_for_success": "A fresh fetch shows the exact remote branch still equals the authorized parent/remote base.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_PUSH_REMOTE_ADVANCED"
+        },
+        {
+          "condition_for_success": "After the fresh fetch, local is exactly one commit ahead and zero commits behind the authorized remote branch.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_PUSH_AHEAD_BEHIND_MISMATCH"
+        },
+        {
+          "condition_for_success": "Force is disabled and no pull, merge, rebase, reset, restore, rollback, checkout repair, or automatic repair is attempted.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_FORCE_OR_REPAIR_ATTEMPT"
+        },
+        {
+          "condition_for_success": "Exactly one ordinary non-force fast-forward push is issued for the exact refspec.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_FAILED"
+        },
+        {
+          "condition_for_success": "The push reports success without rejection, non-fast-forward handling, ref rewrite, or additional ref update.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_FAILED"
+        },
+        {
+          "condition_for_success": "No test collection/execution, import, compilation, project execution, data access, project artifact generation, or network activity beyond the authorized fetch and push occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_EXECUTION_ACTIVITY"
+        },
+        {
+          "condition_for_success": "Git writes are limited to the exact authorized push; no other local or remote Git mutation occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP12",
+          "predicate_ordinal": 13,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_GIT_WRITE"
+        }
+      ],
+      "required_authorization_effect": "TEST_PUSH_ONLY",
+      "success_affected_paths": [
+        "tests/local_curl_per_side/test_canonical_i0a.py",
+        "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+        "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+        "tests/local_curl_per_side/test_governing_package_i0a.py",
+        "tests/local_curl_per_side/test_i0a_public_contract.py",
+        "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_TEST_FAST_FORWARD_PUSH_COMPLETED",
+      "success_decision_owner": "GUSTAVO_MANUAL_INSTALLER",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": true,
+      "to_state": "C04_TEST_PUSHED_PENDING_REMOTE_VERIFICATION"
+    },
+    "TEST_LOCAL_COMMIT_CREATION": {
+      "from_state": "C04_TEST_STATIC_ACCEPTED_NOT_MATERIALIZED",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_TEST_STATIC_ACCEPTED_NOT_MATERIALIZED for stage TEST_LOCAL_COMMIT_CREATION.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_LOCAL_COMMIT_CREATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "A separate Gustavo authorization and active Sentinel handoff authorize only local test materialization commit creation for the exact Sentinel-approved test candidate.",
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "TLC01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_AUTHORIZATION_NOT_ACTIVE"
+        },
+        {
+          "condition_for_success": "The exact test candidate has a prior Sentinel APPROVE decision and the six installed source identities remain unchanged.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_TEST_REVIEW_NOT_APPROVED"
+        },
+        {
+          "condition_for_success": "The local repository, branch, clean worktree, authorized parent commit, and local HEAD match the exact local test-commit package.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_BASE_OR_BRANCH_MISMATCH"
+        },
+        {
+          "condition_for_success": "All six canonical test targets are absent from the authorized parent tree, local index, and local worktree before materialization.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_MATERIALIZATION_TARGET_PRESENT"
+        },
+        {
+          "condition_for_success": "The materialization set is exactly six test CREATE actions and contains no source or extra path.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_MATERIALIZATION_PATH_SET_MISMATCH"
+        },
+        {
+          "condition_for_success": "The four mandatory test files match the Sentinel-approved final bytes and the two support files match the exact accepted capture bytes.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_MATERIALIZATION_BYTE_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "All six created test paths are Git regular files with mode 100644.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_MATERIALIZATION_GIT_MODE_INVALID"
+        },
+        {
+          "condition_for_success": "The five baseline-support paths remain unedited; only exact-byte creation is performed for the two test support paths.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_READ_ONLY_PATH_MUTATED"
+        },
+        {
+          "condition_for_success": "Exactly one ordinary non-merge local commit is created with the exact authorized parent and exactly six test CREATE entries.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "MANUAL_CANONICAL_REPAIR_AND_NEW_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The worktree and index are clean after local commit creation.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "MANUAL_CANONICAL_REPAIR_AND_NEW_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_WORKTREE_NOT_CLEAN"
+        },
+        {
+          "condition_for_success": "No push, pull, merge, rebase, reset, restore, rollback, checkout repair, force action, or automatic repair occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_PROHIBITED_OPERATION"
+        },
+        {
+          "condition_for_success": "Git writes are performed only by Gustavo's manual installer under the exact local-commit authorization.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC12",
+          "predicate_ordinal": 13,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_GIT_WRITE"
+        },
+        {
+          "condition_for_success": "No test collection/execution, import, compilation, project execution, data access, network activity, or project artifact generation occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC13",
+          "predicate_ordinal": 14,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_EXECUTION_ACTIVITY"
+        }
+      ],
+      "required_authorization_effect": "TEST_LOCAL_COMMIT_CREATION_ONLY",
+      "success_affected_paths": [
+        "tests/local_curl_per_side/test_canonical_i0a.py",
+        "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+        "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+        "tests/local_curl_per_side/test_governing_package_i0a.py",
+        "tests/local_curl_per_side/test_i0a_public_contract.py",
+        "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_TEST_LOCAL_COMMIT_CREATED",
+      "success_decision_owner": "GUSTAVO_MANUAL_INSTALLER",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": true,
+      "to_state": "C04_TEST_LOCAL_COMMIT_CREATED_PENDING_REVIEW"
+    },
+    "TEST_LOCAL_COMMIT_REVIEW": {
+      "from_state": "C04_TEST_LOCAL_COMMIT_CREATED_PENDING_REVIEW",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_TEST_LOCAL_COMMIT_CREATED_PENDING_REVIEW for stage TEST_LOCAL_COMMIT_REVIEW.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_LOCAL_COMMIT_REVIEW_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The submitted local test commit SHA is exact and identifies the same bytes produced by the authorized local-commit stage.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The local commit has exactly one parent equal to the authorized parent and is not a merge commit.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_PARENT_MISMATCH"
+        },
+        {
+          "condition_for_success": "The reviewed local branch is the exact branch named by the local-commit package.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_BASE_OR_BRANCH_MISMATCH"
+        },
+        {
+          "condition_for_success": "The commit changes exactly six test paths, each with status A, and no source or extra path.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_PUSH_CHANGED_PATHS_OR_STATUSES_MISMATCH"
+        },
+        {
+          "condition_for_success": "The committed test bytes and Git modes exactly match the authorized materialization identities; all six source paths remain unchanged.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_PUSH_BYTE_OR_MODE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The local worktree and index are clean and local HEAD equals the submitted commit.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_WORKTREE_NOT_CLEAN"
+        },
+        {
+          "condition_for_success": "No push has occurred and no remote ref is claimed to contain the local commit.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_PUSH_OCCURRED"
+        },
+        {
+          "condition_for_success": "The review evidence contains no pull, merge, rebase, reset, restore, rollback, force, or automatic-repair operation.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_PROHIBITED_OPERATION"
+        },
+        {
+          "condition_for_success": "Sentinel decision on the exact local test commit is exactly APPROVE.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_REVIEW_NOT_APPROVED"
+        }
+      ],
+      "required_authorization_effect": "NONE",
+      "success_affected_paths": [
+        "tests/local_curl_per_side/test_canonical_i0a.py",
+        "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+        "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+        "tests/local_curl_per_side/test_governing_package_i0a.py",
+        "tests/local_curl_per_side/test_i0a_public_contract.py",
+        "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_TEST_LOCAL_COMMIT_REVIEW_APPROVED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_TEST_LOCAL_COMMIT_REVIEWED_NOT_PUSH_AUTHORIZED"
+    },
+    "TEST_PUSH_AUTHORIZATION": {
+      "from_state": "C04_TEST_LOCAL_COMMIT_REVIEWED_NOT_PUSH_AUTHORIZED",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_TEST_LOCAL_COMMIT_REVIEWED_NOT_PUSH_AUTHORIZED for stage TEST_PUSH_AUTHORIZATION.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_PUSH_AUTHORIZATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The exact local test commit has a prior Sentinel APPROVE decision.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TPA01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_LOCAL_COMMIT_REVIEW_NOT_APPROVED"
+        },
+        {
+          "condition_for_success": "Gustavo separately authorizes exactly one push of the exact reviewed local test commit; no local-commit or review authorization is reused.",
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "TPA02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_AUTHORIZATION_NOT_ACTIVE"
+        },
+        {
+          "condition_for_success": "The push authorization pins the exact local commit SHA, exact parent and remote base, exact branch, exact refspec, six A-status paths, committed byte hashes, and Git modes.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TPA03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_AUTHORIZATION_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The push authorization permits force=false, one ordinary fast-forward push, and only the read-only fetch needed for the push gate.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TPA04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_FORCE_OR_REPAIR_ATTEMPT"
+        },
+        {
+          "condition_for_success": "The push authorization prohibits pull, merge, rebase, reset, restore, rollback, checkout repair, branch rewrite, and automatic repair.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TPA05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_PUSH_FORCE_OR_REPAIR_ATTEMPT"
+        },
+        {
+          "condition_for_success": "Sentinel issues an active push handoff containing the exact authorization identity and all pinned push facts.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TPA06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_PUSH_AUTHORIZATION_NOT_ACTIVE"
+        }
+      ],
+      "required_authorization_effect": "NONE",
+      "success_affected_paths": [
+        "tests/local_curl_per_side/test_canonical_i0a.py",
+        "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+        "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+        "tests/local_curl_per_side/test_governing_package_i0a.py",
+        "tests/local_curl_per_side/test_i0a_public_contract.py",
+        "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_TEST_PUSH_SEPARATELY_AUTHORIZED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_TEST_PUSH_AUTHORIZED_NOT_PUSHED"
+    },
+    "TEST_REMOTE_INSTALLATION_VERIFICATION": {
+      "from_state": "C04_TEST_PUSHED_PENDING_REMOTE_VERIFICATION",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_TEST_PUSHED_PENDING_REMOTE_VERIFICATION for stage TEST_REMOTE_INSTALLATION_VERIFICATION.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_REMOTE_INSTALLATION_VERIFICATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The canonical remote branch head equals the exact reviewed and authorized local test commit SHA.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TRV01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_REMOTE_INSTALLATION_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The remote commit has the exact authorized parent and forms one ordinary fast-forward commit from the authorized remote base.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TRV02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_REMOTE_INSTALLATION_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The remote commit changes exactly six test paths with status A and no source or extra path.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TRV03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_REMOTE_INSTALLATION_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "All six remote test bytes and Git modes exactly match the Sentinel-reviewed local commit; all source identities remain unchanged.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TRV04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_REMOTE_INSTALLATION_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "No force update, merge, rebase, rewritten parent, extra commit, extra ref, or automatic repair is present.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TRV05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_PUSH_FORCE_OR_REPAIR_ATTEMPT"
+        },
+        {
+          "condition_for_success": "Sentinel independently verifies the exact canonical remote installation.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TRV06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_REMOTE_INSTALLATION_NOT_VERIFIED"
+        }
+      ],
+      "required_authorization_effect": "NONE",
+      "success_affected_paths": [
+        "tests/local_curl_per_side/test_canonical_i0a.py",
+        "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+        "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+        "tests/local_curl_per_side/test_governing_package_i0a.py",
+        "tests/local_curl_per_side/test_i0a_public_contract.py",
+        "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_TEST_REMOTE_INSTALLATION_VERIFIED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_TEST_REMOTE_MATERIALIZED_VERIFIED"
+    },
+    "TEST_SCOPE_REVIEW": {
+      "from_state": "C04_SOURCE_REMOTE_MATERIALIZED_VERIFIED",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_SOURCE_REMOTE_MATERIALIZED_VERIFIED for stage TEST_SCOPE_REVIEW.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_SCOPE_REVIEW_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The proposed test scope names exactly four writable test paths, two test support paths, and all six source paths as read-only.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TSR01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_TEST_SCOPE_NOT_APPROVED"
+        },
+        {
+          "condition_for_success": "Test obligations cover every accepted Revision 10 and remediation requirement, including negative, precedence, and false-unblock cases.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TSR02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_TEST_SCOPE_NOT_APPROVED"
+        },
+        {
+          "condition_for_success": "Allowed new repository files remains NONE during test workspace preparation and authoring.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TSR03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_SUPERSESSION_INCOMPLETE"
+        },
+        {
+          "condition_for_success": "No test execution, source edit, dependency, configuration, fixture relocation, or extra path is included.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TSR04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_TEST_SCOPE_NOT_APPROVED"
+        },
+        {
+          "condition_for_success": "All test-scope Markdown and JSON representations agree.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TSR05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SPEC_REPRESENTATION_MISMATCH"
+        },
+        {
+          "condition_for_success": "Sentinel decision is exactly APPROVE.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TSR06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_TEST_SCOPE_NOT_APPROVED"
+        }
+      ],
+      "required_authorization_effect": "NONE",
+      "success_affected_paths": [
+        "tests/local_curl_per_side/test_canonical_i0a.py",
+        "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+        "tests/local_curl_per_side/test_i0a_public_contract.py",
+        "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_TEST_SCOPE_REVIEW_APPROVED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_TEST_SCOPE_ACCEPTED_NOT_AUTHORIZED"
+    },
+    "TEST_STATIC_REVIEW": {
+      "from_state": "C04_TEST_CANDIDATE_SUBMITTED",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_TEST_CANDIDATE_SUBMITTED for stage TEST_STATIC_REVIEW.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_STATIC_REVIEW_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "The test candidate identity and checksum closure are exact.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TST01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_TEST_CANDIDATE_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The changed-path set is exactly four mandatory test paths and all eight protected paths are unchanged.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TST02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SOURCE_TEST_BOUNDARY_VIOLATION"
+        },
+        {
+          "condition_for_success": "The tests statically cover all accepted obligations, negative cases, precedence, ownership, and false-unblock boundaries.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TST03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_TEST_AUTHORING_RESULT_UNAVAILABLE"
+        },
+        {
+          "condition_for_success": "No test was collected or executed and no project module was imported or executed.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TST04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_EXECUTION_ACTIVITY"
+        },
+        {
+          "condition_for_success": "No prohibited new file, fixture location, dependency, configuration, source edit, or baseline-support edit is present.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TST05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_NEW_FILE_OR_ADDITIONAL_PATH_REQUIRED"
+        },
+        {
+          "condition_for_success": "Sentinel decision is exactly APPROVE.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TST06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_TEST_REVIEW_NOT_APPROVED"
+        }
+      ],
+      "required_authorization_effect": "NONE",
+      "success_affected_paths": [
+        "tests/local_curl_per_side/test_canonical_i0a.py",
+        "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+        "tests/local_curl_per_side/test_i0a_public_contract.py",
+        "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_TEST_STATIC_REVIEW_APPROVED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_TEST_STATIC_ACCEPTED_NOT_MATERIALIZED"
+    },
+    "TEST_WORKSPACE_PREPARATION": {
+      "from_state": "C04_TEST_SCOPE_ACCEPTED_NOT_AUTHORIZED",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_TEST_SCOPE_ACCEPTED_NOT_AUTHORIZED for stage TEST_WORKSPACE_PREPARATION.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_WORKSPACE_PREPARATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "A distinct Gustavo test-workspace authorization and active Sentinel handoff exist.",
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "TWP01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_AUTHORIZATION_NOT_ACTIVE"
+        },
+        {
+          "condition_for_success": "Canonical HEAD and six installed source identities equal the Sentinel-verified source installation.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_TEST_WORKSPACE_SOURCE_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The accepted test scope and Candidate 04 identities are exact and readable.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_CONTROLLING_CONTRACT_UNAVAILABLE"
+        },
+        {
+          "condition_for_success": "The accepted capture supplies exactly six declared test starting paths with exact sizes and hashes.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_CAPTURE_BYTE_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The Windows staging root is outside every Git checkout/worktree and contains no Git metadata.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_WORKSPACE_ROOT_INVALID"
+        },
+        {
+          "condition_for_success": "The staging root has zero members before instantiation.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_WORKSPACE_NOT_EMPTY"
+        },
+        {
+          "condition_for_success": "Six exact installed source files and six exact captured test files are instantiated as regular files with exact paths, sizes, and hashes.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_WORKSPACE_MEMBER_IDENTITY_INVALID"
+        },
+        {
+          "condition_for_success": "No symlink, junction, reparse-point alias, alternate path alias, or hard-link substitution exists.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_WORKSPACE_ALIAS_OR_LINK_INVALID"
+        },
+        {
+          "condition_for_success": "The test workspace has exactly twelve members and no extra or missing path.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_WORKSPACE_EXTRA_OR_MISSING_PATH"
+        },
+        {
+          "condition_for_success": "Exactly four test paths are designated writable and the other eight paths are designated read-only.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_SOURCE_TEST_BOUNDARY_VIOLATION"
+        },
+        {
+          "condition_for_success": "No thirteenth member or repository file is required.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_NEW_FILE_OR_ADDITIONAL_PATH_REQUIRED"
+        },
+        {
+          "condition_for_success": "No failed-gate repair or trusted multi-round lineage is required.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP12",
+          "predicate_ordinal": 13,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_FAILED_GATE_REPAIR_ATTEMPT"
+        },
+        {
+          "condition_for_success": "No Git write occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP13",
+          "predicate_ordinal": 14,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_GIT_WRITE"
+        },
+        {
+          "condition_for_success": "No test collection/execution, import, compilation, project execution, data, network, or project artifact activity occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP14",
+          "predicate_ordinal": 15,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_EXECUTION_ACTIVITY"
+        }
+      ],
+      "required_authorization_effect": "TEST_WORKSPACE_PREPARATION_ONLY",
+      "success_affected_paths": [
+        "pm_research/local_curl_per_side/__init__.py",
+        "pm_research/local_curl_per_side/canonical.py",
+        "pm_research/local_curl_per_side/claim_hashes.py",
+        "pm_research/local_curl_per_side/finding4_registry.py",
+        "pm_research/local_curl_per_side/governing_package.py",
+        "pm_research/local_curl_per_side/prepared_evidence.py",
+        "tests/local_curl_per_side/test_canonical_i0a.py",
+        "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+        "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+        "tests/local_curl_per_side/test_governing_package_i0a.py",
+        "tests/local_curl_per_side/test_i0a_public_contract.py",
+        "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_TEST_WORKSPACE_PREPARED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_TEST_WORKSPACE_READY"
+    },
+    "WORKSPACE_PREPARATION": {
+      "from_state": "C04_SPEC_CANONICALLY_INSTALLED_NOT_AUTHORIZED",
+      "predicates": [
+        {
+          "condition_for_success": "Current workflow state is exactly C04_SPEC_CANONICALLY_INSTALLED_NOT_AUTHORIZED for stage WORKSPACE_PREPARATION.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WORKSPACE_PREPARATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_STAGE_STATE_MISMATCH"
+        },
+        {
+          "condition_for_success": "A distinct Gustavo workspace-preparation authorization and active Sentinel handoff exist for the exact canonically installed Candidate 04 identity.",
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "WP01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_AUTHORIZATION_NOT_ACTIVE"
+        },
+        {
+          "condition_for_success": "Canonical HEAD equals the exact HEAD selected by that active handoff.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_CANONICAL_HEAD_MISMATCH"
+        },
+        {
+          "condition_for_success": "All controlling Revision 10, remediation, capture, Candidate 04, and failed-gate records are exact and readable.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_CONTROLLING_CONTRACT_UNAVAILABLE"
+        },
+        {
+          "condition_for_success": "The accepted capture archive identity and acceptance/installation identities are exact.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_CAPTURE_PACKAGE_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The capture contains exactly the twelve declared relative paths exactly once.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_CAPTURE_PATH_SET_MISMATCH"
+        },
+        {
+          "condition_for_success": "All twelve capture sizes and SHA-256 values match the exact matrix.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_CAPTURE_BYTE_IDENTITY_MISMATCH"
+        },
+        {
+          "condition_for_success": "The Windows staging root is outside every Git checkout/worktree and contains no Git metadata.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_WORKSPACE_ROOT_INVALID"
+        },
+        {
+          "condition_for_success": "The staging root has zero members before instantiation.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_WORKSPACE_NOT_EMPTY"
+        },
+        {
+          "condition_for_success": "Each instantiated member is a regular file at its exact relative path with exact size and SHA-256.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_WORKSPACE_MEMBER_IDENTITY_INVALID"
+        },
+        {
+          "condition_for_success": "No member or ancestor is a symlink, junction, reparse-point alias, alternate path alias, or hard-link substitution.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_WORKSPACE_ALIAS_OR_LINK_INVALID"
+        },
+        {
+          "condition_for_success": "After instantiation, the workspace has exactly twelve members and no extra or missing path.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_WORKSPACE_EXTRA_OR_MISSING_PATH"
+        },
+        {
+          "condition_for_success": "All three mandatory source files and all nine read-only paths are available with exact identities.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP12",
+          "predicate_ordinal": 13,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_MANDATORY_FILE_UNAVAILABLE"
+        },
+        {
+          "condition_for_success": "No thirteenth workspace member or repository file is required.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP13",
+          "predicate_ordinal": 14,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_NEW_FILE_OR_ADDITIONAL_PATH_REQUIRED"
+        },
+        {
+          "condition_for_success": "No old failed-gate predicate, result, authorization ID, or inactive handoff is reused or represented as clear.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP14",
+          "predicate_ordinal": 15,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_FAILED_GATE_REPAIR_ATTEMPT"
+        },
+        {
+          "condition_for_success": "No decision depends on trusting incomplete multi-round lineage.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP15",
+          "predicate_ordinal": 16,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stop_code_on_false": "STOP_C04_TRUSTED_MULTI_ROUND_LINEAGE_REQUIRED"
+        },
+        {
+          "condition_for_success": "No Git write occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP16",
+          "predicate_ordinal": 17,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_GIT_WRITE"
+        },
+        {
+          "condition_for_success": "No test, import, compilation, project execution, data access, network activity, or project artifact generation occurs.",
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP17",
+          "predicate_ordinal": 18,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stop_code_on_false": "STOP_C04_UNAUTHORIZED_EXECUTION_ACTIVITY"
+        }
+      ],
+      "required_authorization_effect": "WORKSPACE_PREPARATION_ONLY",
+      "success_affected_paths": [
+        "pm_research/local_curl_per_side/__init__.py",
+        "pm_research/local_curl_per_side/canonical.py",
+        "pm_research/local_curl_per_side/claim_hashes.py",
+        "pm_research/local_curl_per_side/finding4_registry.py",
+        "pm_research/local_curl_per_side/governing_package.py",
+        "pm_research/local_curl_per_side/prepared_evidence.py",
+        "tests/local_curl_per_side/test_canonical_i0a.py",
+        "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+        "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+        "tests/local_curl_per_side/test_governing_package_i0a.py",
+        "tests/local_curl_per_side/test_i0a_public_contract.py",
+        "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+      ],
+      "success_authoring_started": false,
+      "success_code": "CLEAR_C04_SOURCE_WORKSPACE_PREPARED",
+      "success_decision_owner": "SENTINEL",
+      "success_execution_activity_observed": false,
+      "success_git_write_observed": false,
+      "to_state": "C04_SOURCE_WORKSPACE_READY"
+    }
+  },
+  "stop_code_stage_applicability": [
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_STATIC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_ATOMIC_SOURCE_RESULT_UNAVAILABLE"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "SA01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_AUTHORING"
+        },
+        {
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "TA01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_AUTHORING"
+        },
+        {
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "TWP01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        },
+        {
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "WP01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_AUTHORIZATION_NOT_ACTIVE"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_CANONICAL_HEAD_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_CAPTURE_BYTE_IDENTITY_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_CAPTURE_PACKAGE_IDENTITY_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_CAPTURE_PATH_SET_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_CONTROLLING_CONTRACT_UNAVAILABLE"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EA01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "EXECUTION_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EA02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "EXECUTION_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "EA03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "EXECUTION_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EA04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "EXECUTION_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EA05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "EXECUTION_AUTHORIZATION"
+        }
+      ],
+      "stop_code": "STOP_C04_EXECUTION_AUTHORIZATION_INCOMPLETE"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP12",
+          "predicate_ordinal": 13,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP14",
+          "predicate_ordinal": 15,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_FAILED_GATE_REPAIR_ATTEMPT"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "SLC01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "TLC01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        }
+      ],
+      "stop_code": "STOP_C04_LOCAL_COMMIT_AUTHORIZATION_NOT_ACTIVE"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_LOCAL_COMMIT_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_LOCAL_COMMIT_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_LOCAL_COMMIT_BASE_OR_BRANCH_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "MANUAL_CANONICAL_REPAIR_AND_NEW_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_LOCAL_COMMIT_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "MANUAL_CANONICAL_REPAIR_AND_NEW_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_LOCAL_COMMIT_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_LOCAL_COMMIT_IDENTITY_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_LOCAL_COMMIT_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_LOCAL_COMMIT_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_LOCAL_COMMIT_PARENT_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_LOCAL_COMMIT_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_LOCAL_COMMIT_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_LOCAL_COMMIT_PROHIBITED_OPERATION"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_LOCAL_COMMIT_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_LOCAL_COMMIT_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_LOCAL_COMMIT_PUSH_OCCURRED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_LOCAL_COMMIT_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPA01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_PUSH_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_LOCAL_COMMIT_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TPA01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_PUSH_AUTHORIZATION"
+        }
+      ],
+      "stop_code": "STOP_C04_LOCAL_COMMIT_REVIEW_NOT_APPROVED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "MANUAL_CANONICAL_REPAIR_AND_NEW_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_LOCAL_COMMIT_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "MANUAL_CANONICAL_REPAIR_AND_NEW_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_LOCAL_COMMIT_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_LOCAL_COMMIT_WORKTREE_NOT_CLEAN"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP12",
+          "predicate_ordinal": 13,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_MANDATORY_FILE_UNAVAILABLE"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        }
+      ],
+      "stop_code": "STOP_C04_MATERIALIZATION_BYTE_IDENTITY_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        }
+      ],
+      "stop_code": "STOP_C04_MATERIALIZATION_GIT_MODE_INVALID"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        }
+      ],
+      "stop_code": "STOP_C04_MATERIALIZATION_PATH_SET_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        }
+      ],
+      "stop_code": "STOP_C04_MATERIALIZATION_TARGET_PRESENT"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_STATIC_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TST05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_STATIC_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP13",
+          "predicate_ordinal": 14,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_NEW_FILE_OR_ADDITIONAL_PATH_REQUIRED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_FAST_FORWARD_PUSH"
+        }
+      ],
+      "stop_code": "STOP_C04_PUSH_AHEAD_BEHIND_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPA03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_PUSH_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TPA03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_PUSH_AUTHORIZATION"
+        }
+      ],
+      "stop_code": "STOP_C04_PUSH_AUTHORIZATION_IDENTITY_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "SFP01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "SPA02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_PUSH_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPA06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_PUSH_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "TFP01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "GUSTAVO",
+          "predicate_id": "TPA02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_PUSH_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TPA06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_PUSH_AUTHORIZATION"
+        }
+      ],
+      "stop_code": "STOP_C04_PUSH_AUTHORIZATION_NOT_ACTIVE"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_FAST_FORWARD_PUSH"
+        }
+      ],
+      "stop_code": "STOP_C04_PUSH_BRANCH_REFSPEC_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_LOCAL_COMMIT_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_LOCAL_COMMIT_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_PUSH_BYTE_OR_MODE_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLR04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_LOCAL_COMMIT_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLR04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_LOCAL_COMMIT_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_PUSH_CHANGED_PATHS_OR_STATUSES_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_FAST_FORWARD_PUSH"
+        }
+      ],
+      "stop_code": "STOP_C04_PUSH_COMMIT_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_FAST_FORWARD_PUSH"
+        }
+      ],
+      "stop_code": "STOP_C04_PUSH_FAILED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPA04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_PUSH_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPA05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_PUSH_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SRV05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_REMOTE_INSTALLATION_VERIFICATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TPA04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_PUSH_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TPA05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_PUSH_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TRV05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_REMOTE_INSTALLATION_VERIFICATION"
+        }
+      ],
+      "stop_code": "STOP_C04_PUSH_FORCE_OR_REPAIR_ATTEMPT"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_FAST_FORWARD_PUSH"
+        }
+      ],
+      "stop_code": "STOP_C04_PUSH_REMOTE_ADVANCED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_PUSH_AUTHORIZATION_REQUIRED",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_FAST_FORWARD_PUSH"
+        }
+      ],
+      "stop_code": "STOP_C04_PUSH_WORKTREE_NOT_CLEAN"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO_MANUAL_INSTALLER",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        }
+      ],
+      "stop_code": "STOP_C04_READ_ONLY_PATH_MUTATED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_RECORD_CROSS_FIELD_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_RECORD_SCHEMA_INVALID"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SRV01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_REMOTE_INSTALLATION_VERIFICATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SRV02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_REMOTE_INSTALLATION_VERIFICATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SRV03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_REMOTE_INSTALLATION_VERIFICATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SRV04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_REMOTE_INSTALLATION_VERIFICATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TRV01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_REMOTE_INSTALLATION_VERIFICATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TRV02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_REMOTE_INSTALLATION_VERIFICATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TRV03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_REMOTE_INSTALLATION_VERIFICATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TRV04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_REMOTE_INSTALLATION_VERIFICATION"
+        }
+      ],
+      "stop_code": "STOP_C04_REMOTE_INSTALLATION_IDENTITY_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SRV06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_REMOTE_INSTALLATION_VERIFICATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TRV06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_REMOTE_INSTALLATION_VERIFICATION"
+        }
+      ],
+      "stop_code": "STOP_C04_REMOTE_INSTALLATION_NOT_VERIFIED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "CLAUDE",
+          "stage": "SOURCE_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_STATIC_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_STATIC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_SOURCE_CANDIDATE_IDENTITY_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_STATIC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_SOURCE_REVIEW_NOT_APPROVED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_STATIC_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TST02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_STATIC_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_SOURCE_TEST_BOUNDARY_VIOLATION"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_CANONICAL_BASE_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SCI05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_CANONICAL_INSTALLATION_CONFIRMATION"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_CANONICAL_INSTALLATION_LIVE_PATH_CHANGE"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SCI01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_CANONICAL_INSTALLATION_CONFIRMATION"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_CANONICAL_INSTALLATION_NOT_APPROVED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SCI06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_CANONICAL_INSTALLATION_CONFIRMATION"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_CANONICAL_INSTALLATION_NOT_VERIFIED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SCI03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_CANONICAL_INSTALLATION_CONFIRMATION"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_CANONICAL_INSTALLATION_RECORD_MISSING"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SCI02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_CANONICAL_INSTALLATION_CONFIRMATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_DELIVERY_MECHANICS_NOT_EXTERNAL"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_PACKAGE_IDENTITY_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_PRESERVED_CONTRACT_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TSR05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_SCOPE_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_REPRESENTATION_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_REVIEW_NOT_APPROVED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_SCOPE_DRIFT"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SCI04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_CANONICAL_INSTALLATION_CONFIRMATION"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_SELF_AUTHORIZED_DELIVERY_ATTEMPT"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TSR03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_SCOPE_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_SUPERSESSION_INCOMPLETE"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SR07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_SPEC_WORKFLOW_DOMAIN_NOT_TOTAL"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EXECUTION_AUTHORIZATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "EXECUTION_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_AUTHORING_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_FAST_FORWARD_PUSH_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_LOCAL_COMMIT_CREATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_LOCAL_COMMIT_REVIEW_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_LOCAL_COMMIT_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_PUSH_AUTHORIZATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_PUSH_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_REMOTE_INSTALLATION_VERIFICATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_REMOTE_INSTALLATION_VERIFICATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SOURCE_STATIC_REVIEW_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_STATIC_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPEC_CANONICAL_INSTALLATION_CONFIRMATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_CANONICAL_INSTALLATION_CONFIRMATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SPEC_REVIEW_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SPEC_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_AUTHORING_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_FAST_FORWARD_PUSH_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_LOCAL_COMMIT_CREATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_LOCAL_COMMIT_REVIEW_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_LOCAL_COMMIT_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_PUSH_AUTHORIZATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_PUSH_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_REMOTE_INSTALLATION_VERIFICATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_REMOTE_INSTALLATION_VERIFICATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_SCOPE_REVIEW_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_SCOPE_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_STATIC_REVIEW_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_STATIC_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TEST_WORKSPACE_PREPARATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WORKSPACE_PREPARATION_STATE",
+          "predicate_ordinal": 1,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_STAGE_STATE_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TST03",
+          "predicate_ordinal": 4,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_STATIC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_TEST_AUTHORING_RESULT_UNAVAILABLE"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "CLAUDE",
+          "stage": "TEST_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TST01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_STATIC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_TEST_CANDIDATE_IDENTITY_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TST06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_STATIC_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_TEST_REVIEW_NOT_APPROVED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TSR01",
+          "predicate_ordinal": 2,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_SCOPE_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TSR02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_SCOPE_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TSR04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_SCOPE_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TSR06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_SCOPE_REVIEW"
+        }
+      ],
+      "stop_code": "STOP_C04_TEST_SCOPE_NOT_APPROVED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_TEST_WORKSPACE_SOURCE_IDENTITY_MISMATCH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SSR06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_STATIC_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP15",
+          "predicate_ordinal": 16,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_TRUSTED_MULTI_ROUND_LINEAGE_REQUIRED"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EA06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "EXECUTION_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC13",
+          "predicate_ordinal": 14,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC13",
+          "predicate_ordinal": 14,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TST04",
+          "predicate_ordinal": 5,
+          "retry_eligibility": "NEW_SENTINEL_DECISION_REQUIRED",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_STATIC_REVIEW"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP14",
+          "predicate_ordinal": 15,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP17",
+          "predicate_ordinal": 18,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_UNAUTHORIZED_EXECUTION_ACTIVITY"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "EA07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "EXECUTION_AUTHORIZATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SFP12",
+          "predicate_ordinal": 13,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SLC12",
+          "predicate_ordinal": 13,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "SOURCE_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TFP12",
+          "predicate_ordinal": 13,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_FAST_FORWARD_PUSH"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TLC12",
+          "predicate_ordinal": 13,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_LOCAL_COMMIT_CREATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP13",
+          "predicate_ordinal": 14,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP16",
+          "predicate_ordinal": 17,
+          "retry_eligibility": "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+          "retry_owner": "GUSTAVO",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_UNAUTHORIZED_GIT_WRITE"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP10",
+          "predicate_ordinal": 11,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_WORKSPACE_ALIAS_OR_LINK_INVALID"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP11",
+          "predicate_ordinal": 12,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_WORKSPACE_EXTRA_OR_MISSING_PATH"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "SA02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "SOURCE_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TA02",
+          "predicate_ordinal": 3,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_AUTHORING"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP09",
+          "predicate_ordinal": 10,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_WORKSPACE_MEMBER_IDENTITY_INVALID"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP06",
+          "predicate_ordinal": 7,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP08",
+          "predicate_ordinal": 9,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_WORKSPACE_NOT_EMPTY"
+    },
+    {
+      "applications": [
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "TWP05",
+          "predicate_ordinal": 6,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "TEST_WORKSPACE_PREPARATION"
+        },
+        {
+          "decision_owner": "SENTINEL",
+          "predicate_id": "WP07",
+          "predicate_ordinal": 8,
+          "retry_eligibility": "SAME_AUTHORIZATION_FRESH_GATE",
+          "retry_owner": "SENTINEL",
+          "stage": "WORKSPACE_PREPARATION"
+        }
+      ],
+      "stop_code": "STOP_C04_WORKSPACE_ROOT_INVALID"
+    }
+  ],
+  "terminal_boundary": {
+    "meaning": "Candidate 04 ends at recording that a distinct execution authorization exists; Candidate 04 does not define or authorize execution.",
+    "state": "C04_EXECUTION_AUTHORIZED_OUTSIDE_C04"
+  }
+}

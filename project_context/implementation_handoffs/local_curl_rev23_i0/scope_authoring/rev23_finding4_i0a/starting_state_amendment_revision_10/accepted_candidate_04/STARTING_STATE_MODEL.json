@@ -1,0 +1,209 @@
+{
+  "accepted_capture": {
+    "archive_sha256": "942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9",
+    "baseline_matching": 11,
+    "captured_detached_head": "1e1afb29791f42c286b45d3b576f74926add8dce",
+    "checkpoint_modified": 1,
+    "decision": "ACCEPT FINDING \u2014 CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_ACCEPTED",
+    "installation_commit": "b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1",
+    "path_count": 12
+  },
+  "accepted_remediation_scope": "REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01",
+  "additional_properties": false,
+  "amendment_id": "REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04",
+  "authorization_effect": "NONE",
+  "candidate03_status": "BLOCKED_NOT_ACCEPTED_NON_CONTROLLING",
+  "canonical_base": "bc957fe05096b790052d0515773b9e0a2dc88a60",
+  "canonical_repository": "rigolugo/pm_research",
+  "checkpoint_start": {
+    "acceptance": "NOT_ACCEPTED",
+    "authorization_effect": "NONE",
+    "historical_authorized_start_sha256": "8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07",
+    "historical_start_selected": false,
+    "lineage_use": "OPAQUE_STARTING_BYTES_ONLY",
+    "path": "pm_research/local_curl_per_side/prepared_evidence.py",
+    "sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da",
+    "size_bytes": 112338
+  },
+  "controlling_specification": "REV23_FINDING4_I0A_SCOPE_REVISION_10",
+  "current_authorizations": {
+    "candidate04_documentation_commit": false,
+    "candidate04_documentation_merge": false,
+    "candidate04_documentation_push": false,
+    "data_access": false,
+    "execution": false,
+    "git_write": false,
+    "network_access": false,
+    "source_authoring": false,
+    "source_local_commit_creation": false,
+    "source_local_commit_review": false,
+    "source_push": false,
+    "source_push_authorization": false,
+    "source_remote_verification": false,
+    "test_authoring": false,
+    "test_local_commit_creation": false,
+    "test_local_commit_review": false,
+    "test_push": false,
+    "test_push_authorization": false,
+    "test_remote_verification": false,
+    "test_scope": false,
+    "test_workspace_preparation": false,
+    "workspace_preparation": false
+  },
+  "documentation_installation": {
+    "candidate04_authorizes_commit": false,
+    "candidate04_authorizes_merge": false,
+    "candidate04_authorizes_push": false,
+    "candidate04_authorizes_ref_update": false,
+    "candidate04_defines_delivery_commands": false,
+    "mechanics_authority": "project_context/CHATGPT_CANONICAL_UPDATE_WORKFLOW.md"
+  },
+  "failed_gate": {
+    "authorization_id": "REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01",
+    "installation_commit": "71061065d91fc391e934d7e79a29eefc898cfe82",
+    "reactivated": false,
+    "repaired": false,
+    "result": "STOP_REV10_REMEDIATION_SOURCE_GATE_FAILED",
+    "state": "FAILED_INACTIVE"
+  },
+  "isolated_workspace": {
+    "clear_member_count": 12,
+    "git_metadata_permitted": false,
+    "git_mode_applicable": false,
+    "initial_member_count": 0,
+    "link_and_alias_policy": "NO_SYMLINK_JUNCTION_REPARSE_POINT_ALTERNATE_PATH_ALIAS_OR_HARD_LINK_SUBSTITUTION",
+    "location": "OUTSIDE_CANONICAL_AND_ALL_OTHER_GIT_WORKTREES",
+    "member_identity": "EXACT_RELATIVE_PATH_SIZE_SHA256_REGULAR_FILE",
+    "platform_context": "WINDOWS",
+    "repository_new_files_during_authoring": [],
+    "repository_new_files_during_preparation": [],
+    "source_read_only_paths": [
+      "pm_research/local_curl_per_side/__init__.py",
+      "pm_research/local_curl_per_side/claim_hashes.py",
+      "pm_research/local_curl_per_side/governing_package.py",
+      "tests/local_curl_per_side/test_canonical_i0a.py",
+      "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+      "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+      "tests/local_curl_per_side/test_governing_package_i0a.py",
+      "tests/local_curl_per_side/test_i0a_public_contract.py",
+      "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+    ],
+    "source_writable_paths": [
+      "pm_research/local_curl_per_side/canonical.py",
+      "pm_research/local_curl_per_side/finding4_registry.py",
+      "pm_research/local_curl_per_side/prepared_evidence.py"
+    ],
+    "test_read_only_paths": [
+      "pm_research/local_curl_per_side/__init__.py",
+      "pm_research/local_curl_per_side/canonical.py",
+      "pm_research/local_curl_per_side/claim_hashes.py",
+      "pm_research/local_curl_per_side/finding4_registry.py",
+      "pm_research/local_curl_per_side/governing_package.py",
+      "pm_research/local_curl_per_side/prepared_evidence.py",
+      "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+      "tests/local_curl_per_side/test_governing_package_i0a.py"
+    ],
+    "test_writable_paths": [
+      "tests/local_curl_per_side/test_canonical_i0a.py",
+      "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+      "tests/local_curl_per_side/test_i0a_public_contract.py",
+      "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+    ]
+  },
+  "later_materialization": {
+    "source": {
+      "accepted_final_creation": [
+        "pm_research/local_curl_per_side/canonical.py",
+        "pm_research/local_curl_per_side/finding4_registry.py",
+        "pm_research/local_curl_per_side/prepared_evidence.py"
+      ],
+      "baseline_support_creation": [
+        "pm_research/local_curl_per_side/__init__.py",
+        "pm_research/local_curl_per_side/claim_hashes.py",
+        "pm_research/local_curl_per_side/governing_package.py"
+      ],
+      "create_paths": [
+        "pm_research/local_curl_per_side/__init__.py",
+        "pm_research/local_curl_per_side/canonical.py",
+        "pm_research/local_curl_per_side/claim_hashes.py",
+        "pm_research/local_curl_per_side/finding4_registry.py",
+        "pm_research/local_curl_per_side/governing_package.py",
+        "pm_research/local_curl_per_side/prepared_evidence.py"
+      ],
+      "delivery_stages": [
+        "SOURCE_LOCAL_COMMIT_CREATION",
+        "SOURCE_LOCAL_COMMIT_REVIEW",
+        "SOURCE_PUSH_AUTHORIZATION",
+        "SOURCE_FAST_FORWARD_PUSH",
+        "SOURCE_REMOTE_INSTALLATION_VERIFICATION"
+      ],
+      "editing_baseline_support_permitted": false,
+      "git_mode_verification": "100644",
+      "local_commit_authorization_includes_push": false,
+      "local_commit_review_authorizes_push": false,
+      "push_behind_count_required": 0,
+      "push_commit_count": 1,
+      "push_force_permitted": false,
+      "push_requires_separate_gustavo_authorization": true,
+      "remote_advance_behavior": "HALT_WITHOUT_PUSH_OR_REPAIR",
+      "separate_authorization_required": true,
+      "target_start_state": "ABSENT"
+    },
+    "test": {
+      "accepted_final_creation": [
+        "tests/local_curl_per_side/test_canonical_i0a.py",
+        "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+        "tests/local_curl_per_side/test_i0a_public_contract.py",
+        "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+      ],
+      "baseline_support_creation": [
+        "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+        "tests/local_curl_per_side/test_governing_package_i0a.py"
+      ],
+      "create_paths": [
+        "tests/local_curl_per_side/test_canonical_i0a.py",
+        "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+        "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+        "tests/local_curl_per_side/test_governing_package_i0a.py",
+        "tests/local_curl_per_side/test_i0a_public_contract.py",
+        "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+      ],
+      "delivery_stages": [
+        "TEST_LOCAL_COMMIT_CREATION",
+        "TEST_LOCAL_COMMIT_REVIEW",
+        "TEST_PUSH_AUTHORIZATION",
+        "TEST_FAST_FORWARD_PUSH",
+        "TEST_REMOTE_INSTALLATION_VERIFICATION"
+      ],
+      "editing_baseline_support_permitted": false,
+      "git_mode_verification": "100644",
+      "local_commit_authorization_includes_push": false,
+      "local_commit_review_authorizes_push": false,
+      "push_behind_count_required": 0,
+      "push_commit_count": 1,
+      "push_force_permitted": false,
+      "push_requires_separate_gustavo_authorization": true,
+      "remote_advance_behavior": "HALT_WITHOUT_PUSH_OR_REPAIR",
+      "separate_authorization_required": true,
+      "target_start_state": "ABSENT"
+    }
+  },
+  "model_id": "ISOLATED_CAPTURED_PAYLOAD_WORKSPACE_MODEL_V2",
+  "provenance": {
+    "closed": [
+      "CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED"
+    ],
+    "open": [
+      "MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE"
+    ]
+  },
+  "schema_id": "rev23_finding4_i0a_revision10_candidate04_starting_state_model.v1",
+  "status": "AMENDMENT_CANDIDATE_SPEC_ONLY_NOT_ACCEPTED",
+  "workflow_record_contract": {
+    "cross_field_rules": "WORKFLOW_RECORD_CROSS_FIELD_RULES.md",
+    "halt_schema": "WORKFLOW_HALT_RECORD.schema.json",
+    "invalid_record_authorization_effect": "NONE",
+    "invalid_record_changes_state": false,
+    "success_schema": "WORKFLOW_SUCCESS_RECORD.schema.json"
+  }
+}

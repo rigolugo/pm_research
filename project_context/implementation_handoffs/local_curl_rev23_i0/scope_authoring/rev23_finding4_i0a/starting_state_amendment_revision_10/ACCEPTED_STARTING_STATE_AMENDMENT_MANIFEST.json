@@ -1,0 +1,163 @@
+{
+  "accepted_candidate_id": "REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04",
+  "accepted_candidate_member_count": 19,
+  "accepted_candidate_members": [
+    {
+      "path": "ACCEPTED_SCOPE_SUPERSESSION_AND_MATERIALIZATION.md",
+      "sha256": "4b61d8ad076c1d616016744a6d1b68abb3e3885e206fd642c7ba2f8ff744823a",
+      "size_bytes": 9669
+    },
+    {
+      "path": "CANDIDATE_03_BLOCK_CORRECTION_LEDGER.md",
+      "sha256": "c8a06ec78a8a518da9e2ab727313819380708bce627794077cfc94872c41215f",
+      "size_bytes": 2571
+    },
+    {
+      "path": "DELIVERY_COMMIT_PUSH_REMOTE_BOUNDARIES.md",
+      "sha256": "ed32bb61f0ecbb79dd7246d00cb97cc294f683bdae82268eb4c2535cb73de085",
+      "size_bytes": 5566
+    },
+    {
+      "path": "EXACT_PATH_AND_BYTE_MATRIX.json",
+      "sha256": "dc95280833907f06fc0b9bd4ee369f3b95771f08a891c044cb5797fc8b70af44",
+      "size_bytes": 15747
+    },
+    {
+      "path": "FAILED_GATE_NON_REPAIR_PROOF.md",
+      "sha256": "2cdbf2a95c48018958b76a8240e313d18c415129d19f8c22568d3c5168213b33",
+      "size_bytes": 2828
+    },
+    {
+      "path": "PACKAGE_MANIFEST.json",
+      "sha256": "6661d223f44941ea2bdc33a64d493871179462921161aa825883cba46191c4ba",
+      "size_bytes": 9671
+    },
+    {
+      "path": "README_FIRST.md",
+      "sha256": "03ae5d59dacb6c8077f57f8223b85ab918fce7244d5440d39e75bc54bd2a8933",
+      "size_bytes": 3867
+    },
+    {
+      "path": "REPRESENTATION_CONSISTENCY_REPORT.md",
+      "sha256": "4d518a2f7bc0fc4ad6539416e556d0bba149dbe950ec4d5cfa764ebab6bbcecf",
+      "size_bytes": 4218
+    },
+    {
+      "path": "REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04.md",
+      "sha256": "fc19af42ac4b442e889f4fb9412e5dbd580121ac911b9b51b49cfc090564d1bb",
+      "size_bytes": 15728
+    },
+    {
+      "path": "SENTINEL_REVIEW_HANDOFF.md",
+      "sha256": "2d8506b9d2d722e473b9af42a82077717bf2009d320d339648b953a650c84b03",
+      "size_bytes": 4274
+    },
+    {
+      "path": "SHA256SUMS.txt",
+      "sha256": "e87ff2b6dedf35cb8f5f6df88ad8c9d1a9eb7300196da3b5252d352c88c46045",
+      "size_bytes": 1883
+    },
+    {
+      "path": "STARTING_STATE_MODEL.json",
+      "sha256": "929ba0576554958dc645570cd65d3eb1f3ba7e6ced24da8618952357825754c4",
+      "size_bytes": 9039
+    },
+    {
+      "path": "SUPERSESSION_CONTRACT.json",
+      "sha256": "ecb1d6989854de091fb2368f6dc730f61f4b406b26e6ae4270ae5ffc78c3e114",
+      "size_bytes": 8199
+    },
+    {
+      "path": "WINDOWS_WORKSPACE_IDENTITY.md",
+      "sha256": "4e359a0f869628c963ae4e00fc9b3cfb1d684d6ea1c71af8118d0d5a87be0a24",
+      "size_bytes": 2992
+    },
+    {
+      "path": "WORKFLOW_DOMAIN.json",
+      "sha256": "ea08b160f77670807b4190df276e57be9917261be434370cb1d9fd1077dead8c",
+      "size_bytes": 188444
+    },
+    {
+      "path": "WORKFLOW_DOMAIN.md",
+      "sha256": "a0b557cec570d3744157a14e0b40fe355ae810d34546259810339150c21c745d",
+      "size_bytes": 99849
+    },
+    {
+      "path": "WORKFLOW_HALT_RECORD.schema.json",
+      "sha256": "6b73d32258c90173a3164e107d1b91a09ac30faa12b81327dadf4a1b5855a2f2",
+      "size_bytes": 17003
+    },
+    {
+      "path": "WORKFLOW_RECORD_CROSS_FIELD_RULES.md",
+      "sha256": "7df2c220f53cdc95fd8f0efd6a5b7aa55a25ad1cfd67f8b7c85e999e7ec69a6d",
+      "size_bytes": 6168
+    },
+    {
+      "path": "WORKFLOW_SUCCESS_RECORD.schema.json",
+      "sha256": "688b32a1635d9562c28a618b5f4b8d1fd3492469d0048c95d93ac0e35b58cb88",
+      "size_bytes": 15087
+    }
+  ],
+  "accepted_candidate_number": 4,
+  "accepted_candidate_zip_sha256": "9b6e05ff09e916b02b990556ee1ef6a37e3bc044a83c317ecfcc60fa65a63193",
+  "accepted_candidate_zip_size_bytes": 74507,
+  "accepted_capture": {
+    "archive_sha256": "942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9",
+    "baseline_matching_count": 11,
+    "checkpoint_modified_count": 1,
+    "installation_commit": "b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1",
+    "path_count": 12
+  },
+  "accepted_remediation_scope": "REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01",
+  "active_claude_implementation_prompt": false,
+  "authorization_effect": "NONE",
+  "baseline_support_edit_prohibition_count": 5,
+  "candidate03_status": "BLOCKED_NOT_ACCEPTED_NON_CONTROLLING",
+  "canonical_installation_base": "bc957fe05096b790052d0515773b9e0a2dc88a60",
+  "canonical_repository": "rigolugo/pm_research",
+  "checkpoint_acceptance": "NOT_ACCEPTED",
+  "checkpoint_authorization_effect": "NONE",
+  "controlling_specification": "REV23_FINDING4_I0A_SCOPE_REVISION_10",
+  "delivery_separation": [
+    "LOCAL_COMMIT_CREATION",
+    "SENTINEL_LOCAL_COMMIT_REVIEW",
+    "GUSTAVO_EXACT_PUSH_AUTHORIZATION",
+    "NON_FORCE_FAST_FORWARD_PUSH",
+    "SENTINEL_REMOTE_INSTALLATION_VERIFICATION"
+  ],
+  "failed_authorization_activation": false,
+  "failed_source_gate": "STOP_REV10_REMEDIATION_SOURCE_GATE_FAILED",
+  "git_writes_by_claude_authorized": false,
+  "implementation_authorization": false,
+  "installation_commit": null,
+  "installation_state": "INSTALLED_PENDING_SENTINEL_VERIFICATION",
+  "installation_verification": "PENDING_SENTINEL",
+  "network_or_data_execution_authorized": false,
+  "open_provenance_gaps": [
+    "MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE"
+  ],
+  "package_id": "REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_ACCEPTED_01",
+  "schema_id": "pm_research_accepted_starting_state_amendment.v1",
+  "selected_model": "ISOLATED_CAPTURED_PAYLOAD_WORKSPACE_MODEL_V2",
+  "sentinel_decision": "APPROVE — REV10_STARTING_STATE_AMENDMENT_CANDIDATE_04_ACCEPTED",
+  "source_authoring": {
+    "authorized": false,
+    "protected_path_count": 9,
+    "writable_path_count": 3
+  },
+  "source_authoring_authorized": false,
+  "test_authoring": {
+    "authorized": false,
+    "protected_path_count": 8,
+    "writable_path_count": 4
+  },
+  "test_execution_authorized": false,
+  "test_source_authoring_authorized": false,
+  "workflow_closure": {
+    "ordered_predicate_application_count": 205,
+    "stage_count": 20,
+    "state_count": 21,
+    "stop_code_count": 70,
+    "success_code_count": 20
+  }
+}

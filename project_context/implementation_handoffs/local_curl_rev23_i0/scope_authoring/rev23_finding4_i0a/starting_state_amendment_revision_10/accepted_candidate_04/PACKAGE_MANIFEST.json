@@ -1,0 +1,252 @@
+{
+  "accepted_capture": {
+    "archive_sha256": "942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9",
+    "captured_detached_head": "1e1afb29791f42c286b45d3b576f74926add8dce",
+    "installation_commit": "b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1",
+    "path_count": 12
+  },
+  "accepted_remediation_scope": "REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01",
+  "active_claude_implementation_prompt": false,
+  "additional_properties": false,
+  "authorization_effect": "NONE",
+  "candidate03_status": "BLOCKED_NOT_ACCEPTED_NON_CONTROLLING",
+  "candidate_number": 4,
+  "canonical_base": "bc957fe05096b790052d0515773b9e0a2dc88a60",
+  "canonical_repository": "rigolugo/pm_research",
+  "checkpoint": {
+    "acceptance": "NOT_ACCEPTED",
+    "authorization_effect": "NONE",
+    "opaque_start_sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da",
+    "size_bytes": 112338
+  },
+  "checksum_convention": {
+    "PACKAGE_MANIFEST.json": "Its final SHA-256 is recorded in SHA256SUMS.txt; the manifest does not self-hash.",
+    "SHA256SUMS.txt": "Covers every other ZIP member exactly once and omits itself.",
+    "detached_zip_sidecar": "Covers complete deterministic ZIP bytes and ends with one LF."
+  },
+  "complete_member_list": [
+    "README_FIRST.md",
+    "REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04.md",
+    "CANDIDATE_03_BLOCK_CORRECTION_LEDGER.md",
+    "ACCEPTED_SCOPE_SUPERSESSION_AND_MATERIALIZATION.md",
+    "SUPERSESSION_CONTRACT.json",
+    "STARTING_STATE_MODEL.json",
+    "EXACT_PATH_AND_BYTE_MATRIX.json",
+    "WINDOWS_WORKSPACE_IDENTITY.md",
+    "WORKFLOW_HALT_RECORD.schema.json",
+    "WORKFLOW_SUCCESS_RECORD.schema.json",
+    "WORKFLOW_RECORD_CROSS_FIELD_RULES.md",
+    "DELIVERY_COMMIT_PUSH_REMOTE_BOUNDARIES.md",
+    "WORKFLOW_DOMAIN.md",
+    "WORKFLOW_DOMAIN.json",
+    "FAILED_GATE_NON_REPAIR_PROOF.md",
+    "REPRESENTATION_CONSISTENCY_REPORT.md",
+    "SENTINEL_REVIEW_HANDOFF.md",
+    "PACKAGE_MANIFEST.json",
+    "SHA256SUMS.txt"
+  ],
+  "controlling_specification": "REV23_FINDING4_I0A_SCOPE_REVISION_10",
+  "current_authorizations": {
+    "candidate04_documentation_commit": false,
+    "candidate04_documentation_merge": false,
+    "candidate04_documentation_push": false,
+    "data_access": false,
+    "execution": false,
+    "git_write": false,
+    "network_access": false,
+    "source_authoring": false,
+    "source_local_commit_creation": false,
+    "source_local_commit_review": false,
+    "source_push": false,
+    "source_push_authorization": false,
+    "source_remote_verification": false,
+    "test_authoring": false,
+    "test_local_commit_creation": false,
+    "test_local_commit_review": false,
+    "test_push": false,
+    "test_push_authorization": false,
+    "test_remote_verification": false,
+    "test_scope": false,
+    "test_workspace_preparation": false,
+    "workspace_preparation": false
+  },
+  "data_access_authorized": false,
+  "documentation_installation_boundary": {
+    "candidate04_authorizes_commit": false,
+    "candidate04_authorizes_merge": false,
+    "candidate04_authorizes_push": false,
+    "candidate04_authorizes_ref_update": false,
+    "candidate04_defines_delivery_commands": false,
+    "mechanics_authority": "project_context/CHATGPT_CANONICAL_UPDATE_WORKFLOW.md"
+  },
+  "failed_gate": {
+    "authorization_id": "REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01",
+    "installation_commit": "71061065d91fc391e934d7e79a29eefc898cfe82",
+    "reactivated": false,
+    "repaired": false,
+    "result": "STOP_REV10_REMEDIATION_SOURCE_GATE_FAILED",
+    "state": "FAILED_INACTIVE"
+  },
+  "git_write_authorized": false,
+  "implementation_authorized": false,
+  "member_count": 19,
+  "members_excluding_manifest_and_checksum_inventory": [
+    {
+      "content_class": "MARKDOWN",
+      "path": "README_FIRST.md",
+      "sha256": "03ae5d59dacb6c8077f57f8223b85ab918fce7244d5440d39e75bc54bd2a8933",
+      "size_bytes": 3867
+    },
+    {
+      "content_class": "MARKDOWN",
+      "path": "REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04.md",
+      "sha256": "fc19af42ac4b442e889f4fb9412e5dbd580121ac911b9b51b49cfc090564d1bb",
+      "size_bytes": 15728
+    },
+    {
+      "content_class": "MARKDOWN",
+      "path": "CANDIDATE_03_BLOCK_CORRECTION_LEDGER.md",
+      "sha256": "c8a06ec78a8a518da9e2ab727313819380708bce627794077cfc94872c41215f",
+      "size_bytes": 2571
+    },
+    {
+      "content_class": "MARKDOWN",
+      "path": "ACCEPTED_SCOPE_SUPERSESSION_AND_MATERIALIZATION.md",
+      "sha256": "4b61d8ad076c1d616016744a6d1b68abb3e3885e206fd642c7ba2f8ff744823a",
+      "size_bytes": 9669
+    },
+    {
+      "content_class": "JSON",
+      "path": "SUPERSESSION_CONTRACT.json",
+      "sha256": "ecb1d6989854de091fb2368f6dc730f61f4b406b26e6ae4270ae5ffc78c3e114",
+      "size_bytes": 8199
+    },
+    {
+      "content_class": "JSON",
+      "path": "STARTING_STATE_MODEL.json",
+      "sha256": "929ba0576554958dc645570cd65d3eb1f3ba7e6ced24da8618952357825754c4",
+      "size_bytes": 9039
+    },
+    {
+      "content_class": "JSON",
+      "path": "EXACT_PATH_AND_BYTE_MATRIX.json",
+      "sha256": "dc95280833907f06fc0b9bd4ee369f3b95771f08a891c044cb5797fc8b70af44",
+      "size_bytes": 15747
+    },
+    {
+      "content_class": "MARKDOWN",
+      "path": "WINDOWS_WORKSPACE_IDENTITY.md",
+      "sha256": "4e359a0f869628c963ae4e00fc9b3cfb1d684d6ea1c71af8118d0d5a87be0a24",
+      "size_bytes": 2992
+    },
+    {
+      "content_class": "JSON_SCHEMA",
+      "path": "WORKFLOW_HALT_RECORD.schema.json",
+      "sha256": "6b73d32258c90173a3164e107d1b91a09ac30faa12b81327dadf4a1b5855a2f2",
+      "size_bytes": 17003
+    },
+    {
+      "content_class": "JSON_SCHEMA",
+      "path": "WORKFLOW_SUCCESS_RECORD.schema.json",
+      "sha256": "688b32a1635d9562c28a618b5f4b8d1fd3492469d0048c95d93ac0e35b58cb88",
+      "size_bytes": 15087
+    },
+    {
+      "content_class": "MARKDOWN",
+      "path": "WORKFLOW_RECORD_CROSS_FIELD_RULES.md",
+      "sha256": "7df2c220f53cdc95fd8f0efd6a5b7aa55a25ad1cfd67f8b7c85e999e7ec69a6d",
+      "size_bytes": 6168
+    },
+    {
+      "content_class": "MARKDOWN",
+      "path": "DELIVERY_COMMIT_PUSH_REMOTE_BOUNDARIES.md",
+      "sha256": "ed32bb61f0ecbb79dd7246d00cb97cc294f683bdae82268eb4c2535cb73de085",
+      "size_bytes": 5566
+    },
+    {
+      "content_class": "MARKDOWN",
+      "path": "WORKFLOW_DOMAIN.md",
+      "sha256": "a0b557cec570d3744157a14e0b40fe355ae810d34546259810339150c21c745d",
+      "size_bytes": 99849
+    },
+    {
+      "content_class": "JSON",
+      "path": "WORKFLOW_DOMAIN.json",
+      "sha256": "ea08b160f77670807b4190df276e57be9917261be434370cb1d9fd1077dead8c",
+      "size_bytes": 188444
+    },
+    {
+      "content_class": "MARKDOWN",
+      "path": "FAILED_GATE_NON_REPAIR_PROOF.md",
+      "sha256": "2cdbf2a95c48018958b76a8240e313d18c415129d19f8c22568d3c5168213b33",
+      "size_bytes": 2828
+    },
+    {
+      "content_class": "MARKDOWN",
+      "path": "REPRESENTATION_CONSISTENCY_REPORT.md",
+      "sha256": "4d518a2f7bc0fc4ad6539416e556d0bba149dbe950ec4d5cfa764ebab6bbcecf",
+      "size_bytes": 4218
+    },
+    {
+      "content_class": "MARKDOWN",
+      "path": "SENTINEL_REVIEW_HANDOFF.md",
+      "sha256": "2d8506b9d2d722e473b9af42a82077717bf2009d320d339648b953a650c84b03",
+      "size_bytes": 4274
+    }
+  ],
+  "network_access_authorized": false,
+  "open_provenance_gaps": [
+    "MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE"
+  ],
+  "package_id": "REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04",
+  "preserved_architecture_counts": {
+    "baseline_matching_paths": 11,
+    "baseline_support_paths": 5,
+    "checkpoint_modified_paths": 1,
+    "exact_path_rows": 12,
+    "workflow_predicates": 205,
+    "workflow_stages": 20,
+    "workflow_states": 21,
+    "workflow_stop_codes": 70,
+    "workflow_success_codes": 20
+  },
+  "project_execution_authorized": false,
+  "record_contract": {
+    "cross_field_rules": "WORKFLOW_RECORD_CROSS_FIELD_RULES.md",
+    "halt_required_field_count": 19,
+    "halt_schema_dialect": "https://json-schema.org/draft/2020-12/schema",
+    "halt_schema_filename": "WORKFLOW_HALT_RECORD.schema.json",
+    "halt_schema_id": "urn:rigolugo:pm_research:rev23-finding4-i0a:revision10:candidate04:workflow-halt-record:v1",
+    "success_required_field_count": 18,
+    "success_schema_dialect": "https://json-schema.org/draft/2020-12/schema",
+    "success_schema_filename": "WORKFLOW_SUCCESS_RECORD.schema.json",
+    "success_schema_id": "urn:rigolugo:pm_research:rev23-finding4-i0a:revision10:candidate04:workflow-success-record:v1"
+  },
+  "schema_id": "rev23_finding4_i0a_revision10_starting_state_amendment_candidate04_package.v1",
+  "selected_model_id": "ISOLATED_CAPTURED_PAYLOAD_WORKSPACE_MODEL_V2",
+  "source_delivery_sequence": [
+    "SOURCE_LOCAL_COMMIT_CREATION",
+    "SOURCE_LOCAL_COMMIT_REVIEW",
+    "SOURCE_PUSH_AUTHORIZATION",
+    "SOURCE_FAST_FORWARD_PUSH",
+    "SOURCE_REMOTE_INSTALLATION_VERIFICATION"
+  ],
+  "status": "AMENDMENT_CANDIDATE_SPEC_ONLY_NOT_ACCEPTED",
+  "test_authoring_authorized": false,
+  "test_delivery_sequence": [
+    "TEST_LOCAL_COMMIT_CREATION",
+    "TEST_LOCAL_COMMIT_REVIEW",
+    "TEST_PUSH_AUTHORIZATION",
+    "TEST_FAST_FORWARD_PUSH",
+    "TEST_REMOTE_INSTALLATION_VERIFICATION"
+  ],
+  "test_execution_authorized": false,
+  "validation_summary": {
+    "deterministic_zip_rebuild_required": true,
+    "positive_generated_halt_records": 205,
+    "positive_generated_success_records": 20,
+    "representation_consistency_report": "PROFESSOR_DECLARATIVE_SELF_CHECK_PASS_NOT_SENTINEL_VERIFICATION",
+    "representative_invalid_records_rejected": 13,
+    "single_top_level_directory_required": true
+  }
+}

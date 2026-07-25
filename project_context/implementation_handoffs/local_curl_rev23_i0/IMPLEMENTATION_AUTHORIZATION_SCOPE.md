@@ -2,7 +2,7 @@
 
 ## Current stop
 
-`STOP_REV10_REMEDIATION_SOURCE_AUTHORIZATION_NOT_ACTIVATED`
+`STOP_REV10_STARTING_STATE_AMENDMENT_INSTALLATION_NOT_VERIFIED`
 
 ## Conditional authorization package
 
@@ -29,6 +29,14 @@ It was captured at detached local HEAD `1e1afb29791f42c286b45d3b576f74926add8dce
 
 Therefore the accepted capture does not clear, repair, or reactivate the installed source gate.
 
+## Accepted starting-state amendment
+
+Sentinel accepted `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04` at exact canonical review base `bc957fe05096b790052d0515773b9e0a2dc88a60`.
+
+The accepted amendment supersedes the old starting-state and allowed-new-file assumptions only for future packages that explicitly invoke Candidate 04 after canonical installation verification. It defines an isolated non-Git workspace, exact twelve starting identities, three writable source paths, four separately writable test paths, and later exact CREATE-only materialization boundaries.
+
+Candidate 04 does not activate the failed authorization package. This installation remains `PENDING_SENTINEL_VERIFICATION`; no implementation starting commit, workspace, writable path, local implementation commit, push authorization, or active Claude handoff exists.
+
 ## Writable only after a future valid activation
 
 Exactly:
@@ -39,29 +47,30 @@ Exactly:
 
 The three files form one atomic candidate. Partial implementation does not establish conformance.
 
-The installed package's allowed-new-files value remains `NONE`; it cannot be silently changed by the provenance finding. A separately accepted amendment is required before any different starting-state or materialization model may be authorized.
+The historical installed package's allowed-new-files value remains `NONE` and that package remains inactive. Accepted Candidate 04 defines later exact CREATE-only source and test materialization exceptions, but those exceptions are not active until Candidate 04 installation is verified and Gustavo separately authorizes the exact stage. No current repository file creation is authorized.
 
 ## Required future sequence
 
-Worktree-capture acceptance installation is complete and Sentinel-verified at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`.
+Worktree-capture acceptance is installed and Sentinel-verified at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`. Candidate 04 is accepted and installed by this package with verification pending.
 
-1. Professor finalizes the SPEC-ONLY Candidate 02 starting-state amendment using the accepted capture finding.
-2. Sentinel reviews and accepts or blocks that amendment.
-3. Gustavo separately authorizes the resulting bounded implementation stage.
-4. Sentinel issues a new active Claude handoff with exact starting identities and path/activity boundaries.
+1. Gustavo installs the documentation-only Candidate 04 package at exact base `bc957fe05096b790052d0515773b9e0a2dc88a60` using the controlling canonical-update workflow.
+2. Sentinel verifies the exact installation commit and accepted-candidate bytes.
+3. Gustavo separately decides whether to authorize workspace preparation or a later bounded source-authoring stage.
+4. Sentinel issues a new active Claude handoff only for that exact authorized stage.
+5. Any local implementation commit, Sentinel review, push authorization, push, and remote verification remain separate boundaries under Candidate 04.
 
-No step above follows automatically from provenance acceptance.
+No step follows automatically from Candidate 04 acceptance or documentation installation.
 
 ## Unauthorized now
 
-- source/test authoring or materialization;
+- workspace preparation, capture extraction for implementation, source/test authoring, or materialization;
 - test collection/execution;
 - imports, project execution, compilation, lint, typing, coverage, or CI;
 - research-data, credentials, wallet, or empirical artifact reads;
 - curl/API/RPC/Dune/vendor/package-manager/general network access;
 - dependencies, CLI, config, runtime, exports, packaging, or generated files;
 - repository paths outside a later exact authorized boundary;
-- Git history or remote writes by Claude;
+- local implementation commits, Git history, branch/ref, push, merge, or remote writes by Claude;
 - rollback, restoration, overwrite, or checkpoint promotion;
 - R2, P1/P2/P3, scoring, probe execution, or gate changes.
 

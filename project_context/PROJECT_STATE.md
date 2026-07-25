@@ -35,6 +35,8 @@ and verified the complete current twelve-path worktree capture at `b2e0506cce3e7
 `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED` is closed;
 `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE` remains open.
 
+Sentinel accepted `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04` at canonical review base `bc957fe05096b790052d0515773b9e0a2dc88a60`. The accepted amendment provides the isolated captured-payload workspace model, closed typed workflow records, and exact commit/review/push/remote-verification separation. This documentation package records the installation as `INSTALLED_PENDING_SENTINEL_VERIFICATION`. It selects no implementation authorization or active Claude handoff.
+
 ### Historical Revision 08 objective at installation base
 
 Stay Polymarket-native and preserve the accepted research-only guardrails.
@@ -221,6 +223,23 @@ The accepted future source-authoring boundary is atomic across exactly
 identified test-source paths remain a separate later authorization boundary.
 Acceptance and installation do not activate either stage.
 
+### Accepted Revision 10 starting-state amendment
+
+- decision: `APPROVE — REV10_STARTING_STATE_AMENDMENT_CANDIDATE_04_ACCEPTED`
+- accepted candidate: `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04`
+- submitted ZIP SHA-256: `9b6e05ff09e916b02b990556ee1ef6a37e3bc044a83c317ecfcc60fa65a63193`
+- submitted ZIP size: `74507` bytes
+- accepted member count: `19`
+- canonical review and installation base: `bc957fe05096b790052d0515773b9e0a2dc88a60`
+- installation state: `INSTALLED_PENDING_SENTINEL_VERIFICATION`
+- installation commit: `PENDING_RETURN_TO_SENTINEL`
+- selected model: `ISOLATED_CAPTURED_PAYLOAD_WORKSPACE_MODEL_V2`
+- workflow closure: `21` states, `20` stages, `70` stops, `20` successes, `205` predicates
+- implementation authorization: `NONE`
+- active Claude implementation prompt: `false`
+
+Candidate 04 supersedes blocked Candidate 03 as the accepted starting-state amendment. It does not accept or promote the checkpoint, repair the failed gate, close `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`, or activate source/test authoring, materialization, tests, execution, data/network activity, or Git writes by Claude.
+
 ### Historical Revision 09 scope state
 
 - accepted scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
@@ -257,13 +276,13 @@ not enlarge current Revision 10 authority.
 
 ### Controlling Revision 10 authorization state
 
-`STOP_REV10_REMEDIATION_SOURCE_AUTHORIZATION_NOT_ACTIVATED`
+`STOP_REV10_STARTING_STATE_AMENDMENT_INSTALLATION_NOT_VERIFIED`
 
-Gustavo authorized conditional package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` for one atomic source-authoring stage across exactly `canonical.py`, `finding4_registry.py`, and `prepared_evidence.py`. The package was installed and Sentinel-verified at `71061065d91fc391e934d7e79a29eefc898cfe82`, but its canonical-worktree source gate failed before edits.
+The previously installed package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` remains inactive because its canonical-worktree source gate failed before edits. Candidate 04 does not clear, repair, or reactivate that authorization.
 
-The accepted and verified provenance capture at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1` records Claude's separate untracked twelve-path workspace. It does not clear or repair that failed gate. No active source-gated commit or Claude implementation handoff exists. Test-source authoring, tests, project execution, data/network activity, Git history writes by Claude, and downstream stages remain unauthorized.
+Candidate 04 acceptance defines a possible future isolated-workspace start and exact later delivery gates. This documentation installation remains pending Sentinel verification. No workspace preparation, source/test authoring, materialization, local implementation commit, push, test stage, execution, data/network activity, or Claude Git write is active.
 
-The historical Revision 09 R1 authorization and Revision 08 implementation authorization do not carry forward. The `fcf406c4...` checkpoint remains evidence only and must not be restored, overwritten, promoted, or used as a continuation start.
+The historical Revision 09 R1 authorization and Revision 08 implementation authorization do not carry forward. The `fcf406c4...` checkpoint remains evidence only, `NOT_ACCEPTED`, and non-authorizing.
 
 ### Preserved R1 implementation checkpoint
 
@@ -336,9 +355,9 @@ writes, or any downstream phase.
 
 ### Controlling Revision 10 next step
 
-Professor may finalize the SPEC-ONLY Candidate 02 starting-state amendment using the accepted and verified worktree capture at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`. Sentinel must review that amendment before any implementation authorization is considered.
+Install this documentation-only Candidate 04 acceptance package at exact base `bc957fe05096b790052d0515773b9e0a2dc88a60`, then return the exact installation commit to Sentinel. Sentinel verifies paths, bytes, checksums, accepted-candidate preservation, central-state consistency, and absence of live source/test changes.
 
-No source edit, materialization, test-source authoring, test execution, project execution, data/network access, rollback, promotion, R2, or downstream stage is authorized. The failed source gate remains inactive and cannot be repaired by implication.
+Only after installation verification may Gustavo consider a separately bounded workspace-preparation or implementation authorization. No source/test edit, materialization, local implementation commit, push, test execution, project execution, data/network access, rollback, promotion, R2, or downstream stage is currently authorized.
 
 ### Historical Revision 08 next step at installation base
 

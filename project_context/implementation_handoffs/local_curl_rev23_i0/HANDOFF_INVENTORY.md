@@ -14,6 +14,12 @@ Accepted provenance finding:
 
 Source archive SHA-256: `942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9`. Canonical installation is Sentinel-verified at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`.
 
+Accepted starting-state amendment:
+
+`APPROVE — REV10_STARTING_STATE_AMENDMENT_CANDIDATE_04_ACCEPTED`
+
+Candidate `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04`, ZIP SHA-256 `9b6e05ff09e916b02b990556ee1ef6a37e3bc044a83c317ecfcc60fa65a63193`, is installed by this documentation package with Sentinel installation verification pending. Authorization effect remains `NONE`.
+
 ## Controlling files
 
 - `README_FIRST.md` — current handoff and read order.
@@ -39,6 +45,8 @@ Source archive SHA-256: `942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c
 - `provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/SENTINEL_INSTALLATION_VERIFICATION.md` — verified canonical installation at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`.
 - `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_SHA256SUMS.txt` — focused historical inventory for the capture-acceptance package.
 - `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_VERIFICATION_SHA256SUMS.txt` — focused inventory for installation verification and central synchronization.
+- `scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/` — accepted Candidate 04 and Sentinel acceptance records.
+- `HANDOFF_REVISION_10_STARTING_STATE_AMENDMENT_SHA256SUMS.txt` — focused Candidate 04 installation inventory.
 
 Historical checksum inventories remain immutable evidence of the states they recorded. They are not regenerated or reinterpreted as inventories of this later provenance acceptance.
 
@@ -89,4 +97,4 @@ The capture contains all twelve untracked paths: eleven baseline-matching and on
 
 ## Current authorization state
 
-No source authoring is active. The installed authorization package cannot activate from its failed canonical-worktree source gate. The accepted provenance capture does not repair that gate or authorize continuation. Tests, execution, rollback, promotion, data/network activity, Git history writes by Claude, and downstream stages remain unauthorized.
+No source authoring is active. The installed authorization package cannot activate from its failed canonical-worktree source gate. Accepted Candidate 04 supplies a new specification model but does not repair or reactivate the old package. Candidate 04 installation remains pending Sentinel verification. Workspace preparation, source/test authoring, materialization, local implementation commits, pushes, tests, execution, rollback, promotion, data/network activity, Git history writes by Claude, and downstream stages remain unauthorized.

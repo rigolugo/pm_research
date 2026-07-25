@@ -1,0 +1,115 @@
+{
+  "additional_properties": false,
+  "amendment_id": "REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04",
+  "base_contract": "REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01",
+  "base_contract_installation_commit": "ee4a639f9a9429e642391f1fb1e0ab356a6f965a",
+  "baseline_support_paths": [
+    "pm_research/local_curl_per_side/__init__.py",
+    "pm_research/local_curl_per_side/claim_hashes.py",
+    "pm_research/local_curl_per_side/governing_package.py",
+    "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+    "tests/local_curl_per_side/test_governing_package_i0a.py"
+  ],
+  "candidate03_status": "BLOCKED_NOT_ACCEPTED_NON_CONTROLLING",
+  "candidate04_incorporation_rule": "Candidate 04 incorporates the exact Candidate 03 clause text and retained C03_* provision IDs without making Candidate 03 controlling; Candidate 04 controls only if Sentinel accepts Candidate 04.",
+  "conflict_precedence": [
+    {
+      "candidate03_effect": "Adds exact location and identity interpretation only; creates no repository new-file exception and no edit exception.",
+      "context": "WORKSPACE_PREPARATION_OR_SOURCE_OR_TEST_AUTHORING",
+      "winner": "ACCEPTED_REMEDIATION_SCOPE"
+    },
+    {
+      "candidate03_effect": "Permits exact-byte creation of exactly six absent source targets under separate authorization; every other accepted-scope prohibition remains controlling.",
+      "context": "SOURCE_MATERIALIZATION",
+      "winner": "CANDIDATE03_C03_MAT_SOURCE_01_THROUGH_04"
+    },
+    {
+      "candidate03_effect": "Permits exact-byte creation of exactly six absent test targets under separate authorization; every other accepted-scope prohibition remains controlling.",
+      "context": "TEST_MATERIALIZATION",
+      "winner": "CANDIDATE03_C03_MAT_TEST_01_THROUGH_04"
+    },
+    {
+      "candidate03_effect": "NONE.",
+      "context": "ALL_OTHER_CONTEXTS",
+      "winner": "ACCEPTED_REMEDIATION_SCOPE"
+    }
+  ],
+  "repository_file_definition": "A path in the canonical Git worktree/tree/index.",
+  "retained_provision_id_namespace": "C03_*",
+  "rows": [
+    {
+      "accepted_clause_id": "RSC_AFM_ALLOWED_NEW_FILES_NONE",
+      "accepted_rule": "Future implementation/test scope allowed new files is NONE.",
+      "accepted_source": "accepted_remediation_scope_candidate_01/AUTHORIZED_FILE_MATRIX.md#Allowed-new-files",
+      "controlling_candidate03_provision": "C03_SUP_01, C03_MAT_SOURCE_01, C03_MAT_TEST_01",
+      "source_authoring": "REMAINS_CONTROLLING; no new workspace member or repository file.",
+      "source_materialization": "NARROWLY_SUPERSEDED_BY_C03_MAT_SOURCE_01 for exactly six absent source targets.",
+      "test_authoring": "REMAINS_CONTROLLING; no new workspace member or repository file.",
+      "test_materialization": "NARROWLY_SUPERSEDED_BY_C03_MAT_TEST_01 for exactly six absent test targets.",
+      "workspace_preparation": "REMAINS_CONTROLLING_FOR_REPOSITORY_FILES; workspace-member instantiation is outside the repository and does not create a repository file."
+    },
+    {
+      "accepted_clause_id": "RSC_ABS_MANDATORY_FILES_AVAILABLE",
+      "accepted_rule": "All mandatory files must be available before source authoring.",
+      "accepted_source": "accepted_remediation_scope_candidate_01/ACTIVITY_BOUNDARIES_AND_STOPS.md#Source-authoring-preconditions",
+      "controlling_candidate03_provision": "C03_WS_04, C03_SRC_02, C03_TWS_04, C03_MAT_SOURCE_02, C03_MAT_TEST_02",
+      "source_authoring": "REMAINS_CONTROLLING without exception.",
+      "source_materialization": "SUPERSEDED_ONLY_FOR_TARGET_EXISTENCE: all six canonical source targets must be absent before exact-byte creation.",
+      "test_authoring": "REMAINS_CONTROLLING; all six final source members and six test starts must be present before test authoring.",
+      "test_materialization": "SUPERSEDED_ONLY_FOR_TARGET_EXISTENCE: all six canonical test targets must be absent before exact-byte creation.",
+      "workspace_preparation": "REMAINS_CONTROLLING_AS_CLEAR_CONDITION; no authoring may begin until all twelve exact workspace members, including all mandatory files, are present and verified."
+    },
+    {
+      "accepted_clause_id": "RSC_ABS_MISSING_AUTHORIZED_PATH_HALT",
+      "accepted_rule": "Halt if any authorized path is missing.",
+      "accepted_source": "accepted_remediation_scope_candidate_01/ACTIVITY_BOUNDARIES_AND_STOPS.md#Mandatory-halts",
+      "controlling_candidate03_provision": "C03_WS_08, C03_SRC_03, C03_TWS_08, C03_MAT_SOURCE_03, C03_MAT_TEST_03",
+      "source_authoring": "REMAINS CONTROLLING.",
+      "source_materialization": "NARROW TARGET-ABSENCE EXCEPTION controls before creation; after creation, any missing target halts verification.",
+      "test_authoring": "REMAINS CONTROLLING.",
+      "test_materialization": "NARROW TARGET-ABSENCE EXCEPTION controls before creation; after creation, any missing target halts verification.",
+      "workspace_preparation": "REMAINS_CONTROLLING_AS FINAL CLEAR PREDICATE; partial rehydration halts and cannot activate authoring."
+    },
+    {
+      "accepted_clause_id": "RSC_AFM_FIVE_NOT_IMPLICATED_PROHIBITED",
+      "accepted_rule": "The five non-implicated paths are prohibited from implementation or test editing.",
+      "accepted_source": "accepted_remediation_scope_candidate_01/AUTHORIZED_FILE_MATRIX.md#Exact-twelve-path-closure-and-Global-prohibition",
+      "controlling_candidate03_provision": "C03_SUPPORT_01, C03_MAT_SOURCE_04, C03_MAT_TEST_04",
+      "source_authoring": "REMAINS CONTROLLING; all five are read-only exact bytes.",
+      "source_materialization": "NARROWLY SUPERSEDED ONLY FOR exact-byte CREATE of __init__.py, claim_hashes.py, and governing_package.py; content modification remains prohibited.",
+      "test_authoring": "REMAINS CONTROLLING; all five are read-only exact bytes.",
+      "test_materialization": "NARROWLY SUPERSEDED ONLY FOR exact-byte CREATE of test_claim_hashes_i0a.py and test_governing_package_i0a.py; content modification remains prohibited.",
+      "workspace_preparation": "REMAINS CONTROLLING FOR EDITS; exact-byte instantiation into an empty non-repository workspace is not an edit."
+    },
+    {
+      "accepted_clause_id": "RSC_ABS_NEW_FILE_REQUIRED_HALT",
+      "accepted_rule": "Halt if implementation requires a new file.",
+      "accepted_source": "accepted_remediation_scope_candidate_01/ACTIVITY_BOUNDARIES_AND_STOPS.md#Mandatory-halts",
+      "controlling_candidate03_provision": "C03_SUP_02, C03_MAT_SOURCE_01, C03_MAT_TEST_01",
+      "source_authoring": "REMAINS CONTROLLING.",
+      "source_materialization": "NARROWLY SUPERSEDED for the exact six declared source CREATE actions only.",
+      "test_authoring": "REMAINS CONTROLLING.",
+      "test_materialization": "NARROWLY SUPERSEDED for the exact six declared test CREATE actions only.",
+      "workspace_preparation": "REMAINS CONTROLLING FOR REPOSITORY FILES and for any thirteenth workspace member."
+    }
+  ],
+  "rule": "Candidate 03 controls only where a row explicitly states SUPERSEDED or NARROWLY_SUPERSEDED; otherwise the accepted remediation scope controls.",
+  "schema_id": "rev23_finding4_i0a_revision10_candidate04_supersession_contract.v1",
+  "source_materialization_exception_paths": [
+    "pm_research/local_curl_per_side/__init__.py",
+    "pm_research/local_curl_per_side/canonical.py",
+    "pm_research/local_curl_per_side/claim_hashes.py",
+    "pm_research/local_curl_per_side/finding4_registry.py",
+    "pm_research/local_curl_per_side/governing_package.py",
+    "pm_research/local_curl_per_side/prepared_evidence.py"
+  ],
+  "test_materialization_exception_paths": [
+    "tests/local_curl_per_side/test_canonical_i0a.py",
+    "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+    "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+    "tests/local_curl_per_side/test_governing_package_i0a.py",
+    "tests/local_curl_per_side/test_i0a_public_contract.py",
+    "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+  ],
+  "workspace_member_definition": "A regular file under an isolated non-Git staging root outside every repository checkout. It is not a repository file and cannot be committed or treated as canonical."
+}

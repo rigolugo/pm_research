@@ -189,10 +189,14 @@ Installation commits:
 - `remediation_scope/ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
 - `remediation_scope/REMEDIATION_SCOPE_SHA256SUMS.txt`
 - `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt`
+- `HANDOFF_REVISION_10_STARTING_STATE_AMENDMENT_SHA256SUMS.txt` — focused inventory for accepted Candidate 04 installation records and central synchronization.
+- `scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/README_FIRST.md`
+- `scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/SENTINEL_ACCEPTANCE_DECISION.md`
+- `scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/ACCEPTED_STARTING_STATE_AMENDMENT_MANIFEST.json`
 
 Current implementation state:
 
-`STOP_REV10_REMEDIATION_SOURCE_AUTHORIZATION_NOT_ACTIVATED`
+`STOP_REV10_STARTING_STATE_AMENDMENT_INSTALLATION_NOT_VERIFIED`
 
 Current static-conformance state:
 
@@ -356,6 +360,29 @@ Controlling records:
 - `REMEDIATION_SCOPE_SHA256SUMS.txt`
 - `accepted_remediation_scope_candidate_01/`
 
+### `scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/`
+
+Accepted Revision 10 starting-state amendment; documentation installation pending Sentinel verification.
+
+- accepted candidate: `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04`;
+- Sentinel decision: `APPROVE — REV10_STARTING_STATE_AMENDMENT_CANDIDATE_04_ACCEPTED`;
+- submitted candidate ZIP SHA-256: `9b6e05ff09e916b02b990556ee1ef6a37e3bc044a83c317ecfcc60fa65a63193`;
+- accepted member count: `19`;
+- canonical installation base: `bc957fe05096b790052d0515773b9e0a2dc88a60`;
+- installation state: `INSTALLED_PENDING_SENTINEL_VERIFICATION`;
+- implementation authorization: `NONE`;
+- active Claude implementation prompt: `false`.
+
+Controlling records:
+
+- `README_FIRST.md`
+- `SENTINEL_ACCEPTANCE_DECISION.md`
+- `ACCEPTED_STARTING_STATE_AMENDMENT_MANIFEST.json`
+- `SHA256SUMS.txt`
+- `accepted_candidate_04/` — immutable exact 19-member accepted Candidate 04 package
+
+The amendment defines the isolated starting workspace and future stage gates. It does not materialize any live source/test path, reactivate the failed authorization, accept the checkpoint, or authorize implementation or execution.
+
 ### `authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/`
 
 Conditional Revision 10 remediation source-authoring authorization package.
@@ -495,6 +522,7 @@ Pinned canonical files:
 - `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
 - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/README_FIRST.md`
 - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
+- `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/README_FIRST.md`
 
 Keep canonical repository files and the Claude Project Files panel synchronized.
 Preserve material unaccepted implementation progress through

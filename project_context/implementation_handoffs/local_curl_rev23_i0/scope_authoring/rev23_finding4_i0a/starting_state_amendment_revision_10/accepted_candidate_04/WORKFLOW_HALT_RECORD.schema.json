@@ -1,0 +1,578 @@
+{
+  "$defs": {
+    "AffectedPaths": {
+      "items": {
+        "$ref": "#/$defs/RepositoryRelativePath"
+      },
+      "maxItems": 256,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true,
+      "x-ordering": "LEXICOGRAPHIC_ASCENDING_BY_UTF8_BYTES"
+    },
+    "ExpectedEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "condition": {
+          "$ref": "#/$defs/NonEmptyString"
+        },
+        "facts": {
+          "items": {
+            "$ref": "#/$defs/Fact"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true,
+          "x-ordering": "FACT_KEY_LEXICOGRAPHIC_ASCENDING",
+          "x-uniqueBy": "key"
+        },
+        "status": {
+          "const": "EXPECTED"
+        }
+      },
+      "required": [
+        "condition",
+        "status",
+        "facts"
+      ],
+      "type": "object"
+    },
+    "Fact": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "key": {
+              "$ref": "#/$defs/FactKey"
+            },
+            "value": {
+              "$ref": "#/$defs/NonEmptyString"
+            },
+            "value_type": {
+              "const": "STRING"
+            }
+          },
+          "required": [
+            "key",
+            "value_type",
+            "value"
+          ],
+          "title": "StringFact",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "key": {
+              "$ref": "#/$defs/FactKey"
+            },
+            "value": {
+              "maximum": 9223372036854775807,
+              "minimum": -9223372036854775808,
+              "type": "integer"
+            },
+            "value_type": {
+              "const": "INTEGER"
+            }
+          },
+          "required": [
+            "key",
+            "value_type",
+            "value"
+          ],
+          "title": "IntegerFact",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "key": {
+              "$ref": "#/$defs/FactKey"
+            },
+            "value": {
+              "type": "boolean"
+            },
+            "value_type": {
+              "const": "BOOLEAN"
+            }
+          },
+          "required": [
+            "key",
+            "value_type",
+            "value"
+          ],
+          "title": "BooleanFact",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "key": {
+              "$ref": "#/$defs/FactKey"
+            },
+            "value": {
+              "type": "null"
+            },
+            "value_type": {
+              "const": "NULL"
+            }
+          },
+          "required": [
+            "key",
+            "value_type",
+            "value"
+          ],
+          "title": "NullFact",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "key": {
+              "$ref": "#/$defs/FactKey"
+            },
+            "value": {
+              "$ref": "#/$defs/Sha256"
+            },
+            "value_type": {
+              "const": "SHA256"
+            }
+          },
+          "required": [
+            "key",
+            "value_type",
+            "value"
+          ],
+          "title": "Sha256Fact",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "key": {
+              "$ref": "#/$defs/FactKey"
+            },
+            "value": {
+              "$ref": "#/$defs/GitOid"
+            },
+            "value_type": {
+              "const": "GIT_OID"
+            }
+          },
+          "required": [
+            "key",
+            "value_type",
+            "value"
+          ],
+          "title": "GitOidFact",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "key": {
+              "$ref": "#/$defs/FactKey"
+            },
+            "value": {
+              "$ref": "#/$defs/RepositoryRelativePath"
+            },
+            "value_type": {
+              "const": "PATH"
+            }
+          },
+          "required": [
+            "key",
+            "value_type",
+            "value"
+          ],
+          "title": "PathFact",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "key": {
+              "$ref": "#/$defs/FactKey"
+            },
+            "value": {
+              "items": {
+                "$ref": "#/$defs/NonEmptyString"
+              },
+              "maxItems": 256,
+              "minItems": 0,
+              "type": "array",
+              "uniqueItems": true,
+              "x-ordering": "LEXICOGRAPHIC_ASCENDING_BY_UNICODE_CODE_POINT"
+            },
+            "value_type": {
+              "const": "STRING_ARRAY"
+            }
+          },
+          "required": [
+            "key",
+            "value_type",
+            "value"
+          ],
+          "title": "StringArrayFact",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "key": {
+              "$ref": "#/$defs/FactKey"
+            },
+            "value": {
+              "items": {
+                "maximum": 9223372036854775807,
+                "minimum": -9223372036854775808,
+                "type": "integer"
+              },
+              "maxItems": 256,
+              "minItems": 0,
+              "type": "array",
+              "uniqueItems": true,
+              "x-ordering": "NUMERIC_ASCENDING"
+            },
+            "value_type": {
+              "const": "INTEGER_ARRAY"
+            }
+          },
+          "required": [
+            "key",
+            "value_type",
+            "value"
+          ],
+          "title": "IntegerArrayFact",
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "key": {
+              "$ref": "#/$defs/FactKey"
+            },
+            "value": {
+              "items": {
+                "$ref": "#/$defs/RepositoryRelativePath"
+              },
+              "maxItems": 256,
+              "minItems": 0,
+              "type": "array",
+              "uniqueItems": true,
+              "x-ordering": "LEXICOGRAPHIC_ASCENDING_BY_UTF8_BYTES"
+            },
+            "value_type": {
+              "const": "PATH_ARRAY"
+            }
+          },
+          "required": [
+            "key",
+            "value_type",
+            "value"
+          ],
+          "title": "PathArrayFact",
+          "type": "object"
+        }
+      ]
+    },
+    "FactKey": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[a-z][a-z0-9_]{0,127}$",
+      "type": "string"
+    },
+    "GitOid": {
+      "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$",
+      "type": "string"
+    },
+    "NonEmptyString": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "type": "string"
+    },
+    "ObservedEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "condition": {
+          "$ref": "#/$defs/NonEmptyString"
+        },
+        "facts": {
+          "items": {
+            "$ref": "#/$defs/Fact"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true,
+          "x-ordering": "FACT_KEY_LEXICOGRAPHIC_ASCENDING",
+          "x-uniqueBy": "key"
+        },
+        "status": {
+          "enum": [
+            "FALSE",
+            "MISSING",
+            "MALFORMED",
+            "AMBIGUOUS",
+            "STALE",
+            "CONFLICTING"
+          ]
+        }
+      },
+      "required": [
+        "condition",
+        "status",
+        "facts"
+      ],
+      "type": "object"
+    },
+    "PredicateId": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Z][A-Z0-9_]{0,127}$",
+      "type": "string"
+    },
+    "RepositoryRelativePath": {
+      "description": "Forward-slash repository-relative path with non-empty segments; no absolute path, backslash, dot segment, parent segment, empty segment, leading dot segment, trailing dot, or trailing space.",
+      "maxLength": 4096,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_-](?:[A-Za-z0-9._-]*[A-Za-z0-9_-])?(?:/[A-Za-z0-9_-](?:[A-Za-z0-9._-]*[A-Za-z0-9_-])?)*$",
+      "type": "string"
+    },
+    "Sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "UtcTimestamp": {
+      "format": "date-time",
+      "pattern": "^\\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\\d|3[01])T(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\dZ$",
+      "type": "string"
+    }
+  },
+  "$id": "urn:rigolugo:pm_research:rev23-finding4-i0a:revision10:candidate04:workflow-halt-record:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Closed structural schema. Normative stage/predicate cross-field validation is additionally required by WORKFLOW_RECORD_CROSS_FIELD_RULES.md.",
+  "properties": {
+    "affected_paths": {
+      "$ref": "#/$defs/AffectedPaths"
+    },
+    "authoring_started": {
+      "type": "boolean"
+    },
+    "authorization_effect": {
+      "const": "NONE"
+    },
+    "created_at_utc": {
+      "$ref": "#/$defs/UtcTimestamp"
+    },
+    "decision_owner": {
+      "enum": [
+        "SENTINEL",
+        "GUSTAVO",
+        "GUSTAVO_MANUAL_INSTALLER",
+        "CLAUDE",
+        "NO_OWNER"
+      ]
+    },
+    "evidence_sha256": {
+      "$ref": "#/$defs/Sha256"
+    },
+    "execution_activity_observed": {
+      "type": "boolean"
+    },
+    "expected": {
+      "$ref": "#/$defs/ExpectedEvidence"
+    },
+    "git_write_observed": {
+      "type": "boolean"
+    },
+    "observed": {
+      "$ref": "#/$defs/ObservedEvidence"
+    },
+    "predicate_id": {
+      "$ref": "#/$defs/PredicateId"
+    },
+    "predicate_ordinal": {
+      "maximum": 65535,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "record_kind": {
+      "const": "HALT"
+    },
+    "retry_eligibility": {
+      "enum": [
+        "SAME_AUTHORIZATION_FRESH_GATE",
+        "NEW_SENTINEL_DECISION_REQUIRED",
+        "NEW_GUSTAVO_AUTHORIZATION_REQUIRED",
+        "NEW_PUSH_AUTHORIZATION_REQUIRED",
+        "FRESH_MATERIALIZATION_FROM_NEW_REMOTE_BASE_REQUIRED",
+        "MANUAL_CANONICAL_REPAIR_AND_NEW_AUTHORIZATION",
+        "NO_RETRY_UNDER_SAME_AUTHORIZATION",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "retry_owner": {
+      "enum": [
+        "SENTINEL",
+        "GUSTAVO",
+        "GUSTAVO_MANUAL_INSTALLER",
+        "CLAUDE",
+        "NO_OWNER"
+      ]
+    },
+    "schema_id": {
+      "const": "rev10_candidate04_workflow_halt.v1"
+    },
+    "stage": {
+      "enum": [
+        "SPEC_REVIEW",
+        "SPEC_CANONICAL_INSTALLATION_CONFIRMATION",
+        "WORKSPACE_PREPARATION",
+        "SOURCE_AUTHORING",
+        "SOURCE_STATIC_REVIEW",
+        "SOURCE_LOCAL_COMMIT_CREATION",
+        "SOURCE_LOCAL_COMMIT_REVIEW",
+        "SOURCE_PUSH_AUTHORIZATION",
+        "SOURCE_FAST_FORWARD_PUSH",
+        "SOURCE_REMOTE_INSTALLATION_VERIFICATION",
+        "TEST_SCOPE_REVIEW",
+        "TEST_WORKSPACE_PREPARATION",
+        "TEST_AUTHORING",
+        "TEST_STATIC_REVIEW",
+        "TEST_LOCAL_COMMIT_CREATION",
+        "TEST_LOCAL_COMMIT_REVIEW",
+        "TEST_PUSH_AUTHORIZATION",
+        "TEST_FAST_FORWARD_PUSH",
+        "TEST_REMOTE_INSTALLATION_VERIFICATION",
+        "EXECUTION_AUTHORIZATION"
+      ]
+    },
+    "state": {
+      "enum": [
+        "C04_DRAFT_NOT_ACCEPTED",
+        "C04_SPEC_ACCEPTED_PENDING_EXTERNAL_CANONICAL_INSTALLATION",
+        "C04_SPEC_CANONICALLY_INSTALLED_NOT_AUTHORIZED",
+        "C04_SOURCE_WORKSPACE_READY",
+        "C04_SOURCE_CANDIDATE_SUBMITTED",
+        "C04_SOURCE_STATIC_ACCEPTED_NOT_MATERIALIZED",
+        "C04_SOURCE_LOCAL_COMMIT_CREATED_PENDING_REVIEW",
+        "C04_SOURCE_LOCAL_COMMIT_REVIEWED_NOT_PUSH_AUTHORIZED",
+        "C04_SOURCE_PUSH_AUTHORIZED_NOT_PUSHED",
+        "C04_SOURCE_PUSHED_PENDING_REMOTE_VERIFICATION",
+        "C04_SOURCE_REMOTE_MATERIALIZED_VERIFIED",
+        "C04_TEST_SCOPE_ACCEPTED_NOT_AUTHORIZED",
+        "C04_TEST_WORKSPACE_READY",
+        "C04_TEST_CANDIDATE_SUBMITTED",
+        "C04_TEST_STATIC_ACCEPTED_NOT_MATERIALIZED",
+        "C04_TEST_LOCAL_COMMIT_CREATED_PENDING_REVIEW",
+        "C04_TEST_LOCAL_COMMIT_REVIEWED_NOT_PUSH_AUTHORIZED",
+        "C04_TEST_PUSH_AUTHORIZED_NOT_PUSHED",
+        "C04_TEST_PUSHED_PENDING_REMOTE_VERIFICATION",
+        "C04_TEST_REMOTE_MATERIALIZED_VERIFIED",
+        "C04_EXECUTION_AUTHORIZED_OUTSIDE_C04"
+      ]
+    },
+    "stop_code": {
+      "enum": [
+        "STOP_C04_ATOMIC_SOURCE_RESULT_UNAVAILABLE",
+        "STOP_C04_AUTHORIZATION_NOT_ACTIVE",
+        "STOP_C04_CANONICAL_HEAD_MISMATCH",
+        "STOP_C04_CAPTURE_BYTE_IDENTITY_MISMATCH",
+        "STOP_C04_CAPTURE_PACKAGE_IDENTITY_MISMATCH",
+        "STOP_C04_CAPTURE_PATH_SET_MISMATCH",
+        "STOP_C04_CONTROLLING_CONTRACT_UNAVAILABLE",
+        "STOP_C04_EXECUTION_AUTHORIZATION_INCOMPLETE",
+        "STOP_C04_FAILED_GATE_REPAIR_ATTEMPT",
+        "STOP_C04_LOCAL_COMMIT_AUTHORIZATION_NOT_ACTIVE",
+        "STOP_C04_LOCAL_COMMIT_BASE_OR_BRANCH_MISMATCH",
+        "STOP_C04_LOCAL_COMMIT_IDENTITY_MISMATCH",
+        "STOP_C04_LOCAL_COMMIT_PARENT_MISMATCH",
+        "STOP_C04_LOCAL_COMMIT_PROHIBITED_OPERATION",
+        "STOP_C04_LOCAL_COMMIT_PUSH_OCCURRED",
+        "STOP_C04_LOCAL_COMMIT_REVIEW_NOT_APPROVED",
+        "STOP_C04_LOCAL_COMMIT_WORKTREE_NOT_CLEAN",
+        "STOP_C04_MANDATORY_FILE_UNAVAILABLE",
+        "STOP_C04_MATERIALIZATION_BYTE_IDENTITY_MISMATCH",
+        "STOP_C04_MATERIALIZATION_GIT_MODE_INVALID",
+        "STOP_C04_MATERIALIZATION_PATH_SET_MISMATCH",
+        "STOP_C04_MATERIALIZATION_TARGET_PRESENT",
+        "STOP_C04_NEW_FILE_OR_ADDITIONAL_PATH_REQUIRED",
+        "STOP_C04_PUSH_AHEAD_BEHIND_MISMATCH",
+        "STOP_C04_PUSH_AUTHORIZATION_IDENTITY_MISMATCH",
+        "STOP_C04_PUSH_AUTHORIZATION_NOT_ACTIVE",
+        "STOP_C04_PUSH_BRANCH_REFSPEC_MISMATCH",
+        "STOP_C04_PUSH_BYTE_OR_MODE_MISMATCH",
+        "STOP_C04_PUSH_CHANGED_PATHS_OR_STATUSES_MISMATCH",
+        "STOP_C04_PUSH_COMMIT_MISMATCH",
+        "STOP_C04_PUSH_FAILED",
+        "STOP_C04_PUSH_FORCE_OR_REPAIR_ATTEMPT",
+        "STOP_C04_PUSH_REMOTE_ADVANCED",
+        "STOP_C04_PUSH_WORKTREE_NOT_CLEAN",
+        "STOP_C04_READ_ONLY_PATH_MUTATED",
+        "STOP_C04_RECORD_CROSS_FIELD_MISMATCH",
+        "STOP_C04_RECORD_SCHEMA_INVALID",
+        "STOP_C04_REMOTE_INSTALLATION_IDENTITY_MISMATCH",
+        "STOP_C04_REMOTE_INSTALLATION_NOT_VERIFIED",
+        "STOP_C04_SOURCE_CANDIDATE_IDENTITY_MISMATCH",
+        "STOP_C04_SOURCE_REVIEW_NOT_APPROVED",
+        "STOP_C04_SOURCE_TEST_BOUNDARY_VIOLATION",
+        "STOP_C04_SPEC_CANONICAL_BASE_MISMATCH",
+        "STOP_C04_SPEC_CANONICAL_INSTALLATION_LIVE_PATH_CHANGE",
+        "STOP_C04_SPEC_CANONICAL_INSTALLATION_NOT_APPROVED",
+        "STOP_C04_SPEC_CANONICAL_INSTALLATION_NOT_VERIFIED",
+        "STOP_C04_SPEC_CANONICAL_INSTALLATION_RECORD_MISSING",
+        "STOP_C04_SPEC_DELIVERY_MECHANICS_NOT_EXTERNAL",
+        "STOP_C04_SPEC_PACKAGE_IDENTITY_MISMATCH",
+        "STOP_C04_SPEC_PRESERVED_CONTRACT_MISMATCH",
+        "STOP_C04_SPEC_REPRESENTATION_MISMATCH",
+        "STOP_C04_SPEC_REVIEW_NOT_APPROVED",
+        "STOP_C04_SPEC_SCOPE_DRIFT",
+        "STOP_C04_SPEC_SELF_AUTHORIZED_DELIVERY_ATTEMPT",
+        "STOP_C04_SPEC_SUPERSESSION_INCOMPLETE",
+        "STOP_C04_SPEC_WORKFLOW_DOMAIN_NOT_TOTAL",
+        "STOP_C04_STAGE_STATE_MISMATCH",
+        "STOP_C04_TEST_AUTHORING_RESULT_UNAVAILABLE",
+        "STOP_C04_TEST_CANDIDATE_IDENTITY_MISMATCH",
+        "STOP_C04_TEST_REVIEW_NOT_APPROVED",
+        "STOP_C04_TEST_SCOPE_NOT_APPROVED",
+        "STOP_C04_TEST_WORKSPACE_SOURCE_IDENTITY_MISMATCH",
+        "STOP_C04_TRUSTED_MULTI_ROUND_LINEAGE_REQUIRED",
+        "STOP_C04_UNAUTHORIZED_EXECUTION_ACTIVITY",
+        "STOP_C04_UNAUTHORIZED_GIT_WRITE",
+        "STOP_C04_WORKSPACE_ALIAS_OR_LINK_INVALID",
+        "STOP_C04_WORKSPACE_EXTRA_OR_MISSING_PATH",
+        "STOP_C04_WORKSPACE_MEMBER_IDENTITY_INVALID",
+        "STOP_C04_WORKSPACE_NOT_EMPTY",
+        "STOP_C04_WORKSPACE_ROOT_INVALID"
+      ]
+    }
+  },
+  "required": [
+    "schema_id",
+    "record_kind",
+    "state",
+    "stage",
+    "stop_code",
+    "predicate_id",
+    "predicate_ordinal",
+    "decision_owner",
+    "retry_eligibility",
+    "retry_owner",
+    "authorization_effect",
+    "expected",
+    "observed",
+    "affected_paths",
+    "authoring_started",
+    "git_write_observed",
+    "execution_activity_observed",
+    "evidence_sha256",
+    "created_at_utc"
+  ],
+  "title": "Revision 10 Candidate 04 Workflow Halt Record",
+  "type": "object",
+  "x-cross-field-contract": "WORKFLOW_RECORD_CROSS_FIELD_RULES.md#Halt-record-validation",
+  "x-nullability": "No top-level or evidence property is nullable. Null is permitted only as the value of a Fact whose value_type is exactly NULL."
+}

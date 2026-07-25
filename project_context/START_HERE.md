@@ -80,12 +80,16 @@ Read these before doing anything:
     - `implementation_handoffs/local_curl_rev23_i0/provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/SENTINEL_ACCEPTANCE_DECISION.md`
     - `implementation_handoffs/local_curl_rev23_i0/provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/SENTINEL_INSTALLATION_VERIFICATION.md`
     - `implementation_handoffs/local_curl_rev23_i0/provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/PROVENANCE_CAPTURE_MANIFEST.json`
-26. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
+26. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/README_FIRST.md`
+    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/SENTINEL_ACCEPTANCE_DECISION.md`
+    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/ACCEPTED_STARTING_STATE_AMENDMENT_MANIFEST.json`
+    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/accepted_candidate_04/README_FIRST.md`
+27. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
     - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/GUSTAVO_AUTHORIZATION_RECORD.md`
     - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/SENTINEL_IMPLEMENTATION_AUTHORIZATION.md`
     - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/AUTHORIZATION_MANIFEST.json`
     - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/SOURCE_GATE.md`
-27. The remaining files required by the handoff, authorization, accepted-scope, selected-checkpoint, remediation-scope, and provenance-capture read orders.
+28. The remaining files required by the handoff, authorization, accepted-scope, selected-checkpoint, remediation-scope, provenance-capture, and accepted starting-state amendment read orders.
 
 ---
 
@@ -184,6 +188,22 @@ Sentinel accepted and verified the documentation/evidence-only installation at
 
 The capture does not accept or promote checkpoint bytes and does not repair the failed source gate.
 
+### Accepted Revision 10 starting-state amendment
+
+Sentinel accepted `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04` as:
+
+`APPROVE — REV10_STARTING_STATE_AMENDMENT_CANDIDATE_04_ACCEPTED`
+
+- submitted ZIP SHA-256: `9b6e05ff09e916b02b990556ee1ef6a37e3bc044a83c317ecfcc60fa65a63193`
+- accepted member count: `19`
+- canonical installation base: `bc957fe05096b790052d0515773b9e0a2dc88a60`
+- installation state in this package: `INSTALLED_PENDING_SENTINEL_VERIFICATION`
+- installation commit: `PENDING_RETURN_TO_SENTINEL`
+- implementation authorization: **NO**
+- active Claude implementation prompt: **NO**
+
+The amendment accepts an isolated non-Git starting workspace, exact twelve-path identities, closed workflow record schemas, and separate commit/review/push/remote-verification gates. It does not repair the failed source gate, accept the checkpoint, close the multi-round lineage gap, or authorize implementation.
+
 ### Historical Revision 09 scope record
 
 - scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
@@ -223,6 +243,7 @@ Revision 08 remains immutable historical accepted evidence.
 - Static checkpoint conformance: **BLOCKED — `REVISION10_STATIC_CONFORMANCE_BLOCKED`**.
 - Revision 10 remediation scope: **ACCEPTED, INSTALLED, AND SENTINEL-VERIFIED** at `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`; authorization effect `NONE`.
 - Worktree-capture provenance: **ACCEPTED AND SENTINEL-VERIFIED** at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`; the multi-round activity-lineage gap remains open.
+- Revision 10 starting-state amendment Candidate 04: **ACCEPTED; INSTALLATION PENDING SENTINEL VERIFICATION**; authorization effect `NONE`.
 
 ---
 
@@ -230,14 +251,11 @@ Revision 08 remains immutable historical accepted evidence.
 
 ### Controlling Revision 10 state
 
-`STOP_REV10_REMEDIATION_SOURCE_AUTHORIZATION_NOT_ACTIVATED`
+`STOP_REV10_STARTING_STATE_AMENDMENT_INSTALLATION_NOT_VERIFIED`
 
-Revision 10 specification acceptance and the static-conformance finding do not
-authorize source synchronization, source/test authoring, tests, project execution,
-rollback, restoration, overwrite, checkpoint promotion, data/network access, Git
-writes by Claude, R2, P1/P2/P3, scoring, probe execution, or gate changes.
+Revision 10 specification acceptance, checkpoint review, remediation-scope acceptance, provenance-capture acceptance, and Candidate 04 acceptance do not authorize source/test authoring, workspace preparation, materialization, tests, execution, data/network access, checkpoint promotion, or Git writes by Claude.
 
-Gustavo authorized conditional source-authoring package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01`. The package selects the exact twelve-path expected baseline and three writable source paths, but it is not active until canonical installation, Sentinel verification, and local source-gate acceptance. No active source-gated commit is selected yet. Revision 09 R1 and Revision 08 authorizations remain historical and do not carry forward.
+The historical conditional package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` remains inactive after its failed canonical-worktree source gate. Candidate 04 does not repair or reactivate it. This documentation installation must be Sentinel-verified before Gustavo may consider a new bounded authorization under the accepted amendment. No active source-gated commit or Claude implementation handoff exists.
 
 ### Historical Revision 08 authorization record at installation base
 
@@ -257,7 +275,10 @@ stage.
 - Specification acceptance does not authorize implementation.
 - Implementation acceptance does not authorize tests or execution.
 - Canonical project-document changes are prepared by ChatGPT as complete files
-  and uploaded manually by Gustavo.
+  and uploaded manually by Gustavo. Documentation-only changes normally use a
+  temporary browser branch; local Git remains available for byte-gated or binary work.
+- A local commit does not authorize push. Sentinel reviews the exact commit, and
+  Gustavo separately authorizes any push or merge to canonical `main`.
 - Claude must not edit canonical project-context files.
 - Never silently reverse a settled decision or reactivate superseded material.
 - Preserve material unaccepted implementation progress as an evidence-only canonical checkpoint before chat/model/session transitions; never place it at the executable source path until separately accepted and authorized.

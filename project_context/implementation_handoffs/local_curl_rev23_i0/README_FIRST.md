@@ -20,6 +20,10 @@
 - worktree-capture source ZIP SHA-256: `942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9`;
 - worktree-capture installation verification: `INSTALLED_AND_SENTINEL_VERIFIED`;
 - worktree-capture installation commit: `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`;
+- accepted starting-state amendment: `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04`;
+- amendment decision: `APPROVE — REV10_STARTING_STATE_AMENDMENT_CANDIDATE_04_ACCEPTED`;
+- amendment installation state: `INSTALLED_PENDING_SENTINEL_VERIFICATION`;
+- current authorization stop: `STOP_REV10_STARTING_STATE_AMENDMENT_INSTALLATION_NOT_VERIFIED`;
 - active implementation authorization: `NONE`;
 - active source-gated commit: `NOT_SELECTED`.
 
@@ -50,14 +54,19 @@ The preserved `fcf406c4...` checkpoint remains exact, recoverable, evidence-only
 21. `provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/README_FIRST.md`
 22. `provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/SENTINEL_INSTALLATION_VERIFICATION.md`
 23. the complete provenance-capture read order declared there
-24. `authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
-25. the complete authorization-package read order declared there
-26. `HANDOFF_INVENTORY.md`
-27. `HANDOFF_REVISION_10_STATIC_CONFORMANCE_SHA256SUMS.txt`
-28. `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt`
-29. `HANDOFF_REVISION_10_REMEDIATION_SOURCE_AUTHORIZATION_SHA256SUMS.txt`
-30. `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_SHA256SUMS.txt`
-31. `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_VERIFICATION_SHA256SUMS.txt`
+24. `scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/README_FIRST.md`
+25. `scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/SENTINEL_ACCEPTANCE_DECISION.md`
+26. `scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/ACCEPTED_STARTING_STATE_AMENDMENT_MANIFEST.json`
+27. the complete accepted Candidate 04 read order declared there
+28. `authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
+29. the complete authorization-package read order declared there
+30. `HANDOFF_INVENTORY.md`
+31. `HANDOFF_REVISION_10_STATIC_CONFORMANCE_SHA256SUMS.txt`
+32. `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt`
+33. `HANDOFF_REVISION_10_REMEDIATION_SOURCE_AUTHORIZATION_SHA256SUMS.txt`
+34. `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_SHA256SUMS.txt`
+35. `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_VERIFICATION_SHA256SUMS.txt`
+36. `HANDOFF_REVISION_10_STARTING_STATE_AMENDMENT_SHA256SUMS.txt`
 
 ## Checkpoint and provenance findings
 
@@ -83,8 +92,14 @@ The accepted remediation scope defines a future atomic three-source implementati
 
 Conditional package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` was installed and Sentinel-verified at `71061065d91fc391e934d7e79a29eefc898cfe82`, but its canonical-worktree source gate failed because the expected live twelve-path tree was absent. The accepted provenance capture records Claude's separate untracked workspace; it does not satisfy or activate that failed gate. No historical authorization carries forward and no active Claude implementation prompt exists.
 
+## Accepted starting-state amendment
+
+Sentinel accepted `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04` at review base `bc957fe05096b790052d0515773b9e0a2dc88a60`. The amendment defines an isolated non-Git captured-payload workspace, exact twelve-path starting identities, closed typed workflow records, and separate source/test commit-review-push-remote-verification gates.
+
+The amendment is installed by this documentation package with verification pending. It does not repair the failed gate, accept the checkpoint, close the open lineage gap, or authorize workspace preparation, implementation, tests, execution, or Git writes by Claude.
+
 ## Non-authorization
 
 No implementation, source/test edit, test execution, rollback, restoration, overwrite, promotion, project execution, data/network access, subprocess, artifact production outside this documentation/evidence package, Git write by Claude, R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.
 
-The current permitted next action is SPEC-ONLY Professor finalization of Candidate 02 using the accepted and verified capture finding at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`. No source edit is permitted before a separately accepted amendment, Gustavo authorization, and active Sentinel handoff.
+The current permitted next action is Sentinel verification of the exact documentation-only Candidate 04 installation commit. No workspace preparation, source/test edit, materialization, test stage, push, or execution is permitted before that verification and a later separate Gustavo authorization with an active Sentinel handoff.

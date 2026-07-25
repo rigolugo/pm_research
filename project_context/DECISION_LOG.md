@@ -596,7 +596,31 @@ Sentinel verified canonical installation commit `b2e0506cce3e7be60ed5a5ec6b18b6e
 This closes only `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`.
 `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE` remains open. The checkpoint remains `NOT_ACCEPTED`, non-controlling, and authorization effect `NONE`. The accepted capture does not repair the failed source gate, select implementation starting bytes, or authorize implementation, tests, execution, data/network access, or Git writes by Claude.
 
-Professor may now finalize the SPEC-ONLY Candidate 02 starting-state amendment. Sentinel reviews it; Gustavo separately decides any later implementation authorization.
+At that point, Professor was permitted to finalize the SPEC-ONLY starting-state amendment for Sentinel review.
+
+### Revision 10 starting-state amendment Candidate 04 acceptance
+
+On `2026-07-25`, Sentinel accepted `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04` as:
+
+`APPROVE — REV10_STARTING_STATE_AMENDMENT_CANDIDATE_04_ACCEPTED`
+
+- canonical review and installation base: `bc957fe05096b790052d0515773b9e0a2dc88a60`;
+- submitted ZIP SHA-256: `9b6e05ff09e916b02b990556ee1ef6a37e3bc044a83c317ecfcc60fa65a63193`;
+- submitted ZIP size: `74507` bytes;
+- accepted member count: `19`;
+- Candidate 03 status: `BLOCKED_NOT_ACCEPTED_NON_CONTROLLING`;
+- selected model: `ISOLATED_CAPTURED_PAYLOAD_WORKSPACE_MODEL_V2`;
+- exact starting paths: `12`;
+- source authoring boundary: `3` writable and `9` protected;
+- test authoring boundary: `4` writable and `8` protected;
+- baseline-support edit prohibitions: `5`;
+- workflow closure: `21` states, `20` stages, `70` stop codes, `20` success codes, and `205` ordered predicate applications.
+
+Candidate 04 resolves the Candidate 03 record-schema and delivery-boundary defects. Halt and success records are structurally closed and cross-field bound to exact workflow rows. Source and test delivery each separate local commit creation, Sentinel local review, separate Gustavo push authorization, one non-force fast-forward push, and Sentinel remote installation verification.
+
+The accepted amendment does not repair or reactivate `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01`, accept or promote checkpoint `fcf406c4...`, close `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`, or authorize implementation, tests, execution, data/network activity, or Git writes by Claude.
+
+Canonical installation is documentation-only and remains `PENDING_SENTINEL_VERIFICATION` until the exact commit is returned and verified. Candidate 04 acceptance alone creates no active Claude handoff.
 
 ---
 
@@ -627,6 +651,7 @@ Professor may now finalize the SPEC-ONLY Candidate 02 starting-state amendment. 
   absent new authoritative evidence or a formally accepted amendment.
 - The accepted current twelve-path worktree-capture identity and verified installation
   at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`, absent new authoritative evidence that changes the captured bytes or scope.
+- The accepted Candidate 04 starting-state amendment identity, closed record domains, exact path boundaries, and commit/review/push/remote-verification separation, absent a concrete contract contradiction or formally accepted later amendment.
 
 ---
 
