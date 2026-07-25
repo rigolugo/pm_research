@@ -6,31 +6,35 @@
 
 ## Current objective
 
-### Controlling Revision 10 static-conformance record objective
+### Controlling Revision 10 remediation-scope state
 
 Revision 10 is accepted, canonically installed, and Sentinel-verified at
 `3d6fbe5eda504c32d94fed72be99adb9485fe1b1`. Its accepted source archive
 SHA-256 is `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`.
 
-Sentinel independently completed static implementation-conformance review of
-preserved checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` /
-`fcf406c4...` at canonical review base
-`3cf0871ae97d112324031190822756379d1236e8`.
-
-Decision:
+Sentinel's static review of preserved checkpoint
+`REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` remains:
 
 `BLOCK — REVISION10_STATIC_CONFORMANCE_BLOCKED`
 
-The checkpoint remains exact, recoverable, evidence-only, `NOT_ACCEPTED`,
-non-controlling, and authorization effect `NONE`. T107 and T153 are resolved at
-the specification layer. The two provenance gaps remain separately open.
+Sentinel subsequently accepted remediation package
+`REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01`, submitted ZIP
+SHA-256 `e6bc7139c39bd75630ad480821c203dbd5c2a914dae3b23fd26b9bfe2f513c1a`, as
+`APPROVE — REV10_LOCAL_CURL_REMEDIATION_SCOPE_ACCEPTED`.
 
-The immediate permitted action is Gustavo's manual installation of the
-complete documentation-only review-record package at the exact review base,
-followed by Sentinel verification of the resulting commit.
+The accepted remediation scope was installed documentation-only at canonical
+commit `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`, directly after
+`cc2964840d197a40d1c4ef567b42eda762c0be0a`, and Sentinel verified the exact
+17-path installation, clean worktree, and local/remote equality.
 
-No implementation start, source/test edit, test execution, rollback, promotion,
-R2, or downstream activity is selected or authorized.
+The remediation scope defines a future atomic three-source implementation
+candidate and a separately gated four-test-source candidate. It closes no
+implementation defect by itself. Implementation authorization remains `NONE` and
+no implementation starting SHA or source-gated commit is selected.
+
+The preserved checkpoint remains exact, recoverable, evidence-only,
+`NOT_ACCEPTED`, non-controlling, and authorization effect `NONE`. The two
+provenance gaps remain separately open.
 
 ### Historical Revision 08 objective at installation base
 
@@ -200,6 +204,24 @@ path changed during documentation installation.
 Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification
 package. Revision 09 and Revision 08 remain immutable historical accepted evidence.
 
+### Accepted Revision 10 remediation scope
+
+- decision: `APPROVE — REV10_LOCAL_CURL_REMEDIATION_SCOPE_ACCEPTED`
+- accepted candidate: `REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01`
+- submitted ZIP SHA-256: `e6bc7139c39bd75630ad480821c203dbd5c2a914dae3b23fd26b9bfe2f513c1a`
+- installation package ZIP SHA-256: `5c4594a01b6210b1b8865815d4617447c2470720e540ac03d4144836de48a72c`
+- canonical installation base: `cc2964840d197a40d1c4ef567b42eda762c0be0a`
+- verified canonical installation commit: `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`
+- changed paths: `17`, documentation only
+- live source/test changes: `0`
+- implementation authorization: `NONE`
+- implementation starting SHA: `NOT_AUTHORIZED_AND_NOT_SELECTED`
+
+The accepted future source-authoring boundary is atomic across exactly
+`canonical.py`, `finding4_registry.py`, and `prepared_evidence.py`. The four
+identified test-source paths remain a separate later authorization boundary.
+Acceptance and installation do not activate either stage.
+
 ### Historical Revision 09 scope state
 
 - accepted scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
@@ -318,18 +340,20 @@ writes, or any downstream phase.
 
 ### Controlling Revision 10 next step
 
-Gustavo may manually install the documentation-only static-conformance review
-record package at exact base
-`3cf0871ae97d112324031190822756379d1236e8`, commit only the declared
-canonical-document paths, and return the resulting commit SHA to Sentinel.
+The accepted remediation scope is installed and Sentinel-verified at
+`ee4a639f9a9429e642391f1fb1e0ab356a6f965a`. This documentation synchronization
+records that installation across the canonical state, decision, artifact, and
+navigation files.
 
-Sentinel may then verify installation identity, parent, changed-path scope,
-checksums, unchanged checkpoint payload, unchanged accepted Revision 10 package,
-and absence of live source/test changes.
+After the synchronization commit is installed and Sentinel-verified, Gustavo may
+separately decide whether to authorize a bounded implementation-source stage.
+Any such authorization must select and verify a fresh implementation starting
+state and must be limited to the accepted atomic three-source boundary.
 
-No implementation remediation, starting SHA selection, Claude implementation
-prompt, source/test edit, rollback, promotion, R2, or downstream stage follows
-automatically.
+No implementation, test-source authoring, test execution, source synchronization,
+project execution, data/network access, rollback, promotion, R2, or downstream
+stage follows automatically from remediation-scope acceptance or documentation
+synchronization.
 
 ### Historical Revision 08 next step at installation base
 

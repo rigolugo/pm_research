@@ -492,6 +492,68 @@ Sentinel verification of the resulting commit.
 
 ---
 
+### Revision 10 local-curl remediation-scope acceptance
+
+On `2026-07-24`, Sentinel accepted
+`REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01` as the narrow
+implementation-remediation planning contract.
+
+- decision: `APPROVE — REV10_LOCAL_CURL_REMEDIATION_SCOPE_ACCEPTED`;
+- submitted ZIP SHA-256:
+  `e6bc7139c39bd75630ad480821c203dbd5c2a914dae3b23fd26b9bfe2f513c1a`;
+- accepted candidate member count: `11`;
+- implementation authorization effect: `NONE`;
+- implementation starting SHA selected: `false`.
+
+The accepted source-stage design is one atomic candidate across exactly:
+
+- `pm_research/local_curl_per_side/canonical.py`;
+- `pm_research/local_curl_per_side/finding4_registry.py`;
+- `pm_research/local_curl_per_side/prepared_evidence.py`.
+
+Test-source authoring remains a separate later boundary across exactly:
+
+- `tests/local_curl_per_side/test_canonical_i0a.py`;
+- `tests/local_curl_per_side/test_finding4_registry_i0a.py`;
+- `tests/local_curl_per_side/test_i0a_public_contract.py`;
+- `tests/local_curl_per_side/test_prepared_evidence_i0a.py`.
+
+Binding Sentinel determinations:
+
+1. selected-member iteration is sidecars first, then non-sidecars, with ascending
+   numeric `object_ordinal` within each class;
+2. `UnitContext` is exact, closed, and non-coercing; `bool` is excluded from
+   `subject_sequence`, which is bounded to `0..2^64-1`;
+3. the candidate checksum inventory excludes self-reference and the detached ZIP
+   SHA-256 identifies the complete submitted archive.
+
+The two provenance gaps remain open and independent. Acceptance does not promote
+or accept the preserved `fcf406c4...` checkpoint.
+
+### Revision 10 remediation-scope canonical installation verification
+
+On `2026-07-24`, Sentinel verified canonical commit
+`ee4a639f9a9429e642391f1fb1e0ab356a6f965a` as the exact documentation-only
+installation of the accepted remediation scope.
+
+- parent/install base: `cc2964840d197a40d1c4ef567b42eda762c0be0a`;
+- installation package ZIP SHA-256:
+  `5c4594a01b6210b1b8865815d4617447c2470720e540ac03d4144836de48a72c`;
+- changed paths: `17`;
+- replacements: `1`;
+- new documentation files: `16`;
+- live implementation-source changes: `0`;
+- test-source changes: `0`;
+- local `HEAD` and fetched `origin/main`: exact match;
+- final worktree status entries: `0`.
+
+The accepted remediation scope is therefore `INSTALLED_AND_SENTINEL_VERIFIED`.
+Its authorization effect remains `NONE`; no implementation starting SHA,
+source-gated commit, Claude implementation prompt, test stage, execution stage,
+network/data activity, or downstream phase is active.
+
+---
+
 ## DO NOT REOPEN unless explicitly requested with new evidence
 
 - Rank 1A recalibration.
@@ -514,6 +576,9 @@ Sentinel verification of the resulting commit.
 - The `REVISION10_STATIC_CONFORMANCE_BLOCKED` finding for checkpoint
   `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4`, absent new implementation bytes or
   authoritative evidence that changes the reviewed payload or controlling contract.
+- The accepted Revision 10 remediation-scope identity, binding Sentinel determinations,
+  and verified documentation-only installation at `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`,
+  absent new authoritative evidence or a formally accepted amendment.
 
 ---
 

@@ -154,6 +154,10 @@ Finding 4 installation commit:
 
 `e83555ef23712cf6c846dc63a7103e0e0c7e4ed4`
 
+Accepted Revision 10 remediation-scope installation commit:
+
+`ee4a639f9a9429e642391f1fb1e0ab356a6f965a`
+
 Installation commits:
 
 - `3f8cc54dc12a5335472f00f5ffcf5c0d56d8d1ba`
@@ -178,6 +182,13 @@ Installation commits:
 - `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
 - `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_INSTALLATION_VERIFICATION_REVISION_10.md`
 - `scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
+- `remediation_scope/README_FIRST.md`
+- `remediation_scope/SENTINEL_ACCEPTANCE_DECISION.md`
+- `remediation_scope/SENTINEL_INSTALLATION_AUTHORIZATION.md`
+- `remediation_scope/SENTINEL_INSTALLATION_VERIFICATION.md`
+- `remediation_scope/ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
+- `remediation_scope/REMEDIATION_SCOPE_SHA256SUMS.txt`
+- `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt`
 
 Current implementation state:
 
@@ -310,6 +321,38 @@ Revision 10 accepted source archive SHA-256:
 Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification
 package. Revision 09 and Revision 08 remain immutable historical evidence. No
 implementation authorization follows.
+
+### `remediation_scope/`
+
+Accepted and Sentinel-verified Revision 10 implementation-remediation planning
+record.
+
+- accepted candidate:
+  `REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01`
+- submitted candidate ZIP SHA-256:
+  `e6bc7139c39bd75630ad480821c203dbd5c2a914dae3b23fd26b9bfe2f513c1a`
+- installation package ZIP SHA-256:
+  `5c4594a01b6210b1b8865815d4617447c2470720e540ac03d4144836de48a72c`
+- installation base: `cc2964840d197a40d1c4ef567b42eda762c0be0a`
+- verified installation commit: `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`
+- installation changed paths: `17`, documentation only
+- implementation authorization: `NONE`
+- implementation starting SHA: `NOT_AUTHORIZED_AND_NOT_SELECTED`
+
+The scope defines a future atomic three-source candidate and a separately gated
+four-test-source candidate. It contains no implementation or test code and does
+not activate either stage. The preserved checkpoint remains `NOT_ACCEPTED` and
+non-authorizing; both provenance gaps remain open.
+
+Controlling records:
+
+- `README_FIRST.md`
+- `SENTINEL_ACCEPTANCE_DECISION.md`
+- `SENTINEL_INSTALLATION_AUTHORIZATION.md`
+- `SENTINEL_INSTALLATION_VERIFICATION.md`
+- `ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
+- `REMEDIATION_SCOPE_SHA256SUMS.txt`
+- `accepted_remediation_scope_candidate_01/`
 
 ### `authorization_audit/rev23_finding4_i0a/`
 

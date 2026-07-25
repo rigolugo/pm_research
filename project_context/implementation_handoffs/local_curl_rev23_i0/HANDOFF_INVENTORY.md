@@ -8,7 +8,11 @@ Checkpoint static-conformance status:
 `BLOCK — REVISION10_STATIC_CONFORMANCE_BLOCKED` at review base
 `3cf0871ae97d112324031190822756379d1236e8`.
 
-Implementation is not authorized.
+Accepted remediation scope:
+`REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01`, installed and
+Sentinel-verified at `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`.
+
+Implementation is not authorized. No implementation starting SHA is selected.
 
 ## Controlling files
 
@@ -31,6 +35,12 @@ Implementation is not authorized.
   immutable static-conformance review record.
 - `HANDOFF_REVISION_10_STATIC_CONFORMANCE_SHA256SUMS.txt` — focused checksum
   inventory for this review-record installation.
+- `remediation_scope/README_FIRST.md` — accepted remediation-scope read order.
+- `remediation_scope/SENTINEL_ACCEPTANCE_DECISION.md` — Sentinel acceptance.
+- `remediation_scope/SENTINEL_INSTALLATION_VERIFICATION.md` — verified canonical installation at `ee4a639f...`.
+- `remediation_scope/ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json` — installed identity and non-authorization state.
+- `remediation_scope/accepted_remediation_scope_candidate_01/` — exact accepted 11-member candidate package.
+- `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt` — focused checksum inventory for the accepted remediation-scope records.
 
 Historical checksum inventories remain immutable evidence of the states they
 recorded. They are not regenerated or reinterpreted as inventories of this later
@@ -77,6 +87,6 @@ Open provenance gaps:
 - `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`;
 - `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`.
 
-No checkpoint, accepted specification, or static review record authorizes
-implementation, tests, execution, rollback, promotion, data/network activity,
-Git writes by Claude, or a downstream stage.
+No checkpoint, accepted specification, static review record, or accepted
+remediation-scope record authorizes implementation, tests, execution, rollback,
+promotion, data/network activity, Git writes by Claude, or a downstream stage.

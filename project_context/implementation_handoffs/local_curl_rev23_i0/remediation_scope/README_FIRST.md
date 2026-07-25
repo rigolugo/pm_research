@@ -7,7 +7,8 @@
 - Sentinel decision: `APPROVE — REV10_LOCAL_CURL_REMEDIATION_SCOPE_ACCEPTED`;
 - Gustavo documentation-only installation authorization: **GRANTED** on `2026-07-24`;
 - canonical installation base: `cc2964840d197a40d1c4ef567b42eda762c0be0a`;
-- installation state after this package is committed: `INSTALLED_PENDING_SENTINEL_VERIFICATION`;
+- installation state: `INSTALLED_AND_SENTINEL_VERIFIED`;
+- verified installation commit: `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`;
 - implementation authorization: **NONE**;
 - implementation starting SHA: `NOT_AUTHORIZED_AND_NOT_SELECTED`;
 - test-source authoring: **UNAUTHORIZED**;
@@ -19,19 +20,20 @@ The accepted remediation scope is an implementation-planning contract only. It d
 
 1. `SENTINEL_ACCEPTANCE_DECISION.md`
 2. `SENTINEL_INSTALLATION_AUTHORIZATION.md`
-3. `ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
-4. `accepted_remediation_scope_candidate_01/README_FIRST.md`
-5. `accepted_remediation_scope_candidate_01/REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01.md`
-6. `accepted_remediation_scope_candidate_01/CONTRACT_GAP_TO_CHANGE_MATRIX.md`
-7. `accepted_remediation_scope_candidate_01/AUTHORIZED_FILE_MATRIX.md`
-8. `accepted_remediation_scope_candidate_01/INTERFACE_AND_RESULT_CODE_MATRIX.md`
-9. `accepted_remediation_scope_candidate_01/TEST_OBLIGATION_MATRIX.md`
-10. `accepted_remediation_scope_candidate_01/ACTIVITY_BOUNDARIES_AND_STOPS.md`
-11. `accepted_remediation_scope_candidate_01/PROVENANCE_GAP_HANDLING.md`
-12. `accepted_remediation_scope_candidate_01/SENTINEL_REVIEW_HANDOFF.md`
-13. `accepted_remediation_scope_candidate_01/PACKAGE_MANIFEST.json`
-14. `accepted_remediation_scope_candidate_01/SHA256SUMS.txt`
-15. `REMEDIATION_SCOPE_SHA256SUMS.txt`
+3. `SENTINEL_INSTALLATION_VERIFICATION.md`
+4. `ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
+5. `accepted_remediation_scope_candidate_01/README_FIRST.md`
+6. `accepted_remediation_scope_candidate_01/REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01.md`
+7. `accepted_remediation_scope_candidate_01/CONTRACT_GAP_TO_CHANGE_MATRIX.md`
+8. `accepted_remediation_scope_candidate_01/AUTHORIZED_FILE_MATRIX.md`
+9. `accepted_remediation_scope_candidate_01/INTERFACE_AND_RESULT_CODE_MATRIX.md`
+10. `accepted_remediation_scope_candidate_01/TEST_OBLIGATION_MATRIX.md`
+11. `accepted_remediation_scope_candidate_01/ACTIVITY_BOUNDARIES_AND_STOPS.md`
+12. `accepted_remediation_scope_candidate_01/PROVENANCE_GAP_HANDLING.md`
+13. `accepted_remediation_scope_candidate_01/SENTINEL_REVIEW_HANDOFF.md`
+14. `accepted_remediation_scope_candidate_01/PACKAGE_MANIFEST.json`
+15. `accepted_remediation_scope_candidate_01/SHA256SUMS.txt`
+16. `REMEDIATION_SCOPE_SHA256SUMS.txt`
 
 ## Accepted implementation-stage design
 
@@ -71,4 +73,4 @@ They are not resolved by this remediation-scope acceptance or installation.
 
 No implementation, source/test edit, test execution, rollback, restoration, overwrite, promotion, project execution, data/network access, subprocess, artifact production, Git write by Claude, R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.
 
-After manual commit, Gustavo returns the full commit SHA to Sentinel for exact installation verification. No Claude implementation prompt is active.
+The documentation-only installation is verified at `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`. No Claude implementation prompt is active. A later implementation stage requires separate Gustavo authorization, a Sentinel-approved handoff, and an independently verified starting state.

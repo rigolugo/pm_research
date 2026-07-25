@@ -10,7 +10,8 @@
 - remediation-scope Sentinel decision: `APPROVE — REV10_LOCAL_CURL_REMEDIATION_SCOPE_ACCEPTED`;
 - remediation candidate ZIP SHA-256: `e6bc7139c39bd75630ad480821c203dbd5c2a914dae3b23fd26b9bfe2f513c1a`;
 - remediation installation base: `cc2964840d197a40d1c4ef567b42eda762c0be0a`;
-- remediation installation state after this package is committed: `INSTALLED_PENDING_SENTINEL_VERIFICATION`;
+- remediation installation state: `INSTALLED_AND_SENTINEL_VERIFIED`;
+- remediation installation commit: `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`;
 - implementation authorization: `NONE`;
 - implementation starting SHA: `NOT_AUTHORIZED_AND_NOT_SELECTED`.
 
@@ -35,10 +36,12 @@ The preserved `fcf406c4...` checkpoint remains exact, recoverable, evidence-only
 15. `remediation_scope/README_FIRST.md`
 16. `remediation_scope/SENTINEL_ACCEPTANCE_DECISION.md`
 17. `remediation_scope/SENTINEL_INSTALLATION_AUTHORIZATION.md`
-18. `remediation_scope/ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
-19. the complete remediation-scope read order declared in `remediation_scope/README_FIRST.md`
-20. `HANDOFF_INVENTORY.md`
-21. `HANDOFF_REVISION_10_STATIC_CONFORMANCE_SHA256SUMS.txt`
+18. `remediation_scope/SENTINEL_INSTALLATION_VERIFICATION.md`
+19. `remediation_scope/ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
+20. the complete remediation-scope read order declared in `remediation_scope/README_FIRST.md`
+21. `HANDOFF_INVENTORY.md`
+22. `HANDOFF_REVISION_10_STATIC_CONFORMANCE_SHA256SUMS.txt`
+23. `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt`
 
 ## Checkpoint finding
 
@@ -61,4 +64,4 @@ No implementation starting SHA is selected. No historical authorization carries 
 
 No implementation, source/test edit, test execution, rollback, restoration, overwrite, promotion, project execution, data/network access, subprocess, artifact production, Git write by Claude, R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.
 
-The only permitted immediate action from this package is Gustavo's manual documentation installation at exact base `cc2964840d197a40d1c4ef567b42eda762c0be0a`, followed by Sentinel verification of the resulting commit.
+The accepted remediation scope is installed and Sentinel-verified. The current permitted administrative action is narrow synchronization of the canonical state, decision, artifact, and navigation records. Any implementation stage requires a separate Gustavo authorization and a new Sentinel handoff with an independently verified starting state.

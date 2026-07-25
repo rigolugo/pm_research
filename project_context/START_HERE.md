@@ -71,7 +71,12 @@ Read these before doing anything:
     - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/CHECKPOINT_MANIFEST.json`
     - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_INSTALLATION_VERIFICATION.md`
     - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_STATIC_CONFORMANCE_REVIEW_REVISION_10.md`
-24. The remaining files required by the handoff, authorization, accepted-scope, and selected checkpoint read orders.
+24. `implementation_handoffs/local_curl_rev23_i0/remediation_scope/README_FIRST.md`
+    - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/SENTINEL_ACCEPTANCE_DECISION.md`
+    - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/SENTINEL_INSTALLATION_AUTHORIZATION.md`
+    - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/SENTINEL_INSTALLATION_VERIFICATION.md`
+    - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
+25. The remaining files required by the handoff, authorization, accepted-scope, selected-checkpoint, and remediation-scope read orders.
 
 ---
 
@@ -136,6 +141,23 @@ records `REVISION10_STATIC_CONFORMANCE_BLOCKED`. The two provenance gaps remain
 open independently. Historical Revision 09 and Revision 08 implementation
 authorizations do not carry forward.
 
+### Accepted Revision 10 remediation scope
+
+The accepted remediation scope is canonically installed and Sentinel-verified at
+`ee4a639f9a9429e642391f1fb1e0ab356a6f965a`.
+
+- accepted candidate: `REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01`
+- Sentinel decision: `APPROVE — REV10_LOCAL_CURL_REMEDIATION_SCOPE_ACCEPTED`
+- candidate ZIP SHA-256: `e6bc7139c39bd75630ad480821c203dbd5c2a914dae3b23fd26b9bfe2f513c1a`
+- installation base: `cc2964840d197a40d1c4ef567b42eda762c0be0a`
+- verified installation commit: `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`
+- implementation authorized: **NO**
+- implementation start selected: **NO**
+
+The accepted future source boundary is one atomic three-file candidate. The four
+test-source paths are a separate later authorization boundary. No Claude
+implementation prompt is active.
+
 ### Historical Revision 09 scope record
 
 - scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
@@ -173,6 +195,7 @@ Revision 08 remains immutable historical accepted evidence.
 - Option D temporal precheck: accepted; PMXT v2 deprioritized for broad P0 coverage; Telonex L2 may only proceed through a separately authorized SPEC-ONLY vendor-coverage review.
 - Recovered R1 checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` remains exact, evidence-only, `NOT_ACCEPTED`, and non-authorizing.
 - Static checkpoint conformance: **BLOCKED — `REVISION10_STATIC_CONFORMANCE_BLOCKED`**.
+- Revision 10 remediation scope: **ACCEPTED, INSTALLED, AND SENTINEL-VERIFIED** at `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`; authorization effect `NONE`.
 - Open provenance gaps: multi-round activity lineage and independently captured current twelve-path worktree.
 
 ---
@@ -188,9 +211,9 @@ authorize source synchronization, source/test authoring, tests, project executio
 rollback, restoration, overwrite, checkpoint promotion, data/network access, Git
 writes by Claude, R2, P1/P2/P3, scoring, probe execution, or gate changes.
 
-No Revision 10 implementation starting SHA or source-gated commit is selected.
-The Revision 09 R1 and Revision 08 authorizations remain historical and do not
-carry forward.
+The accepted remediation scope does not change this stop. No Revision 10
+implementation starting SHA or source-gated commit is selected. The Revision 09
+R1 and Revision 08 authorizations remain historical and do not carry forward.
 
 ### Historical Revision 08 authorization record at installation base
 
