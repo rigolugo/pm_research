@@ -30,8 +30,10 @@ commit `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`, directly after
 The remediation scope defines an atomic three-source implementation candidate and a separately gated four-test-source candidate. Gustavo has now authorized conditional source-authoring package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` at package-preparation base `a4fb0e64056b58a229da481664e4234e3215cd91`. The package is not active until canonical installation, Sentinel verification, and local twelve-path source-gate acceptance. No active source-gated commit is selected.
 
 The preserved checkpoint remains exact, recoverable, evidence-only,
-`NOT_ACCEPTED`, non-controlling, and authorization effect `NONE`. The two
-provenance gaps remain separately open.
+`NOT_ACCEPTED`, non-controlling, and authorization effect `NONE`. Sentinel accepted
+and verified the complete current twelve-path worktree capture at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`.
+`CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED` is closed;
+`MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE` remains open.
 
 ### Historical Revision 08 objective at installation base
 
@@ -257,9 +259,9 @@ not enlarge current Revision 10 authority.
 
 `STOP_REV10_REMEDIATION_SOURCE_AUTHORIZATION_NOT_ACTIVATED`
 
-Gustavo authorized conditional package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` for one atomic source-authoring stage across exactly `canonical.py`, `finding4_registry.py`, and `prepared_evidence.py`. Expected starting identity is pinned for all twelve source/test paths.
+Gustavo authorized conditional package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` for one atomic source-authoring stage across exactly `canonical.py`, `finding4_registry.py`, and `prepared_evidence.py`. The package was installed and Sentinel-verified at `71061065d91fc391e934d7e79a29eefc898cfe82`, but its canonical-worktree source gate failed before edits.
 
-The package remains inactive until its canonical installation commit is Sentinel-verified and a local twelve-path source-gate report is accepted. No active source-gated commit or Claude implementation handoff exists. Test-source authoring, tests, project execution, data/network activity, Git history writes by Claude, and downstream stages remain unauthorized.
+The accepted and verified provenance capture at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1` records Claude's separate untracked twelve-path workspace. It does not clear or repair that failed gate. No active source-gated commit or Claude implementation handoff exists. Test-source authoring, tests, project execution, data/network activity, Git history writes by Claude, and downstream stages remain unauthorized.
 
 The historical Revision 09 R1 authorization and Revision 08 implementation authorization do not carry forward. The `fcf406c4...` checkpoint remains evidence only and must not be restored, overwritten, promoted, or used as a continuation start.
 
@@ -303,14 +305,14 @@ Resolved specification areas:
 - T153 reachability;
 - Candidate 09 non-controlling status.
 
-Open provenance gaps:
+Provenance state:
 
-- `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`;
-- `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`.
+- closed by accepted and verified capture: `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`;
+- still open: `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`.
 
-The checkpoint preserves exact bytes against chat/session loss. It does not
-promote those bytes to the executable source tree. The provenance gaps remain
-open but are separate from the verified static-conformance block.
+The checkpoint preserves exact bytes against chat/session loss. The accepted capture
+records all twelve untracked workspace paths but does not promote those bytes to the
+executable source tree or establish implementation conformance.
 
 ### Historical authorization state at installation base
 
@@ -334,9 +336,9 @@ writes, or any downstream phase.
 
 ### Controlling Revision 10 next step
 
-Manually install the conditional source-authorization package at exact base `a4fb0e64056b58a229da481664e4234e3215cd91` and return the documentation-only commit to Sentinel. Sentinel then verifies the commit and issues the local twelve-path hash preflight. Only a clear and accepted source gate permits an active Claude handoff.
+Professor may finalize the SPEC-ONLY Candidate 02 starting-state amendment using the accepted and verified worktree capture at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`. Sentinel must review that amendment before any implementation authorization is considered.
 
-No source edit may occur during package installation or source-gate verification. Test-source authoring, test execution, project execution, data/network access, rollback, promotion, R2, and downstream stages remain unauthorized.
+No source edit, materialization, test-source authoring, test execution, project execution, data/network access, rollback, promotion, R2, or downstream stage is authorized. The failed source gate remains inactive and cannot be repaired by implication.
 
 ### Historical Revision 08 next step at installation base
 

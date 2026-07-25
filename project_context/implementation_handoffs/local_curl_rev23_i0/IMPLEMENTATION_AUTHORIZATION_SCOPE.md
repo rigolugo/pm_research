@@ -43,11 +43,12 @@ The installed package's allowed-new-files value remains `NONE`; it cannot be sil
 
 ## Required future sequence
 
-1. Canonically install and Sentinel-verify the worktree-capture acceptance record.
-2. Professor drafts a SPEC-ONLY starting-state amendment using the accepted capture finding.
-3. Sentinel reviews and accepts or blocks that amendment.
-4. Gustavo separately authorizes the resulting bounded implementation stage.
-5. Sentinel issues a new active Claude handoff with exact starting identities and path/activity boundaries.
+Worktree-capture acceptance installation is complete and Sentinel-verified at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`.
+
+1. Professor finalizes the SPEC-ONLY Candidate 02 starting-state amendment using the accepted capture finding.
+2. Sentinel reviews and accepts or blocks that amendment.
+3. Gustavo separately authorizes the resulting bounded implementation stage.
+4. Sentinel issues a new active Claude handoff with exact starting identities and path/activity boundaries.
 
 No step above follows automatically from provenance acceptance.
 

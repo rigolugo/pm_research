@@ -76,12 +76,16 @@ Read these before doing anything:
     - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/SENTINEL_INSTALLATION_AUTHORIZATION.md`
     - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/SENTINEL_INSTALLATION_VERIFICATION.md`
     - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
-25. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
+25. `implementation_handoffs/local_curl_rev23_i0/provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/README_FIRST.md`
+    - `implementation_handoffs/local_curl_rev23_i0/provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/SENTINEL_ACCEPTANCE_DECISION.md`
+    - `implementation_handoffs/local_curl_rev23_i0/provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/SENTINEL_INSTALLATION_VERIFICATION.md`
+    - `implementation_handoffs/local_curl_rev23_i0/provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/PROVENANCE_CAPTURE_MANIFEST.json`
+26. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
     - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/GUSTAVO_AUTHORIZATION_RECORD.md`
     - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/SENTINEL_IMPLEMENTATION_AUTHORIZATION.md`
     - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/AUTHORIZATION_MANIFEST.json`
     - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/SOURCE_GATE.md`
-26. The remaining files required by the handoff, authorization, accepted-scope, selected-checkpoint, and remediation-scope read orders.
+27. The remaining files required by the handoff, authorization, accepted-scope, selected-checkpoint, remediation-scope, and provenance-capture read orders.
 
 ---
 
@@ -142,9 +146,10 @@ package. Revision 09 and Revision 08 remain immutable historical accepted eviden
 The preserved `fcf406c4...` checkpoint remains unaccepted and non-authorizing.
 Revision 10 resolves its former T107/T153/Candidate 09 specification blockers.
 Sentinel's static review at `3cf0871ae97d112324031190822756379d1236e8`
-records `REVISION10_STATIC_CONFORMANCE_BLOCKED`. The two provenance gaps remain
-open independently. Historical Revision 09 and Revision 08 implementation
-authorizations do not carry forward.
+records `REVISION10_STATIC_CONFORMANCE_BLOCKED`. The independently captured current
+twelve-path worktree finding is accepted and installed at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`.
+`MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE` remains open. Historical Revision 09
+and Revision 08 implementation authorizations do not carry forward.
 
 ### Accepted Revision 10 remediation scope
 
@@ -162,6 +167,22 @@ The accepted remediation scope is canonically installed and Sentinel-verified at
 The accepted future source boundary is one atomic three-file candidate. The four
 test-source paths are a separate later authorization boundary. No Claude
 implementation prompt is active.
+
+### Accepted current twelve-path worktree capture
+
+Sentinel accepted and verified the documentation/evidence-only installation at
+`b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`.
+
+- decision: `ACCEPT FINDING — CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_ACCEPTED`
+- source archive SHA-256: `942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9`
+- captured paths: `12` untracked paths
+- historical baseline matches: `11`
+- checkpoint-modified path: `prepared_evidence.py` at `fcf406c4...`
+- closed provenance gap: `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`
+- still-open provenance gap: `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`
+- implementation authorization effect: `NONE`
+
+The capture does not accept or promote checkpoint bytes and does not repair the failed source gate.
 
 ### Historical Revision 09 scope record
 
@@ -201,7 +222,7 @@ Revision 08 remains immutable historical accepted evidence.
 - Recovered R1 checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` remains exact, evidence-only, `NOT_ACCEPTED`, and non-authorizing.
 - Static checkpoint conformance: **BLOCKED — `REVISION10_STATIC_CONFORMANCE_BLOCKED`**.
 - Revision 10 remediation scope: **ACCEPTED, INSTALLED, AND SENTINEL-VERIFIED** at `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`; authorization effect `NONE`.
-- Open provenance gaps: multi-round activity lineage and independently captured current twelve-path worktree.
+- Worktree-capture provenance: **ACCEPTED AND SENTINEL-VERIFIED** at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`; the multi-round activity-lineage gap remains open.
 
 ---
 

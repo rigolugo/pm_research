@@ -527,8 +527,10 @@ Binding Sentinel determinations:
 3. the candidate checksum inventory excludes self-reference and the detached ZIP
    SHA-256 identifies the complete submitted archive.
 
-The two provenance gaps remain open and independent. Acceptance does not promote
-or accept the preserved `fcf406c4...` checkpoint.
+The remediation-scope acceptance did not close either provenance gap at that time.
+A later independently captured worktree finding closes only
+`CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`; it does not promote or
+accept the preserved `fcf406c4...` checkpoint.
 
 ### Revision 10 remediation-scope canonical installation verification
 
@@ -575,6 +577,27 @@ Sentinel decision:
 
 This package does not reuse the historical Revision 09 authorization or promote the preserved checkpoint. A failed source gate is a valid halt and must not be repaired by restoring historical bytes.
 
+### Current twelve-path worktree capture acceptance and installation verification
+
+On `2026-07-25`, Sentinel accepted the independently captured current twelve-path Claude workspace as:
+
+`ACCEPT FINDING — CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_ACCEPTED`
+
+- source archive SHA-256: `942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9`;
+- source archive size: `487764` bytes;
+- archive members: `17`;
+- captured source/test paths: `12`;
+- all twelve paths: untracked at detached local HEAD `1e1afb29791f42c286b45d3b576f74926add8dce`;
+- historical baseline matches: `11`;
+- checkpoint-modified `prepared_evidence.py`: `fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da`, `112338` bytes.
+
+Sentinel verified canonical installation commit `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1` as one linear documentation/evidence-only commit after `71061065d91fc391e934d7e79a29eefc898cfe82`. The commit changed exactly `17` paths under `project_context/`, changed no live source/test path, and preserved the exact evidence ZIP.
+
+This closes only `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`.
+`MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE` remains open. The checkpoint remains `NOT_ACCEPTED`, non-controlling, and authorization effect `NONE`. The accepted capture does not repair the failed source gate, select implementation starting bytes, or authorize implementation, tests, execution, data/network access, or Git writes by Claude.
+
+Professor may now finalize the SPEC-ONLY Candidate 02 starting-state amendment. Sentinel reviews it; Gustavo separately decides any later implementation authorization.
+
 ---
 
 ## DO NOT REOPEN unless explicitly requested with new evidence
@@ -602,6 +625,8 @@ This package does not reuse the historical Revision 09 authorization or promote 
 - The accepted Revision 10 remediation-scope identity, binding Sentinel determinations,
   and verified documentation-only installation at `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`,
   absent new authoritative evidence or a formally accepted amendment.
+- The accepted current twelve-path worktree-capture identity and verified installation
+  at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`, absent new authoritative evidence that changes the captured bytes or scope.
 
 ---
 

@@ -18,7 +18,8 @@
 - installed source-gate result: `STOP_REV10_REMEDIATION_SOURCE_GATE_FAILED`;
 - accepted worktree-capture finding: `ACCEPT FINDING — CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_ACCEPTED`;
 - worktree-capture source ZIP SHA-256: `942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9`;
-- worktree-capture installation verification: `PENDING_SENTINEL_VERIFICATION`;
+- worktree-capture installation verification: `INSTALLED_AND_SENTINEL_VERIFIED`;
+- worktree-capture installation commit: `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`;
 - active implementation authorization: `NONE`;
 - active source-gated commit: `NOT_SELECTED`.
 
@@ -47,14 +48,16 @@ The preserved `fcf406c4...` checkpoint remains exact, recoverable, evidence-only
 19. `remediation_scope/ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
 20. the complete remediation-scope read order declared in `remediation_scope/README_FIRST.md`
 21. `provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/README_FIRST.md`
-22. the complete provenance-capture read order declared there
-23. `authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
-24. the complete authorization-package read order declared there
-25. `HANDOFF_INVENTORY.md`
-26. `HANDOFF_REVISION_10_STATIC_CONFORMANCE_SHA256SUMS.txt`
-27. `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt`
-28. `HANDOFF_REVISION_10_REMEDIATION_SOURCE_AUTHORIZATION_SHA256SUMS.txt`
-29. `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_SHA256SUMS.txt`
+22. `provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/SENTINEL_INSTALLATION_VERIFICATION.md`
+23. the complete provenance-capture read order declared there
+24. `authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
+25. the complete authorization-package read order declared there
+26. `HANDOFF_INVENTORY.md`
+27. `HANDOFF_REVISION_10_STATIC_CONFORMANCE_SHA256SUMS.txt`
+28. `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt`
+29. `HANDOFF_REVISION_10_REMEDIATION_SOURCE_AUTHORIZATION_SHA256SUMS.txt`
+30. `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_SHA256SUMS.txt`
+31. `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_VERIFICATION_SHA256SUMS.txt`
 
 ## Checkpoint and provenance findings
 
@@ -84,4 +87,4 @@ Conditional package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING
 
 No implementation, source/test edit, test execution, rollback, restoration, overwrite, promotion, project execution, data/network access, subprocess, artifact production outside this documentation/evidence package, Git write by Claude, R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.
 
-The current permitted next action after installation verification is SPEC-ONLY Professor revision of the starting-state amendment using the accepted capture finding. No source edit is permitted before a separately accepted amendment, Gustavo authorization, and active Sentinel handoff.
+The current permitted next action is SPEC-ONLY Professor finalization of Candidate 02 using the accepted and verified capture finding at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`. No source edit is permitted before a separately accepted amendment, Gustavo authorization, and active Sentinel handoff.

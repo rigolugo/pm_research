@@ -199,9 +199,10 @@ Current static-conformance state:
 `BLOCK — REVISION10_STATIC_CONFORMANCE_BLOCKED`
 
 Revision 10 remains the controlling accepted specification, installed and
-Sentinel-verified at `3d6fbe5eda504c32d94fed72be99adb9485fe1b1`. No
-implementation starting SHA, source-gated commit, writable source/test path,
-test stage, rollback, promotion, or downstream stage is selected or authorized.
+Sentinel-verified at `3d6fbe5eda504c32d94fed72be99adb9485fe1b1`. The current
+twelve-path worktree capture is accepted and verified at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`. No implementation
+starting SHA, source-gated commit, writable source/test path, test stage, rollback,
+promotion, or downstream stage is selected or authorized.
 Revision 09 R1 and Revision 08 authorizations are historical and do not carry
 forward.
 
@@ -245,10 +246,10 @@ Exact payload identity:
 The exact payload remains unchanged and is not included as replacement content in
 the documentation-only static-conformance installation package.
 
-Open provenance gaps:
+Provenance state:
 
-- `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`
-- `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`
+- closed by accepted and verified worktree capture: `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`
+- still open: `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`
 
 Resolved specification-layer matters:
 
@@ -342,7 +343,8 @@ record.
 The scope defines a future atomic three-source candidate and a separately gated
 four-test-source candidate. It contains no implementation or test code and does
 not activate either stage. The preserved checkpoint remains `NOT_ACCEPTED` and
-non-authorizing; both provenance gaps remain open.
+non-authorizing. The current twelve-path capture closes the worktree-capture gap;
+`MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE` remains open.
 
 Controlling records:
 
@@ -362,7 +364,9 @@ Conditional Revision 10 remediation source-authoring authorization package.
 - package-preparation base: `a4fb0e64056b58a229da481664e4234e3215cd91`;
 - Gustavo authorization: recorded;
 - Sentinel package decision: `APPROVE`;
-- activation: pending canonical installation and local source-gate acceptance;
+- canonical installation: `INSTALLED_AND_SENTINEL_VERIFIED` at `71061065d91fc391e934d7e79a29eefc898cfe82`;
+- canonical-worktree source gate: `STOP_REV10_REMEDIATION_SOURCE_GATE_FAILED`;
+- activation: `false`;
 - writable after activation: exactly three source files;
 - test-source authoring and test execution: unauthorized;
 - allowed new repository files: none.
@@ -381,7 +385,44 @@ Controlling files:
 - `CLAUDE_HANDOFF_INACTIVE.md`
 - `SHA256SUMS.txt`
 
-The package is not an active Claude handoff until Sentinel verifies its canonical installation commit and accepts the local source gate.
+The package is not an active Claude handoff. Its source gate failed before edits, and the accepted provenance capture does not repair or reactivate it.
+
+### `provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/`
+
+Accepted and Sentinel-verified read-only provenance capture.
+
+- decision: `ACCEPT FINDING — CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_ACCEPTED`;
+- verified installation commit: `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`;
+- installation parent: `71061065d91fc391e934d7e79a29eefc898cfe82`;
+- source archive SHA-256: `942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9`;
+- source archive size: `487764` bytes;
+- source archive members: `17`;
+- captured source/test paths: `12`;
+- baseline-matching paths: `11`;
+- checkpoint-modified paths: `1`;
+- closed gap: `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`;
+- still-open gap: `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`;
+- checkpoint acceptance: `NOT_ACCEPTED`;
+- authorization effect: `NONE`.
+
+Controlling records:
+
+- `README_FIRST.md`
+- `SENTINEL_ACCEPTANCE_DECISION.md`
+- `SENTINEL_INSTALLATION_VERIFICATION.md`
+- `PROVENANCE_CAPTURE_MANIFEST.json`
+- `SOURCE_ARTIFACT_IDENTITY.md`
+- `CAPTURED_GIT_STATE.txt`
+- `CAPTURED_FILE_INVENTORY.json`
+- `CAPTURED_TWELVE_PATH_SHA256SUMS.txt`
+- `CAPTURED_PACKAGE_MANIFEST.json`
+- `CAPTURED_PROVENANCE_NOTES.md`
+- `ACTIVITY_BOUNDARIES.md`
+- `SENTINEL_INSTALLATION_SCOPE.md`
+- `SHA256SUMS.txt` — historical acceptance-package inventory
+- `evidence_exact/REV23_FINDING4_I0A_PROVENANCE_CAPTURE.zip`
+- `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_SHA256SUMS.txt`
+- `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_VERIFICATION_SHA256SUMS.txt`
 
 ### `authorization_audit/rev23_finding4_i0a/`
 

@@ -12,7 +12,7 @@ Accepted provenance finding:
 
 `ACCEPT FINDING — CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_ACCEPTED`
 
-Source archive SHA-256: `942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9`. Canonical installation verification of this acceptance package is pending.
+Source archive SHA-256: `942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9`. Canonical installation is Sentinel-verified at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`.
 
 ## Controlling files
 
@@ -35,8 +35,10 @@ Source archive SHA-256: `942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c
 - `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt` — focused remediation-scope inventory.
 - `authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/` — installed but inactive three-source authorization package with a failed source gate.
 - `HANDOFF_REVISION_10_REMEDIATION_SOURCE_AUTHORIZATION_SHA256SUMS.txt` — focused authorization inventory.
-- `provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/` — accepted worktree-capture evidence and Sentinel decision.
-- `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_SHA256SUMS.txt` — focused inventory for the capture-acceptance package.
+- `provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/` — accepted and Sentinel-verified worktree-capture evidence.
+- `provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/SENTINEL_INSTALLATION_VERIFICATION.md` — verified canonical installation at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`.
+- `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_SHA256SUMS.txt` — focused historical inventory for the capture-acceptance package.
+- `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_VERIFICATION_SHA256SUMS.txt` — focused inventory for installation verification and central synchronization.
 
 Historical checksum inventories remain immutable evidence of the states they recorded. They are not regenerated or reinterpreted as inventories of this later provenance acceptance.
 
