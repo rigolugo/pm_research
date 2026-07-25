@@ -1,0 +1,122 @@
+[
+  {
+    "path": "pm_research/local_curl_per_side/__init__.py",
+    "exists": true,
+    "bytes": 4187,
+    "sha256": "200019940bbd2c2b8dbac7d322722c7eae43926264c1438ec4a60cfc26e12c93",
+    "tracked": "untracked",
+    "mtime_utc": "2026-07-19T00:38:10.706867Z",
+    "baseline_sha256": "200019940bbd2c2b8dbac7d322722c7eae43926264c1438ec4a60cfc26e12c93",
+    "label": "BASELINE_MATCHING"
+  },
+  {
+    "path": "pm_research/local_curl_per_side/canonical.py",
+    "exists": true,
+    "bytes": 13752,
+    "sha256": "60f3141184753d294b8e708a77f381bdd40d04e39c6d1101f2cc14de9a9704b3",
+    "tracked": "untracked",
+    "mtime_utc": "2026-07-19T00:10:56.543775Z",
+    "baseline_sha256": "60f3141184753d294b8e708a77f381bdd40d04e39c6d1101f2cc14de9a9704b3",
+    "label": "BASELINE_MATCHING"
+  },
+  {
+    "path": "pm_research/local_curl_per_side/claim_hashes.py",
+    "exists": true,
+    "bytes": 7772,
+    "sha256": "e9153abcbdb073a37d516056ff6fd657742c4d87620f557363855b3c6d728a3d",
+    "tracked": "untracked",
+    "mtime_utc": "2026-07-19T00:40:27.154696Z",
+    "baseline_sha256": "e9153abcbdb073a37d516056ff6fd657742c4d87620f557363855b3c6d728a3d",
+    "label": "BASELINE_MATCHING"
+  },
+  {
+    "path": "pm_research/local_curl_per_side/finding4_registry.py",
+    "exists": true,
+    "bytes": 72248,
+    "sha256": "06fd23245017fb538d06841d2b2b61f309f533959d16449ace588ccb6080e529",
+    "tracked": "untracked",
+    "mtime_utc": "2026-07-19T00:46:22.254871Z",
+    "baseline_sha256": "06fd23245017fb538d06841d2b2b61f309f533959d16449ace588ccb6080e529",
+    "label": "BASELINE_MATCHING"
+  },
+  {
+    "path": "pm_research/local_curl_per_side/governing_package.py",
+    "exists": true,
+    "bytes": 2984,
+    "sha256": "75c9b5a19023d737d016bfd0e3e5b9b62ea7730355da7d555aa073192df79fec",
+    "tracked": "untracked",
+    "mtime_utc": "2026-07-19T00:18:37.342833Z",
+    "baseline_sha256": "75c9b5a19023d737d016bfd0e3e5b9b62ea7730355da7d555aa073192df79fec",
+    "label": "BASELINE_MATCHING"
+  },
+  {
+    "path": "pm_research/local_curl_per_side/prepared_evidence.py",
+    "exists": true,
+    "bytes": 112338,
+    "sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da",
+    "tracked": "untracked",
+    "mtime_utc": "2026-07-23T01:49:37.611936Z",
+    "baseline_sha256": "8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07",
+    "label": "CHECKPOINT_MODIFIED"
+  },
+  {
+    "path": "tests/local_curl_per_side/test_canonical_i0a.py",
+    "exists": true,
+    "bytes": 8898,
+    "sha256": "9122ee3a0a4aa93f485a7dc35dbd7420e59b07eeed646007baff4ef5ac652bcd",
+    "tracked": "untracked",
+    "mtime_utc": "2026-07-20T09:09:06.602740Z",
+    "baseline_sha256": "9122ee3a0a4aa93f485a7dc35dbd7420e59b07eeed646007baff4ef5ac652bcd",
+    "label": "BASELINE_MATCHING"
+  },
+  {
+    "path": "tests/local_curl_per_side/test_claim_hashes_i0a.py",
+    "exists": true,
+    "bytes": 15098,
+    "sha256": "4e2c8d6d663238c8bd7d3a4f40047bf0888b2ccf64cd5fcf37ce85cd2f158878",
+    "tracked": "untracked",
+    "mtime_utc": "2026-07-20T09:09:06.605501Z",
+    "baseline_sha256": "4e2c8d6d663238c8bd7d3a4f40047bf0888b2ccf64cd5fcf37ce85cd2f158878",
+    "label": "BASELINE_MATCHING"
+  },
+  {
+    "path": "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+    "exists": true,
+    "bytes": 185401,
+    "sha256": "fe7a602684b4861db1cb825c0b70f712c9242ef61386d1a76f80ea8f4fed42f8",
+    "tracked": "untracked",
+    "mtime_utc": "2026-07-20T09:09:06.610313Z",
+    "baseline_sha256": "fe7a602684b4861db1cb825c0b70f712c9242ef61386d1a76f80ea8f4fed42f8",
+    "label": "BASELINE_MATCHING"
+  },
+  {
+    "path": "tests/local_curl_per_side/test_governing_package_i0a.py",
+    "exists": true,
+    "bytes": 209566,
+    "sha256": "c1b6a221a997e9c7d5aae0bf5c5bf98f38d0d1e8183bcabbebc8c7f1ac0550e4",
+    "tracked": "untracked",
+    "mtime_utc": "2026-07-19T12:13:44.617820Z",
+    "baseline_sha256": "c1b6a221a997e9c7d5aae0bf5c5bf98f38d0d1e8183bcabbebc8c7f1ac0550e4",
+    "label": "BASELINE_MATCHING"
+  },
+  {
+    "path": "tests/local_curl_per_side/test_i0a_public_contract.py",
+    "exists": true,
+    "bytes": 14302,
+    "sha256": "c8e69789fc63eebff3d87f14ca6c94748872483e8fcffd541243ffa32e114679",
+    "tracked": "untracked",
+    "mtime_utc": "2026-07-19T12:08:19.326400Z",
+    "baseline_sha256": "c8e69789fc63eebff3d87f14ca6c94748872483e8fcffd541243ffa32e114679",
+    "label": "BASELINE_MATCHING"
+  },
+  {
+    "path": "tests/local_curl_per_side/test_prepared_evidence_i0a.py",
+    "exists": true,
+    "bytes": 277359,
+    "sha256": "c9c5f9e09136f70902dc70e809d82177303319f431f532126b5aee8d04c2ae37",
+    "tracked": "untracked",
+    "mtime_utc": "2026-07-20T09:09:06.632827Z",
+    "baseline_sha256": "c9c5f9e09136f70902dc70e809d82177303319f431f532126b5aee8d04c2ae37",
+    "label": "BASELINE_MATCHING"
+  }
+]

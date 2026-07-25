@@ -1,0 +1,30 @@
+{
+  "package_purpose": "read-only provenance capture of REV23 Finding 4 I0A untracked implementation files",
+  "not_implementation_authoring": true,
+  "checkpoint_not_accepted": true,
+  "canonical_repository": "rigolugo/pm_research",
+  "canonical_commit_requested": "71061065d91fc391e934d7e79a29eefc898cfe82",
+  "canonical_commit_present_locally": false,
+  "local_HEAD": "1e1afb29791f42c286b45d3b576f74926add8dce",
+  "generated_utc": "2026-07-25T03:14:44.765521+00:00",
+  "twelve_paths_total": 12,
+  "existing_members": 12,
+  "missing_members": 0,
+  "labels": {
+    "pm_research/local_curl_per_side/__init__.py": "BASELINE_MATCHING",
+    "pm_research/local_curl_per_side/canonical.py": "BASELINE_MATCHING",
+    "pm_research/local_curl_per_side/claim_hashes.py": "BASELINE_MATCHING",
+    "pm_research/local_curl_per_side/finding4_registry.py": "BASELINE_MATCHING",
+    "pm_research/local_curl_per_side/governing_package.py": "BASELINE_MATCHING",
+    "pm_research/local_curl_per_side/prepared_evidence.py": "CHECKPOINT_MODIFIED",
+    "tests/local_curl_per_side/test_canonical_i0a.py": "BASELINE_MATCHING",
+    "tests/local_curl_per_side/test_claim_hashes_i0a.py": "BASELINE_MATCHING",
+    "tests/local_curl_per_side/test_finding4_registry_i0a.py": "BASELINE_MATCHING",
+    "tests/local_curl_per_side/test_governing_package_i0a.py": "BASELINE_MATCHING",
+    "tests/local_curl_per_side/test_i0a_public_contract.py": "BASELINE_MATCHING",
+    "tests/local_curl_per_side/test_prepared_evidence_i0a.py": "BASELINE_MATCHING"
+  },
+  "original_r1_baseline_pe_sha256": "8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07",
+  "original_r1_baseline_found_in_repo_tree": false,
+  "checkpoint_pe_sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da"
+}

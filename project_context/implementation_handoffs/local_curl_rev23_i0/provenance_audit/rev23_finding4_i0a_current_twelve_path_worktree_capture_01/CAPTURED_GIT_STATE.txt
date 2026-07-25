@@ -1,0 +1,18 @@
+repository_root: /home/claude/pm_research_repo
+local_HEAD: 1e1afb29791f42c286b45d3b576f74926add8dce
+branch: (detached HEAD)
+canonical_commit_requested: 71061065d91fc391e934d7e79a29eefc898cfe82 (NOT PRESENT locally; HEAD unchanged)
+
+--- git status --porcelain=v1 -uall ---
+?? pm_research/local_curl_per_side/__init__.py
+?? pm_research/local_curl_per_side/canonical.py
+?? pm_research/local_curl_per_side/claim_hashes.py
+?? pm_research/local_curl_per_side/finding4_registry.py
+?? pm_research/local_curl_per_side/governing_package.py
+?? pm_research/local_curl_per_side/prepared_evidence.py
+?? tests/local_curl_per_side/test_canonical_i0a.py
+?? tests/local_curl_per_side/test_claim_hashes_i0a.py
+?? tests/local_curl_per_side/test_finding4_registry_i0a.py
+?? tests/local_curl_per_side/test_governing_package_i0a.py
+?? tests/local_curl_per_side/test_i0a_public_contract.py
+?? tests/local_curl_per_side/test_prepared_evidence_i0a.py

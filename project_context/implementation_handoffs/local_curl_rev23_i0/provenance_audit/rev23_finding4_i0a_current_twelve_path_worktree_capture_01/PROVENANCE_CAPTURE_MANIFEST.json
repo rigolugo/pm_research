@@ -1,0 +1,67 @@
+{
+  "schema_id": "pm_research_worktree_capture_acceptance_manifest.v1",
+  "capture_id": "REV23_FINDING4_I0A_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_01",
+  "sentinel_decision": "ACCEPT FINDING \u2014 CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_ACCEPTED",
+  "decision_date": "2026-07-25",
+  "canonical_repository": "rigolugo/pm_research",
+  "package_preparation_base": "71061065d91fc391e934d7e79a29eefc898cfe82",
+  "source_artifact": {
+    "filename": "REV23_FINDING4_I0A_PROVENANCE_CAPTURE.zip",
+    "sha256": "942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9",
+    "size_bytes": 487764,
+    "member_count": 17,
+    "payload_member_count": 12
+  },
+  "independent_review": {
+    "unique_safe_members": 17,
+    "encrypted_members": 0,
+    "symlink_members": 0,
+    "payload_checksum_entries": 12,
+    "payload_checksum_matches": 12
+  },
+  "capture_state": {
+    "local_head": "1e1afb29791f42c286b45d3b576f74926add8dce",
+    "branch": "DETACHED",
+    "canonical_commit_requested": "71061065d91fc391e934d7e79a29eefc898cfe82",
+    "canonical_commit_present_locally": false,
+    "captured_paths": 12,
+    "untracked_paths": 12,
+    "missing_paths": 0,
+    "baseline_matching_paths": 11,
+    "checkpoint_modified_paths": 1,
+    "unresolved_provenance_labels": 0
+  },
+  "prepared_evidence": {
+    "captured_sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da",
+    "captured_size_bytes": 112338,
+    "historical_r1_baseline_sha256": "8b8e9320fb4a30245914e93fb99bdbbadee685ad0fd62cc79098adec05004d07",
+    "historical_r1_baseline_bytes_found_in_capture_tree": false
+  },
+  "finding_effect": {
+    "closed": [
+      "CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED"
+    ],
+    "remains_open": [
+      "MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE"
+    ],
+    "checkpoint_acceptance": "NOT_ACCEPTED",
+    "implementation_conformance": "NOT_ACCEPTED",
+    "authorization_effect": "NONE",
+    "implementation_start_selected": false
+  },
+  "canonical_installation_state": "PENDING_SENTINEL_VERIFICATION",
+  "additional_properties": false,
+  "installation_scope": {
+    "complete_replacements": [
+      "project_context/implementation_handoffs/local_curl_rev23_i0/README_FIRST.md",
+      "project_context/implementation_handoffs/local_curl_rev23_i0/HANDOFF_INVENTORY.md",
+      "project_context/implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md"
+    ],
+    "new_root_files": [
+      "project_context/implementation_handoffs/local_curl_rev23_i0/HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_SHA256SUMS.txt"
+    ],
+    "new_directory": "project_context/implementation_handoffs/local_curl_rev23_i0/provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/",
+    "live_source_paths_changed": 0,
+    "live_test_paths_changed": 0
+  }
+}
