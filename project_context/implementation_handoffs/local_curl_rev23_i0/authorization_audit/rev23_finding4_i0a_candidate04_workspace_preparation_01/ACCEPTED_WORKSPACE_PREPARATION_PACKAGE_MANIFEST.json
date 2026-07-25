@@ -1,0 +1,81 @@
+{
+  "accepted_candidate_directory": "accepted_candidate_02",
+  "accepted_candidate_members": [
+    "ACTIVITY_BOUNDARIES.md",
+    "CENTRAL_DOCUMENT_REPLACEMENTS.md",
+    "GUSTAVO_PACKAGE_AUTHORING_AUTHORIZATION.md",
+    "PACKAGE_MANIFEST.json",
+    "README_FIRST.md",
+    "SENTINEL_REVIEW_HANDOFF.md",
+    "SHA256SUMS.txt",
+    "WORKFLOW_RECORD_CONTRACT.md",
+    "WORKSPACE_PREPARATION_CONTRACT.md"
+  ],
+  "additional_properties": false,
+  "authorization": {
+    "active_workspace_handoff": false,
+    "git_writes_by_claude_authorized": false,
+    "package_authoring": "COMPLETED",
+    "source_authoring_authorized": false,
+    "test_authoring_authorized": false,
+    "test_execution_authorized": false,
+    "workspace_execution_authorized": false
+  },
+  "candidate01_state": "BLOCKED_NOT_ACCEPTED_NON_CONTROLLING",
+  "canonical_installation_base": "689e546e588d557c96f28bc722c3f159d635f2c1",
+  "canonical_installation_state": "INSTALLED_PENDING_SENTINEL_VERIFICATION",
+  "canonical_repository": "rigolugo/pm_research",
+  "capture_identity": {
+    "archive_member_count": 17,
+    "filename": "REV23_FINDING4_I0A_PROVENANCE_CAPTURE.zip",
+    "payload_checksum_entries": 12,
+    "payload_checksum_matches": 12,
+    "payload_member_count": 12,
+    "sha256": "942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9",
+    "size_bytes": 487764
+  },
+  "decision_date": "2026-07-25",
+  "installation_scope": {
+    "binary_repository_members": 0,
+    "complete_replacements": [
+      "project_context/START_HERE.md",
+      "project_context/PROJECT_STATE.md",
+      "project_context/DECISION_LOG.md",
+      "project_context/ARTIFACT_INDEX.md",
+      "project_context/implementation_handoffs/local_curl_rev23_i0/README_FIRST.md",
+      "project_context/implementation_handoffs/local_curl_rev23_i0/HANDOFF_INVENTORY.md"
+    ],
+    "executable_members": 0,
+    "live_source_paths_changed": 0,
+    "live_test_paths_changed": 0,
+    "new_directory": "project_context/implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/",
+    "new_root_files": [
+      "project_context/implementation_handoffs/local_curl_rev23_i0/HANDOFF_CANDIDATE04_WORKSPACE_PREPARATION_SHA256SUMS.txt"
+    ]
+  },
+  "package_id": "REV23_FINDING4_I0A_CANDIDATE04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02",
+  "schema_id": "rev23_finding4_i0a_candidate04_workspace_preparation_accepted_install.v1",
+  "sentinel_decision": "APPROVE — CANDIDATE_04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02_ACCEPTED",
+  "submitted_zip": {
+    "filename": "Candidate_04_Workspace_Preparation_Package_Candidate_02.zip",
+    "member_count": 9,
+    "payload_document_member_count": 8,
+    "sha256": "77c70fec832b97f2d2b78c9fb7886f1fe8f3b1aa03739a73a6213684d8c89601",
+    "size_bytes": 13495
+  },
+  "workflow": {
+    "current_state": "C04_SPEC_CANONICALLY_INSTALLED_NOT_AUTHORIZED",
+    "predicate_count": 18,
+    "required_future_authorization_effect": "WORKSPACE_PREPARATION_ONLY",
+    "stage": "WORKSPACE_PREPARATION",
+    "success_code": "CLEAR_C04_SOURCE_WORKSPACE_PREPARED",
+    "success_state": "C04_SOURCE_WORKSPACE_READY"
+  },
+  "workspace": {
+    "baseline_support_edit_prohibition_count": 5,
+    "exact_windows_staging_root": "C:\\b1\\rev23_candidate04_source_workspace_01",
+    "future_source_protected_count": 9,
+    "future_source_writable_count": 3,
+    "member_count": 12
+  }
+}

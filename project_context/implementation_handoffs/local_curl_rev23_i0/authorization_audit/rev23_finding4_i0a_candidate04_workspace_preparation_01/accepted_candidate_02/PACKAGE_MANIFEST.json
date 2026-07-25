@@ -1,0 +1,38 @@
+{
+  "additional_properties": false,
+  "authorization_effect": "NONE",
+  "canonical_base": "689e546e588d557c96f28bc722c3f159d635f2c1",
+  "canonical_repository": "rigolugo/pm_research",
+  "candidate04_installation_state_proposed": "INSTALLED_AND_SENTINEL_VERIFIED",
+  "capture_identity": {
+    "payload_checksum_entries": 12,
+    "payload_checksum_matches": 12,
+    "payload_member_count": 12,
+    "source_archive_filename": "REV23_FINDING4_I0A_PROVENANCE_CAPTURE.zip",
+    "source_archive_member_count": 17,
+    "source_archive_sha256": "942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9",
+    "source_archive_size_bytes": 487764
+  },
+  "current_authorization": "PACKAGE_AUTHORING_ONLY",
+  "exact_windows_staging_root": "C:\\b1\\rev23_candidate04_source_workspace_01",
+  "executable_members": 0,
+  "files": [
+    "ACTIVITY_BOUNDARIES.md",
+    "CENTRAL_DOCUMENT_REPLACEMENTS.md",
+    "GUSTAVO_PACKAGE_AUTHORING_AUTHORIZATION.md",
+    "PACKAGE_MANIFEST.json",
+    "README_FIRST.md",
+    "SENTINEL_REVIEW_HANDOFF.md",
+    "WORKFLOW_RECORD_CONTRACT.md",
+    "WORKSPACE_PREPARATION_CONTRACT.md"
+  ],
+  "package_id": "REV23_FINDING4_I0A_CANDIDATE04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02",
+  "package_member_count_excluding_sha256s": 8,
+  "package_status": "REVIEW_CANDIDATE",
+  "payload_copies": 0,
+  "schema_id": "rev23_finding4_i0a_candidate04_workspace_preparation_package.v1",
+  "source_code_members": 0,
+  "stage": "WORKSPACE_PREPARATION",
+  "test_code_members": 0,
+  "workspace_execution_authorized": false
+}

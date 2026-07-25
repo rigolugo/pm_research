@@ -35,7 +35,7 @@ and verified the complete current twelve-path worktree capture at `b2e0506cce3e7
 `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED` is closed;
 `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE` remains open.
 
-Sentinel accepted `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04` at canonical review base `bc957fe05096b790052d0515773b9e0a2dc88a60`. The accepted amendment provides the isolated captured-payload workspace model, closed typed workflow records, and exact commit/review/push/remote-verification separation. This documentation package records the installation as `INSTALLED_PENDING_SENTINEL_VERIFICATION`. It selects no implementation authorization or active Claude handoff.
+Sentinel accepted `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04` at canonical review base `bc957fe05096b790052d0515773b9e0a2dc88a60` and verified its canonical installation at `689e546e588d557c96f28bc722c3f159d635f2c1`. The accepted amendment provides the isolated captured-payload workspace model, closed typed workflow records, and exact commit/review/push/remote-verification separation. It selects no implementation authorization or active Claude handoff.
 
 ### Historical Revision 08 objective at installation base
 
@@ -231,14 +231,32 @@ Acceptance and installation do not activate either stage.
 - submitted ZIP size: `74507` bytes
 - accepted member count: `19`
 - canonical review and installation base: `bc957fe05096b790052d0515773b9e0a2dc88a60`
-- installation state: `INSTALLED_PENDING_SENTINEL_VERIFICATION`
-- installation commit: `PENDING_RETURN_TO_SENTINEL`
+- installation state: `INSTALLED_AND_SENTINEL_VERIFIED`
+- installation commit: `689e546e588d557c96f28bc722c3f159d635f2c1`
 - selected model: `ISOLATED_CAPTURED_PAYLOAD_WORKSPACE_MODEL_V2`
 - workflow closure: `21` states, `20` stages, `70` stops, `20` successes, `205` predicates
 - implementation authorization: `NONE`
 - active Claude implementation prompt: `false`
 
 Candidate 04 supersedes blocked Candidate 03 as the accepted starting-state amendment. It does not accept or promote the checkpoint, repair the failed gate, close `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`, or activate source/test authoring, materialization, tests, execution, data/network activity, or Git writes by Claude.
+
+### Accepted Candidate 04 workspace-preparation package
+
+- decision: `APPROVE — CANDIDATE_04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02_ACCEPTED`
+- accepted package: `REV23_FINDING4_I0A_CANDIDATE04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02`
+- submitted ZIP SHA-256: `77c70fec832b97f2d2b78c9fb7886f1fe8f3b1aa03739a73a6213684d8c89601`
+- submitted ZIP size: `13495` bytes
+- submitted archive members: `9`
+- accepted payload documentation files: `8`
+- canonical installation base: `689e546e588d557c96f28bc722c3f159d635f2c1`
+- installation state: `INSTALLED_PENDING_SENTINEL_VERIFICATION`
+- current workflow state: `C04_SPEC_CANONICALLY_INSTALLED_NOT_AUTHORIZED`
+- workspace execution authorization: `NONE`
+- active workspace-execution handoff: `NONE`
+- source authoring authorization: `NONE`
+- active Claude implementation prompt: `false`
+
+Candidate 02 defines the exact future `WORKSPACE_PREPARATION` gate at `C:\b1\rev23_candidate04_source_workspace_01`. It keeps the 17-member source archive identity separate from the twelve-payload-path closure. Acceptance and documentation installation do not create or verify the workspace and do not advance the Candidate 04 workflow state.
 
 ### Historical Revision 09 scope state
 
@@ -276,11 +294,15 @@ not enlarge current Revision 10 authority.
 
 ### Controlling Revision 10 authorization state
 
-`STOP_REV10_STARTING_STATE_AMENDMENT_INSTALLATION_NOT_VERIFIED`
+Current Candidate 04 workflow state:
 
-The previously installed package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` remains inactive because its canonical-worktree source gate failed before edits. Candidate 04 does not clear, repair, or reactivate that authorization.
+`C04_SPEC_CANONICALLY_INSTALLED_NOT_AUTHORIZED`
 
-Candidate 04 acceptance defines a possible future isolated-workspace start and exact later delivery gates. This documentation installation remains pending Sentinel verification. No workspace preparation, source/test authoring, materialization, local implementation commit, push, test stage, execution, data/network activity, or Claude Git write is active.
+Candidate 04 is canonically installed and Sentinel-verified at `689e546e588d557c96f28bc722c3f159d635f2c1`. Accepted workspace-preparation package Candidate 02 is being installed documentation-only and remains pending Sentinel installation verification.
+
+The previously installed package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` remains inactive because its canonical-worktree source gate failed before edits. Candidate 04 and Candidate 02 do not clear, repair, or reactivate that authorization.
+
+Workspace execution authorization is `NONE`; no active workspace-execution handoff exists. No workspace preparation, source/test authoring, materialization, local implementation commit, push, test stage, execution, data/network activity, or Claude Git write is active.
 
 The historical Revision 09 R1 authorization and Revision 08 implementation authorization do not carry forward. The `fcf406c4...` checkpoint remains evidence only, `NOT_ACCEPTED`, and non-authorizing.
 
@@ -355,9 +377,9 @@ writes, or any downstream phase.
 
 ### Controlling Revision 10 next step
 
-Install this documentation-only Candidate 04 acceptance package at exact base `bc957fe05096b790052d0515773b9e0a2dc88a60`, then return the exact installation commit to Sentinel. Sentinel verifies paths, bytes, checksums, accepted-candidate preservation, central-state consistency, and absence of live source/test changes.
+Install this documentation-only accepted Candidate 02 workspace-preparation package at exact base `689e546e588d557c96f28bc722c3f159d635f2c1`, then return the exact branch commit to Sentinel. Sentinel verifies paths, bytes, checksums, accepted-package preservation, central-state consistency, and absence of live source/test changes before any merge authorization is considered.
 
-Only after installation verification may Gustavo consider a separately bounded workspace-preparation or implementation authorization. No source/test edit, materialization, local implementation commit, push, test execution, project execution, data/network access, rollback, promotion, R2, or downstream stage is currently authorized.
+After canonical installation verification, Gustavo may separately decide whether to authorize one `WORKSPACE_PREPARATION_ONLY` run. Source authoring still requires an accepted workspace-success record and a later separate Gustavo authorization. No source/test edit, materialization, local implementation commit, push, test execution, project execution, data/network access, rollback, promotion, R2, or downstream stage is currently authorized.
 
 ### Historical Revision 08 next step at installation base
 

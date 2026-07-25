@@ -620,7 +620,29 @@ Candidate 04 resolves the Candidate 03 record-schema and delivery-boundary defec
 
 The accepted amendment does not repair or reactivate `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01`, accept or promote checkpoint `fcf406c4...`, close `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`, or authorize implementation, tests, execution, data/network activity, or Git writes by Claude.
 
-Canonical installation is documentation-only and remains `PENDING_SENTINEL_VERIFICATION` until the exact commit is returned and verified. Candidate 04 acceptance alone creates no active Claude handoff.
+Sentinel verified the documentation-only canonical installation at `689e546e588d557c96f28bc722c3f159d635f2c1`. Candidate 04 remains non-authorizing and creates no active Claude handoff.
+
+### Candidate 04 workspace-preparation package Candidate 02 acceptance
+
+On `2026-07-25`, Sentinel accepted `REV23_FINDING4_I0A_CANDIDATE04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02` as:
+
+`APPROVE — CANDIDATE_04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02_ACCEPTED`
+
+- canonical review and installation base: `689e546e588d557c96f28bc722c3f159d635f2c1`;
+- submitted ZIP SHA-256: `77c70fec832b97f2d2b78c9fb7886f1fe8f3b1aa03739a73a6213684d8c89601`;
+- submitted ZIP size: `13495` bytes;
+- submitted archive members: `9`;
+- accepted payload documentation files: `8`;
+- Candidate 01 status: `BLOCKED_NOT_ACCEPTED_NON_CONTROLLING`;
+- exact staging root: `C:\b1\rev23_candidate04_source_workspace_01`;
+- workspace members: `12`;
+- future source boundary: `3` writable and `9` protected;
+- baseline-support edit prohibitions: `5`;
+- workspace predicates: `18` in exact accepted order.
+
+Candidate 02 corrects the sole Candidate 01 defect by separating the accepted source archive's `17` total members from its `12` payload members and keeping WP04 archive identity distinct from WP05 twelve-path closure.
+
+The package is documentation only. Canonical installation does not create the workspace, authorize `WORKSPACE_PREPARATION_ONLY`, activate source authoring, repair the failed remediation-source gate, accept the checkpoint, close `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`, or authorize tests, execution, data/network activity, or Git writes by Claude.
 
 ---
 
@@ -652,6 +674,7 @@ Canonical installation is documentation-only and remains `PENDING_SENTINEL_VERIF
 - The accepted current twelve-path worktree-capture identity and verified installation
   at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`, absent new authoritative evidence that changes the captured bytes or scope.
 - The accepted Candidate 04 starting-state amendment identity, closed record domains, exact path boundaries, and commit/review/push/remote-verification separation, absent a concrete contract contradiction or formally accepted later amendment.
+- The accepted `REV23_FINDING4_I0A_CANDIDATE04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02` identity, archive-versus-payload denominator separation, exact staging root, twelve-path workspace boundary, and eighteen-predicate gate, absent new authoritative evidence or a formally accepted later amendment.
 
 ---
 

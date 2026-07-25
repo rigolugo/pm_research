@@ -84,12 +84,16 @@ Read these before doing anything:
     - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/SENTINEL_ACCEPTANCE_DECISION.md`
     - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/ACCEPTED_STARTING_STATE_AMENDMENT_MANIFEST.json`
     - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/accepted_candidate_04/README_FIRST.md`
-27. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
+27. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/README_FIRST.md`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/SENTINEL_ACCEPTANCE_DECISION.md`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/ACCEPTED_WORKSPACE_PREPARATION_PACKAGE_MANIFEST.json`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/accepted_candidate_02/README_FIRST.md`
+28. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
     - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/GUSTAVO_AUTHORIZATION_RECORD.md`
     - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/SENTINEL_IMPLEMENTATION_AUTHORIZATION.md`
     - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/AUTHORIZATION_MANIFEST.json`
     - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/SOURCE_GATE.md`
-28. The remaining files required by the handoff, authorization, accepted-scope, selected-checkpoint, remediation-scope, provenance-capture, and accepted starting-state amendment read orders.
+29. The remaining files required by the handoff, authorization, accepted-scope, selected-checkpoint, remediation-scope, provenance-capture, accepted starting-state amendment, and accepted Candidate 04 workspace-preparation package read orders.
 
 ---
 

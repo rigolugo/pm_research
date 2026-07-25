@@ -362,14 +362,14 @@ Controlling records:
 
 ### `scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/`
 
-Accepted Revision 10 starting-state amendment; documentation installation pending Sentinel verification.
+Accepted Revision 10 starting-state amendment; canonically installed and Sentinel-verified.
 
 - accepted candidate: `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04`;
 - Sentinel decision: `APPROVE — REV10_STARTING_STATE_AMENDMENT_CANDIDATE_04_ACCEPTED`;
 - submitted candidate ZIP SHA-256: `9b6e05ff09e916b02b990556ee1ef6a37e3bc044a83c317ecfcc60fa65a63193`;
 - accepted member count: `19`;
 - canonical installation base: `bc957fe05096b790052d0515773b9e0a2dc88a60`;
-- installation state: `INSTALLED_PENDING_SENTINEL_VERIFICATION`;
+- installation state: `INSTALLED_AND_SENTINEL_VERIFIED` at `689e546e588d557c96f28bc722c3f159d635f2c1`;
 - implementation authorization: `NONE`;
 - active Claude implementation prompt: `false`.
 
@@ -382,6 +382,32 @@ Controlling records:
 - `accepted_candidate_04/` — immutable exact 19-member accepted Candidate 04 package
 
 The amendment defines the isolated starting workspace and future stage gates. It does not materialize any live source/test path, reactivate the failed authorization, accept the checkpoint, or authorize implementation or execution.
+
+### `authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/`
+
+Accepted Candidate 04 workspace-preparation package; documentation installation pending Sentinel verification.
+
+- accepted package: `REV23_FINDING4_I0A_CANDIDATE04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02`;
+- Sentinel decision: `APPROVE — CANDIDATE_04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02_ACCEPTED`;
+- submitted ZIP SHA-256: `77c70fec832b97f2d2b78c9fb7886f1fe8f3b1aa03739a73a6213684d8c89601`;
+- submitted ZIP size: `13495` bytes;
+- submitted archive members: `9`;
+- accepted payload documentation files: `8`;
+- canonical installation base: `689e546e588d557c96f28bc722c3f159d635f2c1`;
+- exact staging root: `C:\b1\rev23_candidate04_source_workspace_01`;
+- current workflow state: `C04_SPEC_CANONICALLY_INSTALLED_NOT_AUTHORIZED`;
+- workspace execution authorization: `NONE`;
+- source authoring authorization: `NONE`.
+
+Controlling records:
+
+- `README_FIRST.md`
+- `SENTINEL_ACCEPTANCE_DECISION.md`
+- `ACCEPTED_WORKSPACE_PREPARATION_PACKAGE_MANIFEST.json`
+- `SHA256SUMS.txt`
+- `accepted_candidate_02/` — immutable exact nine-member accepted Candidate 02 package
+
+Candidate 02 defines the exact future workspace gate and typed result contract. Installation does not execute the gate or advance the workflow state.
 
 ### `authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/`
 

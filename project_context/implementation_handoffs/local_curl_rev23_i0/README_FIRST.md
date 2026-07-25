@@ -22,8 +22,13 @@
 - worktree-capture installation commit: `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`;
 - accepted starting-state amendment: `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04`;
 - amendment decision: `APPROVE — REV10_STARTING_STATE_AMENDMENT_CANDIDATE_04_ACCEPTED`;
-- amendment installation state: `INSTALLED_PENDING_SENTINEL_VERIFICATION`;
-- current authorization stop: `STOP_REV10_STARTING_STATE_AMENDMENT_INSTALLATION_NOT_VERIFIED`;
+- amendment installation state: `INSTALLED_AND_SENTINEL_VERIFIED`;
+- amendment installation commit: `689e546e588d557c96f28bc722c3f159d635f2c1`;
+- accepted workspace-preparation package: `REV23_FINDING4_I0A_CANDIDATE04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02`;
+- workspace-package decision: `APPROVE — CANDIDATE_04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02_ACCEPTED`;
+- workspace-package installation state: `INSTALLED_PENDING_SENTINEL_VERIFICATION`;
+- current Candidate 04 workflow state: `C04_SPEC_CANONICALLY_INSTALLED_NOT_AUTHORIZED`;
+- workspace execution authorization: `NONE`;
 - active implementation authorization: `NONE`;
 - active source-gated commit: `NOT_SELECTED`.
 
@@ -58,15 +63,20 @@ The preserved `fcf406c4...` checkpoint remains exact, recoverable, evidence-only
 25. `scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/SENTINEL_ACCEPTANCE_DECISION.md`
 26. `scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/ACCEPTED_STARTING_STATE_AMENDMENT_MANIFEST.json`
 27. the complete accepted Candidate 04 read order declared there
-28. `authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
-29. the complete authorization-package read order declared there
-30. `HANDOFF_INVENTORY.md`
-31. `HANDOFF_REVISION_10_STATIC_CONFORMANCE_SHA256SUMS.txt`
-32. `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt`
-33. `HANDOFF_REVISION_10_REMEDIATION_SOURCE_AUTHORIZATION_SHA256SUMS.txt`
-34. `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_SHA256SUMS.txt`
-35. `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_VERIFICATION_SHA256SUMS.txt`
-36. `HANDOFF_REVISION_10_STARTING_STATE_AMENDMENT_SHA256SUMS.txt`
+28. `authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/README_FIRST.md`
+29. `authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/SENTINEL_ACCEPTANCE_DECISION.md`
+30. `authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/ACCEPTED_WORKSPACE_PREPARATION_PACKAGE_MANIFEST.json`
+31. the complete accepted Candidate 02 read order declared there
+32. `authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
+33. the complete historical authorization-package read order declared there
+34. `HANDOFF_INVENTORY.md`
+35. `HANDOFF_REVISION_10_STATIC_CONFORMANCE_SHA256SUMS.txt`
+36. `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt`
+37. `HANDOFF_REVISION_10_REMEDIATION_SOURCE_AUTHORIZATION_SHA256SUMS.txt`
+38. `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_SHA256SUMS.txt`
+39. `HANDOFF_CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_VERIFICATION_SHA256SUMS.txt`
+40. `HANDOFF_REVISION_10_STARTING_STATE_AMENDMENT_SHA256SUMS.txt`
+41. `HANDOFF_CANDIDATE04_WORKSPACE_PREPARATION_SHA256SUMS.txt`
 
 ## Checkpoint and provenance findings
 
@@ -96,10 +106,16 @@ Conditional package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING
 
 Sentinel accepted `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04` at review base `bc957fe05096b790052d0515773b9e0a2dc88a60`. The amendment defines an isolated non-Git captured-payload workspace, exact twelve-path starting identities, closed typed workflow records, and separate source/test commit-review-push-remote-verification gates.
 
-The amendment is installed by this documentation package with verification pending. It does not repair the failed gate, accept the checkpoint, close the open lineage gap, or authorize workspace preparation, implementation, tests, execution, or Git writes by Claude.
+The amendment is canonically installed and Sentinel-verified at `689e546e588d557c96f28bc722c3f159d635f2c1`. It does not repair the failed gate, accept the checkpoint, close the open lineage gap, or authorize workspace preparation, implementation, tests, execution, or Git writes by Claude.
+
+## Accepted workspace-preparation package
+
+Sentinel accepted `REV23_FINDING4_I0A_CANDIDATE04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02`, ZIP SHA-256 `77c70fec832b97f2d2b78c9fb7886f1fe8f3b1aa03739a73a6213684d8c89601`, as the documentation contract for a possible future Candidate 04 `WORKSPACE_PREPARATION` stage. This installation is pending Sentinel verification.
+
+The package selects exact root `C:\b1\rev23_candidate04_source_workspace_01`, twelve workspace members, the accepted capture identity, and the eighteen ordered predicates. Workspace execution authorization remains `NONE`, no active run handoff exists, and source authoring remains unauthorized.
 
 ## Non-authorization
 
 No implementation, source/test edit, test execution, rollback, restoration, overwrite, promotion, project execution, data/network access, subprocess, artifact production outside this documentation/evidence package, Git write by Claude, R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.
 
-The current permitted next action is Sentinel verification of the exact documentation-only Candidate 04 installation commit. No workspace preparation, source/test edit, materialization, test stage, push, or execution is permitted before that verification and a later separate Gustavo authorization with an active Sentinel handoff.
+The current permitted next action is Sentinel verification of the exact documentation-only Candidate 02 installation commit. No workspace preparation, source/test edit, materialization, test stage, push, or execution is permitted before that verification and a later separate Gustavo `WORKSPACE_PREPARATION_ONLY` authorization with an active Sentinel handoff.
