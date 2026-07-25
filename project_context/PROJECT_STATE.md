@@ -27,10 +27,7 @@ commit `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`, directly after
 `cc2964840d197a40d1c4ef567b42eda762c0be0a`, and Sentinel verified the exact
 17-path installation, clean worktree, and local/remote equality.
 
-The remediation scope defines a future atomic three-source implementation
-candidate and a separately gated four-test-source candidate. It closes no
-implementation defect by itself. Implementation authorization remains `NONE` and
-no implementation starting SHA or source-gated commit is selected.
+The remediation scope defines an atomic three-source implementation candidate and a separately gated four-test-source candidate. Gustavo has now authorized conditional source-authoring package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` at package-preparation base `a4fb0e64056b58a229da481664e4234e3215cd91`. The package is not active until canonical installation, Sentinel verification, and local twelve-path source-gate acceptance. No active source-gated commit is selected.
 
 The preserved checkpoint remains exact, recoverable, evidence-only,
 `NOT_ACCEPTED`, non-controlling, and authorization effect `NONE`. The two
@@ -258,16 +255,13 @@ not enlarge current Revision 10 authority.
 
 ### Controlling Revision 10 authorization state
 
-`STOP_IMPLEMENTATION_NOT_AUTHORIZED`
+`STOP_REV10_REMEDIATION_SOURCE_AUTHORIZATION_NOT_ACTIVATED`
 
-No Revision 10 implementation authorization, source gate, writable path set,
-test-source stage, test execution, project execution, data/network activity, or
-Git write by Claude is active.
+Gustavo authorized conditional package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` for one atomic source-authoring stage across exactly `canonical.py`, `finding4_registry.py`, and `prepared_evidence.py`. Expected starting identity is pinned for all twelve source/test paths.
 
-The historical Revision 09 R1 authorization and Revision 08 implementation
-authorization do not carry forward. The `fcf406c4...` checkpoint is evidence only
-and must not be restored, overwritten, promoted, or used as a continuation start
-without a later explicit decision.
+The package remains inactive until its canonical installation commit is Sentinel-verified and a local twelve-path source-gate report is accepted. No active source-gated commit or Claude implementation handoff exists. Test-source authoring, tests, project execution, data/network activity, Git history writes by Claude, and downstream stages remain unauthorized.
+
+The historical Revision 09 R1 authorization and Revision 08 implementation authorization do not carry forward. The `fcf406c4...` checkpoint remains evidence only and must not be restored, overwritten, promoted, or used as a continuation start.
 
 ### Preserved R1 implementation checkpoint
 
@@ -340,20 +334,9 @@ writes, or any downstream phase.
 
 ### Controlling Revision 10 next step
 
-The accepted remediation scope is installed and Sentinel-verified at
-`ee4a639f9a9429e642391f1fb1e0ab356a6f965a`. This documentation synchronization
-records that installation across the canonical state, decision, artifact, and
-navigation files.
+Manually install the conditional source-authorization package at exact base `a4fb0e64056b58a229da481664e4234e3215cd91` and return the documentation-only commit to Sentinel. Sentinel then verifies the commit and issues the local twelve-path hash preflight. Only a clear and accepted source gate permits an active Claude handoff.
 
-After the synchronization commit is installed and Sentinel-verified, Gustavo may
-separately decide whether to authorize a bounded implementation-source stage.
-Any such authorization must select and verify a fresh implementation starting
-state and must be limited to the accepted atomic three-source boundary.
-
-No implementation, test-source authoring, test execution, source synchronization,
-project execution, data/network access, rollback, promotion, R2, or downstream
-stage follows automatically from remediation-scope acceptance or documentation
-synchronization.
+No source edit may occur during package installation or source-gate verification. Test-source authoring, test execution, project execution, data/network access, rollback, promotion, R2, and downstream stages remain unauthorized.
 
 ### Historical Revision 08 next step at installation base
 

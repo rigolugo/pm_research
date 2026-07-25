@@ -12,13 +12,13 @@ Accepted remediation scope:
 `REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01`, installed and
 Sentinel-verified at `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`.
 
-Implementation is not authorized. No implementation starting SHA is selected.
+Conditional package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` is Gustavo-authorized but not active. Canonical installation and local source-gate acceptance remain pending. No active source-gated commit exists.
 
 ## Controlling files
 
 - `README_FIRST.md` — current handoff and read order.
 - `IMPLEMENTATION_AUTHORIZATION_SCOPE.md` —
-  `STOP_IMPLEMENTATION_NOT_AUTHORIZED`.
+  `STOP_REV10_REMEDIATION_SOURCE_AUTHORIZATION_NOT_ACTIVATED`.
 - `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md` —
   Revision 10 acceptance decision.
 - `scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_INSTALLATION_VERIFICATION_REVISION_10.md` —
@@ -41,6 +41,8 @@ Implementation is not authorized. No implementation starting SHA is selected.
 - `remediation_scope/ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json` — installed identity and non-authorization state.
 - `remediation_scope/accepted_remediation_scope_candidate_01/` — exact accepted 11-member candidate package.
 - `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt` — focused checksum inventory for the accepted remediation-scope records.
+- `authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/` — conditional three-source authorization package, inactive pending installation and source gate.
+- `HANDOFF_REVISION_10_REMEDIATION_SOURCE_AUTHORIZATION_SHA256SUMS.txt` — focused checksum inventory for this authorization record.
 
 Historical checksum inventories remain immutable evidence of the states they
 recorded. They are not regenerated or reinterpreted as inventories of this later
@@ -87,6 +89,4 @@ Open provenance gaps:
 - `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`;
 - `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`.
 
-No checkpoint, accepted specification, static review record, or accepted
-remediation-scope record authorizes implementation, tests, execution, rollback,
-promotion, data/network activity, Git writes by Claude, or a downstream stage.
+No source authoring is active until `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` is canonically installed, Sentinel-verified, and its local source gate is accepted. Tests, execution, rollback, promotion, data/network activity, Git history writes by Claude, and downstream stages remain unauthorized.

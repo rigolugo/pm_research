@@ -12,8 +12,10 @@
 - remediation installation base: `cc2964840d197a40d1c4ef567b42eda762c0be0a`;
 - remediation installation state: `INSTALLED_AND_SENTINEL_VERIFIED`;
 - remediation installation commit: `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`;
-- implementation authorization: `NONE`;
-- implementation starting SHA: `NOT_AUTHORIZED_AND_NOT_SELECTED`.
+- conditional source-authorization package: `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01`;
+- authorization package status: `PENDING_CANONICAL_INSTALLATION_AND_LOCAL_SOURCE_GATE`;
+- active implementation authorization: `NONE`;
+- active source-gated commit: `NOT_SELECTED`.
 
 The preserved `fcf406c4...` checkpoint remains exact, recoverable, evidence-only, `NOT_ACCEPTED`, non-controlling, and authorization effect `NONE`.
 
@@ -39,9 +41,12 @@ The preserved `fcf406c4...` checkpoint remains exact, recoverable, evidence-only
 18. `remediation_scope/SENTINEL_INSTALLATION_VERIFICATION.md`
 19. `remediation_scope/ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
 20. the complete remediation-scope read order declared in `remediation_scope/README_FIRST.md`
-21. `HANDOFF_INVENTORY.md`
-22. `HANDOFF_REVISION_10_STATIC_CONFORMANCE_SHA256SUMS.txt`
-23. `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt`
+21. `authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
+22. the complete authorization-package read order declared there
+23. `HANDOFF_INVENTORY.md`
+24. `HANDOFF_REVISION_10_STATIC_CONFORMANCE_SHA256SUMS.txt`
+25. `HANDOFF_REVISION_10_REMEDIATION_SCOPE_SHA256SUMS.txt`
+26. `HANDOFF_REVISION_10_REMEDIATION_SOURCE_AUTHORIZATION_SHA256SUMS.txt`
 
 ## Checkpoint finding
 
@@ -58,10 +63,10 @@ Those gaps are separate from the verified implementation-conformance block.
 
 The accepted remediation scope defines a future atomic three-source implementation candidate and a separately gated four-test-source candidate. It closes no implementation defect by itself and does not unblock execution.
 
-No implementation starting SHA is selected. No historical authorization carries forward. No Claude implementation prompt is active.
+Conditional package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` pins the expected twelve-path starting state and three writable paths. It is not active until canonical installation and local source-gate acceptance. No historical authorization carries forward and no active Claude implementation prompt exists.
 
 ## Non-authorization
 
 No implementation, source/test edit, test execution, rollback, restoration, overwrite, promotion, project execution, data/network access, subprocess, artifact production, Git write by Claude, R2, P1/P2/P3, scoring, probe execution, or gate change is authorized.
 
-The accepted remediation scope is installed and Sentinel-verified. The current permitted administrative action is narrow synchronization of the canonical state, decision, artifact, and navigation records. Any implementation stage requires a separate Gustavo authorization and a new Sentinel handoff with an independently verified starting state.
+The current permitted action is manual documentation-only installation of conditional authorization package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01`, followed by Sentinel installation verification and local source-gate review. No source edit is permitted before activation.

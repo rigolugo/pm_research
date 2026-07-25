@@ -1,22 +1,11 @@
-# Claude — Revision 10 Implementation Blocked and Inactive
+# Claude — Revision 10 Remediation Source Authorization Not Activated
 
-`STOP_IMPLEMENTATION_NOT_AUTHORIZED`
+`STOP_REV10_REMEDIATION_SOURCE_AUTHORIZATION_NOT_ACTIVATED`
 
-The controlling static-conformance finding is:
+Conditional authorization package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` has Gustavo approval but is not yet active.
 
-`REVISION10_STATIC_CONFORMANCE_BLOCKED`
+Do not edit source or tests until Sentinel verifies the canonical authorization-installation commit, accepts the local twelve-path source-gate output, and provides a separate active handoff naming the exact source-gated commit.
 
-The preserved checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` /
-`fcf406c4...` is evidence-only, `NOT_ACCEPTED`, non-controlling, and has
-authorization effect `NONE`.
-
-No implementation starting SHA, source-gated commit, writable source/test path,
-rollback, restoration, overwrite, promotion, continuation, test execution,
-project execution, data/network activity, subprocess, artifact production, or
-Git write is authorized.
+The future writable boundary is exactly `canonical.py`, `finding4_registry.py`, and `prepared_evidence.py`. Test-source authoring, tests, project execution, data/network access, Git history writes, and checkpoint promotion remain unauthorized.
 
 This file is an inactive stop notice, not an implementation prompt.
-
-If asked to implement before a later explicit Gustavo authorization and a new
-Sentinel handoff selecting exact starting bytes and exact writable paths, stop
-and return `STOP_IMPLEMENTATION_NOT_AUTHORIZED`.

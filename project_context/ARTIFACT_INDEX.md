@@ -192,7 +192,7 @@ Installation commits:
 
 Current implementation state:
 
-`STOP_IMPLEMENTATION_NOT_AUTHORIZED`
+`STOP_REV10_REMEDIATION_SOURCE_AUTHORIZATION_NOT_ACTIVATED`
 
 Current static-conformance state:
 
@@ -353,6 +353,35 @@ Controlling records:
 - `ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
 - `REMEDIATION_SCOPE_SHA256SUMS.txt`
 - `accepted_remediation_scope_candidate_01/`
+
+### `authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/`
+
+Conditional Revision 10 remediation source-authoring authorization package.
+
+- authorization ID: `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01`;
+- package-preparation base: `a4fb0e64056b58a229da481664e4234e3215cd91`;
+- Gustavo authorization: recorded;
+- Sentinel package decision: `APPROVE`;
+- activation: pending canonical installation and local source-gate acceptance;
+- writable after activation: exactly three source files;
+- test-source authoring and test execution: unauthorized;
+- allowed new repository files: none.
+
+Controlling files:
+
+- `README_FIRST.md`
+- `GUSTAVO_AUTHORIZATION_RECORD.md`
+- `SENTINEL_IMPLEMENTATION_AUTHORIZATION.md`
+- `AUTHORIZATION_MANIFEST.json`
+- `AUTHORIZED_FILE_MATRIX.md`
+- `ACTIVITY_BOUNDARIES.md`
+- `SOURCE_GATE.md`
+- `TWELVE_PATH_STARTING_SHA256SUMS.txt`
+- `IMPLEMENTATION_REVIEW_DELIVERABLES.md`
+- `CLAUDE_HANDOFF_INACTIVE.md`
+- `SHA256SUMS.txt`
+
+The package is not an active Claude handoff until Sentinel verifies its canonical installation commit and accepts the local source gate.
 
 ### `authorization_audit/rev23_finding4_i0a/`
 

@@ -76,7 +76,12 @@ Read these before doing anything:
     - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/SENTINEL_INSTALLATION_AUTHORIZATION.md`
     - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/SENTINEL_INSTALLATION_VERIFICATION.md`
     - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
-25. The remaining files required by the handoff, authorization, accepted-scope, selected-checkpoint, and remediation-scope read orders.
+25. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/GUSTAVO_AUTHORIZATION_RECORD.md`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/SENTINEL_IMPLEMENTATION_AUTHORIZATION.md`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/AUTHORIZATION_MANIFEST.json`
+    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/SOURCE_GATE.md`
+26. The remaining files required by the handoff, authorization, accepted-scope, selected-checkpoint, and remediation-scope read orders.
 
 ---
 
@@ -204,16 +209,14 @@ Revision 08 remains immutable historical accepted evidence.
 
 ### Controlling Revision 10 state
 
-`STOP_IMPLEMENTATION_NOT_AUTHORIZED`
+`STOP_REV10_REMEDIATION_SOURCE_AUTHORIZATION_NOT_ACTIVATED`
 
 Revision 10 specification acceptance and the static-conformance finding do not
 authorize source synchronization, source/test authoring, tests, project execution,
 rollback, restoration, overwrite, checkpoint promotion, data/network access, Git
 writes by Claude, R2, P1/P2/P3, scoring, probe execution, or gate changes.
 
-The accepted remediation scope does not change this stop. No Revision 10
-implementation starting SHA or source-gated commit is selected. The Revision 09
-R1 and Revision 08 authorizations remain historical and do not carry forward.
+Gustavo authorized conditional source-authoring package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01`. The package selects the exact twelve-path expected baseline and three writable source paths, but it is not active until canonical installation, Sentinel verification, and local source-gate acceptance. No active source-gated commit is selected yet. Revision 09 R1 and Revision 08 authorizations remain historical and do not carry forward.
 
 ### Historical Revision 08 authorization record at installation base
 

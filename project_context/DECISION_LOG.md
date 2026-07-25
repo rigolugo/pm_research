@@ -554,6 +554,29 @@ network/data activity, or downstream phase is active.
 
 ---
 
+### Revision 10 remediation source-authoring authorization package
+
+On `2026-07-24`, Gustavo approved conditional authorization package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` after Sentinel described the exact three-source atomic boundary and separate test-source/test-execution gates.
+
+Sentinel decision:
+
+`APPROVE — REV10_REMEDIATION_SOURCE_AUTHORIZATION_PACKAGE_ACCEPTED`
+
+- package-preparation base: `a4fb0e64056b58a229da481664e4234e3215cd91`;
+- controlling specification: `REV23_FINDING4_I0A_SCOPE_REVISION_10`;
+- accepted remediation package: `REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01`;
+- writable paths after activation: exactly `canonical.py`, `finding4_registry.py`, and `prepared_evidence.py`;
+- allowed new repository files: `NONE`;
+- exact twelve-path expected baseline: pinned in `TWELVE_PATH_STARTING_SHA256SUMS.txt`;
+- currently active: `false`;
+- activation requires canonical installation verification plus Sentinel acceptance of a local twelve-path source gate;
+- test-source authoring and test execution: unauthorized;
+- project execution, research data, network, Git history writes by Claude, checkpoint promotion, and downstream stages: unauthorized.
+
+This package does not reuse the historical Revision 09 authorization or promote the preserved checkpoint. A failed source gate is a valid halt and must not be repaired by restoring historical bytes.
+
+---
+
 ## DO NOT REOPEN unless explicitly requested with new evidence
 
 - Rank 1A recalibration.
