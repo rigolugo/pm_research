@@ -1,0 +1,87 @@
+{
+  "accepted_candidate_id": "REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01",
+  "accepted_candidate_member_count": 11,
+  "accepted_candidate_members": [
+    {
+      "path": "project_context/implementation_handoffs/local_curl_rev23_i0/remediation_scope/accepted_remediation_scope_candidate_01/ACTIVITY_BOUNDARIES_AND_STOPS.md",
+      "sha256": "bde7b2a3ba21e08f662ddcac0597d2dbec8fea3b5c2b49b8019de6aee6cfdba4",
+      "size_bytes": 4352
+    },
+    {
+      "path": "project_context/implementation_handoffs/local_curl_rev23_i0/remediation_scope/accepted_remediation_scope_candidate_01/AUTHORIZED_FILE_MATRIX.md",
+      "sha256": "6b8a0799f6417c7b833106a8039c628deb3f2a3e96bfb5fcea02e2c5492b8973",
+      "size_bytes": 3685
+    },
+    {
+      "path": "project_context/implementation_handoffs/local_curl_rev23_i0/remediation_scope/accepted_remediation_scope_candidate_01/CONTRACT_GAP_TO_CHANGE_MATRIX.md",
+      "sha256": "e4b82a068a501c17804baeb558049521b78553b044bc12c94c3945a34affdbab",
+      "size_bytes": 5180
+    },
+    {
+      "path": "project_context/implementation_handoffs/local_curl_rev23_i0/remediation_scope/accepted_remediation_scope_candidate_01/INTERFACE_AND_RESULT_CODE_MATRIX.md",
+      "sha256": "6ed22096065b1e5976590d3a2d2b65fe794034450ae1f1c25e500ffaa1a307f0",
+      "size_bytes": 7651
+    },
+    {
+      "path": "project_context/implementation_handoffs/local_curl_rev23_i0/remediation_scope/accepted_remediation_scope_candidate_01/PACKAGE_MANIFEST.json",
+      "sha256": "e60ce5850ef1e68f69fe954291ff81a1a4ab92b5c263a71788382cd61e4294b4",
+      "size_bytes": 4713
+    },
+    {
+      "path": "project_context/implementation_handoffs/local_curl_rev23_i0/remediation_scope/accepted_remediation_scope_candidate_01/PROVENANCE_GAP_HANDLING.md",
+      "sha256": "1d1b426fb3f989545f97b0bdeddbe11916e85ce709f6b0f07ba2d615dc50774b",
+      "size_bytes": 3551
+    },
+    {
+      "path": "project_context/implementation_handoffs/local_curl_rev23_i0/remediation_scope/accepted_remediation_scope_candidate_01/README_FIRST.md",
+      "sha256": "474037d62a6d2d855fc00268b62a1fca67a730a053ff08534b0b5af8f2295a81",
+      "size_bytes": 3270
+    },
+    {
+      "path": "project_context/implementation_handoffs/local_curl_rev23_i0/remediation_scope/accepted_remediation_scope_candidate_01/REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01.md",
+      "sha256": "9edd5cab7302f79444194486c97a739162c9385bb81787acd3b2ac0110c5a368",
+      "size_bytes": 19856
+    },
+    {
+      "path": "project_context/implementation_handoffs/local_curl_rev23_i0/remediation_scope/accepted_remediation_scope_candidate_01/SENTINEL_REVIEW_HANDOFF.md",
+      "sha256": "d212fe8fd634323e7cd9535eb4ab6083fdc4a5af98c4a06cccb7a2afd670a9d7",
+      "size_bytes": 3954
+    },
+    {
+      "path": "project_context/implementation_handoffs/local_curl_rev23_i0/remediation_scope/accepted_remediation_scope_candidate_01/SHA256SUMS.txt",
+      "sha256": "e3b0c38c88411b19d22db4853dddc7a4397d57719c32699a6dc6ecd5c9fd9997",
+      "size_bytes": 1064
+    },
+    {
+      "path": "project_context/implementation_handoffs/local_curl_rev23_i0/remediation_scope/accepted_remediation_scope_candidate_01/TEST_OBLIGATION_MATRIX.md",
+      "sha256": "1e2173a63b175d1e14979330c6576089ddba1780aee39333eb362d93d4e11d9e",
+      "size_bytes": 7141
+    }
+  ],
+  "binding_sentinel_determinations": {
+    "candidate_checksum_convention": "INTERNAL_INVENTORY_EXCLUDES_SELF_DETACHED_ZIP_SHA_IDENTIFIES_COMPLETE_ARCHIVE",
+    "selected_member_order": "SIDECARS_THEN_NON_SIDECARS_ASCENDING_OBJECT_ORDINAL_WITHIN_CLASS",
+    "unit_context": "EXACT_CLOSED_NON_COERCING_BOOL_EXCLUDED_UINT64_SUBJECT_SEQUENCE"
+  },
+  "canonical_installation_base": "cc2964840d197a40d1c4ef567b42eda762c0be0a",
+  "canonical_repository": "rigolugo/pm_research",
+  "checkpoint_promotion_authorized": false,
+  "controlling_specification": "REV23_FINDING4_I0A_SCOPE_REVISION_10",
+  "gustavo_documentation_installation_authorized": true,
+  "implementation_authorization": false,
+  "implementation_starting_sha_selected": false,
+  "installation_commit": null,
+  "installation_verification": "PENDING_SENTINEL",
+  "network_or_data_execution_authorized": false,
+  "open_provenance_gaps": [
+    "MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE",
+    "CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED"
+  ],
+  "package_id": "REV10_LOCAL_CURL_REMEDIATION_SCOPE_ACCEPTED_01",
+  "sentinel_decision": "APPROVE \u2014 REV10_LOCAL_CURL_REMEDIATION_SCOPE_ACCEPTED",
+  "source_authoring_authorized": false,
+  "status": "ACCEPTED_INSTALLATION_PENDING_SENTINEL_VERIFICATION",
+  "submitted_zip_sha256": "e6bc7139c39bd75630ad480821c203dbd5c2a914dae3b23fd26b9bfe2f513c1a",
+  "test_execution_authorized": false,
+  "test_source_authoring_authorized": false
+}

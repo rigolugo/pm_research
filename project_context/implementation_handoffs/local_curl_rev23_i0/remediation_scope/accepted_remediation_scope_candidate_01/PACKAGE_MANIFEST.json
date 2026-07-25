@@ -1,0 +1,115 @@
+{
+  "allowed_new_implementation_files": [],
+  "base_commit": "cc2964840d197a40d1c4ef567b42eda762c0be0a",
+  "candidate_number": 1,
+  "canonical_repository": "rigolugo/pm_research",
+  "checkpoint_id": "REV23_FINDING4_I0A_R1_CP_0001_FCF406C4",
+  "checkpoint_payload_sha256": "fcf406c4f447945d386467256c07455695db23801400f12be49203ffc2fe35da",
+  "checksum_convention": {
+    "manifest_covers_actual": "every non-inventory member",
+    "reason": "An internal file cannot contain its own actual final SHA-256 without self-reference. The detached ZIP SHA-256 covers all archive bytes.",
+    "sha256sums_covers": "every package member except SHA256SUMS.txt itself"
+  },
+  "complete_member_list": [
+    "README_FIRST.md",
+    "REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01.md",
+    "CONTRACT_GAP_TO_CHANGE_MATRIX.md",
+    "AUTHORIZED_FILE_MATRIX.md",
+    "INTERFACE_AND_RESULT_CODE_MATRIX.md",
+    "TEST_OBLIGATION_MATRIX.md",
+    "ACTIVITY_BOUNDARIES_AND_STOPS.md",
+    "PROVENANCE_GAP_HANDLING.md",
+    "SENTINEL_REVIEW_HANDOFF.md",
+    "PACKAGE_MANIFEST.json",
+    "SHA256SUMS.txt"
+  ],
+  "controlling_scope": "REV23_FINDING4_I0A_SCOPE_REVISION_10",
+  "git_write_authorization": false,
+  "implementation_authorization": false,
+  "local_data_access_authorization": false,
+  "member_count": 11,
+  "member_sha256": [
+    {
+      "hash_status": "ACTUAL_FILE_BYTES",
+      "path": "README_FIRST.md",
+      "sha256": "474037d62a6d2d855fc00268b62a1fca67a730a053ff08534b0b5af8f2295a81"
+    },
+    {
+      "hash_status": "ACTUAL_FILE_BYTES",
+      "path": "REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01.md",
+      "sha256": "9edd5cab7302f79444194486c97a739162c9385bb81787acd3b2ac0110c5a368"
+    },
+    {
+      "hash_status": "ACTUAL_FILE_BYTES",
+      "path": "CONTRACT_GAP_TO_CHANGE_MATRIX.md",
+      "sha256": "e4b82a068a501c17804baeb558049521b78553b044bc12c94c3945a34affdbab"
+    },
+    {
+      "hash_status": "ACTUAL_FILE_BYTES",
+      "path": "AUTHORIZED_FILE_MATRIX.md",
+      "sha256": "6b8a0799f6417c7b833106a8039c628deb3f2a3e96bfb5fcea02e2c5492b8973"
+    },
+    {
+      "hash_status": "ACTUAL_FILE_BYTES",
+      "path": "INTERFACE_AND_RESULT_CODE_MATRIX.md",
+      "sha256": "6ed22096065b1e5976590d3a2d2b65fe794034450ae1f1c25e500ffaa1a307f0"
+    },
+    {
+      "hash_status": "ACTUAL_FILE_BYTES",
+      "path": "TEST_OBLIGATION_MATRIX.md",
+      "sha256": "1e2173a63b175d1e14979330c6576089ddba1780aee39333eb362d93d4e11d9e"
+    },
+    {
+      "hash_status": "ACTUAL_FILE_BYTES",
+      "path": "ACTIVITY_BOUNDARIES_AND_STOPS.md",
+      "sha256": "bde7b2a3ba21e08f662ddcac0597d2dbec8fea3b5c2b49b8019de6aee6cfdba4"
+    },
+    {
+      "hash_status": "ACTUAL_FILE_BYTES",
+      "path": "PROVENANCE_GAP_HANDLING.md",
+      "sha256": "1d1b426fb3f989545f97b0bdeddbe11916e85ce709f6b0f07ba2d615dc50774b"
+    },
+    {
+      "hash_status": "ACTUAL_FILE_BYTES",
+      "path": "SENTINEL_REVIEW_HANDOFF.md",
+      "sha256": "d212fe8fd634323e7cd9535eb4ab6083fdc4a5af98c4a06cccb7a2afd670a9d7"
+    },
+    {
+      "hash_status": "SELF_REFERENTIAL_INVENTORY_MEMBER; actual hash is recorded in SHA256SUMS.txt",
+      "path": "PACKAGE_MANIFEST.json",
+      "sha256": null
+    },
+    {
+      "hash_status": "SELF_REFERENTIAL_INVENTORY_MEMBER; actual final bytes covered by detached ZIP SHA-256",
+      "path": "SHA256SUMS.txt",
+      "sha256": null
+    }
+  ],
+  "network_subprocess_authorization": false,
+  "package_authorization_effect": "NONE",
+  "package_id": "REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01",
+  "project_execution_authorization": false,
+  "proposed_atomic_source_paths": [
+    "pm_research/local_curl_per_side/canonical.py",
+    "pm_research/local_curl_per_side/finding4_registry.py",
+    "pm_research/local_curl_per_side/prepared_evidence.py"
+  ],
+  "proposed_separately_gated_test_source_paths": [
+    "tests/local_curl_per_side/test_canonical_i0a.py",
+    "tests/local_curl_per_side/test_finding4_registry_i0a.py",
+    "tests/local_curl_per_side/test_i0a_public_contract.py",
+    "tests/local_curl_per_side/test_prepared_evidence_i0a.py"
+  ],
+  "schema_id": "rev10_local_curl_implementation_remediation_package_manifest.v1",
+  "self_review": {
+    "canonical_files_modified": false,
+    "performed": true,
+    "result": "NO_UNRESOLVED_CONTRADICTION_FOUND_EXCEPT_NAMED_SENTINEL_DECISIONS",
+    "selected_design": "one atomic three-source authoring stage; test source and execution separately gated",
+    "strongest_alternative": "multiple source-authoring substages",
+    "tests_or_project_code_executed": false
+  },
+  "status": "REVIEW_CANDIDATE_SPECIFICATION_ONLY_NOT_ACCEPTED",
+  "test_execution_authorization": false,
+  "test_source_authoring_authorization": false
+}
