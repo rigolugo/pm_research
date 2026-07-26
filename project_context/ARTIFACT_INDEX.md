@@ -49,7 +49,8 @@ Accepted result:
 
 ### `artifacts/named_binary_probe/price_source_s1/`
 
-Accepted coverage-only result: `S1_SOURCE_NOT_VIABLE`.
+Historical accepted coverage-only result for `interval=max` with fidelity
+omitted: `S1_SOURCE_NOT_VIABLE`.
 
 - `price_source_s1_coverage.json`
 - `price_source_s1_coverage.md`
@@ -58,6 +59,50 @@ Accepted coverage-only result: `S1_SOURCE_NOT_VIABLE`.
 - `price_source_s1_endpoint_shape.md`
 
 No price series is persisted.
+
+Proposed canonical documentation paths in
+`S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02`
+(candidate status until separately accepted and installed):
+
+- `project_context/S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02.md`
+- `project_context/S1_PRICE_SOURCE_REVALIDATION_EVIDENCE_MANIFEST_CANDIDATE_02.json`
+- `project_context/HANDOFF_PROFESSOR_S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02_REVIEW.md`
+
+The proposed record memorializes the settled empirical Sentinel finding that the
+revised reviewed EC2 method (`fidelity=1`, `interval` omitted) establishes
+`S1_SOURCE_VIABLE` for the unchanged valid-window Pass-1 sample: UP_DOWN
+`50/50`, OVER_UNDER `98/98`, NAMED_OTHER `100/100`, combined `248/248`, with
+`52` accepted invalid-window exclusions retained from the original
+`300`-condition sample.
+
+Candidate 02 remains draft documentation pending Sentinel review and canonical
+installation.
+`S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_01` is
+blocked, non-controlling, and not proposed for canonical installation.
+
+Reviewed external evidence identities, not canonically preserved empirical
+archives:
+
+- original accepted S1-shape replay manifest:
+  `90c29244c77fdf326e06bf8a504d0c0d65e508a6d31a1ef04f8ddc34c938b3c9`;
+- original accepted S1-shape replay script:
+  `d915b5ccb78bb1f3e73465205248f713866368d86738369eaf9b1ef256146210`;
+- original accepted S1-shape replay archive:
+  `de283c8c70f34331014cb994eae06bf4cb4a4b3b0d490d2fd6c12a73a21b2042`;
+- revised 248-condition source ledger:
+  `44752917daf26d489e737d62541813221e7ec5291ca5d41f6f8e7ed2414000ea`;
+- revised revalidation runner:
+  `464755a4bcf640bb160e3bd73c5105af69d56967be76be124f458ecb3eecb584`;
+- revised incomplete-run archive:
+  `8ac9b723c864e997332c8da9e9f867cf71886627c8ed26b21fad4b21a54e6ad3`;
+- narrow continuation runner:
+  `1959f6d49a67d6583db10971d84af1bcf117be99c26b761e4c299b16492c3d1e`;
+- narrow continuation archive:
+  `8d25d874984b88ce2ca3d6a5e9a09d394e5f97f3ada97483c271e35dc89f115c`.
+
+Source viability is not price-artifact acceptance. No canonical-side
+decision-time price artifact is built or accepted by this record. P1 remains
+blocked and `named_binary_probe_blocked = true`.
 
 ### `artifacts/named_binary_probe/price_source_s1_alt/`
 
