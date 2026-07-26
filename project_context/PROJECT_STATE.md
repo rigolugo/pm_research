@@ -83,15 +83,61 @@ historical and non-authorizing under Revision 10.
 
 ### S1 — CLOB `/prices-history`
 
-Accepted sampled result: `S1_SOURCE_NOT_VIABLE`.
+Historical accepted sampled result for the original request method:
+`S1_SOURCE_NOT_VIABLE`.
 
-Both-side Level-B coverage cleared `0.95` in no subclass:
+That historical method used `interval=max` with fidelity omitted. Its
+method-qualified Level-B result remains:
 
 - UP_DOWN: `19 / 50 = 0.38`
 - OVER_UNDER: `51 / 98 ≈ 0.5204`
 - NAMED_OTHER: `65 / 100 = 0.65`
 
-No Pass 2 or downstream phase is authorized.
+The revised reviewed EC2 request method used one independently queried token ID
+per side, `startTs = decision_lower_ts - 1`, `endTs = resolved_at_ts`,
+`fidelity=1`, `interval` omitted, zero retries, no side synthesis, and the
+unchanged half-open evaluation window
+`decision_lower_ts <= t < resolved_at_ts`.
+
+The original stratified sample remains exactly `300` conditions:
+
+- valid/query-eligible decision windows: `248`;
+- previously accepted invalid-window exclusions: `52`;
+- no resampling, replacement, or outcome-based selection;
+- valid-window denominators: UP_DOWN `50`, OVER_UNDER `98`, NAMED_OTHER `100`.
+
+The reviewed main revalidation completed `496` planned independent token-side
+requests. It returned `494` HTTP 200 responses and two HTTP 400 responses for
+both sides of one NAMED_OTHER condition. The deterministic error was
+`invalid filters: 'startTs' and 'endTs' interval is too long`, so the run
+correctly halted as `S1_REVALIDATION_INCOMPLETE`.
+
+A separately reviewed narrow continuation targeted only that unresolved
+condition with two fixed overlapping chunks per side. Its four requests all
+returned HTTP 200. Per-side histories were unioned and overlap-deduplicated
+before the unchanged global half-open window was applied. The condition closed
+as `DECISION_PRICE_BOTH_SIDES`.
+
+Final revised Pass-1 both-side coverage:
+
+- UP_DOWN: `50 / 50 = 100%`;
+- OVER_UNDER: `98 / 98 = 100%`;
+- NAMED_OTHER: `100 / 100 = 100%`;
+- combined valid-window sample: `248 / 248 = 100%`.
+
+Every subclass clears the locked `0.95` threshold. The method-qualified revised
+finding is `S1_SOURCE_VIABLE` for this existing stratified Pass-1 sample and
+reviewed EC2 execution route only. It is not full-universe validation and does
+not establish whether `interval=max`, explicit `fidelity=1`, or their interaction
+caused the difference.
+
+Source viability is not an accepted price artifact. No canonical-side
+decision-time price artifact has been built or accepted. P1 remains blocked on
+an accepted per-side/token-identity decision-time price artifact.
+`named_binary_probe_blocked = true` remains unchanged. No S2/Pass 2,
+full-universe request, price-artifact construction, P1/P2/P3, scoring, probe
+execution, further networking, local-data execution, implementation, test, or
+gate change is authorized.
 
 ### S1-ALT — local trade prints
 
@@ -374,6 +420,13 @@ writes, or any downstream phase.
 ---
 
 ## Next possible step
+
+### Price-source S1 next possible step
+
+Only after the revised-S1 canonical acceptance record is accepted, installed,
+and Sentinel-verified, and only after separate Gustavo authorization, Professor
+may draft an S2 SPEC-ONLY candidate. S2 is not active or authorized by the
+revised-S1 finding or this state record.
 
 ### Controlling Revision 10 next step
 
