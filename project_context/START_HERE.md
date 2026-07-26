@@ -32,6 +32,18 @@ Read these before doing anything:
 8. `PRICE_INPUT_CONTRACT_named_binary_probe.md`
 9. `SPEC_named_binary_probe.md`
 10. The accepted price-source specifications and result handoffs relevant to the task.
+    For S1 CLOB `/prices-history`, read in this order without omitting the
+    historical method-qualified negative:
+    - `SPEC_price_source_s1_coverage.md`
+    - `HANDOFF_orchestrator_price_source_s1_pass1_IMPLEMENTATION.md`
+    - `HANDOFF_orchestrator_s1_pass1_parse_ts_patch.md`
+    - `HANDOFF_orchestrator_s1_pass1_nan_and_progress_patch.md`
+    - `HANDOFF_orchestrator_s1_pass1_request_window_fix.md`
+    - `HANDOFF_orchestrator_s1_pass1_request_window_diagnostics.md`
+    - `HANDOFF_orchestrator_s1_pass1_invalid_decision_window.md`
+    - `HANDOFF_orchestrator_s1_parse_ts_millisecond_utc.md`
+    - `HANDOFF_orchestrator_s1_pass1_RESULT.md`
+    - `S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02.md`
 11. `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`
 12. `implementation_handoffs/local_curl_rev23_i0/SENTINEL_ACCEPTANCE_DECISION.md`
 13. `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
@@ -238,7 +250,11 @@ Revision 08 remains immutable historical accepted evidence.
 - P2, P3, scoring, and probe execution: **UNAUTHORIZED**.
 - `named_binary_probe_blocked = true`.
 - `yes_price`, `1 - price`, and `1 - yes_price` must not be used to synthesize named-binary sides.
-- S1 CLOB `/prices-history`: `S1_SOURCE_NOT_VIABLE`.
+- S1 CLOB `/prices-history`: historical `interval=max`, fidelity-omitted
+  method: `S1_SOURCE_NOT_VIABLE`; revised `fidelity=1`, interval-omitted
+  method: `S1_SOURCE_VIABLE` only for the existing stratified Pass-1 sample and
+  reviewed EC2 route. This is not full-universe validation; no price artifact
+  is accepted; P1 remains blocked; `named_binary_probe_blocked = true`.
 - S1-ALT local trade prints: `S1ALT_SOURCE_NOT_VIABLE`.
 - Option B corrected B0: `B0_MECHANICAL_TRUST_NOT_ESTABLISHED`; B1 unauthorized.
 - Option C: mixed/incomplete evidence; `C1F2_ARTIFACTS_INSUFFICIENT`; C1B/C2 unauthorized.
