@@ -646,6 +646,105 @@ The package is documentation only. Canonical installation does not create the wo
 
 ---
 
+### 2026-07-26 — Revised S1 request method establishes sampled source viability
+
+Settled empirical Sentinel finding:
+
+`ACCEPT FINDING — revised S1 establishes S1_SOURCE_VIABLE for the reviewed EC2 fidelity=1, no-interval request method.`
+
+This empirical finding is settled independently of the documentation-package
+status. `S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02`
+remains a draft pending Sentinel review and canonical installation. Blocked
+`S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_01` is
+non-controlling and is not proposed for canonical installation.
+
+This decision revises the current source-method finding without erasing or
+rewriting the historical accepted S1 result.
+
+Historical method and result:
+
+- request method: `interval=max`, fidelity omitted;
+- accepted sampled result: `S1_SOURCE_NOT_VIABLE`;
+- the historical result remains valid evidence for that method.
+
+Revised reviewed method and result:
+
+- one independently queried token ID per side;
+- `startTs = decision_lower_ts - 1`;
+- `endTs = resolved_at_ts`;
+- `fidelity=1`;
+- `interval` omitted;
+- zero retries;
+- no side synthesis;
+- evaluation window `decision_lower_ts <= t < resolved_at_ts`;
+- result: `S1_SOURCE_VIABLE`.
+
+The original stratified sample remains exactly `300` conditions. Exactly `248`
+conditions had accepted valid/query-eligible windows and exactly `52` retained
+the accepted invalid-window exclusion. No resampling, replacement, or
+outcome-based selection occurred. Valid-window denominators remained UP_DOWN
+`50`, OVER_UNDER `98`, and NAMED_OTHER `100`.
+
+The main revalidation completed all `496` planned independent token-side
+requests: `494` returned HTTP 200 and both sides of one NAMED_OTHER condition
+returned HTTP 400 with
+`invalid filters: 'startTs' and 'endTs' interval is too long`. The correct
+intermediate state was `S1_REVALIDATION_INCOMPLETE`.
+
+The separately reviewed continuation targeted only that unresolved condition.
+It used two fixed overlapping chunks per independently queried side, exactly
+four requests, `fidelity=1`, no `interval`, and zero retries. All four requests
+returned HTTP 200. Histories were unioned and overlap-deduplicated before the
+unchanged global half-open window was applied. The condition closed as
+`DECISION_PRICE_BOTH_SIDES`.
+
+Final revised Pass-1 coverage was UP_DOWN `50/50 = 100%`, OVER_UNDER
+`98/98 = 100%`, NAMED_OTHER `100/100 = 100%`, and combined
+`248/248 = 100%`. Every subclass cleared the locked `0.95` threshold.
+
+The reviewed evidence reported no malformed points, prices outside `[0,1]`,
+timestamp-order violations, or conflicting duplicate timestamps. Both sides
+were obtained by independent token-specific requests. No `yes_price`,
+`1 - price`, `1 - yes_price`, `1 - p`, complement synthesis, or winning-token
+enumeration was used. Complementarity remained diagnostic only.
+
+Evidence identities:
+
+- original-shape replay manifest SHA-256:
+  `90c29244c77fdf326e06bf8a504d0c0d65e508a6d31a1ef04f8ddc34c938b3c9`;
+- original-shape replay script SHA-256:
+  `d915b5ccb78bb1f3e73465205248f713866368d86738369eaf9b1ef256146210`;
+- original-shape replay archive SHA-256:
+  `de283c8c70f34331014cb994eae06bf4cb4a4b3b0d490d2fd6c12a73a21b2042`;
+- revised source ledger SHA-256:
+  `44752917daf26d489e737d62541813221e7ec5291ca5d41f6f8e7ed2414000ea`;
+- revised runner SHA-256:
+  `464755a4bcf640bb160e3bd73c5105af69d56967be76be124f458ecb3eecb584`;
+- incomplete-run archive SHA-256:
+  `8ac9b723c864e997332c8da9e9f867cf71886627c8ed26b21fad4b21a54e6ad3`;
+- continuation runner SHA-256:
+  `1959f6d49a67d6583db10971d84af1bcf117be99c26b761e4c299b16492c3d1e`;
+- continuation archive SHA-256:
+  `8d25d874984b88ce2ca3d6a5e9a09d394e5f97f3ada97483c271e35dc89f115c`.
+
+These hashes identify reviewed external evidence; they do not assert canonical
+repository preservation of the empirical archives.
+
+The revised finding supersedes only the historical negative's current gate
+effect for deciding whether this reviewed method warrants later S2
+specification work. It does not erase the historical result, validate the full
+universe, identify which request-parameter difference caused the result, accept
+a price artifact, or unblock P1.
+
+P1 remains blocked. `named_binary_probe_blocked = true` remains unchanged.
+S2/Pass 2, full-universe requests, price-artifact construction, P1/P2/P3,
+scoring, probe execution, networking, local-data execution, implementation,
+tests, and gate changes remain unauthorized. After this record is accepted,
+installed, and Sentinel-verified, Gustavo may separately authorize Professor to
+draft an S2 SPEC-ONLY candidate.
+
+---
+
 ## DO NOT REOPEN unless explicitly requested with new evidence
 
 - Rank 1A recalibration.
@@ -653,7 +752,8 @@ The package is documentation only. Canonical installation does not create the wo
 - The 217/0 and 10/0 artifacts.
 - Fee-field diagnostic.
 - Named-binary orientation and outcome-source derivation.
-- S1 and S1-ALT sampled negatives.
+- Historical S1 `interval=max`, fidelity-omitted sampled negative, and the
+  S1-ALT sampled negative.
 - Option B corrected B0 negative.
 - Option C old unsafe C1 designs or a false `C1_CANARY_DESIGN_CLEAR`.
 - Option D temporal interpretation.
