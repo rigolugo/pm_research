@@ -1,0 +1,214 @@
+{
+  "schema_id": "pm_research.s1_price_source_revalidation_canonical_acceptance_record_candidate.v1",
+  "candidate_id": "S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02",
+  "authoring_mode": "DOCUMENTATION_ONLY_CANONICAL_RECORD_DRAFT",
+  "status": "DRAFT_FOR_SENTINEL_REVIEW",
+  "canonical_repository": "rigolugo/pm_research",
+  "canonical_branch": "main",
+  "expected_base_commit": "aa378029469c518655ec22756243ee62318011b1",
+  "sentinel_finding_class": "SETTLED_SENTINEL_FINDING",
+  "sentinel_finding": "ACCEPT FINDING — revised S1 establishes S1_SOURCE_VIABLE for the reviewed EC2 fidelity=1, no-interval request method.",
+  "candidate_installation_state": "DRAFT_PENDING_SENTINEL_REVIEW_AND_CANONICAL_INSTALLATION",
+  "blocked_candidate_01_installation_proposed": false,
+  "decision_date": "2026-07-26",
+  "sample": {
+    "original_stratified_condition_count": 300,
+    "valid_query_eligible_decision_window_count": 248,
+    "invalid_window_exclusion_count": 52,
+    "resampling_occurred": false,
+    "replacement_occurred": false,
+    "outcome_based_selection_occurred": false,
+    "reconciliation": "248 + 52 = 300",
+    "per_subclass_denominators": {
+      "UP_DOWN": 50,
+      "OVER_UNDER": 98,
+      "NAMED_OTHER": 100
+    },
+    "per_subclass_final_both_side_counts": {
+      "UP_DOWN": 50,
+      "OVER_UNDER": 98,
+      "NAMED_OTHER": 100
+    },
+    "per_subclass_final_both_side_rates": {
+      "UP_DOWN": 1.0,
+      "OVER_UNDER": 1.0,
+      "NAMED_OTHER": 1.0
+    },
+    "combined_final_both_side_count": 248,
+    "combined_valid_window_denominator": 248,
+    "combined_final_both_side_rate": 1.0,
+    "threshold": 0.95,
+    "all_subclasses_clear_threshold": true
+  },
+  "historical_method": {
+    "interval": "max",
+    "fidelity": "OMITTED",
+    "disposition": "S1_SOURCE_NOT_VIABLE",
+    "historical_result_retained": true,
+    "historical_result_erased": false,
+    "historical_result_invalidated": false
+  },
+  "revised_method": {
+    "query_unit": "ONE_INDEPENDENT_TOKEN_ID_PER_SIDE",
+    "startTs": "decision_lower_ts - 1",
+    "endTs": "resolved_at_ts",
+    "fidelity": 1,
+    "interval": "OMITTED",
+    "retry_count": 0,
+    "side_synthesis": "FORBIDDEN_AND_NOT_USED",
+    "evaluation_window": "decision_lower_ts <= t < resolved_at_ts",
+    "disposition": "S1_SOURCE_VIABLE",
+    "scope": "EXISTING_STRATIFIED_PASS1_SAMPLE_AND_REVIEWED_EC2_ROUTE_ONLY"
+  },
+  "main_revalidation": {
+    "planned_request_count": 496,
+    "completed_request_count": 496,
+    "http_200_count": 494,
+    "http_400_count": 2,
+    "unresolved_condition_count": 1,
+    "unresolved_subclass": "NAMED_OTHER",
+    "deterministic_error": "invalid filters: 'startTs' and 'endTs' interval is too long",
+    "intermediate_label": "S1_REVALIDATION_INCOMPLETE"
+  },
+  "continuation": {
+    "target_scope": "ONLY_THE_SINGLE_UNRESOLVED_NAMED_OTHER_CONDITION",
+    "independently_queried_side_count": 2,
+    "fixed_overlapping_chunk_count_per_side": 2,
+    "planned_request_count": 4,
+    "completed_request_count": 4,
+    "http_200_count": 4,
+    "fidelity": 1,
+    "interval": "OMITTED",
+    "retry_count": 0,
+    "history_combination": "UNION_THEN_OVERLAP_DEDUPLICATION_PER_SIDE",
+    "global_window_application": "UNCHANGED_HALF_OPEN_WINDOW_AFTER_UNION_AND_DEDUPLICATION",
+    "final_condition_status": "DECISION_PRICE_BOTH_SIDES",
+    "continuation_label": "S1_REVALIDATION_CONTINUATION_COMPLETE_BOTH_SIDES",
+    "not_a_rerun": true,
+    "not_an_adaptive_retry": true,
+    "not_resampling": true
+  },
+  "reviewed_integrity_findings": {
+    "malformed_points_reported": 0,
+    "prices_outside_closed_unit_interval_reported": 0,
+    "timestamp_order_violations_reported": 0,
+    "conflicting_duplicate_timestamps_reported": 0,
+    "complementarity_use": "DIAGNOSTIC_ONLY"
+  },
+  "forbidden_shortcuts_not_used": [
+    "yes_price",
+    "1 - price",
+    "1 - yes_price",
+    "1 - p",
+    "COMPLEMENT_SYNTHESIS",
+    "WINNING_TOKEN_ENUMERATION"
+  ],
+  "evidence": [
+    {
+      "logical_identity": "ORIGINAL_ACCEPTED_S1_SHAPE_REPLAY_MANIFEST",
+      "sha256": "90c29244c77fdf326e06bf8a504d0c0d65e508a6d31a1ef04f8ddc34c938b3c9",
+      "storage_state": "REVIEWED_EXTERNAL_IDENTITY_NOT_ASSERTED_CANONICALLY_STORED"
+    },
+    {
+      "logical_identity": "ORIGINAL_ACCEPTED_S1_SHAPE_REPLAY_SCRIPT",
+      "sha256": "d915b5ccb78bb1f3e73465205248f713866368d86738369eaf9b1ef256146210",
+      "storage_state": "REVIEWED_EXTERNAL_IDENTITY_NOT_ASSERTED_CANONICALLY_STORED"
+    },
+    {
+      "logical_identity": "ORIGINAL_ACCEPTED_S1_SHAPE_REPLAY_ARCHIVE",
+      "sha256": "de283c8c70f34331014cb994eae06bf4cb4a4b3b0d490d2fd6c12a73a21b2042",
+      "label": "REPLAY_ORIGINAL_S1_SHAPE_BOTH_SIDE_IN_WINDOW_MIXED",
+      "storage_state": "REVIEWED_EXTERNAL_IDENTITY_NOT_ASSERTED_CANONICALLY_STORED"
+    },
+    {
+      "logical_identity": "REVISED_S1_248_CONDITION_SOURCE_LEDGER",
+      "sha256": "44752917daf26d489e737d62541813221e7ec5291ca5d41f6f8e7ed2414000ea",
+      "storage_state": "REVIEWED_EXTERNAL_IDENTITY_NOT_ASSERTED_CANONICALLY_STORED"
+    },
+    {
+      "filename": "ec2_price_history_s1_revalidation_248.py",
+      "logical_identity": "REVISED_S1_248_CONDITION_REVALIDATION_RUNNER",
+      "sha256": "464755a4bcf640bb160e3bd73c5105af69d56967be76be124f458ecb3eecb584",
+      "storage_state": "REVIEWED_EXTERNAL_IDENTITY_NOT_ASSERTED_CANONICALLY_STORED"
+    },
+    {
+      "filename": "pm_price_history_s1_revalidation_248.tar.gz",
+      "logical_identity": "REVISED_S1_INCOMPLETE_RUN_ARCHIVE",
+      "sha256": "8ac9b723c864e997332c8da9e9f867cf71886627c8ed26b21fad4b21a54e6ad3",
+      "reviewed_internal_checksum_entries": 1997,
+      "reviewed_internal_checksum_match_count": "NOT_STATED_AS_A_SEPARATE_MEASUREMENT",
+      "label": "S1_REVALIDATION_INCOMPLETE",
+      "storage_state": "REVIEWED_EXTERNAL_IDENTITY_NOT_ASSERTED_CANONICALLY_STORED"
+    },
+    {
+      "filename": "ec2_price_history_s1_revalidation_continuation_01.py",
+      "logical_identity": "S1_REVALIDATION_NARROW_CONTINUATION_RUNNER",
+      "sha256": "1959f6d49a67d6583db10971d84af1bcf117be99c26b761e4c299b16492c3d1e",
+      "storage_state": "REVIEWED_EXTERNAL_IDENTITY_NOT_ASSERTED_CANONICALLY_STORED"
+    },
+    {
+      "filename": "pm_price_history_s1_revalidation_continuation_01.tar.gz",
+      "logical_identity": "S1_REVALIDATION_NARROW_CONTINUATION_ARCHIVE",
+      "sha256": "8d25d874984b88ce2ca3d6a5e9a09d394e5f97f3ada97483c271e35dc89f115c",
+      "reviewed_internal_checksum_entries": 27,
+      "reviewed_internal_checksum_match_count": "NOT_STATED_AS_A_SEPARATE_MEASUREMENT",
+      "label": "S1_REVALIDATION_CONTINUATION_COMPLETE_BOTH_SIDES",
+      "storage_state": "REVIEWED_EXTERNAL_IDENTITY_NOT_ASSERTED_CANONICALLY_STORED"
+    }
+  ],
+  "decision_semantics": {
+    "historical_method_disposition": "S1_SOURCE_NOT_VIABLE_METHOD_QUALIFIED_AND_RETAINED",
+    "revised_method_disposition": "S1_SOURCE_VIABLE_REVIEWED_SAMPLE_AND_ROUTE_ONLY",
+    "historical_gate_effect": "SUPERSEDED_ONLY_FOR_CONSIDERING_LATER_S2_SPECIFICATION_WORK_FOR_THE_REVIEWED_METHOD",
+    "full_universe_validation": "NOT_ESTABLISHED",
+    "causal_parameter_attribution": "NOT_ESTABLISHED",
+    "source_viability_state": "S1_SOURCE_VIABLE_REVIEWED_SAMPLE_METHOD_AND_EC2_ROUTE_ONLY",
+    "price_artifact_acceptance_state": "NOT_BUILT_NOT_ACCEPTED",
+    "p1_state": "BLOCKED_MISSING_ACCEPTED_PER_SIDE_TOKEN_IDENTITY_DECISION_TIME_PRICE_ARTIFACT",
+    "named_binary_probe_blocked": true
+  },
+  "authorization_effect": {
+    "state": "NONE",
+    "s2_authorized": false,
+    "pass2_authorized": false,
+    "full_universe_requests_authorized": false,
+    "price_artifact_construction_authorized": false,
+    "p1_p2_p3_authorized": false,
+    "scoring_authorized": false,
+    "probe_execution_authorized": false,
+    "further_network_authorized": false,
+    "local_data_execution_authorized": false,
+    "implementation_authorized": false,
+    "tests_authorized": false,
+    "gate_change_authorized": false,
+    "canonical_installation_authorized": false,
+    "next_possible_action": "AFTER_ACCEPTANCE_INSTALLATION_AND_SENTINEL_VERIFICATION_GUSTAVO_MAY_SEPARATELY_AUTHORIZE_PROFESSOR_TO_DRAFT_S2_SPEC_ONLY"
+  },
+  "changed_path_allowlist": [
+    "project_context/START_HERE.md",
+    "project_context/PROJECT_STATE.md",
+    "project_context/DECISION_LOG.md",
+    "project_context/ARTIFACT_INDEX.md",
+    "project_context/S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02.md",
+    "project_context/S1_PRICE_SOURCE_REVALIDATION_EVIDENCE_MANIFEST_CANDIDATE_02.json",
+    "project_context/HANDOFF_PROFESSOR_S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02_REVIEW.md"
+  ],
+  "package_only_paths": [
+    "README_FIRST.md",
+    "SHA256SUMS.txt"
+  ],
+  "forbidden_path_classes": [
+    "project_context/GUARDRAILS.md",
+    "project_context/SPEC_price_source_s1_coverage.md",
+    "project_context/HANDOFF_orchestrator_s1_pass1_RESULT.md",
+    "project_context/HANDOFF_orchestrator_s1_pass1_*.md",
+    "project_context/PRICE_INPUT_CONTRACT_named_binary_probe.md",
+    "project_context/DATA_CONTRACTS_named_binary_probe.md",
+    "ACCEPTED_CONTRACT_OR_SPECIFICATION_PATHS",
+    "CODE_PATHS",
+    "TEST_PATHS",
+    "RESEARCH_DATA_PATHS",
+    "RUNTIME_ARTIFACT_PATHS"
+  ],
+  "additional_properties": false
+}
