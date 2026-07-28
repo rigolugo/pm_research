@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "record_id": "GITHUB_COPILOT_CLI_ROLE_SOURCE_ACCEPTANCE_RECORD_01",
+  "recorded_on": "2026-07-28",
+  "tool_identity": "GITHUB_COPILOT_CLI",
+  "microsoft_365_copilot_record_separate": true,
+  "research_repository": {
+    "repository": "rigolugo/pm_research",
+    "candidate_base_commit": "9a0da006d9ea7e1f5e7a42f980fd831a1fea1037",
+    "installation_state": "ACCEPTED_PENDING_CANONICAL_INSTALLATION"
+  },
+  "accepted_role_source": {
+    "repository": "rigolugo/pm_copilot_roles",
+    "visibility_at_acceptance": "private",
+    "default_branch": "main",
+    "immutable_commit": "a7df418216cb7355b003164b8b509e40081cdbdc",
+    "commit_is_root": true,
+    "commit_message": "Bootstrap validated GitHub Copilot CLI roles",
+    "author_and_committer": "Rigo Lugo <rigolmr@gmail.com>",
+    "bootstrap_candidate_id": "PM_COPILOT_ROLES_REPOSITORY_BOOTSTRAP_CANDIDATE_02",
+    "version": "0.1.0-candidate.2",
+    "candidate_zip_sha256": "6facb7c109121e5886f4ca8a737631be1596b5c954eedfc45194f7b66276a50c",
+    "repository_path_count": 53,
+    "checksum_covered_path_count": 52,
+    "checksum_verification": "CLEAR_52_OF_52",
+    "release_manifest_sha256": "fc324be4f84dadd9e0821a6690df0dd17dda9dbb5a468ac9ca04222e783e692d",
+    "sha256sums_file_sha256": "8919cff890262b299a80dff6b9cf65919fa57fdadecb0e53b5be79e9dca9688f",
+    "decision_bearing_files": [
+      {
+        "path": "agents/pm-static-inspector.agent.md",
+        "sha256": "c426b7f28ee4813830dabf69e497de2afbb38deae3c1948d3714629d4284290e",
+        "byte_length": 3163
+      },
+      {
+        "path": "agents/pm-second-opinion-reviewer.agent.md",
+        "sha256": "7ceba93dc0b51b48fb1f28d88007624a41faec7a45c0bcb5b7e9f91cbd685af0",
+        "byte_length": 3836
+      },
+      {
+        "path": "agents/pm-contract-mapper.agent.md",
+        "sha256": "bd28557d4ad55dd42178e784d215c1fbc3919d3df217ae516abc8b924327f91a",
+        "byte_length": 12092
+      },
+      {
+        "path": "agents/pm-narrow-implementation-author.agent.md",
+        "sha256": "c53ba77c2cece0c496591ba8b580ab14925621928ac253ffbd9f8b649bcc9b9f",
+        "byte_length": 8533
+      },
+      {
+        "path": "skills/pm-static-inspection/SKILL.md",
+        "sha256": "a194bad2deffc5f9ccb252bdb4fa96259df5240ccdb9d6c4f1443e0bb953ea0a",
+        "byte_length": 1754
+      },
+      {
+        "path": "skills/pm-second-opinion-review/SKILL.md",
+        "sha256": "6cba560ab6f30c46fc3433f2183dfb8825c553e928c269377f9efa2eeba07c2e",
+        "byte_length": 2092
+      },
+      {
+        "path": "skills/pm-contract-mapping/SKILL.md",
+        "sha256": "8b6f9819e35ee02c733c34ae11d0b1e8cb0f0e0822b4dec3e3d857b7efa94018",
+        "byte_length": 5794
+      },
+      {
+        "path": "skills/pm-narrow-implementation-authoring/SKILL.md",
+        "sha256": "c6ad0974d79e695688ef0317215af16f27cc0ee8b600053448d485cbfb1feb9b",
+        "byte_length": 4849
+      },
+      {
+        "path": "launchers/Start-NarrowImplementationAuthor.ps1",
+        "sha256": "cc7dcbcbabbc706944bb458ea40fea47cf0a265fd8d672fa5e9e7da99b2e2759",
+        "byte_length": 12367
+      },
+      {
+        "path": "hooks/Invoke-PmNarrowImplementationPolicy.ps1",
+        "sha256": "1a99f54538700f1b0cb2c26f971805a6c677822e1d12d721ac2578926fa4ca1b",
+        "byte_length": 8975
+      },
+      {
+        "path": "hooks/pm-narrow-implementation-policy.json",
+        "sha256": "cd2f88e2192c7f7cd68faf8b611d99ddea07c2841e742b8a03e4352822859131",
+        "byte_length": 264
+      },
+      {
+        "path": "templates/PM_NARROW_IMPLEMENTATION_AUTHORIZATION.template.json",
+        "sha256": "536b1a3a4ee0167a580466ae229090a16f2bbfa210fc4831c7f4722a0a3eef2f",
+        "byte_length": 2025
+      }
+    ]
+  },
+  "accepted_capabilities": [
+    "STATIC_INSPECTOR_READ_ONLY_CLEAR",
+    "SECOND_OPINION_REVIEWER_READ_ONLY_CLEAR",
+    "CONTRACT_MAPPER_BOUNDED_CLOSED_INVENTORY_CLEAR",
+    "NARROW_EXISTING_SOURCE_FILE_AUTHORING_CLEAR",
+    "NARROW_AUTHORIZED_NEW_SOURCE_FILE_AUTHORING_CLEAR",
+    "TEST_SOURCE_AUTHORING_ONLY_CLEAR",
+    "AMBIGUOUS_CONTRACT_STOP_CLEAR",
+    "REQUIRED_UNLISTED_DEPENDENCY_STOP_CLEAR",
+    "MULTI_FILE_ATOMIC_AUTHORING_CLEAR",
+    "DELETE_RENAME_MOVE_PROTECTION_CLEAR"
+  ],
+  "prohibited_or_unestablished": [
+    "FULL_PACKAGE_CONTRACT_MAPPING_NOT_ESTABLISHED",
+    "AUTOMATIC_PROJECT_AUTHORIZATION_PROHIBITED",
+    "NARROW_AUTHOR_TEST_EXECUTION_PROHIBITED",
+    "NARROW_AUTHOR_NETWORK_PROHIBITED",
+    "NARROW_AUTHOR_LOCAL_RESEARCH_DATA_PROHIBITED",
+    "NARROW_AUTHOR_ARTIFACT_PRODUCTION_PROHIBITED",
+    "NARROW_AUTHOR_GIT_WRITES_PROHIBITED",
+    "CROSS_PROJECT_ACCEPTANCE_TRANSFER_PROHIBITED"
+  ],
+  "accepted_profile": {
+    "name": "pm_research",
+    "scope": "SYNTHETIC_BOUNDED_CAPABILITY_EVIDENCE_ONLY",
+    "cross_project_acceptance_transfer": false,
+    "new_project_adapter_requires_review_and_revalidation": true
+  },
+  "project_authority": {
+    "orchestrator_and_decision_gate": "Sentinel",
+    "final_execution_authority": "Gustavo",
+    "role_source_authorization_effect": "NONE"
+  },
+  "documentation_authorization": {
+    "gustavo_authorization_id": "GUSTAVO_PM_RESEARCH_GITHUB_COPILOT_CLI_ROLE_SOURCE_DOCUMENTATION_UPDATE_01",
+    "sentinel_package_id": "PM_RESEARCH_GITHUB_COPILOT_CLI_ROLE_SOURCE_RECORD_CANDIDATE_01"
+  },
+  "explicit_non_authorizations": [
+    "ROLE_INSTALLATION",
+    "IMPLEMENTATION_AUTHORING",
+    "TEST_SOURCE_AUTHORING",
+    "TEST_EXECUTION",
+    "LOCAL_RESEARCH_DATA_ACCESS",
+    "NETWORK_OR_VENDOR_ACCESS",
+    "ARTIFACT_PRODUCTION",
+    "GIT_WRITES",
+    "RELEASE_TAG",
+    "P1_P2_P3",
+    "SCORING",
+    "PROBE_EXECUTION",
+    "TRADING",
+    "GATE_CHANGE"
+  ]
+}
