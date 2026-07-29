@@ -1,0 +1,152 @@
+{
+  "accepted_amendment": {
+    "authorization_effect": "NONE",
+    "byte_length": 24599,
+    "canonical_path": "project_context/S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01.md",
+    "decision": "APPROVE — S2 Candidate 08 Implementation-Source Amendment 01 accepted as a SPEC-only amendment",
+    "sha256": "8b60bbc0f3390c0b2d1a336b33d2c2f1dc54846e1f2906aff58639dad1defd63"
+  },
+  "authorization": "S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_DOCUMENTATION_ONLY_INSTALLATION_PREPARATION_GUSTAVO_AUTHORIZATION_01",
+  "authorization_effect": "NONE",
+  "blocked_predecessor_packages": [
+    {
+      "not_operative_binding_authority": true,
+      "package": "S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_DOCUMENTATION_INSTALLATION_PACKAGE_CANDIDATE_03",
+      "status": "BLOCKED_HISTORICAL_PREDECESSOR"
+    },
+    {
+      "not_operative_binding_authority": true,
+      "package": "S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_DOCUMENTATION_INSTALLATION_PACKAGE_CANDIDATE_04",
+      "status": "BLOCKED_HISTORICAL_PREDECESSOR"
+    }
+  ],
+  "candidate": 5,
+  "canonical_base": "ddf41003fb16aa091c2a899d7c17754e89341cc7",
+  "canonical_repository": "rigolugo/pm_research",
+  "forbidden_operations": [
+    "IMPLEMENTATION_SOURCE_AUTHORING",
+    "TEST_SOURCE_AUTHORING",
+    "TEST_EXECUTION",
+    "PROJECT_IMPORT_OR_EXECUTION",
+    "COMPILATION_LINT_TYPECHECK_COVERAGE",
+    "LOCAL_RESEARCH_DATA_READS",
+    "NETWORK_API_RPC_VENDOR_DUNE_CURL_ENDPOINT_ACTIVITY",
+    "DEPENDENCY_OR_PACKAGING_CHANGES",
+    "ACQUISITION_CONSTRUCTION_ALIGNMENT_REBUILD_AUDIT_TRANSITION_EMPIRICAL_WORK",
+    "P1_P2_P3",
+    "SCORING_OR_PROBE_EXECUTION",
+    "GATE_CHANGES",
+    "GIT_COMMIT_PUSH_MERGE_BRANCH_TAG_RELEASE_REF_UPDATE",
+    "CANONICAL_INSTALLATION_ITSELF"
+  ],
+  "installed_state_facts": {
+    "accepted_k008": {
+      "byte_length": 776003,
+      "sha256": "b6d8b4dde25a67d8e4386762e320600f0778580aee290d3552949c77102e0e63"
+    },
+    "accepted_section_23_jcs": {
+      "byte_length": 479463,
+      "sha256": "82038603fb5cfd564b8563731e772c03d29c6ff6bdc862040ea26e0463ec97ff"
+    },
+    "amendment_accepted_as_spec_only": true,
+    "future_authorization_chain": "K011 + accepted installed amendment → fresh K013 → fresh K012 → fresh K014 → K015/K016",
+    "future_implementation_source_matrix_file_count": 14,
+    "future_implementation_source_matrix_root": "pm_research/named_binary_probe_s2/",
+    "k016_payload_self_identity": null,
+    "namespace_package_behavior_forbidden": true,
+    "pyproject_toml_changes_forbidden_for_this_stage": true,
+    "reducer_projection": {
+      "byte_length": 66232,
+      "sha256": "266d540dfd8481cd084d155ae8cb6f08b740f2c4aead70d9d5e5f9c1588da63c"
+    },
+    "selected_future_package": "pm_research.named_binary_probe_s2",
+    "selected_future_repository_directory": "pm_research/named_binary_probe_s2/",
+    "src_layout_forbidden": true
+  },
+  "package_id": "S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_DOCUMENTATION_INSTALLATION_PACKAGE_CANDIDATE_05",
+  "prior_package": "S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_DOCUMENTATION_INSTALLATION_PACKAGE_CANDIDATE_04",
+  "prior_sentinel_decision": "BLOCK — package incomplete because required external ZIP SHA-256 sidecar was not supplied, and proposed canonical files still refer to blocked Candidate 03 as the operative package/binding identity",
+  "proposed_control_files": [
+    {
+      "canonical_path": "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_DOCUMENTATION_INSTALLATION_PACKAGE_MANIFEST.json",
+      "identity_rule": "self_identity_null_external_binding_candidate05",
+      "package_path": "proposed/project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_DOCUMENTATION_INSTALLATION_PACKAGE_MANIFEST.json",
+      "status": "ADD"
+    },
+    {
+      "byte_length": 1207,
+      "canonical_path": "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_DOCUMENTATION_INSTALLATION_PACKAGE_SHA256SUMS.txt",
+      "identity_rule": "external_binding_not_self_inventory_subject_candidate05",
+      "package_path": "proposed/project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_DOCUMENTATION_INSTALLATION_PACKAGE_SHA256SUMS.txt",
+      "sha256": "6cfc3e1c07a1304ef826fe7e39b9ea422ffc39fe702b2d28eb952d2f053e8d23",
+      "status": "ADD"
+    }
+  ],
+  "proposed_payload_files": [
+    {
+      "byte_length": 10652,
+      "canonical_path": "project_context/START_HERE.md",
+      "package_path": "proposed/project_context/START_HERE.md",
+      "sha256": "3105406e8d396e1c56f45771ce7c1d5f56eb3c08d1606e4dc35bfbc75bd3a9a7",
+      "status": "REPLACE"
+    },
+    {
+      "byte_length": 10660,
+      "canonical_path": "project_context/PROJECT_STATE.md",
+      "package_path": "proposed/project_context/PROJECT_STATE.md",
+      "sha256": "be80b622454aac56e3fbb9bb1e798f09a28fd798bae72050b184235ded418e0d",
+      "status": "REPLACE"
+    },
+    {
+      "byte_length": 5862,
+      "canonical_path": "project_context/DECISION_LOG.md",
+      "package_path": "proposed/project_context/DECISION_LOG.md",
+      "sha256": "dddb0aa9eade49d2fb42084af336a3b4d9287acb3851b5d1584fda4ed665a857",
+      "status": "REPLACE"
+    },
+    {
+      "byte_length": 8466,
+      "canonical_path": "project_context/ARTIFACT_INDEX.md",
+      "package_path": "proposed/project_context/ARTIFACT_INDEX.md",
+      "sha256": "7e0e870cedfcd3fc81b4a0f3f7c0264ae0f54bdb3bfe60d51a559028031dece1",
+      "status": "REPLACE"
+    },
+    {
+      "byte_length": 24599,
+      "canonical_path": "project_context/S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01.md",
+      "package_path": "proposed/project_context/S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01.md",
+      "sha256": "8b60bbc0f3390c0b2d1a336b33d2c2f1dc54846e1f2906aff58639dad1defd63",
+      "status": "ADD"
+    },
+    {
+      "byte_length": 10545,
+      "canonical_path": "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_CANONICAL_INSTALLATION_RECORD.md",
+      "package_path": "proposed/project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_CANONICAL_INSTALLATION_RECORD.md",
+      "sha256": "90a3a7cb976ad5ea4bb5abf8107483abd1640d2a9c2631f783368d4ef4753b3f",
+      "status": "ADD"
+    }
+  ],
+  "self_reference_rule": {
+    "control_files_excluded_from_payload_sidecar": [
+      "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_DOCUMENTATION_INSTALLATION_PACKAGE_MANIFEST.json",
+      "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_DOCUMENTATION_INSTALLATION_PACKAGE_SHA256SUMS.txt"
+    ],
+    "external_binding_required": "Candidate 05 review-package manifest and later Sentinel canonical-installation verification bind the raw identities of both control files.",
+    "forbidden": "No literal self-hash field may be claimed inside this manifest or inside the SHA-256 record.",
+    "model": "TWO_LAYER_EXTERNAL_BINDING_V1",
+    "payload_inventory_scope": "six canonical documentation payload files only",
+    "self_identity": null
+  },
+  "stable_installation_record_id": "S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_DOCUMENTATION_INSTALLATION",
+  "status": "DOCUMENTATION_ONLY_CANONICAL_INSTALLATION_PACKAGE_CANDIDATE",
+  "stop_conditions": [
+    "STOP_CANONICAL_BASE_MISMATCH",
+    "STOP_ACCEPTED_AMENDMENT_IDENTITY_MISMATCH",
+    "STOP_DOCUMENTATION_PACKAGE_IDENTITY_MISMATCH",
+    "STOP_MANIFEST_SIDECAR_SELF_REFERENCE_INVALID",
+    "STOP_CANDIDATE03_OPERATIVE_REFERENCE",
+    "STOP_ROOT_ZIP_SIDECAR_MISSING",
+    "STOP_UNAUTHORIZED_SOURCE_TEST_RUNTIME_CHANGE",
+    "STOP_STALE_PRE_AMENDMENT_AUTHORIZATION_REUSE"
+  ]
+}

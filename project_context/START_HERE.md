@@ -43,7 +43,7 @@ Read these before doing anything:
     - `HANDOFF_orchestrator_s1_pass1_invalid_decision_window.md`
     - `HANDOFF_orchestrator_s1_parse_ts_millisecond_utc.md`
     - `HANDOFF_orchestrator_s1_pass1_RESULT.md`
-    - `S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02.md`
+    - `S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_05.md`
     For the accepted S2 per-token price-artifact specification layer, read:
     - `S2_PER_TOKEN_PRICE_ARTIFACT_A002_ACCEPTED_CONTROLLING_ARCHITECTURE_SET_RECORD_CANDIDATE_01.md`
     - `S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08.md`
@@ -52,6 +52,8 @@ Read these before doing anything:
     - `../nodes/K011/artifact.json`
     - `S2_CANDIDATE_08_CANONICAL_INSTALLATION_PACKAGE_MANIFEST_01.json`
     - `S2_CANDIDATE_08_CANONICAL_INSTALLATION_PACKAGE_SHA256SUMS_01.txt`
+    - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_CANONICAL_INSTALLATION_RECORD.md`
+    - `S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01.md`
 11. `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`
 12. `implementation_handoffs/local_curl_rev23_i0/SENTINEL_ACCEPTANCE_DECISION.md`
 13. `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
@@ -84,169 +86,44 @@ Read these before doing anything:
 21. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_08/README_FIRST.md`
 22. `implementation_handoffs/local_curl_rev23_i0/accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`
 23. `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/README_FIRST.md`
-    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/CHECKPOINT_INDEX.json`
-    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/LATEST_PRESERVED_CHECKPOINT.json`
-    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/LATEST_ACCEPTED_CHECKPOINT.json`
-    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/README_FIRST.md`
-    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/CHECKPOINT_MANIFEST.json`
-    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_INSTALLATION_VERIFICATION.md`
-    - `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/REV23_FINDING4_I0A_R1_CP_0001_FCF406C4/SENTINEL_STATIC_CONFORMANCE_REVIEW_REVISION_10.md`
 24. `implementation_handoffs/local_curl_rev23_i0/remediation_scope/README_FIRST.md`
-    - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/SENTINEL_ACCEPTANCE_DECISION.md`
-    - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/SENTINEL_INSTALLATION_AUTHORIZATION.md`
-    - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/SENTINEL_INSTALLATION_VERIFICATION.md`
-    - `implementation_handoffs/local_curl_rev23_i0/remediation_scope/ACCEPTED_REMEDIATION_SCOPE_MANIFEST.json`
 25. `implementation_handoffs/local_curl_rev23_i0/provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/README_FIRST.md`
-    - `implementation_handoffs/local_curl_rev23_i0/provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/SENTINEL_ACCEPTANCE_DECISION.md`
-    - `implementation_handoffs/local_curl_rev23_i0/provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/SENTINEL_INSTALLATION_VERIFICATION.md`
-    - `implementation_handoffs/local_curl_rev23_i0/provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/PROVENANCE_CAPTURE_MANIFEST.json`
 26. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/README_FIRST.md`
-    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/SENTINEL_ACCEPTANCE_DECISION.md`
-    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/ACCEPTED_STARTING_STATE_AMENDMENT_MANIFEST.json`
-    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/accepted_candidate_04/README_FIRST.md`
 27. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/README_FIRST.md`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/SENTINEL_ACCEPTANCE_DECISION.md`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/ACCEPTED_WORKSPACE_PREPARATION_PACKAGE_MANIFEST.json`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/accepted_candidate_02/README_FIRST.md`
 28. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/GUSTAVO_AUTHORIZATION_RECORD.md`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/SENTINEL_IMPLEMENTATION_AUTHORIZATION.md`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/AUTHORIZATION_MANIFEST.json`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/SOURCE_GATE.md`
-29. The remaining files required by the handoff, authorization, accepted-scope, selected-checkpoint, remediation-scope, provenance-capture, accepted starting-state amendment, and accepted Candidate 04 workspace-preparation package read orders.
+29. The remaining files required by the handoff, authorization, accepted-scope, selected-checkpoint, remediation-scope, provenance-capture, accepted starting-state amendment, and accepted Candidate 05 workspace-preparation package read orders.
+
+---
+
+## Current S2 Candidate 08 amendment state
+
+S2 Candidate 08 Implementation-Source Amendment 01 is accepted as a SPEC-only amendment after this documentation-only installation. Exact installed amendment identity:
+
+- path: `project_context/S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01.md`;
+- byte length: `24599`;
+- SHA-256: `8b60bbc0f3390c0b2d1a336b33d2c2f1dc54846e1f2906aff58639dad1defd63`;
+- Sentinel decision: `APPROVE — S2 Candidate 08 Implementation-Source Amendment 01 accepted as a SPEC-only amendment`;
+- authorization effect: `NONE`.
+
+It resolves only the package-layout/path-boundary defect, registry-provenance ambiguity, K015 ordering ambiguity, K016 self-identity ambiguity, and incorrect Appendix-A matrix citation.
+
+Future implementation-source authoring remains unauthorized and requires:
+
+`K011 + accepted installed amendment → fresh K013 → fresh K012 → fresh K014 → K015/K016`
+
+Selected future package: `pm_research.named_binary_probe_s2`.
+Selected future repository directory: `pm_research/named_binary_probe_s2/`.
+Future matrix: exactly fourteen files under that directory.
+Forbidden for this stage: `src/` layout, namespace package behavior, `pyproject.toml` changes.
+K016 `/payload/self_identity = null`.
 
 ---
 
 ## Current canonical contract
 
-Revision 23 with Amendments 01–03 and accepted Finding 4 is the governing
-SPEC-ONLY contract.
-
-Finding 4 canonical installation was completed through the linear commit sequence:
-
-- `3f8cc54dc12a5335472f00f5ffcf5c0d56d8d1ba`
-- `c394b9ab5eb5dc07f8d716818e02507994ce41d7`
-- `e83555ef23712cf6c846dc63a7103e0e0c7e4ed4`
-
-Authorized installation base:
-
-`f6cb60df66c2bbcdfb6d797119ed25ad79e06a11`
-
-Finding 4 installation commit:
-
-`e83555ef23712cf6c846dc63a7103e0e0c7e4ed4`
-
-Effective hashes:
-
-- governing specification: `e52f70bb243bc431880c2eaabba7403f7a5d786b70d8a5e903b9026b4bde7a76`
-- schema registry: `c9e8fe1b2c64f64e9cefd76e820c9589708723485ff7e54f4f69e3fe4ed49689`
-- request-plan and authorization contract: `926d1503f20965f2573e2b24d79e747438254f77200b2060bcb741f6279556d0`
-- governing-package manifest: `8cd3c6c93b6f1bba1906b1b2b3f67f6e87846991368bb34b5da52044adbc1f38`
-- governing-package semantic SHA-256: `a1368d6f109bb6c1812c9f92d5dd72d4717287fd80fc441726a788a69ad07d9f`
-- accepted-contract checksum inventory: `be9fe20717a0dc54bd7c73558ea201eb90265bd760e1f7fb78202654cca533f9`
-
-The installed contract and Finding 4 audit trail live under:
+Revision 23 with Amendments 01–03 and accepted Finding 4 is the governing SPEC-ONLY contract. The installed contract and Finding 4 audit trail live under:
 
 `project_context/implementation_handoffs/local_curl_rev23_i0/`
-
----
-
-## Accepted Finding 4 I0A scope
-
-### Controlling Revision 10 scope
-
-Revision 10 is accepted, canonically installed, and Sentinel-verified at
-`3d6fbe5eda504c32d94fed72be99adb9485fe1b1`.
-
-- scope: `REV23_FINDING4_I0A_SCOPE_REVISION_10`
-- accepted base: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
-- accepted archive SHA-256: `8a0065ecd75a3283afd3599a1d33639a7cf962d2fec1230e49c73bff07f2f202`
-- accepted member count: `15`
-- canonical installation base: `d3bd79f8fdb81c95340761aac27b3e3580d3e23d`
-- verified installation commit: `3d6fbe5eda504c32d94fed72be99adb9485fe1b1`
-- immutable installed directory: `accepted_scope_revision_10/`
-- implementation authorized: **NO**
-- Revision 10 implementation start selected: **NO**
-
-Revision 10 supersedes Revision 09 for the complete Finding 4 I0A specification
-package. Revision 09 and Revision 08 remain immutable historical accepted evidence.
-
-The preserved `fcf406c4...` checkpoint remains unaccepted and non-authorizing.
-Revision 10 resolves its former T107/T153/Candidate 09 specification blockers.
-Sentinel's static review at `3cf0871ae97d112324031190822756379d1236e8`
-records `REVISION10_STATIC_CONFORMANCE_BLOCKED`. The independently captured current
-twelve-path worktree finding is accepted and installed at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`.
-`MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE` remains open. Historical Revision 09
-and Revision 08 implementation authorizations do not carry forward.
-
-### Accepted Revision 10 remediation scope
-
-The accepted remediation scope is canonically installed and Sentinel-verified at
-`ee4a639f9a9429e642391f1fb1e0ab356a6f965a`.
-
-- accepted candidate: `REV10_LOCAL_CURL_IMPLEMENTATION_REMEDIATION_SCOPE_CANDIDATE_01`
-- Sentinel decision: `APPROVE — REV10_LOCAL_CURL_REMEDIATION_SCOPE_ACCEPTED`
-- candidate ZIP SHA-256: `e6bc7139c39bd75630ad480821c203dbd5c2a914dae3b23fd26b9bfe2f513c1a`
-- installation base: `cc2964840d197a40d1c4ef567b42eda762c0be0a`
-- verified installation commit: `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`
-- implementation authorized: **NO**
-- implementation start selected: **NO**
-
-The accepted future source boundary is one atomic three-file candidate. The four
-test-source paths are a separate later authorization boundary. No Claude
-implementation prompt is active.
-
-### Accepted current twelve-path worktree capture
-
-Sentinel accepted and verified the documentation/evidence-only installation at
-`b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`.
-
-- decision: `ACCEPT FINDING — CURRENT_TWELVE_PATH_WORKTREE_CAPTURE_ACCEPTED`
-- source archive SHA-256: `942d7d00c3d98ea91c09a7bad7023044119839d9f227e4bbbd33f8c21b5f17d9`
-- captured paths: `12` untracked paths
-- historical baseline matches: `11`
-- checkpoint-modified path: `prepared_evidence.py` at `fcf406c4...`
-- closed provenance gap: `CURRENT_TWELVE_PATH_WORKTREE_NOT_INDEPENDENTLY_CAPTURED`
-- still-open provenance gap: `MULTI_ROUND_ACTIVITY_LINEAGE_INCOMPLETE`
-- implementation authorization effect: `NONE`
-
-The capture does not accept or promote checkpoint bytes and does not repair the failed source gate.
-
-### Accepted Revision 10 starting-state amendment
-
-Sentinel accepted `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04` as:
-
-`APPROVE — REV10_STARTING_STATE_AMENDMENT_CANDIDATE_04_ACCEPTED`
-
-- submitted ZIP SHA-256: `9b6e05ff09e916b02b990556ee1ef6a37e3bc044a83c317ecfcc60fa65a63193`
-- accepted member count: `19`
-- canonical installation base: `bc957fe05096b790052d0515773b9e0a2dc88a60`
-- installation state in this package: `INSTALLED_PENDING_SENTINEL_VERIFICATION`
-- installation commit: `PENDING_RETURN_TO_SENTINEL`
-- implementation authorization: **NO**
-- active Claude implementation prompt: **NO**
-
-The amendment accepts an isolated non-Git starting workspace, exact twelve-path identities, closed workflow record schemas, and separate commit/review/push/remote-verification gates. It does not repair the failed source gate, accept the checkpoint, close the multi-round lineage gap, or authorize implementation.
-
-### Historical Revision 09 scope record
-
-- scope: `REV23_FINDING4_I0A_SCOPE_REVISION_09`
-- accepted archive SHA-256: `4b05f25bf8f5c9e6295af94fdc801baa6d046df42fd007a877d08d736b7960a0`
-- verified canonical installation commit: `c4e8b1011c51272042decac4bc89e762d767a72a`
-- immutable installed directory: `accepted_scope_revision_09/`
-- historical R1 checkpoint source-gated commit: `1e1afb29791f42c286b45d3b576f74926add8dce`
-- historical R1 authorization carries forward: **NO**
-
-### Historical Revision 08 scope record at installation base
-
-Revision 08 remains immutable historical accepted evidence.
-
-- review anchor: `88362521fe9ef247708e4d7b5f90753784b8b88e`
-- accepted archive SHA-256: `004c08c02743608af71cfb84084390822893b9ee505a6f0a86a0719c219cf876`
-- accepted-scope canonical commit: `2a08c0c8af7ba8a3ea43b019be3a1aa98096fdff`
-- historical implementation authorization carries forward: **NO**
-- current source/test authoring authorization: **NONE**
-- current test-execution authorization: **NONE**
 
 ---
 
@@ -258,58 +135,11 @@ Revision 08 remains immutable historical accepted evidence.
 - P2, P3, scoring, and probe execution: **UNAUTHORIZED**.
 - `named_binary_probe_blocked = true`.
 - `yes_price`, `1 - price`, and `1 - yes_price` must not be used to synthesize named-binary sides.
-- S1 CLOB `/prices-history`: historical `interval=max`, fidelity-omitted
-  method: `S1_SOURCE_NOT_VIABLE`; revised `fidelity=1`, interval-omitted
-  method: `S1_SOURCE_VIABLE` only for the existing stratified Pass-1 sample and
-  reviewed EC2 route. This is not full-universe validation; no price artifact
-  is accepted; P1 remains blocked; `named_binary_probe_blocked = true`.
-- S2 per-token price-artifact Candidate 08: **ACCEPTED SPECIFICATION** through
-  K010/K011; canonical installation is pending Sentinel verification; no
-  implementation source exists or is accepted; implementation authorization is
-  `NONE`; P1 remains blocked and `named_binary_probe_blocked = true`.
-- S1-ALT local trade prints: `S1ALT_SOURCE_NOT_VIABLE`.
-- Option B corrected B0: `B0_MECHANICAL_TRUST_NOT_ESTABLISHED`; B1 unauthorized.
-- Option C: mixed/incomplete evidence; `C1F2_ARTIFACTS_INSUFFICIENT`; C1B/C2 unauthorized.
-- Option D temporal precheck: accepted; PMXT v2 deprioritized for broad P0 coverage; Telonex L2 may only proceed through a separately authorized SPEC-ONLY vendor-coverage review.
+- S1 CLOB `/prices-history`: historical `interval=max`, fidelity-omitted method: `S1_SOURCE_NOT_VIABLE`; revised `fidelity=1`, interval-omitted method: `S1_SOURCE_VIABLE` only for the existing stratified Pass-1 sample and reviewed EC2 route. This is not full-universe validation; no price artifact is accepted.
+- S2 per-token price-artifact Candidate 08: **ACCEPTED SPECIFICATION** through K010/K011; no implementation source exists or is accepted; implementation authorization is `NONE`.
+- S2 Candidate 08 Implementation-Source Amendment 01: **ACCEPTED SPEC-ONLY AMENDMENT** after installation of this package; authorization effect `NONE`.
 - Recovered R1 checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` remains exact, evidence-only, `NOT_ACCEPTED`, and non-authorizing.
 - Static checkpoint conformance: **BLOCKED — `REVISION10_STATIC_CONFORMANCE_BLOCKED`**.
-- Revision 10 remediation scope: **ACCEPTED, INSTALLED, AND SENTINEL-VERIFIED** at `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`; authorization effect `NONE`.
-- Worktree-capture provenance: **ACCEPTED AND SENTINEL-VERIFIED** at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`; the multi-round activity-lineage gap remains open.
-- Revision 10 starting-state amendment Candidate 04: **ACCEPTED; INSTALLATION PENDING SENTINEL VERIFICATION**; authorization effect `NONE`.
-
----
-
-## Implementation authorization state
-
-### S2 Candidate 08 state
-
-Candidate 08 is accepted as a specification only. K008, K009, K010, and K011
-form the accepted documentation layer. No K013/K012/K014 implementation chain
-is canonically installed or active. Any earlier chat-only implementation chain
-is non-authorizing and must not be reused.
-
-After exact canonical installation and Sentinel verification, Gustavo may
-separately authorize a fresh implementation-source stage anchored to the new
-canonical `main`. No source/test authoring, tests, execution, data/network
-activity, empirical work, P1/P2/P3, scoring, probe execution, or Git write is
-authorized by this documentation package.
-
-### Controlling Revision 10 state
-
-`STOP_REV10_STARTING_STATE_AMENDMENT_INSTALLATION_NOT_VERIFIED`
-
-Revision 10 specification acceptance, checkpoint review, remediation-scope acceptance, provenance-capture acceptance, and Candidate 04 acceptance do not authorize source/test authoring, workspace preparation, materialization, tests, execution, data/network access, checkpoint promotion, or Git writes by Claude.
-
-The historical conditional package `REV23_FINDING4_I0A_REVISION_10_REMEDIATION_SOURCE_AUTHORING_01` remains inactive after its failed canonical-worktree source gate. Candidate 04 does not repair or reactivate it. This documentation installation must be Sentinel-verified before Gustavo may consider a new bounded authorization under the accepted amendment. No active source-gated commit or Claude implementation handoff exists.
-
-### Historical Revision 08 authorization record at installation base
-
-The historical Revision 08 implementation-authoring package and the later
-Revision 09 R1 one-file authorization remain preserved as audit evidence. Both
-are superseded and inactive under Revision 10. Neither may authorize source
-synchronization, source/test authoring, rollback, restoration, overwrite,
-promotion, tests, execution, data/network access, Git writes, or a downstream
-stage.
 
 ---
 
@@ -319,13 +149,7 @@ stage.
 - Passing tests do not prove correctness when tests encode the wrong contract.
 - Specification acceptance does not authorize implementation.
 - Implementation acceptance does not authorize tests or execution.
-- Canonical project-document changes are prepared by ChatGPT as complete files
-  and uploaded manually by Gustavo. Documentation-only changes normally use a
-  temporary browser branch; local Git remains available for byte-gated or binary work.
-- A local commit does not authorize push. Sentinel reviews the exact commit, and
-  Gustavo separately authorizes any push or merge to canonical `main`.
+- Canonical project-document changes are prepared as complete files and uploaded manually by Gustavo.
 - Claude must not edit canonical project-context files.
 - Never silently reverse a settled decision or reactivate superseded material.
-- Preserve material unaccepted implementation progress as an evidence-only canonical checkpoint before chat/model/session transitions; never place it at the executable source path until separately accepted and authorized.
-- Revision 10 is specification-only; no implementation follows without separate Gustavo authorization and Sentinel handoff.
-- Do not treat the historical `8b8e9320...` start or preserved `fcf406c4...` checkpoint as a current implementation start.
+- Revision 10 and S2 Candidate 08 remain specification-only until separate Gustavo authorization and Sentinel handoff.

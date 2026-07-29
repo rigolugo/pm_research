@@ -1,0 +1,13 @@
+# S2 Candidate 08 Implementation-Source Amendment 01 documentation installation SHA-256 record
+
+Inventory scope: six canonical documentation payload files only.
+Excluded control files: this SHA-256 record and the proposed canonical package manifest.
+External binding: Candidate 05 review-package manifest and later Sentinel canonical-installation verification.
+Candidate 03 and Candidate 04 are blocked predecessor packages only and are not operative external-binding authorities.
+
+3105406e8d396e1c56f45771ce7c1d5f56eb3c08d1606e4dc35bfbc75bd3a9a7  project_context/START_HERE.md
+be80b622454aac56e3fbb9bb1e798f09a28fd798bae72050b184235ded418e0d  project_context/PROJECT_STATE.md
+dddb0aa9eade49d2fb42084af336a3b4d9287acb3851b5d1584fda4ed665a857  project_context/DECISION_LOG.md
+7e0e870cedfcd3fc81b4a0f3f7c0264ae0f54bdb3bfe60d51a559028031dece1  project_context/ARTIFACT_INDEX.md
+8b60bbc0f3390c0b2d1a336b33d2c2f1dc54846e1f2906aff58639dad1defd63  project_context/S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01.md
+90a3a7cb976ad5ea4bb5abf8107483abd1640d2a9c2631f783368d4ef4753b3f  project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_CANONICAL_INSTALLATION_RECORD.md
