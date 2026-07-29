@@ -44,6 +44,14 @@ Read these before doing anything:
     - `HANDOFF_orchestrator_s1_parse_ts_millisecond_utc.md`
     - `HANDOFF_orchestrator_s1_pass1_RESULT.md`
     - `S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02.md`
+    For the accepted S2 per-token price-artifact specification layer, read:
+    - `S2_PER_TOKEN_PRICE_ARTIFACT_A002_ACCEPTED_CONTROLLING_ARCHITECTURE_SET_RECORD_CANDIDATE_01.md`
+    - `S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08.md`
+    - `HANDOFF_PROFESSOR_S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_REVIEW.md`
+    - `../nodes/K010/artifact.json`
+    - `../nodes/K011/artifact.json`
+    - `S2_CANDIDATE_08_CANONICAL_INSTALLATION_PACKAGE_MANIFEST_01.json`
+    - `S2_CANDIDATE_08_CANONICAL_INSTALLATION_PACKAGE_SHA256SUMS_01.txt`
 11. `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`
 12. `implementation_handoffs/local_curl_rev23_i0/SENTINEL_ACCEPTANCE_DECISION.md`
 13. `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
@@ -255,6 +263,10 @@ Revision 08 remains immutable historical accepted evidence.
   method: `S1_SOURCE_VIABLE` only for the existing stratified Pass-1 sample and
   reviewed EC2 route. This is not full-universe validation; no price artifact
   is accepted; P1 remains blocked; `named_binary_probe_blocked = true`.
+- S2 per-token price-artifact Candidate 08: **ACCEPTED SPECIFICATION** through
+  K010/K011; canonical installation is pending Sentinel verification; no
+  implementation source exists or is accepted; implementation authorization is
+  `NONE`; P1 remains blocked and `named_binary_probe_blocked = true`.
 - S1-ALT local trade prints: `S1ALT_SOURCE_NOT_VIABLE`.
 - Option B corrected B0: `B0_MECHANICAL_TRUST_NOT_ESTABLISHED`; B1 unauthorized.
 - Option C: mixed/incomplete evidence; `C1F2_ARTIFACTS_INSUFFICIENT`; C1B/C2 unauthorized.
@@ -268,6 +280,19 @@ Revision 08 remains immutable historical accepted evidence.
 ---
 
 ## Implementation authorization state
+
+### S2 Candidate 08 state
+
+Candidate 08 is accepted as a specification only. K008, K009, K010, and K011
+form the accepted documentation layer. No K013/K012/K014 implementation chain
+is canonically installed or active. Any earlier chat-only implementation chain
+is non-authorizing and must not be reused.
+
+After exact canonical installation and Sentinel verification, Gustavo may
+separately authorize a fresh implementation-source stage anchored to the new
+canonical `main`. No source/test authoring, tests, execution, data/network
+activity, empirical work, P1/P2/P3, scoring, probe execution, or Git write is
+authorized by this documentation package.
 
 ### Controlling Revision 10 state
 

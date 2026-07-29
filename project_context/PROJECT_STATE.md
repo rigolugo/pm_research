@@ -37,6 +37,38 @@ and verified the complete current twelve-path worktree capture at `b2e0506cce3e7
 
 Sentinel accepted `REV23_FINDING4_I0A_REVISION_10_STARTING_STATE_AMENDMENT_CANDIDATE_04` at canonical review base `bc957fe05096b790052d0515773b9e0a2dc88a60` and verified its canonical installation at `689e546e588d557c96f28bc722c3f159d635f2c1`. The accepted amendment provides the isolated captured-payload workspace model, closed typed workflow records, and exact commit/review/push/remote-verification separation. It selects no implementation authorization or active Claude handoff.
 
+### S2 per-token price-artifact specification state
+
+Sentinel accepted `S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08` as the
+controlling executable-level S2 specification.
+
+Accepted documentation identities:
+
+- K008 specification: `776003` bytes,
+  SHA-256 `b6d8b4dde25a67d8e4386762e320600f0778580aee290d3552949c77102e0e63`;
+- K009 Professor review handoff: `13549` bytes,
+  SHA-256 `720f2f081fa1f127fadc980702dd072f52a3714a14f7db418489862d14a609f1`;
+- K010 Sentinel review: `1504` bytes,
+  SHA-256 `e34ddcf51b8b908570de9b4cd4af520114e46bc848cfc00110bf4874dfafa17b`;
+- K011 specification acceptance: `1134` bytes,
+  SHA-256 `4f3f044d78d6ddc95d2c21dba3257f459e15810acc27f27cd36a1f2d8b0f264`.
+
+The accepted prerequisite architecture is exact A002:
+
+- path:
+  `project_context/S2_PER_TOKEN_PRICE_ARTIFACT_A002_ACCEPTED_CONTROLLING_ARCHITECTURE_SET_RECORD_CANDIDATE_01.md`;
+- byte length: `5854`;
+- SHA-256:
+  `87146e9e3a5d0501c04518ff0fd818c721c1b92cab684eec0b54d9605980a94c`.
+
+Candidate 08 is accepted but not implemented. No implementation source,
+implementation candidate, tests, empirical artifacts, or accepted per-token
+price artifact exists. Implementation authorization is `NONE`.
+
+This documentation package records the accepted layer for canonical
+installation. Installation remains pending exact branch review, separate merge
+authorization, and Sentinel verification of canonical `main`.
+
 ### Historical Revision 08 objective at installation base
 
 Stay Polymarket-native and preserve the accepted research-only guardrails.
@@ -138,6 +170,23 @@ an accepted per-side/token-identity decision-time price artifact.
 full-universe request, price-artifact construction, P1/P2/P3, scoring, probe
 execution, further networking, local-data execution, implementation, test, or
 gate change is authorized.
+
+### S2 — accepted per-token price-artifact specification
+
+Candidate 08 is accepted as the controlling S2 specification and preserves:
+
+- complete `39,693`-condition reconciliation;
+- independent token-specific acquisition;
+- no complement synthesis or winner-conditioned enumeration;
+- activity-free scientific payload identities;
+- deterministic construction and rebuild;
+- nineteen audit closures;
+- Stage-10 transition ordering;
+- P1 blocked and `named_binary_probe_blocked = true`.
+
+Specification acceptance is not an accepted price artifact and does not
+authorize implementation or execution. No source path under
+`src/pm_research/named_binary_probe/s2/` is installed or accepted.
 
 ### S1-ALT — local trade prints
 
@@ -258,7 +307,7 @@ package. Revision 09 and Revision 08 remain immutable historical accepted eviden
 - submitted ZIP SHA-256: `e6bc7139c39bd75630ad480821c203dbd5c2a914dae3b23fd26b9bfe2f513c1a`
 - installation package ZIP SHA-256: `5c4594a01b6210b1b8865815d4617447c2470720e540ac03d4144836de48a72c`
 - canonical installation base: `cc2964840d197a40d1c4ef567b42eda762c0be0a`
-- verified canonical installation commit: `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`
+- verified installation commit: `ee4a639f9a9429e642391f1fb1e0ab356a6f965a`
 - changed paths: `17`, documentation only
 - live source/test changes: `0`
 - implementation authorization: `NONE`
@@ -337,6 +386,24 @@ not enlarge current Revision 10 authority.
 ---
 
 ## Authorization state
+
+### S2 Candidate 08 authorization state
+
+- specification acceptance: `ACCEPTED`;
+- canonical installation: `PENDING_SENTINEL_VERIFICATION`;
+- implementation source: `ABSENT`;
+- implementation acceptance: `NONE`;
+- implementation authorization: `NONE`;
+- active Claude implementation handoff: `NONE`;
+- test-source authoring: `NONE`;
+- test execution: `NONE`;
+- local-data and network execution: `NONE`;
+- P1/P2/P3, scoring, and probe execution: `UNAUTHORIZED`.
+
+The chat-only K013/K012/K014 records previously attempted before canonical
+installation are inactive and non-authorizing. A fresh chain may be considered
+only after the exact installation commit is reviewed, merged under separate
+authorization, and verified on canonical `main`.
 
 ### Controlling Revision 10 authorization state
 
@@ -421,12 +488,23 @@ writes, or any downstream phase.
 
 ## Next possible step
 
+### S2 Candidate 08 next possible step
+
+Install this documentation-only accepted Candidate-08 package from exact base
+`70ab8455f33d44b2a690b8c5db58f8ebc545454e` on a temporary browser branch.
+Return the exact branch commit to Sentinel. Sentinel must verify the parent,
+changed paths, exact bytes, checksums, central-state consistency, and absence of
+source/test/dependency/runtime changes before Gustavo considers merge.
+
+After separate merge authorization and canonical-main installation
+verification, Gustavo may separately consider a new implementation-source
+authorization anchored to the resulting exact canonical HEAD.
+
 ### Price-source S1 next possible step
 
-Only after the revised-S1 canonical acceptance record is accepted, installed,
-and Sentinel-verified, and only after separate Gustavo authorization, Professor
-may draft an S2 SPEC-ONLY candidate. S2 is not active or authorized by the
-revised-S1 finding or this state record.
+The revised-S1 acceptance record is installed and supports the accepted
+Candidate-08 specification layer. It does not itself authorize S2
+implementation or unblock P1.
 
 ### Controlling Revision 10 next step
 

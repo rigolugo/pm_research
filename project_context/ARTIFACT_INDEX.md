@@ -104,6 +104,50 @@ Source viability is not price-artifact acceptance. No canonical-side
 decision-time price artifact is built or accepted by this record. P1 remains
 blocked and `named_binary_probe_blocked = true`.
 
+### Accepted S2 Candidate-08 documentation layer
+
+Canonical-installation package paths:
+
+- `project_context/S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08.md`
+- `project_context/HANDOFF_PROFESSOR_S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_REVIEW.md`
+- `nodes/K010/artifact.json`
+- `nodes/K011/artifact.json`
+- `project_context/S2_CANDIDATE_08_CANONICAL_INSTALLATION_PACKAGE_MANIFEST_01.json`
+- `project_context/S2_CANDIDATE_08_CANONICAL_INSTALLATION_PACKAGE_SHA256SUMS_01.txt`
+
+Exact accepted identities:
+
+- K008 specification: `776003` bytes,
+  SHA-256 `b6d8b4dde25a67d8e4386762e320600f0778580aee290d3552949c77102e0e63`;
+- K009 Professor review handoff: `13549` bytes,
+  SHA-256 `720f2f081fa1f127fadc980702dd072f52a3714a14f7db418489862d14a609f1`;
+- K010 Sentinel review: `1504` bytes,
+  SHA-256 `e34ddcf51b8b908570de9b4cd4af520114e46bc848cfc00110bf4874dfafa17b`;
+- K011 specification acceptance: `1134` bytes,
+  SHA-256 `4f3f044d78d6ddc95d2c21dba3257f459e15810acc27f27cd36a1f2d8b0f2649`.
+
+Controlling architecture prerequisite:
+
+- `project_context/S2_PER_TOKEN_PRICE_ARTIFACT_A002_ACCEPTED_CONTROLLING_ARCHITECTURE_SET_RECORD_CANDIDATE_01.md`
+- byte length: `5854`
+- SHA-256:
+  `87146e9e3a5d0501c04518ff0fd818c721c1b92cab684eec0b54d9605980a94c`.
+
+State:
+
+- specification: `ACCEPTED`;
+- canonical installation: `PENDING_SENTINEL_VERIFICATION`;
+- implementation source: `ABSENT`;
+- implementation acceptance: `NONE`;
+- implementation authorization: `NONE`;
+- active Claude handoff: `NONE`;
+- accepted per-token price artifact: `NONE`;
+- P1: `BLOCKED`;
+- `named_binary_probe_blocked = true`.
+
+No K013/K012/K014 implementation chain is included in this package. Prior
+chat-only chains are inactive and non-authorizing.
+
 ### `artifacts/named_binary_probe/price_source_s1_alt/`
 
 Accepted coverage-only result: `S1ALT_SOURCE_NOT_VIABLE`.
@@ -589,6 +633,8 @@ Pinned canonical files:
 - `DATA_CONTRACTS_named_binary_probe.md`
 - `PRICE_INPUT_CONTRACT_named_binary_probe.md`
 - `CLAUDE_PROJECT_SETTINGS.md`
+- `S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08.md`
+- `HANDOFF_PROFESSOR_S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_REVIEW.md`
 - `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`
 - `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
 - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/README_FIRST.md`

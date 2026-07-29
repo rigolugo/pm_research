@@ -745,6 +745,52 @@ draft an S2 SPEC-ONLY candidate.
 
 ---
 
+### 2026-07-28 — S2 Candidate 08 specification acceptance
+
+Sentinel accepted `S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08` as the
+controlling executable-level S2 specification.
+
+Exact accepted identities:
+
+- K008 specification: `776003` bytes,
+  SHA-256 `b6d8b4dde25a67d8e4386762e320600f0778580aee290d3552949c77102e0e63`;
+- K009 Professor review handoff: `13549` bytes,
+  SHA-256 `720f2f081fa1f127fadc980702dd072f52a3714a14f7db418489862d14a609f1`;
+- K010 Sentinel review: `1504` bytes,
+  SHA-256 `e34ddcf51b8b908570de9b4cd4af520114e46bc848cfc00110bf4874dfafa17b`;
+- K011 specification acceptance: `1134` bytes,
+  SHA-256 `4f3f044d78d6ddc95d2c21dba3257f459e15810acc27f27cd36a1f2d8b0f2649`.
+
+K011 accepts K008 and records successor authorization `NONE`. Candidate 08
+depends on exact accepted architecture A002, with Amendment 01 controlling on
+conflict and architecture Candidates 01 and 02 non-controlling.
+
+The accepted specification preserves full `39,693`-condition reconciliation,
+independent token-specific acquisition, prohibited complement/winner-conditioned
+paths, deterministic scientific identities, nineteen audit closures, Stage-10
+transition ordering, P1 blocked, and `named_binary_probe_blocked = true`.
+
+K010 records one informational nonblocking finding: an unused
+`ActivityScopeV2` comment retains stale “nine-item” wording. No node, artifact
+profile, binding, implementation interface, or gate depends on that unused type.
+
+Specification acceptance does not accept implementation source, tests, an
+empirical price artifact, or any downstream result. Implementation
+authorization is `NONE`.
+
+The earlier chat-only K013/K012/K014 implementation chains were created before
+canonical installation of K008–K011. They are inactive, noncanonical,
+non-authorizing, and must not be reused. After canonical installation and
+Sentinel verification, a future implementation stage requires a fresh exact
+Gustavo authorization, Sentinel activation, activity root, and canonical base.
+
+P1 remains blocked. `named_binary_probe_blocked = true` remains unchanged.
+No implementation, test authoring or execution, local-data access, network
+execution, empirical acquisition, P1/P2/P3, scoring, probe execution, or Git
+write follows from this acceptance.
+
+---
+
 ## DO NOT REOPEN unless explicitly requested with new evidence
 
 - Rank 1A recalibration.
@@ -775,6 +821,8 @@ draft an S2 SPEC-ONLY candidate.
   at `b2e0506cce3e7be60ed5a5ec6b18b6eec07cf7e1`, absent new authoritative evidence that changes the captured bytes or scope.
 - The accepted Candidate 04 starting-state amendment identity, closed record domains, exact path boundaries, and commit/review/push/remote-verification separation, absent a concrete contract contradiction or formally accepted later amendment.
 - The accepted `REV23_FINDING4_I0A_CANDIDATE04_WORKSPACE_PREPARATION_PACKAGE_CANDIDATE_02` identity, archive-versus-payload denominator separation, exact staging root, twelve-path workspace boundary, and eighteen-predicate gate, absent new authoritative evidence or a formally accepted later amendment.
+- The accepted S2 Candidate-08 K008–K011 identities and specification-only
+  status, absent new authoritative evidence or a formally accepted amendment.
 
 ---
 
