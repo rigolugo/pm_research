@@ -18,9 +18,13 @@ Canonical historical evidence record:
 
 - `project_context/P0_CLOB_CANARY_NETWORK_SENSITIVITY_CANONICAL_RECORD_CANDIDATE_01.md`.
 
-Proposed Candidate 03 lifecycle record:
+Canonical Candidate 03 installation record:
 
 - `project_context/P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_INSTALLATION_RECORD_CANDIDATE_01.md`.
+
+Proposed post-installation verification record:
+
+- `project_context/P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_POST_INSTALLATION_VERIFICATION_RECORD_CANDIDATE_01.md`.
 
 ### Historical empirical source identities
 
@@ -36,7 +40,7 @@ Historical repository base:
 
 `e675a47ec2c8f6cd769c2673afc16d96e5622ccd`
 
-The earlier documentation-only package installed no script, Store, schema, source, test, raw output, local data, or `.gitignore` change.
+The earlier network-sensitivity documentation package installed no script, Store, schema, source, test, raw output, local data, or `.gitignore` change and did not contain Candidate 03.
 
 Historical evidence state remains:
 
@@ -46,27 +50,55 @@ Historical evidence state remains:
 - P0-scale source viability `NOT ESTABLISHED`;
 - accepted per-token price artifact `NONE`.
 
-### Candidate 03 accepted external source package
-
-Candidate package:
+### Candidate 03 external provenance package
 
 `P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_INSTALL_CANDIDATE_03.zip`
 
 - bytes: `20023`;
 - SHA-256: `7a6d63d804a85bcbdf20917b2bc067fe08ae1f4fd77a69c7d1a1f46ed0b45b94`;
 - state: `STATIC_REVIEW_ACCEPTED`;
-- canonical installation: `CANONICAL_INSTALLATION_PENDING`.
+- canonical repository membership: `NO`.
 
-Accepted external payload identities:
+### Verified canonical source installation
 
-| Path | Bytes | SHA-256 | Canonical state |
-|---|---:|---|---|
-| `.gitignore` | `2328` | `0790b0f98f1367195ff5142e4e1de0f651a73b160465f13ef25313945d41522f` | replacement candidate, not installed |
-| `scripts/p0_per_token_price_source_scale_diagnostic_01.py` | `63237` | `2083a847a25d56589e79c0120f0ed8338c657ff539e7a7948dad6111a12d8006` | new source candidate, not installed |
-| `pm_research/data/__init__.py` | `0` | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` | new source candidate, not installed |
-| `pm_research/data/store.py` | `5079` | `68ff4e4b4f60e6726dc961ccb67572a4b03e1e9bbb40716844e67390d952fd95` | new source candidate, not installed |
+Source-installation anchor commit:
 
-The source candidate ZIP and its four payload members are not members of this documentation package and are not proposed as already installed.
+`1a19e1ef715ceca7aef9d55f7aa2446961e13c35`
+
+- parent: `ed045a6ce0130c1c245e4a5bee98fe1b09be83cb`;
+- tree: `d8a530b598735fc9d98294698a21d4d072162414`;
+- message: `Install Candidate 03 P0 CLOB diagnostic source and canonical validation record`;
+- installation finding: `CANONICAL_REMOTE_INSTALLATION_VERIFIED`;
+- method: one local commit followed by an ordinary non-force fast-forward push; no merge, amend, or tag;
+- ref verification: local `HEAD`, `origin/main`, and direct `refs/heads/main` matched the anchor commit;
+- local status after push: clean.
+
+Exact committed scope:
+
+| Status | Path | Git blob SHA |
+|---|---|---|
+| M | `.gitignore` | `b4d26e15ac1b3de27af48d38d5024fd2c4cc830c` |
+| A | `pm_research/data/__init__.py` | `e69de29bb2d1d6434b8b29ae775ad8c2e48c5391` |
+| A | `pm_research/data/store.py` | `711052cdb3ff2644758f0b138016fceaca3c3169` |
+| M | `project_context/ARTIFACT_INDEX.md` | `b9b807957ae4a8597e5769ea20eaa3e51c2f16b5` |
+| M | `project_context/DECISION_LOG.md` | `d2c8b8ab5f7fa51fe74316d0f456dad32de2c3e9` |
+| A | `project_context/P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_INSTALLATION_RECORD_CANDIDATE_01.md` | `d4c5bc0e85617d3a88119e56eb2ec88eabb58c6a` |
+| M | `project_context/PROJECT_STATE.md` | `a4e8bb205394a534062a9ecdd994b9b0703e3140` |
+| M | `project_context/START_HERE.md` | `0d07399a6fe1a48b38ef285f860fbb69893a0257` |
+| A | `scripts/p0_per_token_price_source_scale_diagnostic_01.py` | `c72a6b582e6523fcffc1cf64ce0a25ab114154a9` |
+
+Installed source content identities:
+
+| Path | Bytes | SHA-256 |
+|---|---:|---|
+| `.gitignore` | `2328` | `0790b0f98f1367195ff5142e4e1de0f651a73b160465f13ef25313945d41522f` |
+| `scripts/p0_per_token_price_source_scale_diagnostic_01.py` | `63237` | `2083a847a25d56589e79c0120f0ed8338c657ff539e7a7948dad6111a12d8006` |
+| `pm_research/data/__init__.py` | `0` | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| `pm_research/data/store.py` | `5079` | `68ff4e4b4f60e6726dc961ccb67572a4b03e1e9bbb40716844e67390d952fd95` |
+
+Exact `.gitignore` exception:
+
+`!scripts/p0_per_token_price_source_scale_diagnostic_01.py`
 
 ### Candidate 03 accepted validation evidence
 
@@ -88,21 +120,21 @@ Bounded canary local evidence identities:
 | `results/request_results_summary.json` | `1573` | `d12581fe9e26e8285741260b5723d51f62efea77719bbcccaec21adb8ce01fe2` |
 | `results/request_results.jsonl` | `121528` | `95ae11153b8cc0dab2f22de290aef334c8af9f2218c92b81a2712574d31c9126` |
 
-These are local evidence identities only. They are not package members, are not proposed for repository installation, and `results/request_results.jsonl` is not immutable raw-response evidence. `save_raw = false`; no raw directory existed.
+These are local evidence identities only. They are not repository members, are not members of this documentation package, and are not proposed for repository installation. `results/request_results.jsonl` is not immutable raw-response evidence. `save_raw = false`; no raw directory existed.
 
-Candidate 03 lifecycle:
+Candidate 03 current lifecycle:
 
 - source candidate: `STATIC_REVIEW_ACCEPTED`;
 - local planning: `LOCAL_NON_NETWORK_VALIDATION_CLEAR`;
 - bounded endpoint run: `BOUNDED_100_REQUEST_NETWORK_CANARY_CLEAR`;
-- canonical source installation: `CANONICAL_INSTALLATION_PENDING`;
-- local commit: `NOT_CREATED_OR_REVIEWED`;
-- push authorization: `NONE`;
-- remote verification: `NOT_VERIFIED`;
-- further execution: `UNAUTHORIZED`.
+- canonical remote installation: `CANONICAL_REMOTE_INSTALLATION_VERIFIED`;
+- source-installation anchor commit: `1a19e1ef715ceca7aef9d55f7aa2446961e13c35`;
+- validation execution authorization: `CONSUMED`;
+- further execution: `UNAUTHORIZED`;
+- accepted per-token price artifact: `NONE`;
+- P1: `BLOCKED`.
 
 Candidate 02 remains `ACCEPTED SPEC-ONLY` with authorization effect `NONE`.
-
 
 ---
 
@@ -259,6 +291,6 @@ S1, S1-ALT, Option B, Option C, and Option D artifacts remain evidence-only unle
 
 ## Scripts and tests
 
-Relevant historical scripts and tests remain historical evidence of authorized stages. Candidate 03 now exists as an exact external source-installation candidate with `STATIC_REVIEW_ACCEPTED`, but its source bytes are not installed in canonical `main`. No current test execution or further diagnostic/network execution is authorized.
+Relevant historical scripts and tests remain historical evidence of authorized stages. Candidate 03 diagnostic source is canonically installed and remotely verified at source-installation anchor commit `1a19e1ef715ceca7aef9d55f7aa2446961e13c35`. No current test execution or further diagnostic/network execution is authorized.
 
-This documentation package introduces only canonical documentation candidates and review controls. It includes no Candidate 03 source ZIP or source member, no test, no runtime/dependency change, no local data, no empirical output, no raw response, and no generated artifact.
+This post-installation verification package introduces only canonical documentation candidates and review controls. It includes no source ZIP or source member, `.gitignore`, test, runtime/dependency change, local data, empirical output, raw response, Git object, repository metadata, or generated research artifact.

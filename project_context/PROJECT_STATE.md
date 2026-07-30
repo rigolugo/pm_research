@@ -6,34 +6,37 @@
 
 ## Current objective
 
-The current objective is preparation of the documentation-only source-installation review package:
+The current objective is preparation of the documentation-only post-installation verification review package:
 
-`P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_INSTALLATION_DOCUMENTATION_CANDIDATE_01`
+`P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_POST_INSTALLATION_VERIFICATION_DOCUMENTATION_CANDIDATE_01`
 
-Exact canonical package base:
+Exact canonical package-authoring base and verified canonical `main`:
 
-`ed045a6ce0130c1c245e4a5bee98fe1b09be83cb`
+`1a19e1ef715ceca7aef9d55f7aa2446961e13c35`
+
+Source-installation anchor commit:
+
+`1a19e1ef715ceca7aef9d55f7aa2446961e13c35`
 
 The package proposes complete replacements for:
 
 - `project_context/START_HERE.md`;
 - `project_context/PROJECT_STATE.md`;
 - `project_context/DECISION_LOG.md`;
-- `project_context/ARTIFACT_INDEX.md`.
-
-It proposes one new canonical lifecycle record:
-
+- `project_context/ARTIFACT_INDEX.md`;
 - `project_context/P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_INSTALLATION_RECORD_CANDIDATE_01.md`.
 
-It also contains one Professor-to-Sentinel review handoff and two review-package control files. Those review controls are not source files and are not themselves evidence that canonical installation occurred.
+It proposes one new canonical verification record:
 
-The package records the accepted Candidate 03 source candidate, local non-network validation, and bounded 100-request network canary while preserving the historical canary source attribution. It includes no Candidate 03 source bytes, no empirical output, and no raw response.
+- `project_context/P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_POST_INSTALLATION_VERIFICATION_RECORD_CANDIDATE_01.md`.
+
+It also contains one Professor-to-Sentinel review handoff and two package-control files. It contains no source, `.gitignore`, test, local-data, empirical-output, raw-response, archive, Git-object, or repository-metadata member.
 
 Authorization effect:
 
 `NONE`
 
-This package does not authorize source installation, a local commit, exact commit review, push, merge, remote verification, further execution, tests, imports, local-data access, networking, raw saves, a full diagnostic, S2 artifact construction, P1/P2/P3, scoring, probe execution, gate changes, or any Git write.
+This package records the accepted finding `CANONICAL_REMOTE_INSTALLATION_VERIFIED` for Candidate 03 and synchronizes stale pre-installation documentation. It does not authorize source changes, tests, imports, execution, another endpoint request, a full diagnostic, S2 construction, P1/P2/P3, scoring, probe execution, gate changes, or any Git write.
 
 ---
 
@@ -197,31 +200,45 @@ Historical repository base:
 
 `e675a47ec2c8f6cd769c2673afc16d96e5622ccd`
 
-The earlier documentation-only canonical package recorded those findings but installed no source. Candidate 03 MUST NOT be credited with producing that historical evidence.
+The earlier network-sensitivity documentation package installed no source and did not contain Candidate 03. Candidate 03 MUST NOT be credited with producing those historical runs.
 
-#### Accepted Candidate 03 source package
+#### Candidate 03 accepted external package and canonical installation
 
-Candidate package:
+External provenance package:
 
 `P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_INSTALL_CANDIDATE_03.zip`
 
 - bytes: `20023`;
 - SHA-256: `7a6d63d804a85bcbdf20917b2bc067fe08ae1f4fd77a69c7d1a1f46ed0b45b94`;
-- static review state: `STATIC_REVIEW_ACCEPTED`;
-- canonical installation state: `CANONICAL_INSTALLATION_PENDING`.
+- repository membership: `NO`;
+- static-review state: `STATIC_REVIEW_ACCEPTED`.
 
-Accepted payload:
+Canonical source-installation anchor:
 
-| Path | Bytes | SHA-256 |
-|---|---:|---|
-| `.gitignore` | `2328` | `0790b0f98f1367195ff5142e4e1de0f651a73b160465f13ef25313945d41522f` |
-| `scripts/p0_per_token_price_source_scale_diagnostic_01.py` | `63237` | `2083a847a25d56589e79c0120f0ed8338c657ff539e7a7948dad6111a12d8006` |
-| `pm_research/data/__init__.py` | `0` | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
-| `pm_research/data/store.py` | `5079` | `68ff4e4b4f60e6726dc961ccb67572a4b03e1e9bbb40716844e67390d952fd95` |
+| Field | Exact value |
+|---|---|
+| commit | `1a19e1ef715ceca7aef9d55f7aa2446961e13c35` |
+| parent | `ed045a6ce0130c1c245e4a5bee98fe1b09be83cb` |
+| tree | `d8a530b598735fc9d98294698a21d4d072162414` |
+| message | `Install Candidate 03 P0 CLOB diagnostic source and canonical validation record` |
+| installation finding | `CANONICAL_REMOTE_INSTALLATION_VERIFIED` |
+| installation method | one local commit; ordinary non-force fast-forward push to `origin/main`; no merge, amend, or tag |
+| remote verification | local `HEAD`, `origin/main`, and direct `refs/heads/main` resolved to the same exact commit; local status clean |
 
-Candidate 03 removes the permanent exact-Git-HEAD runtime gate and obsolete canonical-base override path; narrows `Store` to read-only trade loading without directory creation, save/write methods, prices, markets, resolutions, coverage API, or `schemas.py`; contains no `yes_price` or complement-price semantics; excludes `schemas.py`; and adds one narrow `.gitignore` exception for the diagnostic script.
+Installed source identities:
 
-The exact Candidate 03 source paths remain absent from canonical `main` at this package base. The accepted external source candidate exists, but canonical source installation has not occurred.
+| Path | Bytes | SHA-256 | Git blob SHA |
+|---|---:|---|---|
+| `.gitignore` | `2328` | `0790b0f98f1367195ff5142e4e1de0f651a73b160465f13ef25313945d41522f` | `b4d26e15ac1b3de27af48d38d5024fd2c4cc830c` |
+| `scripts/p0_per_token_price_source_scale_diagnostic_01.py` | `63237` | `2083a847a25d56589e79c0120f0ed8338c657ff539e7a7948dad6111a12d8006` | `c72a6b582e6523fcffc1cf64ce0a25ab114154a9` |
+| `pm_research/data/__init__.py` | `0` | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` | `e69de29bb2d1d6434b8b29ae775ad8c2e48c5391` |
+| `pm_research/data/store.py` | `5079` | `68ff4e4b4f60e6726dc961ccb67572a4b03e1e9bbb40716844e67390d952fd95` | `711052cdb3ff2644758f0b138016fceaca3c3169` |
+
+The installed `.gitignore` exception is exactly:
+
+`!scripts/p0_per_token_price_source_scale_diagnostic_01.py`
+
+Candidate 03 removes the permanent exact-Git-HEAD runtime gate and obsolete canonical-base override path; narrows `Store` to read-only trade loading without directory creation, save/write methods, prices, markets, resolutions, coverage API, or `schemas.py`; contains no `yes_price` or complement-price semantics; excludes `schemas.py`; and preserves independent token-side acquisition.
 
 #### Accepted Candidate 03 local non-network validation
 
@@ -230,16 +247,7 @@ Exact validated source:
 - script SHA-256 `2083a847a25d56589e79c0120f0ed8338c657ff539e7a7948dad6111a12d8006`;
 - Store SHA-256 `68ff4e4b4f60e6726dc961ccb67572a4b03e1e9bbb40716844e67390d952fd95`.
 
-Observed controls:
-
-- `dry_run = true`;
-- `execute_network = false`;
-- `save_raw = false`;
-- `executed_requests = 0`;
-- no raw directory;
-- no request-results JSONL;
-- no condition or subclass filters;
-- no maximum-condition or maximum-request restriction.
+Controls: `dry_run = true`, `execute_network = false`, `save_raw = false`, `executed_requests = 0`, no raw directory, no request-results JSONL, no condition or subclass filters, and no maximum-condition or maximum-request restriction.
 
 Accepted reconciliation:
 
@@ -252,7 +260,7 @@ Accepted reconciliation:
 - request-manifest rows `= 37248`;
 - `failed = []`.
 
-Accepted bounded finding:
+Accepted finding:
 
 `LOCAL_NON_NETWORK_VALIDATION_CLEAR`
 
@@ -265,7 +273,7 @@ Run interval:
 - started `2026-07-30T09:15:13Z`;
 - completed `2026-07-30T09:25:28Z`.
 
-Bounded controls included `execute_network = true`, `dry_run = false`, `save_raw = false`, `max_requests = 100`, no condition or subclass filters, `resume = false`, `retry_count = 0`, `fidelity = 1`, interval omitted, timeout `30` seconds, sleep `0`, and independent token-specific acquisition with no complement synthesis or winner-based enumeration.
+Controls included endpoint `https://clob.polymarket.com/prices-history`, `execute_network = true`, `dry_run = false`, `save_raw = false`, `max_requests = 100`, `max_conditions = null`, no condition or subclass filters, `resume = false`, `retry_count = 0`, `fidelity = 1`, interval omitted, timeout `30`, sleep `0`, independent token-specific acquisition, no complement synthesis, and no winner-based token enumeration.
 
 Accepted outcome:
 
@@ -283,25 +291,27 @@ Accepted outcome:
 - planning reconciliation remained `39693 / 18624 / 37248 / 21069 / 18624`;
 - `failed = []`.
 
-Accepted bounded finding:
+Accepted finding:
 
 `BOUNDED_100_REQUEST_NETWORK_CANARY_CLEAR`
 
-The local evidence identities are recorded in the Candidate 03 installation record. They are not repository artifacts, are not members of this documentation package, and `request_results.jsonl` is not immutable raw-response evidence because `save_raw = false` and no raw directory existed.
+The local evidence identities remain non-canonical local evidence only. They are recorded in the installation and post-installation verification records. `request_results.jsonl` is not immutable raw-response evidence because `save_raw = false` and no raw directory existed.
 
-#### Candidate 03 lifecycle
+#### Candidate 03 current lifecycle
 
-| Lifecycle boundary | State |
+| Lifecycle boundary | Current state |
 |---|---|
 | source candidate | `STATIC_REVIEW_ACCEPTED` |
 | local non-network validation | `LOCAL_NON_NETWORK_VALIDATION_CLEAR` |
 | bounded 100-request network canary | `BOUNDED_100_REQUEST_NETWORK_CANARY_CLEAR` |
-| canonical source installation | `CANONICAL_INSTALLATION_PENDING` |
-| exact local commit | `NOT_CREATED_OR_REVIEWED` |
-| push authorization | `NONE` |
-| remote installation verification | `NOT_VERIFIED` |
-| execution authorization | `CONSUMED` |
+| canonical remote installation | `CANONICAL_REMOTE_INSTALLATION_VERIFIED` |
+| source-installation anchor commit | `1a19e1ef715ceca7aef9d55f7aa2446961e13c35` |
+| validation execution authorization | `CONSUMED` |
 | further execution authorization | `NONE` |
+| accepted per-token price artifact | `NONE` |
+| P1 | `BLOCKED` |
+
+A future documentation-installation commit may descend from the source-installation anchor. This document MUST NOT describe `1a19e1ef715ceca7aef9d55f7aa2446961e13c35` as permanently the repository's latest commit.
 
 ### P0 and P1
 
@@ -353,13 +363,13 @@ Static checkpoint conformance remains:
 
 ## Implementation authorization state
 
-Candidate 03 source authoring and its two separately authorized validation activities are complete at the bounded evidence layer. Their execution authorization is consumed.
+Candidate 03 source authoring, the local non-network validation, the bounded network canary, and the exact canonical source installation are complete at their accepted boundaries. Canonical remote installation is verified at source-installation anchor commit `1a19e1ef715ceca7aef9d55f7aa2446961e13c35`.
 
-The exact Candidate 03 source package is accepted for possible later installation, but this documentation package does not install it and does not authorize a local commit. Canonical installation remains `CANONICAL_INSTALLATION_PENDING`.
+The validation execution authorization is consumed. Source installation does not authorize another diagnostic, endpoint request, test run, local-data read, full diagnostic, S2 artifact construction, P1/P2/P3, scoring, probe execution, or gate change.
 
 S2 Candidate 08 implementation authorization remains `NONE`. Candidate 02 remains SPEC-only with authorization effect `NONE`.
 
-This documentation package authorizes no source or test edit, source installation, local commit, exact commit review, push, merge, branch, tag, release, ref update, remote verification, test execution, project import or execution, compilation, linting, type checking, coverage, local research-data read, network/API/RPC/vendor/Dune/curl/endpoint activity, raw-response access or copying, raw saving, diagnostic execution, another dry run or canary, full diagnostic, dependency or packaging change, acquisition, S2 artifact construction, P1/P2/P3, scoring, probe execution, or gate change.
+This documentation package authorizes no source or test edit, `.gitignore` change, staging, local commit, push, merge, amend, branch, tag, reset, ref update, test execution, project import or execution, compilation, linting, type checking, coverage, local research-data read, network/API/RPC/vendor/Dune/curl/endpoint activity, raw-response access or copying, raw saving, diagnostic execution, another dry run or canary, full diagnostic, dependency or packaging change, acquisition, S2 artifact construction, price-artifact construction or acceptance, P1/P2/P3, scoring, probe execution, or gate change.
 
 ---
 

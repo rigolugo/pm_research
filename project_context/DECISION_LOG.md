@@ -82,7 +82,7 @@ Its acceptance does not authorize implementation-source authoring, test-source a
 
 ### Static source candidate accepted
 
-Sentinel accepted the external source-installation candidate:
+Sentinel accepted the external provenance package:
 
 `P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_INSTALL_CANDIDATE_03.zip`
 
@@ -92,9 +92,9 @@ Exact identity:
 - SHA-256: `7a6d63d804a85bcbdf20917b2bc067fe08ae1f4fd77a69c7d1a1f46ed0b45b94`;
 - disposition: `STATIC_REVIEW_ACCEPTED`;
 - authorization effect: `NONE`;
-- canonical installation: `CANONICAL_INSTALLATION_PENDING`.
+- repository membership: `NO`.
 
-Accepted payload:
+Accepted payload identities:
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
@@ -114,7 +114,7 @@ The historical dry run and historical two 100-request canaries remain attributed
 - historical `schemas.py`: `4878` bytes / `75ec05646f458d72d2fba7481ee8a78c67a3099d4025eb9826af3ad9ac30396c`;
 - repository base: `e675a47ec2c8f6cd769c2673afc16d96e5622ccd`.
 
-Candidate 03 does not retroactively own or replace those historical evidence identities. The prior documentation-only package installed no source.
+Candidate 03 does not retroactively own or replace those historical evidence identities. The earlier network-sensitivity documentation package installed no source and did not contain Candidate 03.
 
 ### Candidate 03 local non-network validation accepted
 
@@ -160,20 +160,42 @@ Accepted finding:
 
 This finding establishes bounded end-to-end endpoint behavior only. It does not establish full `37248`-request viability, long-run transport stability, full-universe acquisition, immutable raw-evidence closure, S2 artifact acceptability, price-artifact acceptance, P1 readiness, scoring readiness, probe readiness, or any gate change.
 
-### Lifecycle separation
+### Canonical remote installation verified
 
-The following decisions are separate and MUST NOT be inferred from one another:
+Accepted installation finding:
+
+`CANONICAL_REMOTE_INSTALLATION_VERIFIED`
+
+Source-installation anchor:
+
+| Field | Exact value |
+|---|---|
+| commit | `1a19e1ef715ceca7aef9d55f7aa2446961e13c35` |
+| parent | `ed045a6ce0130c1c245e4a5bee98fe1b09be83cb` |
+| tree | `d8a530b598735fc9d98294698a21d4d072162414` |
+| message | `Install Candidate 03 P0 CLOB diagnostic source and canonical validation record` |
+| changed paths | exactly `9` |
+| push | ordinary non-force fast-forward to `origin/main` |
+| prohibited mechanisms absent | no force push, merge, amend, or tag |
+| ref convergence | local `HEAD`, `origin/main`, and direct `refs/heads/main` resolved to `1a19e1ef715ceca7aef9d55f7aa2446961e13c35` |
+| local status | clean after push |
+
+The exact nine committed paths and their Git blob identities are recorded in the post-installation verification record. The external Candidate 03 ZIP is provenance and is not a repository member.
+
+### Lifecycle separation after installation
+
+The following boundaries remain separate:
 
 1. source candidate static acceptance — complete;
-2. bounded validation evidence — complete;
-3. documentation package acceptance — pending Sentinel review;
-4. canonical source installation — pending;
-5. exact local commit creation and review — not performed;
-6. push authorization — none;
-7. push execution — not performed;
-8. remote installation verification — not performed.
+2. local non-network validation — complete;
+3. bounded network canary — complete;
+4. canonical remote source installation — verified;
+5. this post-installation documentation package — review candidate only;
+6. any future documentation installation commit — not created or authorized by this package;
+7. further empirical execution — unauthorized;
+8. S2 construction, price-artifact acceptance, P1/P2/P3, scoring, probe execution, and gate changes — unauthorized.
 
-The execution authorization used for the local non-network validation and bounded canary is consumed. No further execution is authorized.
+The execution authorization used for the local non-network validation and bounded canary is consumed. Source installation creates no new execution authority.
 
 ---
 
