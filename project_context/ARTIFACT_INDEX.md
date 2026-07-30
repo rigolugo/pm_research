@@ -1,9 +1,9 @@
-Candidate 05 review-package identity rule:
+S2 Amendment 01 Candidate 05 review-package identity rule:
 
-- the Candidate 05 root ZIP SHA-256 sidecar is supplied outside the ZIP and binds the final sealed ZIP bytes;
-- the Candidate 05 root manifest has `self_identity = null`;
-- the Candidate 05 root manifest inventories every actual ZIP member except itself;
-- Candidate 03 and Candidate 04 are blocked predecessor packages only and are not operative installed-package identities.
+- the S2 Amendment 01 Candidate 05 root ZIP SHA-256 sidecar is supplied outside the ZIP and binds the final sealed ZIP bytes;
+- the S2 Amendment 01 Candidate 05 root manifest has `self_identity = null`;
+- the S2 Amendment 01 Candidate 05 root manifest inventories every actual ZIP member except itself;
+- the S2 Amendment 01 documentation-package Candidates 03 and 04 are blocked predecessor packages only and are not operative installed-package identities. This statement does not refer to the separate P0 CLOB Candidate 03 source package.
 
 
 # ARTIFACT INDEX
@@ -12,35 +12,97 @@ Candidate 05 review-package identity rule:
 
 ---
 
-## P0 CLOB canary network-sensitivity documentation
+## P0 CLOB canary and Candidate 03 source-installation documentation
 
-Canonical record proposed by this update:
+Canonical historical evidence record:
 
 - `project_context/P0_CLOB_CANARY_NETWORK_SENSITIVITY_CANONICAL_RECORD_CANDIDATE_01.md`.
 
-Recorded empirical script identity:
+Proposed Candidate 03 lifecycle record:
 
-- SHA-256: `4dd784d3bd5e636ba05e0bd13702f6b24f3e03206d45881a2d6de88bfedcac00`;
-- repository installation status: `NOT INCLUDED`;
-- executable-source acceptance: `NONE`.
+- `project_context/P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_INSTALLATION_RECORD_CANDIDATE_01.md`.
 
-Recorded evidence state:
+### Historical empirical source identities
 
-- dry-run: `39,693` P0 rows loaded; `18,624` request-eligible conditions; `37,248` request-eligible token sides; `21,069` invalid decision windows; `0` executed requests;
-- first canary: `100` requests, `17` HTTP 200, `73` HTTP 500, `10` HTTP NONE, no condition with both sides present;
-- repeat canary on a new network: `100 / 100` HTTP 200 and transport OK, `100` in-window-present sides, `50` conditions with both sides present, no error or malformed responses;
-- accepted interpretation: first failure pattern is network/environment-sensitive and the route is not dead;
-- P0-scale source viability: `NOT ESTABLISHED`;
-- tested scope: `100 / 37,248` request-eligible token sides.
+The accepted historical dry run and historical two 100-request canaries remain attributed to:
 
-Candidate 02 failure-characterization design:
+| Historical item | Bytes | SHA-256 |
+|---|---:|---|
+| diagnostic script | `66241` | `4dd784d3bd5e636ba05e0bd13702f6b24f3e03206d45881a2d6de88bfedcac00` |
+| compatibility Store | `8788` | `7fa3078e78c2ba993ba3a825c2f6042dd33445d0079592aba3cde86e09b7dc92` |
+| `schemas.py` | `4878` | `75ec05646f458d72d2fba7481ee8a78c67a3099d4025eb9826af3ad9ac30396c` |
 
-- status: `ACCEPTED SPEC-ONLY`;
-- authorization effect: `NONE`;
-- implementation source: `ABSENT / UNAUTHORIZED`;
-- tests/imports/local-data reads/network/raw-save/full diagnostic/Git writes: `UNAUTHORIZED`.
+Historical repository base:
 
-This documentation package installs no canary script, Store shim, raw output, local data, parquet artifact, S2 artifact, source file, test file, or `.gitignore` change.
+`e675a47ec2c8f6cd769c2673afc16d96e5622ccd`
+
+The earlier documentation-only package installed no script, Store, schema, source, test, raw output, local data, or `.gitignore` change.
+
+Historical evidence state remains:
+
+- dry-run planning reconciliation `39693 / 18624 / 37248 / 21069 / 18624`;
+- first canary `17` HTTP 200, `73` HTTP 500, `10` HTTP NONE;
+- repeat canary `100 / 100` HTTP 200 and transport OK;
+- P0-scale source viability `NOT ESTABLISHED`;
+- accepted per-token price artifact `NONE`.
+
+### Candidate 03 accepted external source package
+
+Candidate package:
+
+`P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_INSTALL_CANDIDATE_03.zip`
+
+- bytes: `20023`;
+- SHA-256: `7a6d63d804a85bcbdf20917b2bc067fe08ae1f4fd77a69c7d1a1f46ed0b45b94`;
+- state: `STATIC_REVIEW_ACCEPTED`;
+- canonical installation: `CANONICAL_INSTALLATION_PENDING`.
+
+Accepted external payload identities:
+
+| Path | Bytes | SHA-256 | Canonical state |
+|---|---:|---|---|
+| `.gitignore` | `2328` | `0790b0f98f1367195ff5142e4e1de0f651a73b160465f13ef25313945d41522f` | replacement candidate, not installed |
+| `scripts/p0_per_token_price_source_scale_diagnostic_01.py` | `63237` | `2083a847a25d56589e79c0120f0ed8338c657ff539e7a7948dad6111a12d8006` | new source candidate, not installed |
+| `pm_research/data/__init__.py` | `0` | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` | new source candidate, not installed |
+| `pm_research/data/store.py` | `5079` | `68ff4e4b4f60e6726dc961ccb67572a4b03e1e9bbb40716844e67390d952fd95` | new source candidate, not installed |
+
+The source candidate ZIP and its four payload members are not members of this documentation package and are not proposed as already installed.
+
+### Candidate 03 accepted validation evidence
+
+Local non-network finding:
+
+`LOCAL_NON_NETWORK_VALIDATION_CLEAR`
+
+Bounded network finding:
+
+`BOUNDED_100_REQUEST_NETWORK_CANARY_CLEAR`
+
+Bounded canary local evidence identities:
+
+| Local evidence file | Bytes | SHA-256 |
+|---|---:|---|
+| `run_metadata.json` | `2115` | `c70519868568e68e99ce43f1fa7f4bf0c09a49d4d6298be6a5e9a6b1dd2bea8c` |
+| `manifest/request_manifest_summary.json` | `1728` | `a375fecf654866d90c437db8d1af6f1ea777f8b8f626ccc49a9a9aabbf73ff8b` |
+| `manifest/request_manifest.csv` | `15749521` | `e60caa4de2a0e4ad09244bd7b9084dd2c3eb1810bc2ca8e43c1adb810e0d5f5f` |
+| `results/request_results_summary.json` | `1573` | `d12581fe9e26e8285741260b5723d51f62efea77719bbcccaec21adb8ce01fe2` |
+| `results/request_results.jsonl` | `121528` | `95ae11153b8cc0dab2f22de290aef334c8af9f2218c92b81a2712574d31c9126` |
+
+These are local evidence identities only. They are not package members, are not proposed for repository installation, and `results/request_results.jsonl` is not immutable raw-response evidence. `save_raw = false`; no raw directory existed.
+
+Candidate 03 lifecycle:
+
+- source candidate: `STATIC_REVIEW_ACCEPTED`;
+- local planning: `LOCAL_NON_NETWORK_VALIDATION_CLEAR`;
+- bounded endpoint run: `BOUNDED_100_REQUEST_NETWORK_CANARY_CLEAR`;
+- canonical source installation: `CANONICAL_INSTALLATION_PENDING`;
+- local commit: `NOT_CREATED_OR_REVIEWED`;
+- push authorization: `NONE`;
+- remote verification: `NOT_VERIFIED`;
+- further execution: `UNAUTHORIZED`.
+
+Candidate 02 remains `ACCEPTED SPEC-ONLY` with authorization effect `NONE`.
+
 
 ---
 
@@ -71,7 +133,7 @@ Controlling architecture prerequisite:
 State:
 
 - specification: `ACCEPTED`;
-- implementation source: `ABSENT`;
+- S2 Candidate 08 implementation source: `ABSENT`;
 - implementation acceptance: `NONE`;
 - implementation authorization: `NONE`;
 - active Claude handoff: `NONE`;
@@ -154,7 +216,7 @@ Registry/provenance identities:
 - accepted Candidate-08 §23 JCS: `479463` bytes, SHA-256 `82038603fb5cfd564b8563731e772c03d29c6ff6bdc862040ea26e0463ec97ff`;
 - reducer projection: `66232` bytes, SHA-256 `266d540dfd8481cd084d155ae8cb6f08b740f2c4aead70d9d5e5f9c1588da63c`.
 
-No source path under `pm_research/named_binary_probe_s2/` is installed by this documentation package. No implementation source exists or is accepted.
+No source path under `pm_research/named_binary_probe_s2/` is installed by this documentation package. No S2 Candidate 08 implementation source exists or is accepted. The separate P0 CLOB Candidate 03 diagnostic source package does not alter this S2 state.
 
 ---
 
@@ -197,6 +259,6 @@ S1, S1-ALT, Option B, Option C, and Option D artifacts remain evidence-only unle
 
 ## Scripts and tests
 
-Relevant historical scripts and tests remain historical evidence of authorized stages. No current test execution is authorized.
+Relevant historical scripts and tests remain historical evidence of authorized stages. Candidate 03 now exists as an exact external source-installation candidate with `STATIC_REVIEW_ACCEPTED`, but its source bytes are not installed in canonical `main`. No current test execution or further diagnostic/network execution is authorized.
 
-This index records no new source, test, runtime, dependency, generated-code, local data, network, raw-response, or empirical artifact introduced by the P0 CLOB canary documentation-only update. The canary script and raw outputs are not installed.
+This documentation package introduces only canonical documentation candidates and review controls. It includes no Candidate 03 source ZIP or source member, no test, no runtime/dependency change, no local data, no empirical output, no raw response, and no generated artifact.

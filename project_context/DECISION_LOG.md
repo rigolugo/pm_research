@@ -78,6 +78,105 @@ Its acceptance does not authorize implementation-source authoring, test-source a
 
 ---
 
+## P0 CLOB Candidate 03 source-installation decisions
+
+### Static source candidate accepted
+
+Sentinel accepted the external source-installation candidate:
+
+`P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_INSTALL_CANDIDATE_03.zip`
+
+Exact identity:
+
+- bytes: `20023`;
+- SHA-256: `7a6d63d804a85bcbdf20917b2bc067fe08ae1f4fd77a69c7d1a1f46ed0b45b94`;
+- disposition: `STATIC_REVIEW_ACCEPTED`;
+- authorization effect: `NONE`;
+- canonical installation: `CANONICAL_INSTALLATION_PENDING`.
+
+Accepted payload:
+
+| Path | Bytes | SHA-256 |
+|---|---:|---|
+| `.gitignore` | `2328` | `0790b0f98f1367195ff5142e4e1de0f651a73b160465f13ef25313945d41522f` |
+| `scripts/p0_per_token_price_source_scale_diagnostic_01.py` | `63237` | `2083a847a25d56589e79c0120f0ed8338c657ff539e7a7948dad6111a12d8006` |
+| `pm_research/data/__init__.py` | `0` | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| `pm_research/data/store.py` | `5079` | `68ff4e4b4f60e6726dc961ccb67572a4b03e1e9bbb40716844e67390d952fd95` |
+
+The accepted corrections remove the permanent exact-Git-HEAD runtime gate and obsolete canonical-base override; narrow Store to read-only trade loading with no directory creation, save/write methods, prices, markets, resolutions, coverage API, or `schemas.py`; exclude `schemas.py`; retain no `yes_price` or complement-price semantics; and add one narrow `.gitignore` exception.
+
+### Historical source attribution preserved
+
+The historical dry run and historical two 100-request canaries remain attributed to:
+
+- script: `66241` bytes / `4dd784d3bd5e636ba05e0bd13702f6b24f3e03206d45881a2d6de88bfedcac00`;
+- compatibility Store: `8788` bytes / `7fa3078e78c2ba993ba3a825c2f6042dd33445d0079592aba3cde86e09b7dc92`;
+- historical `schemas.py`: `4878` bytes / `75ec05646f458d72d2fba7481ee8a78c67a3099d4025eb9826af3ad9ac30396c`;
+- repository base: `e675a47ec2c8f6cd769c2673afc16d96e5622ccd`.
+
+Candidate 03 does not retroactively own or replace those historical evidence identities. The prior documentation-only package installed no source.
+
+### Candidate 03 local non-network validation accepted
+
+Exact source identities:
+
+- script SHA-256 `2083a847a25d56589e79c0120f0ed8338c657ff539e7a7948dad6111a12d8006`;
+- Store SHA-256 `68ff4e4b4f60e6726dc961ccb67572a4b03e1e9bbb40716844e67390d952fd95`.
+
+The dry-run controls established no network execution and no raw/result output. Reconciliation remained:
+
+- final P0 rows `39693`;
+- token-pair-clear conditions `39693`;
+- request-eligible conditions `18624`;
+- request-eligible token sides and request-manifest rows `37248`;
+- invalid decision windows `21069`;
+- request-eligible disposition `18624`;
+- executed requests `0`;
+- `failed = []`.
+
+Accepted finding:
+
+`LOCAL_NON_NETWORK_VALIDATION_CLEAR`
+
+This proves local planning and reconciliation equivalence only. No dry-run output-file identity is accepted or invented.
+
+### Candidate 03 bounded network canary accepted
+
+The separately authorized deterministic bounded run used the exact Candidate 03 script and Store identities, independent token-specific requests, no complement synthesis, no winner-derived token enumeration, `fidelity = 1`, interval omitted, zero retries, `save_raw = false`, and a maximum of `100` requests.
+
+Accepted result:
+
+- `100 / 100` HTTP 200 and `TRANSPORT_OK`;
+- `100` series present and in-window-present sides;
+- `50` conditions with both sides present;
+- all one-side, neither-side, not-measurable, error, malformed, and resumed-skip counts `0`;
+- `condition_incomplete_bounded_run = 18574`;
+- planning reconciliation remained unchanged;
+- `failed = []`.
+
+Accepted finding:
+
+`BOUNDED_100_REQUEST_NETWORK_CANARY_CLEAR`
+
+This finding establishes bounded end-to-end endpoint behavior only. It does not establish full `37248`-request viability, long-run transport stability, full-universe acquisition, immutable raw-evidence closure, S2 artifact acceptability, price-artifact acceptance, P1 readiness, scoring readiness, probe readiness, or any gate change.
+
+### Lifecycle separation
+
+The following decisions are separate and MUST NOT be inferred from one another:
+
+1. source candidate static acceptance — complete;
+2. bounded validation evidence — complete;
+3. documentation package acceptance — pending Sentinel review;
+4. canonical source installation — pending;
+5. exact local commit creation and review — not performed;
+6. push authorization — none;
+7. push execution — not performed;
+8. remote installation verification — not performed.
+
+The execution authorization used for the local non-network validation and bounded canary is consumed. No further execution is authorized.
+
+---
+
 ## S2 Candidate 08 decisions
 
 ### Candidate 08 specification acceptance
@@ -204,4 +303,4 @@ The preserved checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` remains eviden
 
 ## Non-authorization standing rule
 
-Documentation acceptance, specification acceptance, amendment acceptance, package preparation, checksum validation, static review, or canonical documentation installation authorizes no implementation-source authoring, test-source authoring, tests, project imports or execution, local research-data reads, network/API/RPC/vendor/Dune/curl/endpoint activity, raw-response saving, a full diagnostic, empirical artifacts, dependency or packaging changes, P1/P2/P3, scoring, probe execution, gate changes, Git writes, or downstream stages unless a later exact Gustavo authorization and Sentinel stage authorization explicitly create that scope.
+Documentation acceptance, specification acceptance, amendment acceptance, source-candidate static acceptance, bounded validation acceptance, package preparation, checksum validation, or canonical documentation installation authorizes no source installation, local commit, exact commit review, push, merge, remote verification, further source/test authoring, tests, project imports or execution, local research-data reads, network/API/RPC/vendor/Dune/curl/endpoint activity, raw-response access or saving, another dry run or canary, a full diagnostic, empirical artifacts, dependency or packaging changes, S2 artifact construction, P1/P2/P3, scoring, probe execution, gate changes, Git writes, or downstream stages unless a later exact Gustavo authorization and Sentinel stage authorization explicitly create that scope.

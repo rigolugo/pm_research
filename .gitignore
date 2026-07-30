@@ -20,6 +20,7 @@ credentials/
 *api_key*
 *API_KEY*
 *token*
+!scripts/p0_per_token_price_source_scale_diagnostic_01.py
 *TOKENS*
 
 # ----------------------------

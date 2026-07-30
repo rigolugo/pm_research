@@ -44,8 +44,10 @@ Read these before doing anything:
     - `HANDOFF_orchestrator_s1_parse_ts_millisecond_utc.md`
     - `HANDOFF_orchestrator_s1_pass1_RESULT.md`
     - `S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02.md`
-    For the accepted P0 CLOB canary evidence and network-sensitivity finding, read:
+    For the accepted P0 CLOB canary evidence, network-sensitivity finding, and
+    Candidate 03 source-installation lifecycle, read:
     - `P0_CLOB_CANARY_NETWORK_SENSITIVITY_CANONICAL_RECORD_CANDIDATE_01.md`
+    - `P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_INSTALLATION_RECORD_CANDIDATE_01.md`
     For the accepted S2 per-token price-artifact specification layer, read:
     - `S2_PER_TOKEN_PRICE_ARTIFACT_A002_ACCEPTED_CONTROLLING_ARCHITECTURE_SET_RECORD_CANDIDATE_01.md`
     - `S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08.md`
@@ -138,9 +140,10 @@ Revision 23 with Amendments 01–03 and accepted Finding 4 is the governing SPEC
 - `named_binary_probe_blocked = true`.
 - `yes_price`, `1 - price`, and `1 - yes_price` must not be used to synthesize named-binary sides.
 - S1 CLOB `/prices-history`: historical `interval=max`, fidelity-omitted method: `S1_SOURCE_NOT_VIABLE`; revised `fidelity=1`, interval-omitted method: `S1_SOURCE_VIABLE` only for the existing stratified Pass-1 sample and reviewed EC2 route. This is not full-universe validation; no price artifact is accepted.
-- P0 CLOB `/prices-history` dry-run and two bounded 100-request canaries: **ACCEPTED EVIDENCE**. The repeat canary supports network/environment sensitivity of the first failure pattern and shows the route is not dead. P0-scale source viability remains **NOT ESTABLISHED** because only `100 / 37,248` request-eligible token sides were tested.
-- P0 CLOB Candidate 02 failure-characterization design: **ACCEPTED SPEC-ONLY**; authorization effect `NONE`. Implementation-source authoring, tests, imports, local-data reads, networking, raw-save activity, a full diagnostic, and Git writes remain unauthorized.
-- S2 per-token price-artifact Candidate 08: **ACCEPTED SPECIFICATION** through K010/K011; no implementation source exists or is accepted; implementation authorization is `NONE`.
+- P0 CLOB `/prices-history` historical dry-run and two bounded 100-request canaries: **ACCEPTED EVIDENCE** attributed to historical script SHA-256 `4dd784d3bd5e636ba05e0bd13702f6b24f3e03206d45881a2d6de88bfedcac00` at historical base `e675a47ec2c8f6cd769c2673afc16d96e5622ccd`. The repeat canary supports network/environment sensitivity and shows the route is not dead. P0-scale source viability remains **NOT ESTABLISHED**.
+- P0 CLOB Candidate 02 failure-characterization design: **ACCEPTED SPEC-ONLY**; authorization effect `NONE`.
+- P0 CLOB Candidate 03 source package: **`STATIC_REVIEW_ACCEPTED`**; local planning result **`LOCAL_NON_NETWORK_VALIDATION_CLEAR`**; bounded run result **`BOUNDED_100_REQUEST_NETWORK_CANARY_CLEAR`**; source installation **`CANONICAL_INSTALLATION_PENDING`**. Candidate 03 is an accepted external source-installation candidate, not installed canonical source, not an accepted price artifact, and not a P1 unblock. Its consumed execution authorization creates no further execution authority.
+- S2 per-token price-artifact Candidate 08: **ACCEPTED SPECIFICATION** through K010/K011; no S2 Candidate 08 implementation source exists or is accepted; implementation authorization is `NONE`.
 - S2 Candidate 08 Implementation-Source Amendment 01: **ACCEPTED SPEC-ONLY AMENDMENT** after installation of this package; authorization effect `NONE`.
 - Recovered R1 checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` remains exact, evidence-only, `NOT_ACCEPTED`, and non-authorizing.
 - Static checkpoint conformance: **BLOCKED — `REVISION10_STATIC_CONFORMANCE_BLOCKED`**.
