@@ -4,6 +4,80 @@
 
 ---
 
+## P0 CLOB canary and network-sensitivity decisions
+
+### Dry-run reconciliation accepted
+
+The documentation record preserves the accepted dry-run state:
+
+- `final_p0_rows_loaded = 39,693`;
+- `token_pair_clear_conditions = 39,693`;
+- `request_eligible_conditions = 18,624`;
+- `request_eligible_token_sides = 37,248`;
+- `INVALID_DECISION_WINDOW = 21,069`;
+- `REQUEST_ELIGIBLE = 18,624`;
+- `executed_requests = 0`.
+
+The reconciliation invariant is:
+
+`21,069 + 18,624 = 39,693`
+
+The dry-run did not execute network requests, construct an S2 artifact, or change any gate.
+
+### First bounded 100-request canary accepted
+
+Exact script identity:
+
+`4dd784d3bd5e636ba05e0bd13702f6b24f3e03206d45881a2d6de88bfedcac00`
+
+Accepted result:
+
+- executed requests: `100`;
+- HTTP 200: `17`;
+- HTTP 500: `73`;
+- HTTP NONE: `10`;
+- `TRANSPORT_OK = 17`;
+- `TRANSPORT_HTTP_ERROR = 73`;
+- `TRANSPORT_CONNECTION_ERROR = 9`;
+- `TRANSPORT_TIMEOUT = 1`;
+- `SERIES_PRESENT = 17`;
+- `in_window_present_sides = 17`;
+- `condition_both_sides_present = 0`;
+- source viability: `NOT ESTABLISHED`.
+
+### Repeat bounded 100-request canary on a new network accepted
+
+The repeat verified canonical base `e675a47ec2c8f6cd769c2673afc16d96e5622ccd` and used the same script SHA-256.
+
+Accepted result:
+
+- executed requests: `100`;
+- `HTTP 200 = 100`;
+- `TRANSPORT_OK = 100`;
+- `SERIES_PRESENT = 100`;
+- `IN_WINDOW_PRESENT = 100`;
+- `condition_both_sides_present = 50`;
+- `error_response_count = 0`;
+- `malformed_response_count = 0`.
+
+### Accepted finding and limitation
+
+The repeat canary supports network/environment sensitivity of the first failure pattern. The CLOB route is not dead.
+
+P0-scale source viability remains `NOT ESTABLISHED`. Only `100 / 37,248` request-eligible token sides were tested. No inference from the repeat canary may widen the tested denominator, establish full-universe coverage, accept a price artifact, unblock P1, or clear an S2 gate.
+
+### Candidate 02 failure-characterization design
+
+The Candidate 02 failure-characterization design is accepted as SPEC-only.
+
+Authorization effect:
+
+`NONE`
+
+Its acceptance does not authorize implementation-source authoring, test-source authoring, tests, project imports, local-data reads, network execution, raw-save activity, a full diagnostic, Git writes, S2 artifact construction, P1/P2/P3, scoring, probe execution, or gate changes.
+
+---
+
 ## S2 Candidate 08 decisions
 
 ### Candidate 08 specification acceptance
@@ -130,4 +204,4 @@ The preserved checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` remains eviden
 
 ## Non-authorization standing rule
 
-Documentation acceptance, specification acceptance, amendment acceptance, package preparation, checksum validation, static review, or canonical documentation installation authorizes no implementation-source authoring, test-source authoring, tests, project imports or execution, local research-data reads, network/API/RPC/vendor/Dune/curl/endpoint activity, empirical artifacts, dependency or packaging changes, P1/P2/P3, scoring, probe execution, gate changes, Git writes, or downstream stages unless a later exact Gustavo authorization and Sentinel stage authorization explicitly create that scope.
+Documentation acceptance, specification acceptance, amendment acceptance, package preparation, checksum validation, static review, or canonical documentation installation authorizes no implementation-source authoring, test-source authoring, tests, project imports or execution, local research-data reads, network/API/RPC/vendor/Dune/curl/endpoint activity, raw-response saving, a full diagnostic, empirical artifacts, dependency or packaging changes, P1/P2/P3, scoring, probe execution, gate changes, Git writes, or downstream stages unless a later exact Gustavo authorization and Sentinel stage authorization explicitly create that scope.
