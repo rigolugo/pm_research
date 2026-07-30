@@ -12,6 +12,38 @@ Candidate 05 review-package identity rule:
 
 ---
 
+## P0 CLOB canary network-sensitivity documentation
+
+Canonical record proposed by this update:
+
+- `project_context/P0_CLOB_CANARY_NETWORK_SENSITIVITY_CANONICAL_RECORD_CANDIDATE_01.md`.
+
+Recorded empirical script identity:
+
+- SHA-256: `4dd784d3bd5e636ba05e0bd13702f6b24f3e03206d45881a2d6de88bfedcac00`;
+- repository installation status: `NOT INCLUDED`;
+- executable-source acceptance: `NONE`.
+
+Recorded evidence state:
+
+- dry-run: `39,693` P0 rows loaded; `18,624` request-eligible conditions; `37,248` request-eligible token sides; `21,069` invalid decision windows; `0` executed requests;
+- first canary: `100` requests, `17` HTTP 200, `73` HTTP 500, `10` HTTP NONE, no condition with both sides present;
+- repeat canary on a new network: `100 / 100` HTTP 200 and transport OK, `100` in-window-present sides, `50` conditions with both sides present, no error or malformed responses;
+- accepted interpretation: first failure pattern is network/environment-sensitive and the route is not dead;
+- P0-scale source viability: `NOT ESTABLISHED`;
+- tested scope: `100 / 37,248` request-eligible token sides.
+
+Candidate 02 failure-characterization design:
+
+- status: `ACCEPTED SPEC-ONLY`;
+- authorization effect: `NONE`;
+- implementation source: `ABSENT / UNAUTHORIZED`;
+- tests/imports/local-data reads/network/raw-save/full diagnostic/Git writes: `UNAUTHORIZED`.
+
+This documentation package installs no canary script, Store shim, raw output, local data, parquet artifact, S2 artifact, source file, test file, or `.gitignore` change.
+
+---
+
 ## Accepted S2 Candidate-08 documentation layer
 
 Canonical-installation package paths:
@@ -167,4 +199,4 @@ S1, S1-ALT, Option B, Option C, and Option D artifacts remain evidence-only unle
 
 Relevant historical scripts and tests remain historical evidence of authorized stages. No current test execution is authorized.
 
-This index records no new source, test, package, runtime, dependency, generated-code, local data, network, or empirical artifact introduced by the Amendment 01 documentation-only installation package.
+This index records no new source, test, runtime, dependency, generated-code, local data, network, raw-response, or empirical artifact introduced by the P0 CLOB canary documentation-only update. The canary script and raw outputs are not installed.
