@@ -6,41 +6,30 @@
 
 ## Current objective
 
-The current S2 objective is documentation-only canonical installation of the accepted S2 Candidate 08 Implementation-Source Amendment 01. The exact canonical base for this package is:
+The current objective is documentation-only canonical installation of the accepted P0 CLOB `/prices-history` dry-run, two bounded 100-request canaries, the accepted network/environment sensitivity finding, and the accepted Candidate 02 failure-characterization design.
 
-`ddf41003fb16aa091c2a899d7c17754e89341cc7`
+Exact canonical package base:
 
-This package is prepared under Gustavo authorization:
+`e675a47ec2c8f6cd769c2673afc16d96e5622ccd`
 
-`S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_DOCUMENTATION_ONLY_INSTALLATION_PREPARATION_GUSTAVO_AUTHORIZATION_01`
+Candidate package:
 
-It responds to Candidate 03 being blocked as:
+`P0_CLOB_CANARY_NETWORK_SENSITIVITY_CANONICAL_UPDATE_CANDIDATE_01`
 
-`BLOCK — package manifest recorded SHA mismatch for its proposed canonical manifest`
-
-Candidate 03 preserves Candidate 03's complete documentation-authority coverage and corrects only the package-integrity manifest/sidecar contradiction.
+The package proposes complete replacements for:
 
 - `project_context/START_HERE.md`;
 - `project_context/PROJECT_STATE.md`;
 - `project_context/DECISION_LOG.md`;
 - `project_context/ARTIFACT_INDEX.md`.
 
-It also installs the accepted amendment text and a documentation-only installation record.
+It proposes one new canonical record:
 
+- `project_context/P0_CLOB_CANARY_NETWORK_SENSITIVITY_CANONICAL_RECORD_CANDIDATE_01.md`.
 
-Candidate 05 package-integrity state:
+The package adds no canary script, Store shim, raw response, local data, parquet artifact, executable source, test source, or `.gitignore` change.
 
-- prior Candidate 04 block: `BLOCK — package incomplete because required external ZIP SHA-256 sidecar was not supplied, and proposed canonical files still refer to blocked Candidate 03 as the operative package/binding identity`;
-- root ZIP SHA-256 sidecar is external, supplied outside the ZIP, and binds the final sealed Candidate 05 ZIP bytes;
-- root manifest `self_identity = null`;
-- root manifest member inventory lists every actual ZIP member except the root manifest exactly;
-- no final ZIP hash is stored inside a ZIP member;
-- proposed canonical manifest self-identity: `null`;
-- proposed canonical sidecar/inventory scope: six canonical documentation payload files only;
-- proposed canonical manifest and proposed canonical sidecar are externally bound control files through Candidate 05 and later Sentinel installation verification;
-- no manifest or sidecar raw SHA-256 is embedded in its own bytes;
-- Candidate 03 and Candidate 04 remain blocked historical predecessor evidence only and are not operative package identities.
-
+The package records evidence and decisions only. It does not authorize implementation, tests, imports, local-data reads, network activity, raw-save activity, a full diagnostic, S2 artifact construction, P1/P2/P3, scoring, probe execution, gate changes, or Git writes.
 
 ---
 
@@ -137,6 +126,57 @@ Exact future implementation-source matrix:
 - Legacy pooled-all gate: `BLOCKED_BY_RESOLUTION_MAPPING`.
 - `named_binary_probe_blocked = true`.
 
+### P0 CLOB canary and network-sensitivity state
+
+Accepted dry-run reconciliation:
+
+| Field | Count |
+|---|---:|
+| `final_p0_rows_loaded` | `39,693` |
+| `token_pair_clear_conditions` | `39,693` |
+| `request_eligible_conditions` | `18,624` |
+| `request_eligible_token_sides` | `37,248` |
+| `INVALID_DECISION_WINDOW` | `21,069` |
+| `REQUEST_ELIGIBLE` | `18,624` |
+| `executed_requests` | `0` |
+
+Invariant: `21,069 + 18,624 = 39,693`.
+
+Accepted first bounded canary:
+
+- script SHA-256: `4dd784d3bd5e636ba05e0bd13702f6b24f3e03206d45881a2d6de88bfedcac00`;
+- executed requests: `100`;
+- HTTP 200 / 500 / NONE: `17 / 73 / 10`;
+- transport OK / HTTP error / connection error / timeout: `17 / 73 / 9 / 1`;
+- `SERIES_PRESENT = 17`;
+- `in_window_present_sides = 17`;
+- `condition_both_sides_present = 0`;
+- source viability: `NOT ESTABLISHED`.
+
+Accepted repeat bounded canary on a new network:
+
+- canonical base verified: `true`;
+- canonical commit: `e675a47ec2c8f6cd769c2673afc16d96e5622ccd`;
+- same script SHA-256: `4dd784d3bd5e636ba05e0bd13702f6b24f3e03206d45881a2d6de88bfedcac00`;
+- executed requests: `100`;
+- `HTTP 200 = 100`;
+- `TRANSPORT_OK = 100`;
+- `SERIES_PRESENT = 100`;
+- `IN_WINDOW_PRESENT = 100`;
+- `condition_both_sides_present = 50`;
+- `error_response_count = 0`;
+- `malformed_response_count = 0`.
+
+Accepted interpretation:
+
+- the repeat canary supports network/environment sensitivity of the first failure pattern;
+- the CLOB route is not dead;
+- P0-scale source viability remains `NOT ESTABLISHED`;
+- only `100 / 37,248` request-eligible token sides were tested;
+- the result does not authorize a full diagnostic or any further network activity.
+
+Candidate 02 failure-characterization design is accepted as SPEC-only with authorization effect `NONE`. Implementation-source authoring remains unauthorized.
+
 ### P0 and P1
 
 - P0 preflight: `P0_CLEAR`.
@@ -187,9 +227,9 @@ Static checkpoint conformance remains:
 
 ## Implementation authorization state
 
-Implementation authorization remains `NONE` for S2 Candidate 08 and Amendment 01.
+Implementation authorization remains `NONE` for S2 Candidate 08, Amendment 01, and the accepted P0 CLOB Candidate 02 failure-characterization design.
 
-This documentation package authorizes no implementation-source authoring, test-source authoring, test execution, project imports or execution, compilation, linting, type checking, coverage, local research-data reads, network/API/RPC/vendor/Dune/curl/endpoint activity, dependency or packaging changes, acquisition, construction, alignment, rebuild, audit, transition, empirical work, P1/P2/P3, scoring, probe execution, gate changes, Git commit, push, merge, branch, tag, release, ref update, or canonical installation itself.
+This documentation package authorizes no implementation-source authoring, test-source authoring, test execution, project imports or execution, compilation, linting, type checking, coverage, local research-data reads, network/API/RPC/vendor/Dune/curl/endpoint activity, raw-response saving, Store-shim authoring, full diagnostic, dependency or packaging changes, acquisition, construction, alignment, rebuild, audit, transition, empirical work, S2 artifact construction, P1/P2/P3, scoring, probe execution, gate changes, Git commit, push, merge, branch, tag, release, ref update, or canonical installation itself.
 
 ---
 
