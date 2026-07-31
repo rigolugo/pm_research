@@ -253,13 +253,66 @@ Accepted Amendment 01 facts:
 - accepted Candidate-08 §23 JCS: `479463` bytes / `82038603fb5cfd564b8563731e772c03d29c6ff6bdc862040ea26e0463ec97ff`;
 - reducer projection: `66232` bytes / `266d540dfd8481cd084d155ae8cb6f08b740f2c4aead70d9d5e5f9c1588da63c`.
 
-Future source authoring requires a fresh post-installation chain:
+Candidate 04 supersedes the incomplete prose-only chain representation.
+The future chain does not currently exist. After exact A010 installation and
+Sentinel installation verification, it MUST be:
 
-`K011 + accepted installed amendment → fresh K013 → fresh K012 → fresh K014 → K015/K016`
+```text
+accepted K011
+  + accepted installed Implementation-Source Amendment 01
+  + accepted and canonically verified A010
+  -> fresh K013
+  -> fresh K012
+  -> fresh K014
+  -> K015/K016
+```
 
-No stale, pre-amendment, chat-only, or matrix-mismatched K013/K012/K014 may be reused.
+No stale pre-A010, pre-amendment, chat-only, or matrix-mismatched K013, K012,
+or K014 may be reused.
 
 Authorization effect: `NONE`.
+
+### S2 Candidate 08 Authorization-Graph Amendment 01 Candidate 04 acceptance
+
+Accepted Sentinel decision:
+
+`APPROVE — S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_ACCEPTED_SPEC_ONLY`
+
+Exact accepted artifact:
+
+- path after any later canonical installation: `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md`;
+- bytes: `135500`;
+- SHA-256: `aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950`;
+- serialization: UTF-8, LF-only, no BOM, final newline;
+- authorization effect: `NONE`.
+
+Settled governance design:
+
+1. A010 is the exact accepted Candidate-04 Markdown raw governance artifact under closed `amendment_governance.v1`;
+2. A010 rank is `1115` and its direct predecessor set is exactly `[K011]`;
+3. the accepted installed Implementation-Source Amendment 01 is carried as closed non-edge governance data;
+4. K013, K012, and K014 retain K011 and add A010 under the accepted ordering;
+5. K015 depends directly only on K014;
+6. K016 retains direct predecessors K013, K012, K014, and K015;
+7. A010 is K127 index `2`, K127 population is `60`, and the effective graph is `167 / 683`;
+8. the immutable base registry and reducer projection remain unchanged;
+9. the fourteen-file implementation matrix remains unchanged.
+
+Lifecycle boundaries remain separate:
+
+1. Candidate-04 specification acceptance — complete;
+2. documentation-only installation-package preparation — authorized;
+3. package review — pending;
+4. package installation authorization — absent;
+5. branch or local commit — absent;
+6. merge or push authorization — absent;
+7. canonical installation verification — absent;
+8. fresh K013 preparation authorization — absent;
+9. implementation-source authoring — absent.
+
+No decision in this section installs A010 or authorizes implementation, tests,
+execution, data access, empirical work, scoring, probe execution, artifact
+construction, gate changes, or Git activity.
 
 ---
 

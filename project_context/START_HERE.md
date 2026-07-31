@@ -59,6 +59,10 @@ Read these before doing anything:
     - `S2_CANDIDATE_08_CANONICAL_INSTALLATION_PACKAGE_SHA256SUMS_01.txt`
     - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01_CANONICAL_INSTALLATION_RECORD.md`
     - `S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01.md`
+    - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md`
+    - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_CANONICAL_INSTALLATION_RECORD.md`
+    Any future K013/K012/K014 authorization material MUST be read only after
+    the two Candidate-04 authorization-graph documents above.
 11. `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`
 12. `implementation_handoffs/local_curl_rev23_i0/SENTINEL_ACCEPTANCE_DECISION.md`
 13. `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
@@ -112,9 +116,25 @@ S2 Candidate 08 Implementation-Source Amendment 01 is accepted as a SPEC-only am
 
 It resolves only the package-layout/path-boundary defect, registry-provenance ambiguity, K015 ordering ambiguity, K016 self-identity ambiguity, and incorrect Appendix-A matrix citation.
 
-Future implementation-source authoring remains unauthorized and requires:
+Candidate 04 is accepted SPEC-only. Package preparation does not install A010.
+Exact canonical installation of the accepted Candidate-04 bytes, followed by
+Sentinel installation verification, would establish A010 as the Markdown raw
+governance artifact under `amendment_governance.v1`. A010 has exactly one graph
+predecessor: K011. The accepted installed Implementation-Source Amendment 01 is
+closed non-edge governance data carried by A010.
 
-`K011 + accepted installed amendment → fresh K013 → fresh K012 → fresh K014 → K015/K016`
+The future chain does not currently exist. After exact A010 installation and
+Sentinel installation verification, it MUST be represented as:
+
+```text
+accepted K011
+  + accepted installed Implementation-Source Amendment 01
+  + accepted and canonically verified A010
+  -> fresh K013
+  -> fresh K012
+  -> fresh K014
+  -> K015/K016
+```
 
 Selected future package: `pm_research.named_binary_probe_s2`.
 Selected future repository directory: `pm_research/named_binary_probe_s2/`.
@@ -146,6 +166,7 @@ Revision 23 with Amendments 01–03 and accepted Finding 4 is the governing SPEC
 - P0 CLOB Candidate 03 diagnostic source: **`STATIC_REVIEW_ACCEPTED`**, **`LOCAL_NON_NETWORK_VALIDATION_CLEAR`**, **`BOUNDED_100_REQUEST_NETWORK_CANARY_CLEAR`**, and **`CANONICAL_REMOTE_INSTALLATION_VERIFIED`**. The source-installation anchor commit is `1a19e1ef715ceca7aef9d55f7aa2446961e13c35`. This establishes only the exact installed diagnostic source and bounded validation state; it does not establish full `37,248`-request viability, an accepted price artifact, P1 readiness, or further execution authority.
 - S2 per-token price-artifact Candidate 08: **ACCEPTED SPECIFICATION** through K010/K011; no S2 Candidate 08 implementation source exists or is accepted; implementation authorization is `NONE`.
 - S2 Candidate 08 Implementation-Source Amendment 01: **ACCEPTED SPEC-ONLY AMENDMENT** after installation of this package; authorization effect `NONE`.
+- S2 Candidate 08 Authorization-Graph Amendment 01 Candidate 04: **ACCEPTED SPEC-ONLY**; exact A010 canonical installation and Sentinel installation verification remain absent; effective registry `167 / 683`, K127 population `60`, unchanged reducer projection; K013/K012/K014/K015/K016 remain unmaterialized; authorization effect `NONE`.
 - Recovered R1 checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` remains exact, evidence-only, `NOT_ACCEPTED`, and non-authorizing.
 - Static checkpoint conformance: **BLOCKED — `REVISION10_STATIC_CONFORMANCE_BLOCKED`**.
 

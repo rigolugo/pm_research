@@ -222,7 +222,7 @@ Accepted future implementation-source facts:
 - namespace package behavior forbidden;
 - `pyproject.toml` changes forbidden for this stage;
 - K016 `/payload/self_identity = null`;
-- future authorization chain: `K011 + accepted installed amendment → fresh K013 → fresh K012 → fresh K014 → K015/K016`.
+- future authorization chain after exact A010 installation and Sentinel verification: `accepted K011 + accepted installed Implementation-Source Amendment 01 + accepted and canonically verified A010 → fresh K013 → fresh K012 → fresh K014 → K015/K016`; the chain does not currently exist.
 
 Exact future source matrix:
 
@@ -249,6 +249,46 @@ Registry/provenance identities:
 - reducer projection: `66232` bytes, SHA-256 `266d540dfd8481cd084d155ae8cb6f08b740f2c4aead70d9d5e5f9c1588da63c`.
 
 No source path under `pm_research/named_binary_probe_s2/` is installed by this documentation package. No S2 Candidate 08 implementation source exists or is accepted. The separate P0 CLOB Candidate 03 diagnostic source package does not alter this S2 state.
+
+## Accepted Candidate-04 authorization-graph amendment — proposed canonical installation
+
+Accepted raw governance artifact:
+
+- proposed canonical path: `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md`;
+- bytes: `135500`;
+- SHA-256: `aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950`;
+- accepted decision: `APPROVE — S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_ACCEPTED_SPEC_ONLY`;
+- profile: `amendment_governance.v1`;
+- proposed node identity: A010;
+- direct predecessor set: exactly `[K011]`;
+- authorization effect: `NONE`.
+
+Proposed canonical installation record:
+
+- `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_CANONICAL_INSTALLATION_RECORD.md`.
+
+Proposed canonical package controls:
+
+- `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_MANIFEST.json`;
+- `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_SHA256SUMS.txt`.
+
+Effective-registry contract:
+
+- immutable base registry: `479463` / `82038603fb5cfd564b8563731e772c03d29c6ff6bdc862040ea26e0463ec97ff`;
+- exact overlay: `45347` / `ae5074afdf35c5424da515e7d61a8113a0f9df2948c294dcdf9d43b98ccd8a9a`;
+- effective bundle: `1266` / `075e27248944c9236d243dc6cdc50b310ff581cd6f1934d1ab8af119763e2c67`;
+- reducer projection: `66232` / `266d540dfd8481cd084d155ae8cb6f08b740f2c4aead70d9d5e5f9c1588da63c`;
+- effective graph: `167 / 683`;
+- K127 population: `60`.
+
+Current package state: Candidate 04 is accepted SPEC-only; package preparation
+is authorized; package review and installation authorization are pending; A010
+is not installed or canonically verified in current `main`; K013, K012, K014,
+K015, and K016 remain unmaterialized; implementation-source authorization is
+`NONE`; no S2 implementation or test source exists or is accepted.
+
+The exact accepted Markdown is the proposed A010 raw artifact. No
+`nodes/A010/artifact.json` is created or required.
 
 ---
 

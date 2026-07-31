@@ -6,37 +6,36 @@
 
 ## Current objective
 
-The current objective is preparation of the documentation-only post-installation verification review package:
+The current authorized activity is preparation of the documentation-only
+canonical-installation review package:
 
-`P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_POST_INSTALLATION_VERIFICATION_DOCUMENTATION_CANDIDATE_01`
+`S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_ONLY_CANONICAL_INSTALLATION_PACKAGE_CANDIDATE_01`
 
 Exact canonical package-authoring base and verified canonical `main`:
 
-`1a19e1ef715ceca7aef9d55f7aa2446961e13c35`
+`90c0059c0e86b7afd44fcf9f17223d68eab1a9e0`
 
-Source-installation anchor commit:
+Authorizations:
 
-`1a19e1ef715ceca7aef9d55f7aa2446961e13c35`
+- Gustavo: `S2_CANDIDATE_04_DOCUMENTATION_ONLY_CANONICAL_INSTALLATION_PACKAGE_PREPARATION_GUSTAVO_AUTHORIZATION_01`;
+- Sentinel: `S2_CANDIDATE_04_DOCUMENTATION_ONLY_CANONICAL_INSTALLATION_PACKAGE_PREPARATION_SENTINEL_AUTHORIZATION_01`;
+- activity: `DOCUMENTATION_ONLY_CANONICAL_INSTALLATION_PACKAGE_PREPARATION_ONLY`.
 
-The package proposes complete replacements for:
+The package proposes exactly eight canonical documentation paths: two new
+Candidate-04 records, four complete documentation replacements, and two new
+canonical control files. It contains no `nodes/A010/artifact.json`.
 
-- `project_context/START_HERE.md`;
-- `project_context/PROJECT_STATE.md`;
-- `project_context/DECISION_LOG.md`;
-- `project_context/ARTIFACT_INDEX.md`;
-- `project_context/P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_INSTALLATION_RECORD_CANDIDATE_01.md`.
-
-It proposes one new canonical verification record:
-
-- `project_context/P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_POST_INSTALLATION_VERIFICATION_RECORD_CANDIDATE_01.md`.
-
-It also contains one Professor-to-Sentinel review handoff and two package-control files. It contains no source, `.gitignore`, test, local-data, empirical-output, raw-response, archive, Git-object, or repository-metadata member.
+Candidate 04 specification acceptance is complete. Package review, package
+installation authorization, branch creation, commit, merge, push, canonical
+installation verification, fresh K013 preparation, implementation-source
+authoring, and test-source authoring remain absent.
 
 Authorization effect:
 
 `NONE`
 
-This package records the accepted finding `CANONICAL_REMOTE_INSTALLATION_VERIFIED` for Candidate 03 and synchronizes stale pre-installation documentation. It does not authorize source changes, tests, imports, execution, another endpoint request, a full diagnostic, S2 construction, P1/P2/P3, scoring, probe execution, gate changes, or any Git write.
+Package preparation is not canonical installation and does not establish A010
+in current canonical `main`.
 
 ---
 
@@ -91,11 +90,22 @@ Accepted Amendment 01 implementation-source facts:
 - accepted Candidate-08 §23 JCS: `479463` bytes / `82038603fb5cfd564b8563731e772c03d29c6ff6bdc862040ea26e0463ec97ff`;
 - reducer projection: `66232` bytes / `266d540dfd8481cd084d155ae8cb6f08b740f2c4aead70d9d5e5f9c1588da63c`.
 
-Future source authoring requires a fresh post-installation chain:
+Candidate 04 is accepted SPEC-only. Its exact canonical installation would
+establish A010 only after separate Sentinel installation verification. The
+future authorization chain does not currently exist and MUST be:
 
-`K011 + accepted installed amendment → fresh K013 → fresh K012 → fresh K014 → K015/K016`
+```text
+accepted K011
+  + accepted installed Implementation-Source Amendment 01
+  + accepted and canonically verified A010
+  -> fresh K013
+  -> fresh K012
+  -> fresh K014
+  -> K015/K016
+```
 
-No stale, pre-amendment, or chat-only K013/K012/K014 may be reused.
+No stale pre-A010, pre-amendment, chat-only, or matrix-mismatched K013, K012,
+or K014 may be reused.
 
 Exact future implementation-source matrix:
 
@@ -115,6 +125,41 @@ Exact future implementation-source matrix:
 | 12 | `pm_research/named_binary_probe_s2/state_reducers.py` | `global_condition_transition_state_reducers` |
 | 13 | `pm_research/named_binary_probe_s2/transition.py` | `stage10_transition_reconciliation` |
 | 14 | `pm_research/named_binary_probe_s2/types.py` | `closed_types_and_jcs` |
+
+### S2 Candidate 08 Authorization-Graph Amendment 01 Candidate 04
+
+Sentinel accepted Candidate 04 as SPEC-only:
+
+`APPROVE — S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_ACCEPTED_SPEC_ONLY`
+
+Exact accepted Markdown identity:
+
+- proposed canonical path: `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md`;
+- byte length: `135500`;
+- SHA-256: `aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950`;
+- serialization: UTF-8, LF-only, no BOM, final newline;
+- authorization effect: `NONE`.
+
+The accepted governance design is exactly one A010 node at rank `1115` under
+closed `amendment_governance.v1`. A010's direct predecessor set is exactly
+`[K011]`. The accepted installed Amendment-01 identity and installation commit
+`e675a47ec2c8f6cd769c2673afc16d96e5622ccd` are closed non-edge governance data.
+No `nodes/A010/artifact.json` is required or permitted by this package.
+
+Effective-registry identities remain:
+
+- immutable base: `479463` / `82038603fb5cfd564b8563731e772c03d29c6ff6bdc862040ea26e0463ec97ff`;
+- exact overlay: `45347` / `ae5074afdf35c5424da515e7d61a8113a0f9df2948c294dcdf9d43b98ccd8a9a`;
+- effective bundle: `1266` / `075e27248944c9236d243dc6cdc50b310ff581cd6f1934d1ab8af119763e2c67`;
+- reducer projection: `66232` / `266d540dfd8481cd084d155ae8cb6f08b740f2c4aead70d9d5e5f9c1588da63c`;
+- effective graph: `167` nodes / `683` direct edges;
+- K127 ordered-evidence population: `60`.
+
+Package preparation does not install or verify A010. K013, K012, K014, K015,
+and K016 remain unmaterialized. Fresh K013 preparation requires exact A010
+canonical installation and separate Sentinel installation verification.
+S2 implementation-source authorization remains `NONE`; no S2 implementation
+or test source exists or is accepted.
 
 ---
 
@@ -367,7 +412,7 @@ Candidate 03 source authoring, the local non-network validation, the bounded net
 
 The validation execution authorization is consumed. Source installation does not authorize another diagnostic, endpoint request, test run, local-data read, full diagnostic, S2 artifact construction, P1/P2/P3, scoring, probe execution, or gate change.
 
-S2 Candidate 08 implementation authorization remains `NONE`. Candidate 02 remains SPEC-only with authorization effect `NONE`.
+S2 Candidate 08 implementation authorization remains `NONE`. Candidate 02 remains SPEC-only with authorization effect `NONE`. Candidate 04 is accepted SPEC-only, but A010 installation verification, fresh K013, K012, K014, K015, and K016 remain absent.
 
 This documentation package authorizes no source or test edit, `.gitignore` change, staging, local commit, push, merge, amend, branch, tag, reset, ref update, test execution, project import or execution, compilation, linting, type checking, coverage, local research-data read, network/API/RPC/vendor/Dune/curl/endpoint activity, raw-response access or copying, raw saving, diagnostic execution, another dry run or canary, full diagnostic, dependency or packaging change, acquisition, S2 artifact construction, price-artifact construction or acceptance, P1/P2/P3, scoring, probe execution, or gate change.
 

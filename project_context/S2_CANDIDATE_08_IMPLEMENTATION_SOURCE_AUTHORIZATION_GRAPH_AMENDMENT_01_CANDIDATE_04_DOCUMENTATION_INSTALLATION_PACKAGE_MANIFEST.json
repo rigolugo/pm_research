@@ -1,0 +1,108 @@
+{
+  "a010_target_state": {
+    "artifact_profile": "amendment_governance.v1",
+    "direct_predecessors": [
+      "K011"
+    ],
+    "rank": 1115,
+    "raw_artifact_path": "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md",
+    "separate_node_json": null,
+    "status_after_exact_installation_and_sentinel_verification": "ACCEPTED_CANONICALLY_VERIFIED_GOVERNANCE_ARTIFACT"
+  },
+  "accepted_candidate_04": {
+    "authorization_effect": "NONE",
+    "byte_length": 135500,
+    "decision": "APPROVE — S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_ACCEPTED_SPEC_ONLY",
+    "logical_path": "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md",
+    "sha256": "aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950"
+  },
+  "authoring_mode": "MATERIALIZE",
+  "authorization_effect": "NONE",
+  "authorized_activity": "DOCUMENTATION_ONLY_CANONICAL_INSTALLATION_PACKAGE_PREPARATION_ONLY",
+  "binding_model": "REVIEW_ZIP_EXTERNAL_SIDECAR_V1",
+  "canonical_control_file_count": 2,
+  "canonical_path_count": 8,
+  "canonical_payload_file_count": 6,
+  "canonical_repository": "rigolugo/pm_research",
+  "control_files": [
+    {
+      "binding": "ROOT_REVIEW_PACKAGE_MANIFEST_AND_LATER_SENTINEL_INSTALLATION_VERIFICATION",
+      "logical_path": "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_MANIFEST.json",
+      "raw_identity": null,
+      "role": "canonical_installation_manifest"
+    },
+    {
+      "binding": "ROOT_REVIEW_PACKAGE_MANIFEST_AND_LATER_SENTINEL_INSTALLATION_VERIFICATION",
+      "checksum_subject_count": 6,
+      "excludes": [
+        "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_MANIFEST.json",
+        "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_SHA256SUMS.txt"
+      ],
+      "logical_path": "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_SHA256SUMS.txt",
+      "raw_identity": null,
+      "role": "canonical_payload_sha256_record"
+    }
+  ],
+  "gustavo_authorization": "S2_CANDIDATE_04_DOCUMENTATION_ONLY_CANONICAL_INSTALLATION_PACKAGE_PREPARATION_GUSTAVO_AUTHORIZATION_01",
+  "package_authoring_base": "90c0059c0e86b7afd44fcf9f17223d68eab1a9e0",
+  "package_id": "S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_ONLY_CANONICAL_INSTALLATION_PACKAGE_CANDIDATE_01",
+  "payload_files": [
+    {
+      "byte_length": 135500,
+      "change_type": "NEW",
+      "logical_path": "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md",
+      "sha256": "aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950"
+    },
+    {
+      "byte_length": 10816,
+      "change_type": "NEW",
+      "logical_path": "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_CANONICAL_INSTALLATION_RECORD.md",
+      "sha256": "e483193bbfe3ef41e56c1c1e32430c5b0775821ad4fecf09d8cb203159e635db"
+    },
+    {
+      "byte_length": 13405,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "logical_path": "project_context/START_HERE.md",
+      "sha256": "a752e49886a3d558fb798eb4aef66c85c42b86068e6e9fe7e4603d537ad4bb10"
+    },
+    {
+      "byte_length": 21063,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "logical_path": "project_context/PROJECT_STATE.md",
+      "sha256": "e5f258b9522c9aac191587db6ebcfd9713be43b6efb62337eefdfbe5e6aa0ba9"
+    },
+    {
+      "byte_length": 16430,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "logical_path": "project_context/DECISION_LOG.md",
+      "sha256": "e8535f42df7834b099a862a9d7e8bfb988cf0cb42a0584097f7393bb50ac52f6"
+    },
+    {
+      "byte_length": 17179,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "logical_path": "project_context/ARTIFACT_INDEX.md",
+      "sha256": "37f9a87e7d0711f0b74b29e8b1a0f7ba60f957605cf93fa14a472a190c1aa259"
+    }
+  ],
+  "remaining_absent": [
+    "PACKAGE_REVIEW_DECISION",
+    "PACKAGE_INSTALLATION_AUTHORIZATION",
+    "BRANCH",
+    "LOCAL_COMMIT",
+    "MERGE",
+    "PUSH",
+    "CANONICAL_INSTALLATION_VERIFICATION",
+    "FRESH_K013_PREPARATION_AUTHORIZATION",
+    "K013",
+    "K012",
+    "K014",
+    "K015",
+    "K016",
+    "IMPLEMENTATION_SOURCE",
+    "TEST_SOURCE"
+  ],
+  "schema_id": "pm_research.documentation_installation_package_manifest.v1",
+  "self_identity": null,
+  "sentinel_authorization": "S2_CANDIDATE_04_DOCUMENTATION_ONLY_CANONICAL_INSTALLATION_PACKAGE_PREPARATION_SENTINEL_AUTHORIZATION_01",
+  "status": "REVIEW_CANDIDATE"
+}
