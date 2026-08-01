@@ -1,0 +1,145 @@
+{
+  "authorization_effect": "NONE",
+  "binding_model": "REVIEW_ZIP_EXTERNAL_SIDECAR_V1",
+  "blocked_predecessor": {
+    "block_reason": "PACKAGE_IDENTITY_MODEL_CONTRADICTION",
+    "package_id": "S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_01",
+    "zip_byte_length": 20542,
+    "zip_sha256": "735efd0ecc850cd957335a6e800fae9fac00d4f37c74947210a71891a6657f01"
+  },
+  "candidate_effect_boundary": {
+    "candidate_preparation_authorizes_implementation": false,
+    "implementation_source_authoring_started": false,
+    "k012_accepted": false,
+    "k012_canonically_installed": false,
+    "k012_canonically_verified": false,
+    "k012_consumable": false,
+    "k014_k015_k016_materialized": false
+  },
+  "canonical_base": "6c891a61e7408f7977b72b2ccf52472412cd7e04",
+  "canonical_repository": "rigolugo/pm_research",
+  "checksum_contract": {
+    "acyclic": true,
+    "excluded_paths": [
+      "project_context/S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_02.txt",
+      "project_context/S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_02.json"
+    ],
+    "included_paths": [
+      "nodes/K012/artifact.json",
+      "project_context/ARTIFACT_INDEX.md",
+      "project_context/DECISION_LOG.md",
+      "project_context/PROJECT_STATE.md",
+      "project_context/START_HERE.md",
+      "review_only/CHANGED_PATH_MATRIX_S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_02.csv",
+      "review_only/HANDOFF_PROFESSOR_S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_02.md"
+    ],
+    "record_path": "project_context/S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_02.txt",
+    "verified_subject_count": 7
+  },
+  "correction_boundary": [
+    "CORRECT_FALSE_MANIFEST_SELF_EXCLUSION_DESCRIPTION",
+    "PRESERVE_K012_BYTES_EXACTLY",
+    "REGENERATE_AFFECTED_DERIVATIVE_IDENTITIES"
+  ],
+  "identity_model": {
+    "canonical_manifest_inventories_every_zip_member_including_itself": true,
+    "canonical_manifest_self_member": {
+      "byte_length": null,
+      "path": "project_context/S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_02.json",
+      "self_identity": null,
+      "sha256": null
+    },
+    "canonical_manifest_top_level_self_identity": null,
+    "checksum_inventory_excludes": [
+      "project_context/S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_02.txt",
+      "project_context/S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_02.json"
+    ],
+    "external_zip_sha256_sidecar_binds_final_zip_bytes": true,
+    "identity_graph_acyclic": true,
+    "self_excluding_manifest_model": false
+  },
+  "k012_candidate": {
+    "artifact_profile_id": "sentinel_authorization.v1",
+    "byte_length": 3449,
+    "direct_predecessors": [
+      "K011",
+      "A010",
+      "K013"
+    ],
+    "embedded_contract_commit": "0b755fb71175370638ec87175aee85cf4710f54d",
+    "logical_path": "nodes/K012/artifact.json",
+    "node_id": "K012",
+    "rank": 1130,
+    "schema_id": "pm_research.s2.sentinel_authorization.v1",
+    "semantic_role": "sentinel_implementation_source_authorization",
+    "sha256": "be5417097bd3f09a12a4b5092eacdaf85c81562d88c299b75e2fab4101f1e45c",
+    "status": "REVIEW_CANDIDATE_NOT_CONSUMABLE"
+  },
+  "members": [
+    {
+      "byte_length": 3449,
+      "classification": "SUBSTANTIVE_CANDIDATE",
+      "path": "nodes/K012/artifact.json",
+      "sha256": "be5417097bd3f09a12a4b5092eacdaf85c81562d88c299b75e2fab4101f1e45c"
+    },
+    {
+      "byte_length": 6370,
+      "classification": "SUBSTANTIVE_CANDIDATE",
+      "path": "project_context/ARTIFACT_INDEX.md",
+      "sha256": "e9661d9d23a0652d70d89024a1b619744a9afc6a88de4d7a56190b84a840261b"
+    },
+    {
+      "byte_length": 5879,
+      "classification": "SUBSTANTIVE_CANDIDATE",
+      "path": "project_context/DECISION_LOG.md",
+      "sha256": "95a8c09f859d4738db6a647f53717123768b655046e54f72ec79f575e9998ccb"
+    },
+    {
+      "byte_length": 6861,
+      "classification": "SUBSTANTIVE_CANDIDATE",
+      "path": "project_context/PROJECT_STATE.md",
+      "sha256": "7aa9f1da12aca95ef30551b4ef130381ed7a045d1d3a076aa9c37f97f0ed456b"
+    },
+    {
+      "byte_length": 1615,
+      "classification": "PACKAGE_CONTROL",
+      "path": "project_context/S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_02.txt",
+      "sha256": "88bd7657dce927836e9a91620bc84b400296f9b7dff91a0623314aafa487e215"
+    },
+    {
+      "byte_length": 8182,
+      "classification": "SUBSTANTIVE_CANDIDATE",
+      "path": "project_context/START_HERE.md",
+      "sha256": "9aca783495466aebcafa83c03bbb01bb1b92dd3fbea1fe1a43ab10df92729b0b"
+    },
+    {
+      "byte_length": 1879,
+      "classification": "REVIEW_ONLY",
+      "path": "review_only/CHANGED_PATH_MATRIX_S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_02.csv",
+      "sha256": "5413a0632e9cfa21f022e723067eef979c617467d797d41d47962be6350822c9"
+    },
+    {
+      "byte_length": 6411,
+      "classification": "REVIEW_ONLY",
+      "path": "review_only/HANDOFF_PROFESSOR_S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_02.md",
+      "sha256": "928c3d36e236e8305ab712e77039a23ba0ed80f1c58c5260da5a084a1136bec0"
+    },
+    {
+      "byte_length": null,
+      "classification": "PACKAGE_CONTROL",
+      "identity_binding": "FINAL_ZIP_AND_EXTERNAL_SHA256_SIDECAR",
+      "path": "project_context/S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_02.json",
+      "self_identity": null,
+      "sha256": null
+    }
+  ],
+  "package_id": "S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_02",
+  "proposed_canonical_member_count": 7,
+  "requested_sentinel_decision": "APPROVE — S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_CANDIDATE_01_ACCEPTED",
+  "review_only_member_count": 2,
+  "schema_id": "pm_research.documentation_governance_package_manifest.v1",
+  "self_identity": null,
+  "status": "REVIEW_CANDIDATE_NOT_INSTALLED",
+  "substantive_candidate_count": 5,
+  "task_classification": "K012_DOCUMENTATION_GOVERNANCE_CANDIDATE_PREPARATION_ONLY"
+}
