@@ -1,0 +1,108 @@
+{
+  "authorization_effect": "NONE",
+  "candidate_effect_boundary": {
+    "candidate_preparation_authorizes_implementation": false,
+    "downstream_nodes_materialized": [],
+    "implementation_source_authoring_started": false,
+    "k012_k014_k015_k016_authorized": false,
+    "k013_accepted": false,
+    "k013_canonically_installed": false,
+    "k013_canonically_verified": false,
+    "k013_consumable": false
+  },
+  "canonical_base": "0b755fb71175370638ec87175aee85cf4710f54d",
+  "canonical_repository": "rigolugo/pm_research",
+  "checksum_contract": {
+    "acyclic": true,
+    "excluded_paths": [
+      "project_context/S2_CANDIDATE_08_K013_GUSTAVO_IMPLEMENTATION_SOURCE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_01.json",
+      "project_context/S2_CANDIDATE_08_K013_GUSTAVO_IMPLEMENTATION_SOURCE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_01.txt"
+    ],
+    "included_paths": [
+      "nodes/K013/artifact.json",
+      "project_context/START_HERE.md",
+      "project_context/PROJECT_STATE.md",
+      "project_context/DECISION_LOG.md",
+      "project_context/ARTIFACT_INDEX.md"
+    ],
+    "record_path": "project_context/S2_CANDIDATE_08_K013_GUSTAVO_IMPLEMENTATION_SOURCE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_01.txt",
+    "verified_payload_count": 5
+  },
+  "members": [
+    {
+      "byte_length": 3099,
+      "change_type": "NEW",
+      "classification": "SUBSTANTIVE_PAYLOAD",
+      "path": "nodes/K013/artifact.json",
+      "sha256": "e6ff152bf10d1f828ed0f9267ff3ea5a1ac7efc7cedc5866879cc958b108f32c"
+    },
+    {
+      "base_git_blob_sha": "a02d2b3252e8c0f299fd925753829384c2eb9cdf",
+      "byte_length": 9714,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "classification": "SUBSTANTIVE_PAYLOAD",
+      "path": "project_context/START_HERE.md",
+      "sha256": "ec85a508cb8506b9cbb68a8f83da7c38ef6d737eb1114f6acbf2a6e377945177"
+    },
+    {
+      "base_git_blob_sha": "77aae48dd9760d31dc0e13e249e77e5e1de226e1",
+      "byte_length": 11333,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "classification": "SUBSTANTIVE_PAYLOAD",
+      "path": "project_context/PROJECT_STATE.md",
+      "sha256": "f1c8a4cf7304d4501c0d5e1cf83b530afcee6bb1f26b19438d9eae60fd780533"
+    },
+    {
+      "base_git_blob_sha": "e77b3f0f99a54fe90f4a5c4d38a67988947f106a",
+      "byte_length": 10577,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "classification": "SUBSTANTIVE_PAYLOAD",
+      "path": "project_context/DECISION_LOG.md",
+      "sha256": "f0bfd16d987d318f48565683651839224cfa6331555623d11b68bf03b17af33d"
+    },
+    {
+      "base_git_blob_sha": "2ed5cb2061d7391e6fa7c53fa9a490d1e0ba0ebf",
+      "byte_length": 9446,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "classification": "SUBSTANTIVE_PAYLOAD",
+      "path": "project_context/ARTIFACT_INDEX.md",
+      "sha256": "79c0ae880aa2fafef8b4e2fc463f265e0e18ae19a48f7a947b9d5759f30e983c"
+    },
+    {
+      "byte_length": null,
+      "change_type": "NEW",
+      "classification": "PACKAGE_CONTROL",
+      "identity_binding": "ROOT_REVIEW_MANIFEST_AND_EXTERNAL_ZIP_SIDECAR",
+      "path": "project_context/S2_CANDIDATE_08_K013_GUSTAVO_IMPLEMENTATION_SOURCE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_01.json",
+      "self_identity": null,
+      "sha256": null
+    },
+    {
+      "byte_length": 575,
+      "change_type": "NEW",
+      "classification": "PACKAGE_CONTROL",
+      "path": "project_context/S2_CANDIDATE_08_K013_GUSTAVO_IMPLEMENTATION_SOURCE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_01.txt",
+      "sha256": "41f45730459f82e2e7219a43d6c32fdeee042daf5af9a623d6ce15b6fb2114ab"
+    }
+  ],
+  "package_control_count": 2,
+  "package_id": "S2_CANDIDATE_08_K013_GUSTAVO_IMPLEMENTATION_SOURCE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_01",
+  "proposed_canonical_member_count": 7,
+  "replacement_base_git_blobs": {
+    "project_context/ARTIFACT_INDEX.md": "2ed5cb2061d7391e6fa7c53fa9a490d1e0ba0ebf",
+    "project_context/DECISION_LOG.md": "e77b3f0f99a54fe90f4a5c4d38a67988947f106a",
+    "project_context/PROJECT_STATE.md": "77aae48dd9760d31dc0e13e249e77e5e1de226e1",
+    "project_context/START_HERE.md": "a02d2b3252e8c0f299fd925753829384c2eb9cdf"
+  },
+  "requested_sentinel_decision": "APPROVE — S2_CANDIDATE_08_K013_GUSTAVO_IMPLEMENTATION_SOURCE_AUTHORIZATION_CANDIDATE_01_ACCEPTED",
+  "schema_id": "pm_research.documentation_governance_package_manifest.v1",
+  "self_identity": null,
+  "status": "REVIEW_CANDIDATE_NOT_INSTALLED",
+  "strongest_alternative_interpretation": {
+    "disposition": "REJECTED",
+    "interpretation": "The existence of proposed K013 bytes immediately authorizes implementation-source authoring.",
+    "reason": "K013 is a non-consumable review candidate; Sentinel acceptance, separately authorized installation, exact installed identity verification, fresh K012, fresh K014, and every remaining activity boundary are prerequisites."
+  },
+  "substantive_payload_count": 5,
+  "task_classification": "DOCUMENTATION_GOVERNANCE_CANDIDATE_PREPARATION_ONLY"
+}

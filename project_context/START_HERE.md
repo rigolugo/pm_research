@@ -6,15 +6,11 @@
 
 ## Rule 0 — canonical source
 
-The private GitHub repository is authoritative:
+The private canonical repository is:
 
 `rigolugo/pm_research`
 
-Old chats, memory, uploaded duplicates, archived files, and the public context
-mirror are non-authoritative. If they conflict with the private repository, the
-private repository wins.
-
-The public mirror `rigolugo/pm_research_context` is context-only.
+Old chats, memory, uploaded duplicates, archived files, and public mirrors are non-authoritative. Exact canonical paths, bytes, hashes, schemas, decisions, and authorization records control.
 
 ---
 
@@ -32,24 +28,7 @@ Read these before doing anything:
 8. `PRICE_INPUT_CONTRACT_named_binary_probe.md`
 9. `SPEC_named_binary_probe.md`
 10. The accepted price-source specifications and result handoffs relevant to the task.
-    For S1 CLOB `/prices-history`, read in this order without omitting the
-    historical method-qualified negative:
-    - `SPEC_price_source_s1_coverage.md`
-    - `HANDOFF_orchestrator_price_source_s1_pass1_IMPLEMENTATION.md`
-    - `HANDOFF_orchestrator_s1_pass1_parse_ts_patch.md`
-    - `HANDOFF_orchestrator_s1_pass1_nan_and_progress_patch.md`
-    - `HANDOFF_orchestrator_s1_pass1_request_window_fix.md`
-    - `HANDOFF_orchestrator_s1_pass1_request_window_diagnostics.md`
-    - `HANDOFF_orchestrator_s1_pass1_invalid_decision_window.md`
-    - `HANDOFF_orchestrator_s1_parse_ts_millisecond_utc.md`
-    - `HANDOFF_orchestrator_s1_pass1_RESULT.md`
-    - `S1_PRICE_SOURCE_REVALIDATION_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02.md`
-    For the accepted P0 CLOB canary evidence, network-sensitivity finding, and
-    Candidate 03 source-installation lifecycle, read:
-    - `P0_CLOB_CANARY_NETWORK_SENSITIVITY_CANONICAL_RECORD_CANDIDATE_01.md`
-    - `P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_INSTALLATION_RECORD_CANDIDATE_01.md`
-    - `P0_CLOB_CANARY_IMPLEMENTATION_SOURCE_POST_INSTALLATION_VERIFICATION_RECORD_CANDIDATE_01.md`
-    For the accepted S2 per-token price-artifact specification layer, read:
+11. For S2 Candidate 08, read in this exact order:
     - `S2_PER_TOKEN_PRICE_ARTIFACT_A002_ACCEPTED_CONTROLLING_ARCHITECTURE_SET_RECORD_CANDIDATE_01.md`
     - `S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08.md`
     - `HANDOFF_PROFESSOR_S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_REVIEW.md`
@@ -64,137 +43,130 @@ Read these before doing anything:
     - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_MANIFEST.json`
     - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_SHA256SUMS.txt`
     - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_POST_INSTALLATION_VERIFICATION_RECORD_CANDIDATE_01.md`
-    Any future K013/K012/K014 authorization material MUST be read only after
-    all Candidate-04 authorization-graph and installation-verification
-    documents above.
-11. `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`
-12. `implementation_handoffs/local_curl_rev23_i0/SENTINEL_ACCEPTANCE_DECISION.md`
-13. `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
-14. Historical Revision 08 authorization evidence: `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/README_FIRST.md`
-15. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/SENTINEL_IMPLEMENTATION_AUTHORIZATION.md`
-16. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/AUTHORIZATION_MANIFEST.json`
-17. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/AUTHORIZED_FILE_MATRIX.md`
-18. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/ACTIVITY_BOUNDARIES.md`
-19. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a/SOURCE_GATE.md`
-    Historical Revision 09 R1 authorization evidence — does not carry forward:
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/README_FIRST.md`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SENTINEL_AUTHORIZATION_DECISION.md`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SENTINEL_ACTIVATION_VERIFICATION.md`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/AUTHORIZATION_MANIFEST.json`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/AUTHORIZED_FILE_MATRIX.md`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/REV23_FINDING4_I0A_R1_TWELVE_PATH_BASELINE_SHA256SUMS.txt`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/ACTIVITY_BOUNDARIES.md`
-    - `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision09_r1_source_resume_01/SOURCE_GATE.md`
-20. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/README_FIRST.md`
-    Revision 10 controlling insert, before historical revisions:
-    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION.md`
-    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_INSTALLATION_VERIFICATION_REVISION_10.md`
-    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST.json`
-    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_10/README_FIRST.md`
-    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_09.md`
-    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST_REVISION_09.json`
-    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_09/README_FIRST.md`
-    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/SENTINEL_SCOPE_ACCEPTANCE_DECISION_REVISION_08.md`
-    - `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/ACCEPTED_SCOPE_MANIFEST_REVISION_08.json`
-21. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/accepted_scope_revision_08/README_FIRST.md`
-22. `implementation_handoffs/local_curl_rev23_i0/accepted_contract/GOVERNING_PACKAGE_MANIFEST_REV23.json`
-23. `implementation_handoffs/local_curl_rev23_i0/implementation_checkpoints/README_FIRST.md`
-24. `implementation_handoffs/local_curl_rev23_i0/remediation_scope/README_FIRST.md`
-25. `implementation_handoffs/local_curl_rev23_i0/provenance_audit/rev23_finding4_i0a_current_twelve_path_worktree_capture_01/README_FIRST.md`
-26. `implementation_handoffs/local_curl_rev23_i0/scope_authoring/rev23_finding4_i0a/starting_state_amendment_revision_10/README_FIRST.md`
-27. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_candidate04_workspace_preparation_01/README_FIRST.md`
-28. `implementation_handoffs/local_curl_rev23_i0/authorization_audit/rev23_finding4_i0a_revision10_remediation_source_01/README_FIRST.md`
-29. The remaining files required by the handoff, authorization, accepted-scope, selected-checkpoint, remediation-scope, provenance-capture, accepted starting-state amendment, and accepted Candidate 05 workspace-preparation package read orders.
+    - `../nodes/K013/artifact.json` only after the exact Candidate-04 and A010 verification material above.
+12. For Revision 23 / Finding 4, enter through `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md` and follow every nested accepted read order.
+13. Follow every additional handoff, accepted-scope, checkpoint, remediation, provenance-capture, starting-state, workspace-preparation, and authorization read order referenced by the governing entry points.
 
 ---
 
-## Current S2 Candidate 08 amendment state
+## Current S2 Candidate 08 authorization state
 
-S2 Candidate 08 Implementation-Source Amendment 01 is accepted and canonically installed as a SPEC-only amendment. Exact installed amendment identity:
+Candidate 08 is accepted through K011. The installed Implementation-Source Amendment 01 remains SPEC-only. Candidate-04 is accepted SPEC-only and canonically installed at:
 
-- path: `project_context/S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01.md`;
-- byte length: `24599`;
-- SHA-256: `8b60bbc0f3390c0b2d1a336b33d2c2f1dc54846e1f2906aff58639dad1defd63`;
-- Sentinel decision: `APPROVE — S2 Candidate 08 Implementation-Source Amendment 01 accepted as a SPEC-only amendment`;
-- authorization effect: `NONE`.
+`a34636a89ec6ba557764cb32cbb0deed5b46df94`
 
-It resolves only the package-layout/path-boundary defect, registry-provenance ambiguity, K015 ordering ambiguity, K016 self-identity ambiguity, and incorrect Appendix-A matrix citation.
+The exact installed Candidate-04 Markdown is the A010 raw governance artifact:
 
-Candidate 04 is accepted SPEC-only and its exact Markdown bytes are installed
-in canonical `main` at commit
-`a34636a89ec6ba557764cb32cbb0deed5b46df94`, directly above parent
-`90c0059c0e86b7afd44fcf9f17223d68eab1a9e0`. The bounded Git finding is
-`CANDIDATE_04_CANONICAL_GIT_INSTALLATION_COMPLETE`.
+- path: `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md`;
+- byte length: `135500`;
+- SHA-256: `aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950`;
+- profile: `amendment_governance.v1`;
+- rank: `1115`;
+- direct predecessors: exactly `[K011]`;
+- separate `nodes/A010/artifact.json`: prohibited and absent.
 
-The installed Markdown is the A010 raw governance artifact under
-`amendment_governance.v1`. A010 has rank `1115` and exactly one graph
-predecessor: K011. The accepted installed Implementation-Source Amendment 01 is
-closed non-edge governance data carried by A010. No `nodes/A010/artifact.json`
-exists or is required.
+Sentinel accepted `A010_CANONICAL_INSTALLATION_VERIFIED` at exact canonical verification commit:
 
-The post-installation verification documentation package remains a review
-candidate. A010 downstream consumption remains blocked until Sentinel accepts
-that package and later verifies its exact canonical installation. The requested
-finding is `ACCEPT FINDING — A010_CANONICAL_INSTALLATION_VERIFIED`; Professor
-does not issue that decision.
+`0b755fb71175370638ec87175aee85cf4710f54d`
 
-The future chain does not currently exist. Only after the post-installation
-verification package is accepted and its exact canonical installation is
-verified may it be represented as:
+The authoritative K011 identity is:
 
-```text
-accepted K011
-  + accepted installed Implementation-Source Amendment 01
-  + accepted and canonically verified A010
-  -> fresh K013
-  -> fresh K012
-  -> fresh K014
-  -> K015/K016
-```
+- path: `nodes/K011/artifact.json`;
+- byte length: `1134`;
+- SHA-256: `4f3f044d78d6ddc95d2c21dba3257f459e15810acc27f27cd36a1f2d8b0f2649`.
 
-Selected future package: `pm_research.named_binary_probe_s2`.
-Selected future repository directory: `pm_research/named_binary_probe_s2/`.
-Future matrix: exactly fourteen files under that directory.
-Forbidden for this stage: `src/` layout, namespace package behavior, `pyproject.toml` changes.
-K016 `/payload/self_identity = null`.
+Fresh proposed K013 Candidate 01 now exists only as a sealed review-package member:
 
----
+- path: `nodes/K013/artifact.json`;
+- byte length: `3099`;
+- SHA-256: `e6ff152bf10d1f828ed0f9267ff3ea5a1ac7efc7cedc5866879cc958b108f32c`;
+- profile: `gustavo_authorization.v1`;
+- rank: `1120`;
+- semantic role: `gustavo_implementation_source_authorization`;
+- exact direct predecessors: `[K011, A010]`;
+- status: `REVIEW_CANDIDATE_NOT_CONSUMABLE`;
+- authorization effect of candidate preparation: `NONE`.
 
-## Current canonical contract
+K013's proposed future scope is implementation-source authoring only for the exact accepted fourteen-file matrix. Candidate preparation itself does not activate that scope.
 
-Revision 23 with Amendments 01–03 and accepted Finding 4 is the governing SPEC-ONLY contract. The installed contract and Finding 4 audit trail live under:
+K013 has no independently consumable implementation effect until all of the following occur:
 
-`project_context/implementation_handoffs/local_curl_rev23_i0/`
+1. Sentinel accepts the exact K013 bytes;
+2. Gustavo separately authorizes canonical installation where required;
+3. the exact installed K013 identity is canonically verified;
+4. fresh K012 is created after the exact K013 bytes exist;
+5. fresh K014 binds K011, A010, K013, and K012;
+6. every remaining activity boundary is separately authorized.
+
+K012, K014, K015, and K016 remain unmaterialized and unauthorized.
 
 ---
 
-## Current project state
+## Exact future implementation-source matrix
+
+The package model remains a regular package at `pm_research/named_binary_probe_s2`. A `src/` layout, namespace-package redesign, `pyproject.toml` modification, additional implementation path, or matrix reduction is forbidden.
+
+| # | Path | Role | Language | Required |
+|---:|---|---|---|---|
+| 1 | `pm_research/named_binary_probe_s2/__init__.py` | `package_export` | `PYTHON` | `true` |
+| 2 | `pm_research/named_binary_probe_s2/acquisition.py` | `independent_token_acquisition_and_raw_closure` | `PYTHON` | `true` |
+| 3 | `pm_research/named_binary_probe_s2/alignment.py` | `accepted_policy_alignment` | `PYTHON` | `true` |
+| 4 | `pm_research/named_binary_probe_s2/audit.py` | `nineteen_audit_closures_and_gate` | `PYTHON` | `true` |
+| 5 | `pm_research/named_binary_probe_s2/construction.py` | `scientific_construction_and_deduplication` | `PYTHON` | `true` |
+| 6 | `pm_research/named_binary_probe_s2/prices_history_contract.py` | `endpoint_response_terminal_and_retry_contract` | `PYTHON` | `true` |
+| 7 | `pm_research/named_binary_probe_s2/rebuild.py` | `isolated_rebuild_and_byte_comparison` | `PYTHON` | `true` |
+| 8 | `pm_research/named_binary_probe_s2/request_plan.py` | `deterministic_request_plan` | `PYTHON` | `true` |
+| 9 | `pm_research/named_binary_probe_s2/s4_inputs.py` | `s4_input_parsers_and_reconciliation` | `PYTHON` | `true` |
+| 10 | `pm_research/named_binary_probe_s2/safe_span.py` | `safe_span_classifier_and_reducer` | `PYTHON` | `true` |
+| 11 | `pm_research/named_binary_probe_s2/schema_registry.py` | `schema_registry_and_edge_derivation` | `PYTHON` | `true` |
+| 12 | `pm_research/named_binary_probe_s2/state_reducers.py` | `global_condition_transition_state_reducers` | `PYTHON` | `true` |
+| 13 | `pm_research/named_binary_probe_s2/transition.py` | `stage10_transition_reconciliation` | `PYTHON` | `true` |
+| 14 | `pm_research/named_binary_probe_s2/types.py` | `closed_types_and_jcs` | `PYTHON` | `true` |
+
+---
+
+## Required lifecycle state
+
+1. Candidate-04 specification acceptance is complete.
+2. Candidate-04 canonical installation at `a34636a89ec6ba557764cb32cbb0deed5b46df94` is complete.
+3. Sentinel's accepted finding `A010_CANONICAL_INSTALLATION_VERIFIED` is bound to exact canonical verification commit `0b755fb71175370638ec87175aee85cf4710f54d`.
+4. Fresh K013 Candidate 01 has been prepared only as a review candidate.
+5. K013 is not accepted, canonically installed, canonically verified, effective, consumable, or independently implementation-authorizing.
+6. K012, K014, K015, and K016 remain unmaterialized and unauthorized.
+7. Implementation-source authoring has not begun and is not authorized by candidate preparation.
+8. Test-source authoring, tests, project imports, local research-data access, subprocess execution, networking, vendor/API/RPC/Polymarket access, empirical execution, artifact generation, and canonical or Git activity remain unauthorized.
+9. The exact fourteen-file implementation matrix and all accepted architectural restrictions remain unchanged.
+10. `named_binary_probe_blocked = true`.
+11. P1 remains blocked.
+12. P2 and P3 remain unauthorized.
+13. `yes_price`, `1 - price`, `1 - yes_price`, and any complement synthesis remain prohibited.
+
+---
+
+## Current research gates
 
 - P0 preflight: **ACCEPTED — `P0_CLEAR`**.
-- P0 representativeness audit: **ACCEPTED — `P0_REPRESENTATIVENESS_CLEAR_WITH_LIMITATIONS`**.
-- P1 feature assembly: **BLOCKED** on an accepted per-side/token-identity decision-time price source.
-- P2, P3, scoring, and probe execution: **UNAUTHORIZED**.
+- Final P0 eligible universe: `39,693`.
+- P0 representativeness: **ACCEPTED — `P0_REPRESENTATIVENESS_CLEAR_WITH_LIMITATIONS`**.
+- P1: **BLOCKED** on an accepted per-side, token-identity decision-time price artifact.
+- P2 and P3: **UNAUTHORIZED**.
+- Scoring and probe execution: **UNAUTHORIZED**.
 - `named_binary_probe_blocked = true`.
-- `yes_price`, `1 - price`, and `1 - yes_price` must not be used to synthesize named-binary sides.
-- S1 CLOB `/prices-history`: historical `interval=max`, fidelity-omitted method: `S1_SOURCE_NOT_VIABLE`; revised `fidelity=1`, interval-omitted method: `S1_SOURCE_VIABLE` only for the existing stratified Pass-1 sample and reviewed EC2 route. This is not full-universe validation; no price artifact is accepted.
-- P0 CLOB `/prices-history` historical dry-run and two bounded 100-request canaries: **ACCEPTED EVIDENCE** attributed to historical script SHA-256 `4dd784d3bd5e636ba05e0bd13702f6b24f3e03206d45881a2d6de88bfedcac00` at historical base `e675a47ec2c8f6cd769c2673afc16d96e5622ccd`. The repeat canary supports network/environment sensitivity and shows the route is not dead. P0-scale source viability remains **NOT ESTABLISHED**.
-- P0 CLOB Candidate 02 failure-characterization design: **ACCEPTED SPEC-ONLY**; authorization effect `NONE`.
-- P0 CLOB Candidate 03 diagnostic source: **`STATIC_REVIEW_ACCEPTED`**, **`LOCAL_NON_NETWORK_VALIDATION_CLEAR`**, **`BOUNDED_100_REQUEST_NETWORK_CANARY_CLEAR`**, and **`CANONICAL_REMOTE_INSTALLATION_VERIFIED`**. The source-installation anchor commit is `1a19e1ef715ceca7aef9d55f7aa2446961e13c35`. This establishes only the exact installed diagnostic source and bounded validation state; it does not establish full `37,248`-request viability, an accepted price artifact, P1 readiness, or further execution authority.
-- S2 per-token price-artifact Candidate 08: **ACCEPTED SPECIFICATION** through K010/K011; no S2 Candidate 08 implementation source exists or is accepted; implementation authorization is `NONE`.
-- S2 Candidate 08 Implementation-Source Amendment 01: **ACCEPTED AND CANONICALLY INSTALLED SPEC-ONLY AMENDMENT**; authorization effect `NONE`.
-- S2 Candidate 08 Authorization-Graph Amendment 01 Candidate 04: **ACCEPTED SPEC-ONLY AND CANONICALLY INSTALLED** at `a34636a89ec6ba557764cb32cbb0deed5b46df94`; bounded finding `CANDIDATE_04_CANONICAL_GIT_INSTALLATION_COMPLETE`; post-installation finding `A010_CANONICAL_INSTALLATION_VERIFIED` remains requested and not self-approved; A010 downstream consumption, fresh K013, and K012/K014/K015/K016 remain blocked or unauthorized; effective graph `167 / 683`, K127 population `60`, unchanged reducer projection; authorization effect `NONE`.
-- Recovered R1 checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` remains exact, evidence-only, `NOT_ACCEPTED`, and non-authorizing.
-- Static checkpoint conformance: **BLOCKED — `REVISION10_STATIC_CONFORMANCE_BLOCKED`**.
+- `yes_price`, `1 - price`, `1 - yes_price`, and complement synthesis are prohibited.
+- Historical S1 `interval=max`, fidelity-omitted method: `S1_SOURCE_NOT_VIABLE`.
+- Revised `fidelity=1`, interval-omitted method: `S1_SOURCE_VIABLE` only for the existing stratified Pass-1 sample and reviewed EC2 route; not full-universe validation and not price-artifact acceptance.
+- No S2 per-token price artifact is accepted.
 
 ---
 
 ## Working discipline
 
 - Verify exact paths, bytes, hashes, schemas, and authorization boundaries.
-- Passing tests do not prove correctness when tests encode the wrong contract.
-- Specification acceptance does not authorize implementation.
-- Implementation acceptance does not authorize tests or execution.
-- Canonical project-document changes are prepared as complete files and uploaded manually by Gustavo.
-- Claude must not edit canonical project-context files.
-- Never silently reverse a settled decision or reactivate superseded material.
-- Revision 10 and S2 Candidate 08 remain specification-only until separate Gustavo authorization and Sentinel handoff.
+- Candidate preparation, package sealing, checksum validation, specification acceptance, or documentation installation does not authorize implementation.
+- Implementation-source authorization does not authorize tests, imports, data access, networking, execution, or downstream stages.
+- Canonical changes are prepared as complete candidate files for Sentinel review and Gustavo-controlled installation.
+- Professor does not approve its own work.
+- Claude receives only Sentinel-accepted and Gustavo-authorized scope.
+- Never silently reverse a settled decision or reopen a closed finding.
+
+Requested Sentinel decision: APPROVE — S2_CANDIDATE_08_K013_GUSTAVO_IMPLEMENTATION_SOURCE_AUTHORIZATION_CANDIDATE_01_ACCEPTED
