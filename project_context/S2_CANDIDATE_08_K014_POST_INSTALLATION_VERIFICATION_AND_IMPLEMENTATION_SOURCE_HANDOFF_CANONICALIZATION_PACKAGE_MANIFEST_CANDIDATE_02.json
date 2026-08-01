@@ -1,0 +1,204 @@
+{
+  "authorization_effect": "NONE",
+  "binding_model": "REVIEW_ZIP_EXTERNAL_SIDECAR_V1",
+  "blocked_predecessor": {
+    "block_reason": "MISSING_EXPLICIT_NORMATIVE_MATRIX_AUTHORITY_SECTION",
+    "package_id": "S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_CANDIDATE_01",
+    "zip_byte_length": 31049,
+    "zip_sha256": "a2be53dae9b23990a3a80ba5550c99bb2152989c215df4be89212f964adaa337"
+  },
+  "candidate_effect_boundary": {
+    "bounded_implementation_handoff_installed": false,
+    "canonicalization_package_installed_and_verified": false,
+    "implementation_source_authoring_started": false,
+    "implementation_source_consumable_from_candidate_preparation": false,
+    "k014_accepted": true,
+    "k014_canonically_installed": true,
+    "k014_canonically_verified": true,
+    "k015_materialized": false,
+    "k016_materialized": false,
+    "verification_record_installed": false
+  },
+  "canonical_base": "fc16e9124acb8acb490975c7289d8199b84f2c25",
+  "canonical_repository": "rigolugo/pm_research",
+  "checksum_contract": {
+    "acyclic": true,
+    "excluded_paths": [
+      "project_context/S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_SHA256SUMS_CANDIDATE_02.txt",
+      "project_context/S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_MANIFEST_CANDIDATE_02.json"
+    ],
+    "included_paths": [
+      "project_context/S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_RECORD_CANDIDATE_01.md",
+      "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORING_BOUNDED_SENTINEL_HANDOFF_RECORD_CANDIDATE_01.md",
+      "project_context/START_HERE.md",
+      "project_context/PROJECT_STATE.md",
+      "project_context/DECISION_LOG.md",
+      "project_context/ARTIFACT_INDEX.md",
+      "review_only/HANDOFF_PROFESSOR_S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_CANDIDATE_02.md",
+      "review_only/CHANGED_PATH_MATRIX_S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_CANDIDATE_02.csv"
+    ],
+    "record_path": "project_context/S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_SHA256SUMS_CANDIDATE_02.txt",
+    "verified_subject_count": 8
+  },
+  "correction_boundary": [
+    "ADD_EXPLICIT_NORMATIVE_MATRIX_AUTHORITY_SECTION",
+    "REGENERATE_ONLY_AFFECTED_DERIVATIVE_IDENTITIES"
+  ],
+  "future_activation_boundary": {
+    "continuing_network_authorization": false,
+    "data_or_empirical_authorization": false,
+    "downstream_authorization": false,
+    "git_write_authorization": false,
+    "permitted_after_activation": [
+      "EXACT_FOURTEEN_FILE_IMPLEMENTATION_SOURCE_AUTHORING",
+      "NON_EXECUTING_SOURCE_BYTE_LENGTH_AND_SHA256_COMPUTATION",
+      "STATIC_TEXT_SCHEMA_IDENTITY_INSPECTION",
+      "K015_AFTER_FINAL_SOURCE_BYTES",
+      "K016_AFTER_VALID_K015_BYTES"
+    ],
+    "project_import_authorization": false,
+    "requires_exact_canonical_installation": true,
+    "requires_independent_installation_verification": true,
+    "requires_package_sentinel_acceptance": true,
+    "requires_separate_gustavo_installation_authorization": true,
+    "subprocess_authorization": false,
+    "test_authorization": false
+  },
+  "identity_model": {
+    "canonical_manifest_inventories_every_zip_member_including_itself": true,
+    "canonical_manifest_self_member": {
+      "byte_length": null,
+      "path": "project_context/S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_MANIFEST_CANDIDATE_02.json",
+      "self_identity": null,
+      "sha256": null
+    },
+    "canonical_manifest_top_level_self_identity": null,
+    "checksum_inventory_excludes": [
+      "project_context/S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_SHA256SUMS_CANDIDATE_02.txt",
+      "project_context/S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_MANIFEST_CANDIDATE_02.json"
+    ],
+    "external_zip_sha256_sidecar_binds_final_zip_bytes": true,
+    "identity_graph_acyclic": true
+  },
+  "k014_installed_identity": {
+    "artifact_profile_id": "activity_root.v1",
+    "byte_length": 4302,
+    "embedded_contract_commit": "0b755fb71175370638ec87175aee85cf4710f54d",
+    "git_blob_sha": "cc35df982377286e0940c9dddd5cee01a51e4ace",
+    "installation_commit": "fc16e9124acb8acb490975c7289d8199b84f2c25",
+    "installed_identity_independently_verified": true,
+    "logical_path": "nodes/K014/artifact.json",
+    "ordered_direct_predecessors": [
+      "K011",
+      "A010",
+      "K013",
+      "K012"
+    ],
+    "rank": 1140,
+    "schema_id": "pm_research.s2.activity_root.v1",
+    "semantic_role": "implementation_source_activity_root",
+    "sha256": "7d54c1cabd1be53abc677425e5b7ce781d362bef2918c31bd844a0fa316b9fc2"
+  },
+  "members": [
+    {
+      "byte_length": 11742,
+      "change_type": "NEW",
+      "classification": "SUBSTANTIVE_DOCUMENTATION",
+      "git_blob_sha": "b61f20e45982956b01dd656c0d2c277463830858",
+      "path": "project_context/S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_RECORD_CANDIDATE_01.md",
+      "sha256": "ce0d7ec6421e16370dc3637c50225c04b8fbf0c2a1197d0cd9bb0cd1fb74920f"
+    },
+    {
+      "byte_length": 18047,
+      "change_type": "NEW",
+      "classification": "SUBSTANTIVE_DOCUMENTATION",
+      "git_blob_sha": "d76b9c3798c9ea927c2286ea8ad10bddf1530fa3",
+      "path": "project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORING_BOUNDED_SENTINEL_HANDOFF_RECORD_CANDIDATE_01.md",
+      "sha256": "cf9a5459689c52b2c93f2df0641fcdbc8cb7cea64afcfadc4acd14ecca02e863"
+    },
+    {
+      "base_git_blob_sha": "2c6aec16f59f0cace2a993152cf30f9516ce11df",
+      "byte_length": 9035,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "classification": "SUBSTANTIVE_DOCUMENTATION",
+      "git_blob_sha": "f02047547d6158cb80cd9012cb21d2c4b3d9e3b5",
+      "path": "project_context/START_HERE.md",
+      "sha256": "079c1dda32bf8e6fc12ed0a825242521a2759d52c44660d1f3b7d8040b174b55"
+    },
+    {
+      "base_git_blob_sha": "d7c3f9597078cc5cd1a14ef0d8aee5fc8691a839",
+      "byte_length": 6402,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "classification": "SUBSTANTIVE_DOCUMENTATION",
+      "git_blob_sha": "d85516627db80d7f54e9531ca89f4ce715f06817",
+      "path": "project_context/PROJECT_STATE.md",
+      "sha256": "bb8f4783e6850f3a26a8d51233e9adfdd811bc7260c6e2227082fd9579c5fd9e"
+    },
+    {
+      "base_git_blob_sha": "1dc6d020eccd8030f823d708cab12ab7cefcafd7",
+      "byte_length": 5898,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "classification": "SUBSTANTIVE_DOCUMENTATION",
+      "git_blob_sha": "3a0b3d061f6cc6de17ec7695b318c9f67b616459",
+      "path": "project_context/DECISION_LOG.md",
+      "sha256": "4ccf3fe60ac6779abc8e4fe347f77a4a2772c25b19319e87abb34e4d4f90be39"
+    },
+    {
+      "base_git_blob_sha": "f03700e30ab21fb2309564869f92edd48543e7b3",
+      "byte_length": 6312,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "classification": "SUBSTANTIVE_DOCUMENTATION",
+      "git_blob_sha": "d27e5666b57fdace474a8e97ce416197863ed802",
+      "path": "project_context/ARTIFACT_INDEX.md",
+      "sha256": "29e4ca8f5d84bd60a052b62093cade16412b6f3cc9531eccec0b1b35bfdbab1c"
+    },
+    {
+      "byte_length": 1998,
+      "classification": "PACKAGE_CONTROL",
+      "git_blob_sha": "cb0b4f3a25fde6106a9644ded5bad96da21c8294",
+      "path": "project_context/S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_SHA256SUMS_CANDIDATE_02.txt",
+      "sha256": "03ea33bc6797855583c960ab32338c342fc58ce11bc71786f1d2984a2d9b2858"
+    },
+    {
+      "byte_length": 6275,
+      "classification": "REVIEW_ONLY",
+      "git_blob_sha": "7345c0637f7589471598adef63481af312ddccac",
+      "path": "review_only/HANDOFF_PROFESSOR_S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_CANDIDATE_02.md",
+      "sha256": "4a4dfb07eba5a7cfbc59e09231d3eaf8d806f13638cfbcd7b9067c95c7fb1ec1"
+    },
+    {
+      "byte_length": 2382,
+      "classification": "REVIEW_ONLY",
+      "git_blob_sha": "15aadcc2b3f28bfb7c269878b664f56177b2819f",
+      "path": "review_only/CHANGED_PATH_MATRIX_S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_CANDIDATE_02.csv",
+      "sha256": "4aebc2d845758d481cca9e4b8e417a2333597b39e3dc0b56b08767dc360c40c9"
+    },
+    {
+      "byte_length": null,
+      "classification": "PACKAGE_CONTROL",
+      "identity_binding": "FINAL_ZIP_AND_EXTERNAL_SHA256_SIDECAR",
+      "path": "project_context/S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_MANIFEST_CANDIDATE_02.json",
+      "self_identity": null,
+      "sha256": null
+    }
+  ],
+  "package_control_count": 2,
+  "package_id": "S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_CANDIDATE_02",
+  "proposed_canonical_member_count": 8,
+  "read_only_repository_access": {
+    "authorization_id": "S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_READ_ONLY_REPOSITORY_ACCESS_GUSTAVO_AUTHORIZATION_01",
+    "continuing_network_or_subprocess_authorization": false,
+    "existing_files_changed": 0,
+    "pinned_commit": "fc16e9124acb8acb490975c7289d8199b84f2c25",
+    "source_files_created": 0,
+    "state": "COMPLETED_ANTECEDENT_ADMINISTRATIVE_ACTION",
+    "workspace_clean": true
+  },
+  "requested_sentinel_decision": "APPROVE — S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_CANDIDATE_02_ACCEPTED",
+  "review_only_member_count": 2,
+  "schema_id": "pm_research.documentation_governance_package_manifest.v1",
+  "self_identity": null,
+  "status": "REVIEW_CANDIDATE_NOT_INSTALLED",
+  "substantive_documentation_count": 6,
+  "task_classification": "K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_HANDOFF_CANONICALIZATION_CANDIDATE_PREPARATION_ONLY"
+}

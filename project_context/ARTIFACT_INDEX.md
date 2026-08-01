@@ -1,60 +1,64 @@
 # ARTIFACT INDEX
 
-*Canonical and proposed identities for the current S2 K014 review boundary.*
+*Canonical and proposed identities for the K014 post-installation and bounded
+implementation-handoff canonicalization boundary.*
 
 ---
 
 ## Canonical base
 
 - repository: `rigolugo/pm_research`;
-- canonical `main`: `0872d4578fd2c0fc5147c77af606b9f807c7bc2b`;
-- classification: `K014_DOCUMENTATION_GOVERNANCE_CANDIDATE_PREPARATION_ONLY`;
-- candidate-preparation authorization effect: `NONE`.
+- canonical `main`: `fc16e9124acb8acb490975c7289d8199b84f2c25`;
+- task classification: `K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_HANDOFF_CANONICALIZATION_CANDIDATE_PREPARATION_ONLY`;
+- package-preparation authorization effect: `NONE`.
 
 ## Installed controlling artifacts
 
-| Node | Path | Bytes | SHA-256 | Rank | Predecessors | Installation state |
-|---|---|---:|---|---:|---|---|
-| K011 | `nodes/K011/artifact.json` | 1134 | `4f3f044d78d6ddc95d2c21dba3257f459e15810acc27f27cd36a1f2d8b0f2649` | acceptance | accepted chain | canonical |
-| A010 | `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md` | 135500 | `aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950` | 1115 | `[K011]` | accepted, installed, verified |
-| K013 | `nodes/K013/artifact.json` | 3099 | `e6ff152bf10d1f828ed0f9267ff3ea5a1ac7efc7cedc5866879cc958b108f32c` | 1120 | `[K011, A010]` | installed at `6c891a61e7408f7977b72b2ccf52472412cd7e04`, verified |
-| K012 | `nodes/K012/artifact.json` | 3449 | `be5417097bd3f09a12a4b5092eacdaf85c81562d88c299b75e2fab4101f1e45c` | 1130 | `[K011, A010, K013]` | installed at `0872d4578fd2c0fc5147c77af606b9f807c7bc2b`, verified |
+| Item | Path | Bytes | SHA-256 | State |
+|---|---|---:|---|---|
+| K011 | `nodes/K011/artifact.json` | `1134` | `4f3f044d78d6ddc95d2c21dba3257f459e15810acc27f27cd36a1f2d8b0f2649` | accepted |
+| A010 | `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md` | `135500` | `aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950` | accepted, installed, verified |
+| K013 | `nodes/K013/artifact.json` | `3099` | `e6ff152bf10d1f828ed0f9267ff3ea5a1ac7efc7cedc5866879cc958b108f32c` | accepted, installed, verified |
+| K012 | `nodes/K012/artifact.json` | `3449` | `be5417097bd3f09a12a4b5092eacdaf85c81562d88c299b75e2fab4101f1e45c` | accepted, installed, verified |
+| K014 | `nodes/K014/artifact.json` | `4302` | `7d54c1cabd1be53abc677425e5b7ce781d362bef2918c31bd844a0fa316b9fc2` | accepted, installed at `fc16e9124acb8acb490975c7289d8199b84f2c25`, verified |
+| K008 | `project_context/S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08.md` | `776003` | `b6d8b4dde25a67d8e4386762e320600f0778580aee290d3552949c77102e0e63` | accepted |
+| Amendment 01 | `project_context/S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01.md` | `24599` | `8b60bbc0f3390c0b2d1a336b33d2c2f1dc54846e1f2906aff58639dad1defd63` | accepted, installed |
 
-K012 Git blob: `796a4d1af1f5765890544f029e51b7b27878d24d`.
-
-## Fresh proposed K014
-
-| Field | Value |
-|---|---|
-| Path | `nodes/K014/artifact.json` |
-| Bytes | `4302` |
-| SHA-256 | `7d54c1cabd1be53abc677425e5b7ce781d362bef2918c31bd844a0fa316b9fc2` |
-| Git blob | `cc35df982377286e0940c9dddd5cee01a51e4ace` |
-| Schema/profile | `pm_research.s2.activity_root.v1` / `activity_root.v1` |
-| Rank/role | `1140` / `implementation_source_activity_root` |
-| Ordered predecessors | `[K011, A010, K013, K012]` |
-| Embedded commit | `0b755fb71175370638ec87175aee85cf4710f54d` |
-| Timestamp | `1785598380000` |
-| Status | `REVIEW_CANDIDATE_NOT_CONSUMABLE` |
-| Canonical membership | `NO — proposed package member only` |
-| Candidate-preparation effect | `NONE` |
+K014 Git blob: `cc35df982377286e0940c9dddd5cee01a51e4ace`.
 
 ## Proposed canonical package paths
 
-1. `nodes/K014/artifact.json`
-2. `project_context/START_HERE.md`
-3. `project_context/PROJECT_STATE.md`
-4. `project_context/DECISION_LOG.md`
-5. `project_context/ARTIFACT_INDEX.md`
-6. `project_context/S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_01.json`
-7. `project_context/S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_01.txt`
+Exactly eight proposed canonical paths:
 
-Review-only members:
+1. `project_context/S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_RECORD_CANDIDATE_01.md`
+2. `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORING_BOUNDED_SENTINEL_HANDOFF_RECORD_CANDIDATE_01.md`
+3. `project_context/START_HERE.md`
+4. `project_context/PROJECT_STATE.md`
+5. `project_context/DECISION_LOG.md`
+6. `project_context/ARTIFACT_INDEX.md`
+7. `project_context/S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_MANIFEST_CANDIDATE_01.json`
+8. `project_context/S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_SHA256SUMS_CANDIDATE_01.txt`
 
-1. `review_only/HANDOFF_PROFESSOR_S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_01.md`
-2. `review_only/CHANGED_PATH_MATRIX_S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_01.csv`
+Review-only paths:
 
-## Exact implementation matrix
+1. `review_only/HANDOFF_PROFESSOR_S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_CANDIDATE_02.md`
+2. `review_only/CHANGED_PATH_MATRIX_S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_CANDIDATE_02.csv`
+
+No source file, K015, K016, test, runtime artifact, Git metadata, or research
+data is a package member.
+
+## Proposed lifecycle
+
+- verification record: candidate until separately installed;
+- bounded Sentinel handoff: candidate until separately installed;
+- implementation remains blocked until package acceptance, installation, and
+  independent verification;
+- after those boundaries, only exact fourteen-file source authoring and bounded
+  K015/K016 completion become consumable;
+- K015/K016 currently absent;
+- implementation source currently absent.
+
+## Exact future source matrix
 
 | # | Path | Role | Language | Required |
 |---:|---|---|---|---|
@@ -75,20 +79,25 @@ Review-only members:
 
 ## Package identity model
 
-The binding model is `REVIEW_ZIP_EXTERNAL_SIDECAR_V1`. The checksum inventory
-hashes five substantive candidates and two review-only files, while excluding
-itself and the manifest. The manifest inventories every ZIP member, including
-itself. Its own member entry has null byte length, SHA-256, and self-identity;
-top-level self-identity is null. The external sidecar binds final ZIP bytes.
-No ZIP member contains the final ZIP hash. The graph is acyclic.
+Binding model: `REVIEW_ZIP_EXTERNAL_SIDECAR_V1`.
 
-## Lifecycle status
+1. The canonical manifest inventories all ten ZIP members, including itself.
+2. Its own member entry has null byte length, null SHA-256, and null
+   self-identity.
+3. Top-level manifest self-identity is null.
+4. The checksum inventory excludes itself and the manifest.
+5. The checksum inventory covers the six substantive documentation files and
+   both review-only files.
+6. The external `.zip.sha256` sidecar binds final sealed ZIP bytes.
+7. No ZIP member contains the final ZIP hash.
+8. The identity graph is acyclic.
 
-K012 is accepted, installed, and verified. K014 review is pending. K014
-installation authorization, installation verification, consumability, and the
-separate implementation handoff are absent. K015/K016 and implementation source
-are absent. Tests, execution, data, network, empirical work, canonical
-installation, and Git activity are absent.
+## Preserved gates
+
+P0 remains accepted at `39,693`; P1 remains blocked; P2/P3 remain
+unauthorized; `named_binary_probe_blocked = true`; tests, imports, data,
+execution, network, subprocess, Git writes, scoring, probes, gate changes, and
+complement synthesis remain unauthorized.
 
 Requested Sentinel decision:
-`APPROVE — S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_CANDIDATE_01_ACCEPTED`.
+`APPROVE — S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_CANDIDATE_02_ACCEPTED`.
