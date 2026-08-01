@@ -254,8 +254,10 @@ Accepted Amendment 01 facts:
 - reducer projection: `66232` bytes / `266d540dfd8481cd084d155ae8cb6f08b740f2c4aead70d9d5e5f9c1588da63c`.
 
 Candidate 04 supersedes the incomplete prose-only chain representation.
-The future chain does not currently exist. After exact A010 installation and
-Sentinel installation verification, it MUST be:
+Its exact Markdown is canonically installed at
+`a34636a89ec6ba557764cb32cbb0deed5b46df94`. The future chain does not
+currently exist. Only after Sentinel accepts the post-installation verification
+package and later verifies that package's exact canonical installation may it be:
 
 ```text
 accepted K011
@@ -280,7 +282,7 @@ Accepted Sentinel decision:
 
 Exact accepted artifact:
 
-- path after any later canonical installation: `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md`;
+- canonical path: `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md`;
 - bytes: `135500`;
 - SHA-256: `aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950`;
 - serialization: UTF-8, LF-only, no BOM, final newline;
@@ -298,21 +300,43 @@ Settled governance design:
 8. the immutable base registry and reducer projection remain unchanged;
 9. the fourteen-file implementation matrix remains unchanged.
 
+### Candidate-04 canonical Git installation
+
+Canonical Git evidence establishes:
+
+- finding: `CANDIDATE_04_CANONICAL_GIT_INSTALLATION_COMPLETE`;
+- commit: `a34636a89ec6ba557764cb32cbb0deed5b46df94`;
+- direct parent: `90c0059c0e86b7afd44fcf9f17223d68eab1a9e0`;
+- commit distance: exactly one;
+- message: `Install accepted S2 Candidate 04 authorization-graph documentation`;
+- changed paths: exactly eight, comprising four additions and four modifications;
+- no ninth path or merge commit is present;
+- every installed byte length, SHA-256, and Git blob identity matches the accepted installation package.
+
+The raw commit-tree pointer was not exposed independently to Professor and is
+omitted. No acceptance predicate, stop, lifecycle transition, or A010
+verification conclusion depends on it.
+
 Lifecycle boundaries remain separate:
 
 1. Candidate-04 specification acceptance — complete;
-2. documentation-only installation-package preparation — authorized;
-3. package review — pending;
-4. package installation authorization — absent;
-5. branch or local commit — absent;
-6. merge or push authorization — absent;
-7. canonical installation verification — absent;
-8. fresh K013 preparation authorization — absent;
-9. implementation-source authoring — absent.
+2. Candidate-04 documentation installation package acceptance — complete;
+3. temporary branch creation and exact eight-file commit — complete;
+4. temporary branch push and Sentinel branch verification — complete;
+5. Gustavo merge authorization — complete and consumed;
+6. ordinary one-commit fast-forward installation into canonical `main` — complete;
+7. canonical Git installation commit — exactly `a34636a89ec6ba557764cb32cbb0deed5b46df94`;
+8. post-installation verification documentation package — review candidate only;
+9. requested Sentinel finding — `ACCEPT FINDING — A010_CANONICAL_INSTALLATION_VERIFIED`;
+10. A010 downstream graph consumption — blocked pending package acceptance and later exact package-installation verification;
+11. fresh K013 preparation — unauthorized;
+12. K012, K014, K015, and K016 — unmaterialized and unauthorized;
+13. implementation-source and test-source authoring — unauthorized.
 
-No decision in this section installs A010 or authorizes implementation, tests,
-execution, data access, empirical work, scoring, probe execution, artifact
-construction, gate changes, or Git activity.
+The post-installation package does not approve itself. No decision in this
+section authorizes implementation, tests, execution, data access, empirical
+work, scoring, probe execution, artifact construction, gate changes, or Git
+activity.
 
 ---
 

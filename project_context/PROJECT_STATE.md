@@ -7,35 +7,43 @@
 ## Current objective
 
 The current authorized activity is preparation of the documentation-only
-canonical-installation review package:
+post-installation verification package:
 
-`S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_ONLY_CANONICAL_INSTALLATION_PACKAGE_CANDIDATE_01`
+`S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_POST_INSTALLATION_VERIFICATION_DOCUMENTATION_PACKAGE_CANDIDATE_01`
 
-Exact canonical package-authoring base and verified canonical `main`:
+Exact package-authoring base and verified canonical `main`:
 
-`90c0059c0e86b7afd44fcf9f17223d68eab1a9e0`
+`a34636a89ec6ba557764cb32cbb0deed5b46df94`
 
-Authorizations:
+The package proposes exactly seven canonical documentation paths: one new
+post-installation verification record, four complete documentation
+replacements, and two new package-control files. The sealed review ZIP contains
+exactly ten members: those seven canonical candidates plus one Professor
+handoff, one changed-path matrix, and one root review manifest. It contains no
+`nodes/A010/artifact.json`.
 
-- Gustavo: `S2_CANDIDATE_04_DOCUMENTATION_ONLY_CANONICAL_INSTALLATION_PACKAGE_PREPARATION_GUSTAVO_AUTHORIZATION_01`;
-- Sentinel: `S2_CANDIDATE_04_DOCUMENTATION_ONLY_CANONICAL_INSTALLATION_PACKAGE_PREPARATION_SENTINEL_AUTHORIZATION_01`;
-- activity: `DOCUMENTATION_ONLY_CANONICAL_INSTALLATION_PACKAGE_PREPARATION_ONLY`.
+Candidate-04 specification acceptance, documentation-installation-package
+acceptance, temporary branch creation, the exact eight-path branch commit,
+temporary-branch push and Sentinel branch verification, consumed Gustavo merge
+authorization, and ordinary one-commit fast-forward installation into canonical
+`main` are complete. The canonical Git installation commit is
+`a34636a89ec6ba557764cb32cbb0deed5b46df94`, directly above
+`90c0059c0e86b7afd44fcf9f17223d68eab1a9e0`.
 
-The package proposes exactly eight canonical documentation paths: two new
-Candidate-04 records, four complete documentation replacements, and two new
-canonical control files. It contains no `nodes/A010/artifact.json`.
+The bounded Git finding is
+`CANDIDATE_04_CANONICAL_GIT_INSTALLATION_COMPLETE`. This post-installation
+verification package remains a review candidate. It requests, but does not
+issue:
 
-Candidate 04 specification acceptance is complete. Package review, package
-installation authorization, branch creation, commit, merge, push, canonical
-installation verification, fresh K013 preparation, implementation-source
-authoring, and test-source authoring remain absent.
+`ACCEPT FINDING — A010_CANONICAL_INSTALLATION_VERIFIED`
+
+A010 downstream graph consumption remains blocked until Sentinel accepts this
+package and later verifies its exact canonical installation. Fresh K013
+preparation and K012/K014/K015/K016 remain unauthorized and unmaterialized.
 
 Authorization effect:
 
 `NONE`
-
-Package preparation is not canonical installation and does not establish A010
-in current canonical `main`.
 
 ---
 
@@ -60,7 +68,7 @@ Candidate 08 remains accepted but not implemented. No S2 Candidate 08 implementa
 
 ### S2 Candidate 08 Implementation-Source Amendment 01
 
-Amendment 01 is accepted as a SPEC-only amendment after this documentation installation.
+Amendment 01 is accepted and canonically installed as a SPEC-only amendment.
 
 Accepted amendment identity:
 
@@ -90,9 +98,12 @@ Accepted Amendment 01 implementation-source facts:
 - accepted Candidate-08 §23 JCS: `479463` bytes / `82038603fb5cfd564b8563731e772c03d29c6ff6bdc862040ea26e0463ec97ff`;
 - reducer projection: `66232` bytes / `266d540dfd8481cd084d155ae8cb6f08b740f2c4aead70d9d5e5f9c1588da63c`.
 
-Candidate 04 is accepted SPEC-only. Its exact canonical installation would
-establish A010 only after separate Sentinel installation verification. The
-future authorization chain does not currently exist and MUST be:
+Candidate 04 is accepted SPEC-only and canonically installed at
+`a34636a89ec6ba557764cb32cbb0deed5b46df94`. The exact installed Markdown is
+the A010 raw governance artifact. Formal downstream consumption remains blocked
+until Sentinel accepts the post-installation verification package and later
+verifies that package's exact canonical installation. The future authorization
+chain does not currently exist and MUST be:
 
 ```text
 accepted K011
@@ -134,7 +145,7 @@ Sentinel accepted Candidate 04 as SPEC-only:
 
 Exact accepted Markdown identity:
 
-- proposed canonical path: `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md`;
+- canonical path: `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md`;
 - byte length: `135500`;
 - SHA-256: `aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950`;
 - serialization: UTF-8, LF-only, no BOM, final newline;
@@ -155,11 +166,16 @@ Effective-registry identities remain:
 - effective graph: `167` nodes / `683` direct edges;
 - K127 ordered-evidence population: `60`.
 
-Package preparation does not install or verify A010. K013, K012, K014, K015,
-and K016 remain unmaterialized. Fresh K013 preparation requires exact A010
-canonical installation and separate Sentinel installation verification.
-S2 implementation-source authorization remains `NONE`; no S2 implementation
-or test source exists or is accepted.
+Canonical Git installation of the exact Candidate-04 Markdown is complete at
+`a34636a89ec6ba557764cb32cbb0deed5b46df94`; the bounded finding is
+`CANDIDATE_04_CANONICAL_GIT_INSTALLATION_COMPLETE`. The post-installation
+verification package requests
+`ACCEPT FINDING — A010_CANONICAL_INSTALLATION_VERIFIED` but does not approve
+itself. A010 downstream consumption, fresh K013, K012, K014, K015, and K016
+remain blocked, unauthorized, or unmaterialized until Sentinel accepts the
+package and later verifies its exact canonical installation. S2
+implementation-source authorization remains `NONE`; no S2 implementation or
+test source exists or is accepted.
 
 ---
 
@@ -412,7 +428,7 @@ Candidate 03 source authoring, the local non-network validation, the bounded net
 
 The validation execution authorization is consumed. Source installation does not authorize another diagnostic, endpoint request, test run, local-data read, full diagnostic, S2 artifact construction, P1/P2/P3, scoring, probe execution, or gate change.
 
-S2 Candidate 08 implementation authorization remains `NONE`. Candidate 02 remains SPEC-only with authorization effect `NONE`. Candidate 04 is accepted SPEC-only, but A010 installation verification, fresh K013, K012, K014, K015, and K016 remain absent.
+S2 Candidate 08 implementation authorization remains `NONE`. Candidate 02 remains SPEC-only with authorization effect `NONE`. Candidate 04 is accepted SPEC-only and canonically installed at `a34636a89ec6ba557764cb32cbb0deed5b46df94`; `CANDIDATE_04_CANONICAL_GIT_INSTALLATION_COMPLETE` is established. The requested `A010_CANONICAL_INSTALLATION_VERIFIED` finding, A010 downstream consumption, fresh K013, and K012/K014/K015/K016 remain absent, blocked, or unauthorized pending Sentinel acceptance and later exact installation verification of this documentation package.
 
 This documentation package authorizes no source or test edit, `.gitignore` change, staging, local commit, push, merge, amend, branch, tag, reset, ref update, test execution, project import or execution, compilation, linting, type checking, coverage, local research-data read, network/API/RPC/vendor/Dune/curl/endpoint activity, raw-response access or copying, raw saving, diagnostic execution, another dry run or canary, full diagnostic, dependency or packaging change, acquisition, S2 artifact construction, price-artifact construction or acceptance, P1/P2/P3, scoring, probe execution, or gate change.
 

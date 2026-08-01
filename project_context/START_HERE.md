@@ -61,8 +61,12 @@ Read these before doing anything:
     - `S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01.md`
     - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md`
     - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_CANONICAL_INSTALLATION_RECORD.md`
+    - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_MANIFEST.json`
+    - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_SHA256SUMS.txt`
+    - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_POST_INSTALLATION_VERIFICATION_RECORD_CANDIDATE_01.md`
     Any future K013/K012/K014 authorization material MUST be read only after
-    the two Candidate-04 authorization-graph documents above.
+    all Candidate-04 authorization-graph and installation-verification
+    documents above.
 11. `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md`
 12. `implementation_handoffs/local_curl_rev23_i0/SENTINEL_ACCEPTANCE_DECISION.md`
 13. `implementation_handoffs/local_curl_rev23_i0/IMPLEMENTATION_AUTHORIZATION_SCOPE.md`
@@ -106,7 +110,7 @@ Read these before doing anything:
 
 ## Current S2 Candidate 08 amendment state
 
-S2 Candidate 08 Implementation-Source Amendment 01 is accepted as a SPEC-only amendment after this documentation-only installation. Exact installed amendment identity:
+S2 Candidate 08 Implementation-Source Amendment 01 is accepted and canonically installed as a SPEC-only amendment. Exact installed amendment identity:
 
 - path: `project_context/S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01.md`;
 - byte length: `24599`;
@@ -116,15 +120,27 @@ S2 Candidate 08 Implementation-Source Amendment 01 is accepted as a SPEC-only am
 
 It resolves only the package-layout/path-boundary defect, registry-provenance ambiguity, K015 ordering ambiguity, K016 self-identity ambiguity, and incorrect Appendix-A matrix citation.
 
-Candidate 04 is accepted SPEC-only. Package preparation does not install A010.
-Exact canonical installation of the accepted Candidate-04 bytes, followed by
-Sentinel installation verification, would establish A010 as the Markdown raw
-governance artifact under `amendment_governance.v1`. A010 has exactly one graph
-predecessor: K011. The accepted installed Implementation-Source Amendment 01 is
-closed non-edge governance data carried by A010.
+Candidate 04 is accepted SPEC-only and its exact Markdown bytes are installed
+in canonical `main` at commit
+`a34636a89ec6ba557764cb32cbb0deed5b46df94`, directly above parent
+`90c0059c0e86b7afd44fcf9f17223d68eab1a9e0`. The bounded Git finding is
+`CANDIDATE_04_CANONICAL_GIT_INSTALLATION_COMPLETE`.
 
-The future chain does not currently exist. After exact A010 installation and
-Sentinel installation verification, it MUST be represented as:
+The installed Markdown is the A010 raw governance artifact under
+`amendment_governance.v1`. A010 has rank `1115` and exactly one graph
+predecessor: K011. The accepted installed Implementation-Source Amendment 01 is
+closed non-edge governance data carried by A010. No `nodes/A010/artifact.json`
+exists or is required.
+
+The post-installation verification documentation package remains a review
+candidate. A010 downstream consumption remains blocked until Sentinel accepts
+that package and later verifies its exact canonical installation. The requested
+finding is `ACCEPT FINDING — A010_CANONICAL_INSTALLATION_VERIFIED`; Professor
+does not issue that decision.
+
+The future chain does not currently exist. Only after the post-installation
+verification package is accepted and its exact canonical installation is
+verified may it be represented as:
 
 ```text
 accepted K011
@@ -165,8 +181,8 @@ Revision 23 with Amendments 01–03 and accepted Finding 4 is the governing SPEC
 - P0 CLOB Candidate 02 failure-characterization design: **ACCEPTED SPEC-ONLY**; authorization effect `NONE`.
 - P0 CLOB Candidate 03 diagnostic source: **`STATIC_REVIEW_ACCEPTED`**, **`LOCAL_NON_NETWORK_VALIDATION_CLEAR`**, **`BOUNDED_100_REQUEST_NETWORK_CANARY_CLEAR`**, and **`CANONICAL_REMOTE_INSTALLATION_VERIFIED`**. The source-installation anchor commit is `1a19e1ef715ceca7aef9d55f7aa2446961e13c35`. This establishes only the exact installed diagnostic source and bounded validation state; it does not establish full `37,248`-request viability, an accepted price artifact, P1 readiness, or further execution authority.
 - S2 per-token price-artifact Candidate 08: **ACCEPTED SPECIFICATION** through K010/K011; no S2 Candidate 08 implementation source exists or is accepted; implementation authorization is `NONE`.
-- S2 Candidate 08 Implementation-Source Amendment 01: **ACCEPTED SPEC-ONLY AMENDMENT** after installation of this package; authorization effect `NONE`.
-- S2 Candidate 08 Authorization-Graph Amendment 01 Candidate 04: **ACCEPTED SPEC-ONLY**; exact A010 canonical installation and Sentinel installation verification remain absent; effective registry `167 / 683`, K127 population `60`, unchanged reducer projection; K013/K012/K014/K015/K016 remain unmaterialized; authorization effect `NONE`.
+- S2 Candidate 08 Implementation-Source Amendment 01: **ACCEPTED AND CANONICALLY INSTALLED SPEC-ONLY AMENDMENT**; authorization effect `NONE`.
+- S2 Candidate 08 Authorization-Graph Amendment 01 Candidate 04: **ACCEPTED SPEC-ONLY AND CANONICALLY INSTALLED** at `a34636a89ec6ba557764cb32cbb0deed5b46df94`; bounded finding `CANDIDATE_04_CANONICAL_GIT_INSTALLATION_COMPLETE`; post-installation finding `A010_CANONICAL_INSTALLATION_VERIFIED` remains requested and not self-approved; A010 downstream consumption, fresh K013, and K012/K014/K015/K016 remain blocked or unauthorized; effective graph `167 / 683`, K127 population `60`, unchanged reducer projection; authorization effect `NONE`.
 - Recovered R1 checkpoint `REV23_FINDING4_I0A_R1_CP_0001_FCF406C4` remains exact, evidence-only, `NOT_ACCEPTED`, and non-authorizing.
 - Static checkpoint conformance: **BLOCKED — `REVISION10_STATIC_CONFORMANCE_BLOCKED`**.
 

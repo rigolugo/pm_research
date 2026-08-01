@@ -250,27 +250,47 @@ Registry/provenance identities:
 
 No source path under `pm_research/named_binary_probe_s2/` is installed by this documentation package. No S2 Candidate 08 implementation source exists or is accepted. The separate P0 CLOB Candidate 03 diagnostic source package does not alter this S2 state.
 
-## Accepted Candidate-04 authorization-graph amendment — proposed canonical installation
+## Accepted and canonically installed Candidate-04 authorization-graph amendment
 
-Accepted raw governance artifact:
+Canonical raw governance artifact:
 
-- proposed canonical path: `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md`;
+- canonical path: `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md`;
 - bytes: `135500`;
 - SHA-256: `aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950`;
+- Git blob: `4c316506074418cc6fc915069d93cf010b77a30a`;
 - accepted decision: `APPROVE — S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_ACCEPTED_SPEC_ONLY`;
 - profile: `amendment_governance.v1`;
-- proposed node identity: A010;
+- A010 rank: `1115`;
 - direct predecessor set: exactly `[K011]`;
 - authorization effect: `NONE`.
 
-Proposed canonical installation record:
+Canonical installation record and controls:
 
-- `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_CANONICAL_INSTALLATION_RECORD.md`.
+- `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_CANONICAL_INSTALLATION_RECORD.md` — `10816` bytes / `e483193bbfe3ef41e56c1c1e32430c5b0775821ad4fecf09d8cb203159e635db` / Git blob `f7ea62f13d78f0c8ffb82b2cce18f9ace6482033`;
+- `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_MANIFEST.json` — `4879` bytes / `1fda5d0588a796d3a3fd9af881deede095af6bf3c27259783bc96fee80cd55d2` / Git blob `c56d6e1b54eb0ed66fc7c32372bc9be256e53377`;
+- `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_SHA256SUMS.txt` — `1368` bytes / `4fc16f106a37c55ba3eec361a02a79d3d9a7345e4b2466dc94d46c04d68bcd45` / Git blob `939053973b06ca1f9876f0d01cbebf8d9a6c981c`.
 
-Proposed canonical package controls:
+Canonical Git installation anchor:
 
-- `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_MANIFEST.json`;
-- `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_SHA256SUMS.txt`.
+- commit: `a34636a89ec6ba557764cb32cbb0deed5b46df94`;
+- direct parent: `90c0059c0e86b7afd44fcf9f17223d68eab1a9e0`;
+- message: `Install accepted S2 Candidate 04 authorization-graph documentation`;
+- topology: exactly one intervening commit;
+- changed paths: exactly eight, with four additions and four modifications;
+- finding: `CANDIDATE_04_CANONICAL_GIT_INSTALLATION_COMPLETE`.
+
+The raw commit-tree pointer is omitted because it was not independently exposed
+to Professor and is non-decision-bearing.
+
+Prior sealed review-package provenance, distinct from repository membership:
+
+- ZIP bytes: `66399`;
+- ZIP SHA-256: `74dc44719e1f5a71cc9faeb55cc1b32087ee12593a685521ab8f2ad44b916e3c`;
+- member count: `11`;
+- canonical payload count: `8`;
+- review-only member count: `3`;
+- binding: `REVIEW_ZIP_EXTERNAL_SIDECAR_V1`;
+- ZIP and external sidecar repository membership: `NO`.
 
 Effective-registry contract:
 
@@ -281,14 +301,24 @@ Effective-registry contract:
 - effective graph: `167 / 683`;
 - K127 population: `60`.
 
-Current package state: Candidate 04 is accepted SPEC-only; package preparation
-is authorized; package review and installation authorization are pending; A010
-is not installed or canonically verified in current `main`; K013, K012, K014,
-K015, and K016 remain unmaterialized; implementation-source authorization is
-`NONE`; no S2 implementation or test source exists or is accepted.
+Proposed post-installation verification documentation paths:
 
-The exact accepted Markdown is the proposed A010 raw artifact. No
-`nodes/A010/artifact.json` is created or required.
+- `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_POST_INSTALLATION_VERIFICATION_RECORD_CANDIDATE_01.md`;
+- `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_POST_INSTALLATION_VERIFICATION_DOCUMENTATION_PACKAGE_MANIFEST_CANDIDATE_01.json`;
+- `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_POST_INSTALLATION_VERIFICATION_DOCUMENTATION_PACKAGE_SHA256SUMS_CANDIDATE_01.txt`.
+
+Current lifecycle: Candidate-04 acceptance and canonical Git installation are
+complete. The post-installation verification package is a review candidate.
+The requested decision
+`ACCEPT FINDING — A010_CANONICAL_INSTALLATION_VERIFIED` has not been issued by
+Professor. A010 downstream graph consumption remains blocked until Sentinel
+accepts that package and later verifies its exact canonical installation.
+Fresh K013, K012, K014, K015, and K016 remain unmaterialized and unauthorized;
+implementation-source authorization is `NONE`; no S2 implementation or test
+source exists or is accepted.
+
+The exact installed Markdown is the A010 raw artifact. No
+`nodes/A010/artifact.json` exists or is required.
 
 ---
 
