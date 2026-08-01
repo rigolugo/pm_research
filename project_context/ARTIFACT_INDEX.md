@@ -1,64 +1,60 @@
 # ARTIFACT INDEX
 
-*Canonical and proposed identities for the current S2 K012 review boundary.*
+*Canonical and proposed identities for the current S2 K014 review boundary.*
 
 ---
 
 ## Canonical base
 
 - repository: `rigolugo/pm_research`;
-- canonical `main` inspected: `6c891a61e7408f7977b72b2ccf52472412cd7e04`;
-- candidate-preparation classification:
-  `K012_DOCUMENTATION_GOVERNANCE_CANDIDATE_PREPARATION_ONLY`;
+- canonical `main`: `0872d4578fd2c0fc5147c77af606b9f807c7bc2b`;
+- classification: `K014_DOCUMENTATION_GOVERNANCE_CANDIDATE_PREPARATION_ONLY`;
 - candidate-preparation authorization effect: `NONE`.
 
 ## Installed controlling artifacts
 
-| Node | Logical path | Bytes | SHA-256 | Direct predecessors |
-|---|---|---:|---|---|
-| `K011` | `nodes/K011/artifact.json` | `1134` | `4f3f044d78d6ddc95d2c21dba3257f459e15810acc27f27cd36a1f2d8b0f2649` | accepted specification chain |
-| `A010` | `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md` | `135500` | `aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950` | `[K011]` |
-| `K013` | `nodes/K013/artifact.json` | `3099` | `e6ff152bf10d1f828ed0f9267ff3ea5a1ac7efc7cedc5866879cc958b108f32c` | `[K011, A010]` |
+| Node | Path | Bytes | SHA-256 | Rank | Predecessors | Installation state |
+|---|---|---:|---|---:|---|---|
+| K011 | `nodes/K011/artifact.json` | 1134 | `4f3f044d78d6ddc95d2c21dba3257f459e15810acc27f27cd36a1f2d8b0f2649` | acceptance | accepted chain | canonical |
+| A010 | `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md` | 135500 | `aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950` | 1115 | `[K011]` | accepted, installed, verified |
+| K013 | `nodes/K013/artifact.json` | 3099 | `e6ff152bf10d1f828ed0f9267ff3ea5a1ac7efc7cedc5866879cc958b108f32c` | 1120 | `[K011, A010]` | installed at `6c891a61e7408f7977b72b2ccf52472412cd7e04`, verified |
+| K012 | `nodes/K012/artifact.json` | 3449 | `be5417097bd3f09a12a4b5092eacdaf85c81562d88c299b75e2fab4101f1e45c` | 1130 | `[K011, A010, K013]` | installed at `0872d4578fd2c0fc5147c77af606b9f807c7bc2b`, verified |
 
-K013 canonical installation commit: `6c891a61e7408f7977b72b2ccf52472412cd7e04`.
+K012 Git blob: `796a4d1af1f5765890544f029e51b7b27878d24d`.
 
-## Fresh proposed K012
+## Fresh proposed K014
 
 | Field | Value |
 |---|---|
-| Path | `nodes/K012/artifact.json` |
-| Bytes | `3449` |
-| SHA-256 | `be5417097bd3f09a12a4b5092eacdaf85c81562d88c299b75e2fab4101f1e45c` |
-| Schema | `pm_research.s2.sentinel_authorization.v1` |
-| Profile | `sentinel_authorization.v1` |
-| Rank | `1130` |
-| Semantic role | `sentinel_implementation_source_authorization` |
-| Ordered direct predecessors | `[K011, A010, K013]` |
+| Path | `nodes/K014/artifact.json` |
+| Bytes | `4302` |
+| SHA-256 | `7d54c1cabd1be53abc677425e5b7ce781d362bef2918c31bd844a0fa316b9fc2` |
+| Git blob | `cc35df982377286e0940c9dddd5cee01a51e4ace` |
+| Schema/profile | `pm_research.s2.activity_root.v1` / `activity_root.v1` |
+| Rank/role | `1140` / `implementation_source_activity_root` |
+| Ordered predecessors | `[K011, A010, K013, K012]` |
+| Embedded commit | `0b755fb71175370638ec87175aee85cf4710f54d` |
+| Timestamp | `1785598380000` |
 | Status | `REVIEW_CANDIDATE_NOT_CONSUMABLE` |
 | Canonical membership | `NO — proposed package member only` |
-| Authorization effect of preparation | `NONE` |
+| Candidate-preparation effect | `NONE` |
 
 ## Proposed canonical package paths
 
-1. `nodes/K012/artifact.json` — new substantive candidate.
-2. `project_context/START_HERE.md` — complete replacement.
-3. `project_context/PROJECT_STATE.md` — complete replacement.
-4. `project_context/DECISION_LOG.md` — complete replacement.
-5. `project_context/ARTIFACT_INDEX.md` — complete replacement.
-6. `project_context/S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_02.json` — new package control.
-7. `project_context/S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_02.txt` — new acyclic checksum control.
+1. `nodes/K014/artifact.json`
+2. `project_context/START_HERE.md`
+3. `project_context/PROJECT_STATE.md`
+4. `project_context/DECISION_LOG.md`
+5. `project_context/ARTIFACT_INDEX.md`
+6. `project_context/S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_01.json`
+7. `project_context/S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_01.txt`
 
 Review-only members:
 
-1. `review_only/HANDOFF_PROFESSOR_S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_02.md`;
-2. `review_only/CHANGED_PATH_MATRIX_S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_02.csv`.
+1. `review_only/HANDOFF_PROFESSOR_S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_01.md`
+2. `review_only/CHANGED_PATH_MATRIX_S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_01.csv`
 
-The review ZIP contains no K014, K015, K016, implementation source, test source,
-test result, imported project output, local research data, raw network response,
-empirical evidence, research artifact, Git object, repository metadata, or
-canonical installation action.
-
-## Exact preserved implementation matrix
+## Exact implementation matrix
 
 | # | Path | Role | Language | Required |
 |---:|---|---|---|---|
@@ -79,45 +75,20 @@ canonical installation action.
 
 ## Package identity model
 
-Binding model: `REVIEW_ZIP_EXTERNAL_SIDECAR_V1`.
-
-1. The checksum inventory hashes all five substantive candidate files and both
-   review-only files.
-2. The checksum inventory excludes itself and the canonical package manifest.
-3. The canonical package manifest inventories every ZIP member, including
-   itself.
-4. The manifest's own member entry has `byte_length = null`, `sha256 = null`,
-   and `self_identity = null`; it is a membership declaration and not a
-   self-hash.
-5. The canonical package manifest's top-level `self_identity` remains `null`.
-6. The external `.zip.sha256` sidecar binds the final sealed ZIP bytes.
-7. No ZIP member contains the final ZIP hash.
-8. The identity graph remains acyclic because the manifest carries no raw
-   identity for itself and the checksum inventory excludes both controls.
-
-This produces an acyclic identity chain:
-
-```text
-substantive files + changed-path matrix
-  -> review handoff
-  -> checksum inventory
-  -> package manifest inventory of all ZIP members
-     (manifest self-entry has null identity fields)
-  -> ZIP
-  -> external SHA-256 sidecar
-```
+The binding model is `REVIEW_ZIP_EXTERNAL_SIDECAR_V1`. The checksum inventory
+hashes five substantive candidates and two review-only files, while excluding
+itself and the manifest. The manifest inventories every ZIP member, including
+itself. Its own member entry has null byte length, SHA-256, and self-identity;
+top-level self-identity is null. The external sidecar binds final ZIP bytes.
+No ZIP member contains the final ZIP hash. The graph is acyclic.
 
 ## Lifecycle status
 
-- K012 Sentinel review: pending.
-- K012 canonical installation authorization: absent.
-- K012 installation and verification: absent.
-- K012 consumability: absent.
-- K014/K015/K016: absent.
-- implementation source: absent.
-- test source and execution: absent.
-- project/research artifact generation: absent.
-- Git activity: absent.
+K012 is accepted, installed, and verified. K014 review is pending. K014
+installation authorization, installation verification, consumability, and the
+separate implementation handoff are absent. K015/K016 and implementation source
+are absent. Tests, execution, data, network, empirical work, canonical
+installation, and Git activity are absent.
 
 Requested Sentinel decision:
-`APPROVE — S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_CANDIDATE_01_ACCEPTED`.
+`APPROVE — S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_CANDIDATE_01_ACCEPTED`.

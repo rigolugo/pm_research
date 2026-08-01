@@ -13,8 +13,6 @@ duplicates, and public mirrors.
 
 ## Required read order
 
-Read these before doing anything:
-
 1. `GUARDRAILS.md`
 2. `PROJECT_STATE.md`
 3. `DECISION_LOG.md`
@@ -41,57 +39,63 @@ Read these before doing anything:
     - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_DOCUMENTATION_INSTALLATION_PACKAGE_SHA256SUMS.txt`
     - `S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04_POST_INSTALLATION_VERIFICATION_RECORD_CANDIDATE_01.md`
     - `../nodes/K013/artifact.json`
-    - after exact K013 installation verification, the proposed K012 review material:
-      - `../nodes/K012/artifact.json`
-      - `S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_02.json`
-      - `S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_02.txt`
+    - `S2_CANDIDATE_08_K013_GUSTAVO_IMPLEMENTATION_SOURCE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_01.json`
+    - `../nodes/K012/artifact.json`
+    - `S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_02.json`
+    - `S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_02.txt`
+    - after exact K012 installation verification, the proposed K014 review material:
+      - `../nodes/K014/artifact.json`
+      - `S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_01.json`
+      - `S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_01.txt`
 12. For Revision 23 / Finding 4, enter through
     `implementation_handoffs/local_curl_rev23_i0/README_FIRST.md` and follow
     every nested accepted read order.
-13. Follow every additional canonical read order referenced by the governing
-    entry points.
+13. Follow every additional canonical read order referenced by the governing entry points.
 
 ## Current S2 Candidate 08 authorization state
 
-Canonical `main` inspected for this candidate:
+Canonical `main` verified for this candidate: `0872d4578fd2c0fc5147c77af606b9f807c7bc2b`.
 
-`6c891a61e7408f7977b72b2ccf52472412cd7e04`
+| Node | Path | Bytes | SHA-256 | Rank | Ordered direct predecessors | State |
+|---|---|---:|---|---:|---|---|
+| `K011` | `nodes/K011/artifact.json` | `1134` | `4f3f044d78d6ddc95d2c21dba3257f459e15810acc27f27cd36a1f2d8b0f2649` | acceptance | accepted chain | accepted |
+| `A010` | `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md` | `135500` | `aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950` | `1115` | `[K011]` | accepted, installed, verified |
+| `K013` | `nodes/K013/artifact.json` | `3099` | `e6ff152bf10d1f828ed0f9267ff3ea5a1ac7efc7cedc5866879cc958b108f32c` | `1120` | `[K011, A010]` | accepted, installed at `6c891a61e7408f7977b72b2ccf52472412cd7e04`, verified |
+| `K012` | `nodes/K012/artifact.json` | `3449` | `be5417097bd3f09a12a4b5092eacdaf85c81562d88c299b75e2fab4101f1e45c` | `1130` | `[K011, A010, K013]` | accepted, installed at `0872d4578fd2c0fc5147c77af606b9f807c7bc2b`, verified |
 
-Exact installed prerequisites:
+K013 and K012 both embed `0b755fb71175370638ec87175aee85cf4710f54d`. `0872d4578fd2c0fc5147c77af606b9f807c7bc2b` identifies repository
+installation/preparation state and does not replace that embedded contract commit.
 
-| Node | Path | Bytes | SHA-256 | State |
-|---|---|---:|---|---|
-| `K011` | `nodes/K011/artifact.json` | `1134` | `4f3f044d78d6ddc95d2c21dba3257f459e15810acc27f27cd36a1f2d8b0f2649` | accepted |
-| `A010` | `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md` | `135500` | `aea6aab26249ef84d8714197ab22d95f2701d6744ea6fa38c81fb1a390943950` | accepted, installed, Sentinel-verified |
-| `K013` | `nodes/K013/artifact.json` | `3099` | `e6ff152bf10d1f828ed0f9267ff3ea5a1ac7efc7cedc5866879cc958b108f32c` | accepted, installed at `6c891a61e7408f7977b72b2ccf52472412cd7e04`, exact installation identity independently verified |
+## Fresh proposed K014 Candidate 01
 
-Fresh proposed K012 Candidate 01:
-
-- path: `nodes/K012/artifact.json`;
-- byte length: `3449`;
-- SHA-256: `be5417097bd3f09a12a4b5092eacdaf85c81562d88c299b75e2fab4101f1e45c`;
-- schema/profile: `pm_research.s2.sentinel_authorization.v1` /
-  `sentinel_authorization.v1`;
-- rank: `1130`;
-- semantic role: `sentinel_implementation_source_authorization`;
-- ordered direct predecessors: exactly `[K011, A010, K013]`;
-- created after exact K013 bytes;
+- path: `nodes/K014/artifact.json`;
+- bytes: `4302`;
+- SHA-256: `7d54c1cabd1be53abc677425e5b7ce781d362bef2918c31bd844a0fa316b9fc2`;
+- Git blob: `cc35df982377286e0940c9dddd5cee01a51e4ace`;
+- schema/profile: `pm_research.s2.activity_root.v1` / `activity_root.v1`;
+- rank: `1140`;
+- semantic role: `implementation_source_activity_root`;
+- ordered direct predecessors: `[K011, A010, K013, K012]`;
+- `created_at_utc_ms`: `1785598380000`;
+- embedded `canonical_commit`: `0b755fb71175370638ec87175aee85cf4710f54d`;
 - status: `REVIEW_CANDIDATE_NOT_CONSUMABLE`;
 - candidate-preparation authorization effect: `NONE`.
 
-K012 is not accepted, canonically installed, canonically verified, effective, or
-consumable. Its payload cannot be used without independent Sentinel acceptance
-and every required installation and verification boundary. K014, K015, and K016
-remain unmaterialized. Implementation-source authoring has not begun.
+K014 is not accepted, installed, verified, effective, or consumable. K015 and
+K016 remain unmaterialized. Implementation-source authoring has not begun.
 
-## Exact implementation-source matrix preserved by proposed K012
+## Exact K014 scope
 
-The package model remains the regular package at
-`pm_research/named_binary_probe_s2`. A `src/` layout, namespace-package
-redesign, `pyproject.toml` modification, additional path, removed path, renamed
-path, relocated path, or role reassignment is forbidden.
+Input roots:
 
-| # | Path | Role | Language | Required |
+- `nodes/K011/artifact.json`
+- `project_context/S2_CANDIDATE_08_IMPLEMENTATION_SOURCE_AUTHORIZATION_GRAPH_AMENDMENT_01_CANDIDATE_04.md`
+- `project_context/S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08.md`
+- `project_context/S2_PER_TOKEN_PRICE_ARTIFACT_SPEC_CANDIDATE_08_IMPLEMENTATION_SOURCE_AMENDMENT_01.md`
+
+Output root: `pm_research/named_binary_probe_s2`.
+
+| # | Allowed deliverable | Role | Language | Required |
 |---:|---|---|---|---|
 | 1 | `pm_research/named_binary_probe_s2/__init__.py` | `package_export` | `PYTHON` | `true` |
 | 2 | `pm_research/named_binary_probe_s2/acquisition.py` | `independent_token_acquisition_and_raw_closure` | `PYTHON` | `true` |
@@ -108,41 +112,38 @@ path, relocated path, or role reassignment is forbidden.
 | 13 | `pm_research/named_binary_probe_s2/transition.py` | `stage10_transition_reconciliation` | `PYTHON` | `true` |
 | 14 | `pm_research/named_binary_probe_s2/types.py` | `closed_types_and_jcs` | `PYTHON` | `true` |
 
+No fifteenth source file, `src/` layout, namespace-package design,
+`pyproject.toml` change, path rename, relocation, matrix reduction, or role
+reassignment is permitted.
+
 ## Required lifecycle order
 
 ```text
-accepted K011
-  -> accepted and canonically verified A010
-  -> exact accepted, installed, and verified K013
-  -> fresh K012 review candidate
-  -> Sentinel acceptance and any required K012 installation/verification
-  -> separately prepared K014
+K011 accepted
+  -> A010 accepted, installed, verified
+  -> K013 accepted, installed, verified
+  -> K012 accepted, installed, verified
+  -> K014 review candidate
+  -> Sentinel acceptance
+  -> separate Gustavo installation authorization
+  -> exact installed K014 verification
+  -> separate bounded Sentinel implementation handoff
   -> K015/K016
 ```
 
-This package stops before K014. It contains no implementation source.
+Candidate preparation does not activate Claude and does not authorize implementation.
 
 ## Preserved research and authorization gates
 
 - P0 remains accepted with final eligible universe `39,693`.
-- P1 remains blocked on an accepted per-side token-identity decision-time price artifact.
-- P2 and P3 remain unauthorized.
+- P1 remains blocked; P2 and P3 remain unauthorized.
 - `named_binary_probe_blocked = true`.
+- No accepted S2 per-token price artifact exists.
 - Scoring and probe execution remain unauthorized.
-- `yes_price`, `1 - price`, `1 - yes_price`, and complement synthesis remain prohibited.
-- No S2 per-token price artifact is accepted.
+- Complement synthesis remains prohibited.
 - Test source, tests, imports, local research-data access, subprocess execution,
-  networking, empirical activity, research-artifact generation, canonical
-  installation, and Git activity remain unauthorized by this candidate package.
-
-## Working discipline
-
-- Verify exact paths, bytes, hashes, schemas, ranks, roles, ordering, and authorization boundaries.
-- Candidate preparation is not Sentinel acceptance.
-- A stage-authorization candidate is not an activity root.
-- K014 is required before implementation-source activity can begin.
-- Professor does not approve its own work.
-- Claude receives only Sentinel-accepted and Gustavo-authorized scope.
+  networking, empirical execution, research-artifact generation, canonical
+  installation, and Git activity remain unauthorized by this candidate.
 
 Requested Sentinel decision:
-`APPROVE — S2_CANDIDATE_08_K012_SENTINEL_IMPLEMENTATION_SOURCE_STAGE_AUTHORIZATION_CANDIDATE_01_ACCEPTED`
+`APPROVE — S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_CANDIDATE_01_ACCEPTED`.

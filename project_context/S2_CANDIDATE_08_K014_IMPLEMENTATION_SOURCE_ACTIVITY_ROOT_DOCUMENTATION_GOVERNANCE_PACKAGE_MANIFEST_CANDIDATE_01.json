@@ -1,0 +1,161 @@
+{
+  "authorization_effect": "NONE",
+  "binding_model": "REVIEW_ZIP_EXTERNAL_SIDECAR_V1",
+  "candidate_effect_boundary": {
+    "bounded_implementation_handoff_issued": false,
+    "candidate_preparation_authorizes_implementation": false,
+    "implementation_source_authoring_started": false,
+    "k014_accepted": false,
+    "k014_canonically_installed": false,
+    "k014_canonically_verified": false,
+    "k014_consumable": false,
+    "k015_k016_materialized": false
+  },
+  "canonical_base": "0872d4578fd2c0fc5147c77af606b9f807c7bc2b",
+  "canonical_repository": "rigolugo/pm_research",
+  "checksum_contract": {
+    "acyclic": true,
+    "excluded_paths": [
+      "project_context/S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_01.txt",
+      "project_context/S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_01.json"
+    ],
+    "included_paths": [
+      "nodes/K014/artifact.json",
+      "project_context/ARTIFACT_INDEX.md",
+      "project_context/DECISION_LOG.md",
+      "project_context/PROJECT_STATE.md",
+      "project_context/START_HERE.md",
+      "review_only/CHANGED_PATH_MATRIX_S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_01.csv",
+      "review_only/HANDOFF_PROFESSOR_S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_01.md"
+    ],
+    "record_path": "project_context/S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_01.txt",
+    "verified_subject_count": 7
+  },
+  "identity_model": {
+    "canonical_manifest_inventories_every_zip_member_including_itself": true,
+    "canonical_manifest_self_member": {
+      "byte_length": null,
+      "path": "project_context/S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_01.json",
+      "self_identity": null,
+      "sha256": null
+    },
+    "canonical_manifest_top_level_self_identity": null,
+    "checksum_inventory_excludes": [
+      "project_context/S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_01.txt",
+      "project_context/S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_01.json"
+    ],
+    "external_zip_sha256_sidecar_binds_final_zip_bytes": true,
+    "identity_graph_acyclic": true,
+    "self_excluding_manifest_model": false
+  },
+  "k014_candidate": {
+    "artifact_profile_id": "activity_root.v1",
+    "byte_length": 4302,
+    "created_at_utc_ms": 1785598380000,
+    "direct_predecessors": [
+      "K011",
+      "A010",
+      "K013",
+      "K012"
+    ],
+    "embedded_contract_commit": "0b755fb71175370638ec87175aee85cf4710f54d",
+    "git_blob_sha": "cc35df982377286e0940c9dddd5cee01a51e4ace",
+    "logical_path": "nodes/K014/artifact.json",
+    "node_id": "K014",
+    "rank": 1140,
+    "schema_id": "pm_research.s2.activity_root.v1",
+    "semantic_role": "implementation_source_activity_root",
+    "sha256": "7d54c1cabd1be53abc677425e5b7ce781d362bef2918c31bd844a0fa316b9fc2",
+    "status": "REVIEW_CANDIDATE_NOT_CONSUMABLE"
+  },
+  "members": [
+    {
+      "byte_length": 4302,
+      "change_type": "NEW",
+      "classification": "SUBSTANTIVE_CANDIDATE",
+      "git_blob_sha": "cc35df982377286e0940c9dddd5cee01a51e4ace",
+      "path": "nodes/K014/artifact.json",
+      "sha256": "7d54c1cabd1be53abc677425e5b7ce781d362bef2918c31bd844a0fa316b9fc2"
+    },
+    {
+      "base_git_blob_sha": "4d194f96af39b95481c6cf4fe05e3c8c09ec2c26",
+      "byte_length": 8799,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "classification": "SUBSTANTIVE_CANDIDATE",
+      "git_blob_sha": "2c6aec16f59f0cace2a993152cf30f9516ce11df",
+      "path": "project_context/START_HERE.md",
+      "sha256": "12e2af8b611fbb5351aa9ec0b02c8bfdba0ff55915a12b276dc1fb6d00b51ed0"
+    },
+    {
+      "base_git_blob_sha": "0c3744d407c2e6a1d09d2ee000c82d72d81fba47",
+      "byte_length": 7149,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "classification": "SUBSTANTIVE_CANDIDATE",
+      "git_blob_sha": "d7c3f9597078cc5cd1a14ef0d8aee5fc8691a839",
+      "path": "project_context/PROJECT_STATE.md",
+      "sha256": "51ab2d043d22ae0d62aafc24dd1d56215658969cb0cf38e64aac6dfe6d69fc86"
+    },
+    {
+      "base_git_blob_sha": "e6575f5e1ce0959113c9ec3523cfa822cab8c50c",
+      "byte_length": 5132,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "classification": "SUBSTANTIVE_CANDIDATE",
+      "git_blob_sha": "1dc6d020eccd8030f823d708cab12ab7cefcafd7",
+      "path": "project_context/DECISION_LOG.md",
+      "sha256": "cd51ffff6b849eb2802efeac28e81ffc8b5a808529b13ed228c6e0b38903eac9"
+    },
+    {
+      "base_git_blob_sha": "f18e2abdc071b5de54617675813d3b84c19f2b4f",
+      "byte_length": 5581,
+      "change_type": "COMPLETE_REPLACEMENT",
+      "classification": "SUBSTANTIVE_CANDIDATE",
+      "git_blob_sha": "f03700e30ab21fb2309564869f92edd48543e7b3",
+      "path": "project_context/ARTIFACT_INDEX.md",
+      "sha256": "4eb3e16b8ea0ddf002667968cbe60bbb8c3089bc53571187bbbf0d1dab05b895"
+    },
+    {
+      "byte_length": 1418,
+      "classification": "PACKAGE_CONTROL",
+      "git_blob_sha": "289fcac2d4ba175642b8a826e9613f6e4b64ac7b",
+      "path": "project_context/S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_SHA256SUMS_CANDIDATE_01.txt",
+      "sha256": "c19f60754bf4ab3dcf2b6839c8a46a9bdcaf887a0306961e9e3ff349c95912d6"
+    },
+    {
+      "byte_length": 1602,
+      "classification": "REVIEW_ONLY",
+      "git_blob_sha": "d68476efadb006ea76880684e5b9ad1ac086b2fa",
+      "path": "review_only/CHANGED_PATH_MATRIX_S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_01.csv",
+      "sha256": "98e2f06e464b81ecd977d6954dec3d96b8e1d3a034e83ac4dacd24185bf19d54"
+    },
+    {
+      "byte_length": 4533,
+      "classification": "REVIEW_ONLY",
+      "git_blob_sha": "0b806fc3548c227308859eca0463ad900101abfb",
+      "path": "review_only/HANDOFF_PROFESSOR_S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_01.md",
+      "sha256": "51255a16c270e0b05c26b33c921a16ed6ae0195b018753373ea3e14f1b265bdd"
+    },
+    {
+      "byte_length": null,
+      "classification": "PACKAGE_CONTROL",
+      "identity_binding": "FINAL_ZIP_AND_EXTERNAL_SHA256_SIDECAR",
+      "path": "project_context/S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_MANIFEST_CANDIDATE_01.json",
+      "self_identity": null,
+      "sha256": null
+    }
+  ],
+  "package_id": "S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_DOCUMENTATION_GOVERNANCE_PACKAGE_CANDIDATE_01",
+  "proposed_canonical_member_count": 7,
+  "replacement_base_git_blobs": {
+    "project_context/ARTIFACT_INDEX.md": "f18e2abdc071b5de54617675813d3b84c19f2b4f",
+    "project_context/DECISION_LOG.md": "e6575f5e1ce0959113c9ec3523cfa822cab8c50c",
+    "project_context/PROJECT_STATE.md": "0c3744d407c2e6a1d09d2ee000c82d72d81fba47",
+    "project_context/START_HERE.md": "4d194f96af39b95481c6cf4fe05e3c8c09ec2c26"
+  },
+  "requested_sentinel_decision": "APPROVE — S2_CANDIDATE_08_K014_IMPLEMENTATION_SOURCE_ACTIVITY_ROOT_CANDIDATE_01_ACCEPTED",
+  "review_only_member_count": 2,
+  "schema_id": "pm_research.documentation_governance_package_manifest.v1",
+  "self_identity": null,
+  "status": "REVIEW_CANDIDATE_NOT_INSTALLED",
+  "substantive_candidate_count": 5,
+  "task_classification": "K014_DOCUMENTATION_GOVERNANCE_CANDIDATE_PREPARATION_ONLY"
+}
