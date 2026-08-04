@@ -124,3 +124,20 @@ acyclic controls, consistent K014 state, and exact future authorization boundary
 
 Requested Sentinel decision: `APPROVE`, `BLOCK`, `DEFER`, or
 `NEEDS VERIFICATION`.
+
+## S2 Candidate 08 C10 WP01/WP02 recovery checkpoint
+
+| Item | State |
+|---|---|
+| checkpoint authoring base | `2ba8766893407cb92616dd75b9e15a77ad0c865c` |
+| accepted Working Paper 01 Candidate 03 | `380466` / `c2d5e487bce6c3ed13cb61f52d0eb153c6279970ebc9192f5df5414b3899be65` |
+| Working Paper 02 | `WORKING_PAPER_02_UNACCEPTED` |
+| Working Paper 02 controlling candidate | `NONE` |
+| partial Working Paper 02 acceptance | `NO_PARTIAL_WORKING_PAPER_02_ACCEPTANCE` |
+| Working Paper 03 | `UNAUTHORIZED` |
+| modularization | recommended only; unauthorized until separate Gustavo authorization and Sentinel review |
+
+No implementation, tests, execution, data access, network access, Git activity, K199, or downstream authority follows from this checkpoint.
+
+The preserved gates remain unchanged: P0 accepted at `39693`, P1 blocked, P2/P3 unauthorized, `named_binary_probe_blocked = true`, no accepted S2 per-token price artifact, complement synthesis prohibited, and scoring/probes unauthorized.
+

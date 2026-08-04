@@ -1,0 +1,347 @@
+{
+  "accepted_wp01_identity": {
+    "byte_length": 380466,
+    "disposition": "EXECUTION_CLOSURE_STATE_MACHINE_WORKING_PAPER_CANDIDATE_03_ACCEPTED",
+    "no_final_newline_exception_preserved": true,
+    "path": "project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_01_EXECUTION_CLOSURE_STATE_MACHINE_CANDIDATE_03.md",
+    "sha256": "c2d5e487bce6c3ed13cb61f52d0eb153c6279970ebc9192f5df5414b3899be65"
+  },
+  "authorization_effect": "NONE",
+  "candidate_02_predecessor_identity": {
+    "byte_length": 53629,
+    "disposition": "BLOCKED_REVIEW_ONLY_NON_CONTROLLING",
+    "filename": "S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_CANDIDATE_02.zip",
+    "sha256": "132e5cdb8a6ff9be0111d9b711d137446661d5ef7fe1c1692a5389316e8d1b66"
+  },
+  "candidate_02_to_candidate_03_changed_object_register": [
+    {
+      "candidate_02_byte_length": 380466,
+      "candidate_02_path": "project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_01_EXECUTION_CLOSURE_STATE_MACHINE_CANDIDATE_03.md",
+      "candidate_02_sha256": "c2d5e487bce6c3ed13cb61f52d0eb153c6279970ebc9192f5df5414b3899be65",
+      "candidate_03_byte_length": 380466,
+      "candidate_03_path": "project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_01_EXECUTION_CLOSURE_STATE_MACHINE_CANDIDATE_03.md",
+      "candidate_03_sha256": "c2d5e487bce6c3ed13cb61f52d0eb153c6279970ebc9192f5df5414b3899be65",
+      "classification": "BYTE_IDENTICAL",
+      "equality_result": "BYTE_IDENTICAL_TO_CANDIDATE_02"
+    },
+    {
+      "candidate_02_byte_length": 1551,
+      "candidate_02_path": "project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_01_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02.md",
+      "candidate_02_sha256": "100135feab8992d71ba25b647ac7ccb877dce504068f570b1e578e7a1ffa3e81",
+      "candidate_03_byte_length": 1551,
+      "candidate_03_path": "project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_01_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02.md",
+      "candidate_03_sha256": "100135feab8992d71ba25b647ac7ccb877dce504068f570b1e578e7a1ffa3e81",
+      "classification": "BYTE_IDENTICAL",
+      "equality_result": "BYTE_IDENTICAL_TO_CANDIDATE_02"
+    },
+    {
+      "candidate_02_byte_length": 5576,
+      "candidate_02_path": "project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_02_RECOVERY_STATE_RECORD_CANDIDATE_02.md",
+      "candidate_02_sha256": "4c39563bd4e9b892bfbc4f058f1a34b25699a27f43e28fea3b744aca223db123",
+      "candidate_03_byte_length": 5576,
+      "candidate_03_path": "project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_02_RECOVERY_STATE_RECORD_CANDIDATE_02.md",
+      "candidate_03_sha256": "4c39563bd4e9b892bfbc4f058f1a34b25699a27f43e28fea3b744aca223db123",
+      "classification": "BYTE_IDENTICAL",
+      "equality_result": "BYTE_IDENTICAL_TO_CANDIDATE_02"
+    },
+    {
+      "candidate_02_byte_length": 7398,
+      "candidate_02_path": "project_context/PROJECT_STATE.md",
+      "candidate_02_sha256": "4df598d4a7ae52a0a8186cc1cd71769b2593db5845ce9cf08355ab927a21b543",
+      "candidate_03_byte_length": 7398,
+      "candidate_03_path": "project_context/PROJECT_STATE.md",
+      "candidate_03_sha256": "4df598d4a7ae52a0a8186cc1cd71769b2593db5845ce9cf08355ab927a21b543",
+      "classification": "BYTE_IDENTICAL",
+      "equality_result": "BYTE_IDENTICAL_TO_CANDIDATE_02"
+    },
+    {
+      "candidate_02_byte_length": 6665,
+      "candidate_02_path": "project_context/DECISION_LOG.md",
+      "candidate_02_sha256": "5b431d7f7c1b104919c03e9e76a4d9673f5a4533048378484e995f78dc7ba9b1",
+      "candidate_03_byte_length": 6665,
+      "candidate_03_path": "project_context/DECISION_LOG.md",
+      "candidate_03_sha256": "5b431d7f7c1b104919c03e9e76a4d9673f5a4533048378484e995f78dc7ba9b1",
+      "classification": "BYTE_IDENTICAL",
+      "equality_result": "BYTE_IDENTICAL_TO_CANDIDATE_02"
+    },
+    {
+      "candidate_02_byte_length": 8751,
+      "candidate_02_path": "project_context/ARTIFACT_INDEX.md",
+      "candidate_02_sha256": "0f9860baf42cdd36d21bfc4498b9d9f1689ddba1c28cb76419234e4421c0f760",
+      "candidate_03_byte_length": 8751,
+      "candidate_03_path": "project_context/ARTIFACT_INDEX.md",
+      "candidate_03_sha256": "0f9860baf42cdd36d21bfc4498b9d9f1689ddba1c28cb76419234e4421c0f760",
+      "classification": "BYTE_IDENTICAL",
+      "equality_result": "BYTE_IDENTICAL_TO_CANDIDATE_02"
+    },
+    {
+      "candidate_02_byte_length": 9922,
+      "candidate_02_path": "project_context/START_HERE.md",
+      "candidate_02_sha256": "99f42ba8724e5404063dd1fb950c2081c2221921c98d1666405cabfa440e6d7b",
+      "candidate_03_byte_length": 9873,
+      "candidate_03_path": "project_context/START_HERE.md",
+      "candidate_03_sha256": "6daf9f142272536c1514fa9e16849d34bbded64a4cbb0d7ae8a3563748530404",
+      "classification": "CORRECTED_CANONICAL_BASE_PLUS_ADDENDUM",
+      "equality_result": "CHANGED_AS_AUTHORIZED"
+    },
+    {
+      "candidate_02_byte_length": 880,
+      "candidate_02_path": "project_context/S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_PACKAGE_SHA256SUMS_CANDIDATE_02.txt",
+      "candidate_02_sha256": "a8465f9c4c268ab738111fdee56ef143a8886f77e658756eede7762a5482a2e5",
+      "candidate_03_byte_length": 880,
+      "candidate_03_path": "project_context/S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_PACKAGE_SHA256SUMS_CANDIDATE_03.txt",
+      "candidate_03_sha256": "a1ab23d7f48714380e743ff6f35fc54dae608ecfb2aecbdec855416b75f845f7",
+      "classification": "RENAMED_AND_DERIVED_IDENTITY_RECALCULATION",
+      "equality_result": "DERIVED_CHANGE_REQUIRED"
+    },
+    {
+      "candidate_02_byte_length": 11012,
+      "candidate_02_path": "project_context/S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_PACKAGE_MANIFEST_CANDIDATE_02.json",
+      "candidate_02_sha256": "0aa97a58f42d91ea4d0cfe0ce41cb9384883a201c9606fa007d4d67013273869",
+      "candidate_03_byte_length": null,
+      "candidate_03_path": "project_context/S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_PACKAGE_MANIFEST_CANDIDATE_03.json",
+      "candidate_03_sha256": null,
+      "classification": "RENAMED_AND_DERIVED_IDENTITY_RECALCULATION",
+      "equality_result": "DERIVED_CHANGE_REQUIRED_MANIFEST_SELF_IDENTITY_NULL"
+    },
+    {
+      "candidate_02_byte_length": 53629,
+      "candidate_02_path": "S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_CANDIDATE_02.zip",
+      "candidate_02_sha256": "132e5cdb8a6ff9be0111d9b711d137446661d5ef7fe1c1692a5389316e8d1b66",
+      "candidate_03_byte_length": null,
+      "candidate_03_path": "S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_CANDIDATE_03.zip",
+      "candidate_03_sha256": null,
+      "classification": "DERIVED_IDENTITY_RECALCULATION",
+      "identity_location": "EXTERNAL_CANDIDATE_03_ZIP_SIDECAR"
+    },
+    {
+      "candidate_02_byte_length": 148,
+      "candidate_02_path": "S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_CANDIDATE_02.zip.sha256",
+      "candidate_02_sha256": "352d885e3f36512a4a0febed06dbae35d0367cae04d08fc501b6de6c5dfde19e",
+      "candidate_03_byte_length": null,
+      "candidate_03_path": "S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_CANDIDATE_03.zip.sha256",
+      "candidate_03_sha256": null,
+      "classification": "DERIVED_IDENTITY_RECALCULATION",
+      "identity_location": "EXTERNAL_SIDECAR_OBJECT"
+    }
+  ],
+  "canonical_authoring_base": "2ba8766893407cb92616dd75b9e15a77ad0c865c",
+  "checksum_entry_count": 7,
+  "classification": "DOCUMENTATION_GOVERNANCE_RECOVERY_CHECKPOINT_ONE_FILE_PLUS_DERIVED_IDENTITIES_CORRECTION_ONLY",
+  "installation_effect": "NONE",
+  "manifest_self_identity": null,
+  "member_count": 9,
+  "no_blocked_wp02_candidate_payload": true,
+  "no_controlling_wp02_candidate": true,
+  "no_partial_wp02_acceptance": true,
+  "package_assertions": {
+    "all_package_effects_none": true,
+    "canonical_main_verified": true,
+    "canonical_start_here_blob_reproduced": true,
+    "deleted_canonical_byte_count_equals_zero": true,
+    "exact_accepted_wp01_bytes_present": true,
+    "extracted_final_prefix_reproduces_canonical_blob": true,
+    "extracted_final_suffix_equals_declared_addendum": true,
+    "no_blocked_wp02_candidate_payload": true,
+    "no_duplicate_or_undeclared_path": true,
+    "no_implementation_test_execution_data_network_git_k199_p123_scoring_probe_trading_gate_authority": true,
+    "no_partial_wp02_acceptance": true,
+    "seven_checksum_entries_match_seven_payload_members": true,
+    "six_preserved_candidate_02_substantive_payloads_byte_identical": true,
+    "unrelated_canonical_deletion_count_equals_zero": true,
+    "wp01_identity_reproduced": true,
+    "wp02_candidates_01_02_identity_status": "NOT_VERIFIED_IN_CHECKPOINT_SOURCE_SET",
+    "wp02_remains_unaccepted": true,
+    "wp03_unauthorized": true,
+    "zip_member_count_equals_nine": true
+  },
+  "package_assertions_label": "DETERMINISTIC_PACKAGE_PREPARATION_ASSERTIONS_SUBMITTED_FOR_SENTINEL_VERIFICATION",
+  "package_id": "S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_CANDIDATE_03",
+  "payload_document_count": 7,
+  "payload_members": [
+    {
+      "byte_length": 8751,
+      "path": "project_context/ARTIFACT_INDEX.md",
+      "role": "payload_document",
+      "sha256": "0f9860baf42cdd36d21bfc4498b9d9f1689ddba1c28cb76419234e4421c0f760"
+    },
+    {
+      "byte_length": 6665,
+      "path": "project_context/DECISION_LOG.md",
+      "role": "payload_document",
+      "sha256": "5b431d7f7c1b104919c03e9e76a4d9673f5a4533048378484e995f78dc7ba9b1"
+    },
+    {
+      "byte_length": 7398,
+      "path": "project_context/PROJECT_STATE.md",
+      "role": "payload_document",
+      "sha256": "4df598d4a7ae52a0a8186cc1cd71769b2593db5845ce9cf08355ab927a21b543"
+    },
+    {
+      "byte_length": 1551,
+      "path": "project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_01_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02.md",
+      "role": "payload_document",
+      "sha256": "100135feab8992d71ba25b647ac7ccb877dce504068f570b1e578e7a1ffa3e81"
+    },
+    {
+      "byte_length": 380466,
+      "path": "project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_01_EXECUTION_CLOSURE_STATE_MACHINE_CANDIDATE_03.md",
+      "role": "payload_document",
+      "sha256": "c2d5e487bce6c3ed13cb61f52d0eb153c6279970ebc9192f5df5414b3899be65"
+    },
+    {
+      "byte_length": 5576,
+      "path": "project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_02_RECOVERY_STATE_RECORD_CANDIDATE_02.md",
+      "role": "payload_document",
+      "sha256": "4c39563bd4e9b892bfbc4f058f1a34b25699a27f43e28fea3b744aca223db123"
+    },
+    {
+      "byte_length": 9873,
+      "path": "project_context/START_HERE.md",
+      "role": "payload_document",
+      "sha256": "6daf9f142272536c1514fa9e16849d34bbded64a4cbb0d7ae8a3563748530404"
+    }
+  ],
+  "professor_self_approval": false,
+  "requested_sentinel_decision": "APPROVE — S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_CANDIDATE_03_ACCEPTED",
+  "self_attack": [
+    {
+      "attack": "START_HERE based on Candidate-02 incorrect prefix",
+      "evidence": "reverse prefix Git blob is f02047547d6158cb80cd9012cb21d2c4b3d9e3b5",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "prefix Git blob equals 27c9bbd4836ba2ac07e9c4dd36cd604602eed39a",
+      "evidence": "computed prefix Git blob is f02047547d6158cb80cd9012cb21d2c4b3d9e3b5",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "prefix differs by one byte from required canonical blob",
+      "evidence": "Git blob equality is exact",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "globally normalized canonical prefix",
+      "evidence": "exact canonical raw prefix bytes reproduce required Git blob",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "removing addendum does not reproduce required Git blob",
+      "evidence": {
+        "addendum_byte_length": 838,
+        "addendum_sha256": "5559a230a4c661e0d0471b3bfdf1b447a0b543da0ce0af33f81d510d9877c10e",
+        "bytes_after_canonical_prefix_equal_declared_addendum": true,
+        "canonical_git_blob_sha1": "f02047547d6158cb80cd9012cb21d2c4b3d9e3b5",
+        "canonical_prefix_length": 9035,
+        "canonical_raw_byte_length": 9035,
+        "canonical_raw_sha256": "079c1dda32bf8e6fc12ed0a825242521a2759d52c44660d1f3b7d8040b174b55",
+        "canonical_ref": "2ba8766893407cb92616dd75b9e15a77ad0c865c",
+        "computed_git_blob_of_extracted_prefix": "f02047547d6158cb80cd9012cb21d2c4b3d9e3b5",
+        "deleted_canonical_byte_count": 0,
+        "insertion_mode": "EXACT_CANONICAL_BYTES_PLUS_SINGLE_APPENDED_ADDENDUM",
+        "prefix_blob_matches_required_canonical_blob": true,
+        "replaced_canonical_range": "NONE",
+        "resulting_byte_length": 9873,
+        "resulting_path": "project_context/START_HERE.md",
+        "resulting_sha256": "6daf9f142272536c1514fa9e16849d34bbded64a4cbb0d7ae8a3563748530404",
+        "reverse_procedure": [
+          "remove exactly addendum_byte_length bytes from final START_HERE.md",
+          "compute Git blob SHA-1 over remaining prefix",
+          "require equality with f02047547d6158cb80cd9012cb21d2c4b3d9e3b5",
+          "require removed suffix bytes equal declared addendum bytes"
+        ],
+        "unrelated_canonical_deletion_count": 0
+      },
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "altered addendum with no declared change",
+      "evidence": "final suffix SHA-256 equals declared addendum SHA-256",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "change to six preserved substantive payloads",
+      "evidence": "all six equality results are BYTE_IDENTICAL_TO_CANDIDATE_02",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "changed WP01 final-newline condition",
+      "evidence": "exact accepted 380466-byte object remains without final newline",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "stale Candidate-02 START_HERE checksum in SHA256SUMS",
+      "evidence": "Candidate-03 checksum inventory recomputed from corrected payload",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "stale Candidate-02 SHA256SUMS identity in manifest",
+      "evidence": "manifest binds Candidate-03 SHA256SUMS path and identity",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "Candidate-02 manifest filename retained in ZIP",
+      "evidence": "only project_context/S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_PACKAGE_MANIFEST_CANDIDATE_03.json is declared",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "Candidate-02 checksum filename retained in ZIP",
+      "evidence": "only project_context/S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_PACKAGE_SHA256SUMS_CANDIDATE_03.txt is declared",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "undeclared ZIP member",
+      "evidence": "exact nine-member inventory and central-directory equality",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "checksum or manifest identity cycle",
+      "evidence": "checksum excludes itself and manifest; manifest self-identity and ZIP identity are null",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "package accepts WP02 or authorizes WP03",
+      "evidence": "WP02 unaccepted, no partial acceptance, WP03 unauthorized",
+      "result": "BLOCKED"
+    },
+    {
+      "attack": "package changes project guardrail or downstream authorization",
+      "evidence": "only START_HERE and directly derived package identities changed",
+      "result": "BLOCKED"
+    }
+  ],
+  "sha256sums_member": {
+    "byte_length": 880,
+    "path": "project_context/S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_PACKAGE_SHA256SUMS_CANDIDATE_03.txt",
+    "role": "payload_checksum_inventory",
+    "sha256": "a1ab23d7f48714380e743ff6f35fc54dae608ecfb2aecbdec855416b75f845f7"
+  },
+  "start_here_reverse_construction_proof": {
+    "addendum_byte_length": 838,
+    "addendum_sha256": "5559a230a4c661e0d0471b3bfdf1b447a0b543da0ce0af33f81d510d9877c10e",
+    "bytes_after_canonical_prefix_equal_declared_addendum": true,
+    "canonical_git_blob_sha1": "f02047547d6158cb80cd9012cb21d2c4b3d9e3b5",
+    "canonical_prefix_length": 9035,
+    "canonical_raw_byte_length": 9035,
+    "canonical_raw_sha256": "079c1dda32bf8e6fc12ed0a825242521a2759d52c44660d1f3b7d8040b174b55",
+    "canonical_ref": "2ba8766893407cb92616dd75b9e15a77ad0c865c",
+    "computed_git_blob_of_extracted_prefix": "f02047547d6158cb80cd9012cb21d2c4b3d9e3b5",
+    "deleted_canonical_byte_count": 0,
+    "insertion_mode": "EXACT_CANONICAL_BYTES_PLUS_SINGLE_APPENDED_ADDENDUM",
+    "prefix_blob_matches_required_canonical_blob": true,
+    "replaced_canonical_range": "NONE",
+    "resulting_byte_length": 9873,
+    "resulting_path": "project_context/START_HERE.md",
+    "resulting_sha256": "6daf9f142272536c1514fa9e16849d34bbded64a4cbb0d7ae8a3563748530404",
+    "reverse_procedure": [
+      "remove exactly addendum_byte_length bytes from final START_HERE.md",
+      "compute Git blob SHA-1 over remaining prefix",
+      "require equality with f02047547d6158cb80cd9012cb21d2c4b3d9e3b5",
+      "require removed suffix bytes equal declared addendum bytes"
+    ],
+    "unrelated_canonical_deletion_count": 0
+  },
+  "wp02_state": "WORKING_PAPER_02_UNACCEPTED",
+  "wp03_authorization": "UNAUTHORIZED",
+  "zip_identity": null
+}

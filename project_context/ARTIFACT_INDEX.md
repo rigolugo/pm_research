@@ -101,3 +101,35 @@ complement synthesis remain unauthorized.
 
 Requested Sentinel decision:
 `APPROVE — S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_CANDIDATE_02_ACCEPTED`.
+
+## S2 Candidate 08 C10 WP01/WP02 recovery checkpoint index
+
+## Accepted Working Paper 01
+
+| Item | Path | Bytes | SHA-256 | State |
+|---|---|---:|---|---|
+| Working Paper 01 Candidate 03 | `project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_01_EXECUTION_CLOSURE_STATE_MACHINE_CANDIDATE_03.md` | `380466` | `c2d5e487bce6c3ed13cb61f52d0eb153c6279970ebc9192f5df5414b3899be65` | `EXECUTION_CLOSURE_STATE_MACHINE_WORKING_PAPER_CANDIDATE_03_ACCEPTED` |
+
+## Proposed C10 recovery checkpoint paths
+
+1. `project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_01_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02.md`
+2. `project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_02_RECOVERY_STATE_RECORD_CANDIDATE_02.md`
+3. `project_context/S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_PACKAGE_MANIFEST_CANDIDATE_02.json`
+4. `project_context/S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_PACKAGE_SHA256SUMS_CANDIDATE_02.txt`
+
+## Working Paper 02 review history only
+
+Working Paper 02 Candidates 01 through 07 are review history only. They are not controlling and are not in the controlling read order.
+
+| Candidate | Artifact identity status | Bytes | SHA-256 | State |
+|---|---|---:|---|---|
+| Candidate 01 | `NOT_VERIFIED_IN_CHECKPOINT_SOURCE_SET` | `null` | `null` | `BLOCKED_REVIEW_ONLY_NON_CONTROLLING` |
+| Candidate 02 | `NOT_VERIFIED_IN_CHECKPOINT_SOURCE_SET` | `null` | `null` | `BLOCKED_REVIEW_ONLY_NON_CONTROLLING` |
+| Candidate 03 | `VERIFIED_IN_CHECKPOINT_SOURCE_SET` | `2870582` | `086ad542c2e4ebbcc0e01ec1e8a36f58192d66dd1db46d5130216d8e69b55694` | `BLOCKED_REVIEW_ONLY_NON_CONTROLLING` |
+| Candidate 04 | `VERIFIED_IN_CHECKPOINT_SOURCE_SET` | `531035` | `81419b44c611e391aac1f6ec86d41a5dc2e39eb10fb3b77a99da2f5d53df841d` | `BLOCKED_REVIEW_ONLY_NON_CONTROLLING` |
+| Candidate 05 | `VERIFIED_IN_CHECKPOINT_SOURCE_SET` | `1674756` | `b61b076312acd0978f148f5827dba1e428184abc71ea96b9b2d1ddbbd40f6bdf` | `BLOCKED_REVIEW_ONLY_NON_CONTROLLING` |
+| Candidate 06 | `VERIFIED_IN_CHECKPOINT_SOURCE_SET` | `4206730` | `06fc2fc520f637eea99a1ed4553b37dee4153ba3c813d1f9570be870525695d4` | `BLOCKED_REVIEW_ONLY_NON_CONTROLLING` |
+| Candidate 07 | `VERIFIED_IN_CHECKPOINT_SOURCE_SET` | `278281` | `2f252d485e0a06eb0527e60c552d31e285700c7035dbb2cc8488fcc7a957e7cd` | `BLOCKED_REVIEW_ONLY_NON_CONTROLLING` |
+
+Working Paper 02 remains unaccepted. There is no partial Working Paper 02 acceptance. Working Paper 03 remains unauthorized.
+

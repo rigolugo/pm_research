@@ -121,3 +121,20 @@ Requested Sentinel decision:
 `APPROVE — S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_CANDIDATE_02_ACCEPTED`
 
 Professor does not issue that decision.
+
+## S2 Candidate 08 C10 WP01/WP02 recovery checkpoint decision boundary
+
+Settled checkpoint decision boundary:
+
+- accepted Working Paper 01 may be canonicalized independently of Working Paper 02;
+- the earlier combined Working Paper 01 plus Working Paper 02 checkpoint sequence is superseded;
+- Working Paper 02 remains unaccepted;
+- recording blocked review history is not partial acceptance;
+- Working Paper 03 remains blocked and unauthorized;
+- modularization is a recommendation requiring separate Gustavo authorization and Sentinel acceptance.
+
+This section does not record modularization as an accepted technical specification.
+
+Requested Sentinel decision:
+`APPROVE — S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_CANDIDATE_02_ACCEPTED`
+

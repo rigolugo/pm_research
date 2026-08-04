@@ -139,3 +139,17 @@ be created only after valid K015 bytes exist, and
 
 Requested Sentinel decision on this package:
 `APPROVE — S2_CANDIDATE_08_K014_POST_INSTALLATION_VERIFICATION_AND_IMPLEMENTATION_SOURCE_HANDOFF_CANONICALIZATION_PACKAGE_CANDIDATE_02_ACCEPTED`.
+
+
+## S2 Candidate 08 C10 recovery checkpoint read-order addendum
+
+The following recovery checkpoint materials are added to the applicable S2 Candidate 08 read order only after package acceptance, separate Gustavo installation authorization, installation, and independent verification, in this order:
+
+1. `S2_CANDIDATE_08_C10_WORKING_PAPER_01_CANONICAL_ACCEPTANCE_RECORD_CANDIDATE_02.md`
+2. `S2_CANDIDATE_08_C10_WORKING_PAPER_01_EXECUTION_CLOSURE_STATE_MACHINE_CANDIDATE_03.md`
+3. `S2_CANDIDATE_08_C10_WORKING_PAPER_02_RECOVERY_STATE_RECORD_CANDIDATE_02.md`
+
+Working Paper 01 is accepted at `380466` bytes / `c2d5e487bce6c3ed13cb61f52d0eb153c6279970ebc9192f5df5414b3899be65`.
+
+Working Paper 02 is unaccepted. No Working Paper 02 candidate is controlling. There is no partial Working Paper 02 acceptance. Working Paper 03 is unauthorized.
+
