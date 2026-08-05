@@ -153,3 +153,29 @@ Working Paper 01 is accepted at `380466` bytes / `c2d5e487bce6c3ed13cb61f52d0eb1
 
 Working Paper 02 is unaccepted. No Working Paper 02 candidate is controlling. There is no partial Working Paper 02 acceptance. Working Paper 03 is unauthorized.
 
+
+## S2 Candidate 08 C10 WP02 modularization architecture read-order addendum
+
+After this documentation package is accepted, separately authorized for installation,
+installed, and independently verified, the applicable S2 Candidate 08 read order
+continues immediately after
+`S2_CANDIDATE_08_C10_WORKING_PAPER_02_RECOVERY_STATE_RECORD_CANDIDATE_02.md`
+with:
+
+1. `S2_CANDIDATE_08_C10_WP02_MODULARIZATION_AMENDMENT_01_SENTINEL_ACCEPTANCE_RECORD_CANDIDATE_02.md`
+2. `S2_CANDIDATE_08_C10_WORKING_PAPER_02_MODULARIZATION_AMENDMENT_01_CANDIDATE_04.md`
+
+Candidate 04 is the accepted controlling WP02 modularization architecture at
+`25845` bytes / `6f9582306f912292ecabdebd737343306dfa26aa281529d3ff1423d0f832dced`.
+
+The controlling Sentinel decision is `S2_CANDIDATE_08_C10_WP02_MODULARIZATION_AMENDMENT_01_CANDIDATE_04_SENTINEL_ACCEPTANCE_01` with disposition
+`APPROVE — S2_CANDIDATE_08_C10_WORKING_PAPER_02_MODULARIZATION_AMENDMENT_01_CANDIDATE_04_ACCEPTED`.
+
+Amendment Candidates 01, 02, and 03 remain blocked review-history artifacts and
+non-controlling. No WP02 module is authorized. Module acceptance does not equal
+partial WP02 acceptance. Integrated Working Paper 02 remains unaccepted. All five
+Candidate-07 findings remain open. Working Paper 03 remains unauthorized.
+
+Only after this documentation is accepted, installation-authorized, installed, and
+independently verified may Gustavo separately authorize `WP02-A`
+specification-only drafting. No such authorization is created here.

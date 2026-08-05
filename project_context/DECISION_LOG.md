@@ -138,3 +138,28 @@ This section does not record modularization as an accepted technical specificati
 Requested Sentinel decision:
 `APPROVE — S2_CANDIDATE_08_C10_WP01_ACCEPTANCE_AND_WP02_RECOVERY_CHECKPOINT_CANDIDATE_02_ACCEPTED`
 
+
+## S2 Candidate 08 C10 WP02 modularization architecture acceptance boundary
+
+Sentinel accepted exact Candidate 04 only as the controlling WP02 modularization
+architecture:
+
+- path: `project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_02_MODULARIZATION_AMENDMENT_01_CANDIDATE_04.md`;
+- bytes: `25845`;
+- SHA-256: `6f9582306f912292ecabdebd737343306dfa26aa281529d3ff1423d0f832dced`;
+- decision identifier: `S2_CANDIDATE_08_C10_WP02_MODULARIZATION_AMENDMENT_01_CANDIDATE_04_SENTINEL_ACCEPTANCE_01`;
+- disposition: `APPROVE — S2_CANDIDATE_08_C10_WORKING_PAPER_02_MODULARIZATION_AMENDMENT_01_CANDIDATE_04_ACCEPTED`.
+
+The disposition covers only those exact bytes. Changed bytes require fresh
+Sentinel review.
+
+Amendment Candidates 01, 02, and 03 remain blocked review-history artifacts and
+non-controlling. No module is authorized. Module acceptance does not equal
+partial WP02 acceptance. Integrated Working Paper 02 remains unaccepted. All five
+Candidate-07 findings remain open. Working Paper 03 remains unauthorized.
+
+The only permissible next progression after this documentation is accepted,
+separately authorized for installation, installed, and independently verified is
+a separate Gustavo authorization for `WP02-A` specification-only drafting.
+This decision record creates no such authorization and has every authorization
+effect `NONE`.

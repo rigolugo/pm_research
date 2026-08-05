@@ -1,0 +1,87 @@
+{
+  "schema": "S2_CANDIDATE_08_C10_WP02_MODULARIZATION_DOCUMENTATION_INSTALLATION_PACKAGE_MANIFEST_V1",
+  "package_candidate": "S2_CANDIDATE_08_C10_WP02_MODULARIZATION_AMENDMENT_01_DOCUMENTATION_INSTALLATION_PACKAGE_CANDIDATE_02",
+  "required_canonical_base": "c57c74a64f6e577b2610b39a2bebc579dbe887c8",
+  "accepted_candidate_04": {
+    "path": "project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_02_MODULARIZATION_AMENDMENT_01_CANDIDATE_04.md",
+    "byte_length": 25845,
+    "sha256": "6f9582306f912292ecabdebd737343306dfa26aa281529d3ff1423d0f832dced"
+  },
+  "sentinel_decision_identifier": "S2_CANDIDATE_08_C10_WP02_MODULARIZATION_AMENDMENT_01_CANDIDATE_04_SENTINEL_ACCEPTANCE_01",
+  "sentinel_disposition": "APPROVE — S2_CANDIDATE_08_C10_WORKING_PAPER_02_MODULARIZATION_AMENDMENT_01_CANDIDATE_04_ACCEPTED",
+  "repository_member_count": 9,
+  "members": [
+    {
+      "path": "project_context/S2_CANDIDATE_08_C10_WORKING_PAPER_02_MODULARIZATION_AMENDMENT_01_CANDIDATE_04.md",
+      "role": "accepted controlling architecture",
+      "classification": "NEW",
+      "byte_length": 25845,
+      "sha256": "6f9582306f912292ecabdebd737343306dfa26aa281529d3ff1423d0f832dced"
+    },
+    {
+      "path": "project_context/S2_CANDIDATE_08_C10_WP02_MODULARIZATION_AMENDMENT_01_SENTINEL_ACCEPTANCE_RECORD_CANDIDATE_02.md",
+      "role": "Sentinel acceptance record candidate",
+      "classification": "NEW",
+      "byte_length": 1846,
+      "sha256": "0036d9995166106aad1481ffe402993578c4fa6991231b12224f198f730579bd"
+    },
+    {
+      "path": "project_context/S2_CANDIDATE_08_C10_WP02_MODULARIZATION_AMENDMENT_01_DOCUMENTATION_INSTALLATION_HANDOFF_CANDIDATE_02.md",
+      "role": "documentation installation handoff candidate",
+      "classification": "NEW",
+      "byte_length": 6824,
+      "sha256": "9fe6695b8efa8e2b4b9b0e86764b888efbf1b2bf407d2d3977294ec9941fc862"
+    },
+    {
+      "path": "project_context/START_HERE.md",
+      "role": "complete bounded governance replacement",
+      "classification": "REPLACEMENT",
+      "byte_length": 11361,
+      "sha256": "55ce69f00c17ef6a5635feda06487c7d6b70885f56fda043c32900271201f7dc"
+    },
+    {
+      "path": "project_context/PROJECT_STATE.md",
+      "role": "complete bounded governance replacement",
+      "classification": "REPLACEMENT",
+      "byte_length": 8746,
+      "sha256": "315b448958af7b8a39b6820460ef9032d5fa795456bccffe380276c5f08539ee"
+    },
+    {
+      "path": "project_context/DECISION_LOG.md",
+      "role": "complete bounded governance replacement",
+      "classification": "REPLACEMENT",
+      "byte_length": 8008,
+      "sha256": "2fcef308b112444495cc57012f2492299cd745d80aa5d10bd05cb01940fd71e0"
+    },
+    {
+      "path": "project_context/ARTIFACT_INDEX.md",
+      "role": "complete bounded governance replacement",
+      "classification": "REPLACEMENT",
+      "byte_length": 10204,
+      "sha256": "c7fa5c561dad0ac329c49e5e272e4c898bad7bf986d2466f400221886990cca1"
+    },
+    {
+      "path": "project_context/S2_CANDIDATE_08_C10_WP02_MODULARIZATION_AMENDMENT_01_DOCUMENTATION_INSTALLATION_PACKAGE_MANIFEST_CANDIDATE_02.json",
+      "role": "package manifest",
+      "classification": "NEW",
+      "byte_length": null,
+      "sha256": null,
+      "self_identity": null
+    },
+    {
+      "path": "project_context/S2_CANDIDATE_08_C10_WP02_MODULARIZATION_AMENDMENT_01_DOCUMENTATION_INSTALLATION_PACKAGE_CHECKSUMS_CANDIDATE_02.sha256",
+      "role": "internal checksum inventory",
+      "classification": "NEW",
+      "byte_length": null,
+      "sha256": null,
+      "identity_state": "DOWNSTREAM_OF_MANIFEST"
+    }
+  ],
+  "zip_and_external_sidecar_excluded_from_repository_inventory": true,
+  "authorization_effect": "NONE",
+  "installation_claim": "NONE",
+  "git_claim": "NONE",
+  "module_authoring_claim": "NONE",
+  "integrated_wp02_acceptance_claim": "NONE",
+  "downstream_authorization_claim": "NONE"
+}
